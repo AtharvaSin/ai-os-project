@@ -2,28 +2,31 @@
 
 > **Purpose:** Operational state file. Tells Claude what you're working on RIGHT NOW and where deep context lives. Updated after any session where project status shifts.
 >
-> **Last updated:** 2026-03-15 (MCP Gateway deployed, Phase 1 complete, CI/CD active)
+> **Last updated:** 2026-03-15 (State v2: Google OAuth fully configured. 6 secrets in Secret Manager. All 17 MCP tools code-complete. Awaiting commit + push for redeployment.)
+> **Authoritative state:** See `knowledge-base/PROJECT_STATE.md` for verified filesystem-scanned state.
 
 ---
 
 ## Active Focus Projects
 
 ### 1. AI Operating System
-- **Status:** Phase 1 complete, Phase 2 stubs deployed. MCP Gateway live on Cloud Run with 17 tools (6 PostgreSQL tools operational, 11 Google sync stubs). CI/CD pipeline active via Cloud Build. Migration 005 applied. Next: Google OAuth setup, Phase 2 full implementation, then Dashboard PWA.
-- **Current phase:** Sprint 4 — MCP Gateway deployed and verified on Cloud Run. PostgreSQL module fully operational. Google Tasks, Drive Write, Calendar Sync modules stubbed (pending Google OAuth credentials). Task Notification Cloud Function built (pending deployment). CI/CD auto-deploys on push to main. Next: set up Google OAuth, implement full Phase 2 modules, deploy Task Notification function + Cloud Scheduler trigger.
-- **Next milestone:** Set up Google OAuth credentials, implement full Google Tasks + Drive Write + Calendar Sync modules (replace stubs), deploy Task Notification Cloud Function with Cloud Scheduler
-- **Pending decisions:** Google OAuth credential setup, Dashboard design system finalization, Birthday Wishes workflow priority, FCM project setup timing
+- **Status:** Phase 1 complete, Phase 2 code complete, Google OAuth configured. MCP Gateway live on Cloud Run with 17 tools (6 PostgreSQL tools operational, 11 Google tools fully coded + OAuth configured — awaiting redeployment). CI/CD pipeline active. Migration 005 applied. 6 secrets in Secret Manager. 16 GCP APIs enabled. Next: commit + push to redeploy, then deploy Task Notification function, then Dashboard PWA.
+- **Current phase:** Sprint 4 — MCP Gateway deployed and verified on Cloud Run. PostgreSQL module fully operational. Google Tasks (5 tools), Drive Write (3 tools), Calendar Sync (3 tools) modules are fully implemented with Google OAuth credentials now configured (consent screen, Desktop client, refresh token obtained, 3 secrets stored in Secret Manager, Cloud Run SA granted access). Task Notification Cloud Function built (pending deployment). CI/CD auto-deploys on push to main. 17 skills. PRIMARY BLOCKER: commit + push uncommitted changes to trigger redeployment with OAuth secrets.
+- **Next milestone:** Commit + push to trigger Gateway redeployment (unblocks 11 Google tools), deploy Task Notification Cloud Function + Cloud Scheduler, complete Claude.ai MCP connector
+- **Pending decisions:** Dashboard design system finalization, Birthday Wishes workflow priority, FCM project setup timing
 - **What's been built:**
-  - Category A: 15 skills, 3 connectors (Gmail, Calendar, Drive), 20+ KB documents
-  - Claude Code: Project directory with CLAUDE.md, 15 migrated SKILL.md skills, mirrored KB
-  - GCP: Project ai-operating-system-490208 with 13 APIs, 3 service accounts, Artifact Registry, Secret Manager
-  - Database: ai_os DB on Cloud SQL (shared Bharatvarsh instance), 21 tables across 4 domains, pgvector enabled, Migration 005 applied (Google sync columns)
-  - MCP Gateway: Deployed on Cloud Run (ai-os-gateway, asia-south1, scale-to-zero). FastAPI + FastMCP 3.1.1. 17 tools registered. PostgreSQL module live (6 tools). Google Tasks/Drive Write/Calendar Sync stubs (11 tools). Bearer token auth.
+  - Category A: 17 skills, 3 connectors (Gmail, Calendar, Drive), 27 KB files
+  - Claude Code: Project directory with CLAUDE.md, 17 SKILL.md skills, mirrored KB
+  - GCP: Project ai-operating-system-490208 with 16 APIs (incl. Tasks, Drive, Calendar), 3 service accounts, Artifact Registry, Secret Manager (6 secrets)
+  - Database: ai_os DB on Cloud SQL (shared Bharatvarsh instance), 21 tables across 4 domains, pgvector enabled, Migration 005 applied (google_calendar_event_id on milestones)
+  - MCP Gateway: Deployed on Cloud Run (ai-os-gateway, asia-south1, scale-to-zero). FastAPI + FastMCP 3.1.1. 17 tools registered. PostgreSQL module live (6 tools). Google Tasks (5 tools), Drive Write (3 tools), Calendar Sync (3 tools) — fully implemented, OAuth configured, awaiting redeployment. Bearer token auth.
+  - Google OAuth: Consent screen created, Desktop OAuth client created, refresh token obtained, 3 secrets stored (GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, GOOGLE_REFRESH_TOKEN), Cloud Run SA granted access, cloudbuild.yaml updated with new secrets
   - CI/CD: Cloud Build trigger `deploy-mcp-gateway` auto-deploys on push to main. Artifact Registry images (v0.1.0-v0.1.2+).
   - Task Notification: Cloud Function built at workflows/category-b/task-notification/ (pending deployment)
+  - Scripts: google_oauth_setup.py (OAuth token flow), migration_005_google_sync.sql (applied)
   - Architecture: Three-tier tool ecosystem — Tier 1 directory connectors / Tier 2 unified MCP Gateway / Tier 3 local STDIO MCPs
   - Interface Strategy: Option C decided — Google Tasks/Calendar/Drive as notification rails, Next.js PWA as intelligence layer, Cloud SQL as single source of truth
-- **Context:** GCP_INFRA_CONFIG.md (KB), DB_SCHEMA.md (KB), TOOL_ECOSYSTEM_PLAN.md (KB), INTERFACE_STRATEGY.md (KB), EVOLUTION_LOG.md (KB)
+- **Context:** PROJECT_STATE.md (KB — authoritative state), GCP_INFRA_CONFIG.md (KB), DB_SCHEMA.md (KB), TOOL_ECOSYSTEM_PLAN.md (KB), INTERFACE_STRATEGY.md (KB), EVOLUTION_LOG.md (KB)
 - **Tech stack:** Claude.ai + Claude Code, Cloud SQL PostgreSQL + pgvector, GCP (Cloud Run, Functions, Scheduler, Cloud Build), FastAPI, FastMCP, Next.js (Phase 3), Firebase Cloud Messaging (Phase 3), LangGraph (future), Docker
 
 ### 2. AI&U YouTube Channel

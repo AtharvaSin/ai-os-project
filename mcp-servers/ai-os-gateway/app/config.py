@@ -16,6 +16,25 @@ def _is_cloud_run() -> bool:
     return os.getenv("K_SERVICE") is not None
 
 
+def _load_secret(secret_id: str) -> str | None:
+    """Load a secret from env or GCP Secret Manager."""
+    value = os.getenv(secret_id)
+    if value:
+        return value
+
+    if _is_cloud_run():
+        try:
+            from google.cloud import secretmanager
+            client = secretmanager.SecretManagerServiceClient()
+            name = f"projects/ai-operating-system-490208/secrets/{secret_id}/versions/latest"
+            response = client.access_secret_version(request={"name": name})
+            return response.payload.data.decode("utf-8")
+        except Exception:
+            return None
+
+    return None
+
+
 async def _load_api_key() -> str:
     """Load API key from env or Secret Manager."""
     key = os.getenv("MCP_GATEWAY_API_KEY") or os.getenv("API_KEY")
@@ -32,11 +51,29 @@ async def _load_api_key() -> str:
     raise ValueError("MCP_GATEWAY_API_KEY not configured")
 
 
+async def _load_google_oauth_env() -> None:
+    """Load Google OAuth secrets from Secret Manager into env vars.
+
+    On Cloud Run, the 3 Google OAuth secrets are in Secret Manager.
+    This loads them into environment so google_oauth.py can find them.
+    """
+    if not _is_cloud_run():
+        return
+
+    oauth_secrets = ["GOOGLE_CLIENT_ID", "GOOGLE_CLIENT_SECRET", "GOOGLE_REFRESH_TOKEN"]
+    for secret_id in oauth_secrets:
+        if not os.getenv(secret_id):
+            value = _load_secret(secret_id)
+            if value:
+                os.environ[secret_id] = value
+
+
 async def init_db_pool() -> None:
     """Initialize the asyncpg connection pool."""
     global _db_pool, _api_key
 
     _api_key = await _load_api_key()
+    await _load_google_oauth_env()
 
     db_name = os.getenv("DB_NAME", "ai_os")
     db_user = os.getenv("DB_USER", "ai_os_admin")

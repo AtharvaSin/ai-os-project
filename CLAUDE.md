@@ -3,7 +3,9 @@
 ## Project Overview
 This is Atharva Singh's AI-enabled Personal Operating System. This directory is the execution layer — where code gets written, workflows get built, infrastructure gets deployed, and the OS grows.
 
-The primary interface is a Claude.ai project (Category A) with 15 skills, 3 connectors (Gmail, Calendar, Drive), and a rich knowledge base. This Claude Code workspace handles what can't happen inside chat: terminal operations, multi-file code generation, git management, deployment, and MCP server development.
+The primary interface is a Claude.ai project (Category A) with 17 skills, 3 connectors (Gmail, Calendar, Drive), and a rich knowledge base. This Claude Code workspace handles what can't happen inside chat: terminal operations, multi-file code generation, git management, deployment, and MCP server development.
+
+**Current State:** See `knowledge-base/PROJECT_STATE.md` for the authoritative, filesystem-verified project state snapshot. Run `/update-project-state` to refresh it.
 
 ## Owner
 Atharva Singh — AI & Cloud Product Leader, incoming TPM at Zealogics Inc.
@@ -27,7 +29,7 @@ See `knowledge-base/TOOL_ECOSYSTEM_PLAN.md` for full architecture, module invent
 - **Database:** Cloud SQL PostgreSQL (pgvector) on shared bharatvarsh-db instance (bharatvarsh-website:us-central1:bharatvarsh-db). Database: ai_os. User: ai_os_admin. 21 tables, 4 schema domains.
 - **Frontend:** Next.js, React, Tailwind (Bharatvarsh website already live)
 - **AI Models:** Claude Sonnet 4.6 (default), Opus 4.6 (complex reasoning), Haiku 4.5 (classification)
-- **MCP:** Gmail, Calendar, Drive (Tier 1 connectors). AI OS Gateway with PostgreSQL, Google Tasks, Drive write, Bharatvarsh modules (Tier 2, to build). Evernote, n8n (Tier 3 local STDIO, to configure).
+- **MCP:** Gmail, Calendar, Drive (Tier 1 connectors). AI OS Gateway deployed on Cloud Run with PostgreSQL (live), Google Tasks, Drive Write, Calendar Sync (built, blocked on OAuth). Evernote, n8n (Tier 3 local STDIO, to configure).
 
 ## GCP Infrastructure (Provisioned)
 - **Project:** ai-operating-system-490208 (asia-south1)
@@ -58,7 +60,7 @@ ai-os-project/
 │   ├── profile-context-pack/
 │   ├── aiu-knowledge-pack/
 │   └── bharatvarsh-website-docs/
-├── .claude/skills/           ← Claude Code auto-discovered skills (15 skills)
+├── .claude/skills/           ← Claude Code auto-discovered skills (17 skills)
 ├── workflows/
 │   ├── category-b/           ← Cloud Functions (scheduled)
 │   └── category-c/           ← LangGraph + FastAPI (agentic)
@@ -99,8 +101,7 @@ When calling the Anthropic API in code:
 Always use prompt caching for system prompts that repeat across runs.
 
 ## Current Sprint
-Focus: MCP Gateway build (PostgreSQL module first), then Google Tasks + Drive Write modules, then first Category B workflow (Birthday Wishes).
-See `knowledge-base/EVOLUTION_LOG.md` for full sprint history.
+Focus: Google OAuth credentials setup (unblocks 11 tools), Task Notification Cloud Function deployment + Cloud Scheduler, Claude.ai MCP connector completion. MCP Gateway is deployed with all 4 modules fully coded. See `knowledge-base/PROJECT_STATE.md` for verified state and `knowledge-base/EVOLUTION_LOG.md` for full sprint history.
 
 ## Key Commands
 - `claude` — Start Claude Code session in this directory
