@@ -13,6 +13,49 @@ A running record of design decisions, architecture changes, brainstorming outcom
 
 ## Log Entries
 
+### Entry 005 — Interface Layer Strategy Decision
+- **Date:** 2026-03-14
+- **Domain:** Architecture / Interface Layer / Dashboard / Mobile
+- **Status:** [ACTIVE]
+- **Summary:** Evaluated three interface strategies for the AI OS Layer 1 (Interface): Option A (Full Third-Party with Notion + Google), Option B (Full Custom with Next.js + React Native), Option C (Hybrid: Google Rails + Custom Intelligence Layer). After weighted analysis across 7 criteria (time to value, cost, power, control, AI integration depth, mobile experience, maintenance burden), Option C was selected. Created INTERFACE_STRATEGY.md as canonical reference. Updated TOOL_ECOSYSTEM_PLAN.md with dashboard service and revised phases.
+- **Architecture Decisions:**
+  - **Interface strategy: Option C — Google Rails + Custom Intelligence Layer.** Google Tasks, Calendar, and Drive serve as notification rails (delivery channels to the phone). Cloud SQL remains the single source of truth. A custom Next.js PWA serves as the AI intelligence layer (dashboards, analytics, risk surfacing).
+  - **Google tools are downstream consumers, NOT data stores.** Task created in Claude → written to Cloud SQL → synced to Google Tasks. Never the reverse. Google Tasks is a notification surface, not canonical state.
+  - **Notion deprioritized.** Creates data bifurcation (two sources of truth). Two-way sync is fragile (3 req/sec rate limits). $10/month for a middleman. Dashboard replaces Notion's workspace role.
+  - **Dashboard is a separate Cloud Run service** (ai-os-dashboard) alongside the MCP Gateway (ai-os-gateway). Two services, not one — independent scaling, independent deployment, cleaner separation.
+  - **PWA over native mobile.** One codebase (Next.js), installable on home screen, push notifications via FCM, no app store, no Apple Developer account ($99/yr saved). iOS 16.4+ required for push — acceptable since Google Tasks covers critical deadline notifications on all platforms.
+  - **AI Risk Engine:** Daily Cloud Function computes overdue scores, velocity trends, milestone slip risk, dependency chain risk, stale project warnings. Results pushed via FCM to dashboard PWA.
+  - **Schema additions planned:** google_task_id, drive_file_id, drive_url columns on existing tables. New tables: risk_alerts, notifications, user_preferences.
+  - **Design system locked:** Dark theme (obsidian palette), Instrument Serif + DM Sans + JetBrains Mono, color-coded accents (gold/teal/purple/red), card-based layouts. Consistent with Claude artifact visual conventions.
+  - **Implementation phases updated:**
+    - Phase 2 (Now → 6 weeks): Google Tasks + Drive Write + Calendar Sync MCP modules + Task notification Cloud Function
+    - Phase 3a (6-12 weeks): Dashboard scaffold + PWA + auth + Command Center + Gantt + Task Board
+    - Phase 3b (8-14 weeks): AI Risk Engine + push notifications + Risk Dashboard
+    - Phase 4-5 (3-6 months): Content Calendar, Pipeline Monitor, Knowledge Explorer, Analytics
+- **KB Changes Made:**
+  - INTERFACE_STRATEGY.md — NEW: Canonical reference for interface layer design, component architecture, data flow patterns, schema additions, deployment topology, design system, implementation phases, cost model
+  - TOOL_ECOSYSTEM_PLAN.md — UPDATED: Dashboard service added, Notion marked as deprioritized, Calendar Sync module added (P1), implementation phases revised, cost model updated ($3-15/month), decision tree extended (step 5: dashboard pages)
+  - WORK_PROJECTS.md — UPDATED: AI OS status reflects interface strategy decision, next milestone updated, tech stack includes Next.js and FCM, context includes INTERFACE_STRATEGY.md
+  - EVOLUTION_LOG.md — UPDATED: Entry 005 added
+  - Project Instructions — AMENDMENT DRAFTED: KB catalogue updated, interface routing rules updated, W4 workstream updated
+- **Artifacts Produced:**
+  - Interactive strategy report (React artifact) — 6-tab analysis with requirements decomposition, option comparison, weighted matrix, architecture diagrams, implementation roadmap, and cost model
+  - INTERFACE_STRATEGY.md — Full specification document
+  - Updated KB files (TOOL_ECOSYSTEM_PLAN.md, WORK_PROJECTS.md, EVOLUTION_LOG.md)
+  - Project Instructions amendment (draft for manual application)
+- **Next Steps:**
+  - [ ] Upload INTERFACE_STRATEGY.md to project KB
+  - [ ] Replace TOOL_ECOSYSTEM_PLAN.md, WORK_PROJECTS.md, EVOLUTION_LOG.md in project KB
+  - [ ] Apply Project Instructions amendment (manual — see draft)
+  - [ ] Mirror INTERFACE_STRATEGY.md to Claude Code knowledge-base directory
+  - [ ] Build MCP Gateway scaffold + PostgreSQL module (Claude Code, Phase 1, 3-5 days)
+  - [ ] Add Google Tasks + Drive Write + Calendar Sync modules (Claude Code, Phase 2, 3-4 days)
+  - [ ] Build Task Notification Cloud Function (Claude Code, Phase 2b, 2-3 days)
+  - [ ] Set up Firebase project + FCM for push notifications (before Phase 3)
+  - [ ] Build Dashboard scaffold + PWA + auth (Claude Code, Phase 3a, 3-4 days)
+
+---
+
 ### Entry 004 — Tool Ecosystem Architecture Design
 - **Date:** 2026-03-14
 - **Domain:** Architecture / Tool Layer / MCP
@@ -39,11 +82,11 @@ A running record of design decisions, architecture changes, brainstorming outcom
   - Three-tier architecture SVG diagram (inline in chat)
   - TOOL_ECOSYSTEM_PLAN.md — Condensed KB reference version
 - **Next Steps:**
-  - [ ] Build MCP Gateway scaffold + PostgreSQL module (Claude Code, Phase 1, 3-5 days)
-  - [ ] Add Google Tasks + Drive Write modules (Claude Code, Phase 2, 2-3 days)
-  - [ ] Add Bharatvarsh Admin + Lore Search modules (Claude Code, Phase 3, 2-3 days)
-  - [ ] Install Evernote + n8n local STDIO MCPs (Claude Code, Phase 4, 1-2 days)
-  - [ ] Connect Slack, Notion, Canva directory connectors when available
+  - [x] ~~Build MCP Gateway scaffold + PostgreSQL module~~ → Remains priority, now part of Interface Strategy Phase 1-2
+  - [x] ~~Add Google Tasks + Drive Write modules~~ → Elevated to Phase 2 of Interface Strategy
+  - [ ] Add Bharatvarsh Admin + Lore Search modules (Claude Code, Phase 4, 2-3 days)
+  - [ ] Install Evernote + n8n local STDIO MCPs (Claude Code, Phase 5, 1-2 days)
+  - [ ] Connect Slack, Canva directory connectors when available
   - [ ] Build Birthday Wishes Cloud Function (first Category B pipeline)
   - [ ] Start daily /morning-brief ritual
   - [ ] Establish /weekly-review cadence
