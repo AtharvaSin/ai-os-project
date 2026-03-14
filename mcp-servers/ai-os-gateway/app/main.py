@@ -9,9 +9,10 @@ import contextlib
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.requests import Request
-from starlette.responses import JSONResponse
+from starlette.responses import JSONResponse as StarletteJSON
 from fastmcp import FastMCP
 
 from app import config
@@ -29,7 +30,8 @@ drive_write.register_tools(mcp, config.get_db_pool)
 calendar_sync.register_tools(mcp, config.get_db_pool)
 
 # Create the MCP HTTP sub-app (stateless — no session persistence needed)
-mcp_app = mcp.http_app(path="/", stateless_http=True)
+# path="/mcp" so the sub-app handles /mcp directly (no 307 redirect)
+mcp_app = mcp.http_app(path="/mcp", stateless_http=True)
 
 
 class MCPAuthMiddleware(BaseHTTPMiddleware):
@@ -50,7 +52,7 @@ class MCPAuthMiddleware(BaseHTTPMiddleware):
                 except Exception as exc:
                     status = getattr(exc, "status_code", 401)
                     detail = getattr(exc, "detail", {"error": "Unauthorized"})
-                    return JSONResponse(status_code=status, content=detail)
+                    return StarletteJSON(status_code=status, content=detail)
         return await call_next(request)
 
 
@@ -70,14 +72,10 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-# CORS — allow Claude.ai domains
+# CORS — allow all origins for MCP compatibility
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "https://claude.ai",
-        "https://claude.com",
-        "http://localhost:3000",
-    ],
+    allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -85,9 +83,8 @@ app.add_middleware(
 # Auth middleware for /mcp endpoints
 app.add_middleware(MCPAuthMiddleware)
 
-# Mount MCP server at /mcp
-app.mount("/mcp", mcp_app)
 
+# --- Explicit routes MUST be defined BEFORE the catch-all mount ---
 
 @app.get("/health")
 async def health():
@@ -110,3 +107,38 @@ async def health():
         "google_oauth": google_status,
         "modules": ["postgres", "google_tasks", "drive_write", "calendar_sync"],
     }
+
+
+# --- OAuth discovery endpoints for Claude.ai MCP spec compliance ---
+# Claude.ai checks these when connecting. Returning proper responses
+# tells it no OAuth is required.
+
+@app.get("/.well-known/oauth-protected-resource")
+@app.get("/.well-known/oauth-protected-resource/{path:path}")
+async def oauth_protected_resource(path: str = ""):
+    """Tell MCP clients this server doesn't require OAuth."""
+    return JSONResponse(content={
+        "resource": "https://ai-os-gateway-1054489801008.asia-south1.run.app",
+    })
+
+
+@app.get("/.well-known/oauth-authorization-server")
+async def oauth_authorization_server():
+    """No authorization server — this MCP server is open."""
+    return JSONResponse(status_code=404, content={
+        "error": "No authorization server configured."
+    })
+
+
+@app.post("/register")
+async def oauth_register():
+    """Dynamic client registration not supported."""
+    return JSONResponse(status_code=404, content={
+        "error": "Dynamic client registration not supported."
+    })
+
+
+# --- Mount MCP sub-app LAST (catch-all at root) ---
+# The sub-app handles /mcp internally. Mounted at "/" so that
+# POST /mcp works directly without a 307 redirect.
+app.mount("/", mcp_app)
