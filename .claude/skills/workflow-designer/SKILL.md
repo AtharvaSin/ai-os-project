@@ -1,8 +1,3 @@
----
-name: workflow-designer
-description: "Category B/C workflow specification with flow diagrams and cost estimates. Use when user wants to design, automate, or build a workflow, agent, or background service."
----
-
 # Skill: Workflow Designer
 
 > **Scope:** This skill operates within the AI Operating System project only. It references project-specific knowledge base documents and connectors available in this project.
@@ -82,9 +77,9 @@ Produce a **Workflow Specification** with these sections:
 - What happens if the human rejects? (retry, modify, abort)
 
 **7. Data Schema**
-- Supabase tables needed (new or existing)
+- Postgres tables needed (new or existing)
 - Fields, types, relationships
-- Reference SUPABASE_SCHEMA.md if it exists
+- Reference DB_SCHEMA.md if it exists
 
 **8. Error Handling**
 - What happens when each step fails?
@@ -133,6 +128,6 @@ After delivering, ask: "Want me to add this to the Evolution Log, or start build
 
 - **Knowledge base: Reference Architecture** — tech stack grounding (required)
 - **Knowledge base: WORK_PROJECTS.md** — project context
-- **Knowledge base: SUPABASE_SCHEMA.md** — database schema (when available)
+- **Knowledge base: DB_SCHEMA.md** — database schema (when available)
 - **Knowledge base: OS_EVOLUTION_LOG.md** — prior workflow decisions
 - **Past chats search** — previous discussions about this workflow

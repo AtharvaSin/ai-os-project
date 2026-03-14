@@ -1,8 +1,3 @@
----
-name: checklist-gen
-description: "QA, deployment, and process checklists as interactive artifacts. Use when user asks for a checklist, QA list, launch checklist, deployment steps, or verification guide."
----
-
 # Skill: Checklist Generator
 
 > **Scope:** This skill operates within the AI Operating System project only. It references project-specific knowledge base documents and connectors available in this project.
@@ -79,7 +74,7 @@ Produce as an interactive React artifact with:
 
 ## Quality Rules
 
-- Every item must be a verifiable action, not a vague reminder. "Check the database" is bad. "Verify all migrations ran successfully via Supabase dashboard" is good.
+- Every item must be a verifiable action, not a vague reminder. "Check the database" is bad. "Verify all migrations ran successfully via psql or Cloud SQL console" is good.
 - Critical items should never exceed 30% of the total list. If they do, the process has too many failure points — suggest simplifying the process itself.
 - Include a "post-completion" section for follow-up actions (monitoring, notifications, cleanup).
 - The checklist should be usable by someone other than the creator — no assumed context.

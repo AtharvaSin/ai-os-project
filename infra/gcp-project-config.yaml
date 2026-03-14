@@ -1,0 +1,108 @@
+# AI Operating System — GCP Project Configuration
+# Created: 2026-03-14
+
+project:
+  id: ai-operating-system-490208
+  name: AI Operating System
+  number: 1054489801008
+  region: asia-south1
+  owner: aiwithasr@gmail.com
+  console: https://console.cloud.google.com/welcome?project=ai-operating-system-490208
+
+enabled_apis:
+  - run.googleapis.com                    # Cloud Run
+  - cloudfunctions.googleapis.com         # Cloud Functions
+  - cloudscheduler.googleapis.com         # Cloud Scheduler
+  - secretmanager.googleapis.com          # Secret Manager
+  - artifactregistry.googleapis.com       # Artifact Registry
+  - cloudbuild.googleapis.com             # Cloud Build
+  - compute.googleapis.com                # Compute Engine
+  - iam.googleapis.com                    # IAM
+  - cloudresourcemanager.googleapis.com   # Resource Manager
+  - logging.googleapis.com                # Cloud Logging
+  - monitoring.googleapis.com             # Cloud Monitoring
+  - pubsub.googleapis.com                 # Pub/Sub
+  - sqladmin.googleapis.com               # Cloud SQL Admin (cross-project access)
+
+service_accounts:
+  cloud_run:
+    email: ai-os-cloud-run@ai-operating-system-490208.iam.gserviceaccount.com
+    purpose: Cloud Run deployments (Category C — LangGraph/FastAPI)
+    roles:
+      - roles/run.admin
+      - roles/secretmanager.secretAccessor
+      - roles/logging.logWriter
+      - roles/monitoring.metricWriter
+    cross_project_roles:
+      bharatvarsh-website:
+        - roles/cloudsql.client              # Connect to bharatvarsh-db
+
+  cloud_functions:
+    email: ai-os-cloud-functions@ai-operating-system-490208.iam.gserviceaccount.com
+    purpose: Cloud Functions (Category B — scheduled workflows)
+    roles:
+      - roles/cloudfunctions.invoker
+      - roles/run.invoker
+      - roles/secretmanager.secretAccessor
+      - roles/logging.logWriter
+      - roles/cloudscheduler.admin
+      - roles/pubsub.publisher
+    cross_project_roles:
+      bharatvarsh-website:
+        - roles/cloudsql.client              # Connect to bharatvarsh-db
+
+  cicd:
+    email: ai-os-cicd@ai-operating-system-490208.iam.gserviceaccount.com
+    purpose: Cloud Build CI/CD pipelines
+    roles:
+      - roles/cloudbuild.builds.builder
+      - roles/run.admin
+      - roles/cloudfunctions.developer
+      - roles/artifactregistry.writer
+      - roles/iam.serviceAccountUser
+      - roles/logging.logWriter
+    cross_project_roles:
+      bharatvarsh-website:
+        - roles/cloudsql.client              # Connect to bharatvarsh-db (migrations)
+
+artifact_registry:
+  repository: ai-os-images
+  format: docker
+  location: asia-south1
+  url: asia-south1-docker.pkg.dev/ai-operating-system-490208/ai-os-images
+
+docker:
+  push_format: "asia-south1-docker.pkg.dev/ai-operating-system-490208/ai-os-images/{IMAGE_NAME}:{TAG}"
+  auth_configured: true
+
+cloud_sql:
+  # Shared instance from bharatvarsh-website project (saves ~$50-70/month)
+  instance_name: bharatvarsh-db
+  instance_project: bharatvarsh-website
+  connection_name: bharatvarsh-website:us-central1:bharatvarsh-db
+  instance_region: us-central1                # Cross-region (~200-280ms latency, acceptable)
+  tier: db-custom-1-3840
+  postgres_version: "15"
+  disk_size_gb: 20
+  database: ai_os
+  user: ai_os_admin
+  extensions:
+    - vector                                  # pgvector 0.8.1 for embeddings
+  secrets:
+    password: AI_OS_DB_PASSWORD               # In ai-operating-system-490208 Secret Manager
+    instance: AI_OS_DB_INSTANCE               # Connection name secret
+  backups:
+    enabled: true
+    start_time: "03:00"
+    retained_count: 7
+    point_in_time_recovery: true
+    transaction_log_retention_days: 7
+  connection_methods:
+    cloud_run: cloud-sql-auth-proxy-sidecar   # --add-cloudsql-instances flag
+    cloud_functions: cloud-sql-python-connector # google-cloud-sql-connector library
+    local: cloud-sql-proxy-cli                # cloud-sql-proxy CLI
+
+defaults:
+  compute_region: asia-south1
+  run_region: asia-south1
+  functions_region: asia-south1

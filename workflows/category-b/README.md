@@ -18,7 +18,34 @@ gcloud functions deploy FUNCTION_NAME \
   --trigger-http \
   --region asia-south1 \
   --entry-point main \
-  --set-secrets 'ANTHROPIC_API_KEY=ANTHROPIC_API_KEY:latest'
+  --service-account ai-os-cloud-functions@ai-operating-system-490208.iam.gserviceaccount.com \
+  --set-secrets 'ANTHROPIC_API_KEY=ANTHROPIC_API_KEY:latest,AI_OS_DB_PASSWORD=AI_OS_DB_PASSWORD:latest,AI_OS_DB_INSTANCE=AI_OS_DB_INSTANCE:latest'
+```
+
+## Database Connection (Cloud SQL):
+Cloud Functions can't use the Auth Proxy sidecar. Use `cloud-sql-python-connector` instead:
+
+**Add to `requirements.txt`:**
+```
+cloud-sql-python-connector[pg8000]
+```
+
+**Connection pattern:**
+```python
+from google.cloud.sql.connector import Connector
+import pg8000
+import os
+
+def get_db_connection():
+    connector = Connector()
+    conn = connector.connect(
+        os.environ["AI_OS_DB_INSTANCE"],
+        "pg8000",
+        user="ai_os_admin",
+        password=os.environ["AI_OS_DB_PASSWORD"],
+        db="ai_os",
+    )
+    return conn
 ```
 
 ## Scheduling:
