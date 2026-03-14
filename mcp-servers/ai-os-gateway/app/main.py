@@ -33,16 +33,24 @@ mcp_app = mcp.http_app(path="/", stateless_http=True)
 
 
 class MCPAuthMiddleware(BaseHTTPMiddleware):
-    """Middleware to enforce bearer auth on /mcp endpoints."""
+    """Middleware to enforce bearer auth on /mcp endpoints.
+
+    Auth is optional: if an Authorization header is present, it MUST be
+    valid. If absent, the request passes through (allows Claude.ai
+    custom connectors which don't send Bearer tokens). Claude Code and
+    other clients that send Bearer tokens get validated.
+    """
 
     async def dispatch(self, request: Request, call_next):
         if request.url.path.startswith("/mcp"):
-            try:
-                await verify_bearer_token(request)
-            except Exception as exc:
-                status = getattr(exc, "status_code", 401)
-                detail = getattr(exc, "detail", {"error": "Unauthorized"})
-                return JSONResponse(status_code=status, content=detail)
+            auth_header = request.headers.get("Authorization")
+            if auth_header:
+                try:
+                    await verify_bearer_token(request)
+                except Exception as exc:
+                    status = getattr(exc, "status_code", 401)
+                    detail = getattr(exc, "detail", {"error": "Unauthorized"})
+                    return JSONResponse(status_code=status, content=detail)
         return await call_next(request)
 
 
