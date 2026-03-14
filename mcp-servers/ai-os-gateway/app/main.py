@@ -9,10 +9,9 @@ import contextlib
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
 from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.requests import Request
-from starlette.responses import JSONResponse as StarletteJSON
+from starlette.responses import JSONResponse
 from fastmcp import FastMCP
 
 from app import config
@@ -52,7 +51,7 @@ class MCPAuthMiddleware(BaseHTTPMiddleware):
                 except Exception as exc:
                     status = getattr(exc, "status_code", 401)
                     detail = getattr(exc, "detail", {"error": "Unauthorized"})
-                    return StarletteJSON(status_code=status, content=detail)
+                    return JSONResponse(status_code=status, content=detail)
         return await call_next(request)
 
 
@@ -109,33 +108,8 @@ async def health():
     }
 
 
-# --- OAuth discovery endpoints for Claude.ai MCP spec compliance ---
-# Claude.ai checks these when connecting. Returning proper responses
-# tells it no OAuth is required.
-
-@app.get("/.well-known/oauth-protected-resource")
-@app.get("/.well-known/oauth-protected-resource/{path:path}")
-async def oauth_protected_resource(path: str = ""):
-    """Tell MCP clients this server doesn't require OAuth."""
-    return JSONResponse(content={
-        "resource": "https://ai-os-gateway-1054489801008.asia-south1.run.app",
-    })
-
-
-@app.get("/.well-known/oauth-authorization-server")
-async def oauth_authorization_server():
-    """No authorization server — this MCP server is open."""
-    return JSONResponse(status_code=404, content={
-        "error": "No authorization server configured."
-    })
-
-
-@app.post("/register")
-async def oauth_register():
-    """Dynamic client registration not supported."""
-    return JSONResponse(status_code=404, content={
-        "error": "Dynamic client registration not supported."
-    })
+# No OAuth discovery endpoints defined — all return 404 via FastAPI default.
+# This correctly tells MCP clients (including Claude.ai) that no OAuth is required.
 
 
 # --- Mount MCP sub-app LAST (catch-all at root) ---
