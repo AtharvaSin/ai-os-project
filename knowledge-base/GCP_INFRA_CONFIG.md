@@ -2,7 +2,7 @@
 
 > **Purpose:** Canonical reference for all GCP project config, service accounts, database access, secrets, and deployment patterns. Referenced by /workflow-designer, /build-prd, /tech-eval, and any skill that deploys or connects to infrastructure.
 >
-> **Last updated:** 2026-03-14 (dashboard deployment template added, FCM secrets planned)
+> **Last updated:** 2026-03-15 (MCP Gateway deployed, MCP_GATEWAY_API_KEY secret added, ai-os-gateway image live)
 
 ---
 
@@ -82,7 +82,7 @@ Enabled at 03:00 UTC, 7 retained, point-in-time recovery on, 7-day transaction l
 **Images planned:**
 | Image | Service | Status |
 |-------|---------|--------|
-| ai-os-gateway | MCP Gateway (FastAPI) | Not built |
+| ai-os-gateway | MCP Gateway (FastAPI) | Deployed (v0.1.2+) |
 | ai-os-dashboard | Dashboard PWA (Next.js) | Not built |
 
 ---
@@ -93,6 +93,7 @@ Enabled at 03:00 UTC, 7 retained, point-in-time recovery on, 7-day transaction l
 |--------|----------|---------|
 | AI_OS_DB_PASSWORD | ai_os_admin database password | Cloud Run, Cloud Functions |
 | AI_OS_DB_INSTANCE | Connection name string | Cloud Run, Cloud Functions |
+| MCP_GATEWAY_API_KEY | Bearer token for MCP Gateway auth | Cloud Run, Claude Code |
 
 **Planned secrets:**
 | Secret | Contents | Used By | When |
@@ -155,7 +156,7 @@ gcloud run deploy ai-os-dashboard \
 
 | Service | Container | Purpose | Auth | Status |
 |---------|-----------|---------|------|--------|
-| ai-os-gateway | FastAPI | MCP Gateway — tool bridge for Claude.ai, Claude Code, workflows | Bearer token / API key | Not deployed |
+| ai-os-gateway | FastAPI | MCP Gateway — tool bridge for Claude.ai, Claude Code, workflows | Bearer token / API key | Deployed (asia-south1, scale-to-zero) |
 | ai-os-dashboard | Next.js | PWA Dashboard — project views, Gantt, risk alerts, analytics | Google OAuth (NextAuth.js) | Not deployed |
 
 Both services share the same service account (ai-os-cloud-run), the same Cloud SQL instance (via Auth Proxy sidecar), and the same Secret Manager secrets. They scale to zero independently.

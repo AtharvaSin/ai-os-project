@@ -2,26 +2,29 @@
 
 > **Purpose:** Operational state file. Tells Claude what you're working on RIGHT NOW and where deep context lives. Updated after any session where project status shifts.
 >
-> **Last updated:** 2026-03-14 (interface layer strategy decided — Option C: Google Rails + Custom Intelligence Layer)
+> **Last updated:** 2026-03-15 (MCP Gateway deployed, Phase 1 complete, CI/CD active)
 
 ---
 
 ## Active Focus Projects
 
 ### 1. AI Operating System
-- **Status:** Phase 1-2 build — Category A complete. Data layer live. Tool ecosystem designed. Interface strategy decided (Option C). Infrastructure ready. Next: build MCP Gateway, then Google sync modules, then Dashboard PWA.
-- **Current phase:** Sprint 3 — Claude Code integrated, GCP provisioned, 21-table database deployed, three-tier tool ecosystem architecture finalized, interface strategy locked (Google Rails + Custom Intelligence Layer). Next: implement MCP Gateway (PostgreSQL module first), then Google Tasks + Drive Write + Calendar Sync modules (Phase 2), then Next.js PWA Dashboard (Phase 3).
-- **Next milestone:** Deploy AI OS MCP Gateway on Cloud Run (PostgreSQL module), then add Google Tasks + Drive Write + Calendar Sync modules for mobile notifications and artifact storage
-- **Pending decisions:** MCP Gateway implementation timing, Dashboard design system finalization, Birthday Wishes workflow priority, FCM project setup timing
+- **Status:** Phase 1 complete, Phase 2 stubs deployed. MCP Gateway live on Cloud Run with 17 tools (6 PostgreSQL tools operational, 11 Google sync stubs). CI/CD pipeline active via Cloud Build. Migration 005 applied. Next: Google OAuth setup, Phase 2 full implementation, then Dashboard PWA.
+- **Current phase:** Sprint 4 — MCP Gateway deployed and verified on Cloud Run. PostgreSQL module fully operational. Google Tasks, Drive Write, Calendar Sync modules stubbed (pending Google OAuth credentials). Task Notification Cloud Function built (pending deployment). CI/CD auto-deploys on push to main. Next: set up Google OAuth, implement full Phase 2 modules, deploy Task Notification function + Cloud Scheduler trigger.
+- **Next milestone:** Set up Google OAuth credentials, implement full Google Tasks + Drive Write + Calendar Sync modules (replace stubs), deploy Task Notification Cloud Function with Cloud Scheduler
+- **Pending decisions:** Google OAuth credential setup, Dashboard design system finalization, Birthday Wishes workflow priority, FCM project setup timing
 - **What's been built:**
   - Category A: 15 skills, 3 connectors (Gmail, Calendar, Drive), 20+ KB documents
   - Claude Code: Project directory with CLAUDE.md, 15 migrated SKILL.md skills, mirrored KB
   - GCP: Project ai-operating-system-490208 with 13 APIs, 3 service accounts, Artifact Registry, Secret Manager
-  - Database: ai_os DB on Cloud SQL (shared Bharatvarsh instance), 21 tables across 4 domains, pgvector enabled
+  - Database: ai_os DB on Cloud SQL (shared Bharatvarsh instance), 21 tables across 4 domains, pgvector enabled, Migration 005 applied (Google sync columns)
+  - MCP Gateway: Deployed on Cloud Run (ai-os-gateway, asia-south1, scale-to-zero). FastAPI + FastMCP 3.1.1. 17 tools registered. PostgreSQL module live (6 tools). Google Tasks/Drive Write/Calendar Sync stubs (11 tools). Bearer token auth.
+  - CI/CD: Cloud Build trigger `deploy-mcp-gateway` auto-deploys on push to main. Artifact Registry images (v0.1.0-v0.1.2+).
+  - Task Notification: Cloud Function built at workflows/category-b/task-notification/ (pending deployment)
   - Architecture: Three-tier tool ecosystem — Tier 1 directory connectors / Tier 2 unified MCP Gateway / Tier 3 local STDIO MCPs
   - Interface Strategy: Option C decided — Google Tasks/Calendar/Drive as notification rails, Next.js PWA as intelligence layer, Cloud SQL as single source of truth
 - **Context:** GCP_INFRA_CONFIG.md (KB), DB_SCHEMA.md (KB), TOOL_ECOSYSTEM_PLAN.md (KB), INTERFACE_STRATEGY.md (KB), EVOLUTION_LOG.md (KB)
-- **Tech stack:** Claude.ai + Claude Code, Cloud SQL PostgreSQL + pgvector, GCP (Cloud Run, Functions, Scheduler), FastAPI, Next.js (Phase 3), Firebase Cloud Messaging (Phase 3), LangGraph (future), Docker
+- **Tech stack:** Claude.ai + Claude Code, Cloud SQL PostgreSQL + pgvector, GCP (Cloud Run, Functions, Scheduler, Cloud Build), FastAPI, FastMCP, Next.js (Phase 3), Firebase Cloud Messaging (Phase 3), LangGraph (future), Docker
 
 ### 2. AI&U YouTube Channel
 - **Status:** Pre-launch — content system designed, brand defined, no videos published yet

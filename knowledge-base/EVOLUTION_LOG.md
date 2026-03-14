@@ -13,6 +13,54 @@ A running record of design decisions, architecture changes, brainstorming outcom
 
 ## Log Entries
 
+### Entry 006 — MCP Gateway Build + Cloud Run Deployment + CI/CD
+- **Date:** 2026-03-15
+- **Domain:** Infrastructure / Tool Layer / MCP / CI/CD
+- **Status:** [ACTIVE]
+- **Summary:** Built and deployed the complete MCP Gateway (Phase 1 + Phase 2 stubs + Phase 2b). FastAPI + FastMCP server on Cloud Run with 17 MCP tools registered. PostgreSQL module fully operational with 6 tools. Google Tasks, Drive Write, Calendar Sync modules stubbed with full tool descriptions. Task Notification Cloud Function built. CI/CD pipeline established via Cloud Build with auto-deploy on push.
+- **Architecture Decisions:**
+  - **FastMCP 3.1.1 on FastAPI:** FastMCP mounted as sub-app on FastAPI with lifespan chaining for DB pool + MCP session management. Stateless HTTP mode for Cloud Run compatibility.
+  - **Auth model:** Bearer token auth optional — validates if present, passes through if absent. Allows Claude.ai connectors (no auth headers) and Claude Code (Bearer token) to both connect.
+  - **asyncpg with ssl=False:** Cloud SQL Auth Proxy handles TLS, so asyncpg must not attempt SSL negotiation. Fixed connection failures.
+  - **MCP path mounting:** FastMCP sub-app mounted at root with `path="/mcp"` to avoid Starlette's 307 redirect from `/mcp` to `/mcp/` which Claude.ai's httpx client doesn't follow for POST requests.
+  - **Cloud Build CI/CD:** Trigger `deploy-mcp-gateway` fires on push to main when files in `mcp-servers/ai-os-gateway/**` change. Builds Docker image (SHA + latest tags), pushes to Artifact Registry, deploys to Cloud Run.
+  - **Task Notification placed in workflows/category-b/:** Cloud Function code lives at `workflows/category-b/task-notification/` matching the project's existing directory structure.
+  - **Pipeline seeded:** `task-notification-daily` pipeline added to the pipelines table for log_pipeline_run tool.
+- **Infrastructure Changes:**
+  - Migration 005 applied: 6 new columns (google_task_id, google_task_list, last_synced_at on tasks; google_calendar_event_id on milestones; drive_file_id, drive_url on artifacts)
+  - Secret created: MCP_GATEWAY_API_KEY in Secret Manager
+  - IAM: ai-os-cicd service account granted secretmanager.secretAccessor role
+  - Cloud Run service deployed: ai-os-gateway (asia-south1, scale-to-zero, 512Mi)
+  - Cloud Build trigger created: deploy-mcp-gateway (auto-deploy on push)
+  - Artifact Registry: ai-os-gateway image (v0.1.0, v0.1.1, v0.1.2, latest)
+- **Files Created (27 files, ~2,800 lines):**
+  - MCP Gateway: main.py, config.py, bearer.py, google_oauth.py, postgres.py, google_tasks.py, drive_write.py, calendar_sync.py, Dockerfile, cloudbuild.yaml, requirements.txt, .env.example, tests/test_postgres.py
+  - Cloud Function: workflows/category-b/task-notification/main.py + requirements.txt
+  - Migration: database/migrations/005_google_sync_columns.sql
+  - KB docs: GCP_INFRA_CONFIG.md, INTERFACE_STRATEGY.md added
+- **Bugs Fixed During Build:**
+  - asyncpg ssl=False required for cloud-sql-proxy connections
+  - FastMCP 3.1.1 API changes (stateless_http moved from constructor to http_app())
+  - FastMCP lifespan chaining (session_manager.run() replaced by mcp_app.router.lifespan_context)
+  - bytes serialization for PostgreSQL char type in asyncpg
+  - 307 redirect on /mcp path (mount at root with path="/mcp")
+  - OAuth discovery endpoints removed (returning 200 confused Claude.ai into thinking OAuth required)
+- **Deployment Verified:**
+  - Cloud Run: healthy, DB connected, 17 tools available, query_db returns live data
+  - CI/CD: 2 successful builds, auto-trigger on push working
+  - Claude.ai connector: added as custom integration (connection in progress)
+- **Next Steps:**
+  - [ ] Complete Claude.ai custom connector connection
+  - [ ] Connect Claude Code via MCP config
+  - [ ] Set up Google OAuth credentials for Phase 2 (Tasks, Drive, Calendar)
+  - [ ] Implement full Google Tasks module (replace stubs)
+  - [ ] Implement full Drive Write module (replace stubs)
+  - [ ] Implement full Calendar Sync module (replace stubs)
+  - [ ] Deploy Task Notification Cloud Function + Cloud Scheduler trigger
+  - [ ] Start daily /morning-brief ritual
+
+---
+
 ### Entry 005 — Interface Layer Strategy Decision
 - **Date:** 2026-03-14
 - **Domain:** Architecture / Interface Layer / Dashboard / Mobile
