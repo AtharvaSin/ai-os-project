@@ -1,8 +1,21 @@
 steps:
+  # Build Docker image with commit SHA and latest tags
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'asia-south1-docker.pkg.dev/ai-operating-system-490208/ai-os-images/ai-os-gateway:$SHORT_SHA', '.']
+    args:
+      - 'build'
+      - '--platform=linux/amd64'
+      - '-t'
+      - 'asia-south1-docker.pkg.dev/ai-operating-system-490208/ai-os-images/ai-os-gateway:$SHORT_SHA'
+      - '-t'
+      - 'asia-south1-docker.pkg.dev/ai-operating-system-490208/ai-os-images/ai-os-gateway:latest'
+      - '.'
+    dir: 'mcp-servers/ai-os-gateway'
+
+  # Push both tags
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'asia-south1-docker.pkg.dev/ai-operating-system-490208/ai-os-images/ai-os-gateway:$SHORT_SHA']
+    args: ['push', '--all-tags', 'asia-south1-docker.pkg.dev/ai-operating-system-490208/ai-os-images/ai-os-gateway']
+
+  # Deploy to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gcloud'
     args:
@@ -14,7 +27,15 @@ steps:
       - '--service-account=ai-os-cloud-run@ai-operating-system-490208.iam.gserviceaccount.com'
       - '--add-cloudsql-instances=bharatvarsh-website:us-central1:bharatvarsh-db'
       - '--set-secrets=DB_PASSWORD=AI_OS_DB_PASSWORD:latest,API_KEY=MCP_GATEWAY_API_KEY:latest'
+      - '--set-env-vars=DB_NAME=ai_os,DB_USER=ai_os_admin,DB_SOCKET_PATH=/cloudsql/bharatvarsh-website:us-central1:bharatvarsh-db'
       - '--min-instances=0'
+      - '--max-instances=2'
+      - '--memory=512Mi'
       - '--allow-unauthenticated'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
+
 images:
   - 'asia-south1-docker.pkg.dev/ai-operating-system-490208/ai-os-images/ai-os-gateway:$SHORT_SHA'
+  - 'asia-south1-docker.pkg.dev/ai-operating-system-490208/ai-os-images/ai-os-gateway:latest'
