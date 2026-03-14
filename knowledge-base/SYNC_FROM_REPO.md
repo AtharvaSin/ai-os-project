@@ -1,3 +1,5 @@
+> **DEPRECATED:** Superseded by SKILL_KB_SYNC.md which covers Pull, Push, and Audit workflows. Use /kb-sync instead. This file will be removed in a future cleanup.
+
 # Skill: Sync from Repo
 
 > **Scope:** This skill operates within the AI Operating System project only. It uses the connected GitHub repository as the source of truth for project state and synchronizes this project's knowledge base and instructions accordingly.

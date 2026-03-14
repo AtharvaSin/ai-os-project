@@ -281,4 +281,26 @@ This skill's output (`PROJECT_STATE.md`) is consumed by:
 - **`/weekly-review`** — Uses change log and drift report for retrospective
 - **`/action-planner`** — Uses BLOCKED and PLANNED sections for task decomposition
 
-After running `/update-project-state`, suggest the user upload the updated `PROJECT_STATE.md` to the Claude.ai project knowledge base so both interfaces stay in sync.
+**Sync loop between Claude Code and Claude.ai:**
+
+```
+Claude Code                          Claude.ai
+    │                                    │
+    ├─ /update-project-state             │
+    │   ├─ Scans filesystem              │
+    │   ├─ Checks git history            │
+    │   ├─ Detects drift                 │
+    │   └─ Writes PROJECT_STATE.md       │
+    │        │                           │
+    │        └──── git commit + push ────┤
+    │                                    │
+    │                              /kb-sync
+    │                       (SKILL_KB_SYNC.md)
+    │                        ├─ Pull: refreshes Claude.ai KB from repo
+    │                        ├─ Push: gets session edits into the repo
+    │                        └─ Audit: full KB health check
+    │                                    │
+    └──── next Claude Code session ──────┘
+```
+
+After running `/update-project-state`, suggest the user run `/kb-sync` in Claude.ai to consume the updated `PROJECT_STATE.md` and reconcile all KB documents against the latest repo state.
