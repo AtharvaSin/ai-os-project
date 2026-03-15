@@ -9,6 +9,7 @@ load_dotenv()
 
 _db_pool: asyncpg.Pool | None = None
 _api_key: str | None = None
+_openai_api_key: str | None = None
 
 
 def _is_cloud_run() -> bool:
@@ -68,12 +69,33 @@ async def _load_google_oauth_env() -> None:
                 os.environ[secret_id] = value
 
 
+def _load_openai_env() -> None:
+    """Load OpenAI API key from Secret Manager into env vars.
+
+    On Cloud Run, OPENAI_API_KEY is in Secret Manager.
+    Locally, it is expected in .env or the environment.
+    """
+    key = _load_secret("OPENAI_API_KEY")
+    if key:
+        os.environ.setdefault("OPENAI_API_KEY", key)
+
+
+def get_openai_api_key() -> str | None:
+    """Get the OpenAI API key, loading from env or Secret Manager on first call."""
+    global _openai_api_key
+    if _openai_api_key:
+        return _openai_api_key
+    _openai_api_key = os.environ.get("OPENAI_API_KEY") or _load_secret("OPENAI_API_KEY")
+    return _openai_api_key
+
+
 async def init_db_pool() -> None:
     """Initialize the asyncpg connection pool."""
     global _db_pool, _api_key
 
     _api_key = await _load_api_key()
     await _load_google_oauth_env()
+    _load_openai_env()
 
     db_name = os.getenv("DB_NAME", "ai_os")
     db_user = os.getenv("DB_USER", "ai_os_admin")

@@ -1,0 +1,41 @@
+steps:
+  # Build Docker image with commit SHA and latest tags
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '--platform=linux/amd64'
+      - '-t'
+      - 'asia-south1-docker.pkg.dev/ai-operating-system-490208/ai-os-images/embedding-generator:$SHORT_SHA'
+      - '-t'
+      - 'asia-south1-docker.pkg.dev/ai-operating-system-490208/ai-os-images/embedding-generator:latest'
+      - '.'
+    dir: 'workflows/category-b/embedding-generator'
+
+  # Push both tags
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', '--all-tags', 'asia-south1-docker.pkg.dev/ai-operating-system-490208/ai-os-images/embedding-generator']
+
+  # Deploy to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args:
+      - 'run'
+      - 'deploy'
+      - 'embedding-generator'
+      - '--image=asia-south1-docker.pkg.dev/ai-operating-system-490208/ai-os-images/embedding-generator:$SHORT_SHA'
+      - '--region=asia-south1'
+      - '--service-account=ai-os-cloud-run@ai-operating-system-490208.iam.gserviceaccount.com'
+      - '--add-cloudsql-instances=bharatvarsh-website:us-central1:bharatvarsh-db'
+      - '--set-secrets=AI_OS_DB_PASSWORD=AI_OS_DB_PASSWORD:latest,OPENAI_API_KEY=OPENAI_API_KEY:latest'
+      - '--set-env-vars=DB_NAME=ai_os,DB_USER=ai_os_admin,DB_INSTANCE=bharatvarsh-website:us-central1:bharatvarsh-db'
+      - '--min-instances=0'
+      - '--max-instances=1'
+      - '--memory=256Mi'
+      - '--no-allow-unauthenticated'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
+
+images:
+  - 'asia-south1-docker.pkg.dev/ai-operating-system-490208/ai-os-images/embedding-generator:$SHORT_SHA'
+  - 'asia-south1-docker.pkg.dev/ai-operating-system-490208/ai-os-images/embedding-generator:latest'

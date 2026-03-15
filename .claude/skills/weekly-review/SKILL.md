@@ -56,6 +56,50 @@ For each active project, assess:
 - **Blockers** — What slowed things down? Is the blocker still active?
 - **Drift** — Did the week's actual work match the planned priorities? If not, why?
 
+### Step 2b: Query Knowledge Layer Health
+Query knowledge layer statistics via MCP tools to include in the review:
+
+**A. Domain Stats** — Call `query_db` with:
+```sql
+SELECT domain::text, COUNT(*) as entries,
+       COUNT(CASE WHEN created_at >= NOW() - INTERVAL '7 days' THEN 1 END) as new_this_week
+FROM knowledge_entries
+GROUP BY domain
+```
+
+**B. Embedding Coverage** — Call `query_db` with:
+```sql
+SELECT
+    (SELECT COUNT(*) FROM knowledge_entries) as total_entries,
+    (SELECT COUNT(*) FROM knowledge_embeddings) as embedded,
+    (SELECT COUNT(*) FROM knowledge_connections) as connections
+```
+
+**C. Recent Ingestion Jobs** — Call `query_db` with:
+```sql
+SELECT job_type::text, status::text, entries_created, started_at
+FROM knowledge_ingestion_jobs
+WHERE started_at >= NOW() - INTERVAL '7 days'
+ORDER BY started_at DESC
+```
+
+**D. Proposed Knowledge Connections** — Call `query_db` with:
+```sql
+SELECT kc.id,
+       ke_s.title as source_title, ke_s.domain::text as source_domain,
+       ke_t.title as target_title, ke_t.domain::text as target_domain,
+       kc.relationship_type::text, kc.strength, kc.context
+FROM knowledge_connections kc
+JOIN knowledge_entries ke_s ON ke_s.id = kc.source_entry_id
+JOIN knowledge_entries ke_t ON ke_t.id = kc.target_entry_id
+WHERE (kc.metadata->>'auto_proposed')::boolean = true
+AND (kc.metadata->>'approved')::boolean = false
+ORDER BY kc.strength DESC
+LIMIT 10
+```
+
+If these queries fail or return empty (knowledge layer not yet active), skip these sections silently.
+
 ### Step 3: Compose the Review
 
 **WEEK IN REVIEW: [Date Range]**
@@ -73,6 +117,28 @@ For each active project, assess:
 
 **COMMUNICATIONS**
 [Important emails sent/received, decisions communicated, threads needing follow-up]
+
+**KNOWLEDGE LAYER HEALTH**
+[Only show if knowledge layer data is available from Step 2b]
+- Total entries per domain + weekly delta (new entries this week)
+- Embedding coverage percentage (embedded / total entries)
+- Connection count and growth
+- Ingestion job success/failure rates this week
+- Recommendation: flag domains that need more content (e.g., "Personal domain has only 10 entries — consider adding journal or goal docs")
+
+**PROPOSED KNOWLEDGE CONNECTIONS**
+[Only show if unapproved auto-discovered connections exist from Step 2b-D]
+Present each proposed connection as:
+- **{source_title}** ({source_domain}) → *{relationship_type}* → **{target_title}** ({target_domain}) — Similarity: {strength}
+
+Ask the user to approve, reject, or modify each connection. For approved connections, call `query_db` to update:
+```sql
+UPDATE knowledge_connections SET metadata = metadata || '{"approved": true}' WHERE id = '{connection_id}'
+```
+For rejected connections, call `query_db` to delete:
+```sql
+DELETE FROM knowledge_connections WHERE id = '{connection_id}'
+```
 
 **OPEN ITEMS**
 [Action items from sessions that weren't completed. Decisions still pending.]
@@ -114,5 +180,7 @@ If the week was particularly productive (multiple decisions, many artifacts), of
 - **Past chats search** — find sessions from the current week (required)
 - **Google Calendar** — review the week's events
 - **Gmail** — review sent communications and pending threads
+- **MCP Gateway: query_db** — used for Step 2b (knowledge layer health stats, proposed connections)
+- **MCP Gateway: search_knowledge** — optional, for semantic queries against knowledge layer
 - **Knowledge base: WORK_PROJECTS.md** — current project state
 - **Knowledge base: OS_EVOLUTION_LOG.md** — recent entries and decisions

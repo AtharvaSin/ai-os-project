@@ -37,12 +37,31 @@ Skip entirely: newsletters, marketing emails, automated alerts, security notific
 
 If nothing is action-needed, say "Inbox is clear" and move on.
 
-### Step 3: Check Active Project State
+### Step 3: Query Knowledge Layer (RAG-Grounded)
+Before composing the project pulse, query the AI OS knowledge layer via MCP tools for richer, up-to-date context:
+
+**A. Project Status** — For each active project, call:
+`search_knowledge(query="weekly status update", domain="project", sub_domain="{project_slug}", limit=1)`
+Use the most recent weekly summary to ground the project status section. This provides auto-generated summaries of tasks completed, blockers, and velocity for the past week.
+
+**B. Personal Events** — Call:
+`search_knowledge(query="upcoming events this week", domain="personal", limit=5)`
+Include any personal events (birthdays, anniversaries, trips) found in the knowledge layer in the brief.
+
+**C. System Updates** — Call:
+`search_knowledge(query="infrastructure changes deployment", domain="system", limit=3)`
+If recent system changes (deployments, migrations, infra updates) are found, mention them briefly as context.
+
+If `search_knowledge` returns no results for any domain, fall back to the static KB approach below.
+
+### Step 3b: Check Active Project State (Fallback)
 Reference **WORK_PROJECTS.md** from this project's knowledge base. For each active focus project (AI Operating System, AI&U, Bharatvarsh), pull:
 - Current status (one line)
 - This week's focus or next milestone
 
 Flag any milestone that's due this week or any pending decision that's been sitting unresolved.
+
+**Merge knowledge layer results with static KB:** If the knowledge layer returned weekly summaries, use those as the primary source and supplement with WORK_PROJECTS.md only for information not covered. If no knowledge layer results, use WORK_PROJECTS.md as before.
 
 ### Step 4: Check for Carry-Forward Items
 Use the past chats search tool to find recent sessions in this project (last 2-3 conversations). Look for:
@@ -89,6 +108,7 @@ Present as a single structured response:
 
 - **Google Calendar** — required for Step 1
 - **Gmail** — required for Step 2
+- **MCP Gateway: search_knowledge** — used for Step 3 (knowledge layer queries, semantic search)
 - **Past chats search** — used for Step 4 (carry-forward items)
-- **Knowledge base: WORK_PROJECTS.md** — required for Step 3 (project pulse)
+- **Knowledge base: WORK_PROJECTS.md** — fallback for Step 3b (project pulse)
 - **Knowledge base: OS_EVOLUTION_LOG.md** — referenced for recent decisions context

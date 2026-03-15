@@ -2,7 +2,7 @@
 
 > **Purpose:** Operational state file. Tells Claude what you're working on RIGHT NOW and where deep context lives. Updated after any session where project status shifts.
 >
-> **Last updated:** 2026-03-15 (State v4: Dashboard PWA deployed to Cloud Run. All 17 MCP tools live. 8 secrets. Next: Cloud Build trigger for dashboard, Task Notification function, Phase 3b.)
+> **Last updated:** 2026-03-15 (State v5: Knowledge Layer V2 complete build — 4 pipelines, 38 seed docs, semantic search, 3 skills RAG-grounded. All code built, pending deployment.)
 > **Authoritative state:** See `knowledge-base/PROJECT_STATE.md` for verified filesystem-scanned state.
 
 ---
@@ -10,22 +10,23 @@
 ## Active Focus Projects
 
 ### 1. AI Operating System
-- **Status:** Phase 3a complete and deployed. MCP Gateway live with all 17 tools. Dashboard PWA live on Cloud Run. Database seeded with 28 tasks. Google OAuth configured for both Gateway (Desktop client) and Dashboard (Web Application client). 8 secrets in Secret Manager. 16 GCP APIs enabled. CI/CD auto-deploys Gateway; Dashboard requires manual deploy.
-- **Current phase:** Sprint 5 — Post-deployment stabilization. Dashboard PWA is live at https://ai-os-dashboard-sv4fbx5yna-el.a.run.app. All 17 MCP tools operational on Gateway. Task Notification function built (pending deployment). Cloud Build trigger for dashboard not yet created. Claude.ai MCP connector pending completion.
-- **Next milestone:** Create Cloud Build trigger for dashboard auto-deploy, deploy Task Notification Cloud Function + Cloud Scheduler, complete Claude.ai MCP connector, begin Phase 3b (AI Risk Engine + push notifications).
-- **Pending decisions:** Firebase project setup timing (needed for FCM push notifications), Risk Dashboard design, Cloud Build trigger configuration for dashboard
+- **Status:** Knowledge Layer V2 code complete (69 files built). Phase 3a deployed. MCP Gateway live with 17 tools (semantic search upgrade pending redeploy). Dashboard PWA live. Task Notification live. 4 knowledge pipelines built (pending deploy). 38 seed documents ready. 3 skills RAG-grounded.
+- **Current phase:** Sprint 5 — Knowledge Layer V2 deployment. All code built: 2 migrations (006-007), 4 pipeline services, MCP gateway semantic search, shared library, 38 seed docs, 3 utility scripts. Pending: apply migrations, store API keys, deploy services, seed knowledge base.
+- **Next milestone:** Deploy Knowledge Layer V2 (store OPENAI_API_KEY + ANTHROPIC_API_KEY, apply migrations, deploy 4 pipelines + redeploy gateway, seed 80-100+ knowledge entries). Then Phase 3b (AI Risk Engine + push notifications).
+- **Pending decisions:** Firebase project setup timing (Phase 3b), Knowledge Layer monitoring/alerting strategy, Drive folder creation method (MCP vs manual)
 - **What's been built:**
   - Category A: 18 skills, 3 connectors (Gmail, Calendar, Drive), 27+ KB files
   - Claude Code: Project directory with CLAUDE.md, 18 SKILL.md skills, mirrored KB
   - GCP: Project ai-operating-system-490208 with 16 APIs, 3 service accounts, Artifact Registry, Secret Manager (8 secrets)
-  - Database: ai_os DB on Cloud SQL (shared Bharatvarsh instance), 21 tables across 4 domains, pgvector enabled, Migrations 001-005 applied, 28 tasks seeded
-  - MCP Gateway: LIVE on Cloud Run (ai-os-gateway, asia-south1, scale-to-zero). FastAPI + FastMCP 3.1.1. 17 tools ALL operational. PostgreSQL (6 tools), Google Tasks (5 tools), Drive Write (3 tools), Calendar Sync (3 tools). Image: be26f7c. Bearer token auth.
+  - Database: ai_os DB on Cloud SQL (shared Bharatvarsh instance), 21 tables across 4 domains (24 after migration 007), pgvector enabled, Migrations 001-005 applied (006-007 built), 28 tasks seeded
+  - MCP Gateway: LIVE on Cloud Run (ai-os-gateway, asia-south1, scale-to-zero). FastAPI + FastMCP 3.1.1. 17 tools ALL operational. PostgreSQL (6 tools — search_knowledge upgraded to semantic/hybrid/fulltext, pending redeploy), Google Tasks (5 tools), Drive Write (3 tools), Calendar Sync (3 tools). Bearer token auth. openai>=1.0 added for embedding generation.
   - Google OAuth: Desktop client for Gateway (refresh token). Web Application client for Dashboard (DASHBOARD_OAUTH_SECRET). Consent screen configured.
-  - Dashboard PWA: LIVE on Cloud Run (ai-os-dashboard, asia-south1, scale-to-zero). Next.js 14 + TypeScript + Tailwind CSS. 6 pages (Command Center, Project Detail, Task Board, Gantt Timeline, Sign-in, Error). 7 API routes. 16 components (Kanban with drag-and-drop, custom CSS Grid Gantt, QuickAdd modal). NextAuth.js Google OAuth. Obsidian Aurora design system. PWA with service worker + offline fallback. Multi-stage Dockerfile.
-  - CI/CD: Cloud Build trigger `deploy-mcp-gateway` auto-deploys on push to main. Dashboard deployed manually (cloudbuild.yaml ready, no trigger).
-  - Task Notification: Cloud Function built at workflows/category-b/task-notification/ (pending deployment)
+  - Dashboard PWA: LIVE on Cloud Run (ai-os-dashboard, asia-south1, scale-to-zero). Next.js 14 + TypeScript + Tailwind CSS. 6 pages. 7 API routes. 16 components. NextAuth.js Google OAuth. Obsidian Aurora design system. PWA with service worker + offline fallback.
+  - CI/CD: Cloud Build triggers: deploy-mcp-gateway (auto) + deploy-ai-os-dashboard (auto). Cloud Scheduler: task-notification-daily-trigger.
+  - Task Notification: LIVE on Cloud Run + Cloud Scheduler (daily 06:00 IST)
+  - Knowledge Layer V2 (BUILT, not deployed): 4 pipeline services (embedding-generator, drive-knowledge-scanner, weekly-knowledge-summary, knowledge-auto-connector), shared library (ai_os_knowledge.py), 38 seed documents, 3 utility scripts, deployment guide. Migrations 006-007 ready. 3 skills RAG-grounded (morning-brief, weekly-review, session-resume).
   - Seeds: 28 tasks (AI OS 12, AI&U 8, Bharatvarsh 8), all milestone due dates set
-  - Scripts: google_oauth_setup.py (OAuth token flow), migration_005_google_sync.sql (applied)
+  - Scripts: google_oauth_setup.py, deploy_knowledge_layer_v2.sh, seed_knowledge_connections.py, generate_knowledge_snapshots.py
   - Architecture: Three-tier tool ecosystem — Tier 1 directory connectors / Tier 2 unified MCP Gateway / Tier 3 local STDIO MCPs
   - Interface Strategy: Option C decided — Google Tasks/Calendar/Drive as notification rails, Next.js PWA as intelligence layer, Cloud SQL as single source of truth
 - **Context:** PROJECT_STATE.md (KB — authoritative state), GCP_INFRA_CONFIG.md (KB), DB_SCHEMA.md (KB), TOOL_ECOSYSTEM_PLAN.md (KB), INTERFACE_STRATEGY.md (KB), EVOLUTION_LOG.md (KB)

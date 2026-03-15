@@ -26,17 +26,17 @@ See `knowledge-base/TOOL_ECOSYSTEM_PLAN.md` for full architecture, module invent
 - **Cloud:** GCP (project: ai-operating-system-490208, region: asia-south1)
 - **Backend:** FastAPI, Python 3.12
 - **Orchestration:** LangGraph (Category C only)
-- **Database:** Cloud SQL PostgreSQL (pgvector) on shared bharatvarsh-db instance (bharatvarsh-website:us-central1:bharatvarsh-db). Database: ai_os. User: ai_os_admin. 21 tables, 4 schema domains.
+- **Database:** Cloud SQL PostgreSQL (pgvector) on shared bharatvarsh-db instance (bharatvarsh-website:us-central1:bharatvarsh-db). Database: ai_os. User: ai_os_admin. 21 tables live (24 after migration 007), 4 schema domains. Migrations 001-005 applied; 006-007 built (pending apply).
 - **Frontend:** Next.js 14, React 18, Tailwind CSS, NextAuth.js, @hello-pangea/dnd (Dashboard PWA live on Cloud Run). Bharatvarsh website also live.
 - **AI Models:** Claude Sonnet 4.6 (default), Opus 4.6 (complex reasoning), Haiku 4.5 (classification)
-- **MCP:** Gmail, Calendar, Drive (Tier 1 connectors). AI OS Gateway deployed on Cloud Run with all 17 tools live: PostgreSQL (6), Google Tasks (5), Drive Write (3), Calendar Sync (3). Evernote, n8n (Tier 3 local STDIO, to configure).
+- **MCP:** Gmail, Calendar, Drive (Tier 1 connectors). AI OS Gateway deployed on Cloud Run with all 17 tools live: PostgreSQL (6, search_knowledge upgraded to semantic/hybrid/fulltext — pending redeploy), Google Tasks (5), Drive Write (3), Calendar Sync (3). Evernote, n8n (Tier 3 local STDIO, to configure).
 
 ## GCP Infrastructure (Provisioned)
 - **Project:** ai-operating-system-490208 (asia-south1)
 - **APIs:** 16 enabled (Cloud Run, Functions, Scheduler, Secret Manager, Artifact Registry, Cloud Build, Google Tasks, Drive, Calendar, etc.)
 - **Service Accounts:** ai-os-cloud-run (Cat C), ai-os-cloud-functions (Cat B), ai-os-cicd (CI/CD). All with cross-project cloudsql.client role.
 - **Artifact Registry:** asia-south1-docker.pkg.dev/ai-operating-system-490208/ai-os-images
-- **Secrets:** 8 in Secret Manager (AI_OS_DB_PASSWORD, AI_OS_DB_INSTANCE, MCP_GATEWAY_API_KEY, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, GOOGLE_REFRESH_TOKEN, NEXTAUTH_SECRET, DASHBOARD_OAUTH_SECRET)
+- **Secrets:** 8 in Secret Manager (AI_OS_DB_PASSWORD, AI_OS_DB_INSTANCE, MCP_GATEWAY_API_KEY, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, GOOGLE_REFRESH_TOKEN, NEXTAUTH_SECRET, DASHBOARD_OAUTH_SECRET). Need +2 for Knowledge Layer V2: OPENAI_API_KEY, ANTHROPIC_API_KEY.
 - See `knowledge-base/GCP_INFRA_CONFIG.md` for full config.
 
 ## Directory Structure
@@ -75,8 +75,14 @@ ai-os-project/
 │   ├── tailwind.config.ts
 │   └── package.json
 ├── workflows/
-│   ├── category-b/           ← Cloud Functions (scheduled)
-│   │   └── task-notification/ ← Daily overdue scan (built, not deployed)
+│   ├── category-b/           ← Cloud Run services (scheduled via Cloud Scheduler)
+│   │   ├── task-notification/ ← Daily overdue scan (LIVE on Cloud Run)
+│   │   ├── embedding-generator/ ← Knowledge embedding pipeline (BUILT, pending deploy)
+│   │   ├── drive-knowledge-scanner/ ← Drive folder scanner (BUILT, pending deploy)
+│   │   ├── weekly-knowledge-summary/ ← Weekly project summaries (BUILT, pending deploy)
+│   │   └── knowledge-auto-connector/ ← Auto connection discovery (BUILT, pending deploy)
+│   ├── shared/               ← Shared Python libraries
+│   │   └── ai_os_knowledge.py ← KnowledgeClient for semantic search + graph traversal
 │   └── category-c/           ← LangGraph + FastAPI (agentic)
 ├── mcp-servers/
 │   └── ai-os-gateway/        ← Unified MCP Gateway (17 tools, ALL LIVE)
@@ -90,16 +96,19 @@ ai-os-project/
 │       ├── requirements.txt
 │       └── cloudbuild.yaml
 ├── database/
-│   ├── migrations/           ← 001-005 (all applied)
-│   └── seeds/                ← 001-005 (all applied, 28 tasks seeded)
+│   ├── migrations/           ← 001-005 (applied), 006-007 (built, pending apply)
+│   └── seeds/                ← 001-005 (applied), 006 (built, pending apply)
 ├── scripts/
-│   └── google_oauth_setup.py ← OAuth token flow helper
+│   ├── google_oauth_setup.py ← OAuth token flow helper
+│   ├── deploy_knowledge_layer_v2.sh ← Step-by-step deployment guide
+│   ├── seed_knowledge_connections.py ← Seed initial knowledge connections
+│   └── generate_knowledge_snapshots.py ← Generate domain-level snapshots
 ├── infra/
 └── docs/
 ```
 
 ## Active Projects
-1. **AI Operating System** — Phase 3a complete. MCP Gateway live (17 tools). Dashboard PWA live on Cloud Run. Database: 21 tables, 28 tasks seeded. 8 secrets. Next: Cloud Build trigger for dashboard, Task Notification function, Phase 3b (AI Risk Engine).
+1. **AI Operating System** — Knowledge Layer V2 code complete (69 files). Phase 3a deployed. 4 new pipelines built (pending deploy). MCP Gateway semantic search upgraded (pending redeploy). 38 seed docs ready. 3 skills RAG-grounded. Next: deploy Knowledge Layer V2, then Phase 3b (AI Risk Engine).
 2. **AI&U YouTube** — Pre-launch. Content system designed. First 10-video library in progress.
 3. **Bharatvarsh** — Published. Website live at welcometobharatvarsh.com. Marketing phase.
 
@@ -119,7 +128,7 @@ When calling the Anthropic API in code:
 Always use prompt caching for system prompts that repeat across runs.
 
 ## Current Sprint
-Focus: Create Cloud Build trigger for dashboard auto-deploy, deploy Task Notification Cloud Function + Cloud Scheduler, complete Claude.ai MCP connector. All 17 MCP tools live. Dashboard PWA live. Phase 3b (AI Risk Engine + push notifications) is next major build. See `knowledge-base/PROJECT_STATE.md` for verified state and `knowledge-base/EVOLUTION_LOG.md` for full sprint history.
+Focus: Deploy Knowledge Layer V2. All code built (69 files): 2 DB migrations, 4 pipeline services, MCP gateway semantic search, shared library, 38 seed docs, 3 utility scripts. Deployment steps: (1) store OPENAI_API_KEY + ANTHROPIC_API_KEY in Secret Manager, (2) apply migrations 006-007, (3) deploy 4 Cloud Run services + create 4 Cloud Scheduler triggers, (4) redeploy MCP Gateway, (5) create Drive Knowledge/ folders + upload seed docs, (6) verify embeddings. Use `scripts/deploy_knowledge_layer_v2.sh` for guided deployment. After Knowledge Layer: Phase 3b (AI Risk Engine + push notifications). See `knowledge-base/PROJECT_STATE.md` for verified state (v5).
 
 ## Key Commands
 - `claude` — Start Claude Code session in this directory

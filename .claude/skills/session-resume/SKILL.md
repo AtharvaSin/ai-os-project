@@ -27,9 +27,26 @@ Determine the domain or topic:
 - If the user is vague ("continue where we left off"), search broadly for the most recent substantive sessions.
 
 ### Step 2: Search for Previous Context
-Execute these searches in order:
+Execute these searches in order — **knowledge layer first**, then traditional sources as fallback:
 
-**A. Past Chats Search**
+**A. Knowledge Layer Context (PRIMARY — check FIRST)**
+When resuming a session, first query the knowledge layer for relevant context:
+
+1. **Recent Project Updates**: For the project being worked on, call:
+   `search_knowledge(query="latest changes and status", domain="project", sub_domain="{relevant_project}", limit=3)`
+   This returns curated weekly summaries with task counts, blockers, and velocity data.
+
+2. **System Context**: Call:
+   `search_knowledge(query="recent deployments and infrastructure changes", domain="system", limit=3)`
+   This surfaces any recent infra changes that may affect the work.
+
+3. **Relevant Decisions**: If the user mentions a specific topic, call:
+   `search_knowledge(query="{user_topic}", mode="semantic", limit=5)`
+   Semantic search finds relevant knowledge entries even if they don't match exact keywords.
+
+Use knowledge layer results as primary context. They are curated and high-quality. Fall back to past chat search only if the knowledge layer doesn't provide sufficient context.
+
+**B. Past Chats Search (SECONDARY — use if knowledge layer insufficient)**
 Search recent conversations in this project for the relevant topic. Look for:
 - The last substantive working session on this domain
 - Any explicit "next steps" or action items stated at the end
@@ -37,14 +54,14 @@ Search recent conversations in this project for the relevant topic. Look for:
 - Artifacts that were produced
 - Open questions that were deferred
 
-**B. Evolution Log**
+**C. Evolution Log**
 Read the OS_EVOLUTION_LOG.md from the knowledge base. Check:
 - Most recent entries for the relevant domain
 - Any status changes ([ACTIVE], [COMPLETED], [PARKED])
 - Listed next steps that may still be pending
 - Architecture decisions that provide context
 
-**C. WORK_PROJECTS.md**
+**D. WORK_PROJECTS.md**
 Check the current project status for the relevant focus area:
 - Current phase and status
 - Next milestone
@@ -99,7 +116,8 @@ If the past chat search returns links to previous conversations, include them so
 
 ## Connectors Used
 
-- **Past chats search** — primary tool for finding previous session context (required)
+- **MCP Gateway: search_knowledge** — primary tool for finding curated knowledge context (checked first)
+- **Past chats search** — secondary tool for session-level context when knowledge layer is insufficient
 - **Knowledge base: OS_EVOLUTION_LOG.md** — for decision history and status tracking
 - **Knowledge base: WORK_PROJECTS.md** — for current project state
 - **Knowledge base: domain-specific docs** — loaded based on which project/domain is being resumed

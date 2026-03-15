@@ -8,6 +8,7 @@ for user-supplied values.
 from __future__ import annotations
 
 import json
+import logging
 import re
 import uuid
 from datetime import date, datetime
@@ -15,6 +16,10 @@ from decimal import Decimal
 from typing import Any
 
 from fastmcp import FastMCP
+
+from app import config as app_config
+
+logger = logging.getLogger(__name__)
 
 ALLOWED_TABLES = [
     "projects", "project_phases", "milestones", "tasks", "artifacts",
@@ -51,6 +56,28 @@ def _serialize(value: Any) -> Any:
 def _row_to_dict(record) -> dict[str, Any]:
     """Convert an asyncpg Record to a JSON-safe dict."""
     return {k: _serialize(v) for k, v in dict(record).items()}
+
+
+async def generate_query_embedding(query: str) -> list | None:
+    """Generate embedding for search query using OpenAI text-embedding-3-small.
+
+    Returns the embedding vector as a list of floats, or None if generation
+    fails (missing API key, network error, etc.). Callers should fall back
+    to BM25 full-text search when None is returned.
+    """
+    try:
+        from openai import OpenAI
+
+        api_key = app_config.get_openai_api_key()
+        if not api_key:
+            logger.warning("OPENAI_API_KEY not configured — skipping embedding generation")
+            return None
+        client = OpenAI(api_key=api_key)
+        response = client.embeddings.create(input=[query], model="text-embedding-3-small")
+        return response.data[0].embedding
+    except Exception as e:
+        logger.warning(f"Embedding generation failed: {e}")
+        return None
 
 
 def register_tools(mcp: FastMCP, get_pool) -> None:
@@ -192,30 +219,99 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
             return json.dumps({"error": f"Schema query failed: {exc}"})
 
     @mcp.tool(description=(
-        "Full-text search over knowledge_entries using the GIN index on "
-        "title + content. Optionally filter by domain. Returns ranked results."
+        "Search knowledge entries using semantic similarity (vector), "
+        "BM25 full-text search, or hybrid mode (semantic first, BM25 fallback). "
+        "Supports filtering by domain, sub_domain, and project_slug."
     ))
     async def search_knowledge(
-        query: str, domain: str | None = None, limit: int = 10,
+        query: str,
+        domain: str | None = None,
+        sub_domain: str | None = None,
+        project_slug: str | None = None,
+        mode: str = "hybrid",
+        threshold: float = 0.7,
+        limit: int = 10,
     ) -> str:
         pool = get_pool()
-        tsv = "to_tsvector('english', coalesce(title,'') || ' ' || coalesce(content,''))"
-        tsq = "plainto_tsquery('english', $1)"
-        sql = (
-            f"SELECT id, title, left(content, 500) AS snippet, "
-            f"domain, source, tags, ts_rank({tsv}, {tsq}) AS rank "
-            f"FROM knowledge_entries WHERE {tsv} @@ {tsq}"
-        )
-        params: list[Any] = [query]
-        if domain is not None:
-            sql += " AND domain = $2"
-            params.append(domain)
-        sql += f" ORDER BY rank DESC LIMIT ${len(params)+1}"
-        params.append(limit)
         try:
+            # --- Semantic / Hybrid path ---
+            if mode in ("semantic", "hybrid"):
+                embedding = await generate_query_embedding(query)
+
+                if embedding:
+                    # Resolve project_id from slug when provided
+                    project_id = None
+                    if project_slug:
+                        async with pool.acquire() as conn:
+                            row = await conn.fetchrow(
+                                "SELECT id FROM projects WHERE slug = $1",
+                                project_slug,
+                            )
+                            project_id = row["id"] if row else None
+
+                    # Call match_knowledge() SQL function
+                    async with pool.acquire() as conn:
+                        rows = await conn.fetch(
+                            "SELECT * FROM match_knowledge("
+                            "$1, $2, $3, $4::knowledge_domain, $5, $6)",
+                            embedding,
+                            threshold,
+                            limit,
+                            domain,
+                            sub_domain,
+                            project_id,
+                        )
+
+                    if rows or mode == "semantic":
+                        return json.dumps({
+                            "mode": "semantic",
+                            "results": [_row_to_dict(r) for r in rows],
+                            "count": len(rows),
+                        })
+
+                elif mode == "semantic":
+                    # Embedding generation failed and caller wants semantic only
+                    return json.dumps({
+                        "mode": "semantic",
+                        "results": [],
+                        "count": 0,
+                        "warning": "Embedding generation unavailable — no results.",
+                    })
+
+            # --- BM25 full-text fallback ---
+            tsv = "to_tsvector('english', coalesce(title,'') || ' ' || coalesce(content,''))"
+            tsq = "plainto_tsquery('english', $1)"
+            sql = (
+                f"SELECT id, title, left(content, 500) AS snippet, "
+                f"domain::text, sub_domain, source_type::text, tags, "
+                f"ts_rank({tsv}, {tsq}) AS rank "
+                f"FROM knowledge_entries WHERE {tsv} @@ {tsq}"
+            )
+            params: list[Any] = [query]
+            param_idx = 2
+
+            if domain is not None:
+                sql += f" AND domain = ${param_idx}::knowledge_domain"
+                params.append(domain)
+                param_idx += 1
+
+            if sub_domain is not None:
+                sql += f" AND sub_domain = ${param_idx}"
+                params.append(sub_domain)
+                param_idx += 1
+
+            sql += f" ORDER BY rank DESC LIMIT ${param_idx}"
+            params.append(limit)
+
             async with pool.acquire() as conn:
                 rows = await conn.fetch(sql, *params)
-                return json.dumps([_row_to_dict(r) for r in rows])
+
+            return json.dumps({
+                "mode": "fulltext",
+                "results": [_row_to_dict(r) for r in rows],
+                "count": len(rows),
+            })
+
         except Exception as exc:
             return json.dumps({"error": f"Search failed: {exc}"})
 

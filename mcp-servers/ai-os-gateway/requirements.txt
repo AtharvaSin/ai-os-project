@@ -5,6 +5,7 @@ asyncpg>=0.30.0
 google-cloud-secret-manager>=2.21.0
 pydantic>=2.10.0
 python-dotenv>=1.0.0
+openai>=1.0
 
 # Phase 2 — Google API clients (install now, use later)
 google-api-python-client>=2.160.0
