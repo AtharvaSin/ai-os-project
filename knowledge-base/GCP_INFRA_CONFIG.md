@@ -158,8 +158,9 @@ gcloud run deploy ai-os-dashboard \
 |---------|-----------|---------|------|--------|-----|
 | ai-os-gateway | FastAPI | MCP Gateway — tool bridge for Claude.ai, Claude Code, workflows | Bearer token / API key | LIVE (asia-south1, scale-to-zero) | https://ai-os-gateway-1054489801008.asia-south1.run.app |
 | ai-os-dashboard | Next.js | PWA Dashboard — project views, Gantt, task board, milestone management | Google OAuth (NextAuth.js) | LIVE (asia-south1, scale-to-zero) | https://ai-os-dashboard-sv4fbx5yna-el.a.run.app |
+| task-notification-daily | Python + functions-framework | Daily overdue/upcoming task scan + Google Tasks sync | OIDC (Cloud Scheduler) | LIVE (asia-south1, scale-to-zero) | https://task-notification-daily-sv4fbx5yna-el.a.run.app |
 
-Both services share the same service account (ai-os-cloud-run), the same Cloud SQL instance (via Auth Proxy sidecar), and the same Secret Manager secrets. They scale to zero independently.
+Gateway and Dashboard share service account `ai-os-cloud-run`. Task notification uses `ai-os-cloud-functions`. All use Cloud SQL Auth Proxy sidecar and scale to zero independently.
 
 See INTERFACE_STRATEGY.md for full dashboard specification and TOOL_ECOSYSTEM_PLAN.md for full gateway module inventory.
 
@@ -170,7 +171,13 @@ See INTERFACE_STRATEGY.md for full dashboard specification and TOOL_ECOSYSTEM_PL
 | Trigger Name | Source | Watches | Action | Status |
 |-------------|--------|---------|--------|--------|
 | deploy-mcp-gateway | GitHub: AtharvaSin/ai-os-project, branch main | `mcp-servers/ai-os-gateway/**` | Build image → push to Artifact Registry → deploy to Cloud Run | Active |
-| deploy-ai-os-dashboard | — | `dashboard/**` | Build image → push to Artifact Registry → deploy to Cloud Run | NOT CREATED (manual deploy only) |
+| deploy-ai-os-dashboard | GitHub: AtharvaSin/ai-os-project, branch main | `dashboard/**` | Build image → push to Artifact Registry → deploy to Cloud Run | Active |
+
+### Cloud Scheduler Jobs
+
+| Job Name | Schedule | Target | Auth | Status |
+|----------|----------|--------|------|--------|
+| task-notification-daily-trigger | `0 6 * * *` (06:00 IST) | https://task-notification-daily-sv4fbx5yna-el.a.run.app | OIDC (ai-os-cloud-functions SA) | Enabled |
 
 ---
 
@@ -180,7 +187,7 @@ See INTERFACE_STRATEGY.md for full dashboard specification and TOOL_ECOSYSTEM_PL
 - Authorized networks cleanup — a residential IP is in the allowlist; needs review
 - postgres user password rotation — was reset during setup; should be stored securely
 - Firebase project setup — needed before Phase 3b (FCM for push notifications)
-- Cloud Build trigger for dashboard — needed for automated deployments
+- Cloud Functions Gen 2 buildpack broken — buildpack creator exits immediately (all functions, all regions). Using Cloud Run + Dockerfile as workaround
 
 ---
 

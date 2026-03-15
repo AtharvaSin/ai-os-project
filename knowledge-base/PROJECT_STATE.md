@@ -16,8 +16,8 @@
 | Database | LIVE (Cloud SQL) | 21 tables, 5 migrations, 28 tasks seeded |
 | Dashboard PWA | LIVE (Cloud Run) | 6 pages, 7 API routes, 16 components. Manually deployed. |
 | Google OAuth | CONFIGURED | Desktop client for MCP Gateway. Web Application client for Dashboard (DASHBOARD_OAUTH_SECRET created). |
-| Cloud Functions | BUILT, NOT DEPLOYED | Task notification function ready |
-| CI/CD | ACTIVE | Cloud Build auto-deploys Gateway on push to main. Dashboard: manual deploy only (no trigger). |
+| Task Notification | LIVE (Cloud Run) | Deployed as Cloud Run service + Cloud Scheduler (daily 06:00 IST). |
+| CI/CD | ACTIVE | Cloud Build triggers: Gateway (auto) + Dashboard (auto). Cloud Scheduler: task-notification-daily-trigger. |
 | Secrets | 8 in Secret Manager | AI_OS_DB_PASSWORD, AI_OS_DB_INSTANCE, MCP_GATEWAY_API_KEY, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, GOOGLE_REFRESH_TOKEN, NEXTAUTH_SECRET, DASHBOARD_OAUTH_SECRET |
 
 ---
@@ -91,13 +91,19 @@
 - **Service Accounts:** 3 (ai-os-cloud-run, ai-os-cloud-functions, ai-os-cicd)
 - **Secrets in Secret Manager:** 8 (AI_OS_DB_PASSWORD, AI_OS_DB_INSTANCE, MCP_GATEWAY_API_KEY, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, GOOGLE_REFRESH_TOKEN, NEXTAUTH_SECRET, DASHBOARD_OAUTH_SECRET)
 - **Artifact Registry:** ai-os-images (ai-os-gateway + ai-os-dashboard images live)
-- **CI/CD:** Cloud Build trigger `deploy-mcp-gateway` active. No trigger for dashboard.
+- **CI/CD:** Cloud Build triggers: `deploy-mcp-gateway` (auto on push, gateway files) + `deploy-ai-os-dashboard` (auto on push, dashboard files). Cloud Scheduler: `task-notification-daily-trigger` (daily 06:00 IST).
 
 ---
 
-## BUILT (Code Complete, Not Deployed)
+### Task Notification Service (Cloud Run + Cloud Scheduler)
+- **Service:** task-notification-daily, asia-south1, scale-to-zero (512Mi)
+- **URL:** https://task-notification-daily-sv4fbx5yna-el.a.run.app
+- **Image:** asia-south1-docker.pkg.dev/ai-operating-system-490208/ai-os-images/task-notification:latest
+- **Scheduler:** `task-notification-daily-trigger` — daily at 06:00 IST (cron: `0 6 * * *`), OIDC auth
+- **Function:** Scans overdue + upcoming tasks from Cloud SQL, creates/updates Google Tasks for phone notifications, logs pipeline run
+- **Note:** Deployed as Cloud Run service (not Cloud Function) due to Cloud Functions Gen 2 buildpack failure in this project. Functionally identical — uses `functions-framework` as HTTP server.
 
-- [ ] **Task Notification Cloud Function** — Location: `workflows/category-b/task-notification/`. Ready to deploy with `gcloud functions deploy` + Cloud Scheduler trigger.
+## BUILT (Code Complete, Applied)
 
 - [x] **Task seed data** — Location: `database/seeds/005_seed_tasks.sql`. 28 tasks seeded across 3 projects. Milestone due dates updated. Already applied to Cloud SQL.
 
@@ -125,43 +131,32 @@
 
 | Item | Blocked On | Owner | Impact |
 |------|-----------|-------|--------|
-| Dashboard Cloud Build trigger | Create trigger in GCP Console for auto-deploy on push | Atharva | Dashboard requires manual deploy on each code change |
-| Task Notification Cloud Function | `gcloud functions deploy` + Cloud Scheduler trigger | Atharva | No daily overdue-task notifications |
 | Claude.ai MCP connector | Complete custom connector connection in Claude.ai UI | Atharva | MCP Gateway tools not accessible from Claude.ai chat |
+| Cloud Functions Gen 2 buildpack | Buildpack `creator` exits with code 1 in ~1s for ALL functions (even minimal). Project-level config issue. Task notification deployed as Cloud Run workaround. | GCP Support / Atharva | Cannot use Cloud Functions Gen 2 in this project. Using Cloud Run instead. |
 
 ---
 
 ## Drift Report
 
-### Resolved Since v3
-- **Dashboard PWA** — Was BUILT, NOT DEPLOYED. Now DEPLOYED and LIVE on Cloud Run. URL: https://ai-os-dashboard-sv4fbx5yna-el.a.run.app. Manually deployed by aiwithasr@gmail.com at 2026-03-15T09:57:23Z.
-- **MCP Gateway Google modules** — Were "awaiting redeployment with OAuth". Now LIVE. Image `be26f7c` deployed via Cloud Build at 2026-03-14T21:58:09Z. All 17 tools operational.
-- **DASHBOARD_OAUTH_SECRET** — New secret created in Secret Manager (8 total, up from 7). Implies Web Application OAuth client was created for Dashboard.
-- **Dashboard image in Artifact Registry** — Was "Not built". Now live (~78MB, sha256:b690e1a5...).
+### Resolved Since v4 Initial
+- **Cloud Build trigger for Dashboard** — Created: `deploy-ai-os-dashboard` watching `dashboard/**` on push to main.
+- **Task Notification** — Deployed as Cloud Run service (not Cloud Function due to buildpack issue) + Cloud Scheduler daily at 06:00 IST.
+- **IAM fix** — Granted `roles/artifactregistry.writer` and `roles/logging.logWriter` to default Cloud Build SA.
 
-### No Longer Blocked
-- ~~11 Google MCP tools~~ — RESOLVED. Gateway redeployed with OAuth via Cloud Build auto-trigger.
-- ~~Dashboard deploy to Cloud Run~~ — RESOLVED. Manually deployed.
+### Known Issue
+- **Cloud Functions Gen 2 buildpack broken** — All function deploys fail (buildpack creator exits in ~1s, even for minimal hello-world). Workaround: deploy as Cloud Run services with Dockerfile + `functions-framework`. Functionally identical.
 
-### Stale References (CLAUDE.md — Flagged for Update)
-- **CLAUDE.md "Current Sprint" section:** References "Google OAuth credentials setup (unblocks 11 tools), Task Notification Cloud Function deployment". Should say: "Dashboard PWA deployed, all 17 MCP tools live. Next: Cloud Build trigger for dashboard, Task Notification function, Phase 3b."
-- **CLAUDE.md "Secrets" line:** Lists 2 secrets. Now 8.
-- **CLAUDE.md directory structure:** Does not include `dashboard/` directory.
-- **CLAUDE.md "Active Projects":** Says "Next: MCP Gateway build." Gateway is built and deployed.
-- **CLAUDE.md "MCP":** Says "blocked on OAuth". All modules now live.
-- **CLAUDE.md "APIs":** Says 13. Now 16.
+### All CLAUDE.md Stale References — RESOLVED in v4
 
 ---
 
 ## Next Actions (Priority Order)
 
-1. **Create Cloud Build trigger for Dashboard** — Set up `deploy-ai-os-dashboard` trigger watching `dashboard/**` on push to main. Estimated effort: 10 minutes. Unblocks: automated dashboard deployments.
+1. **Complete Claude.ai MCP connector** — Add custom connector in Claude.ai UI pointing to Gateway URL. Estimated effort: 15 minutes. Unblocks: MCP tools from Claude.ai chat.
 
-2. **Deploy Task Notification Cloud Function + Cloud Scheduler** — Code complete at `workflows/category-b/task-notification/`. Estimated effort: 30 minutes. Unblocks: daily overdue task notifications.
+2. **Start Phase 3b: AI Risk Engine** — Firebase project setup, FCM, risk computation service, Risk Dashboard page. Estimated effort: 2-3 weeks.
 
-3. **Complete Claude.ai MCP connector** — Add custom connector in Claude.ai UI pointing to Gateway URL. Estimated effort: 15 minutes. Unblocks: MCP tools from Claude.ai chat.
-
-4. **Start Phase 3b: AI Risk Engine** — Firebase project setup, FCM, risk computation Cloud Function, Risk Dashboard page. Estimated effort: 2-3 weeks.
+3. **Investigate Cloud Functions Gen 2 buildpack issue** — All Gen 2 function deploys fail in this project (buildpack creator exits in ~1s). Low priority since Cloud Run workaround works. Consider filing GCP support ticket.
 
 ---
 
@@ -169,6 +164,7 @@
 
 | Date | State Version | Changes |
 |------|--------------|---------|
+| 2026-03-15 | v4.1 | Cloud Build trigger for dashboard created. Task notification deployed as Cloud Run service + Cloud Scheduler (06:00 IST). Cloud Functions Gen 2 buildpack issue discovered (project-level). IAM fix: artifactregistry.writer + logging.logWriter for default Cloud Build SA. 3 Cloud Run services now live. |
 | 2026-03-15 | v4 | Dashboard PWA deployed to Cloud Run (LIVE). MCP Gateway redeployed with all 17 tools live (Google OAuth modules operational). DASHBOARD_OAUTH_SECRET created (8 total secrets). Dashboard image in Artifact Registry. All KB files updated post-deployment. |
 | 2026-03-15 | v3 | Dashboard PWA Phase 3a fully built (52 files: 6 pages, 7 API routes, 16 components, Dockerfile, cloudbuild.yaml). 28 tasks seeded to Cloud SQL across 3 projects. All 8 milestones now have due dates. NEXTAUTH_SECRET created in Secret Manager (7 total secrets). kb-sync skill added (18 skills total). Dashboard locally tested against live Cloud SQL data. |
 | 2026-03-15 | v2 | Google OAuth fully configured. 3 Google modules confirmed as full implementations. 6 secrets in Secret Manager. 16 APIs enabled. |

@@ -137,7 +137,7 @@ NPM packages running as local subprocesses. Zero cloud cost.
 |-------|------|--------|--------|
 | Phase 1 | Gateway scaffold + PostgreSQL module | 3-5 days | Complete |
 | Phase 2 | Google Tasks + Drive Write + Calendar Sync + OAuth | 3-4 days | Complete |
-| Phase 2b | Task notification Cloud Function (daily overdue scan) | 2-3 days | Built, not deployed |
+| Phase 2b | Task notification service (daily overdue scan) | 2-3 days | Complete — deployed as Cloud Run + Scheduler |
 | Phase 3a | Dashboard scaffold + PWA + auth + Command Center + Gantt + Task Board | 4-6 weeks | Complete — deployed to Cloud Run |
 | Phase 3b | AI Risk Engine + push notifications + Risk Dashboard | 2-3 weeks | Not started |
 | Phase 4 | Bharatvarsh Admin + Lore Search modules | 2-3 days | Not started |
