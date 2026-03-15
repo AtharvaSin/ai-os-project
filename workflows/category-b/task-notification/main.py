@@ -15,23 +15,33 @@ from datetime import datetime, timezone
 
 import functions_framework
 import pg8000
-from google.cloud.sql.connector import Connector
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 
 
-# Database connection
-connector = Connector()
-
-
 def get_connection():
-    """Connect to Cloud SQL via Python Connector."""
-    return connector.connect(
-        os.getenv("DB_INSTANCE", "bharatvarsh-website:us-central1:bharatvarsh-db"),
-        "pg8000",
+    """Connect to Cloud SQL via Auth Proxy sidecar Unix socket (Cloud Run)
+    or TCP localhost (local dev with cloud-sql-proxy)."""
+    instance = os.getenv(
+        "DB_INSTANCE", "bharatvarsh-website:us-central1:bharatvarsh-db"
+    )
+    unix_sock = f"/cloudsql/{instance}/.s.PGSQL.5432"
+
+    # Try Unix socket first (Cloud Run with Auth Proxy sidecar)
+    if os.path.exists(f"/cloudsql/{instance}"):
+        return pg8000.connect(
+            user=os.getenv("DB_USER", "ai_os_admin"),
+            password=os.getenv("DB_PASSWORD", ""),
+            database=os.getenv("DB_NAME", "ai_os"),
+            unix_sock=unix_sock,
+        )
+    # Fallback to TCP localhost (local dev with cloud-sql-proxy)
+    return pg8000.connect(
         user=os.getenv("DB_USER", "ai_os_admin"),
         password=os.getenv("DB_PASSWORD", ""),
-        db=os.getenv("DB_NAME", "ai_os"),
+        database=os.getenv("DB_NAME", "ai_os"),
+        host="127.0.0.1",
+        port=5432,
     )
 
 
