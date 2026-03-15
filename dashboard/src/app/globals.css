@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #0d0d14;
+  --bg-card: #12121e;
+  --bg-hover: #1a1a2e;
+  --border: #1f1f35;
+  --text-primary: #e8e6e1;
+  --text-secondary: #a09d95;
+  --text-muted: #807d75;
+  --accent-gold: #E8B931;
+  --accent-teal: #4ECDC4;
+  --accent-purple: #7B68EE;
+  --accent-red: #FF6B6B;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body), sans-serif;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Focus ring */
+*:focus-visible {
+  outline: 2px solid var(--accent-purple);
+  outline-offset: 2px;
+}
+
+@layer components {
+  .card {
+    @apply rounded-card border;
+    background-color: var(--bg-card);
+    border-color: var(--border);
+  }
+
+  .card-hover {
+    @apply card transition-colors;
+  }
+  .card-hover:hover {
+    background-color: var(--bg-hover);
+  }
+
+  .badge {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold font-mono;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium transition-colors;
+    background-color: var(--accent-purple);
+    color: white;
+  }
+  .btn-primary:hover {
+    opacity: 0.9;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium transition-colors;
+    color: var(--text-secondary);
+  }
+  .btn-ghost:hover {
+    background-color: var(--bg-hover);
+    color: var(--text-primary);
+  }
+}

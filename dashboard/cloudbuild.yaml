@@ -1,0 +1,47 @@
+steps:
+  # Build Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - 'asia-south1-docker.pkg.dev/ai-operating-system-490208/ai-os-images/ai-os-dashboard:$SHORT_SHA'
+      - '-t'
+      - 'asia-south1-docker.pkg.dev/ai-operating-system-490208/ai-os-images/ai-os-dashboard:latest'
+      - '.'
+
+  # Push to Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - 'asia-south1-docker.pkg.dev/ai-operating-system-490208/ai-os-images/ai-os-dashboard:$SHORT_SHA'
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - 'asia-south1-docker.pkg.dev/ai-operating-system-490208/ai-os-images/ai-os-dashboard:latest'
+
+  # Deploy to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args:
+      - 'run'
+      - 'deploy'
+      - 'ai-os-dashboard'
+      - '--image=asia-south1-docker.pkg.dev/ai-operating-system-490208/ai-os-images/ai-os-dashboard:$SHORT_SHA'
+      - '--region=asia-south1'
+      - '--service-account=ai-os-cloud-run@ai-operating-system-490208.iam.gserviceaccount.com'
+      - '--add-cloudsql-instances=bharatvarsh-website:us-central1:bharatvarsh-db'
+      - '--set-secrets=DB_PASSWORD=AI_OS_DB_PASSWORD:latest,GOOGLE_CLIENT_SECRET=GOOGLE_OAUTH_CLIENT_SECRET:latest,NEXTAUTH_SECRET=NEXTAUTH_SECRET:latest'
+      - '--set-env-vars=DB_NAME=ai_os,DB_USER=ai_os_admin,DB_HOST=/cloudsql/bharatvarsh-website:us-central1:bharatvarsh-db'
+      - '--min-instances=0'
+      - '--max-instances=3'
+      - '--memory=512Mi'
+      - '--cpu=1'
+      - '--allow-unauthenticated'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
+
+images:
+  - 'asia-south1-docker.pkg.dev/ai-operating-system-490208/ai-os-images/ai-os-dashboard:$SHORT_SHA'
+  - 'asia-south1-docker.pkg.dev/ai-operating-system-490208/ai-os-images/ai-os-dashboard:latest'

@@ -13,6 +13,39 @@ A running record of design decisions, architecture changes, brainstorming outcom
 
 ## Log Entries
 
+### Entry 007 — Dashboard PWA Phase 3a Build + Task Seed Data
+- **Date:** 2026-03-15
+- **Domain:** Interface Layer / Dashboard / Database
+- **Status:** [ACTIVE]
+- **Summary:** Built the complete AI OS Dashboard PWA (Phase 3a). Next.js 14 + TypeScript + Tailwind CSS with Obsidian Aurora design system. 52 source files: 6 pages (Command Center, Project Detail, Task Board, Gantt Timeline, Sign-in, Error), 7 API routes (projects, tasks, milestones, gantt, auth), 16 React components (ProjectCard, KanbanBoard with drag-and-drop, GanttChart with milestone reschedule, PhaseAccordion, QuickAddTask modal, responsive Sidebar + MobileNav). Auth via NextAuth.js with Google OAuth, single-email gate. Database via pg + Cloud SQL Auth Proxy sidecar. PWA with manifest, service worker, offline fallback, PNG icons. Seeded 28 tasks across 3 projects. Locally tested against live Cloud SQL.
+- **Architecture Decisions:**
+  - **Custom Gantt over frappe-gantt:** Built CSS Grid Gantt chart for better React integration and Obsidian Aurora theme consistency. Supports click-to-reschedule milestones.
+  - **Server components by default:** Command Center and Project Detail are server components querying Cloud SQL directly. Task Board and Gantt are client components for interactivity.
+  - **@hello-pangea/dnd for Kanban:** Maintained fork of react-beautiful-dnd for drag-and-drop task status changes.
+  - **No ORM:** Raw SQL via pg npm package with typed query helpers, matching the MCP Gateway's direct-SQL approach.
+  - **CSP disabled in dev:** Next.js HMR requires eval/inline scripts and data URI fonts. CSP headers applied only in production builds.
+  - **Desktop OAuth for local dev:** Existing MCP Gateway Desktop client reused for local testing. Web Application client needed for Cloud Run production.
+- **Files Created (52 files, ~3,200 lines):**
+  - Config: package.json, tsconfig.json, next.config.js, tailwind.config.ts, postcss.config.js, Dockerfile, cloudbuild.yaml, .env.example, .dockerignore
+  - Pages: page.tsx (home), projects/[slug]/page.tsx, tasks/page.tsx, gantt/page.tsx, auth/signin/page.tsx, auth/error/page.tsx
+  - API routes: projects/route.ts, projects/[slug]/route.ts, tasks/route.ts, tasks/[id]/route.ts, gantt/route.ts, milestones/[id]/route.ts, auth/[...nextauth]/route.ts
+  - Components: 16 components including layout (Sidebar, MobileNav)
+  - Lib: auth.ts, db.ts, types.ts, utils.ts, middleware.ts
+  - PWA: manifest.json, sw.js, offline.html, icon-192.png, icon-512.png
+  - Seed: database/seeds/005_seed_tasks.sql (28 tasks, milestone due date updates)
+- **Secrets Created:**
+  - NEXTAUTH_SECRET in Secret Manager (generated via openssl rand -base64 32)
+- **Data Seeded:**
+  - 28 tasks: AI OS (12), AI&U (8), Bharatvarsh (8)
+  - Distribution: todo (15), in_progress (6), blocked (1), done (6)
+  - Priority: urgent (3), high (11), medium (9), low (5)
+  - All 8 milestones updated with due dates
+- **Next Steps:**
+  - [ ] Create Web Application OAuth client in GCP Console for Cloud Run production
+  - [ ] Deploy Dashboard to Cloud Run via cloudbuild.yaml
+  - [ ] Deploy Task Notification Cloud Function + Cloud Scheduler
+  - [ ] Phase 3b: AI Risk Engine + push notifications
+
 ### Entry 006 — MCP Gateway Build + Cloud Run Deployment + CI/CD
 - **Date:** 2026-03-15
 - **Domain:** Infrastructure / Tool Layer / MCP / CI/CD
