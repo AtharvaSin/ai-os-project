@@ -2,7 +2,7 @@
 
 > **Purpose:** Canonical reference for all GCP project config, service accounts, database access, secrets, and deployment patterns. Referenced by /workflow-designer, /build-prd, /tech-eval, and any skill that deploys or connects to infrastructure.
 >
-> **Last updated:** 2026-03-15 (MCP Gateway deployed, MCP_GATEWAY_API_KEY secret added, ai-os-gateway image live)
+> **Last updated:** 2026-03-15 (Dashboard deployed to Cloud Run, ai-os-dashboard image live, 8 secrets, DASHBOARD_OAUTH_SECRET created)
 
 ---
 
@@ -19,9 +19,9 @@
 
 ## 2. Enabled APIs
 
-Cloud Run, Cloud Functions, Cloud Scheduler, Secret Manager, Artifact Registry, Cloud Build, Compute Engine, IAM, Resource Manager, Cloud Logging, Cloud Monitoring, Pub/Sub, Cloud SQL Admin — 13 APIs covering the full Category B (scheduled functions) and Category C (agentic Cloud Run) architecture.
+Cloud Run, Cloud Functions, Cloud Scheduler, Secret Manager, Artifact Registry, Cloud Build, Compute Engine, IAM, Resource Manager, Cloud Logging, Cloud Monitoring, Pub/Sub, Cloud SQL Admin, Google Tasks API, Google Drive API, Google Calendar API — 16 APIs covering the full Category B (scheduled functions) and Category C (agentic Cloud Run) architecture plus Google workspace integrations.
 
-**Planned additions (Phase 3):** Firebase Cloud Messaging API (for PWA push notifications).
+**Planned additions (Phase 3b):** Firebase Cloud Messaging API (for PWA push notifications).
 
 ---
 
@@ -31,7 +31,7 @@ Cloud Run, Cloud Functions, Cloud Scheduler, Secret Manager, Artifact Registry, 
 |----------------|---------|-----------|
 | ai-os-cloud-run@... | Cloud Run (Category C services, MCP Gateway, Dashboard) | run.admin, secretmanager.secretAccessor, logging.logWriter, monitoring.metricWriter |
 | ai-os-cloud-functions@... | Cloud Functions (Category B pipelines) | cloudfunctions.invoker, run.invoker, secretmanager.secretAccessor, logging.logWriter, cloudscheduler.admin, pubsub.publisher |
-| ai-os-cicd@... | Cloud Build CI/CD | cloudbuild.builds.builder, run.admin, cloudfunctions.developer, artifactregistry.writer, iam.serviceAccountUser, logging.logWriter |
+| ai-os-cicd@... | Cloud Build CI/CD | cloudbuild.builds.builder, run.admin, cloudfunctions.developer, artifactregistry.writer, iam.serviceAccountUser, logging.logWriter, secretmanager.secretAccessor |
 
 All three have `roles/cloudsql.client` on the bharatvarsh-website project (cross-project IAM) for database access.
 
@@ -56,10 +56,10 @@ AI OS shares the existing bharatvarsh-db instance from the bharatvarsh-website G
 
 ### Connection Patterns
 
-- **Cloud Run:** Auth Proxy sidecar (Unix socket, zero-config TLS). Add `--add-cloudsql-instances=bharatvarsh-website:us-central1:bharatvarsh-db` to deploy command.
+- **Cloud Run (MCP Gateway):** Auth Proxy sidecar (Unix socket, zero-config TLS). Add `--add-cloudsql-instances=bharatvarsh-website:us-central1:bharatvarsh-db` to deploy command.
+- **Cloud Run (Dashboard):** Same Auth Proxy sidecar pattern. Uses `pg` npm package with Unix socket path `/cloudsql/bharatvarsh-website:us-central1:bharatvarsh-db`.
 - **Cloud Functions:** `cloud-sql-python-connector[pg8000]` library. Use the connector's `connect()` method with instance connection name.
 - **Local dev:** `cloud-sql-proxy bharatvarsh-website:us-central1:bharatvarsh-db` on localhost:5432.
-- **Dashboard (Next.js):** Same Auth Proxy sidecar pattern as MCP Gateway. Use `pg` npm package with Unix socket path.
 
 ### Cross-Region Note
 
@@ -79,11 +79,11 @@ Enabled at 03:00 UTC, 7 retained, point-in-time recovery on, 7-day transaction l
 | URL | asia-south1-docker.pkg.dev/ai-operating-system-490208/ai-os-images |
 | Auth | Docker auth configured and ready for pushes |
 
-**Images planned:**
-| Image | Service | Status |
-|-------|---------|--------|
-| ai-os-gateway | MCP Gateway (FastAPI) | Deployed (v0.1.2+) |
-| ai-os-dashboard | Dashboard PWA (Next.js) | Not built |
+**Images:**
+| Image | Service | Status | Size |
+|-------|---------|--------|------|
+| ai-os-gateway | MCP Gateway (FastAPI) | LIVE (latest: be26f7c) | ~107MB |
+| ai-os-dashboard | Dashboard PWA (Next.js) | LIVE (latest: sha256:b690e1a5...) | ~78MB |
 
 ---
 
@@ -91,17 +91,14 @@ Enabled at 03:00 UTC, 7 retained, point-in-time recovery on, 7-day transaction l
 
 | Secret | Contents | Used By |
 |--------|----------|---------|
-| AI_OS_DB_PASSWORD | ai_os_admin database password | Cloud Run, Cloud Functions |
+| AI_OS_DB_PASSWORD | ai_os_admin database password | Cloud Run (Gateway + Dashboard), Cloud Functions |
 | AI_OS_DB_INSTANCE | Connection name string | Cloud Run, Cloud Functions |
-| MCP_GATEWAY_API_KEY | Bearer token for MCP Gateway auth | Cloud Run, Claude Code |
-
-**Planned secrets:**
-| Secret | Contents | Used By | When |
-|--------|----------|---------|------|
-| GOOGLE_OAUTH_CLIENT_ID | OAuth client ID for Dashboard login | Dashboard | Phase 3 |
-| GOOGLE_OAUTH_CLIENT_SECRET | OAuth client secret | Dashboard | Phase 3 |
-| FCM_SERVER_KEY | Firebase Cloud Messaging server key | Dashboard, Cloud Functions | Phase 3 |
-| NEXTAUTH_SECRET | NextAuth.js session encryption key | Dashboard | Phase 3 |
+| MCP_GATEWAY_API_KEY | Bearer token for MCP Gateway auth | Cloud Run (Gateway), Claude Code |
+| GOOGLE_CLIENT_ID | OAuth Desktop client ID (MCP Gateway) | Cloud Run (Gateway) |
+| GOOGLE_CLIENT_SECRET | OAuth Desktop client secret (MCP Gateway) | Cloud Run (Gateway) |
+| GOOGLE_REFRESH_TOKEN | OAuth refresh token (MCP Gateway) | Cloud Run (Gateway) |
+| NEXTAUTH_SECRET | NextAuth.js session encryption key | Cloud Run (Dashboard) |
+| DASHBOARD_OAUTH_SECRET | Web Application OAuth client secret (Dashboard) | Cloud Run (Dashboard) |
 
 ---
 
@@ -129,7 +126,7 @@ gcloud run deploy ai-os-gateway \
   --region=asia-south1 \
   --service-account=ai-os-cloud-run@ai-operating-system-490208.iam.gserviceaccount.com \
   --add-cloudsql-instances=bharatvarsh-website:us-central1:bharatvarsh-db \
-  --set-secrets=DB_PASSWORD=AI_OS_DB_PASSWORD:latest \
+  --set-secrets=DB_PASSWORD=AI_OS_DB_PASSWORD:latest,GOOGLE_CLIENT_ID=GOOGLE_CLIENT_ID:latest,GOOGLE_CLIENT_SECRET=GOOGLE_CLIENT_SECRET:latest,GOOGLE_REFRESH_TOKEN=GOOGLE_REFRESH_TOKEN:latest \
   --min-instances=0 \
   --no-allow-unauthenticated
 ```
@@ -142,9 +139,12 @@ gcloud run deploy ai-os-dashboard \
   --region=asia-south1 \
   --service-account=ai-os-cloud-run@ai-operating-system-490208.iam.gserviceaccount.com \
   --add-cloudsql-instances=bharatvarsh-website:us-central1:bharatvarsh-db \
-  --set-secrets=DB_PASSWORD=AI_OS_DB_PASSWORD:latest,GOOGLE_OAUTH_CLIENT_SECRET=GOOGLE_OAUTH_CLIENT_SECRET:latest,NEXTAUTH_SECRET=NEXTAUTH_SECRET:latest,FCM_SERVER_KEY=FCM_SERVER_KEY:latest \
-  --set-env-vars=GOOGLE_OAUTH_CLIENT_ID=xxx,NEXTAUTH_URL=https://ai-os-dashboard-xxx.run.app \
+  --set-secrets=DB_PASSWORD=AI_OS_DB_PASSWORD:latest,GOOGLE_CLIENT_SECRET=GOOGLE_CLIENT_SECRET:latest,NEXTAUTH_SECRET=NEXTAUTH_SECRET:latest \
+  --set-env-vars=DB_NAME=ai_os,DB_USER=ai_os_admin,DB_HOST=/cloudsql/bharatvarsh-website:us-central1:bharatvarsh-db \
   --min-instances=0 \
+  --max-instances=3 \
+  --memory=512Mi \
+  --cpu=1 \
   --allow-unauthenticated
 ```
 
@@ -154,10 +154,10 @@ gcloud run deploy ai-os-dashboard \
 
 ## 8. Cloud Run Service Topology
 
-| Service | Container | Purpose | Auth | Status |
-|---------|-----------|---------|------|--------|
-| ai-os-gateway | FastAPI | MCP Gateway — tool bridge for Claude.ai, Claude Code, workflows | Bearer token / API key | Deployed (asia-south1, scale-to-zero) |
-| ai-os-dashboard | Next.js | PWA Dashboard — project views, Gantt, risk alerts, analytics | Google OAuth (NextAuth.js) | Not deployed |
+| Service | Container | Purpose | Auth | Status | URL |
+|---------|-----------|---------|------|--------|-----|
+| ai-os-gateway | FastAPI | MCP Gateway — tool bridge for Claude.ai, Claude Code, workflows | Bearer token / API key | LIVE (asia-south1, scale-to-zero) | https://ai-os-gateway-1054489801008.asia-south1.run.app |
+| ai-os-dashboard | Next.js | PWA Dashboard — project views, Gantt, task board, milestone management | Google OAuth (NextAuth.js) | LIVE (asia-south1, scale-to-zero) | https://ai-os-dashboard-sv4fbx5yna-el.a.run.app |
 
 Both services share the same service account (ai-os-cloud-run), the same Cloud SQL instance (via Auth Proxy sidecar), and the same Secret Manager secrets. They scale to zero independently.
 
@@ -165,13 +165,22 @@ See INTERFACE_STRATEGY.md for full dashboard specification and TOOL_ECOSYSTEM_PL
 
 ---
 
-## 9. Deferred Items
+## 9. Cloud Build Triggers
+
+| Trigger Name | Source | Watches | Action | Status |
+|-------------|--------|---------|--------|--------|
+| deploy-mcp-gateway | GitHub: AtharvaSin/ai-os-project, branch main | `mcp-servers/ai-os-gateway/**` | Build image → push to Artifact Registry → deploy to Cloud Run | Active |
+| deploy-ai-os-dashboard | — | `dashboard/**` | Build image → push to Artifact Registry → deploy to Cloud Run | NOT CREATED (manual deploy only) |
+
+---
+
+## 10. Deferred Items
 
 - SSL enforcement on Cloud SQL instance — skipped to avoid disrupting live Bharatvarsh website
 - Authorized networks cleanup — a residential IP is in the allowlist; needs review
 - postgres user password rotation — was reset during setup; should be stored securely
-- Firebase project setup — needed before Phase 3 (FCM for push notifications)
-- Google OAuth client creation — needed before Phase 3 (dashboard login)
+- Firebase project setup — needed before Phase 3b (FCM for push notifications)
+- Cloud Build trigger for dashboard — needed for automated deployments
 
 ---
 

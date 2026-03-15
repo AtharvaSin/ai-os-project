@@ -1,8 +1,9 @@
 # AI OS Database Schema
 
-> Auto-generated from `ai_os` database on 2026-03-14
+> Auto-generated from `ai_os` database on 2026-03-14, updated 2026-03-15 (row counts from seed data, migration 005 columns added)
 > Instance: `bharatvarsh-website:us-central1:bharatvarsh-db`
 > Database: `ai_os` | User: `ai_os_admin` | PostgreSQL 15 | Extensions: vector 0.8.1, moddatetime 1.0
+> **Note:** Row counts for tasks (28) updated from seed 005. Column counts for tasks (16), milestones (10), artifacts (12) updated for migration 005. Live regeneration requires Cloud SQL Proxy connection.
 
 ## Overview
 
@@ -10,9 +11,9 @@
 |---|-------|------|---------|--------|-----------|
 | 1 | `projects` | 3 | 13 | Project Management | 001 |
 | 2 | `project_phases` | 8 | 9 | Project Management | 001 |
-| 3 | `milestones` | 8 | 9 | Project Management | 001 |
-| 4 | `tasks` | 0 | 13 | Project Management | 001 |
-| 5 | `artifacts` | 0 | 10 | Project Management | 001 |
+| 3 | `milestones` | 8 | 10 | Project Management | 001, 005 |
+| 4 | `tasks` | 28 | 16 | Project Management | 001, 005 |
+| 5 | `artifacts` | 0 | 12 | Project Management | 001, 005 |
 | 6 | `project_tags` | 12 | 4 | Project Management | 001 |
 | 7 | `contacts` | 10 | 16 | Contacts & Reference | 002 |
 | 8 | `contact_relationships` | 4 | 7 | Contacts & Reference | 002 |
@@ -84,6 +85,7 @@ _Key deliverables within a phase_
 | `due_date` | `date` | YES |  |  |
 | `completed_at` | `timestamp with time zone` | YES |  |  |
 | `created_at` | `timestamp with time zone` | NO | `now()` |  |
+| `google_calendar_event_id` | `text` | YES |  | Migration 005 — Google Calendar sync |
 
 ### Table: `tasks`
 _Actionable work items_
@@ -103,6 +105,9 @@ _Actionable work items_
 | `metadata` | `jsonb` | YES | `{}` |  |
 | `created_at` | `timestamp with time zone` | NO | `now()` |  |
 | `updated_at` | `timestamp with time zone` | NO | `now()` |  |
+| `google_task_id` | `text` | YES |  | Migration 005 — Google Tasks sync |
+| `google_task_list` | `text` | YES |  | Migration 005 — Google Tasks list ID |
+| `last_synced_at` | `timestamp with time zone` | YES |  | Migration 005 — Last Google sync timestamp |
 
 ### Table: `artifacts`
 _Files, links, outputs tied to a project_
@@ -119,6 +124,8 @@ _Files, links, outputs tied to a project_
 | `description` | `text` | YES |  |  |
 | `metadata` | `jsonb` | YES | `{}` |  |
 | `created_at` | `timestamp with time zone` | NO | `now()` |  |
+| `drive_file_id` | `text` | YES |  | Migration 005 — Google Drive sync |
+| `drive_url` | `text` | YES |  | Migration 005 — Google Drive URL |
 
 ### Table: `project_tags`
 _Flexible labeling for projects_
