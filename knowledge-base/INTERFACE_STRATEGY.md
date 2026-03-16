@@ -4,7 +4,7 @@
 >
 > **Decision:** Option C — Google Rails + Custom Intelligence Layer
 >
-> **Last updated:** 2026-03-14
+> **Last updated:** 2026-03-16
 
 ---
 
@@ -15,7 +15,7 @@ The interface layer is built on a strict separation between three roles:
 | Role | Tool | Why |
 |------|------|-----|
 | **Cognitive Engine** | Claude.ai (this project) + Claude Code | 60-70% of work. Creates tasks, generates artifacts, plans, drafts, decides. Talks to Google and Cloud SQL through the MCP Gateway. |
-| **Notification Rails** | Google Tasks, Calendar, Drive | Delivery channels that push alerts to the phone and store files. NOT data stores. Cloud SQL is always the source of truth. |
+| **Notification Rails** | Google Tasks, Calendar, Drive, Telegram Bot | Delivery channels that push alerts to the phone and store files. NOT data stores. Cloud SQL is always the source of truth. |
 | **Intelligence Layer** | Next.js PWA Dashboard | What no third-party tool can provide: AI-powered risk surfacing, cross-project analytics, interactive Gantt, and a unified command center reading directly from Cloud SQL. |
 
 **Rule:** Google tools are downstream consumers of Cloud SQL data. They never hold canonical state. If Google Tasks shows a task as complete, the Cloud SQL `tasks` table is updated first (via MCP Gateway), and Google Tasks reflects the change. Not the other way around.
@@ -131,7 +131,30 @@ Claude generates document → MCP Gateway saves to Drive (correct folder)
                               - name, description, metadata
 ```
 
-### 5. Next.js PWA Dashboard — The Intelligence Layer (Phase 3 — custom build)
+### 5. Telegram Bot — Pocket Command Channel (Phase 3a — deployed)
+
+**Bot:** @AsrAiOsbot
+**What it does:** Provides a mobile-first notification channel and lightweight command interface. Receives scheduled briefs, overdue alerts, and weekly digests. Supports 5 slash commands for quick task management and project status checks from the phone.
+
+**Commands:**
+| Command | Action |
+|---------|--------|
+| `/brief` | On-demand morning brief (projects, tasks, milestones) |
+| `/add <task>` | Quick-add a task from Telegram |
+| `/done <task_id>` | Mark a task complete |
+| `/status` | Project status summary |
+| `/log <note>` | Log a quick note to the knowledge base |
+
+**Scheduled notifications (via Cloud Scheduler):**
+- **Morning Brief** (6:30 AM IST) — project snapshot, today's tasks, upcoming milestones
+- **Overdue Alerts** (9:00 AM IST) — overdue tasks and at-risk milestones
+- **Weekly Digest** (Sunday 7:00 PM IST) — week-in-review with velocity and progress
+
+**AI triage:** Free-form messages are processed by Claude Haiku for intent classification and routed to the appropriate handler. Conversation memory stored in `bot_conversations` table for context continuity.
+
+**What it does NOT do:** Replace the Dashboard for analytics or deep-dive views. It is a quick-action and notification surface.
+
+### 6. Next.js PWA Dashboard — The Intelligence Layer (Phase 3 — custom build)
 
 **What it does:** The AI-powered command center. Reads from Cloud SQL. Surfaces risks, progress, and analytics. The only interface that shows the FULL picture across all projects.
 

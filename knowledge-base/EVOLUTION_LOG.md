@@ -13,6 +13,37 @@ A running record of design decisions, architecture changes, brainstorming outcom
 
 ## Log Entries
 
+### Entry 009 — Telegram Bot Deployed (Pocket Command Channel)
+- **Date:** 2026-03-16
+- **Domain:** Interface Layer / Notifications / Telegram / MCP Gateway / Database
+- **Status:** [COMPLETED]
+- **Summary:** Built and deployed the Telegram Bot feature as the AI OS pocket command channel. 15 new files, 4 modified. @AsrAiOsbot provides 5 slash commands (/brief, /add, /done, /status, /log), 3 scheduled notifications (morning brief, overdue alerts, weekly digest), and AI triage with conversation memory via Claude Haiku. 5 new MCP Gateway tools (send_telegram_message, send_telegram_template, send_telegram_inline_keyboard, edit_telegram_message, get_telegram_bot_info) bring gateway total to 22. 3 new database tables (bot_conversations, notification_log, bot_inbox) bring total to 27. Migration 008 applied with short_id() function and pipelines.notify_telegram column. 3 Cloud Scheduler jobs created. Estimated cost: ~$2-3.50/month.
+- **Architecture Decisions:**
+  - **Telegram over WhatsApp:** Free Bot API, no business verification, instant setup, rich inline keyboards, webhook support. WhatsApp deferred.
+  - **Separate Cloud Run service:** telegram-notifications runs independently from MCP Gateway. Webhook + cron endpoints. Scale-to-zero.
+  - **AI triage with Claude Haiku:** Free-form messages classified by intent (task, status, note, question). Conversation memory in bot_conversations table for context continuity.
+  - **short_id() for human-readable refs:** 8-char alphanumeric IDs for Telegram-friendly references instead of UUIDs.
+- **Files Created/Modified (15 new, 4 modified):**
+  - Cloud Run service: workflows/category-b/telegram-notifications/ (main.py, handlers/, Dockerfile, cloudbuild.yaml, requirements.txt, etc.)
+  - MCP Gateway: telegram.py module (5 tools)
+  - Migration: database/migrations/008_telegram_tables.sql
+  - Seed: database/seeds/008_seed_telegram_pipeline.sql
+- **Infrastructure Changes:**
+  - 3 new secrets: TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, TELEGRAM_WEBHOOK_SECRET
+  - Cloud Run service: telegram-notifications (asia-south1, scale-to-zero)
+  - 3 Cloud Scheduler jobs: telegram-morning-brief (6:30 AM IST), telegram-overdue-alerts (9:00 AM IST), telegram-weekly-digest (Sunday 7 PM IST)
+  - MCP Gateway redeployed with Telegram module (17 -> 22 tools)
+- **KB Changes Made:**
+  - TOOL_ECOSYSTEM_PLAN.md — Telegram module added, tool count 17 -> 22
+  - GCP_INFRA_CONFIG.md — 3 new secrets, telegram-notifications service, 3 scheduler jobs
+  - DB_SCHEMA.md — 3 new tables (27 total), short_id() function, pipelines.notify_telegram
+  - INTERFACE_STRATEGY.md — Telegram added as notification channel / pocket command interface
+  - EVOLUTION_LOG.md — Entry 009 added
+- **Next Steps:**
+  - [ ] Deploy Knowledge Layer V2 (migrations 006-007, 4 pipelines)
+  - [ ] Phase 3b: AI Risk Engine + push notifications
+  - [ ] Complete Claude.ai MCP connector
+
 ### Entry 008 — Knowledge Layer V2 Complete Build (Sprint 5A-5D)
 - **Date:** 2026-03-15
 - **Domain:** Knowledge Layer / Pipelines / MCP Gateway / Skills / Database

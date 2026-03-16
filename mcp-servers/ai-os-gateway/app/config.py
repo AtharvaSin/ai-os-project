@@ -10,6 +10,9 @@ load_dotenv()
 _db_pool: asyncpg.Pool | None = None
 _api_key: str | None = None
 _openai_api_key: str | None = None
+_telegram_bot_token: str | None = None
+_telegram_chat_id: str | None = None
+_telegram_webhook_secret: str | None = None
 
 
 def _is_cloud_run() -> bool:
@@ -89,6 +92,68 @@ def get_openai_api_key() -> str | None:
     return _openai_api_key
 
 
+def _load_anthropic_env() -> None:
+    """Load Anthropic API key from Secret Manager into env vars.
+
+    On Cloud Run, ANTHROPIC_API_KEY is in Secret Manager.
+    Locally, it is expected in .env or the environment.
+    """
+    key = _load_secret("ANTHROPIC_API_KEY")
+    if key:
+        os.environ.setdefault("ANTHROPIC_API_KEY", key)
+
+
+def get_anthropic_api_key() -> str | None:
+    """Get the Anthropic API key."""
+    return os.environ.get("ANTHROPIC_API_KEY") or _load_secret("ANTHROPIC_API_KEY")
+
+
+def _load_telegram_env() -> None:
+    """Load Telegram secrets from Secret Manager into env vars.
+
+    On Cloud Run, the 3 Telegram secrets are injected via --set-secrets.
+    Locally, they are expected in .env or the environment.
+    """
+    for secret_id in ["TELEGRAM_BOT_TOKEN", "TELEGRAM_CHAT_ID", "TELEGRAM_WEBHOOK_SECRET"]:
+        if not os.getenv(secret_id):
+            value = _load_secret(secret_id)
+            if value:
+                os.environ[secret_id] = value
+
+
+def get_telegram_bot_token() -> str:
+    """Get the Telegram bot token."""
+    global _telegram_bot_token
+    if _telegram_bot_token:
+        return _telegram_bot_token
+    _telegram_bot_token = os.environ.get("TELEGRAM_BOT_TOKEN") or _load_secret("TELEGRAM_BOT_TOKEN")
+    if not _telegram_bot_token:
+        raise RuntimeError("TELEGRAM_BOT_TOKEN not configured")
+    return _telegram_bot_token
+
+
+def get_telegram_chat_id() -> str:
+    """Get the authorized Telegram chat ID."""
+    global _telegram_chat_id
+    if _telegram_chat_id:
+        return _telegram_chat_id
+    _telegram_chat_id = os.environ.get("TELEGRAM_CHAT_ID") or _load_secret("TELEGRAM_CHAT_ID")
+    if not _telegram_chat_id:
+        raise RuntimeError("TELEGRAM_CHAT_ID not configured")
+    return _telegram_chat_id
+
+
+def get_telegram_webhook_secret() -> str:
+    """Get the Telegram webhook secret token."""
+    global _telegram_webhook_secret
+    if _telegram_webhook_secret:
+        return _telegram_webhook_secret
+    _telegram_webhook_secret = os.environ.get("TELEGRAM_WEBHOOK_SECRET") or _load_secret("TELEGRAM_WEBHOOK_SECRET")
+    if not _telegram_webhook_secret:
+        raise RuntimeError("TELEGRAM_WEBHOOK_SECRET not configured")
+    return _telegram_webhook_secret
+
+
 async def init_db_pool() -> None:
     """Initialize the asyncpg connection pool."""
     global _db_pool, _api_key
@@ -96,6 +161,8 @@ async def init_db_pool() -> None:
     _api_key = await _load_api_key()
     await _load_google_oauth_env()
     _load_openai_env()
+    _load_anthropic_env()
+    _load_telegram_env()
 
     db_name = os.getenv("DB_NAME", "ai_os")
     db_user = os.getenv("DB_USER", "ai_os_admin")

@@ -1,7 +1,7 @@
 """Embedding Generation Pipeline — Category B Pipeline.
 
-Runs every 5 minutes via Cloud Scheduler. Finds knowledge_entries rows without
-corresponding knowledge_embeddings, generates embeddings via OpenAI
+Runs once a week (Sunday 02:00 IST) via Cloud Scheduler. Finds knowledge_entries
+rows without corresponding knowledge_embeddings, generates embeddings via OpenAI
 text-embedding-3-small, and inserts them.
 
 Entry point: main(request)

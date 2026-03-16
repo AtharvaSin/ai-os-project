@@ -2,7 +2,7 @@
 
 > **Purpose:** Operational state file. Tells Claude what you're working on RIGHT NOW and where deep context lives. Updated after any session where project status shifts.
 >
-> **Last updated:** 2026-03-15 (State v5: Knowledge Layer V2 complete build — 4 pipelines, 38 seed docs, semantic search, 3 skills RAG-grounded. All code built, pending deployment.)
+> **Last updated:** 2026-03-16 (State v6: Knowledge Layer V2 deployed. Telegram Bot deployed — @AsrAiOsbot with 5 commands, AI triage, 3 scheduled notifications. 8 Cloud Run services, 27 tables, 22 MCP tools, 13 secrets.)
 > **Authoritative state:** See `knowledge-base/PROJECT_STATE.md` for verified filesystem-scanned state.
 
 ---
@@ -10,21 +10,22 @@
 ## Active Focus Projects
 
 ### 1. AI Operating System
-- **Status:** Knowledge Layer V2 code complete (69 files built). Phase 3a deployed. MCP Gateway live with 17 tools (semantic search upgrade pending redeploy). Dashboard PWA live. Task Notification live. 4 knowledge pipelines built (pending deploy). 38 seed documents ready. 3 skills RAG-grounded.
-- **Current phase:** Sprint 5 — Knowledge Layer V2 deployment. All code built: 2 migrations (006-007), 4 pipeline services, MCP gateway semantic search, shared library, 38 seed docs, 3 utility scripts. Pending: apply migrations, store API keys, deploy services, seed knowledge base.
-- **Next milestone:** Deploy Knowledge Layer V2 (store OPENAI_API_KEY + ANTHROPIC_API_KEY, apply migrations, deploy 4 pipelines + redeploy gateway, seed 80-100+ knowledge entries). Then Phase 3b (AI Risk Engine + push notifications).
-- **Pending decisions:** Firebase project setup timing (Phase 3b), Knowledge Layer monitoring/alerting strategy, Drive folder creation method (MCP vs manual)
+- **Status:** Knowledge Layer V2 deployed. Telegram Bot deployed. MCP Gateway live with 22 tools (5 modules). Dashboard PWA live. 8 Cloud Run services. 8 Cloud Scheduler jobs. 27 tables. 13 secrets. All infrastructure operational.
+- **Current phase:** Sprint 6 — Telegram Bot deployed, Knowledge seeding pending. All code deployed. Pending: seed knowledge base (Drive folders + 38 docs), complete Claude.ai MCP connector.
+- **Next milestone:** Seed knowledge base (80-100+ entries via Drive scanner), connect Claude.ai MCP connector. Then Phase 3b (AI Risk Engine + push notifications).
+- **Pending decisions:** Firebase project setup timing (Phase 3b), Knowledge Layer monitoring/alerting strategy, Drive folder creation method (MCP vs manual), Telegram bot Phase T4 features prioritization
 - **What's been built:**
   - Category A: 18 skills, 3 connectors (Gmail, Calendar, Drive), 27+ KB files
   - Claude Code: Project directory with CLAUDE.md, 18 SKILL.md skills, mirrored KB
-  - GCP: Project ai-operating-system-490208 with 16 APIs, 3 service accounts, Artifact Registry, Secret Manager (8 secrets)
-  - Database: ai_os DB on Cloud SQL (shared Bharatvarsh instance), 21 tables across 4 domains (24 after migration 007), pgvector enabled, Migrations 001-005 applied (006-007 built), 28 tasks seeded
-  - MCP Gateway: LIVE on Cloud Run (ai-os-gateway, asia-south1, scale-to-zero). FastAPI + FastMCP 3.1.1. 17 tools ALL operational. PostgreSQL (6 tools — search_knowledge upgraded to semantic/hybrid/fulltext, pending redeploy), Google Tasks (5 tools), Drive Write (3 tools), Calendar Sync (3 tools). Bearer token auth. openai>=1.0 added for embedding generation.
+  - GCP: Project ai-operating-system-490208 with 16 APIs, 3 service accounts, Artifact Registry, Secret Manager (13 secrets)
+  - Database: ai_os DB on Cloud SQL (shared Bharatvarsh instance), 27 tables across 5 domains, pgvector enabled, Migrations 001-008 all applied, 28 tasks seeded
+  - MCP Gateway: LIVE on Cloud Run (ai-os-gateway, asia-south1, scale-to-zero). FastAPI + FastMCP. 22 tools ALL operational. PostgreSQL (6), Google Tasks (5), Drive Write (3), Calendar Sync (3), Telegram (5). Telegram webhook subsystem (8 files). Bearer token auth.
   - Google OAuth: Desktop client for Gateway (refresh token). Web Application client for Dashboard (DASHBOARD_OAUTH_SECRET). Consent screen configured.
   - Dashboard PWA: LIVE on Cloud Run (ai-os-dashboard, asia-south1, scale-to-zero). Next.js 14 + TypeScript + Tailwind CSS. 6 pages. 7 API routes. 16 components. NextAuth.js Google OAuth. Obsidian Aurora design system. PWA with service worker + offline fallback.
-  - CI/CD: Cloud Build triggers: deploy-mcp-gateway (auto) + deploy-ai-os-dashboard (auto). Cloud Scheduler: task-notification-daily-trigger.
+  - CI/CD: Cloud Build triggers: deploy-mcp-gateway (auto) + deploy-ai-os-dashboard (auto). 8 Cloud Scheduler jobs.
   - Task Notification: LIVE on Cloud Run + Cloud Scheduler (daily 06:00 IST)
-  - Knowledge Layer V2 (BUILT, not deployed): 4 pipeline services (embedding-generator, drive-knowledge-scanner, weekly-knowledge-summary, knowledge-auto-connector), shared library (ai_os_knowledge.py), 38 seed documents, 3 utility scripts, deployment guide. Migrations 006-007 ready. 3 skills RAG-grounded (morning-brief, weekly-review, session-resume).
+  - Knowledge Layer V2: DEPLOYED. 4 pipeline services LIVE on Cloud Run (embedding-generator, drive-knowledge-scanner, weekly-knowledge-summary, knowledge-auto-connector). Shared library (ai_os_knowledge.py). 38 seed documents ready. 5 Cloud Scheduler triggers. 3 skills RAG-grounded (morning-brief, weekly-review, session-resume).
+  - Telegram Bot: DEPLOYED. @AsrAiOsbot with webhook on MCP Gateway. 5 slash commands (/brief, /add, /done, /status, /log). AI triage via Claude Haiku. Conversation memory with thread management. telegram-notifications Cloud Run service with 3 scheduled notifications (morning brief, overdue alerts, weekly digest). Inline keyboard callbacks.
   - Seeds: 28 tasks (AI OS 12, AI&U 8, Bharatvarsh 8), all milestone due dates set
   - Scripts: google_oauth_setup.py, deploy_knowledge_layer_v2.sh, seed_knowledge_connections.py, generate_knowledge_snapshots.py
   - Architecture: Three-tier tool ecosystem — Tier 1 directory connectors / Tier 2 unified MCP Gateway / Tier 3 local STDIO MCPs

@@ -18,7 +18,7 @@ Based in Hyderabad, India. Full profile in `knowledge-base/OWNER_PROFILE.md`.
 
 ## Tool Ecosystem (Three-Tier Model)
 - **Tier 1 — Directory Connectors:** Gmail, Calendar, Drive (connected). Slack, Notion, Canva, GitHub (pending). Zero infrastructure. One-click OAuth via Claude.ai.
-- **Tier 2 — Unified MCP Gateway:** ONE FastAPI Cloud Run service (`mcp-servers/ai-os-gateway/`) with 17 tools (all live). PostgreSQL (6), Google Tasks (5), Drive Write (3), Calendar Sync (3). Scales to zero. $0-7/month. Dashboard PWA (`dashboard/`) on separate Cloud Run service.
+- **Tier 2 — Unified MCP Gateway:** ONE FastAPI Cloud Run service (`mcp-servers/ai-os-gateway/`) with 22 tools (all live). PostgreSQL (6), Google Tasks (5), Drive Write (3), Calendar Sync (3), Telegram (5). Telegram bot webhook also hosted on Gateway. Scales to zero. $0-7/month. Dashboard PWA (`dashboard/`) on separate Cloud Run service.
 - **Tier 3 — Local STDIO MCP:** Evernote, n8n, GitHub via npm packages in Claude Code. Zero cloud cost.
 See `knowledge-base/TOOL_ECOSYSTEM_PLAN.md` for full architecture, module inventory, decision tree for adding new tools, and implementation phases.
 
@@ -26,17 +26,17 @@ See `knowledge-base/TOOL_ECOSYSTEM_PLAN.md` for full architecture, module invent
 - **Cloud:** GCP (project: ai-operating-system-490208, region: asia-south1)
 - **Backend:** FastAPI, Python 3.12
 - **Orchestration:** LangGraph (Category C only)
-- **Database:** Cloud SQL PostgreSQL (pgvector) on shared bharatvarsh-db instance (bharatvarsh-website:us-central1:bharatvarsh-db). Database: ai_os. User: ai_os_admin. 21 tables live (24 after migration 007), 4 schema domains. Migrations 001-005 applied; 006-007 built (pending apply).
+- **Database:** Cloud SQL PostgreSQL (pgvector) on shared bharatvarsh-db instance (bharatvarsh-website:us-central1:bharatvarsh-db). Database: ai_os. User: ai_os_admin. 27 tables live, 5 schema domains. Migrations 001-008 applied.
 - **Frontend:** Next.js 14, React 18, Tailwind CSS, NextAuth.js, @hello-pangea/dnd (Dashboard PWA live on Cloud Run). Bharatvarsh website also live.
 - **AI Models:** Claude Sonnet 4.6 (default), Opus 4.6 (complex reasoning), Haiku 4.5 (classification)
-- **MCP:** Gmail, Calendar, Drive (Tier 1 connectors). AI OS Gateway deployed on Cloud Run with all 17 tools live: PostgreSQL (6, search_knowledge upgraded to semantic/hybrid/fulltext — pending redeploy), Google Tasks (5), Drive Write (3), Calendar Sync (3). Evernote, n8n (Tier 3 local STDIO, to configure).
+- **MCP:** Gmail, Calendar, Drive (Tier 1 connectors). AI OS Gateway deployed on Cloud Run with 22 tools live: PostgreSQL (6), Google Tasks (5), Drive Write (3), Calendar Sync (3), Telegram (5). Telegram bot @AsrAiOsbot webhook on Gateway. Evernote, n8n (Tier 3 local STDIO, to configure).
 
 ## GCP Infrastructure (Provisioned)
 - **Project:** ai-operating-system-490208 (asia-south1)
 - **APIs:** 16 enabled (Cloud Run, Functions, Scheduler, Secret Manager, Artifact Registry, Cloud Build, Google Tasks, Drive, Calendar, etc.)
 - **Service Accounts:** ai-os-cloud-run (Cat C), ai-os-cloud-functions (Cat B), ai-os-cicd (CI/CD). All with cross-project cloudsql.client role.
 - **Artifact Registry:** asia-south1-docker.pkg.dev/ai-operating-system-490208/ai-os-images
-- **Secrets:** 8 in Secret Manager (AI_OS_DB_PASSWORD, AI_OS_DB_INSTANCE, MCP_GATEWAY_API_KEY, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, GOOGLE_REFRESH_TOKEN, NEXTAUTH_SECRET, DASHBOARD_OAUTH_SECRET). Need +2 for Knowledge Layer V2: OPENAI_API_KEY, ANTHROPIC_API_KEY.
+- **Secrets:** 13 in Secret Manager (AI_OS_DB_PASSWORD, AI_OS_DB_INSTANCE, MCP_GATEWAY_API_KEY, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, GOOGLE_REFRESH_TOKEN, NEXTAUTH_SECRET, DASHBOARD_OAUTH_SECRET, OPENAI_API_KEY, ANTHROPIC_API_KEY, TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, TELEGRAM_WEBHOOK_SECRET).
 - See `knowledge-base/GCP_INFRA_CONFIG.md` for full config.
 
 ## Directory Structure
@@ -77,6 +77,7 @@ ai-os-project/
 ├── workflows/
 │   ├── category-b/           ← Cloud Run services (scheduled via Cloud Scheduler)
 │   │   ├── task-notification/ ← Daily overdue scan (LIVE on Cloud Run)
+│   │   ├── telegram-notifications/ ← Telegram bot notifications (LIVE on Cloud Run)
 │   │   ├── embedding-generator/ ← Knowledge embedding pipeline (BUILT, pending deploy)
 │   │   ├── drive-knowledge-scanner/ ← Drive folder scanner (BUILT, pending deploy)
 │   │   ├── weekly-knowledge-summary/ ← Weekly project summaries (BUILT, pending deploy)
@@ -85,19 +86,19 @@ ai-os-project/
 │   │   └── ai_os_knowledge.py ← KnowledgeClient for semantic search + graph traversal
 │   └── category-c/           ← LangGraph + FastAPI (agentic)
 ├── mcp-servers/
-│   └── ai-os-gateway/        ← Unified MCP Gateway (17 tools, ALL LIVE)
+│   └── ai-os-gateway/        ← Unified MCP Gateway (22 tools, ALL LIVE)
 │       ├── app/
 │       │   ├── main.py
 │       │   ├── config.py
-│       │   ├── mcp_registry.py
-│       │   ├── modules/      ← postgres.py, google_tasks.py, drive_write.py, calendar_sync.py
+│       │   ├── modules/      ← postgres.py, google_tasks.py, drive_write.py, calendar_sync.py, telegram.py
+│       │   ├── telegram/     ← Bot webhook, commands, AI triage, thread memory
 │       │   └── auth/         ← google_oauth.py, bearer.py
 │       ├── Dockerfile
 │       ├── requirements.txt
 │       └── cloudbuild.yaml
 ├── database/
-│   ├── migrations/           ← 001-005 (applied), 006-007 (built, pending apply)
-│   └── seeds/                ← 001-005 (applied), 006 (built, pending apply)
+│   ├── migrations/           ← 001-008 (all applied)
+│   └── seeds/                ← 001-008 (all applied)
 ├── scripts/
 │   ├── google_oauth_setup.py ← OAuth token flow helper
 │   ├── deploy_knowledge_layer_v2.sh ← Step-by-step deployment guide
@@ -128,7 +129,7 @@ When calling the Anthropic API in code:
 Always use prompt caching for system prompts that repeat across runs.
 
 ## Current Sprint
-Focus: Deploy Knowledge Layer V2. All code built (69 files): 2 DB migrations, 4 pipeline services, MCP gateway semantic search, shared library, 38 seed docs, 3 utility scripts. Deployment steps: (1) store OPENAI_API_KEY + ANTHROPIC_API_KEY in Secret Manager, (2) apply migrations 006-007, (3) deploy 4 Cloud Run services + create 4 Cloud Scheduler triggers, (4) redeploy MCP Gateway, (5) create Drive Knowledge/ folders + upload seed docs, (6) verify embeddings. Use `scripts/deploy_knowledge_layer_v2.sh` for guided deployment. After Knowledge Layer: Phase 3b (AI Risk Engine + push notifications). See `knowledge-base/PROJECT_STATE.md` for verified state (v5).
+Focus: Knowledge seeding + Claude.ai MCP connector. Knowledge Layer V2 and Telegram Bot both deployed. 8 Cloud Run services, 8 scheduler jobs, 27 tables, 22 MCP tools all operational. Pending: (1) Create Drive Knowledge/ folders + upload 38 seed docs → trigger scanner → verify embeddings, (2) Complete Claude.ai MCP custom connector (15 min). After seeding: Phase 3b (AI Risk Engine + push notifications). See `knowledge-base/PROJECT_STATE.md` for verified state (v6).
 
 ## Key Commands
 - `claude` — Start Claude Code session in this directory

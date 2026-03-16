@@ -16,7 +16,8 @@ from fastmcp import FastMCP
 
 from app import config
 from app.auth.bearer import verify_bearer_token
-from app.modules import postgres, google_tasks, drive_write, calendar_sync
+from app.modules import postgres, google_tasks, drive_write, calendar_sync, telegram
+from app.telegram.webhook import router as telegram_router
 
 
 # Create FastMCP server
@@ -27,6 +28,7 @@ postgres.register_tools(mcp, config.get_db_pool)
 google_tasks.register_tools(mcp, config.get_db_pool)
 drive_write.register_tools(mcp, config.get_db_pool)
 calendar_sync.register_tools(mcp, config.get_db_pool)
+telegram.register_tools(mcp, config.get_db_pool)
 
 # Create the MCP HTTP sub-app (stateless — no session persistence needed)
 # path="/mcp" so the sub-app handles /mcp directly (no 307 redirect)
@@ -104,12 +106,16 @@ async def health():
         "version": "0.1.0",
         "database": db_status,
         "google_oauth": google_status,
-        "modules": ["postgres", "google_tasks", "drive_write", "calendar_sync"],
+        "modules": ["postgres", "google_tasks", "drive_write", "calendar_sync", "telegram"],
     }
 
 
 # No OAuth discovery endpoints defined — all return 404 via FastAPI default.
 # This correctly tells MCP clients (including Claude.ai) that no OAuth is required.
+
+
+# --- Telegram webhook router (BEFORE the catch-all mount) ---
+app.include_router(telegram_router)
 
 
 # --- Mount MCP sub-app LAST (catch-all at root) ---

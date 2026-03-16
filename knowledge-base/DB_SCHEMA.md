@@ -1,9 +1,9 @@
 # AI OS Database Schema
 
-> Auto-generated from `ai_os` database on 2026-03-14, updated 2026-03-15
+> Auto-generated from `ai_os` database on 2026-03-14, updated 2026-03-16
 > Instance: `bharatvarsh-website:us-central1:bharatvarsh-db`
 > Database: `ai_os` | User: `ai_os_admin` | PostgreSQL 15 | Extensions: vector 0.8.1, moddatetime 1.0
-> **Note:** Migrations 001-005 applied. Migrations 006-007 built (pending apply). After 007: 24 tables, 2 new SQL functions, 3 new enums. Live regeneration requires Cloud SQL Proxy connection.
+> **Note:** Migrations 001-005 applied. Migration 008 (Telegram) applied. Migrations 006-007 built (pending apply). After all migrations: 27 tables, short_id() function, 2 planned SQL functions, 3+ new enums. Live regeneration requires Cloud SQL Proxy connection.
 
 ## Overview
 
@@ -33,6 +33,14 @@
 | 22 | `knowledge_ingestion_jobs` | 0 | 14 | Knowledge & Intelligence | 007 |
 | 23 | `knowledge_snapshots` | 0 | 12 | Knowledge & Intelligence | 007 |
 | 24 | `drive_scan_state` | 7 | 8 | Knowledge & Intelligence | 007 |
+| 25 | `bot_conversations` | 0 | 8 | Telegram Bot | 008 |
+| 26 | `notification_log` | 0 | 9 | Telegram Bot | 008 |
+| 27 | `bot_inbox` | 0 | 7 | Telegram Bot | 008 |
+
+**Migration 008 (Telegram) adds:**
+- **Tables:** bot_conversations (conversation memory for AI triage), notification_log (all sent notifications with delivery status), bot_inbox (inbound messages from Telegram for async processing)
+- **Function:** short_id() — generates 8-char alphanumeric IDs for human-readable references
+- **Column:** pipelines.notify_telegram (boolean, default false) — flag to enable Telegram notifications per pipeline
 
 **Pending migrations 006-007 add:**
 - **Migration 006:** 7 new source_type enum values, knowledge_domain enum, 3 new columns on knowledge_entries (sub_domain, project_id FK, drive_file_id), match_knowledge() function (semantic search), traverse_knowledge() function (graph traversal), 4 new indexes
@@ -608,7 +616,14 @@ _Tracks changes to skills over time_
 
 ## Functions
 
-_No user-defined application functions exist yet._ All current functions are internal to pgvector and moddatetime extensions.
+### `short_id()` (human-readable ID generator — Migration 008)
+
+```sql
+-- Generates 8-character alphanumeric IDs for Telegram-friendly references
+-- Used by bot_conversations, notification_log, bot_inbox tables
+-- Example output: 'a3f8k2m1'
+CREATE FUNCTION short_id() RETURNS text
+```
 
 ### Planned: `match_knowledge()` (RAG semantic search primitive)
 

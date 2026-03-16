@@ -2,7 +2,7 @@
 
 > **Purpose:** Reference architecture for the three-tier MCP and tool access system. Governs how new tools are added and where they live.
 >
-> **Last updated:** 2026-03-15 (Phase 1-3a complete. MCP Gateway live with all 17 tools. Dashboard PWA deployed on Cloud Run.)
+> **Last updated:** 2026-03-16 (Phase 1-3a complete. MCP Gateway live with all 22 tools. Telegram module deployed. Dashboard PWA deployed on Cloud Run.)
 
 ---
 
@@ -35,6 +35,7 @@ Single FastAPI container on Cloud Run. Scales to zero. All custom tool access. A
 | Google Tasks | P1 | list_tasks, create_task, update_task, complete_task, sync_to_db | LIVE (5 tools) |
 | Drive (write) | P1 | upload_file, create_doc, create_folder | LIVE (3 tools) |
 | Calendar Sync | P1 | create_milestone_event, update_milestone_event, delete_milestone_event | LIVE (3 tools) |
+| Telegram | P1 | send_telegram_message, send_telegram_template, send_telegram_inline_keyboard, edit_telegram_message, get_telegram_bot_info | LIVE (5 tools) |
 | Bharatvarsh Admin | P2 | query_lore, get_character, search_timeline, forum_moderate | Not started |
 | Lore Search | P2 | semantic_search_lore, get_lore_by_topic (pgvector) | Not started |
 | WhatsApp | P3 | send_message, send_template, get_message_status | Not started |
@@ -52,6 +53,7 @@ mcp-servers/ai-os-gateway/
 │   │   ├── google_tasks.py  ← LIVE (5 tools)
 │   │   ├── drive_write.py   ← LIVE (3 tools)
 │   │   ├── calendar_sync.py ← LIVE (3 tools)
+│   │   ├── telegram.py      ← LIVE (5 tools)
 │   │   ├── bharatvarsh.py   ← Not started
 │   │   ├── whatsapp.py      ← Not started
 │   │   └── content.py       ← Not started
@@ -153,9 +155,10 @@ NPM packages running as local subprocesses. Zero cloud cost.
 | Tier 2 (MCP Gateway, Cloud Run) | $0-7 |
 | Tier 3 (local STDIO) | $0 |
 | Dashboard (Cloud Run, scale-to-zero) | $3-8 |
+| Telegram Bot (Cloud Run, scale-to-zero) | $2-3.50 |
 | Firebase Cloud Messaging | $0 |
 | Google Tasks / Calendar / Drive | $0 |
-| **Total** | **$3-15/month** |
+| **Total** | **$5-18.50/month** |
 
 ---
 
