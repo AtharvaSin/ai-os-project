@@ -229,56 +229,61 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
         sub_domain: str | None = None,
         project_slug: str | None = None,
         mode: str = "hybrid",
-        threshold: float = 0.7,
+        threshold: float = 0.3,
         limit: int = 10,
     ) -> str:
         pool = get_pool()
         try:
             # --- Semantic / Hybrid path ---
             if mode in ("semantic", "hybrid"):
-                embedding = await generate_query_embedding(query)
+                try:
+                    embedding = await generate_query_embedding(query)
 
-                if embedding:
-                    # Resolve project_id from slug when provided
-                    project_id = None
-                    if project_slug:
+                    if embedding:
+                        # Resolve project_id from slug when provided
+                        project_id = None
+                        if project_slug:
+                            async with pool.acquire() as conn:
+                                row = await conn.fetchrow(
+                                    "SELECT id FROM projects WHERE slug = $1",
+                                    project_slug,
+                                )
+                                project_id = row["id"] if row else None
+
+                        # Call match_knowledge() SQL function
+                        # Convert embedding list to pgvector string format
+                        embedding_str = "[" + ",".join(str(x) for x in embedding) + "]"
                         async with pool.acquire() as conn:
-                            row = await conn.fetchrow(
-                                "SELECT id FROM projects WHERE slug = $1",
-                                project_slug,
+                            rows = await conn.fetch(
+                                "SELECT * FROM match_knowledge("
+                                "$1::vector, $2, $3, $4::knowledge_domain, $5, $6)",
+                                embedding_str,
+                                threshold,
+                                limit,
+                                domain,
+                                sub_domain,
+                                project_id,
                             )
-                            project_id = row["id"] if row else None
 
-                    # Call match_knowledge() SQL function
-                    # Convert embedding list to pgvector string format
-                    embedding_str = "[" + ",".join(str(x) for x in embedding) + "]"
-                    async with pool.acquire() as conn:
-                        rows = await conn.fetch(
-                            "SELECT * FROM match_knowledge("
-                            "$1::vector, $2, $3, $4::knowledge_domain, $5, $6)",
-                            embedding_str,
-                            threshold,
-                            limit,
-                            domain,
-                            sub_domain,
-                            project_id,
-                        )
+                        if rows or mode == "semantic":
+                            return json.dumps({
+                                "mode": "semantic",
+                                "results": [_row_to_dict(r) for r in rows],
+                                "count": len(rows),
+                            })
 
-                    if rows or mode == "semantic":
+                    elif mode == "semantic":
+                        # Embedding generation failed and caller wants semantic only
                         return json.dumps({
                             "mode": "semantic",
-                            "results": [_row_to_dict(r) for r in rows],
-                            "count": len(rows),
+                            "results": [],
+                            "count": 0,
+                            "warning": "Embedding generation unavailable — no results.",
                         })
-
-                elif mode == "semantic":
-                    # Embedding generation failed and caller wants semantic only
-                    return json.dumps({
-                        "mode": "semantic",
-                        "results": [],
-                        "count": 0,
-                        "warning": "Embedding generation unavailable — no results.",
-                    })
+                except Exception as sem_exc:
+                    logger.warning(f"Semantic search failed, falling back to fulltext: {sem_exc}")
+                    if mode == "semantic":
+                        return json.dumps({"error": f"Semantic search failed: {sem_exc}"})
 
             # --- BM25 full-text fallback ---
             tsv = "to_tsvector('english', coalesce(title,'') || ' ' || coalesce(content,''))"
