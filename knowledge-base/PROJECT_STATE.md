@@ -13,16 +13,16 @@
 |------|--------|---------|
 | Skills & Connectors | 19 skills, 3 connectors | All operational. 3 skills RAG-grounded. 1 new skill (drive-knowledge-distill) |
 | MCP Gateway | LIVE (Cloud Run) | 26 tools — 22 LIVE, 4 uncommitted (pending deploy). 6 modules + Telegram webhook subsystem |
-| Database | LIVE (Cloud SQL) | 27 tables live (migrations 001-008). 2 pending migrations (009-010) → 29 tables after apply |
+| Database | LIVE (Cloud SQL) | 29 tables, 10 migrations (all applied), 15 pipelines registered |
 | Dashboard PWA | LIVE (Cloud Run) | 8 pages (6 live + 2 built), 12 API routes (7 live + 5 built), 22 components (16 live + 6 built) |
 | Knowledge Layer V2 | LIVE (Cloud Run) | 4 pipelines deployed, 8 Cloud Scheduler jobs |
 | Telegram Bot | LIVE (Cloud Run) | @AsrAiOsbot — 5 commands, 5 MCP tools, AI triage, 3 scheduled notifications |
 | Task Notification | LIVE (Cloud Run) | Daily 06:00 IST via Cloud Scheduler |
-| Risk Engine | BUILT (not deployed) | Cloud Run service + migration 009 + dashboard Risk page |
-| Daily Brief Engine | BUILT (not deployed) | Cloud Run service with collectors/composer/delivery modules |
-| Task Annotation Sync | BUILT (not deployed) | Cloud Run service + migration 010 + MCP get_task_annotations tool |
-| Cloud Run Services | 8 LIVE | Gateway, Dashboard, Task Notification, Telegram Notifications, Embedding Generator, Drive Scanner, Weekly Summary, Auto Connector |
-| Cloud Scheduler Jobs | 8 ENABLED | task-notification, 4 knowledge pipelines, 3 telegram notifications |
+| Risk Engine | LIVE (Cloud Run) | Daily 06:30 IST. 5 risk types → risk_alerts table + Telegram for high/critical |
+| Daily Brief Engine | LIVE (Cloud Run) | Daily 06:15 IST. Collectors → AI Composer → multi-channel delivery |
+| Task Annotation Sync | LIVE (Cloud Run) | Every 15 min. Google Tasks user notes → task_annotations table |
+| Cloud Run Services | 11 LIVE | Gateway, Dashboard, Task Notification, Telegram, 4 Knowledge Pipelines, Risk Engine, Daily Brief, Task Annotation Sync |
+| Cloud Scheduler Jobs | 12 ENABLED | task-notification, 4 knowledge pipelines, 3 telegram, risk-engine, daily-brief, task-annotation-sync, monthly-knowledge-distill-reminder |
 | Secrets | 13 in Secret Manager | All configured with IAM bindings |
 
 ---
@@ -89,18 +89,38 @@
 - **Scheduler:** daily at 06:00 IST, OIDC auth
 - **Function:** Scans overdue + upcoming tasks, creates/updates Google Tasks
 
+### Risk Engine (Cloud Run + Cloud Scheduler)
+- **Service:** risk-engine, asia-south1, scale-to-zero (256Mi)
+- **URL:** https://risk-engine-1054489801008.asia-south1.run.app
+- **Scheduler:** risk-engine-daily-trigger — daily at 06:30 IST, OIDC auth
+- **Function:** Computes 5 risk types (overdue_cluster, velocity_decline, milestone_slip, dependency_chain, stale_project). Writes risk_alerts table. Sends Telegram for high/critical severity.
+
+### Daily Brief Engine (Cloud Run + Cloud Scheduler)
+- **Service:** daily-brief-engine, asia-south1, scale-to-zero (512Mi)
+- **URL:** https://daily-brief-engine-1054489801008.asia-south1.run.app
+- **Scheduler:** daily-brief-engine-trigger — daily at 06:15 IST, OIDC auth
+- **Function:** Collects data from Calendar, Gmail, Knowledge, Tasks → AI Composer (Claude Haiku) → delivers to Telegram, Drive, Google Tasks.
+
+### Task Annotation Sync (Cloud Run + Cloud Scheduler)
+- **Service:** task-annotation-sync, asia-south1, scale-to-zero (256Mi)
+- **URL:** https://task-annotation-sync-1054489801008.asia-south1.run.app
+- **Scheduler:** task-annotation-sync-trigger — every 15 min, OIDC auth
+- **Function:** Captures user-written notes from Google Tasks user zone into task_annotations table. SHA-256 content-hash dedup.
+
 ### Database (Cloud SQL PostgreSQL)
 - **Instance:** bharatvarsh-website:us-central1:bharatvarsh-db
 - **Database:** ai_os | User: ai_os_admin | PostgreSQL 15
-- **Tables:** 27 live across 5 domains:
+- **Tables:** 29 across 6 domains:
   - Project Management (7): projects, project_phases, milestones, tasks, artifacts, project_tags, skill_evolution_log
   - Contacts (4): contacts, contact_relationships, important_dates, audiences/audience_members
   - Pipelines (4): pipelines, pipeline_runs, pipeline_logs, campaigns/campaign_posts
   - Knowledge (6): knowledge_entries, knowledge_embeddings, knowledge_connections, knowledge_snapshots, knowledge_ingestion_jobs, drive_scan_state
   - Telegram (3): bot_conversations, notification_log, bot_inbox
+  - Intelligence (2): risk_alerts, task_annotations
   - Other: skill_registry
-- **Migrations applied:** 001 through 008
-- **Seeds applied:** 001 through 008
+- **Migrations applied:** 001 through 010 (all applied)
+- **Seeds applied:** 001 through 011 (all applied)
+- **Pipelines registered:** 15
 - **Functions:** short_id(uuid), match_knowledge(), traverse_knowledge()
 - **Extensions:** pgvector 0.8.1, moddatetime, uuid-ossp
 
@@ -108,8 +128,8 @@
 - **Project:** ai-operating-system-490208 (asia-south1)
 - **APIs enabled:** 16
 - **Service Accounts:** 3 (ai-os-cloud-run, ai-os-cloud-functions, ai-os-cicd)
-- **Cloud Run Services (8 live):** ai-os-gateway, ai-os-dashboard, task-notification-daily, telegram-notifications, embedding-generator, drive-knowledge-scanner, weekly-knowledge-summary, knowledge-auto-connector
-- **Cloud Scheduler Jobs (8):** task-notification-daily-trigger, telegram-morning-brief, telegram-overdue-alerts, telegram-weekly-digest, embedding-generator-trigger, drive-scanner-trigger, weekly-summary-trigger, auto-connector-trigger
+- **Cloud Run Services (11 live):** ai-os-gateway, ai-os-dashboard, task-notification-daily, telegram-notifications, embedding-generator, drive-knowledge-scanner, weekly-knowledge-summary, knowledge-auto-connector, risk-engine, daily-brief-engine, task-annotation-sync
+- **Cloud Scheduler Jobs (12):** task-notification-daily-trigger, telegram-morning-brief, telegram-overdue-alerts, telegram-weekly-digest, embedding-generator-trigger, drive-scanner-trigger, weekly-summary-trigger, auto-connector-trigger, risk-engine-daily-trigger, daily-brief-engine-trigger, task-annotation-sync-trigger, monthly-knowledge-distill-reminder
 - **Secrets in Secret Manager (13):** AI_OS_DB_PASSWORD, AI_OS_DB_INSTANCE, MCP_GATEWAY_API_KEY, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, GOOGLE_REFRESH_TOKEN, NEXTAUTH_SECRET, DASHBOARD_OAUTH_SECRET, OPENAI_API_KEY, ANTHROPIC_API_KEY, TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, TELEGRAM_WEBHOOK_SECRET
 - **Artifact Registry:** ai-os-images (ai-os-gateway, ai-os-dashboard, telegram-notifications, + 4 knowledge pipeline images)
 - **CI/CD:** Cloud Build triggers: deploy-mcp-gateway (auto) + deploy-ai-os-dashboard (auto)
@@ -131,19 +151,8 @@
 - [ ] **Updated Command Center** — Knowledge Health card integrated, risk summary added.
 - [ ] **New types + utils** — Risk/Pipeline TypeScript types, chart utilities (106 + 56 lines added).
 
-### Category B Workflows (3 new services)
-- [ ] **risk-engine/** — AI Risk Engine. main.py (580 lines), Dockerfile, cloudbuild.yaml, requirements.txt. Computes overdue scores, velocity trends, milestone slip risk, dependency chain risk, stale project warnings. Writes to risk_alerts table. Ready to deploy: after migration 009.
-- [ ] **daily-brief-engine/** — Automated Daily Brief. main.py (369 lines) + collectors/ (calendar, gmail, knowledge, tasks) + composer/ (ai_composer, formatter) + delivery/ (drive, google_tasks, telegram) + config.py. 14 Python files. Ready to deploy: yes.
-- [ ] **task-annotation-sync/** — Two-way task annotation sync. main.py (212 lines), Dockerfile, cloudbuild.yaml, requirements.txt. Captures Google Tasks user notes every 15 min. Ready to deploy: after migration 010.
-
-### Database Migrations (built, not applied)
-- [ ] **Migration 009** — risk_alerts table (risk engine output). Seed 009 registers pipeline. Blocking: risk-engine deploy, risk dashboard.
-- [ ] **Migration 010** — task_annotations table + 3 indexes. Seed 011 registers pipeline. Blocking: task-annotation-sync deploy, get_task_annotations tool.
-- [ ] **Seed 010** — Registers drive-knowledge-distill skill + pipeline.
-
 ### Skills
-- [ ] **drive-knowledge-distill** — .claude/skills/ skill file exists. Seed 010 not yet applied (registers in skill_registry + pipelines tables). Skill operational in Claude Code, DB registration pending.
-- [ ] **SKILL_DRIVE_KNOWLEDGE_DISTILL.md** — Knowledge base mirror of skill doc (knowledge-base/skills/).
+- [x] **drive-knowledge-distill** — Skill file + DB registration complete.
 
 ---
 
