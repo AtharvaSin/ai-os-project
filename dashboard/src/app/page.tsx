@@ -1,7 +1,10 @@
-import { query } from '@/lib/db';
+import Link from 'next/link';
+import { ShieldAlert } from 'lucide-react';
+import { query, queryOne } from '@/lib/db';
 import { ProjectCard } from '@/components/ProjectCard';
 import { MilestoneRibbon } from '@/components/MilestoneRibbon';
 import { TodayTasks } from '@/components/TodayTasks';
+import { KnowledgeHealthCard } from '@/components/KnowledgeHealthCard';
 import type { ProjectWithHealth, HealthColor, Milestone } from '@/lib/types';
 
 export const dynamic = 'force-dynamic';
@@ -57,19 +60,55 @@ async function getUpcomingMilestones(): Promise<(Milestone & { project_name: str
   `);
 }
 
+async function getRiskCount(): Promise<{ total: number; critical: number }> {
+  try {
+    const row = await queryOne<{ total: string; critical: string }>(`
+      SELECT
+        COUNT(*) FILTER (WHERE NOT is_resolved) AS total,
+        COUNT(*) FILTER (WHERE NOT is_resolved AND severity = 'critical') AS critical
+      FROM risk_alerts
+    `);
+    return {
+      total: Number(row?.total ?? 0),
+      critical: Number(row?.critical ?? 0),
+    };
+  } catch {
+    return { total: 0, critical: 0 };
+  }
+}
+
 export default async function CommandCenter() {
-  const [projects, milestones] = await Promise.all([
+  const [projects, milestones, riskCount] = await Promise.all([
     getProjects(),
     getUpcomingMilestones(),
+    getRiskCount(),
   ]);
 
   return (
     <div className="p-4 lg:p-8 space-y-8 max-w-7xl mx-auto">
-      <header>
-        <h1 className="font-display text-3xl lg:text-4xl text-text-primary">
-          Command Center
-        </h1>
-        <p className="text-text-secondary mt-1">Project health at a glance</p>
+      <header className="flex items-center justify-between">
+        <div>
+          <h1 className="font-display text-3xl lg:text-4xl text-text-primary">
+            Command Center
+          </h1>
+          <p className="text-text-secondary mt-1">Project health at a glance</p>
+        </div>
+        {riskCount.total > 0 && (
+          <Link
+            href="/risks"
+            className="flex items-center gap-2 px-3 py-2 rounded-lg bg-accent-red/10 hover:bg-accent-red/20 transition-colors"
+          >
+            <ShieldAlert className="h-4 w-4 text-accent-red" />
+            <span className="text-sm font-medium text-accent-red">
+              {riskCount.total} active risk{riskCount.total !== 1 ? 's' : ''}
+            </span>
+            {riskCount.critical > 0 && (
+              <span className="badge bg-[#FF6B6B]/20 text-[#FF6B6B] text-[10px]">
+                {riskCount.critical} critical
+              </span>
+            )}
+          </Link>
+        )}
       </header>
 
       {/* Project health cards */}
@@ -92,12 +131,20 @@ export default async function CommandCenter() {
         <MilestoneRibbon milestones={milestones} />
       </section>
 
-      {/* Today's tasks */}
-      <section>
-        <h2 className="text-sm font-mono text-text-muted uppercase tracking-wider mb-4">
-          Today&apos;s Tasks
-        </h2>
-        <TodayTasks />
+      {/* Today's tasks + Knowledge Health */}
+      <section className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+        <div className="xl:col-span-2">
+          <h2 className="text-sm font-mono text-text-muted uppercase tracking-wider mb-4">
+            Today&apos;s Tasks
+          </h2>
+          <TodayTasks />
+        </div>
+        <div>
+          <h2 className="text-sm font-mono text-text-muted uppercase tracking-wider mb-4">
+            Knowledge Layer
+          </h2>
+          <KnowledgeHealthCard />
+        </div>
       </section>
     </div>
   );

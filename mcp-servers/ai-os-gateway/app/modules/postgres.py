@@ -27,7 +27,7 @@ ALLOWED_TABLES = [
     "audiences", "audience_members", "pipelines", "pipeline_runs",
     "pipeline_logs", "campaigns", "campaign_posts", "knowledge_entries",
     "knowledge_embeddings", "knowledge_connections", "skill_registry",
-    "skill_evolution_log",
+    "skill_evolution_log", "task_annotations",
 ]
 
 _WRITE_KEYWORDS = re.compile(

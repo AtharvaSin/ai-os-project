@@ -93,7 +93,7 @@ Government/regulatory compliance, Oil & Gas, Utilities, Aerospace & Defense, Air
 
 ## Active Projects
 
-1. **AI Operating System** — Personal AI-enabled OS built on Claude + LangGraph + GCP. Phase 1 build.
+1. **AI Operating System** — Personal AI-enabled OS built on Claude + GCP. 8 Cloud Run services, 26 MCP tools, 19 skills, Dashboard PWA, Telegram Bot, Knowledge Layer V2. Phase 3b in progress.
 2. **AI&U YouTube Channel** — Practical GenAI education. Pre-launch. Building first 10-video foundation.
 3. **Bharatvarsh Novel & Transmedia** — Published 350+ page alternate-reality thriller with live immersive website, Bhoomi AI voice assistant, community forum, and lore archive.
 

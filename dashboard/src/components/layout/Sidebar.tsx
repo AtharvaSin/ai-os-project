@@ -3,13 +3,15 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import { Home, ListTodo, GanttChart, FolderOpen, LogOut } from 'lucide-react';
+import { Home, ListTodo, GanttChart, ShieldAlert, Activity, FolderOpen, LogOut } from 'lucide-react';
 import { signOut } from 'next-auth/react';
 
 const navItems = [
   { href: '/', label: 'Command Center', icon: Home },
   { href: '/tasks', label: 'Task Board', icon: ListTodo },
   { href: '/gantt', label: 'Gantt Timeline', icon: GanttChart },
+  { href: '/risks', label: 'Risk Dashboard', icon: ShieldAlert },
+  { href: '/pipelines', label: 'Pipelines', icon: Activity },
 ];
 
 export function Sidebar() {

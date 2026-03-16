@@ -2,7 +2,7 @@
 
 > **Purpose:** Canonical reference for all GCP project config, service accounts, database access, secrets, and deployment patterns. Referenced by /workflow-designer, /build-prd, /tech-eval, and any skill that deploys or connects to infrastructure.
 >
-> **Last updated:** 2026-03-16 (Telegram bot deployed. telegram-notifications Cloud Run service live. 3 Cloud Scheduler jobs. 11 secrets.)
+> **Last updated:** 2026-03-17 (State v7. 8 Cloud Run services live. 8 Cloud Scheduler jobs. 13 secrets. 3 new services built pending deploy.)
 
 ---
 
@@ -84,6 +84,11 @@ Enabled at 03:00 UTC, 7 retained, point-in-time recovery on, 7-day transaction l
 |-------|---------|--------|------|
 | ai-os-gateway | MCP Gateway (FastAPI) | LIVE (latest: be26f7c) | ~107MB |
 | ai-os-dashboard | Dashboard PWA (Next.js) | LIVE (latest: sha256:b690e1a5...) | ~78MB |
+| telegram-notifications | Telegram Bot Notifications | LIVE | ~60MB |
+| embedding-generator | Knowledge Embedding Pipeline | LIVE | ~50MB |
+| drive-knowledge-scanner | Drive Knowledge Scanner | LIVE | ~50MB |
+| weekly-knowledge-summary | Weekly Knowledge Summaries | LIVE | ~50MB |
+| knowledge-auto-connector | Knowledge Auto-Connector | LIVE | ~50MB |
 
 ---
 
@@ -101,6 +106,8 @@ Enabled at 03:00 UTC, 7 retained, point-in-time recovery on, 7-day transaction l
 | DASHBOARD_OAUTH_SECRET | Web Application OAuth client secret (Dashboard) | Cloud Run (Dashboard) |
 | TELEGRAM_BOT_TOKEN | Telegram Bot API token (@AsrAiOsbot) | Cloud Run (telegram-notifications, MCP Gateway) |
 | TELEGRAM_CHAT_ID | Owner's Telegram chat ID for bot notifications | Cloud Run (telegram-notifications) |
+| OPENAI_API_KEY | OpenAI API key (text-embedding-3-small) | Cloud Run (embedding-generator, MCP Gateway) |
+| ANTHROPIC_API_KEY | Anthropic API key (Claude Haiku for pipelines) | Cloud Run (weekly-knowledge-summary, knowledge-auto-connector, telegram-notifications, daily-brief-engine) |
 | TELEGRAM_WEBHOOK_SECRET | Webhook verification secret for Telegram updates | Cloud Run (telegram-notifications) |
 
 ---
@@ -159,10 +166,14 @@ gcloud run deploy ai-os-dashboard \
 
 | Service | Container | Purpose | Auth | Status | URL |
 |---------|-----------|---------|------|--------|-----|
-| ai-os-gateway | FastAPI | MCP Gateway — tool bridge for Claude.ai, Claude Code, workflows | Bearer token / API key | LIVE (asia-south1, scale-to-zero) | https://ai-os-gateway-1054489801008.asia-south1.run.app |
-| ai-os-dashboard | Next.js | PWA Dashboard — project views, Gantt, task board, milestone management | Google OAuth (NextAuth.js) | LIVE (asia-south1, scale-to-zero) | https://ai-os-dashboard-sv4fbx5yna-el.a.run.app |
+| ai-os-gateway | FastAPI | MCP Gateway — 26 tools (6 modules), Telegram webhook | Bearer token / API key | LIVE (asia-south1, scale-to-zero) | https://ai-os-gateway-1054489801008.asia-south1.run.app |
+| ai-os-dashboard | Next.js | PWA Dashboard — 8 pages, 12 API routes, 22 components | Google OAuth (NextAuth.js) | LIVE (asia-south1, scale-to-zero) | https://ai-os-dashboard-sv4fbx5yna-el.a.run.app |
 | task-notification-daily | Python + functions-framework | Daily overdue/upcoming task scan + Google Tasks sync | OIDC (Cloud Scheduler) | LIVE (asia-south1, scale-to-zero) | https://task-notification-daily-sv4fbx5yna-el.a.run.app |
-| telegram-notifications | Python + FastAPI | Telegram bot: scheduled briefs, overdue alerts, weekly digest, AI triage, /brief /add /done /status /log commands | OIDC (Cloud Scheduler) + Telegram webhook | LIVE (asia-south1, scale-to-zero) | https://telegram-notifications-sv4fbx5yna-el.a.run.app |
+| telegram-notifications | Python + FastAPI | Telegram bot: scheduled briefs, overdue alerts, weekly digest, AI triage | OIDC (Cloud Scheduler) + Telegram webhook | LIVE (asia-south1, scale-to-zero) | https://telegram-notifications-sv4fbx5yna-el.a.run.app |
+| embedding-generator | Python | Knowledge embedding pipeline (text-embedding-3-small) | OIDC (Cloud Scheduler) | LIVE (asia-south1, scale-to-zero) | — |
+| drive-knowledge-scanner | Python | Drive Knowledge/ folder scanner, chunker, ingester | OIDC (Cloud Scheduler) | LIVE (asia-south1, scale-to-zero) | — |
+| weekly-knowledge-summary | Python | Per-project knowledge summaries via Claude Haiku | OIDC (Cloud Scheduler) | LIVE (asia-south1, scale-to-zero) | — |
+| knowledge-auto-connector | Python | Cross-domain cosine similarity + relationship classification | OIDC (Cloud Scheduler) | LIVE (asia-south1, scale-to-zero) | — |
 
 Gateway and Dashboard share service account `ai-os-cloud-run`. Task notification and telegram-notifications use `ai-os-cloud-functions`. All use Cloud SQL Auth Proxy sidecar and scale to zero independently.
 
@@ -185,6 +196,10 @@ See INTERFACE_STRATEGY.md for full dashboard specification and TOOL_ECOSYSTEM_PL
 | telegram-morning-brief | `30 1 * * *` (06:30 AM IST / 01:30 UTC) | https://telegram-notifications-sv4fbx5yna-el.a.run.app/cron/morning-brief | OIDC (ai-os-cloud-functions SA) | Enabled |
 | telegram-overdue-alerts | `30 3 * * *` (09:00 AM IST / 03:30 UTC) | https://telegram-notifications-sv4fbx5yna-el.a.run.app/cron/overdue-alerts | OIDC (ai-os-cloud-functions SA) | Enabled |
 | telegram-weekly-digest | `30 13 * * 0` (07:00 PM IST Sunday / 13:30 UTC) | https://telegram-notifications-sv4fbx5yna-el.a.run.app/cron/weekly-digest | OIDC (ai-os-cloud-functions SA) | Enabled |
+| embedding-generator-trigger | `*/5 * * * *` (every 5 min) | embedding-generator Cloud Run | OIDC (ai-os-cloud-functions SA) | Enabled |
+| drive-scanner-trigger | `0 0 * * *` (06:00 IST / 00:30 UTC) | drive-knowledge-scanner Cloud Run | OIDC (ai-os-cloud-functions SA) | Enabled |
+| weekly-summary-trigger | `0 16 * * 0` (22:00 IST Sunday / 16:30 UTC) | weekly-knowledge-summary Cloud Run | OIDC (ai-os-cloud-functions SA) | Enabled |
+| auto-connector-trigger | `0 17 * * 0` (23:00 IST Sunday / 17:30 UTC) | knowledge-auto-connector Cloud Run | OIDC (ai-os-cloud-functions SA) | Enabled |
 
 ---
 

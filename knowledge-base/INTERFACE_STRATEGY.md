@@ -4,7 +4,7 @@
 >
 > **Decision:** Option C — Google Rails + Custom Intelligence Layer
 >
-> **Last updated:** 2026-03-16
+> **Last updated:** 2026-03-17
 
 ---
 
@@ -33,7 +33,7 @@ The interface layer is built on a strict separation between three roles:
 - Message compose tool for email drafting
 - Interactive artifacts (React/HTML) for visual outputs
 - Past chats search for session continuity
-- Skills (15 active) for structured workflows
+- Skills (19 active) for structured workflows
 
 **What it creates for the interface layer:**
 - Tasks → written to Cloud SQL via MCP Gateway → synced to Google Tasks

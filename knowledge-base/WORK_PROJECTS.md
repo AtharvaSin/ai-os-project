@@ -2,7 +2,7 @@
 
 > **Purpose:** Operational state file. Tells Claude what you're working on RIGHT NOW and where deep context lives. Updated after any session where project status shifts.
 >
-> **Last updated:** 2026-03-16 (State v6: Knowledge Layer V2 deployed. Telegram Bot deployed — @AsrAiOsbot with 5 commands, AI triage, 3 scheduled notifications. 8 Cloud Run services, 27 tables, 22 MCP tools, 13 secrets.)
+> **Last updated:** 2026-03-17 (State v7: Drive Read module + Task Annotation Sync + Risk Engine + Daily Brief Engine + Dashboard expansion. 26 MCP tools. 19 skills. Dashboard: 8 pages, 12 API routes, 22 components. 3 new Category B services built.)
 > **Authoritative state:** See `knowledge-base/PROJECT_STATE.md` for verified filesystem-scanned state.
 
 ---
@@ -10,24 +10,28 @@
 ## Active Focus Projects
 
 ### 1. AI Operating System
-- **Status:** Knowledge Layer V2 deployed. Telegram Bot deployed. MCP Gateway live with 22 tools (5 modules). Dashboard PWA live. 8 Cloud Run services. 8 Cloud Scheduler jobs. 27 tables. 13 secrets. All infrastructure operational.
-- **Current phase:** Sprint 6 — Telegram Bot deployed, Knowledge seeding pending. All code deployed. Pending: seed knowledge base (Drive folders + 38 docs), complete Claude.ai MCP connector.
-- **Next milestone:** Seed knowledge base (80-100+ entries via Drive scanner), connect Claude.ai MCP connector. Then Phase 3b (AI Risk Engine + push notifications).
-- **Pending decisions:** Firebase project setup timing (Phase 3b), Knowledge Layer monitoring/alerting strategy, Drive folder creation method (MCP vs manual), Telegram bot Phase T4 features prioritization
+- **Status:** Phase 3b in progress. MCP Gateway 26 tools (6 modules). Dashboard 8 pages, 12 API routes, 22 components. 3 new Category B services built (risk-engine, daily-brief-engine, task-annotation-sync). 19 skills. 8 Cloud Run services live. 27 tables live, 2 pending migrations (009-010). 13 secrets. All core infrastructure operational.
+- **Current phase:** Sprint 7 — Phase 3b (Risk Engine + Dashboard expansion + Daily Brief + Task Annotations). Code built, pending commit + deploy + migration apply.
+- **Next milestone:** Commit all uncommitted code (30+ files), apply migrations 009-010, deploy 3 new services, seed knowledge base. Then push notifications (FCM).
+- **Pending decisions:** Firebase project setup timing, deployment order for 3 new services, knowledge seeding method (manual vs automated), daily brief delivery channels configuration
 - **What's been built:**
-  - Category A: 18 skills, 3 connectors (Gmail, Calendar, Drive), 27+ KB files
-  - Claude Code: Project directory with CLAUDE.md, 18 SKILL.md skills, mirrored KB
+  - Category A: 19 skills, 3 connectors (Gmail, Calendar, Drive), 27+ KB files
+  - Claude Code: Project directory with CLAUDE.md, 19 SKILL.md skills, mirrored KB
   - GCP: Project ai-operating-system-490208 with 16 APIs, 3 service accounts, Artifact Registry, Secret Manager (13 secrets)
   - Database: ai_os DB on Cloud SQL (shared Bharatvarsh instance), 27 tables across 5 domains, pgvector enabled, Migrations 001-008 all applied, 28 tasks seeded
-  - MCP Gateway: LIVE on Cloud Run (ai-os-gateway, asia-south1, scale-to-zero). FastAPI + FastMCP. 22 tools ALL operational. PostgreSQL (6), Google Tasks (5), Drive Write (3), Calendar Sync (3), Telegram (5). Telegram webhook subsystem (8 files). Bearer token auth.
+  - MCP Gateway: LIVE on Cloud Run (ai-os-gateway, asia-south1, scale-to-zero). FastAPI + FastMCP. 26 tools (22 live, 4 pending deploy). 6 modules: PostgreSQL (6), Google Tasks (6), Drive Write (3), Drive Read (3), Calendar Sync (3), Telegram (5). Telegram webhook subsystem (8 files). Bearer token auth.
   - Google OAuth: Desktop client for Gateway (refresh token). Web Application client for Dashboard (DASHBOARD_OAUTH_SECRET). Consent screen configured.
-  - Dashboard PWA: LIVE on Cloud Run (ai-os-dashboard, asia-south1, scale-to-zero). Next.js 14 + TypeScript + Tailwind CSS. 6 pages. 7 API routes. 16 components. NextAuth.js Google OAuth. Obsidian Aurora design system. PWA with service worker + offline fallback.
+  - Dashboard PWA: LIVE on Cloud Run (ai-os-dashboard, asia-south1, scale-to-zero). Next.js 14 + TypeScript + Tailwind CSS. 8 pages (6 live + 2 built). 12 API routes (7 live + 5 built). 22 components (16 live + 6 built). NextAuth.js Google OAuth. Obsidian Aurora design system. PWA with service worker + offline fallback. New: Risk Dashboard, Pipeline Monitor, Knowledge Health card.
   - CI/CD: Cloud Build triggers: deploy-mcp-gateway (auto) + deploy-ai-os-dashboard (auto). 8 Cloud Scheduler jobs.
   - Task Notification: LIVE on Cloud Run + Cloud Scheduler (daily 06:00 IST)
   - Knowledge Layer V2: DEPLOYED. 4 pipeline services LIVE on Cloud Run (embedding-generator, drive-knowledge-scanner, weekly-knowledge-summary, knowledge-auto-connector). Shared library (ai_os_knowledge.py). 38 seed documents ready. 5 Cloud Scheduler triggers. 3 skills RAG-grounded (morning-brief, weekly-review, session-resume).
   - Telegram Bot: DEPLOYED. @AsrAiOsbot with webhook on MCP Gateway. 5 slash commands (/brief, /add, /done, /status, /log). AI triage via Claude Haiku. Conversation memory with thread management. telegram-notifications Cloud Run service with 3 scheduled notifications (morning brief, overdue alerts, weekly digest). Inline keyboard callbacks.
+  - Risk Engine: BUILT. AI Risk Engine (580 lines) computes overdue scores, velocity trends, milestone slip, dependency chains, stale warnings. Writes to risk_alerts table. Cloud Run service with Dockerfile + cloudbuild.yaml.
+  - Daily Brief Engine: BUILT. Automated daily brief (14 files) with collectors (calendar, gmail, knowledge, tasks), AI composer (Claude Haiku), and multi-channel delivery (Telegram, Drive, Google Tasks).
+  - Task Annotation Sync: BUILT. Two-way Google Tasks notes sync (212 lines). Captures user annotations from mobile every 15 min. SHA-256 content-hash deduplication.
+  - Drive Read Module: BUILT. 3 MCP tools (list_drive_files, read_drive_file, get_drive_changes_summary). 438 lines.
   - Seeds: 28 tasks (AI OS 12, AI&U 8, Bharatvarsh 8), all milestone due dates set
-  - Scripts: google_oauth_setup.py, deploy_knowledge_layer_v2.sh, seed_knowledge_connections.py, generate_knowledge_snapshots.py
+  - Scripts: google_oauth_setup.py, deploy_knowledge_layer_v2.sh, seed_knowledge_connections.py, generate_knowledge_snapshots.py, seed_knowledge_drive.py
   - Architecture: Three-tier tool ecosystem — Tier 1 directory connectors / Tier 2 unified MCP Gateway / Tier 3 local STDIO MCPs
   - Interface Strategy: Option C decided — Google Tasks/Calendar/Drive as notification rails, Next.js PWA as intelligence layer, Cloud SQL as single source of truth
 - **Context:** PROJECT_STATE.md (KB — authoritative state), GCP_INFRA_CONFIG.md (KB), DB_SCHEMA.md (KB), TOOL_ECOSYSTEM_PLAN.md (KB), INTERFACE_STRATEGY.md (KB), EVOLUTION_LOG.md (KB)

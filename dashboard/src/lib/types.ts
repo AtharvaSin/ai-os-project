@@ -6,6 +6,10 @@ export type MilestoneStatus = 'pending' | 'in_progress' | 'completed' | 'missed'
 export type TaskStatus = 'todo' | 'in_progress' | 'blocked' | 'done' | 'cancelled';
 export type TaskPriority = 'low' | 'medium' | 'high' | 'urgent';
 export type ArtifactType = 'document' | 'code' | 'config' | 'design' | 'media' | 'deployment' | 'other';
+export type RiskAlertType = 'overdue_cluster' | 'velocity_decline' | 'milestone_slip' | 'dependency_chain' | 'stale_project';
+export type RiskSeverity = 'low' | 'medium' | 'high' | 'critical';
+export type PipelineCategory = 'B' | 'C';
+export type PipelineRunStatus = 'success' | 'failed' | 'running' | 'cancelled';
 
 /* ── Database row types ── */
 
@@ -141,4 +145,106 @@ export interface CreateTaskPayload {
   priority?: TaskPriority;
   due_date?: string;
   description?: string;
+}
+
+/* ── Risk Engine types ── */
+
+export interface RiskAlert {
+  id: string;
+  project_id: string;
+  project_name?: string;
+  project_slug?: string;
+  alert_type: RiskAlertType;
+  severity: RiskSeverity;
+  title: string;
+  description: string | null;
+  affected_tasks: string[];
+  affected_milestones: string[];
+  score: number | null;
+  is_resolved: boolean;
+  resolved_at: string | null;
+  resolution_note: string | null;
+  metadata: Record<string, unknown>;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface RiskSummary {
+  total_active: number;
+  critical_count: number;
+  high_count: number;
+  projects_affected: number;
+  oldest_unresolved_days: number;
+}
+
+export interface VelocityDataPoint {
+  date: string;
+  project_name: string;
+  project_slug: string;
+  completed_count: number;
+}
+
+export interface RisksApiResponse {
+  summary: RiskSummary;
+  alerts: RiskAlert[];
+  velocity: VelocityDataPoint[];
+}
+
+/* ── Pipeline Monitor types ── */
+
+export interface Pipeline {
+  id: string;
+  name: string;
+  slug: string;
+  description: string | null;
+  category: PipelineCategory;
+  schedule: string | null;
+  is_active: boolean;
+  notify_telegram: boolean;
+  config: Record<string, unknown>;
+  created_at: string;
+}
+
+export interface PipelineRun {
+  id: string;
+  pipeline_id: string;
+  status: PipelineRunStatus;
+  trigger_type: string;
+  triggered_by: string | null;
+  started_at: string;
+  completed_at: string | null;
+  duration_ms: number | null;
+  tokens_used: number | null;
+  cost_estimate_usd: number | null;
+  output_summary: string | null;
+  error_message: string | null;
+}
+
+export interface PipelineWithStats extends Pipeline {
+  latest_run: PipelineRun | null;
+  total_runs: number;
+  success_count: number;
+  failed_count: number;
+  success_rate: number;
+  avg_duration_ms: number | null;
+}
+
+export interface PipelinesApiResponse {
+  pipelines: PipelineWithStats[];
+}
+
+export interface PipelineRunsApiResponse {
+  pipeline: Pipeline;
+  runs: PipelineRun[];
+}
+
+/* ── Knowledge Health types ── */
+
+export interface KnowledgeHealth {
+  total_entries: number;
+  with_embeddings: number;
+  embedding_coverage_pct: number;
+  domain_count: number;
+  connection_count: number;
+  last_ingestion: string | null;
 }

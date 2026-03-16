@@ -13,6 +13,66 @@ A running record of design decisions, architecture changes, brainstorming outcom
 
 ## Log Entries
 
+### Entry 011 — Two-Way Task Annotation Sync
+- **Date:** 2026-03-17
+- **Domain:** Task Layer / MCP Gateway / Google Tasks / Database / Pipelines
+- **Status:** [BUILT — pending deployment]
+- **Summary:** Made Google Tasks notes genuinely two-way by splitting the field into a system zone (task brief, written by Gateway) and a user zone (execution annotations, written by user on mobile). System zone shows priority tag, project name, due date, task ID short, and truncated brief above a delimiter line. User types notes below the delimiter on their phone. `sync_tasks_to_db` and a new standalone Category B pipeline (`task-annotation-sync`, every 15 min) capture user annotations into a new `task_annotations` table with SHA-256 content-hash deduplication. New `get_task_annotations` MCP tool returns Item 1 (brief) + Item 2 (annotations) together. Gateway tool count: 25 → 26. Table count: 28 → 29.
+- **Architecture Decisions:**
+  - **Dual-item separation:** Item 1 (task brief) lives in `tasks.description` — never truncated, never overwritten by sync. Item 2 (annotations) lives in `task_annotations` — append-only, timestamped, content-hash deduped. The two items never conflate.
+  - **Delimiter protocol:** A Unicode delimiter line (`── ✏️ YOUR NOTES BELOW ─────────────────────────`) separates system zone from user zone in Google Tasks notes. Gateway writes above; user writes below.
+  - **Content-hash deduplication:** `SHA-256(user_zone)` stored in `content_hash` column with unique index on `(task_id, content_hash)`. Editing text creates a new annotation row (different hash) — correct audit-trail behavior.
+  - **User zone preservation:** `update_task` fetches existing Google Task notes before rebuilding system zone, re-appends user zone below delimiter. Mobile annotations survive Gateway updates.
+  - **Standalone pipeline for scheduled capture:** `task-annotation-sync` (Category B, Cloud Run, every 15 min) mirrors the Gateway's annotation capture logic using pg8000 + Google API. Ensures annotations are captured even when user doesn't trigger `sync_tasks_to_db` manually.
+- **Files Created/Modified:**
+  - NEW: database/migrations/010_task_annotations.sql (task_annotations table + 3 indexes)
+  - NEW: database/seeds/011_seed_task_annotation_sync.sql (pipeline registration)
+  - NEW: workflows/category-b/task-annotation-sync/main.py (~170 lines)
+  - NEW: workflows/category-b/task-annotation-sync/Dockerfile
+  - NEW: workflows/category-b/task-annotation-sync/requirements.txt
+  - NEW: workflows/category-b/task-annotation-sync/cloudbuild.yaml
+  - MODIFIED: mcp-servers/ai-os-gateway/app/modules/google_tasks.py (notes protocol, annotation capture, get_task_annotations tool)
+  - MODIFIED: mcp-servers/ai-os-gateway/app/modules/postgres.py (task_annotations in ALLOWED_TABLES)
+  - MODIFIED: knowledge-base/TOOL_ECOSYSTEM_PLAN.md (tool count 25 → 26, Google Tasks 5 → 6 tools)
+  - MODIFIED: knowledge-base/EVOLUTION_LOG.md (Entry 011)
+- **Known Limitations:**
+  - Legacy tasks (created before this feature) have no delimiter — annotations won't be captured
+  - Deleted delimiter: annotations lost until next `update_task` re-injects it
+  - Completed tasks excluded from sync (by design)
+- **Next Steps:**
+  - [ ] Apply migration 010 via cloud-sql-proxy
+  - [ ] Apply seed 011 via cloud-sql-proxy
+  - [ ] Redeploy MCP Gateway to Cloud Run
+  - [ ] Deploy task-annotation-sync to Cloud Run
+  - [ ] Create Cloud Scheduler job (*/15 * * * *)
+  - [ ] Verify: create_task → check notes on phone → type annotation → sync → get_task_annotations
+
+### Entry 010 — Drive Knowledge Distill Skill + Drive Read Module
+- **Date:** 2026-03-17
+- **Domain:** Knowledge Layer / MCP Gateway / Skills
+- **Status:** [COMPLETED]
+- **Summary:** Built drive_read MCP module (3 tools: list_drive_files, read_drive_file, get_drive_changes_summary) enabling direct Drive file discovery and reading from Claude.ai/Claude Code. Created /drive-knowledge-distill skill for monthly human-in-the-loop knowledge curation — discovers Drive changes, classifies content, proposes knowledge entries with approve/edit/reject/merge/split options, and commits approved entries. Skill has 3 access modes (direct Drive read, pipeline DB entries, manual paste). Gateway tool count: 22 → 25.
+- **Architecture Decisions:**
+  - **Drive Read as separate module from Drive Write:** Read-only operations (listing, reading, change summary) are distinct from write operations (upload, create). Separate modules follow single-responsibility principle.
+  - **Three access modes for resilience:** Mode A (direct Drive read via MCP) preferred when tools are available. Mode B (pipeline DB entries) uses existing scanner data. Mode C (manual paste) as fallback. Skill degrades gracefully.
+  - **Human-in-the-loop gate:** No knowledge entries committed without explicit user approval. Proposals support approve/edit/reject/merge/split/batch operations.
+  - **Cross-reference with knowledge_entries:** get_drive_changes_summary compares Drive file modifiedTime against knowledge_entries.updated_at to classify files as new/modified/ingested.
+  - **Granularity by document length:** Docs > 2000 words split by H2/H3 headers with overview entry. Docs < 2000 words get single entry. Matches drive-knowledge-scanner chunking approach.
+  - **Cross-project separation:** Documents spanning multiple projects get separate knowledge entries per project with relevant content only.
+- **Files Created/Modified:**
+  - NEW: mcp-servers/ai-os-gateway/app/modules/drive_read.py (~280 lines, 3 MCP tools)
+  - NEW: .claude/skills/drive-knowledge-distill/SKILL.md (~200 lines)
+  - NEW: database/seeds/010_seed_drive_knowledge_distill.sql (skill + pipeline registration)
+  - MODIFIED: mcp-servers/ai-os-gateway/app/main.py (import, registration, health check)
+  - MODIFIED: knowledge-base/TOOL_ECOSYSTEM_PLAN.md (Drive Read module, 25 tools)
+  - MODIFIED: knowledge-base/EVOLUTION_LOG.md (Entry 010)
+- **Next Steps:**
+  - [ ] Deploy updated MCP Gateway to Cloud Run (adds 3 Drive Read tools)
+  - [ ] Apply seed 010 to Cloud SQL (registers skill + pipeline)
+  - [ ] Test drive_read tools via MCP (list, read, changes summary)
+  - [ ] Run first /drive-knowledge-distill cycle in Claude.ai
+  - [ ] Phase 3b: AI Risk Engine + push notifications
+
 ### Entry 009 — Telegram Bot Deployed (Pocket Command Channel)
 - **Date:** 2026-03-16
 - **Domain:** Interface Layer / Notifications / Telegram / MCP Gateway / Database

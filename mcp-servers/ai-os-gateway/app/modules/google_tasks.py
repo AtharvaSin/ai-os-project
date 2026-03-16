@@ -11,6 +11,7 @@ Google Task IDs stored in tasks.metadata->>'google_task_id'.
 
 from __future__ import annotations
 
+import hashlib
 import json
 import uuid
 from datetime import date, datetime
@@ -28,6 +29,45 @@ PRIORITY_PREFIXES = {
     "urgent": "[URGENT] ",
     "high": "[HIGH] ",
 }
+
+NOTES_DELIMITER = '── ✏️ YOUR NOTES BELOW ─────────────────────────'
+
+
+def _build_notes_header(
+    task_id: str,
+    project_name: str,
+    priority: str,
+    due_date: str | None,
+    description: str | None = None,
+    existing_notes: str | None = None,
+) -> str:
+    """Build system zone for Google Tasks notes field.
+
+    Includes priority tag, project, due date, task ID short,
+    and a 120-char mirror of the task brief.
+    """
+    lines = [
+        f'[{priority.upper()}] {project_name}',
+        f'Due: {due_date or "not set"}  |  ID: {task_id[:8]}',
+    ]
+    if description and description.strip():
+        brief = description.strip()[:120]
+        if len(description.strip()) > 120:
+            brief += '...'
+        lines.append('─' * 44)
+        lines.append(f'📋 {brief}')
+    lines.append('─' * 44)
+    lines.append(NOTES_DELIMITER)
+    header = '\n'.join(lines)
+    user_zone = _extract_user_zone(existing_notes or '')
+    return f'{header}\n{user_zone}' if user_zone.strip() else header
+
+
+def _extract_user_zone(notes: str) -> str:
+    """Extract everything below the delimiter. Returns '' if no delimiter."""
+    if NOTES_DELIMITER in notes:
+        return notes.split(NOTES_DELIMITER, 1)[1].lstrip('\n')
+    return ''
 
 
 def _serialize(value: Any) -> Any:
@@ -167,19 +207,21 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                 # Resolve project
                 if project_slug:
                     project = await conn.fetchrow(
-                        "SELECT id FROM projects WHERE slug = $1", project_slug
+                        "SELECT id, name FROM projects WHERE slug = $1", project_slug
                     )
                     if not project:
                         return json.dumps({"error": f"Project '{project_slug}' not found"})
                     project_id = str(project["id"])
+                    project_name = project["name"]
                 else:
                     # Default to first project
                     project = await conn.fetchrow(
-                        "SELECT id FROM projects ORDER BY created_at LIMIT 1"
+                        "SELECT id, name FROM projects ORDER BY created_at LIMIT 1"
                     )
                     if not project:
                         return json.dumps({"error": "No projects found in database"})
                     project_id = str(project["id"])
+                    project_name = project["name"]
 
                 # Insert task into Cloud SQL
                 task_id = str(uuid.uuid4())
@@ -206,7 +248,13 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                         if list_id:
                             google_body: dict[str, Any] = {
                                 "title": _prefixed_title(title, priority),
-                                "notes": description or "",
+                                "notes": _build_notes_header(
+                                    task_id=task_id,
+                                    project_name=project_name,
+                                    priority=priority,
+                                    due_date=due_date,
+                                    description=description,
+                                ),
                                 "status": "needsAction",
                             }
                             if due_date:
@@ -256,9 +304,11 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
 
         try:
             async with pool.acquire() as conn:
-                # Get current task
+                # Get current task (JOIN project for name — needed for notes header)
                 task = await conn.fetchrow(
-                    "SELECT * FROM tasks WHERE id = $1::uuid", task_id
+                    "SELECT t.*, p.name AS project_name FROM tasks t "
+                    "JOIN projects p ON t.project_id = p.id "
+                    "WHERE t.id = $1::uuid", task_id
                 )
                 if not task:
                     return json.dumps({"error": f"Task '{task_id}' not found"})
@@ -287,17 +337,27 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                         new_priority = fields.get("priority", task_dict["priority"])
                         google_update["title"] = _prefixed_title(new_title, new_priority)
 
-                        if "description" in fields:
-                            google_update["notes"] = fields["description"] or ""
                         if "due_date" in fields:
                             google_update["due"] = _rfc3339_date(fields["due_date"])
 
-                        # Fetch current Google task, merge updates, and save
+                        # Fetch current Google task (need existing notes to preserve user zone)
                         gtask = await run_google_api(
                             service.tasks().get(
                                 tasklist=google_list_id, task=google_task_id
                             ).execute
                         )
+
+                        # Handle description: rebuild system zone, preserve user zone
+                        if "description" in fields:
+                            google_update["notes"] = _build_notes_header(
+                                task_id=task_id,
+                                project_name=task_dict.get("project_name", ""),
+                                priority=new_priority,
+                                due_date=fields.get("due_date", str(task_dict.get("due_date") or "")),
+                                description=fields["description"],
+                                existing_notes=gtask.get("notes", ""),
+                            )
+
                         gtask.update(google_update)
                         await run_google_api(
                             service.tasks().update(
@@ -411,6 +471,27 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                                 "change": "marked_completed",
                             })
                             synced += 1
+
+                        # ── Annotation capture (Item 2) ──
+                        user_zone = _extract_user_zone(gtask.get('notes', ''))
+                        if user_zone.strip():
+                            content_hash = hashlib.sha256(user_zone.encode()).hexdigest()
+                            inserted = await conn.fetchval(
+                                "INSERT INTO task_annotations "
+                                "(task_id, content, source, content_hash, metadata) "
+                                "VALUES ($1::uuid, $2, 'google_tasks', $3, $4::jsonb) "
+                                "ON CONFLICT (task_id, content_hash) DO NOTHING "
+                                "RETURNING id",
+                                row['id'], user_zone, content_hash,
+                                json.dumps({'word_count': len(user_zone.split())}),
+                            )
+                            if inserted:
+                                changes.append({
+                                    'task_id': str(row['id']),
+                                    'change': 'annotation_captured',
+                                    'preview': user_zone[:80],
+                                })
+                                synced += 1
                     except Exception:
                         errors += 1
 
@@ -422,3 +503,32 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                 })
         except Exception as exc:
             return json.dumps({"error": f"Sync failed: {exc}"})
+
+    @mcp.tool(
+        description="Retrieve execution annotations captured from Google Tasks notes "
+        "for a specific task. Returns the task brief (Item 1) alongside "
+        "timestamped annotations (Item 2), newest first."
+    )
+    async def get_task_annotations(task_id: str, limit: int = 20) -> str:
+        pool = get_pool()
+        try:
+            async with pool.acquire() as conn:
+                task = await conn.fetchrow(
+                    'SELECT title, description FROM tasks WHERE id = $1::uuid',
+                    task_id,
+                )
+                rows = await conn.fetch(
+                    'SELECT id, content, source, captured_at, content_hash, metadata '
+                    'FROM task_annotations WHERE task_id = $1::uuid '
+                    'ORDER BY captured_at DESC LIMIT $2',
+                    task_id, limit,
+                )
+                return json.dumps({
+                    'task_id': task_id,
+                    'task_title': task['title'] if task else None,
+                    'item_1_brief': task['description'] if task else None,
+                    'item_2_annotations': [_row_to_dict(r) for r in rows],
+                    'annotation_count': len(rows),
+                })
+        except Exception as exc:
+            return json.dumps({'error': f'Failed: {exc}'})

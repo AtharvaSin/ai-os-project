@@ -1,0 +1,4 @@
+pg8000>=1.31.0
+functions-framework>=3.8.0
+google-api-python-client>=2.160.0
+google-auth>=2.38.0

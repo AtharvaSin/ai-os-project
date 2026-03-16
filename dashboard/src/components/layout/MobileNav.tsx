@@ -3,12 +3,13 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import { Home, ListTodo, GanttChart, MoreHorizontal } from 'lucide-react';
+import { Home, ListTodo, ShieldAlert, Activity, MoreHorizontal } from 'lucide-react';
 
 const navItems = [
   { href: '/', label: 'Home', icon: Home },
   { href: '/tasks', label: 'Tasks', icon: ListTodo },
-  { href: '/gantt', label: 'Gantt', icon: GanttChart },
+  { href: '/risks', label: 'Risks', icon: ShieldAlert },
+  { href: '/pipelines', label: 'Pipes', icon: Activity },
   { href: '/projects/ai-os', label: 'More', icon: MoreHorizontal },
 ];
 

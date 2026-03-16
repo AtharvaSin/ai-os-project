@@ -1,9 +1,9 @@
 # AI OS Database Schema
 
-> Auto-generated from `ai_os` database on 2026-03-14, updated 2026-03-16
+> Auto-generated from `ai_os` database on 2026-03-14, updated 2026-03-17
 > Instance: `bharatvarsh-website:us-central1:bharatvarsh-db`
 > Database: `ai_os` | User: `ai_os_admin` | PostgreSQL 15 | Extensions: vector 0.8.1, moddatetime 1.0
-> **Note:** Migrations 001-005 applied. Migration 008 (Telegram) applied. Migrations 006-007 built (pending apply). After all migrations: 27 tables, short_id() function, 2 planned SQL functions, 3+ new enums. Live regeneration requires Cloud SQL Proxy connection.
+> **Note:** Migrations 001-008 all applied (27 tables live). Migrations 009-010 built (pending apply). After all pending migrations: 29 tables. Live regeneration requires Cloud SQL Proxy connection.
 
 ## Overview
 
@@ -37,14 +37,22 @@
 | 26 | `notification_log` | 0 | 9 | Telegram Bot | 008 |
 | 27 | `bot_inbox` | 0 | 7 | Telegram Bot | 008 |
 
-**Migration 008 (Telegram) adds:**
+**Migration 006 (Knowledge Functions — applied):**
+- 7 new source_type enum values, knowledge_domain enum, 3 new columns on knowledge_entries (sub_domain, project_id FK, drive_file_id), match_knowledge() function (semantic search), traverse_knowledge() function (graph traversal), 4 new indexes
+
+**Migration 007 (Knowledge Ingestion — applied):**
+- ingestion_job_type enum, knowledge_ingestion_jobs table, knowledge_snapshots table, drive_scan_state table (with 7 seed rows), moddatetime trigger
+
+**Migration 008 (Telegram — applied):**
 - **Tables:** bot_conversations (conversation memory for AI triage), notification_log (all sent notifications with delivery status), bot_inbox (inbound messages from Telegram for async processing)
 - **Function:** short_id() — generates 8-char alphanumeric IDs for human-readable references
 - **Column:** pipelines.notify_telegram (boolean, default false) — flag to enable Telegram notifications per pipeline
 
-**Pending migrations 006-007 add:**
-- **Migration 006:** 7 new source_type enum values, knowledge_domain enum, 3 new columns on knowledge_entries (sub_domain, project_id FK, drive_file_id), match_knowledge() function (semantic search), traverse_knowledge() function (graph traversal), 4 new indexes
-- **Migration 007:** ingestion_job_type enum, knowledge_ingestion_jobs table, knowledge_snapshots table, drive_scan_state table (with 7 seed rows), moddatetime trigger
+**Pending migration 009 (Risk Alerts — built, not applied):**
+- **Table:** risk_alerts — stores computed risk assessments from AI Risk Engine. Columns: project_id, alert_type (overdue_cluster, velocity_decline, milestone_slip, dependency_chain, stale_project), severity, title, description, affected_tasks (UUID[]), affected_milestones (UUID[]), is_resolved, resolved_at, metadata, timestamps. Indexes on project_id, alert_type, severity, is_resolved.
+
+**Pending migration 010 (Task Annotations — built, not applied):**
+- **Table:** task_annotations — captures user notes written below delimiter in Google Tasks. Columns: id (uuid), task_id (FK → tasks), content (text), content_hash (SHA-256), source (default 'google_tasks'), metadata (jsonb), created_at. Unique index on (task_id, content_hash) for deduplication. Indexes on task_id and created_at.
 
 ---
 
@@ -625,10 +633,10 @@ _Tracks changes to skills over time_
 CREATE FUNCTION short_id() RETURNS text
 ```
 
-### Planned: `match_knowledge()` (RAG semantic search primitive)
+### `match_knowledge()` (RAG semantic search primitive — Migration 006, applied)
 
 ```sql
--- PLANNED — semantic similarity search over knowledge_entries via pgvector
+-- Semantic similarity search over knowledge_entries via pgvector
 -- Signature: match_knowledge(
 --   query_embedding vector(1536),
 --   match_threshold float DEFAULT 0.7,
@@ -642,10 +650,10 @@ CREATE FUNCTION short_id() RETURNS text
 -- Core RAG primitive — all agents call this for semantic retrieval.
 ```
 
-### Planned: `traverse_knowledge()` (knowledge graph traversal)
+### `traverse_knowledge()` (knowledge graph traversal — Migration 006, applied)
 
 ```sql
--- PLANNED — graph traversal across knowledge_connections
+-- Graph traversal across knowledge_connections
 -- Signature: traverse_knowledge(
 --   start_entry_id uuid,
 --   max_depth int DEFAULT 2,

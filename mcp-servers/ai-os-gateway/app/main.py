@@ -16,7 +16,7 @@ from fastmcp import FastMCP
 
 from app import config
 from app.auth.bearer import verify_bearer_token
-from app.modules import postgres, google_tasks, drive_write, calendar_sync, telegram
+from app.modules import postgres, google_tasks, drive_write, drive_read, calendar_sync, telegram
 from app.telegram.webhook import router as telegram_router
 
 
@@ -27,6 +27,7 @@ mcp = FastMCP(name="AI-OS-Gateway")
 postgres.register_tools(mcp, config.get_db_pool)
 google_tasks.register_tools(mcp, config.get_db_pool)
 drive_write.register_tools(mcp, config.get_db_pool)
+drive_read.register_tools(mcp, config.get_db_pool)
 calendar_sync.register_tools(mcp, config.get_db_pool)
 telegram.register_tools(mcp, config.get_db_pool)
 
@@ -106,7 +107,7 @@ async def health():
         "version": "0.1.0",
         "database": db_status,
         "google_oauth": google_status,
-        "modules": ["postgres", "google_tasks", "drive_write", "calendar_sync", "telegram"],
+        "modules": ["postgres", "google_tasks", "drive_write", "drive_read", "calendar_sync", "telegram"],
     }
 
 

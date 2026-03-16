@@ -2,7 +2,7 @@
 
 > **Purpose:** Reference architecture for the three-tier MCP and tool access system. Governs how new tools are added and where they live.
 >
-> **Last updated:** 2026-03-16 (Phase 1-3a complete. MCP Gateway live with all 22 tools. Telegram module deployed. Dashboard PWA deployed on Cloud Run.)
+> **Last updated:** 2026-03-17 (Phase 1-3a complete. MCP Gateway live with 26 tools. Drive Read module added. Telegram module deployed. Task annotation sync added. Dashboard PWA deployed on Cloud Run.)
 
 ---
 
@@ -32,8 +32,9 @@ Single FastAPI container on Cloud Run. Scales to zero. All custom tool access. A
 | Module | Priority | Tool Calls | Status |
 |--------|----------|-----------|--------|
 | PostgreSQL | P0 | query_db, insert_record, update_record, get_schema, search_knowledge, log_pipeline_run | LIVE (6 tools) |
-| Google Tasks | P1 | list_tasks, create_task, update_task, complete_task, sync_to_db | LIVE (5 tools) |
+| Google Tasks | P1 | list_tasks, create_task, update_task, complete_task, sync_to_db, get_task_annotations | LIVE (6 tools) |
 | Drive (write) | P1 | upload_file, create_doc, create_folder | LIVE (3 tools) |
+| Drive (read) | P1 | list_drive_files, read_drive_file, get_drive_changes_summary | LIVE (3 tools) |
 | Calendar Sync | P1 | create_milestone_event, update_milestone_event, delete_milestone_event | LIVE (3 tools) |
 | Telegram | P1 | send_telegram_message, send_telegram_template, send_telegram_inline_keyboard, edit_telegram_message, get_telegram_bot_info | LIVE (5 tools) |
 | Bharatvarsh Admin | P2 | query_lore, get_character, search_timeline, forum_moderate | Not started |
@@ -50,8 +51,9 @@ mcp-servers/ai-os-gateway/
 │   ├── mcp_registry.py      ← Tool registration system
 │   ├── modules/             ← One file per tool
 │   │   ├── postgres.py      ← LIVE (6 tools)
-│   │   ├── google_tasks.py  ← LIVE (5 tools)
+│   │   ├── google_tasks.py  ← LIVE (6 tools)
 │   │   ├── drive_write.py   ← LIVE (3 tools)
+│   │   ├── drive_read.py    ← LIVE (3 tools)
 │   │   ├── calendar_sync.py ← LIVE (3 tools)
 │   │   ├── telegram.py      ← LIVE (5 tools)
 │   │   ├── bharatvarsh.py   ← Not started
