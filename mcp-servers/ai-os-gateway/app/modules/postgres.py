@@ -250,11 +250,13 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                             project_id = row["id"] if row else None
 
                     # Call match_knowledge() SQL function
+                    # Convert embedding list to pgvector string format
+                    embedding_str = "[" + ",".join(str(x) for x in embedding) + "]"
                     async with pool.acquire() as conn:
                         rows = await conn.fetch(
                             "SELECT * FROM match_knowledge("
-                            "$1, $2, $3, $4::knowledge_domain, $5, $6)",
-                            embedding,
+                            "$1::vector, $2, $3, $4::knowledge_domain, $5, $6)",
+                            embedding_str,
                             threshold,
                             limit,
                             domain,
