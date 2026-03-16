@@ -1,9 +1,9 @@
 # AI OS Database Schema
 
-> Auto-generated from `ai_os` database on 2026-03-14, updated 2026-03-15 (row counts from seed data, migration 005 columns added)
+> Auto-generated from `ai_os` database on 2026-03-14, updated 2026-03-15
 > Instance: `bharatvarsh-website:us-central1:bharatvarsh-db`
 > Database: `ai_os` | User: `ai_os_admin` | PostgreSQL 15 | Extensions: vector 0.8.1, moddatetime 1.0
-> **Note:** Row counts for tasks (28) updated from seed 005. Column counts for tasks (16), milestones (10), artifacts (12) updated for migration 005. Live regeneration requires Cloud SQL Proxy connection.
+> **Note:** Migrations 001-005 applied. Migrations 006-007 built (pending apply). After 007: 24 tables, 2 new SQL functions, 3 new enums. Live regeneration requires Cloud SQL Proxy connection.
 
 ## Overview
 
@@ -25,11 +25,18 @@
 | 14 | `pipeline_logs` | 0 | 6 | Pipeline Tracking | 003 |
 | 15 | `campaigns` | 2 | 13 | Pipeline Tracking | 003 |
 | 16 | `campaign_posts` | 4 | 13 | Pipeline Tracking | 003 |
-| 17 | `knowledge_entries` | 0 | 11 | Knowledge & Intelligence | 004 |
+| 17 | `knowledge_entries` | 0 | 14 | Knowledge & Intelligence | 004, 006 |
 | 18 | `knowledge_embeddings` | 0 | 5 | Knowledge & Intelligence | 004 |
 | 19 | `knowledge_connections` | 0 | 7 | Knowledge & Intelligence | 004 |
 | 20 | `skill_registry` | 15 | 12 | Knowledge & Intelligence | 004 |
 | 21 | `skill_evolution_log` | 15 | 8 | Knowledge & Intelligence | 004 |
+| 22 | `knowledge_ingestion_jobs` | 0 | 14 | Knowledge & Intelligence | 007 |
+| 23 | `knowledge_snapshots` | 0 | 12 | Knowledge & Intelligence | 007 |
+| 24 | `drive_scan_state` | 7 | 8 | Knowledge & Intelligence | 007 |
+
+**Pending migrations 006-007 add:**
+- **Migration 006:** 7 new source_type enum values, knowledge_domain enum, 3 new columns on knowledge_entries (sub_domain, project_id FK, drive_file_id), match_knowledge() function (semantic search), traverse_knowledge() function (graph traversal), 4 new indexes
+- **Migration 007:** ingestion_job_type enum, knowledge_ingestion_jobs table, knowledge_snapshots table, drive_scan_state table (with 7 seed rows), moddatetime trigger
 
 ---
 

@@ -13,6 +13,45 @@ A running record of design decisions, architecture changes, brainstorming outcom
 
 ## Log Entries
 
+### Entry 008 — Knowledge Layer V2 Complete Build (Sprint 5A-5D)
+- **Date:** 2026-03-15
+- **Domain:** Knowledge Layer / Pipelines / MCP Gateway / Skills / Database
+- **Status:** [BUILT — pending deployment]
+- **Summary:** Complete Knowledge Layer V2 build across 4 sprints (5A-5D). 69 files (7 modified + 62 new, 6,050 lines). 2 database migrations (006-007), 4 pipeline services (embedding-generator, drive-knowledge-scanner, weekly-knowledge-summary, knowledge-auto-connector), MCP Gateway semantic search upgrade, shared knowledge library, 3 skills RAG-grounded, 38 seed documents across 3 domains, 3 utility scripts, deployment guide. All code built in parallel using 7 specialized agents.
+- **Architecture Decisions:**
+  - **Two-pathway ingestion:** Weekly batch summarisation (Postgres ops data → Claude Haiku → knowledge entries) + Drive Knowledge Scanner (Google Drive → chunk → knowledge entries). Operational data stays structured; knowledge entries are curated or systematically summarised.
+  - **pgvector for semantic search:** Leveraged existing pgvector extension rather than adding a separate vector database. match_knowledge() SQL function enables cosine similarity search alongside structured queries.
+  - **Expert-in-the-loop for connections:** Auto-connector proposes edges with metadata.approved=false. Human approves via /weekly-review skill. Prevents noisy knowledge graph.
+  - **Cloud Run for all pipelines:** Cloud Functions Gen 2 buildpack still broken. All 4 new pipelines use Cloud Run + Cloud Scheduler (same pattern as task-notification).
+  - **text-embedding-3-small:** Cheapest OpenAI embedding model ($0.02/1M tokens). 100 entries ≈ $0.001. Monthly cost ≈ $0.45 for all 4 pipelines.
+  - **pg8000 for pipelines, asyncpg for gateway:** Pipelines use pg8000 (sync, simple, matches task-notification pattern). MCP Gateway uses asyncpg (async, matches FastAPI pattern). Shared library uses asyncpg.
+- **Files Created (69 total):**
+  - Migrations: database/migrations/006_knowledge_functions.sql, 007_knowledge_ingestion.sql
+  - Seeds: database/seeds/006_seed_knowledge_pipelines.sql
+  - Pipelines (4 services × 4 files): embedding-generator, drive-knowledge-scanner, weekly-knowledge-summary, knowledge-auto-connector
+  - Shared library: workflows/shared/__init__.py, ai_os_knowledge.py
+  - MCP Gateway: postgres.py (search_knowledge upgrade), config.py (OPENAI_API_KEY), requirements.txt, cloudbuild.yaml
+  - Skills: morning-brief, weekly-review, session-resume (RAG-grounded)
+  - Seed docs: 38 files in docs/knowledge-seed/ (System 15, Bharatvarsh 7, AI&U 5, AI-OS 3, Zealogics 1, Personal 7)
+  - Scripts: deploy_knowledge_layer_v2.sh, seed_knowledge_connections.py, generate_knowledge_snapshots.py
+- **KB Changes Made:**
+  - PROJECT_STATE.md — Updated to v5
+  - WORK_PROJECTS.md — Updated: Knowledge Layer V2 status
+  - CLAUDE.md — Updated: directory structure, current sprint, database info, secrets
+  - EVOLUTION_LOG.md — Entry 008 added
+  - DB_SCHEMA.md — Updated with migrations 006-007 info
+- **Next Steps:**
+  - [ ] Store OPENAI_API_KEY + ANTHROPIC_API_KEY in Secret Manager
+  - [ ] Apply migrations 006-007 to Cloud SQL
+  - [ ] Deploy 4 pipeline services to Cloud Run
+  - [ ] Create 4 Cloud Scheduler triggers
+  - [ ] Redeploy MCP Gateway with semantic search
+  - [ ] Create Drive Knowledge/ folders (7)
+  - [ ] Upload 38 seed docs to Drive
+  - [ ] Trigger Drive scanner, verify embeddings
+  - [ ] Complete Claude.ai MCP connector
+  - [ ] Phase 3b: AI Risk Engine + push notifications
+
 ### Entry 007 — Dashboard PWA Build + Deploy (Phase 3a) + Task Seed Data
 - **Date:** 2026-03-15
 - **Domain:** Interface Layer / Dashboard / PWA / Database / Deployment
