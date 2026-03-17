@@ -33,7 +33,7 @@ The interface layer is built on a strict separation between three roles:
 - Message compose tool for email drafting
 - Interactive artifacts (React/HTML) for visual outputs
 - Past chats search for session continuity
-- Skills (19 active) for structured workflows
+- Skills (22 active) for structured workflows
 
 **What it creates for the interface layer:**
 - Tasks → written to Cloud SQL via MCP Gateway → synced to Google Tasks
@@ -411,6 +411,25 @@ The dashboard follows the same design principles as Claude artifact visuals for 
 | Labels / badges | JetBrains Mono | 11px | 600 |
 
 **Component patterns:** Cards with `--bg-card` background, `--border` border, 8px radius. Score bars for metrics. Badges for status. Minimal animation — content over decoration.
+
+---
+
+## Brand Identity System
+
+The OS operates three distinct brand contexts managed via `BRAND_IDENTITY.md`
+and the `brand-guidelines` skill. See that document for canonical token tables.
+
+Context routing:
+- AI OS System (Context A): Dashboard, PRDs, research docs, infographics, system artifacts
+- Bharatvarsh (Context B): Novel content, website, promotional material, lore
+- Portfolio (Context C): Personal website, profile content, atharvasingh.com
+
+All visual output from this OS MUST declare its context before applying any tokens.
+
+Skills added:
+- `brand-guidelines` — context-aware token dispatch (A/B/C routing)
+- `infographic` — dual-mode visual generation (React artifact + matplotlib)
+- `ui-design-process` — anti-slop process with Step 0 context declaration
 
 ---
 

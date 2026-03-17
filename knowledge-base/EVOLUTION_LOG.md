@@ -13,6 +13,32 @@ A running record of design decisions, architecture changes, brainstorming outcom
 
 ## Log Entries
 
+### Entry 015 — Brand Consistency System (Sprint 9-A)
+- **Date:** 2026-03-18
+- **Domain:** Brand System / Skills / Knowledge Base / Drive
+- **Status:** [COMPLETED]
+- **Summary:** Built three-context brand identity system. Extracted design tokens from wibify.agency (Playwright MCP, dark mode) to establish Context A accent color. Created canonical BRAND_IDENTITY.md with all three context token tables. Built 3 new skills (brand-guidelines, infographic, ui-design-process). Generated matplotlib theme, 3 React infographic templates, 3 branded .docx templates. Drive folder structure created under AI OS/BRAND_TEMPLATES/.
+- **Architecture Decisions:**
+  - **Three brand contexts:** A (AI OS System — Wibify-inspired, Obsidian Aurora, DM Sans, accent #00D492), B (Bharatvarsh — dystopian-cinematic, Bebas Neue, mustard #F1C232), C (Portfolio — violet/coral, Inter). Contexts are mutually exclusive — no mixing.
+  - **Wibify extraction → #00D492:** Electric emerald green extracted as the signature accent-primary. Wibify uses Geist font; DM Sans retained for Context A (similar geometric precision, broader weight range).
+  - **Anti-slop enforcement:** ui-design-process skill embeds a mandatory pre-build process: context declaration → use case interrogation → aesthetic direction commit → anti-slop checklist → differentiation decision → build. No code until direction is written.
+  - **JetBrains Mono universal:** The one font that appears in ALL three contexts — data, metrics, code, timestamps.
+  - **Font Context Lock Table:** Strict mapping of which fonts belong to which context. Instrument Serif = A only, Bebas Neue = B only, Inter body = B+C, DM Sans = A only.
+- **Files Created:**
+  - NEW: knowledge-base/BRAND_IDENTITY.md (canonical, 532 lines)
+  - NEW: .claude/skills/brand-guidelines/SKILL.md + references/TOKENS.md
+  - NEW: .claude/skills/infographic/SKILL.md + assets/mpl-themes/ai_os_system.mplstyle + assets/react-templates/{MetricCard,ComparisonTable,ProcessFlow}.jsx
+  - NEW: .claude/skills/ui-design-process/SKILL.md + references/ANTI_SLOP_CHECKLIST.md
+  - NEW: docs/temp/brand guides/context_a_extracted.json (Wibify extraction data)
+  - NEW: Drive: AI OS/BRAND_TEMPLATES/{context-a-ai-os, context-b-bharatvarsh, context-c-portfolio}/
+  - GENERATED: /tmp/brand-templates/{ai_os_template, bharatvarsh_template, portfolio_template}.docx
+- **Files Modified:**
+  - MODIFIED: docs/temp/brand guides/SPEC_CONTEXT_A.md (all [EXTRACTED] placeholders filled)
+  - MODIFIED: knowledge-base/INTERFACE_STRATEGY.md (Brand Identity System section, skills 19→22)
+  - MODIFIED: knowledge-base/EVOLUTION_LOG.md (Entry 015)
+- **Extraction Source:** wibify.agency dark mode via Playwright MCP browser automation
+- **Skill Count:** 19 → 22 (brand-guidelines, infographic, ui-design-process)
+
 ### Entry 014 — Delimiter Redesign, Annotation Fix, delete_task & Domain Move
 - **Date:** 2026-03-17
 - **Domain:** MCP Gateway / Google Tasks / Category B Pipeline
