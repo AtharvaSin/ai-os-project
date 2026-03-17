@@ -248,7 +248,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                 if domain_slug:
                     rows = await conn.fetch(
                         "SELECT t.*, p.slug AS project_slug, p.name AS project_name, "
-                        "d.name AS domain_name, d.slug AS domain_slug "
+                        "d.name AS domain_name, d.slug AS domain_slug, d.domain_number "
                         "FROM tasks t "
                         "JOIN projects p ON t.project_id = p.id "
                         "LEFT JOIN life_domains d ON t.domain_id = d.id "
@@ -264,7 +264,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                         return json.dumps({"error": f"Project '{project_slug}' not found"})
                     rows = await conn.fetch(
                         "SELECT t.*, p.slug AS project_slug, p.name AS project_name, "
-                        "d.name AS domain_name, d.slug AS domain_slug "
+                        "d.name AS domain_name, d.slug AS domain_slug, d.domain_number "
                         "FROM tasks t "
                         "JOIN projects p ON t.project_id = p.id "
                         "LEFT JOIN life_domains d ON t.domain_id = d.id "
@@ -275,7 +275,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                 else:
                     rows = await conn.fetch(
                         "SELECT t.*, p.slug AS project_slug, p.name AS project_name, "
-                        "d.name AS domain_name, d.slug AS domain_slug "
+                        "d.name AS domain_name, d.slug AS domain_slug, d.domain_number "
                         "FROM tasks t "
                         "JOIN projects p ON t.project_id = p.id "
                         "LEFT JOIN life_domains d ON t.domain_id = d.id "
@@ -406,17 +406,24 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
 
     @mcp.tool(
         description="Update an existing task in Cloud SQL and sync changes to Google Tasks. "
-        "Updates title, due_date, description, priority, or status. "
-        "If priority changes to urgent/high, the Google Task title prefix is updated."
+        "Updates title, due_date, description, priority, status, or domain_slug. "
+        "If priority changes to urgent/high, the Google Task title prefix is updated. "
+        "If domain_slug is provided, the task is moved to the new domain's Google Task list "
+        "(delete from old list + create in new list, preserving all data and user annotations)."
     )
     async def update_task(task_id: str, fields: dict) -> str:
         pool = get_pool()
-        allowed_fields = {"title", "description", "status", "priority", "due_date", "assignee"}
+        allowed_fields = {"title", "description", "status", "priority", "due_date", "assignee", "domain_slug"}
         invalid = set(fields.keys()) - allowed_fields
         if invalid:
             return json.dumps({"error": f"Invalid fields: {', '.join(invalid)}. Allowed: {', '.join(allowed_fields)}"})
 
+        # Separate domain_slug from regular DB column updates
+        new_domain_slug = fields.pop("domain_slug", None)
+
         try:
+            from app.auth.google_oauth import run_google_api
+
             async with pool.acquire() as conn:
                 task = await conn.fetchrow(
                     "SELECT t.*, d.name AS domain_name FROM tasks t "
@@ -426,23 +433,25 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                 if not task:
                     return json.dumps({"error": f"Task '{task_id}' not found"})
 
-                columns = list(fields.keys())
-                values = list(fields.values())
-                set_clause = ", ".join(f"{col} = ${i+1}" for i, col in enumerate(columns))
-                sql = f"UPDATE tasks SET {set_clause} WHERE id = ${len(columns)+1}::uuid RETURNING *"
+                # Apply regular field updates
+                if fields:
+                    columns = list(fields.keys())
+                    values = list(fields.values())
+                    set_clause = ", ".join(f"{col} = ${i+1}" for i, col in enumerate(columns))
+                    sql = f"UPDATE tasks SET {set_clause} WHERE id = ${len(columns)+1}::uuid RETURNING *"
+                    record = await conn.fetchrow(sql, *values, task_id)
+                else:
+                    record = task
 
-                record = await conn.fetchrow(sql, *values, task_id)
                 task_dict = _row_to_dict(record)
-
                 metadata = task_dict.get("metadata") or {}
                 google_task_id = metadata.get("google_task_id")
                 google_list_id = metadata.get("google_task_list_id")
                 service = _get_tasks_service()
 
-                if service and google_task_id and google_list_id:
+                # Sync regular field changes to Google Tasks
+                if service and google_task_id and google_list_id and fields:
                     try:
-                        from app.auth.google_oauth import run_google_api
-
                         google_update: dict[str, Any] = {}
                         new_title = fields.get("title", task_dict["title"])
                         new_priority = fields.get("priority", task_dict["priority"])
@@ -477,6 +486,99 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                         task_dict["google_synced"] = True
                     except Exception as e:
                         task_dict["google_sync_error"] = str(e)
+
+                # Handle domain move
+                if new_domain_slug:
+                    new_domain = await conn.fetchrow(
+                        "SELECT id, name, metadata FROM life_domains WHERE slug = $1",
+                        new_domain_slug,
+                    )
+                    if not new_domain:
+                        return json.dumps({"error": f"Domain '{new_domain_slug}' not found"})
+
+                    new_domain_id = new_domain["id"]
+                    new_domain_meta = _parse_jsonb(new_domain["metadata"]) or {}
+                    new_list_id = new_domain_meta.get("google_task_list_id")
+
+                    # Update domain_id in DB
+                    await conn.execute(
+                        "UPDATE tasks SET domain_id = $1::uuid, updated_at = NOW() "
+                        "WHERE id = $2::uuid",
+                        new_domain_id, task_id,
+                    )
+                    task_dict["domain_id"] = str(new_domain_id)
+                    task_dict["domain_moved"] = new_domain_slug
+
+                    # Move on Google Tasks: delete old, create new
+                    if service and new_list_id:
+                        try:
+                            # Read existing Google Task to preserve user zone
+                            existing_notes = ""
+                            if google_task_id and google_list_id:
+                                try:
+                                    old_gtask = await run_google_api(
+                                        service.tasks().get(
+                                            tasklist=google_list_id, task=google_task_id
+                                        ).execute
+                                    )
+                                    existing_notes = old_gtask.get("notes", "")
+                                except Exception:
+                                    pass
+
+                                # Delete from old list
+                                try:
+                                    await run_google_api(
+                                        service.tasks().delete(
+                                            tasklist=google_list_id, task=google_task_id
+                                        ).execute
+                                    )
+                                except Exception:
+                                    pass
+
+                            # Re-read updated task for current field values
+                            updated_row = await conn.fetchrow(
+                                "SELECT * FROM tasks WHERE id = $1::uuid", task_id
+                            )
+                            updated = _row_to_dict(updated_row)
+
+                            # Create in new list
+                            new_body: dict[str, Any] = {
+                                "title": _prefixed_title(
+                                    updated["title"], updated["priority"]
+                                ),
+                                "notes": _build_notes_header(
+                                    task_id=task_id,
+                                    domain_name=new_domain["name"],
+                                    priority=updated["priority"],
+                                    due_date=str(updated["due_date"]) if updated.get("due_date") else None,
+                                    description=updated.get("description"),
+                                    existing_notes=existing_notes,
+                                ),
+                                "status": "completed" if updated.get("status") == "done" else "needsAction",
+                            }
+                            if updated.get("due_date"):
+                                new_body["due"] = _rfc3339_date(str(updated["due_date"]))
+
+                            new_gtask = await run_google_api(
+                                service.tasks().insert(
+                                    tasklist=new_list_id, body=new_body
+                                ).execute
+                            )
+
+                            # Update metadata with new Google Task IDs
+                            new_metadata = {
+                                **metadata,
+                                "google_task_id": new_gtask["id"],
+                                "google_task_list_id": new_list_id,
+                            }
+                            await conn.execute(
+                                "UPDATE tasks SET metadata = $1::jsonb WHERE id = $2::uuid",
+                                json.dumps(new_metadata), task_id,
+                            )
+                            task_dict["google_synced"] = True
+                            task_dict["metadata"] = new_metadata
+                        except Exception as e:
+                            task_dict["google_sync_error"] = str(e)
 
                 return json.dumps(task_dict)
         except Exception as exc:
@@ -527,6 +629,66 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                 return json.dumps(task_dict)
         except Exception as exc:
             return json.dumps({"error": f"Failed to complete task: {exc}"})
+
+    @mcp.tool(
+        description="Permanently delete a task from both Cloud SQL and Google Tasks. "
+        "Removes the task row, deletes it from the Google Task list on the phone, "
+        "and cleans up related annotations. This action is irreversible."
+    )
+    async def delete_task(task_id: str) -> str:
+        pool = get_pool()
+        try:
+            async with pool.acquire() as conn:
+                row = await conn.fetchrow(
+                    "SELECT t.id, t.title, t.metadata, d.name AS domain_name "
+                    "FROM tasks t LEFT JOIN life_domains d ON t.domain_id = d.id "
+                    "WHERE t.id = $1::uuid",
+                    task_id,
+                )
+                if not row:
+                    return json.dumps({"error": f"Task '{task_id}' not found"})
+
+                meta = _parse_jsonb(row["metadata"]) or {}
+                google_task_id = meta.get("google_task_id")
+                google_list_id = meta.get("google_task_list_id")
+
+                # Delete from Google Tasks if synced
+                google_deleted = False
+                service = _get_tasks_service()
+                if service and google_task_id and google_list_id:
+                    try:
+                        from app.auth.google_oauth import run_google_api
+
+                        await run_google_api(
+                            service.tasks().delete(
+                                tasklist=google_list_id, task=google_task_id
+                            ).execute
+                        )
+                        google_deleted = True
+                    except Exception as e:
+                        logger.warning(
+                            "Could not delete Google Task %s: %s",
+                            google_task_id, e,
+                        )
+
+                # Delete annotations then task from DB
+                await conn.execute(
+                    "DELETE FROM task_annotations WHERE task_id = $1::uuid",
+                    task_id,
+                )
+                await conn.execute(
+                    "DELETE FROM tasks WHERE id = $1::uuid", task_id
+                )
+
+                return json.dumps({
+                    "deleted": True,
+                    "task_id": task_id,
+                    "title": row["title"],
+                    "domain": row.get("domain_name"),
+                    "google_deleted": google_deleted,
+                })
+        except Exception as exc:
+            return json.dumps({"error": f"Failed to delete task: {exc}"})
 
     @mcp.tool(
         description="Sync Google Tasks state back to Cloud SQL. "
