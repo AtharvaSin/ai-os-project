@@ -29,7 +29,8 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("task-annotation-sync")
 
 # Must be byte-for-byte identical to gateway constant
-NOTES_DELIMITER = '── ✏️ YOUR NOTES BELOW ─────────────────────────'
+NOTES_DELIMITER = '--- YOUR NOTES BELOW ---'
+NOTES_MARKER = 'YOUR NOTES BELOW'
 
 PRIORITY_PREFIXES = {
     "urgent": "[URGENT] ",
@@ -79,10 +80,34 @@ def get_tasks_service():
     return build("tasks", "v1", credentials=creds)
 
 
+def _has_delimiter(notes: str) -> bool:
+    """Check if notes contain any form of the delimiter (current or legacy)."""
+    if not notes:
+        return False
+    return NOTES_DELIMITER in notes or NOTES_MARKER in notes
+
+
 def extract_user_zone(notes: str) -> str:
-    """Extract everything below the delimiter. Returns '' if no delimiter."""
+    """Extract user-written content below the notes delimiter.
+
+    Two-tier matching: exact delimiter first, then fuzzy marker match.
+    """
+    if not notes:
+        return ''
+
+    # Tier 1: Exact delimiter match
     if NOTES_DELIMITER in notes:
         return notes.split(NOTES_DELIMITER, 1)[1].lstrip('\n')
+
+    # Tier 2: Fuzzy match on marker text
+    if NOTES_MARKER in notes:
+        idx = notes.index(NOTES_MARKER) + len(NOTES_MARKER)
+        rest = notes[idx:]
+        newline_pos = rest.find('\n')
+        if newline_pos != -1:
+            return rest[newline_pos + 1:].lstrip('\n')
+        return ''
+
     return ''
 
 
@@ -94,7 +119,10 @@ def build_notes_header(
     description: str | None = None,
     existing_notes: str | None = None,
 ) -> str:
-    """Build system zone for Google Tasks notes field."""
+    """Build system zone for Google Tasks notes field.
+
+    ASCII-only formatting. Preserves user zone. Handles legacy tasks.
+    """
     lines = [
         f'[{priority.upper()}] {domain_name}',
         f'Due: {due_date or "not set"}  |  ID: {task_id[:8]}',
@@ -103,13 +131,25 @@ def build_notes_header(
         brief = description.strip()[:120]
         if len(description.strip()) > 120:
             brief += '...'
-        lines.append('─' * 44)
-        lines.append(f'📋 {brief}')
-    lines.append('─' * 44)
+        lines.append('')
+        lines.append(brief)
+    lines.append('')
     lines.append(NOTES_DELIMITER)
+
     header = '\n'.join(lines)
+
+    # Preserve existing user zone
     user_zone = extract_user_zone(existing_notes or '')
-    return f'{header}\n{user_zone}' if user_zone.strip() else header
+
+    # Legacy handling: if no delimiter found but notes exist,
+    # treat entire existing notes as user content
+    if not user_zone.strip() and existing_notes and existing_notes.strip():
+        if not _has_delimiter(existing_notes):
+            user_zone = existing_notes.strip()
+
+    if user_zone.strip():
+        return f'{header}\n{user_zone}'
+    return header
 
 
 def _prefixed_title(title: str, priority: str) -> str:
@@ -286,8 +326,20 @@ def main(request):
                     ).execute()
 
                 # 4. ANNOTATION CAPTURE
-                user_zone = extract_user_zone(gtask.get("notes", ""))
+                raw_notes = gtask.get("notes", "")
+                logger.info(
+                    "Task %s (%s): notes_len=%d, delimiter=%s, marker=%s",
+                    str(task["id"])[:8], str(task.get("title", ""))[:30],
+                    len(raw_notes),
+                    NOTES_DELIMITER in raw_notes,
+                    NOTES_MARKER in raw_notes,
+                )
+                user_zone = extract_user_zone(raw_notes)
                 if user_zone.strip():
+                    logger.info(
+                        "Task %s: user_zone found (%d chars)",
+                        str(task["id"])[:8], len(user_zone),
+                    )
                     content_hash = hashlib.sha256(
                         user_zone.encode()
                     ).hexdigest()
@@ -402,7 +454,7 @@ def main(request):
                     google_notes = gt.get("notes", "")
                     user_notes = (
                         extract_user_zone(google_notes)
-                        if NOTES_DELIMITER in google_notes
+                        if _has_delimiter(google_notes)
                         else google_notes
                     )
 

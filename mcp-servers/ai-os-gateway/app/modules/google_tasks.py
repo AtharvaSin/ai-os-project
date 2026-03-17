@@ -14,12 +14,15 @@ from __future__ import annotations
 
 import hashlib
 import json
+import logging
 import uuid
 from datetime import date, datetime, timezone
 from decimal import Decimal
 from typing import Any
 
 from fastmcp import FastMCP
+
+logger = logging.getLogger("google_tasks")
 
 NOT_CONFIGURED_MSG = json.dumps({
     "error": "Google OAuth not configured",
@@ -36,7 +39,11 @@ CONTEXT_ITEM_PREFIXES = {
     "automation": "[AUTO] ",
 }
 
-NOTES_DELIMITER = '── ✏️ YOUR NOTES BELOW ─────────────────────────'
+NOTES_DELIMITER = '--- YOUR NOTES BELOW ---'
+NOTES_MARKER = 'YOUR NOTES BELOW'
+
+# Legacy delimiter — kept for migration detection only
+_OLD_DELIMITER = '── ✏️ YOUR NOTES BELOW ─────────────────────────'
 
 
 def _build_notes_header(
@@ -47,7 +54,12 @@ def _build_notes_header(
     description: str | None = None,
     existing_notes: str | None = None,
 ) -> str:
-    """Build system zone for Google Tasks notes field."""
+    """Build system zone for Google Tasks notes field.
+
+    Uses ASCII-only formatting to survive Google Tasks API round-trips.
+    Preserves user zone from existing notes (below delimiter).
+    Handles legacy tasks that have no delimiter by treating entire notes as user content.
+    """
     lines = [
         f'[{priority.upper()}] {domain_name}',
         f'Due: {due_date or "not set"}  |  ID: {task_id[:8]}',
@@ -56,19 +68,60 @@ def _build_notes_header(
         brief = description.strip()[:120]
         if len(description.strip()) > 120:
             brief += '...'
-        lines.append('─' * 44)
-        lines.append(f'📋 {brief}')
-    lines.append('─' * 44)
+        lines.append('')
+        lines.append(brief)
+    lines.append('')
     lines.append(NOTES_DELIMITER)
+
     header = '\n'.join(lines)
+
+    # Preserve existing user zone
     user_zone = _extract_user_zone(existing_notes or '')
-    return f'{header}\n{user_zone}' if user_zone.strip() else header
+
+    # Legacy handling: if no delimiter found but notes exist,
+    # treat entire existing notes as user content
+    if not user_zone.strip() and existing_notes and existing_notes.strip():
+        if not _has_delimiter(existing_notes):
+            user_zone = existing_notes.strip()
+
+    if user_zone.strip():
+        return f'{header}\n{user_zone}'
+    return header
+
+
+def _has_delimiter(notes: str) -> bool:
+    """Check if notes contain any form of the delimiter (current or legacy)."""
+    if not notes:
+        return False
+    return NOTES_DELIMITER in notes or NOTES_MARKER in notes
 
 
 def _extract_user_zone(notes: str) -> str:
-    """Extract everything below the delimiter. Returns '' if no delimiter."""
+    """Extract user-written content below the notes delimiter.
+
+    Uses a two-tier matching strategy:
+    1. Exact match on NOTES_DELIMITER (fast path)
+    2. Fuzzy match on NOTES_MARKER text (handles Google Tasks normalization)
+
+    Returns empty string if no delimiter/marker found.
+    """
+    if not notes:
+        return ''
+
+    # Tier 1: Exact delimiter match
     if NOTES_DELIMITER in notes:
         return notes.split(NOTES_DELIMITER, 1)[1].lstrip('\n')
+
+    # Tier 2: Fuzzy match — find the marker text regardless of surrounding chars
+    if NOTES_MARKER in notes:
+        idx = notes.index(NOTES_MARKER) + len(NOTES_MARKER)
+        rest = notes[idx:]
+        # Skip past remaining characters on the delimiter line
+        newline_pos = rest.find('\n')
+        if newline_pos != -1:
+            return rest[newline_pos + 1:].lstrip('\n')
+        return ''
+
     return ''
 
 
@@ -626,8 +679,21 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                             )
 
                         # 4. ANNOTATION SYNC
-                        user_zone = _extract_user_zone(gtask.get("notes", ""))
+                        raw_notes = gtask.get("notes", "")
+                        logger.info(
+                            "Sync task %s (%s): notes_len=%d, "
+                            "delimiter_found=%s, marker_found=%s",
+                            str(row["id"])[:8], row["title"][:30],
+                            len(raw_notes),
+                            NOTES_DELIMITER in raw_notes,
+                            NOTES_MARKER in raw_notes,
+                        )
+                        user_zone = _extract_user_zone(raw_notes)
                         if user_zone.strip():
+                            logger.info(
+                                "Sync task %s: user_zone found (%d chars)",
+                                str(row["id"])[:8], len(user_zone),
+                            )
                             content_hash = hashlib.sha256(
                                 user_zone.encode()
                             ).hexdigest()
@@ -729,7 +795,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                             google_notes = gt.get("notes", "")
                             user_notes = (
                                 _extract_user_zone(google_notes)
-                                if NOTES_DELIMITER in google_notes
+                                if _has_delimiter(google_notes)
                                 else google_notes
                             )
 
@@ -1082,3 +1148,94 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                 return json.dumps(results)
         except Exception as exc:
             return json.dumps({"error": f"Reset failed: {exc}"})
+
+    @mcp.tool(
+        description="Migrate all Google Tasks notes from old Unicode delimiter to new ASCII "
+        "delimiter. Rebuilds the system zone of every synced task using the new "
+        "'--- YOUR NOTES BELOW ---' format while preserving user-written annotations. "
+        "One-time migration tool — safe to run multiple times."
+    )
+    async def migrate_notes_delimiter() -> str:
+        service = _get_tasks_service()
+        if not service:
+            return NOT_CONFIGURED_MSG
+
+        pool = get_pool()
+        try:
+            from app.auth.google_oauth import run_google_api
+
+            async with pool.acquire() as conn:
+                migrated = 0
+                already_new = 0
+                no_notes = 0
+                err = 0
+
+                rows = await conn.fetch(
+                    "SELECT t.id, t.title, t.description, t.priority::text, "
+                    "t.due_date, t.metadata, d.name AS domain_name "
+                    "FROM tasks t "
+                    "LEFT JOIN life_domains d ON t.domain_id = d.id "
+                    "WHERE t.metadata->>'google_task_id' IS NOT NULL "
+                    "AND t.status != 'done'::task_status"
+                )
+
+                for row in rows:
+                    meta = _parse_jsonb(row["metadata"]) or {}
+                    gtid = meta.get("google_task_id")
+                    glid = meta.get("google_task_list_id")
+                    if not gtid or not glid:
+                        continue
+
+                    try:
+                        gtask = await run_google_api(
+                            service.tasks().get(
+                                tasklist=glid, task=gtid
+                            ).execute
+                        )
+                        notes = gtask.get("notes", "")
+
+                        if not notes:
+                            no_notes += 1
+                            continue
+
+                        # Already has new delimiter — skip
+                        if NOTES_DELIMITER in notes:
+                            already_new += 1
+                            continue
+
+                        # Rebuild with new delimiter, preserving user zone
+                        domain_name = row.get("domain_name") or "Unknown"
+                        new_notes = _build_notes_header(
+                            task_id=str(row["id"]),
+                            domain_name=domain_name,
+                            priority=row["priority"],
+                            due_date=str(row["due_date"]) if row["due_date"] else None,
+                            description=row["description"],
+                            existing_notes=notes,
+                        )
+
+                        await run_google_api(
+                            service.tasks().patch(
+                                tasklist=glid,
+                                task=gtid,
+                                body={"notes": new_notes},
+                            ).execute
+                        )
+                        migrated += 1
+                        logger.info(
+                            "Migrated delimiter: %s (%s)",
+                            str(row["id"])[:8], row["title"][:30],
+                        )
+                    except Exception as e:
+                        err += 1
+                        logger.error("Migration error %s: %s", str(row["id"])[:8], e)
+
+                return json.dumps({
+                    "migrated": migrated,
+                    "already_new": already_new,
+                    "no_notes": no_notes,
+                    "errors": err,
+                    "total": len(rows),
+                })
+        except Exception as exc:
+            return json.dumps({"error": f"Migration failed: {exc}"})

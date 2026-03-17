@@ -13,6 +13,23 @@ A running record of design decisions, architecture changes, brainstorming outcom
 
 ## Log Entries
 
+### Entry 014 — Delimiter Redesign & Annotation Capture Fix
+- **Date:** 2026-03-17
+- **Domain:** MCP Gateway / Google Tasks / Category B Pipeline
+- **Status:** [COMPLETED]
+- **Summary:** Fixed broken annotation capture (0 rows in task_annotations despite user writing notes). Root cause: Unicode em-dash delimiter (`── ✏️ YOUR NOTES BELOW ─────`) was being normalized/mangled by Google Tasks API during round-trip, so exact string match always failed. Redesigned to ASCII-only `--- YOUR NOTES BELOW ---` with two-tier extraction (exact match + fuzzy marker fallback). Added `migrate_notes_delimiter` MCP tool (tool #35) to update all existing Google Tasks. Legacy task handling preserves notes that predate the delimiter system.
+- **Changes:**
+  - New delimiter: `--- YOUR NOTES BELOW ---` (ASCII-only, survives Google Tasks round-trip)
+  - Two-tier extraction: exact match on `NOTES_DELIMITER`, fallback to `NOTES_MARKER = 'YOUR NOTES BELOW'`
+  - `_has_delimiter()` helper for robust detection across old and new formats
+  - `_build_notes_header()` rewritten: ASCII separators, legacy task handling (no delimiter → treat entire notes as user content)
+  - `migrate_notes_delimiter` tool: rebuilds system zone on all active Google Tasks with new format
+  - Debug logging in both gateway and pipeline for annotation sync observability
+- **Files Modified:**
+  - MODIFIED: mcp-servers/ai-os-gateway/app/modules/google_tasks.py (delimiter, extraction, notes builder, migration tool, logging)
+  - MODIFIED: workflows/category-b/task-annotation-sync/main.py (same delimiter + extraction + notes builder changes)
+  - MODIFIED: knowledge-base/EVOLUTION_LOG.md (entry 014)
+
 ### Entry 013 — Two-Way Google Tasks ↔ Cloud SQL Field-Level Sync
 - **Date:** 2026-03-17
 - **Domain:** MCP Gateway / Google Tasks / Category B Pipeline
