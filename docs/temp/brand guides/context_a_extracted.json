@@ -1,0 +1,69 @@
+{
+  "source": "wibify.agency (dark mode)",
+  "extracted_at": "2026-03-18T00:17:00.000Z",
+  "method": "Playwright MCP via Claude Code — live browser extraction",
+  "semantic_mapping": {
+    "bg-void": "#0a0a0a",
+    "bg-base": "#0a0a0a",
+    "bg-surface": "#171717",
+    "bg-elevated": "#262626",
+    "accent-primary": "#00D492",
+    "text-primary": "#fafafa",
+    "text-secondary": "#d4d4d4",
+    "text-muted": "#a1a1a1",
+    "border": "rgba(255,255,255,0.1)",
+    "cta-bg": "#00D492",
+    "cta-text": "#ffffff",
+    "nav-bg": "#0a0a0a"
+  },
+  "css_variables": {
+    "--background": "#0a0a0a",
+    "--foreground": "#fafafa",
+    "--card": "#171717",
+    "--card-foreground": "#fafafa",
+    "--primary": "#e5e5e5",
+    "--secondary": "#262626",
+    "--accent": "#262626",
+    "--muted": "#262626",
+    "--muted-foreground": "#a1a1a1",
+    "--border": "rgba(255,255,255,0.1)",
+    "--ring": "#737373",
+    "--destructive": "lab(63.7053% 60.745 31.3109)"
+  },
+  "computed_styles": {
+    "body": {
+      "backgroundColor": "#0a0a0a",
+      "color": "#fafafa",
+      "fontFamily": "Geist, Geist Fallback, sans-serif"
+    },
+    "hero_heading": {
+      "fontSize": "96px",
+      "fontWeight": "600",
+      "letterSpacing": "-4.8px",
+      "fontFamily": "Geist"
+    },
+    "section_heading": {
+      "fontSize": "60px",
+      "fontWeight": "600",
+      "letterSpacing": "-3px"
+    },
+    "cta_button": {
+      "backgroundColor": "#00D492",
+      "color": "#ffffff",
+      "fontSize": "14px"
+    },
+    "card": {
+      "backgroundColor": "#171717",
+      "borderColor": "#262626"
+    },
+    "footer": {
+      "backgroundColor": "#0a0a0a"
+    }
+  },
+  "font_families": ["Geist", "Geist Mono"],
+  "reconciliation_notes": {
+    "bg-void_vs_bg-base": "Wibify uses #0a0a0a as its only dark bg. Within 10 luminance units of Obsidian Aurora #0d0d14. Per reconciliation rule, bg-void mapped to #0a0a0a, bg-base kept at #0d0d14 (LOCKED).",
+    "accent-primary": "#00D492 — electric emerald green. Used on CTA buttons and decorative accent lines. This is the ONE signature interactive color.",
+    "font_decision": "Wibify uses Geist (Vercel's geometric sans). Context A retains DM Sans (similar geometric precision, broader weight range 400-800) and Instrument Serif (editorial gravitas). Geist noted as aesthetic inspiration only."
+  }
+}
