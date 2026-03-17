@@ -72,6 +72,20 @@ def _extract_user_zone(notes: str) -> str:
     return ''
 
 
+def _parse_jsonb(value: Any) -> Any:
+    """Ensure a JSONB value is a Python dict/list, not a raw JSON string.
+
+    asyncpg may return JSONB columns as str when no custom codec is
+    registered on the connection pool.  This helper normalises them.
+    """
+    if isinstance(value, str):
+        try:
+            return json.loads(value)
+        except (json.JSONDecodeError, TypeError):
+            return value
+    return value
+
+
 def _serialize(value: Any) -> Any:
     """Convert DB-native types to JSON-safe Python types."""
     if isinstance(value, uuid.UUID):
@@ -80,6 +94,15 @@ def _serialize(value: Any) -> Any:
         return value.isoformat()
     if isinstance(value, Decimal):
         return float(value)
+    if isinstance(value, str):
+        # JSONB columns sometimes arrive as raw JSON strings — decode them
+        try:
+            parsed = json.loads(value)
+            if isinstance(parsed, (dict, list)):
+                return parsed
+        except (json.JSONDecodeError, TypeError, ValueError):
+            pass
+        return value
     if isinstance(value, dict):
         return {k: _serialize(v) for k, v in value.items()}
     if isinstance(value, (list, tuple)):
@@ -128,7 +151,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
         if not domain:
             return None
 
-        metadata = domain["metadata"] or {}
+        metadata = _parse_jsonb(domain["metadata"]) or {}
         existing_list_id = metadata.get("google_task_list_id")
 
         if existing_list_id:

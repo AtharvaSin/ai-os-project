@@ -28,6 +28,15 @@ def _serialize(value: Any) -> Any:
         return float(value)
     if isinstance(value, bytes):
         return value.decode("utf-8", errors="replace")
+    if isinstance(value, str):
+        # JSONB columns sometimes arrive as raw JSON strings — decode them
+        try:
+            parsed = json.loads(value)
+            if isinstance(parsed, (dict, list)):
+                return parsed
+        except (json.JSONDecodeError, TypeError, ValueError):
+            pass
+        return value
     if isinstance(value, dict):
         return {k: _serialize(v) for k, v in value.items()}
     if isinstance(value, (list, tuple)):
