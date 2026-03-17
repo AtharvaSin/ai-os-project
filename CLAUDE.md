@@ -18,7 +18,7 @@ Based in Hyderabad, India. Full profile in `knowledge-base/OWNER_PROFILE.md`.
 
 ## Tool Ecosystem (Three-Tier Model)
 - **Tier 1 — Directory Connectors:** Gmail, Calendar, Drive (connected). Slack, Notion, Canva, GitHub (pending). Zero infrastructure. One-click OAuth via Claude.ai.
-- **Tier 2 — Unified MCP Gateway:** ONE FastAPI Cloud Run service (`mcp-servers/ai-os-gateway/`) with 26 tools (6 modules). PostgreSQL (6), Google Tasks (6), Drive Write (3), Drive Read (3), Calendar Sync (3), Telegram (5). Telegram bot webhook also hosted on Gateway. Scales to zero. $0-7/month. Dashboard PWA (`dashboard/`) on separate Cloud Run service.
+- **Tier 2 — Unified MCP Gateway:** ONE FastAPI Cloud Run service (`mcp-servers/ai-os-gateway/`) with 34 tools (7 modules). PostgreSQL (6), Google Tasks (7), Drive Write (3), Drive Read (3), Calendar Sync (3), Telegram (5), Life Graph (8). Telegram bot webhook also hosted on Gateway. Scales to zero. $0-7/month. Dashboard PWA (`dashboard/`) on separate Cloud Run service.
 - **Tier 3 — Local STDIO MCP:** Evernote, n8n, GitHub via npm packages in Claude Code. Zero cloud cost.
 See `knowledge-base/TOOL_ECOSYSTEM_PLAN.md` for full architecture, module inventory, decision tree for adding new tools, and implementation phases.
 
@@ -26,10 +26,10 @@ See `knowledge-base/TOOL_ECOSYSTEM_PLAN.md` for full architecture, module invent
 - **Cloud:** GCP (project: ai-operating-system-490208, region: asia-south1)
 - **Backend:** FastAPI, Python 3.12
 - **Orchestration:** LangGraph (Category C only)
-- **Database:** Cloud SQL PostgreSQL (pgvector) on shared bharatvarsh-db instance (bharatvarsh-website:us-central1:bharatvarsh-db). Database: ai_os. User: ai_os_admin. 27 tables live (29 after pending migrations 009-010), 5 schema domains. Migrations 001-008 applied. Migrations 009-010 built (risk_alerts, task_annotations).
+- **Database:** Cloud SQL PostgreSQL (pgvector, ltree) on shared bharatvarsh-db instance (bharatvarsh-website:us-central1:bharatvarsh-db). Database: ai_os. User: ai_os_admin. 32 tables live across 6 schema domains. Migrations 001-012 applied.
 - **Frontend:** Next.js 14, React 18, Tailwind CSS, NextAuth.js, @hello-pangea/dnd (Dashboard PWA live on Cloud Run). Bharatvarsh website also live.
 - **AI Models:** Claude Sonnet 4.6 (default), Opus 4.6 (complex reasoning), Haiku 4.5 (classification)
-- **MCP:** Gmail, Calendar, Drive (Tier 1 connectors). AI OS Gateway deployed on Cloud Run with 26 tools (6 modules): PostgreSQL (6), Google Tasks (6), Drive Write (3), Drive Read (3), Calendar Sync (3), Telegram (5). Telegram bot @AsrAiOsbot webhook on Gateway. Evernote, n8n (Tier 3 local STDIO, to configure).
+- **MCP:** Gmail, Calendar, Drive (Tier 1 connectors). AI OS Gateway deployed on Cloud Run with 34 tools (7 modules): PostgreSQL (6), Google Tasks (7), Drive Write (3), Drive Read (3), Calendar Sync (3), Telegram (5), Life Graph (8): list_domains, get_domain_tree, get_domain_tasks, get_domain_summary, create_domain, update_domain, add_context_item, complete_context_item. Telegram bot @AsrAiOsbot webhook on Gateway. Evernote, n8n (Tier 3 local STDIO, to configure).
 
 ## GCP Infrastructure (Provisioned)
 - **Project:** ai-operating-system-490208 (asia-south1)
@@ -58,6 +58,7 @@ ai-os-project/
 │   ├── BHARATVARSH_PLATFORM.md
 │   ├── CONTENT_CALENDAR.md
 │   ├── MARKETING_PLAYBOOK.md
+│   ├── LIFE_GRAPH.md
 │   ├── profile-context-pack/
 │   ├── aiu-knowledge-pack/
 │   └── bharatvarsh-website-docs/
@@ -84,23 +85,24 @@ ai-os-project/
 │   │   ├── knowledge-auto-connector/ ← Auto connection discovery (LIVE on Cloud Run)
 │   │   ├── risk-engine/       ← AI Risk Engine (BUILT, pending deploy)
 │   │   ├── daily-brief-engine/ ← Automated daily brief (BUILT, pending deploy)
-│   │   └── task-annotation-sync/ ← Two-way task annotation sync (BUILT, pending deploy)
+│   │   ├── task-annotation-sync/ ← Two-way task annotation sync (BUILT, pending deploy)
+│   │   └── domain-health-scorer/ ← Domain health scoring (LIVE on Cloud Run)
 │   ├── shared/               ← Shared Python libraries
 │   │   └── ai_os_knowledge.py ← KnowledgeClient for semantic search + graph traversal
 │   └── category-c/           ← LangGraph + FastAPI (agentic)
 ├── mcp-servers/
-│   └── ai-os-gateway/        ← Unified MCP Gateway (26 tools, 6 modules)
+│   └── ai-os-gateway/        ← Unified MCP Gateway (34 tools, 7 modules)
 │       ├── app/
 │       │   ├── main.py
 │       │   ├── config.py
-│       │   ├── modules/      ← postgres.py, google_tasks.py, drive_write.py, drive_read.py, calendar_sync.py, telegram.py
+│       │   ├── modules/      ← postgres.py, google_tasks.py, drive_write.py, drive_read.py, calendar_sync.py, telegram.py, life_graph.py
 │       │   ├── telegram/     ← Bot webhook, commands, AI triage, thread memory
 │       │   └── auth/         ← google_oauth.py, bearer.py
 │       ├── Dockerfile
 │       ├── requirements.txt
 │       └── cloudbuild.yaml
 ├── database/
-│   ├── migrations/           ← 001-008 applied, 009-010 built (pending apply)
+│   ├── migrations/           ← 001-012 applied
 │   └── seeds/                ← 001-008 applied, 009-011 built (pending apply)
 ├── scripts/
 │   ├── google_oauth_setup.py ← OAuth token flow helper
@@ -113,7 +115,7 @@ ai-os-project/
 ```
 
 ## Active Projects
-1. **AI Operating System** — Phase 3b in progress. 8 Cloud Run services live, 26 MCP tools (6 modules), 19 skills, Dashboard PWA (8 pages), Telegram Bot, Knowledge Layer V2 deployed. 3 new services built (risk-engine, daily-brief-engine, task-annotation-sync) pending deploy. Next: commit + deploy, apply migrations 009-010, seed knowledge base.
+1. **AI Operating System** — Life Graph integration complete. 32 tables, 34 MCP tools (7 modules), domain-based Google Task lists (9 domains), Dashboard PWA (8 pages), Telegram Bot, Knowledge Layer V2 deployed, domain-health-scorer pipeline deployed.
 2. **AI&U YouTube** — Pre-launch. Content system designed. First 10-video library in progress.
 3. **Bharatvarsh** — Published. Website live at welcometobharatvarsh.com. Marketing phase.
 
@@ -133,7 +135,7 @@ When calling the Anthropic API in code:
 Always use prompt caching for system prompts that repeat across runs.
 
 ## Current Sprint
-Sprint 7 — Phase 3b (Risk Engine + Dashboard expansion + Daily Brief + Task Annotations). All code built, pending commit + deploy + migration apply. 30+ uncommitted files. Key deliverables: (1) Commit and push all code, (2) Apply migrations 009-010 + seeds 009-011 via cloud-sql-proxy, (3) Deploy 3 new Cloud Run services (risk-engine, daily-brief-engine, task-annotation-sync) + create Cloud Scheduler jobs, (4) Seed knowledge base (Drive folders + 38 docs), (5) Complete Claude.ai MCP connector. See `knowledge-base/PROJECT_STATE.md` for verified state (v7).
+Sprint 8 — Life Graph Integration complete. 32 tables, 34 MCP tools (7 modules), domain-based Google Task lists (9 domains), 4 skills updated with domain health sections, domain-health-scorer pipeline deployed.
 
 ## Key Commands
 - `claude` — Start Claude Code session in this directory

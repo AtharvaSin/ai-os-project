@@ -2,7 +2,7 @@
 
 > **Purpose:** Reference architecture for the three-tier MCP and tool access system. Governs how new tools are added and where they live.
 >
-> **Last updated:** 2026-03-17 (Phase 1-3a complete. MCP Gateway live with 26 tools. Drive Read module added. Telegram module deployed. Task annotation sync added. Dashboard PWA deployed on Cloud Run.)
+> **Last updated:** 2026-03-17 (Phase 3b + Life Graph complete. MCP Gateway live with 34 tools across 7 modules. Life Graph module with 8 domain tools. Domain-based Google Task lists. Dashboard PWA deployed.)
 
 ---
 
@@ -32,11 +32,12 @@ Single FastAPI container on Cloud Run. Scales to zero. All custom tool access. A
 | Module | Priority | Tool Calls | Status |
 |--------|----------|-----------|--------|
 | PostgreSQL | P0 | query_db, insert_record, update_record, get_schema, search_knowledge, log_pipeline_run | LIVE (6 tools) |
-| Google Tasks | P1 | list_tasks, create_task, update_task, complete_task, sync_to_db, get_task_annotations | LIVE (6 tools) |
+| Google Tasks | P1 | list_tasks, create_task, update_task, complete_task, sync_to_db, get_task_annotations, reset_task_lists | LIVE (7 tools) |
 | Drive (write) | P1 | upload_file, create_doc, create_folder | LIVE (3 tools) |
 | Drive (read) | P1 | list_drive_files, read_drive_file, get_drive_changes_summary | LIVE (3 tools) |
 | Calendar Sync | P1 | create_milestone_event, update_milestone_event, delete_milestone_event | LIVE (3 tools) |
 | Telegram | P1 | send_telegram_message, send_telegram_template, send_telegram_inline_keyboard, edit_telegram_message, get_telegram_bot_info | LIVE (5 tools) |
+| Life Graph | P0 | list_domains, get_domain_tree, get_domain_tasks, get_domain_summary, create_domain, update_domain, add_context_item, complete_context_item | LIVE (8 tools) |
 | Bharatvarsh Admin | P2 | query_lore, get_character, search_timeline, forum_moderate | Not started |
 | Lore Search | P2 | semantic_search_lore, get_lore_by_topic (pgvector) | Not started |
 | WhatsApp | P3 | send_message, send_template, get_message_status | Not started |
@@ -56,6 +57,7 @@ mcp-servers/ai-os-gateway/
 │   │   ├── drive_read.py    ← LIVE (3 tools)
 │   │   ├── calendar_sync.py ← LIVE (3 tools)
 │   │   ├── telegram.py      ← LIVE (5 tools)
+│   │   ├── life_graph.py    ← LIVE (8 tools)
 │   │   ├── bharatvarsh.py   ← Not started
 │   │   ├── whatsapp.py      ← Not started
 │   │   └── content.py       ← Not started
@@ -66,6 +68,8 @@ mcp-servers/ai-os-gateway/
 ├── requirements.txt
 └── cloudbuild.yaml
 ```
+
+**Architecture Decision: Neo4j Retired.** The original Reference Architecture specified Neo4j AuraDB for the Life Graph. This was retired in favor of PostgreSQL ltree extension. The Life Graph is a shallow tree (3-4 levels, ~15 nodes) that doesn't warrant a separate graph database. ltree handles hierarchical queries natively on the existing Cloud SQL instance with zero additional cost.
 
 ### Dashboard Service (Separate Cloud Run Service)
 Next.js PWA on Cloud Run. Scales to zero. AI-powered command center with project views, Gantt, task board, and milestone management. Reads from Cloud SQL. See INTERFACE_STRATEGY.md for full specification.

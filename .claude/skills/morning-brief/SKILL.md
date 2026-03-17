@@ -54,7 +54,18 @@ If recent system changes (deployments, migrations, infra updates) are found, men
 
 If `search_knowledge` returns no results for any domain, fall back to the static KB approach below.
 
-### Step 3b: Check Active Project State (Fallback)
+### Step 3b: Life Domain Health Check
+Query the Life Graph for domain-level status using MCP tools:
+
+1. Call `get_domain_tree()` to get the full Life Graph hierarchy with active task/objective/automation counts.
+2. For each top-level category (private_affairs, personal_projects, work), call `get_domain_summary(domain_slug)` to get aggregate stats (total tasks, active, overdue, objectives, automations).
+3. Identify:
+   - Domains with overdue tasks
+   - Domains with no recent activity (no task updates in 7+ days)
+   - Objectives nearing their target_date
+4. If `get_domain_tree` fails or returns empty (Life Graph not yet deployed), skip this section silently.
+
+### Step 3c: Check Active Project State (Fallback)
 Reference **WORK_PROJECTS.md** from this project's knowledge base. For each active focus project (AI Operating System, AI&U, Bharatvarsh), pull:
 - Current status (one line)
 - This week's focus or next milestone
@@ -85,6 +96,9 @@ Present as a single structured response:
 **PROJECT PULSE**
 [One line per active project: Project Name → status → this week's focus]
 
+**DOMAIN HEALTH**
+[Show 3 category summaries with their numbered domains. For each domain: status emoji (green=healthy, yellow=stale 3-7d, red=stale 7d+ or overdue), domain number + name, task/objective counts. Flag any domain needing attention. Only show if Life Graph data is available.]
+
 **CARRY-FORWARD**
 [Unfinished items from recent sessions. Only show if items exist.]
 
@@ -109,6 +123,7 @@ Present as a single structured response:
 - **Google Calendar** — required for Step 1
 - **Gmail** — required for Step 2
 - **MCP Gateway: search_knowledge** — used for Step 3 (knowledge layer queries, semantic search)
+- **MCP Gateway: get_domain_tree, get_domain_summary** — used for Step 3b (Life Graph domain health)
 - **Past chats search** — used for Step 4 (carry-forward items)
-- **Knowledge base: WORK_PROJECTS.md** — fallback for Step 3b (project pulse)
+- **Knowledge base: WORK_PROJECTS.md** — fallback for Step 3c (project pulse)
 - **Knowledge base: OS_EVOLUTION_LOG.md** — referenced for recent decisions context

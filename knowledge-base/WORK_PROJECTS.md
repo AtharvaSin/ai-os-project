@@ -2,7 +2,7 @@
 
 > **Purpose:** Operational state file. Tells Claude what you're working on RIGHT NOW and where deep context lives. Updated after any session where project status shifts.
 >
-> **Last updated:** 2026-03-17 (State v7: Drive Read module + Task Annotation Sync + Risk Engine + Daily Brief Engine + Dashboard expansion. 26 MCP tools. 19 skills. Dashboard: 8 pages, 12 API routes, 22 components. 3 new Category B services built.)
+> **Last updated:** 2026-03-17 (State v8: Life Graph v2 integration complete. 34 MCP tools (7 modules). 19 skills (4 updated with domain health). 9 Cloud Run services. 32 tables. Domain-based Google Task lists.)
 > **Authoritative state:** See `knowledge-base/PROJECT_STATE.md` for verified filesystem-scanned state.
 
 ---
@@ -10,19 +10,20 @@
 ## Active Focus Projects
 
 ### 1. AI Operating System
-- **Status:** Phase 3b in progress. MCP Gateway 26 tools (6 modules). Dashboard 8 pages, 12 API routes, 22 components. 3 new Category B services built (risk-engine, daily-brief-engine, task-annotation-sync). 19 skills. 8 Cloud Run services live. 27 tables live, 2 pending migrations (009-010). 13 secrets. All core infrastructure operational.
-- **Current phase:** Sprint 7 — Phase 3b (Risk Engine + Dashboard expansion + Daily Brief + Task Annotations). Code built, pending commit + deploy + migration apply.
-- **Next milestone:** Commit all uncommitted code (30+ files), apply migrations 009-010, deploy 3 new services, seed knowledge base. Then push notifications (FCM).
-- **Pending decisions:** Firebase project setup timing, deployment order for 3 new services, knowledge seeding method (manual vs automated), daily brief delivery channels configuration
+- **Status:** Active. Sprint 8 complete — Life Graph v2 integration. 32 tables, 34 MCP tools (7 modules), 9 Cloud Run services, domain-based Google Task lists, 4 skills updated with domain health sections. 19 skills. 13 secrets. All core infrastructure operational.
+- **Current phase:** Sprint 8 — Life Graph Integration (COMPLETE). Database schema (ltree + 3 tables: life_domains, domain_context_items, domain_health_snapshots), 8 new MCP tools (life_graph.py module), domain-based Google Tasks reorganization, domain-health-scorer pipeline (Cloud Run + Cloud Scheduler), 4 skills updated with domain health integration.
+- **Next milestone:** Dashboard UI components for Life Graph visualization, deploy pending services (risk-engine, daily-brief-engine, task-annotation-sync), seed knowledge base from Drive folders. Then push notifications (FCM).
+- **Pending decisions:** Firebase project setup timing, Life Graph dashboard visualization approach, knowledge seeding method (manual vs automated), daily brief delivery channels configuration
 - **What's been built:**
   - Category A: 19 skills, 3 connectors (Gmail, Calendar, Drive), 27+ KB files
   - Claude Code: Project directory with CLAUDE.md, 19 SKILL.md skills, mirrored KB
   - GCP: Project ai-operating-system-490208 with 16 APIs, 3 service accounts, Artifact Registry, Secret Manager (13 secrets)
-  - Database: ai_os DB on Cloud SQL (shared Bharatvarsh instance), 27 tables across 5 domains, pgvector enabled, Migrations 001-008 all applied, 28 tasks seeded
-  - MCP Gateway: LIVE on Cloud Run (ai-os-gateway, asia-south1, scale-to-zero). FastAPI + FastMCP. 26 tools (22 live, 4 pending deploy). 6 modules: PostgreSQL (6), Google Tasks (6), Drive Write (3), Drive Read (3), Calendar Sync (3), Telegram (5). Telegram webhook subsystem (8 files). Bearer token auth.
+  - Life Graph v2: COMPLETE. ltree extension + 3 new tables (life_domains 12 rows, domain_context_items 12 rows, domain_health_snapshots). 8 MCP tools (life_graph.py module). Domain-based Google Task lists. domain-health-scorer pipeline (Cloud Run + weekly scheduler). 4 skills updated with domain health sections. LIFE_GRAPH.md in knowledge base.
+  - Database: ai_os DB on Cloud SQL (shared Bharatvarsh instance), 32 tables across 7 domains, pgvector + ltree enabled, Migrations 001-012 all applied, 28 tasks seeded
+  - MCP Gateway: LIVE on Cloud Run (ai-os-gateway, asia-south1, scale-to-zero). FastAPI + FastMCP. 34 tools (7 modules). Modules: PostgreSQL (6), Google Tasks (7), Drive Write (3), Drive Read (3), Calendar Sync (3), Telegram (5), Life Graph (8). Telegram webhook subsystem (8 files). Bearer token auth. Latest revision: ai-os-gateway-00020-ws5.
   - Google OAuth: Desktop client for Gateway (refresh token). Web Application client for Dashboard (DASHBOARD_OAUTH_SECRET). Consent screen configured.
   - Dashboard PWA: LIVE on Cloud Run (ai-os-dashboard, asia-south1, scale-to-zero). Next.js 14 + TypeScript + Tailwind CSS. 8 pages (6 live + 2 built). 12 API routes (7 live + 5 built). 22 components (16 live + 6 built). NextAuth.js Google OAuth. Obsidian Aurora design system. PWA with service worker + offline fallback. New: Risk Dashboard, Pipeline Monitor, Knowledge Health card.
-  - CI/CD: Cloud Build triggers: deploy-mcp-gateway (auto) + deploy-ai-os-dashboard (auto). 8 Cloud Scheduler jobs.
+  - CI/CD: Cloud Build triggers: deploy-mcp-gateway (auto) + deploy-ai-os-dashboard (auto). 9 Cloud Scheduler jobs.
   - Task Notification: LIVE on Cloud Run + Cloud Scheduler (daily 06:00 IST)
   - Knowledge Layer V2: DEPLOYED. 4 pipeline services LIVE on Cloud Run (embedding-generator, drive-knowledge-scanner, weekly-knowledge-summary, knowledge-auto-connector). Shared library (ai_os_knowledge.py). 38 seed documents ready. 5 Cloud Scheduler triggers. 3 skills RAG-grounded (morning-brief, weekly-review, session-resume).
   - Telegram Bot: DEPLOYED. @AsrAiOsbot with webhook on MCP Gateway. 5 slash commands (/brief, /add, /done, /status, /log). AI triage via Claude Haiku. Conversation memory with thread management. telegram-notifications Cloud Run service with 3 scheduled notifications (morning brief, overdue alerts, weekly digest). Inline keyboard callbacks.

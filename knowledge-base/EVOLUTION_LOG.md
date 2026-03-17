@@ -13,6 +13,40 @@ A running record of design decisions, architecture changes, brainstorming outcom
 
 ## Log Entries
 
+### Entry 012 — Life Graph v2 Integration
+- **Date:** 2026-03-17
+- **Domain:** Life Graph / Database / MCP Gateway / Google Tasks / Skills / Dashboard / Pipelines
+- **Status:** [COMPLETED]
+- **Summary:** Transformed AI OS from project-centric to life-domain-aware system. Implemented Life Graph v2 hierarchy (3 categories: Private Affairs, Personal Projects, Work; 9 numbered domains 001-009) in PostgreSQL using hybrid adjacency list + ltree. Added 8 new MCP tools in life_graph.py module. Switched Google Tasks from project-based to domain-based task lists (9 lists for domains 001-009). Tasks, objectives, and automations all sync to domain Google Task lists. Updated 4 skills (morning-brief, weekly-review, session-resume, action-planner) with domain health sections. Created domain-health-scorer Category B pipeline (weekly Sunday 6 PM IST). Dashboard API routes for domain tree and detail views. Total: 34 MCP tools (was 26), 32 tables (was 29), 7 modules (was 6).
+- **Architecture Decisions:**
+  - **PostgreSQL ltree over Neo4j:** Life Graph is a shallow tree (3-4 levels, ~15 nodes). ltree handles hierarchical queries natively without new infrastructure. Neo4j formally retired from Reference Architecture.
+  - **Hybrid adjacency list + ltree:** parent_id FK for simple inserts/moves, ltree path for fast descendant/ancestor queries. Trigger auto-computes path from parent_id.
+  - **Three context types:** Tasks (in tasks table with domain_id FK), Objectives and Automations (in domain_context_items table). Tasks sync to Google Tasks; objectives/automations are DB-only but visible in domain Google Task lists.
+  - **Domain-based Google Task lists:** Switched from project-based ("AI OS: Project Name") to domain-based ("001 Friends and Gatherings"). reset_task_lists tool does full cleanup + recreation.
+  - **Health scoring formula:** task_completion_rate * 0.40 + objective_progress * 0.30 + recency_score * 0.20 + automation_coverage * 0.10. Weekly pipeline stores snapshots.
+- **Files Created:**
+  - NEW: database/migrations/011_life_domains.sql (ltree, 3 tables, 3 triggers, 3 functions)
+  - NEW: database/migrations/012_domain_fk_additions.sql (domain_id on tasks + projects)
+  - NEW: database/seeds/012_seed_life_graph_v2.sql (12 domains, 12 context items, project links)
+  - NEW: mcp-servers/ai-os-gateway/app/modules/life_graph.py (8 tools)
+  - NEW: workflows/category-b/domain-health-scorer/ (main.py, Dockerfile, cloudbuild.yaml, requirements.txt)
+  - NEW: knowledge-base/LIFE_GRAPH.md
+  - NEW: dashboard/src/app/api/domains/route.ts
+  - NEW: dashboard/src/app/api/domains/[slug]/route.ts
+- **Files Modified:**
+  - MODIFIED: mcp-servers/ai-os-gateway/app/modules/google_tasks.py (domain-based lists, reset_task_lists tool, domain_slug params)
+  - MODIFIED: mcp-servers/ai-os-gateway/app/modules/postgres.py (3 new tables in ALLOWED_TABLES)
+  - MODIFIED: mcp-servers/ai-os-gateway/app/main.py (life_graph module registration)
+  - MODIFIED: dashboard/src/lib/types.ts (Life Graph TypeScript types)
+  - MODIFIED: .claude/skills/morning-brief/SKILL.md (Domain Health section)
+  - MODIFIED: .claude/skills/weekly-review/SKILL.md (Life Domain Review section)
+  - MODIFIED: .claude/skills/session-resume/SKILL.md (domain context recovery)
+  - MODIFIED: .claude/skills/action-planner/SKILL.md (domain-aware task creation)
+- **Deployed:**
+  - MCP Gateway: revision ai-os-gateway-00020-ws5 (34 tools, 7 modules)
+  - Domain Health Scorer: domain-health-scorer-00001-rl5 (Cloud Scheduler: Sunday 6 PM IST)
+- **Testing:** 32/32 tests passed (23 feature tests + 9 regression tests)
+
 ### Entry 011 — Two-Way Task Annotation Sync
 - **Date:** 2026-03-17
 - **Domain:** Task Layer / MCP Gateway / Google Tasks / Database / Pipelines
@@ -40,11 +74,11 @@ A running record of design decisions, architecture changes, brainstorming outcom
   - Deleted delimiter: annotations lost until next `update_task` re-injects it
   - Completed tasks excluded from sync (by design)
 - **Next Steps:**
-  - [ ] Apply migration 010 via cloud-sql-proxy
-  - [ ] Apply seed 011 via cloud-sql-proxy
-  - [ ] Redeploy MCP Gateway to Cloud Run
-  - [ ] Deploy task-annotation-sync to Cloud Run
-  - [ ] Create Cloud Scheduler job (*/15 * * * *)
+  - [x] Applied migration 010 via cloud-sql-proxy
+  - [x] Applied seed 011 via cloud-sql-proxy
+  - [x] Deployed MCP Gateway to Cloud Run (revision 00020)
+  - [ ] Deploy task-annotation-sync to Cloud Run (still pending)
+  - [ ] Create Cloud Scheduler job (still pending)
   - [ ] Verify: create_task → check notes on phone → type annotation → sync → get_task_annotations
 
 ### Entry 010 — Drive Knowledge Distill Skill + Drive Read Module

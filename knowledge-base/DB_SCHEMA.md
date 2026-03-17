@@ -2,17 +2,17 @@
 
 > Auto-generated from `ai_os` database on 2026-03-14, updated 2026-03-17
 > Instance: `bharatvarsh-website:us-central1:bharatvarsh-db`
-> Database: `ai_os` | User: `ai_os_admin` | PostgreSQL 15 | Extensions: vector 0.8.1, moddatetime 1.0
-> **Note:** Migrations 001-008 all applied (27 tables live). Migrations 009-010 built (pending apply). After all pending migrations: 29 tables. Live regeneration requires Cloud SQL Proxy connection.
+> Database: `ai_os` | User: `ai_os_admin` | PostgreSQL 15 | Extensions: vector 0.8.1, moddatetime 1.0, ltree 1.2
+> **Note:** Migrations 001-012 all applied (32 tables live). Extensions: vector 0.8.1, moddatetime 1.0, ltree 1.2. Live regeneration requires Cloud SQL Proxy connection.
 
 ## Overview
 
 | # | Table | Rows | Columns | Domain | Migration |
 |---|-------|------|---------|--------|-----------|
-| 1 | `projects` | 3 | 13 | Project Management | 001 |
+| 1 | `projects` | 5 | 14 | Project Management | 001, 012 |
 | 2 | `project_phases` | 8 | 9 | Project Management | 001 |
 | 3 | `milestones` | 8 | 10 | Project Management | 001, 005 |
-| 4 | `tasks` | 28 | 16 | Project Management | 001, 005 |
+| 4 | `tasks` | 6 | 17 | Project Management | 001, 005, 012 |
 | 5 | `artifacts` | 0 | 12 | Project Management | 001, 005 |
 | 6 | `project_tags` | 12 | 4 | Project Management | 001 |
 | 7 | `contacts` | 10 | 16 | Contacts & Reference | 002 |
@@ -36,6 +36,11 @@
 | 25 | `bot_conversations` | 0 | 8 | Telegram Bot | 008 |
 | 26 | `notification_log` | 0 | 9 | Telegram Bot | 008 |
 | 27 | `bot_inbox` | 0 | 7 | Telegram Bot | 008 |
+| 28 | `risk_alerts` | 0 | 14 | Risk Engine | 009 |
+| 29 | `task_annotations` | 0 | 8 | Task Layer | 010 |
+| 30 | `life_domains` | 12 | 16 | Life Graph | 011 |
+| 31 | `domain_context_items` | 12 | 14 | Life Graph | 011 |
+| 32 | `domain_health_snapshots` | 0 | 14 | Life Graph | 011 |
 
 **Migration 006 (Knowledge Functions — applied):**
 - 7 new source_type enum values, knowledge_domain enum, 3 new columns on knowledge_entries (sub_domain, project_id FK, drive_file_id), match_knowledge() function (semantic search), traverse_knowledge() function (graph traversal), 4 new indexes
@@ -48,11 +53,21 @@
 - **Function:** short_id() — generates 8-char alphanumeric IDs for human-readable references
 - **Column:** pipelines.notify_telegram (boolean, default false) — flag to enable Telegram notifications per pipeline
 
-**Pending migration 009 (Risk Alerts — built, not applied):**
-- **Table:** risk_alerts — stores computed risk assessments from AI Risk Engine. Columns: project_id, alert_type (overdue_cluster, velocity_decline, milestone_slip, dependency_chain, stale_project), severity, title, description, affected_tasks (UUID[]), affected_milestones (UUID[]), is_resolved, resolved_at, metadata, timestamps. Indexes on project_id, alert_type, severity, is_resolved.
+**Migration 009 (Risk Alerts — applied):**
+- **Table:** risk_alerts — stores computed risk assessments. Columns: project_id, alert_type, severity, title, description, affected_tasks (UUID[]), affected_milestones (UUID[]), is_resolved, metadata.
 
-**Pending migration 010 (Task Annotations — built, not applied):**
-- **Table:** task_annotations — captures user notes written below delimiter in Google Tasks. Columns: id (uuid), task_id (FK → tasks), content (text), content_hash (SHA-256), source (default 'google_tasks'), metadata (jsonb), created_at. Unique index on (task_id, content_hash) for deduplication. Indexes on task_id and created_at.
+**Migration 010 (Task Annotations — applied):**
+- **Table:** task_annotations — captures user notes from Google Tasks. Columns: task_id (FK), content, content_hash (SHA-256 dedup), source, metadata. Unique index on (task_id, content_hash).
+
+**Migration 011 (Life Graph — applied):**
+- **Extension:** ltree for hierarchical path queries
+- **Enums:** domain_status (active, dormant, archived), context_item_type (task, objective, automation)
+- **Tables:** life_domains (12 rows — hybrid adjacency list + ltree), domain_context_items (12 rows — objectives and automations), domain_health_snapshots (weekly health scores)
+- **Triggers:** update_domain_path (auto-compute ltree path from parent_id), cascade_domain_path (propagate moves to children), moddatetime on both tables
+- **Functions:** get_domain_tasks(slug), get_domain_breadcrumb(slug), get_domain_summary(slug)
+
+**Migration 012 (Domain FK additions — applied):**
+- Added domain_id UUID FK (→ life_domains, SET NULL) to tasks and projects tables. Both nullable — existing rows unaffected.
 
 ---
 
@@ -78,6 +93,7 @@ _Top-level project entities_
 | `metadata` | `jsonb` | YES | `{}` |  |
 | `created_at` | `timestamp with time zone` | NO | `now()` |  |
 | `updated_at` | `timestamp with time zone` | NO | `now()` |  |
+| `domain_id` | `uuid` | YES |  | FK -> `life_domains.id` (SET NULL). Migration 012 |
 
 ### Table: `project_phases`
 _Major phases within a project_
@@ -131,6 +147,7 @@ _Actionable work items_
 | `google_task_id` | `text` | YES |  | Migration 005 — Google Tasks sync |
 | `google_task_list` | `text` | YES |  | Migration 005 — Google Tasks list ID |
 | `last_synced_at` | `timestamp with time zone` | YES |  | Migration 005 — Last Google sync timestamp |
+| `domain_id` | `uuid` | YES |  | FK -> `life_domains.id` (SET NULL). Migration 012 |
 
 ### Table: `artifacts`
 _Files, links, outputs tied to a project_
@@ -418,6 +435,74 @@ _Tracks changes to skills over time_
 
 ---
 
+## Domain 6: Life Graph (migration 011-012)
+
+Hierarchical life domain system using hybrid adjacency list + ltree for path queries. Tracks 12 life domains (career, health, finance, etc.) with objectives, automations, and weekly health snapshots. Domain FK on tasks and projects enables cross-domain analytics.
+
+### Table: `life_domains`
+_Hierarchical life domain definitions (hybrid adjacency list + ltree)_
+
+| Column | Type | Nullable | Default | Notes |
+|--------|------|----------|---------|-------|
+| `id` | `uuid` | NO | `uuid_generate_v4()` | PK |
+| `name` | `text` | NO |  |  |
+| `slug` | `text` | NO |  | UNIQUE |
+| `description` | `text` | YES |  |  |
+| `icon` | `text` | YES |  | Emoji icon for UI display |
+| `color` | `text` | YES |  | Hex color for UI display |
+| `status` | `domain_status` | NO | `'active'::domain_status` |  |
+| `parent_id` | `uuid` | YES |  | FK -> `life_domains.id` (SET NULL). Self-referencing for hierarchy |
+| `path` | `ltree` | YES |  | Auto-computed by trigger from parent_id + slug |
+| `sort_order` | `integer` | NO | `0` |  |
+| `health_score` | `numeric` | YES |  | Current health score (0-100) |
+| `health_updated_at` | `timestamp with time zone` | YES |  | Last health score update |
+| `goals_summary` | `text` | YES |  | Free-text goals summary |
+| `metadata` | `jsonb` | YES | `{}` |  |
+| `created_at` | `timestamp with time zone` | NO | `now()` |  |
+| `updated_at` | `timestamp with time zone` | NO | `now()` |  |
+
+### Table: `domain_context_items`
+_Objectives, tasks, and automations linked to a domain_
+
+| Column | Type | Nullable | Default | Notes |
+|--------|------|----------|---------|-------|
+| `id` | `uuid` | NO | `uuid_generate_v4()` | PK |
+| `domain_id` | `uuid` | NO |  | FK -> `life_domains.id` (CASCADE) |
+| `item_type` | `context_item_type` | NO |  |  |
+| `title` | `text` | NO |  |  |
+| `description` | `text` | YES |  |  |
+| `status` | `text` | YES | `'active'` |  |
+| `priority` | `integer` | YES |  |  |
+| `due_date` | `date` | YES |  |  |
+| `completed_at` | `timestamp with time zone` | YES |  |  |
+| `external_ref` | `text` | YES |  | Reference to external system (task ID, pipeline slug, etc.) |
+| `sort_order` | `integer` | NO | `0` |  |
+| `metadata` | `jsonb` | YES | `{}` |  |
+| `created_at` | `timestamp with time zone` | NO | `now()` |  |
+| `updated_at` | `timestamp with time zone` | NO | `now()` |  |
+
+### Table: `domain_health_snapshots`
+_Weekly health score snapshots per domain_
+
+| Column | Type | Nullable | Default | Notes |
+|--------|------|----------|---------|-------|
+| `id` | `uuid` | NO | `uuid_generate_v4()` | PK |
+| `domain_id` | `uuid` | NO |  | FK -> `life_domains.id` (CASCADE) |
+| `score` | `numeric` | NO |  | Health score (0-100) |
+| `previous_score` | `numeric` | YES |  | Previous period score for delta calculation |
+| `trend` | `text` | YES |  | up, down, stable |
+| `factors` | `jsonb` | YES | `{}` | Breakdown of scoring factors |
+| `ai_summary` | `text` | YES |  | AI-generated health assessment |
+| `recommendations` | `jsonb` | YES | `[]` | AI-generated action items |
+| `period_start` | `date` | NO |  | Start of measurement period |
+| `period_end` | `date` | NO |  | End of measurement period |
+| `snapshot_type` | `text` | NO | `'weekly'` | weekly, monthly, quarterly |
+| `metadata` | `jsonb` | YES | `{}` |  |
+| `created_at` | `timestamp with time zone` | NO | `now()` |  |
+| `updated_at` | `timestamp with time zone` | NO | `now()` |  |
+
+---
+
 ## Indexes
 
 ### `projects`
@@ -666,7 +751,40 @@ CREATE FUNCTION short_id() RETURNS text
 -- Used after match_knowledge() to expand context with related entries.
 ```
 
-### Extension Functions (pgvector & moddatetime)
+### `get_domain_tasks()` (domain task aggregation — Migration 011, applied)
+
+```sql
+-- Returns all tasks linked to a domain via domain_id FK
+-- Signature: get_domain_tasks(domain_slug text)
+-- RETURNS TABLE (id uuid, title text, status task_status, priority task_priority, due_date date, project_name text)
+--
+-- Joins tasks → projects, filters by domain slug.
+-- Used by dashboard and daily brief for per-domain task views.
+```
+
+### `get_domain_breadcrumb()` (domain hierarchy path — Migration 011, applied)
+
+```sql
+-- Returns the full breadcrumb path for a domain (root → ... → leaf)
+-- Signature: get_domain_breadcrumb(domain_slug text)
+-- RETURNS TABLE (id uuid, name text, slug text, depth int)
+--
+-- Uses ltree path to reconstruct the full hierarchy chain.
+-- Used by dashboard UI for navigation breadcrumbs.
+```
+
+### `get_domain_summary()` (domain health summary — Migration 011, applied)
+
+```sql
+-- Returns a comprehensive summary for a domain including health, tasks, and context items
+-- Signature: get_domain_summary(domain_slug text)
+-- RETURNS TABLE (domain_name text, health_score numeric, active_tasks bigint, pending_objectives bigint, latest_snapshot_date date)
+--
+-- Aggregates across life_domains, tasks, domain_context_items, and domain_health_snapshots.
+-- Used by daily brief engine and dashboard domain detail views.
+```
+
+### Extension Functions (pgvector, moddatetime & ltree)
 
 pgvector provides ~170 internal C functions for vector operations. Key operators:
 
@@ -695,6 +813,10 @@ pgvector provides ~170 internal C functions for vector operations. Key operators
 | `campaign_posts_updated_at` | `campaign_posts` | BEFORE | UPDATE | `EXECUTE FUNCTION moddatetime('updated_at')` |
 | `knowledge_entries_updated_at` | `knowledge_entries` | BEFORE | UPDATE | `EXECUTE FUNCTION moddatetime('updated_at')` |
 | `skill_registry_updated_at` | `skill_registry` | BEFORE | UPDATE | `EXECUTE FUNCTION moddatetime('updated_at')` |
+| `domain_path_trigger` | `life_domains` | BEFORE | INSERT OR UPDATE OF parent_id, slug | `EXECUTE FUNCTION update_domain_path()` |
+| `domain_path_cascade` | `life_domains` | AFTER | UPDATE OF path | `EXECUTE FUNCTION cascade_domain_path()` |
+| `life_domains_updated_at` | `life_domains` | BEFORE | UPDATE | `EXECUTE FUNCTION moddatetime('updated_at')` |
+| `context_items_updated_at` | `domain_context_items` | BEFORE | UPDATE | `EXECUTE FUNCTION moddatetime('updated_at')` |
 
 All `updated_at` triggers use `moddatetime()` from the `moddatetime` extension — automatically sets the column to `NOW()` on any `UPDATE`.
 
@@ -724,7 +846,12 @@ All `updated_at` triggers use `moddatetime()` from the `moddatetime` extension �
 | `project_tags` | `project_id` | `projects` | `id` | CASCADE |
 | `skill_evolution_log` | `skill_id` | `skill_registry` | `id` | CASCADE |
 | `tasks` | `milestone_id` | `milestones` | `id` | SET NULL |
+| `tasks` | `domain_id` | `life_domains` | `id` | SET NULL |
 | `tasks` | `project_id` | `projects` | `id` | CASCADE |
+| `projects` | `domain_id` | `life_domains` | `id` | SET NULL |
+| `domain_context_items` | `domain_id` | `life_domains` | `id` | CASCADE |
+| `domain_health_snapshots` | `domain_id` | `life_domains` | `id` | CASCADE |
+| `life_domains` | `parent_id` | `life_domains` | `id` | SET NULL |
 
 ---
 
@@ -764,6 +891,8 @@ All `USER-DEFINED` columns use PostgreSQL enum types. Valid values:
 - **`source_type`**: `research_session`, `decision`, `lesson_learned`, `reference`, `manual`
 - **`relationship_type_kb`**: `relates_to`, `derived_from`, `contradicts`, `supersedes`, `expands`, `depends_on`
 - **`skill_change_type`**: `created`, `updated`, `tested`, `deprecated`
+- **`domain_status`**: `active`, `dormant`, `archived`
+- **`context_item_type`**: `task`, `objective`, `automation`
 
 ---
 
@@ -773,6 +902,7 @@ All `USER-DEFINED` columns use PostgreSQL enum types. Valid values:
 |-----------|---------|---------|
 | `vector` | 0.8.1 | Vector similarity search (pgvector) — enables `vector(1536)` type and HNSW indexes |
 | `moddatetime` | 1.0 | Auto-update `updated_at` timestamps on row modification |
+| `ltree` | 1.2 | Hierarchical path queries — enables `ltree` type and GiST indexes for Life Graph domain hierarchy |
 | `uuid-ossp` | — | UUID generation — `uuid_generate_v4()` for primary keys |
 
 ---

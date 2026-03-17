@@ -2,7 +2,7 @@
 
 > **Purpose:** Canonical reference for all GCP project config, service accounts, database access, secrets, and deployment patterns. Referenced by /workflow-designer, /build-prd, /tech-eval, and any skill that deploys or connects to infrastructure.
 >
-> **Last updated:** 2026-03-17 (State v7. 8 Cloud Run services live. 8 Cloud Scheduler jobs. 13 secrets. 3 new services built pending deploy.)
+> **Last updated:** 2026-03-17 (State v8. 9 Cloud Run services live. 9 Cloud Scheduler jobs. 13 secrets. Life Graph integration complete.)
 
 ---
 
@@ -166,7 +166,7 @@ gcloud run deploy ai-os-dashboard \
 
 | Service | Container | Purpose | Auth | Status | URL |
 |---------|-----------|---------|------|--------|-----|
-| ai-os-gateway | FastAPI | MCP Gateway — 26 tools (6 modules), Telegram webhook | Bearer token / API key | LIVE (asia-south1, scale-to-zero) | https://ai-os-gateway-1054489801008.asia-south1.run.app |
+| ai-os-gateway | FastAPI | MCP Gateway — 34 tools (7 modules), Telegram webhook. Latest revision: ai-os-gateway-00020-ws5 | Bearer token / API key | LIVE (asia-south1, scale-to-zero) | https://ai-os-gateway-1054489801008.asia-south1.run.app |
 | ai-os-dashboard | Next.js | PWA Dashboard — 8 pages, 12 API routes, 22 components | Google OAuth (NextAuth.js) | LIVE (asia-south1, scale-to-zero) | https://ai-os-dashboard-sv4fbx5yna-el.a.run.app |
 | task-notification-daily | Python + functions-framework | Daily overdue/upcoming task scan + Google Tasks sync | OIDC (Cloud Scheduler) | LIVE (asia-south1, scale-to-zero) | https://task-notification-daily-sv4fbx5yna-el.a.run.app |
 | telegram-notifications | Python + FastAPI | Telegram bot: scheduled briefs, overdue alerts, weekly digest, AI triage | OIDC (Cloud Scheduler) + Telegram webhook | LIVE (asia-south1, scale-to-zero) | https://telegram-notifications-sv4fbx5yna-el.a.run.app |
@@ -174,8 +174,9 @@ gcloud run deploy ai-os-dashboard \
 | drive-knowledge-scanner | Python | Drive Knowledge/ folder scanner, chunker, ingester | OIDC (Cloud Scheduler) | LIVE (asia-south1, scale-to-zero) | — |
 | weekly-knowledge-summary | Python | Per-project knowledge summaries via Claude Haiku | OIDC (Cloud Scheduler) | LIVE (asia-south1, scale-to-zero) | — |
 | knowledge-auto-connector | Python | Cross-domain cosine similarity + relationship classification | OIDC (Cloud Scheduler) | LIVE (asia-south1, scale-to-zero) | — |
+| domain-health-scorer | Python | Weekly domain health score computation | OIDC (Cloud Scheduler) | LIVE (asia-south1, scale-to-zero) | domain-health-scorer-1054489801008.asia-south1.run.app |
 
-Gateway and Dashboard share service account `ai-os-cloud-run`. Task notification and telegram-notifications use `ai-os-cloud-functions`. All use Cloud SQL Auth Proxy sidecar and scale to zero independently.
+9 Cloud Run services. Gateway and Dashboard share service account `ai-os-cloud-run`. Task notification and telegram-notifications use `ai-os-cloud-functions`. All use Cloud SQL Auth Proxy sidecar and scale to zero independently.
 
 See INTERFACE_STRATEGY.md for full dashboard specification and TOOL_ECOSYSTEM_PLAN.md for full gateway module inventory.
 
@@ -200,6 +201,9 @@ See INTERFACE_STRATEGY.md for full dashboard specification and TOOL_ECOSYSTEM_PL
 | drive-scanner-trigger | `0 0 * * *` (06:00 IST / 00:30 UTC) | drive-knowledge-scanner Cloud Run | OIDC (ai-os-cloud-functions SA) | Enabled |
 | weekly-summary-trigger | `0 16 * * 0` (22:00 IST Sunday / 16:30 UTC) | weekly-knowledge-summary Cloud Run | OIDC (ai-os-cloud-functions SA) | Enabled |
 | auto-connector-trigger | `0 17 * * 0` (23:00 IST Sunday / 17:30 UTC) | knowledge-auto-connector Cloud Run | OIDC (ai-os-cloud-functions SA) | Enabled |
+| domain-health-scorer | `0 18 * * 0` (Sunday 6 PM IST / 12:30 UTC) | domain-health-scorer Cloud Run (POST /cron/compute-health) | OIDC (ai-os-cloud-functions SA) | Enabled |
+
+9 Cloud Scheduler jobs.
 
 ---
 

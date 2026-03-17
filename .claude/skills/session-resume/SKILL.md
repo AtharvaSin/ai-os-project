@@ -46,6 +46,11 @@ When resuming a session, first query the knowledge layer for relevant context:
 
 Use knowledge layer results as primary context. They are curated and high-quality. Fall back to past chat search only if the knowledge layer doesn't provide sufficient context.
 
+4. **Life Domain Context**: Call `get_domain_tree()` to get the current Life Graph state. Then call `get_domain_tasks(domain_slug)` for the domain most relevant to the session topic. This surfaces:
+   - Which life domains are currently active
+   - Objectives and their progress in the relevant domain
+   - Tasks under that domain that may need attention
+
 **B. Past Chats Search (SECONDARY — use if knowledge layer insufficient)**
 Search recent conversations in this project for the relevant topic. Look for:
 - The last substantive working session on this domain
@@ -117,6 +122,7 @@ If the past chat search returns links to previous conversations, include them so
 ## Connectors Used
 
 - **MCP Gateway: search_knowledge** — primary tool for finding curated knowledge context (checked first)
+- **MCP Gateway: get_domain_tree, get_domain_tasks** — Life Graph domain context for session scope
 - **Past chats search** — secondary tool for session-level context when knowledge layer is insufficient
 - **Knowledge base: OS_EVOLUTION_LOG.md** — for decision history and status tracking
 - **Knowledge base: WORK_PROJECTS.md** — for current project state

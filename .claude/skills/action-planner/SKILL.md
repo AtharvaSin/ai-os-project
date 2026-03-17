@@ -35,6 +35,7 @@ Before planning forward, establish where things stand:
 - Check **Evolution Log** for recent decisions or pending items in this domain
 - Check **Google Calendar** for any time constraints, deadlines, or upcoming commitments that affect the plan
 - Search **past chats** for any commitments or action items from recent sessions
+- Call `get_domain_tree()` to understand the current Life Graph domain distribution. Identify which domain(s) the planned work maps to (e.g., 'managing_ai_os', 'networking', 'health'). This ensures tasks are tagged with the correct life domain when created.
 
 ### Step 3: Break Down into Tasks
 Decompose the goal into discrete, executable tasks. For each task:
@@ -47,6 +48,7 @@ Decompose the goal into discrete, executable tasks. For each task:
 | **Depends on** | What must be done first, if anything |
 | **Priority** | P0 (must do), P1 (should do), P2 (nice to have) |
 | **Category** | If relevant, note if this is a Category A (Claude chat), B (scheduled automation), or C (agentic system) task |
+| **Life Domain** | Map to the appropriate Life Graph domain slug (e.g., 'managing_ai_os', 'health', 'networking'). When creating tasks via MCP, always include domain_slug parameter |
 
 ### Step 4: Identify Automation Candidates
 Scan the task list for anything that could become a repeatable workflow:
@@ -112,3 +114,5 @@ Always end with: "Want me to create Calendar events for any of these, or log thi
 - **Knowledge base: WORK_PROJECTS.md** — current project state and milestones
 - **Knowledge base: OS_EVOLUTION_LOG.md** — recent decisions and pending items
 - **Knowledge base: Reference Architecture** — for AI OS technical planning context
+- **MCP Gateway: get_domain_tree** — Life Graph domain context for domain-aware task creation
+- **MCP Gateway: create_task** — task creation with domain_slug parameter for Life Graph tagging

@@ -16,7 +16,7 @@ from fastmcp import FastMCP
 
 from app import config
 from app.auth.bearer import verify_bearer_token
-from app.modules import postgres, google_tasks, drive_write, drive_read, calendar_sync, telegram
+from app.modules import postgres, google_tasks, drive_write, drive_read, calendar_sync, telegram, life_graph
 from app.telegram.webhook import router as telegram_router
 
 
@@ -30,6 +30,7 @@ drive_write.register_tools(mcp, config.get_db_pool)
 drive_read.register_tools(mcp, config.get_db_pool)
 calendar_sync.register_tools(mcp, config.get_db_pool)
 telegram.register_tools(mcp, config.get_db_pool)
+life_graph.register_tools(mcp, config.get_db_pool)
 
 # Create the MCP HTTP sub-app (stateless — no session persistence needed)
 # path="/mcp" so the sub-app handles /mcp directly (no 307 redirect)
@@ -107,7 +108,7 @@ async def health():
         "version": "0.1.0",
         "database": db_status,
         "google_oauth": google_status,
-        "modules": ["postgres", "google_tasks", "drive_write", "drive_read", "calendar_sync", "telegram"],
+        "modules": ["postgres", "google_tasks", "drive_write", "drive_read", "calendar_sync", "telegram", "life_graph"],
     }
 
 

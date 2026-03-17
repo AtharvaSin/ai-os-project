@@ -1,0 +1,24 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'asia-south1-docker.pkg.dev/ai-operating-system-490208/ai-os-images/domain-health-scorer', '.']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'asia-south1-docker.pkg.dev/ai-operating-system-490208/ai-os-images/domain-health-scorer']
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    args:
+      - 'gcloud'
+      - 'run'
+      - 'deploy'
+      - 'domain-health-scorer'
+      - '--image=asia-south1-docker.pkg.dev/ai-operating-system-490208/ai-os-images/domain-health-scorer'
+      - '--region=asia-south1'
+      - '--service-account=ai-os-cloud-functions@ai-operating-system-490208.iam.gserviceaccount.com'
+      - '--set-secrets=DB_PASSWORD=AI_OS_DB_PASSWORD:latest'
+      - '--set-env-vars=DB_USER=ai_os_admin,DB_NAME=ai_os,INSTANCE_CONNECTION_NAME=bharatvarsh-website:us-central1:bharatvarsh-db'
+      - '--add-cloudsql-instances=bharatvarsh-website:us-central1:bharatvarsh-db'
+      - '--no-allow-unauthenticated'
+      - '--min-instances=0'
+      - '--max-instances=1'
+      - '--memory=256Mi'
+      - '--timeout=120'
+images:
+  - 'asia-south1-docker.pkg.dev/ai-operating-system-490208/ai-os-images/domain-health-scorer'

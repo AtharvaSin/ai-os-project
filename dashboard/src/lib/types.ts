@@ -248,3 +248,56 @@ export interface KnowledgeHealth {
   connection_count: number;
   last_ingestion: string | null;
 }
+
+/* ── Life Graph types ── */
+
+export type LifeDomainStatus = 'active' | 'dormant' | 'archived';
+
+export interface LifeDomain {
+  id: string;
+  slug: string;
+  name: string;
+  domain_number: string | null;
+  path: string;
+  level: number;
+  status: LifeDomainStatus;
+  parent_id: string | null;
+  priority_weight: number;
+  color_code: string | null;
+  icon: string | null;
+  sort_order: number;
+}
+
+export interface DomainWithCounts extends LifeDomain {
+  active_tasks: number;
+  active_objectives: number;
+  active_automations: number;
+}
+
+export interface DomainTreeNode extends DomainWithCounts {
+  children: DomainTreeNode[];
+}
+
+export interface DomainContextItem {
+  id: string;
+  domain_id: string;
+  item_type: 'task' | 'objective' | 'automation';
+  title: string;
+  description: string | null;
+  status: string;
+  priority: string;
+  target_date: string | null;
+  progress_pct: number;
+  completed_at: string | null;
+}
+
+export interface DomainHealthSnapshot {
+  domain_id: string;
+  snapshot_date: string;
+  health_score: number;
+  tasks_total: number;
+  tasks_completed: number;
+  tasks_overdue: number;
+  velocity_7d: number;
+  days_since_activity: number;
+}

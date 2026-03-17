@@ -100,6 +100,21 @@ LIMIT 10
 
 If these queries fail or return empty (knowledge layer not yet active), skip these sections silently.
 
+### Step 2c: Life Domain Review
+Query the Life Graph for weekly domain-level health using MCP tools:
+
+1. Call `get_domain_tree()` for the full hierarchy with task/objective/automation counts per domain.
+2. For each numbered domain (001-009), call `get_domain_summary(slug)` to get:
+   - Tasks completed vs total
+   - Overdue tasks
+   - Objective progress (avg progress_pct)
+   - Automation status
+3. Calculate domain activity by checking if tasks were updated/completed this week.
+4. Flag domains that have been stale for 14+ days with a rebalancing alert.
+5. Note cross-domain patterns: e.g., "Work domains (007-009) received 80% of effort, Private Affairs received 0%."
+
+If `get_domain_tree` fails or returns empty, skip this section silently.
+
 ### Step 3: Compose the Review
 
 **WEEK IN REVIEW: [Date Range]**
@@ -139,6 +154,19 @@ For rejected connections, call `query_db` to delete:
 ```sql
 DELETE FROM knowledge_connections WHERE id = '{connection_id}'
 ```
+
+**LIFE DOMAIN REVIEW**
+[Only show if Life Graph data is available from Step 2c]
+Present as a table:
+
+| Domain | Tasks Done | New Tasks | Objectives | Status |
+|--------|-----------|-----------|------------|--------|
+| 001 Friends | 1/2 | 0 | 0/0 | Healthy |
+| 002 Health | 0/0 | 0 | 0/1 (0%) | Stale (14d) |
+| ... | ... | ... | ... | ... |
+
+Include rebalancing alerts if any domain is neglected (14+ days stale).
+Note effort distribution across categories (Private Affairs vs Personal Projects vs Work).
 
 **OPEN ITEMS**
 [Action items from sessions that weren't completed. Decisions still pending.]
@@ -181,6 +209,7 @@ If the week was particularly productive (multiple decisions, many artifacts), of
 - **Google Calendar** — review the week's events
 - **Gmail** — review sent communications and pending threads
 - **MCP Gateway: query_db** — used for Step 2b (knowledge layer health stats, proposed connections)
+- **MCP Gateway: get_domain_tree, get_domain_summary** — used for Step 2c (Life Graph domain review)
 - **MCP Gateway: search_knowledge** — optional, for semantic queries against knowledge layer
 - **Knowledge base: WORK_PROJECTS.md** — current project state
 - **Knowledge base: OS_EVOLUTION_LOG.md** — recent entries and decisions
