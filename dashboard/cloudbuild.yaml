@@ -7,7 +7,9 @@ steps:
       - 'asia-south1-docker.pkg.dev/ai-operating-system-490208/ai-os-images/ai-os-dashboard:$SHORT_SHA'
       - '-t'
       - 'asia-south1-docker.pkg.dev/ai-operating-system-490208/ai-os-images/ai-os-dashboard:latest'
-      - '.'
+      - '-f'
+      - 'dashboard/Dockerfile'
+      - 'dashboard'
 
   # Push to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
