@@ -2,7 +2,7 @@
 
 > **Purpose:** Operational state file. Tells Claude what you're working on RIGHT NOW and where deep context lives. Updated after any session where project status shifts.
 >
-> **Last updated:** 2026-03-17 (State v8: Life Graph v2 integration complete. 34 MCP tools (7 modules). 19 skills (4 updated with domain health). 9 Cloud Run services. 32 tables. Domain-based Google Task lists.)
+> **Last updated:** 2026-03-18 (State v9: Brand system complete. 37 MCP tools (7 modules). 22 skills. 12 Cloud Run services. 32 tables. 3-context brand identity. Domain-based Google Task lists.)
 > **Authoritative state:** See `knowledge-base/PROJECT_STATE.md` for verified filesystem-scanned state.
 
 ---
@@ -10,19 +10,19 @@
 ## Active Focus Projects
 
 ### 1. AI Operating System
-- **Status:** Active. Sprint 8 complete — Life Graph v2 integration. 32 tables, 34 MCP tools (7 modules), 9 Cloud Run services, domain-based Google Task lists, 4 skills updated with domain health sections. 19 skills. 13 secrets. All core infrastructure operational.
-- **Current phase:** Sprint 8 — Life Graph Integration (COMPLETE). Database schema (ltree + 3 tables: life_domains, domain_context_items, domain_health_snapshots), 8 new MCP tools (life_graph.py module), domain-based Google Tasks reorganization, domain-health-scorer pipeline (Cloud Run + Cloud Scheduler), 4 skills updated with domain health integration.
-- **Next milestone:** Dashboard UI components for Life Graph visualization, deploy pending services (risk-engine, daily-brief-engine, task-annotation-sync), seed knowledge base from Drive folders. Then push notifications (FCM).
+- **Status:** Active. Sprint 9-A complete — Brand Consistency System. 32 tables, 37 MCP tools (7 modules), 12 Cloud Run services, domain-based Google Task lists, 22 skills (3 brand skills added). 13 secrets. All core infrastructure operational.
+- **Current phase:** Sprint 9-A — Brand Consistency System (COMPLETE). Three-context brand identity (A: AI OS/Wibify, B: Bharatvarsh, C: Portfolio). BRAND_IDENTITY.md canonical. 3 new skills (brand-guidelines, infographic, ui-design-process). Wibify extraction → accent #00D492.
+- **Next milestone:** Deploy dashboard with Life Graph + Risk + Pipeline pages. Claude.ai MCP connector (37 tools). Seed knowledge base from Drive folders. Push notifications (FCM).
 - **Pending decisions:** Firebase project setup timing, Life Graph dashboard visualization approach, knowledge seeding method (manual vs automated), daily brief delivery channels configuration
 - **What's been built:**
-  - Category A: 19 skills, 3 connectors (Gmail, Calendar, Drive), 27+ KB files
-  - Claude Code: Project directory with CLAUDE.md, 19 SKILL.md skills, mirrored KB
+  - Category A: 22 skills, 3 connectors (Gmail, Calendar, Drive), 28+ KB files
+  - Claude Code: Project directory with CLAUDE.md, 22 SKILL.md skills, mirrored KB
   - GCP: Project ai-operating-system-490208 with 16 APIs, 3 service accounts, Artifact Registry, Secret Manager (13 secrets)
   - Life Graph v2: COMPLETE. ltree extension + 3 new tables (life_domains 12 rows, domain_context_items 12 rows, domain_health_snapshots). 8 MCP tools (life_graph.py module). Domain-based Google Task lists. domain-health-scorer pipeline (Cloud Run + weekly scheduler). 4 skills updated with domain health sections. LIFE_GRAPH.md in knowledge base.
   - Database: ai_os DB on Cloud SQL (shared Bharatvarsh instance), 32 tables across 7 domains, pgvector + ltree enabled, Migrations 001-012 all applied, 28 tasks seeded
-  - MCP Gateway: LIVE on Cloud Run (ai-os-gateway, asia-south1, scale-to-zero). FastAPI + FastMCP. 34 tools (7 modules). Modules: PostgreSQL (6), Google Tasks (7), Drive Write (3), Drive Read (3), Calendar Sync (3), Telegram (5), Life Graph (8). Telegram webhook subsystem (8 files). Bearer token auth. Latest revision: ai-os-gateway-00020-ws5.
+  - MCP Gateway: LIVE on Cloud Run (ai-os-gateway, asia-south1, scale-to-zero). FastAPI + FastMCP. 37 tools (7 modules). Modules: PostgreSQL (6), Google Tasks (9), Drive Write (3), Drive Read (3), Calendar Sync (3), Telegram (5), Life Graph (8). Telegram webhook subsystem (8 files). Bearer token auth. Latest revision: ai-os-gateway-00020-ws5.
   - Google OAuth: Desktop client for Gateway (refresh token). Web Application client for Dashboard (DASHBOARD_OAUTH_SECRET). Consent screen configured.
-  - Dashboard PWA: LIVE on Cloud Run (ai-os-dashboard, asia-south1, scale-to-zero). Next.js 14 + TypeScript + Tailwind CSS. 8 pages (6 live + 2 built). 12 API routes (7 live + 5 built). 22 components (16 live + 6 built). NextAuth.js Google OAuth. Obsidian Aurora design system. PWA with service worker + offline fallback. New: Risk Dashboard, Pipeline Monitor, Knowledge Health card.
+  - Dashboard PWA: LIVE on Cloud Run (ai-os-dashboard, asia-south1, scale-to-zero). Next.js 14 + TypeScript + Tailwind CSS. 8 pages. 20 API routes. 26 components. NextAuth.js Google OAuth. Obsidian Aurora design system. PWA with service worker + offline fallback. Pages: Command Center (with Life Graph, Knowledge Health), Project Detail, Task Board, Gantt, Risks, Pipelines, Sign-in, Error.
   - CI/CD: Cloud Build triggers: deploy-mcp-gateway (auto) + deploy-ai-os-dashboard (auto). 9 Cloud Scheduler jobs.
   - Task Notification: LIVE on Cloud Run + Cloud Scheduler (daily 06:00 IST)
   - Knowledge Layer V2: DEPLOYED. 4 pipeline services LIVE on Cloud Run (embedding-generator, drive-knowledge-scanner, weekly-knowledge-summary, knowledge-auto-connector). Shared library (ai_os_knowledge.py). 38 seed documents ready. 5 Cloud Scheduler triggers. 3 skills RAG-grounded (morning-brief, weekly-review, session-resume).
@@ -34,6 +34,7 @@
   - Seeds: 28 tasks (AI OS 12, AI&U 8, Bharatvarsh 8), all milestone due dates set
   - Scripts: google_oauth_setup.py, deploy_knowledge_layer_v2.sh, seed_knowledge_connections.py, generate_knowledge_snapshots.py, seed_knowledge_drive.py
   - Architecture: Three-tier tool ecosystem — Tier 1 directory connectors / Tier 2 unified MCP Gateway / Tier 3 local STDIO MCPs
+  - Brand Identity System: BRAND_IDENTITY.md (3-context design system). Contexts: A (AI OS, accent #00D492, DM Sans), B (Bharatvarsh, mustard #F1C232, Bebas Neue), C (Portfolio, violet #8b5cf6, Inter). 3 skills: brand-guidelines, infographic, ui-design-process. Assets: matplotlib theme, 3 React templates, 3 .docx Drive templates. Drive: AI OS/BRAND_TEMPLATES/.
   - Interface Strategy: Option C decided — Google Tasks/Calendar/Drive as notification rails, Next.js PWA as intelligence layer, Cloud SQL as single source of truth
 - **Context:** PROJECT_STATE.md (KB — authoritative state), GCP_INFRA_CONFIG.md (KB), DB_SCHEMA.md (KB), TOOL_ECOSYSTEM_PLAN.md (KB), INTERFACE_STRATEGY.md (KB), EVOLUTION_LOG.md (KB)
 - **Tech stack:** Claude.ai + Claude Code, Cloud SQL PostgreSQL + pgvector, GCP (Cloud Run, Functions, Scheduler, Cloud Build), FastAPI, FastMCP, Next.js 14, NextAuth.js, Tailwind CSS, @hello-pangea/dnd, Docker, Firebase Cloud Messaging (Phase 3b)

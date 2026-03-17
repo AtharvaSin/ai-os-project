@@ -2,7 +2,7 @@
 
 > **Purpose:** Reference architecture for the three-tier MCP and tool access system. Governs how new tools are added and where they live.
 >
-> **Last updated:** 2026-03-17 (Phase 3b + Life Graph complete. MCP Gateway live with 34 tools across 7 modules. Life Graph module with 8 domain tools. Domain-based Google Task lists. Dashboard PWA deployed.)
+> **Last updated:** 2026-03-18 (Sprint 9-A + reconciliation. MCP Gateway live with 37 tools across 7 modules. Brand system complete with 3 skills. Dashboard: 8 pages, 20 API routes, 26 components.)
 
 ---
 
@@ -52,7 +52,7 @@ mcp-servers/ai-os-gateway/
 │   ├── mcp_registry.py      ← Tool registration system
 │   ├── modules/             ← One file per tool
 │   │   ├── postgres.py      ← LIVE (6 tools)
-│   │   ├── google_tasks.py  ← LIVE (6 tools)
+│   │   ├── google_tasks.py  ← LIVE (9 tools)
 │   │   ├── drive_write.py   ← LIVE (3 tools)
 │   │   ├── drive_read.py    ← LIVE (3 tools)
 │   │   ├── calendar_sync.py ← LIVE (3 tools)
@@ -78,7 +78,7 @@ Next.js PWA on Cloud Run. Scales to zero. AI-powered command center with project
 **Service URL:** https://ai-os-dashboard-sv4fbx5yna-el.a.run.app
 **Service account:** ai-os-cloud-run (shared with MCP Gateway)
 **Image:** ai-os-dashboard:latest (~78MB)
-**Deployed:** 2026-03-15T09:57:23Z (manual deploy, no Cloud Build trigger)
+**Deployed:** auto-deploy via Cloud Build trigger deploy-ai-os-dashboard
 
 **Project structure:**
 ```
@@ -91,7 +91,7 @@ dashboard/
 │   │   ├── gantt/           ← Interactive Gantt — LIVE
 │   │   ├── auth/            ← Sign-in + error pages — LIVE
 │   │   └── api/             ← API routes (Cloud SQL access) — LIVE
-│   ├── components/          ← 16 React components
+│   ├── components/          ← 26 React components
 │   │   ├── layout/          ← Sidebar, MobileNav
 │   │   ├── ProjectCard.tsx
 │   │   ├── KanbanBoard.tsx  ← @hello-pangea/dnd drag-and-drop
@@ -113,10 +113,9 @@ dashboard/
 ```
 
 **Not implemented (deferred to Phase 3b+):**
-- Risk Dashboard page (/risks) — requires AI Risk Engine + FCM
 - Gantt drag-to-reschedule (click-to-reschedule implemented instead)
 - Push notifications via FCM — requires Firebase project setup
-- Content Calendar, Pipeline Monitor, Knowledge Explorer, Analytics pages
+- Content Calendar, Knowledge Explorer, Analytics, Contact Network pages
 
 ### Tier 3 — Local STDIO MCP Servers (Claude Code Only)
 NPM packages running as local subprocesses. Zero cloud cost.
@@ -147,7 +146,7 @@ NPM packages running as local subprocesses. Zero cloud cost.
 | Phase 2 | Google Tasks + Drive Write + Calendar Sync + OAuth | 3-4 days | Complete |
 | Phase 2b | Task notification service (daily overdue scan) | 2-3 days | Complete — deployed as Cloud Run + Scheduler |
 | Phase 3a | Dashboard scaffold + PWA + auth + Command Center + Gantt + Task Board | 4-6 weeks | Complete — deployed to Cloud Run |
-| Phase 3b | AI Risk Engine + push notifications + Risk Dashboard | 2-3 weeks | Not started |
+| Phase 3b | AI Risk Engine + push notifications + Risk Dashboard | 2-3 weeks | Partial — Risk Engine + Daily Brief + Task Annotation Sync deployed. FCM push notifications pending. |
 | Phase 4 | Bharatvarsh Admin + Lore Search modules | 2-3 days | Not started |
 | Phase 5 | Local STDIOs + WhatsApp + Content Tracker + Dashboard extended views | 2-4 weeks | Not started |
 

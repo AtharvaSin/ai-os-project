@@ -3,7 +3,7 @@
 ## Project Overview
 This is Atharva Singh's AI-enabled Personal Operating System. This directory is the execution layer — where code gets written, workflows get built, infrastructure gets deployed, and the OS grows.
 
-The primary interface is a Claude.ai project (Category A) with 19 skills, 3 connectors (Gmail, Calendar, Drive), and a rich knowledge base. This Claude Code workspace handles what can't happen inside chat: terminal operations, multi-file code generation, git management, deployment, and MCP server development.
+The primary interface is a Claude.ai project (Category A) with 22 skills, 3 connectors (Gmail, Calendar, Drive), and a rich knowledge base. This Claude Code workspace handles what can't happen inside chat: terminal operations, multi-file code generation, git management, deployment, and MCP server development.
 
 **Current State:** See `knowledge-base/PROJECT_STATE.md` for the authoritative, filesystem-verified project state snapshot. Run `/update-project-state` to refresh it.
 
@@ -18,7 +18,7 @@ Based in Hyderabad, India. Full profile in `knowledge-base/OWNER_PROFILE.md`.
 
 ## Tool Ecosystem (Three-Tier Model)
 - **Tier 1 — Directory Connectors:** Gmail, Calendar, Drive (connected). Slack, Notion, Canva, GitHub (pending). Zero infrastructure. One-click OAuth via Claude.ai.
-- **Tier 2 — Unified MCP Gateway:** ONE FastAPI Cloud Run service (`mcp-servers/ai-os-gateway/`) with 34 tools (7 modules). PostgreSQL (6), Google Tasks (7), Drive Write (3), Drive Read (3), Calendar Sync (3), Telegram (5), Life Graph (8). Telegram bot webhook also hosted on Gateway. Scales to zero. $0-7/month. Dashboard PWA (`dashboard/`) on separate Cloud Run service.
+- **Tier 2 — Unified MCP Gateway:** ONE FastAPI Cloud Run service (`mcp-servers/ai-os-gateway/`) with 37 tools (7 modules). PostgreSQL (6), Google Tasks (9), Drive Write (3), Drive Read (3), Calendar Sync (3), Telegram (5), Life Graph (8). Telegram bot webhook also hosted on Gateway. Scales to zero. $0-7/month. Dashboard PWA (`dashboard/`) on separate Cloud Run service.
 - **Tier 3 — Local STDIO MCP:** Evernote, n8n, GitHub via npm packages in Claude Code. Zero cloud cost.
 See `knowledge-base/TOOL_ECOSYSTEM_PLAN.md` for full architecture, module inventory, decision tree for adding new tools, and implementation phases.
 
@@ -26,10 +26,10 @@ See `knowledge-base/TOOL_ECOSYSTEM_PLAN.md` for full architecture, module invent
 - **Cloud:** GCP (project: ai-operating-system-490208, region: asia-south1)
 - **Backend:** FastAPI, Python 3.12
 - **Orchestration:** LangGraph (Category C only)
-- **Database:** Cloud SQL PostgreSQL (pgvector, ltree) on shared bharatvarsh-db instance (bharatvarsh-website:us-central1:bharatvarsh-db). Database: ai_os. User: ai_os_admin. 32 tables live across 6 schema domains. Migrations 001-012 applied.
+- **Database:** Cloud SQL PostgreSQL (pgvector, ltree) on shared bharatvarsh-db instance (bharatvarsh-website:us-central1:bharatvarsh-db). Database: ai_os. User: ai_os_admin. 32 tables live across 7 schema domains. Migrations 001-012 applied.
 - **Frontend:** Next.js 14, React 18, Tailwind CSS, NextAuth.js, @hello-pangea/dnd (Dashboard PWA live on Cloud Run). Bharatvarsh website also live.
 - **AI Models:** Claude Sonnet 4.6 (default), Opus 4.6 (complex reasoning), Haiku 4.5 (classification)
-- **MCP:** Gmail, Calendar, Drive (Tier 1 connectors). AI OS Gateway deployed on Cloud Run with 34 tools (7 modules): PostgreSQL (6), Google Tasks (7), Drive Write (3), Drive Read (3), Calendar Sync (3), Telegram (5), Life Graph (8): list_domains, get_domain_tree, get_domain_tasks, get_domain_summary, create_domain, update_domain, add_context_item, complete_context_item. Telegram bot @AsrAiOsbot webhook on Gateway. Evernote, n8n (Tier 3 local STDIO, to configure).
+- **MCP:** Gmail, Calendar, Drive (Tier 1 connectors). AI OS Gateway deployed on Cloud Run with 37 tools (7 modules): PostgreSQL (6), Google Tasks (9), Drive Write (3), Drive Read (3), Calendar Sync (3), Telegram (5), Life Graph (8): list_domains, get_domain_tree, get_domain_tasks, get_domain_summary, create_domain, update_domain, add_context_item, complete_context_item. Telegram bot @AsrAiOsbot webhook on Gateway. Evernote, n8n (Tier 3 local STDIO, to configure).
 
 ## GCP Infrastructure (Provisioned)
 - **Project:** ai-operating-system-490208 (asia-south1)
@@ -59,14 +59,15 @@ ai-os-project/
 │   ├── CONTENT_CALENDAR.md
 │   ├── MARKETING_PLAYBOOK.md
 │   ├── LIFE_GRAPH.md
+│   ├── BRAND_IDENTITY.md
 │   ├── profile-context-pack/
 │   ├── aiu-knowledge-pack/
 │   └── bharatvarsh-website-docs/
-├── .claude/skills/           ← Claude Code auto-discovered skills (19 skills)
+├── .claude/skills/           ← Claude Code auto-discovered skills (22 skills)
 ├── dashboard/                ← Dashboard PWA (Next.js 14, LIVE on Cloud Run)
 │   ├── src/
-│   │   ├── app/              ← Pages + API routes (8 pages, 12 API routes)
-│   │   ├── components/       ← 22 React components
+│   │   ├── app/              ← Pages + API routes (8 pages, 20 API routes)
+│   │   ├── components/       ← 26 React components
 │   │   ├── lib/              ← DB client, auth, types, utils
 │   │   └── middleware.ts     ← Auth gate
 │   ├── public/               ← PWA manifest, service worker, icons
@@ -91,7 +92,7 @@ ai-os-project/
 │   │   └── ai_os_knowledge.py ← KnowledgeClient for semantic search + graph traversal
 │   └── category-c/           ← LangGraph + FastAPI (agentic)
 ├── mcp-servers/
-│   └── ai-os-gateway/        ← Unified MCP Gateway (34 tools, 7 modules)
+│   └── ai-os-gateway/        ← Unified MCP Gateway (37 tools, 7 modules)
 │       ├── app/
 │       │   ├── main.py
 │       │   ├── config.py
@@ -135,7 +136,7 @@ When calling the Anthropic API in code:
 Always use prompt caching for system prompts that repeat across runs.
 
 ## Current Sprint
-Sprint 8 — Life Graph Integration complete. 32 tables, 34 MCP tools (7 modules), domain-based Google Task lists (9 domains), 4 skills updated with domain health sections, domain-health-scorer pipeline deployed.
+Sprint 9-A — Brand Consistency System complete. 32 tables, 37 MCP tools (7 modules), domain-based Google Task lists (9 domains), 4 skills updated with domain health sections, domain-health-scorer pipeline deployed, 3 brand skills added (brand-guidelines, infographic, ui-design-process), BRAND_IDENTITY.md canonical.
 
 ## Key Commands
 - `claude` — Start Claude Code session in this directory
