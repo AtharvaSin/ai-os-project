@@ -15,7 +15,7 @@ from __future__ import annotations
 import hashlib
 import json
 import uuid
-from datetime import date, datetime
+from datetime import date, datetime, timezone
 from decimal import Decimal
 from typing import Any
 
@@ -477,9 +477,11 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
 
     @mcp.tool(
         description="Sync Google Tasks state back to Cloud SQL. "
-        "Checks each domain's Google Task list for tasks completed externally "
-        "(e.g., from the phone) and updates the database accordingly. "
-        "Returns a summary of changes detected and applied."
+        "Performs three passes: (1) field-level merge for existing tasks — "
+        "completion, title, due date, and annotations; (2) discovery of "
+        "tasks created directly in Google Tasks (phone) and import to DB; "
+        "(3) notes reconciliation to rebuild system zone after changes. "
+        "Returns a summary of all changes detected and applied."
     )
     async def sync_tasks_to_db() -> str:
         service = _get_tasks_service()
@@ -491,18 +493,23 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
             from app.auth.google_oauth import run_google_api
 
             async with pool.acquire() as conn:
-                rows = await conn.fetch(
-                    "SELECT id, status, metadata FROM tasks "
-                    "WHERE metadata->>'google_task_id' IS NOT NULL "
-                    "AND status != 'done'::task_status"
-                )
-
                 synced = 0
                 errors = 0
-                changes: list[dict[str, str]] = []
+                changes: list[dict[str, Any]] = []
+
+                # ── Phase 1: Field-level merge for existing DB tasks ──
+                rows = await conn.fetch(
+                    "SELECT t.id, t.title, t.description, t.status::text, "
+                    "t.priority::text, t.due_date, t.updated_at, t.metadata, "
+                    "d.name AS domain_name "
+                    "FROM tasks t "
+                    "LEFT JOIN life_domains d ON t.domain_id = d.id "
+                    "WHERE t.metadata->>'google_task_id' IS NOT NULL "
+                    "AND t.status != 'done'::task_status"
+                )
 
                 for row in rows:
-                    meta = row["metadata"] or {}
+                    meta = _parse_jsonb(row["metadata"]) or {}
                     google_task_id = meta.get("google_task_id")
                     google_list_id = meta.get("google_task_list_id")
 
@@ -516,10 +523,12 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                             ).execute
                         )
 
+                        # 1. COMPLETION SYNC
                         if gtask.get("status") == "completed":
                             await conn.execute(
                                 "UPDATE tasks SET status = 'done'::task_status, "
-                                "completed_at = now() WHERE id = $1::uuid",
+                                "completed_at = now(), updated_at = now() "
+                                "WHERE id = $1::uuid",
                                 row["id"],
                             )
                             changes.append({
@@ -527,29 +536,273 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                                 "change": "marked_completed",
                             })
                             synced += 1
+                            continue
 
-                        # Annotation capture
-                        user_zone = _extract_user_zone(gtask.get('notes', ''))
+                        # Timestamp comparison for field merge
+                        google_updated_str = gtask.get("updated", "")
+                        google_updated = None
+                        if google_updated_str:
+                            google_updated = datetime.fromisoformat(
+                                google_updated_str.replace("Z", "+00:00")
+                            )
+                        db_updated = row["updated_at"]
+                        if db_updated and not db_updated.tzinfo:
+                            db_updated = db_updated.replace(tzinfo=timezone.utc)
+
+                        field_changes: dict[str, Any] = {}
+                        needs_notes_rebuild = False
+
+                        # 2. TITLE SYNC
+                        google_title = gtask.get("title", "")
+                        for prefix in ["[URGENT] ", "[HIGH] "]:
+                            if google_title.startswith(prefix):
+                                google_title = google_title[len(prefix):]
+                                break
+                        if (google_title and google_title != row["title"]
+                                and google_updated and db_updated
+                                and google_updated > db_updated):
+                            field_changes["title"] = google_title
+                            needs_notes_rebuild = True
+
+                        # 3. DUE DATE SYNC
+                        google_due = gtask.get("due")
+                        google_due_date = None
+                        if google_due:
+                            google_due_date = datetime.fromisoformat(
+                                google_due.replace("Z", "+00:00")
+                            ).date()
+                        if (google_due_date != row["due_date"]
+                                and google_updated and db_updated
+                                and google_updated > db_updated):
+                            field_changes["due_date"] = google_due_date
+                            needs_notes_rebuild = True
+
+                        # Apply field changes to DB
+                        if field_changes:
+                            set_parts = []
+                            values: list[Any] = []
+                            for i, (col, val) in enumerate(field_changes.items(), 1):
+                                set_parts.append(f"{col} = ${i}")
+                                values.append(val)
+                            values.append(row["id"])
+                            await conn.execute(
+                                f"UPDATE tasks SET {', '.join(set_parts)}, "
+                                f"updated_at = NOW() WHERE id = ${len(values)}::uuid",
+                                *values,
+                            )
+                            for col, val in field_changes.items():
+                                changes.append({
+                                    "task_id": str(row["id"]),
+                                    "change": f"{col}_updated_from_google",
+                                    "new_value": str(val),
+                                })
+                            synced += 1
+
+                        # 5. NOTES RECONCILIATION after field changes
+                        if needs_notes_rebuild:
+                            domain_name = row.get("domain_name") or "Unknown"
+                            new_title = field_changes.get("title", row["title"])
+                            new_due = field_changes.get("due_date", row["due_date"])
+                            new_notes = _build_notes_header(
+                                task_id=str(row["id"]),
+                                domain_name=domain_name,
+                                priority=row["priority"],
+                                due_date=str(new_due) if new_due else None,
+                                description=row["description"],
+                                existing_notes=gtask.get("notes", ""),
+                            )
+                            # Update Google Task title if it changed
+                            patch_body: dict[str, Any] = {"notes": new_notes}
+                            if "title" in field_changes:
+                                patch_body["title"] = _prefixed_title(
+                                    field_changes["title"], row["priority"]
+                                )
+                            await run_google_api(
+                                service.tasks().patch(
+                                    tasklist=google_list_id,
+                                    task=google_task_id,
+                                    body=patch_body,
+                                ).execute
+                            )
+
+                        # 4. ANNOTATION SYNC
+                        user_zone = _extract_user_zone(gtask.get("notes", ""))
                         if user_zone.strip():
-                            content_hash = hashlib.sha256(user_zone.encode()).hexdigest()
+                            content_hash = hashlib.sha256(
+                                user_zone.encode()
+                            ).hexdigest()
                             inserted = await conn.fetchval(
                                 "INSERT INTO task_annotations "
                                 "(task_id, content, source, content_hash, metadata) "
                                 "VALUES ($1::uuid, $2, 'google_tasks', $3, $4::jsonb) "
                                 "ON CONFLICT (task_id, content_hash) DO NOTHING "
                                 "RETURNING id",
-                                row['id'], user_zone, content_hash,
-                                json.dumps({'word_count': len(user_zone.split())}),
+                                row["id"], user_zone, content_hash,
+                                json.dumps({"word_count": len(user_zone.split())}),
                             )
                             if inserted:
                                 changes.append({
-                                    'task_id': str(row['id']),
-                                    'change': 'annotation_captured',
-                                    'preview': user_zone[:80],
+                                    "task_id": str(row["id"]),
+                                    "change": "annotation_captured",
+                                    "preview": user_zone[:80],
                                 })
                                 synced += 1
                     except Exception:
                         errors += 1
+
+                # ── Phase 2: Discover phone-created tasks ──
+                domains = await conn.fetch(
+                    "SELECT id, slug, name, metadata FROM life_domains "
+                    "WHERE metadata->>'google_task_list_id' IS NOT NULL "
+                    "AND status = 'active'"
+                )
+
+                known_ids_rows = await conn.fetch(
+                    "SELECT metadata->>'google_task_id' AS gid FROM tasks "
+                    "WHERE metadata->>'google_task_id' IS NOT NULL"
+                )
+                known_google_ids = {r["gid"] for r in known_ids_rows}
+
+                for domain in domains:
+                    dmeta = _parse_jsonb(domain["metadata"]) or {}
+                    google_list_id = dmeta.get("google_task_list_id")
+                    if not google_list_id:
+                        continue
+
+                    try:
+                        result = await run_google_api(
+                            service.tasks().list(
+                                tasklist=google_list_id,
+                                maxResults=100,
+                                showCompleted=True,
+                                showHidden=True,
+                            ).execute
+                        )
+                        google_tasks_list = result.get("items", [])
+                    except Exception:
+                        errors += 1
+                        continue
+
+                    for gt in google_tasks_list:
+                        gt_id = gt.get("id")
+                        if not gt_id or gt_id in known_google_ids:
+                            continue
+
+                        # Skip objectives/automations (they have type prefixes)
+                        gt_title = gt.get("title", "")
+                        if gt_title.startswith(("[OBJ] ", "[AUTO] ")):
+                            continue
+
+                        try:
+                            domain_id = domain["id"]
+                            domain_slug = domain["slug"]
+
+                            # Resolve project from domain
+                            project_row = await conn.fetchrow(
+                                "SELECT id FROM projects WHERE domain_id = $1::uuid",
+                                domain_id,
+                            )
+                            if not project_row:
+                                project_row = await conn.fetchrow(
+                                    "SELECT id FROM projects ORDER BY created_at LIMIT 1"
+                                )
+                            if not project_row:
+                                continue
+                            project_id = project_row["id"]
+
+                            # Parse Google Task fields
+                            clean_title = gt_title
+                            for prefix in ["[URGENT] ", "[HIGH] ", "[MEDIUM] ", "[LOW] "]:
+                                if clean_title.startswith(prefix):
+                                    clean_title = clean_title[len(prefix):]
+                                    break
+
+                            google_due = gt.get("due")
+                            due_date_val = None
+                            if google_due:
+                                due_date_val = datetime.fromisoformat(
+                                    google_due.replace("Z", "+00:00")
+                                ).date()
+
+                            is_completed = gt.get("status") == "completed"
+
+                            google_notes = gt.get("notes", "")
+                            user_notes = (
+                                _extract_user_zone(google_notes)
+                                if NOTES_DELIMITER in google_notes
+                                else google_notes
+                            )
+
+                            # INSERT into tasks
+                            new_task_id = str(uuid.uuid4())
+                            await conn.execute(
+                                "INSERT INTO tasks "
+                                "(id, title, project_id, domain_id, status, priority, "
+                                "due_date, description, metadata, assignee) "
+                                "VALUES ($1::uuid, $2, $3::uuid, $4::uuid, $5, "
+                                "'medium'::task_priority, $6, $7, $8::jsonb, 'atharva')",
+                                new_task_id,
+                                clean_title or "Untitled",
+                                project_id,
+                                domain_id,
+                                "done" if is_completed else "todo",
+                                due_date_val,
+                                None,
+                                json.dumps({
+                                    "google_task_id": gt_id,
+                                    "google_task_list_id": google_list_id,
+                                    "source": "google_tasks",
+                                }),
+                            )
+                            known_google_ids.add(gt_id)
+
+                            # Capture annotation if present
+                            if user_notes and user_notes.strip():
+                                content_hash = hashlib.sha256(
+                                    user_notes.encode()
+                                ).hexdigest()
+                                await conn.execute(
+                                    "INSERT INTO task_annotations "
+                                    "(id, task_id, content, content_hash, source, metadata) "
+                                    "VALUES ($1::uuid, $2::uuid, $3, $4, 'google_tasks', "
+                                    "$5::jsonb) "
+                                    "ON CONFLICT (task_id, content_hash) DO NOTHING",
+                                    str(uuid.uuid4()),
+                                    new_task_id,
+                                    user_notes,
+                                    content_hash,
+                                    json.dumps({
+                                        "word_count": len(user_notes.split()),
+                                        "imported": True,
+                                    }),
+                                )
+
+                            # Rebuild Google Task notes with system zone
+                            new_notes = _build_notes_header(
+                                task_id=new_task_id,
+                                domain_name=domain["name"],
+                                priority="medium",
+                                due_date=str(due_date_val) if due_date_val else None,
+                                description=None,
+                                existing_notes=google_notes,
+                            )
+                            await run_google_api(
+                                service.tasks().patch(
+                                    tasklist=google_list_id,
+                                    task=gt_id,
+                                    body={"notes": new_notes},
+                                ).execute
+                            )
+
+                            changes.append({
+                                "task_id": new_task_id,
+                                "change": "imported_from_google",
+                                "title": clean_title,
+                                "domain": domain_slug,
+                            })
+                            synced += 1
+                        except Exception:
+                            errors += 1
 
                 return json.dumps({
                     "synced": synced,

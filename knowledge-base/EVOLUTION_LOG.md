@@ -13,6 +13,24 @@ A running record of design decisions, architecture changes, brainstorming outcom
 
 ## Log Entries
 
+### Entry 013 — Two-Way Google Tasks ↔ Cloud SQL Field-Level Sync
+- **Date:** 2026-03-17
+- **Domain:** MCP Gateway / Google Tasks / Category B Pipeline
+- **Status:** [COMPLETED]
+- **Summary:** Fixed incomplete Google Tasks ↔ Cloud SQL sync. Prior state: DB→Google worked (create/update/complete), but Google→DB was limited to completion detection and annotation capture with a metadata JSONB parsing bug. After fix: full two-way field-level sync with phone-created task discovery.
+- **Fixes Applied:**
+  1. **Metadata JSONB guard (Fix 1):** Applied `_parse_jsonb()` to `sync_tasks_to_db` — asyncpg returns JSONB as string without registered codec, causing `'str' has no .get()` errors.
+  2. **Pipeline audit (Fix 2):** Pipeline already had `isinstance(meta, str)` guard. Expanded pipeline query to include title, priority, due_date, updated_at, domain_name for field merge.
+  3. **Field-level merge (Fix 3):** `sync_tasks_to_db` now compares Google Task title (stripped of priority prefix) and due_date against DB values. Last-write-wins via `updated_at` timestamp comparison. After field changes, system zone in Google Task notes is rebuilt while preserving user zone.
+  4. **Pipeline field sync (Fix 4):** Mirrored field-level merge logic into `task-annotation-sync` pipeline using pg8000 sync driver. Pipeline now handles completion sync, title/due_date merge, annotation capture, and discovery — all in one scheduled run.
+  5. **Phone-created task discovery (Fix 5):** New Phase 2 in both `sync_tasks_to_db` and pipeline. Iterates all domain Google Task lists, finds tasks not in DB (by `google_task_id`), imports them with `metadata.source = "google_tasks"` tag, captures any user notes as annotations, and rebuilds system zone notes on the Google Task.
+- **Merge Rules:** System zone (above delimiter) = DB wins. User zone (below delimiter) = Google wins. Fields (title, due_date) = last-write-wins. Discovery = phone tasks imported at medium priority.
+- **Files Modified:**
+  - MODIFIED: mcp-servers/ai-os-gateway/app/modules/google_tasks.py (sync_tasks_to_db rewritten: JSONB guard, field merge, discovery pass, notes reconciliation)
+  - MODIFIED: workflows/category-b/task-annotation-sync/main.py (full rewrite: completion sync, field merge, discovery, logging, notes rebuild helpers)
+  - MODIFIED: knowledge-base/EVOLUTION_LOG.md (entry 013)
+  - MODIFIED: knowledge-base/TOOL_ECOSYSTEM_PLAN.md (Google Tasks module description updated)
+
 ### Entry 012 — Life Graph v2 Integration
 - **Date:** 2026-03-17
 - **Domain:** Life Graph / Database / MCP Gateway / Google Tasks / Skills / Dashboard / Pipelines

@@ -32,7 +32,7 @@ Single FastAPI container on Cloud Run. Scales to zero. All custom tool access. A
 | Module | Priority | Tool Calls | Status |
 |--------|----------|-----------|--------|
 | PostgreSQL | P0 | query_db, insert_record, update_record, get_schema, search_knowledge, log_pipeline_run | LIVE (6 tools) |
-| Google Tasks | P1 | list_tasks, create_task, update_task, complete_task, sync_to_db, get_task_annotations, reset_task_lists | LIVE (7 tools) |
+| Google Tasks | P1 | list_tasks, create_task, update_task, complete_task, sync_tasks_to_db (two-way field merge + phone discovery), get_task_annotations, reset_task_lists | LIVE (7 tools) |
 | Drive (write) | P1 | upload_file, create_doc, create_folder | LIVE (3 tools) |
 | Drive (read) | P1 | list_drive_files, read_drive_file, get_drive_changes_summary | LIVE (3 tools) |
 | Calendar Sync | P1 | create_milestone_event, update_milestone_event, delete_milestone_event | LIVE (3 tools) |
