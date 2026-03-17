@@ -262,20 +262,37 @@ export interface LifeDomain {
   level: number;
   status: LifeDomainStatus;
   parent_id: string | null;
+  description: string | null;
   priority_weight: number;
   color_code: string | null;
   icon: string | null;
   sort_order: number;
+  metadata: Record<string, unknown>;
+  created_at: string;
+  updated_at: string;
 }
 
 export interface DomainWithCounts extends LifeDomain {
   active_tasks: number;
+  overdue_tasks: number;
   active_objectives: number;
   active_automations: number;
+  health_score: number | null;
+  health_trend: 'up' | 'down' | 'stable' | null;
 }
 
 export interface DomainTreeNode extends DomainWithCounts {
   children: DomainTreeNode[];
+}
+
+export interface LifeGraphResponse {
+  domains: DomainWithCounts[];
+  summary: {
+    total_domains: number;
+    active_tasks: number;
+    overdue_tasks: number;
+    active_objectives: number;
+  };
 }
 
 export interface DomainContextItem {
@@ -289,15 +306,52 @@ export interface DomainContextItem {
   target_date: string | null;
   progress_pct: number;
   completed_at: string | null;
+  automation_config: Record<string, unknown> | null;
+  metadata: Record<string, unknown>;
+  created_at: string;
+  updated_at: string;
 }
 
 export interface DomainHealthSnapshot {
+  id: string;
   domain_id: string;
   snapshot_date: string;
   health_score: number;
   tasks_total: number;
   tasks_completed: number;
   tasks_overdue: number;
+  objectives_total: number;
+  objectives_progress: number;
+  automations_active: number;
   velocity_7d: number;
   days_since_activity: number;
+  metadata: Record<string, unknown>;
+  created_at: string;
+}
+
+export interface DomainDetailResponse {
+  domain: LifeDomain;
+  context_items: DomainContextItem[];
+  tasks: (Task & { domain_name: string; domain_slug: string })[];
+  health_snapshots: DomainHealthSnapshot[];
+  breadcrumb: { depth: number; name: string; slug: string }[];
+}
+
+export interface CreateDomainPayload {
+  name: string;
+  slug: string;
+  parent_id: string;
+  domain_number?: string;
+  description?: string;
+  color_code?: string;
+}
+
+export interface CreateContextItemPayload {
+  domain_id: string;
+  item_type: 'objective' | 'automation';
+  title: string;
+  description?: string;
+  priority?: TaskPriority;
+  target_date?: string;
+  automation_config?: Record<string, unknown>;
 }

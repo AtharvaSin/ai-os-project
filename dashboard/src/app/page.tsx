@@ -5,6 +5,7 @@ import { ProjectCard } from '@/components/ProjectCard';
 import { MilestoneRibbon } from '@/components/MilestoneRibbon';
 import { TodayTasks } from '@/components/TodayTasks';
 import { KnowledgeHealthCard } from '@/components/KnowledgeHealthCard';
+import { LifeGraphSection } from '@/components/LifeGraphSection';
 import type { ProjectWithHealth, HealthColor, Milestone } from '@/lib/types';
 
 export const dynamic = 'force-dynamic';
@@ -130,6 +131,9 @@ export default async function CommandCenter() {
         </h2>
         <MilestoneRibbon milestones={milestones} />
       </section>
+
+      {/* Life Graph */}
+      <LifeGraphSection />
 
       {/* Today's tasks + Knowledge Health */}
       <section className="grid grid-cols-1 xl:grid-cols-3 gap-6">
