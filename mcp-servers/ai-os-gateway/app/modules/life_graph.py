@@ -440,12 +440,13 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                 if not domain:
                     return json.dumps({"error": f"Domain '{domain_slug}' not found"})
 
+                parsed_date = date.fromisoformat(target_date) if target_date else None
                 record = await conn.fetchrow(
                     "INSERT INTO domain_context_items "
                     "(domain_id, item_type, title, description, priority, target_date) "
                     "VALUES ($1, $2::context_item_type, $3, $4, $5::task_priority, $6::date) "
                     "RETURNING *",
-                    domain["id"], item_type, title, description, priority, target_date,
+                    domain["id"], item_type, title, description, priority, parsed_date,
                 )
 
                 result = _row_to_dict(record)

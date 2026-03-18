@@ -289,7 +289,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
         if domain_slug is not None:
             updates["domain_slug"] = domain_slug
         if last_contacted_at is not None:
-            updates["last_contacted_at"] = last_contacted_at
+            updates["last_contacted_at"] = datetime.fromisoformat(last_contacted_at.replace("Z", "+00:00"))
 
         if not updates:
             return json.dumps({"error": "No fields provided for update"})
@@ -554,12 +554,13 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
         pool = get_pool()
         try:
             async with pool.acquire() as conn:
+                parsed_date = date.fromisoformat(date_value)
                 record = await conn.fetchrow(
                     "INSERT INTO important_dates "
                     "(contact_id, date_type, date_value, year_known, label, reminder_days_before) "
                     "VALUES ($1::uuid, $2::date_type, $3::date, $4, $5, $6) "
                     "RETURNING *",
-                    contact_id, date_type, date_value,
+                    contact_id, date_type, parsed_date,
                     year_known, label, reminder_days_before,
                 )
                 result = _row_to_dict(record)

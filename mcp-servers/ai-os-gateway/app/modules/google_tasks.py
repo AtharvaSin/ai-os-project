@@ -362,13 +362,14 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                 task_id = str(uuid.uuid4())
                 metadata: dict[str, Any] = {}
 
+                parsed_due = date.fromisoformat(due_date) if due_date else None
                 record = await conn.fetchrow(
                     "INSERT INTO tasks (id, project_id, domain_id, title, description, status, "
                     "priority, due_date, metadata) "
                     "VALUES ($1::uuid, $2::uuid, $3::uuid, $4, $5, 'todo'::task_status, "
                     "$6::task_priority, $7::date, $8::jsonb) RETURNING *",
                     task_id, project_id, domain_id, title, description,
-                    priority, due_date, json.dumps(metadata),
+                    priority, parsed_due, json.dumps(metadata),
                 )
 
                 # Sync to Google Tasks (domain-based list)
