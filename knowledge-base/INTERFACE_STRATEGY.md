@@ -4,7 +4,7 @@
 >
 > **Decision:** Option C — Google Rails + Custom Intelligence Layer
 >
-> **Last updated:** 2026-03-18 (State v11. 25 skills. Dashboard: 9 pages, 23 API routes, 28 components. MCP Gateway: 56 tools deployed, 10 modules.)
+> **Last updated:** 2026-03-19 (State v12. 25 skills. Dashboard: 9 pages, 23 API routes, 28 components. MCP Gateway: 64 tools in codebase (12 modules), 56/10 deployed. Composite queries + Visual content modules built. Drive structure redesigned.)
 
 ---
 
@@ -101,46 +101,70 @@ Milestone gets due_date in Cloud SQL → MCP Gateway creates Calendar event
 - Color-code by project
 - All-day events for milestones, timed events for meetings/deadlines
 
-### 4. Google Drive — Artifact Storage (Phase 2 — build Drive Write MCP module)
+### 4. Google Drive — Artifact Storage + Knowledge Input (LIVE)
 
-**What it does:** Stores Claude-generated documents (PRDs, plans, reports, presentations). Organized by project. Accessible from phone and desktop.
+**Drive account:** atharvasingh.24@gmail.com (ONLY account — enforced at OAuth token level).
 
-**Folder structure:**
+**What it does:** Two distinct roles under a single root:
+1. **Knowledge/** — Scanner input. Markdown files ingested by the drive-knowledge-scanner pipeline into `knowledge_entries` with embeddings. Never write artifacts here.
+2. **Artifacts/** — Claude and pipeline output. NOT scanned. Exists for human reference and task execution.
+
+**Canonical folder structure (immutable — changes require updating this doc first):**
 ```
-AI OS/
-├── AI Operating System/
-│   ├── PRDs/
-│   ├── Architecture/
-│   ├── Decision Memos/
-│   └── Session Artifacts/
-├── AI&U/
-│   ├── Scripts/
-│   ├── Thumbnails/
-│   └── Research/
-├── Bharatvarsh/
-│   ├── Marketing/
-│   ├── Lore Docs/
-│   └── Content/
-└── Zealogics/
-    ├── Project Docs/
-    └── Deliverables/
+AI OS/                          ← SINGLE ROOT
+├── Knowledge/                    ← SCANNER INPUT (.md files only)
+│   ├── System/                   ← OS decisions, retros, lessons, refs
+│   ├── Personal/                 ← Profile, goals, preferences, career
+│   └── Projects/
+│       ├── AI-OS/                ← AI OS design docs, architecture
+│       ├── Bharatvarsh/          ← Lore, marketing, platform
+│       ├── AI-and-U/             ← Channel strategy, content system
+│       └── Zealogics/            ← Role context, onboarding
+├── Artifacts/                    ← PIPELINE + CLAUDE OUTPUT (NOT scanned)
+│   ├── Daily-Briefs/
+│   ├── Architecture/             ← PRDs, design docs, implementation plans
+│   ├── Instructions/             ← Claude Code instruction sheets
+│   ├── Brand-Templates/
+│   │   ├── context-a-ai-os/
+│   │   ├── context-b-bharatvarsh/
+│   │   └── context-c-portfolio/
+│   └── Reports/                  ← Audits, feature reviews
+└── Weekly-Reviews/               ← Auto-generated weekly review docs
 ```
+
+**Routing rules:**
+| Content type | Target |
+|---|---|
+| OS decisions, retros, lessons, refs | Knowledge/System/ |
+| Professional profile, goals, preferences | Knowledge/Personal/ |
+| AI OS design docs | Knowledge/Projects/AI-OS/ |
+| Bharatvarsh lore, marketing | Knowledge/Projects/Bharatvarsh/ |
+| AI&U channel strategy | Knowledge/Projects/AI-and-U/ |
+| Zealogics role context | Knowledge/Projects/Zealogics/ |
+| PRD, design doc, implementation plan | Artifacts/Architecture |
+| Auto-generated daily brief | Artifacts/Daily-Briefs |
+| Claude Code instruction sheet | Artifacts/Instructions |
+| Brand template (Context A/B/C) | Artifacts/Brand-Templates/{context}/ |
+| Audit report, feature review | Artifacts/Reports |
+| Weekly review doc | Weekly-Reviews |
+
+**Immutability contract:** No ad hoc folder creation. If a file type has no designated folder, update this schema first. Legacy subfolder names (PRDs, Scripts, etc.) are auto-aliased in `drive_write.py`.
 
 **Artifact logging:**
 ```
-Claude generates document → MCP Gateway saves to Drive (correct folder)
+Claude generates document → MCP Gateway saves to Drive (AI OS/Artifacts/{subfolder}/)
                           → MCP Gateway writes to Cloud SQL artifacts table:
                               - project_id (FK to projects)
-                              - task_id (FK to tasks, if task-related)
                               - artifact_type (document, design, code, etc.)
-                              - file_path (Drive file ID / URL)
+                              - file_path (drive://{drive_file_id})
+                              - url (Drive webViewLink)
                               - name, description, metadata
 ```
 
 ### 5. Telegram Bot — Pocket Command Channel (Phase 3a — deployed)
 
 **Bot:** @AsrAiOsbot
-**What it does:** Provides a mobile-first notification channel, lightweight command interface, and personal capture input. Receives scheduled briefs, overdue alerts, and weekly digests. Supports 9 slash commands for quick task management, project status checks, and personal capture from the phone.
+**What it does:** Provides a mobile-first notification channel, lightweight command interface, and personal capture input. Receives scheduled briefs, overdue alerts, and weekly digests. Supports 10 slash commands for quick task management, project status checks, and personal capture from the phone.
 
 **Commands:**
 | Command | Action |
@@ -154,6 +178,7 @@ Claude generates document → MCP Gateway saves to Drive (correct folder)
 | `/e <text>` | Quick capture (observation) |
 | `/ei <text>` | Capture an idea |
 | `/em <text>` | Capture a memory recall |
+| `/img <prompt>` | Generate a brand-consistent image |
 
 **Scheduled notifications (via Cloud Scheduler):**
 - **Morning Brief** (6:30 AM IST) — project snapshot, today's tasks, upcoming milestones
@@ -248,8 +273,8 @@ Results are written to a `risk_alerts` table (new, to be added in Phase 3) and p
 1. User in Claude.ai: "Generate a PRD for the dashboard"
 2. Claude creates document (docx/md)
 3. Claude calls MCP Gateway → upload_file (Drive) + insert_record (artifacts table)
-4. MCP Gateway saves file to Drive (AI OS/AI Operating System/PRDs/)
-5. MCP Gateway writes artifact metadata to Cloud SQL (file_path = Drive URL)
+4. MCP Gateway saves file to Drive (AI OS/Artifacts/Architecture/)
+5. MCP Gateway writes artifact metadata to Cloud SQL (file_path = drive://{id}, url = Drive link)
 6. Dashboard (when built) shows artifact in project detail view
 ```
 

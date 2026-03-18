@@ -677,6 +677,183 @@ async def handle_entry_memory(args: str, pool: asyncpg.Pool) -> dict[str, Any]:
     return await handle_entry(args, pool, capture_type="memory_recall")
 
 
+async def handle_img(args: str, pool: asyncpg.Pool) -> dict[str, Any]:
+    """Handle /img — generate a brand-consistent image.
+
+    Usage: /img <prompt> ctx:A|B|C type:social|thumbnail|hero|illustration
+    Default: ctx:A type:social aspect:1:1 model:auto
+    """
+    if not args.strip():
+        return {
+            "text": escape_md(
+                "Usage: /img <prompt> ctx:A|B|C type:social|thumbnail|hero\n\n"
+                "Examples:\n"
+                "  /img Futuristic dashboard with emerald data streams\n"
+                "  /img ctx:B Dystopian city at twilight type:hero\n"
+                "  /img ctx:C Professional headshot background type:social"
+            ),
+            "parse_mode": "MarkdownV2",
+        }
+
+    # Parse modifiers from args
+    tokens = args.split()
+    brand_context = "A"
+    content_type = "social"
+    aspect_ratio = "1:1"
+    prompt_parts: list[str] = []
+
+    for token in tokens:
+        lower = token.lower()
+        if lower.startswith("ctx:"):
+            ctx_val = token[4:].upper()
+            if ctx_val in ("A", "B", "C"):
+                brand_context = ctx_val
+            continue
+        if lower.startswith("type:"):
+            content_type = lower[5:]
+            continue
+        if lower.startswith("aspect:"):
+            aspect_ratio = lower[7:]
+            continue
+        prompt_parts.append(token)
+
+    prompt = " ".join(prompt_parts)
+    if not prompt:
+        return {"text": escape_md("Please provide an image prompt.")}
+
+    # Send "generating..." acknowledgement first
+    from app.telegram.webhook import send_message
+    from app import config as app_config
+
+    chat_id = int(app_config.get_telegram_chat_id())
+    await send_message(
+        chat_id=chat_id,
+        text=escape_md(f"Generating {content_type} image (context {brand_context})..."),
+        parse_mode="MarkdownV2",
+    )
+
+    # Call the media_gen module
+    try:
+        from app.modules.media_gen import (
+            _get_gemini_client,
+            _build_brand_prompt,
+            _resolve_model,
+            _upload_image_to_drive,
+            _store_media_record,
+            BRAND_CONFIGS,
+            ASPECT_RATIOS,
+        )
+
+        client = _get_gemini_client()
+        if not client:
+            return {"text": escape_md("GEMINI_API_KEY not configured.")}
+
+        enhanced_prompt = _build_brand_prompt(prompt, brand_context, content_type)
+        model_config = _resolve_model("auto", content_type)
+        model_api_id = model_config["api_id"]
+        model_type = model_config["type"]
+
+        image_bytes = None
+
+        if model_type == "imagen":
+            from google.genai import types as genai_types
+
+            imagen_config = genai_types.GenerateImagesConfig(
+                number_of_images=1,
+                aspect_ratio=ASPECT_RATIOS.get(aspect_ratio, "1:1"),
+            )
+            response = client.models.generate_images(
+                model=model_api_id,
+                prompt=enhanced_prompt,
+                config=imagen_config,
+            )
+            if response.generated_images:
+                image_bytes = response.generated_images[0].image.image_bytes
+
+        else:
+            from google.genai import types as genai_types
+
+            response = client.models.generate_content(
+                model=model_api_id,
+                contents=enhanced_prompt,
+                config=genai_types.GenerateContentConfig(
+                    response_modalities=["IMAGE", "TEXT"],
+                ),
+            )
+            for part in response.candidates[0].content.parts:
+                if part.inline_data and part.inline_data.mime_type.startswith("image/"):
+                    image_bytes = part.inline_data.data
+                    break
+
+        if not image_bytes:
+            return {"text": escape_md("Image generation failed — prompt may have been filtered.")}
+
+        # Upload to Drive
+        from datetime import datetime as dt
+        timestamp = dt.utcnow().strftime("%Y%m%d_%H%M%S")
+        brand_name = BRAND_CONFIGS[brand_context]["name"].lower().replace(" ", "_")
+        filename = f"{brand_name}_{content_type}_{timestamp}.png"
+
+        drive_result = await _upload_image_to_drive(
+            image_bytes, filename, brand_context, lambda: pool
+        )
+
+        # Store in DB
+        record = await _store_media_record(
+            pool,
+            brand_context=brand_context,
+            asset_type=content_type,
+            source="generated",
+            model_used=model_api_id,
+            prompt_used=enhanced_prompt,
+            original_prompt=prompt,
+            content_type=content_type,
+            aspect_ratio=aspect_ratio,
+            dimensions=None,
+            file_format="png",
+            file_size_bytes=drive_result["file_size_bytes"],
+            drive_file_id=drive_result["drive_file_id"],
+            drive_url=drive_result["drive_url"],
+            drive_folder_id=drive_result["drive_folder_id"],
+            domain_slug=None,
+            tags=["telegram"],
+            metadata={"source_interface": "telegram"},
+        )
+
+        short_id = str(record["id"])[:8]
+        cost_str = f"${model_config['cost_per_image']:.3f}"
+        brand_label = brand_context + ": " + BRAND_CONFIGS[brand_context]["name"]
+        model_label = model_api_id.split("-")[0]
+        drive_url_display = drive_result.get("drive_url", "Uploaded")
+        if len(drive_url_display) > 80:
+            drive_url_display = drive_url_display[:80] + "..."
+        text = (
+            f"🖼️ Image generated \\({code(short_id)}\\)\n\n"
+            f"{bold(escape_md(brand_label))}\n"
+            f"Type: {escape_md(content_type)} \\| Model: {escape_md(model_label)}\n"
+            f"Cost: {escape_md(cost_str)}\n\n"
+            f"📁 {escape_md(drive_url_display)}"
+        )
+
+        # Send the image via Telegram
+        try:
+            from app.telegram.webhook import telegram_api as tg_api
+
+            # Send photo directly
+            await tg_api("sendPhoto", {
+                "chat_id": chat_id,
+                "photo": drive_result["drive_url"],
+                "caption": f"{BRAND_CONFIGS[brand_context]['name']} | {content_type} | {prompt[:100]}",
+            })
+        except Exception:
+            pass  # Photo send is best-effort; text response goes through
+
+        return {"text": text, "parse_mode": "MarkdownV2"}
+
+    except Exception as exc:
+        return {"text": escape_md(f"Image generation failed: {str(exc)[:200]}")}
+
+
 async def handle_log(args: str, pool: asyncpg.Pool) -> dict[str, Any]:
     """Handle /log — capture a quick thought to knowledge_entries.
 
@@ -751,6 +928,7 @@ COMMANDS: dict[str, Any] = {
     "/e": handle_entry,
     "/ei": handle_entry_idea,
     "/em": handle_entry_memory,
+    "/img": handle_img,
 }
 
 
@@ -777,7 +955,8 @@ async def handle_command(command: str, args: str, pool: asyncpg.Pool) -> dict[st
             "/j — Journal entry\n"
             "/e — Quick capture\n"
             "/ei — Capture idea\n"
-            "/em — Capture memory"
+            "/em — Capture memory\n"
+            "/img — Generate an image"
         ),
         "parse_mode": "MarkdownV2",
     }

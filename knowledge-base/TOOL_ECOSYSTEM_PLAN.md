@@ -2,7 +2,7 @@
 
 > **Purpose:** Reference architecture for the three-tier MCP and tool access system. Governs how new tools are added and where they live.
 >
-> **Last updated:** 2026-03-18 (Sprint 10-B. MCP Gateway LIVE with 56 tools across 10 modules. Bharatvarsh Lore Layer deployed (image: lore-v1, revision 00037). 25 skills. Dashboard: 9 pages, 23 API routes, 28 components.)
+> **Last updated:** 2026-03-19 (State v12. MCP Gateway: 64 tools across 12 modules in codebase (56/10 deployed). Composite queries + Visual content modules built. 25 skills. Dashboard: 9 pages, 23 API routes, 28 components.)
 
 ---
 
@@ -27,7 +27,7 @@ Single FastAPI container on Cloud Run. Scales to zero. All custom tool access. A
 **Deployed at:** Cloud Run, asia-south1, project ai-operating-system-490208
 **Service URL:** https://ai-os-gateway-1054489801008.asia-south1.run.app
 **Service account:** ai-os-cloud-run
-**Image:** ai-os-gateway:be26f7c (auto-deployed via Cloud Build)
+**Image:** ai-os-gateway:lore-v1 (deployed), next deploy includes composite + media_gen
 
 | Module | Priority | Tool Calls | Status |
 |--------|----------|-----------|--------|
@@ -41,6 +41,8 @@ Single FastAPI container on Cloud Run. Scales to zero. All custom tool access. A
 | Capture | P1 | capture_entry, list_journals, search_journals | LIVE (3 tools) |
 | Contacts | P1 | search_contacts, get_contact, create_contact, update_contact, get_upcoming_dates, get_contact_network, add_relationship, add_important_date | LIVE (8 tools) |
 | Bharatvarsh | P2 | query_lore, get_character, get_entity, search_lore, get_timeline, get_chapter, check_lore_consistency, get_writing_style | LIVE (8 tools) |
+| Composite | P1 | get_task_full, get_domain_overview, get_contact_brief | BUILT (3 tools) |
+| Media Gen | P2 | generate_image, edit_image, render_template, store_asset, list_assets | BUILT (5 tools) |
 | WhatsApp | P3 | send_message, send_template, get_message_status | Not started |
 | Content Tracker | P3 | log_post, get_calendar, update_status, get_metrics | Not started |
 
@@ -62,8 +64,11 @@ mcp-servers/ai-os-gateway/
 │   │   ├── capture.py       ← LIVE (3 tools)
 │   │   ├── contacts.py      ← LIVE (8 tools)
 │   │   ├── bharatvarsh.py   ← LIVE (8 tools)
+│   │   ├── composite.py     ← BUILT (3 tools)
+│   │   ├── media_gen.py     ← BUILT (5 tools)
 │   │   ├── whatsapp.py      ← Not started
 │   │   └── content.py       ← Not started
+│   ├── templates/            ← 6 branded HTML templates for media_gen
 │   └── auth/
 │       ├── google_oauth.py  ← Shared Google OAuth (refresh token)
 │       └── bearer.py        ← API key validation
@@ -150,7 +155,7 @@ NPM packages running as local subprocesses. Zero cloud cost.
 | Phase 2b | Task notification service (daily overdue scan) | 2-3 days | Complete — deployed as Cloud Run + Scheduler |
 | Phase 3a | Dashboard scaffold + PWA + auth + Command Center + Gantt + Task Board | 4-6 weeks | Complete — deployed to Cloud Run |
 | Phase 3b | AI Risk Engine + push notifications + Risk Dashboard | 2-3 weeks | Partial — Risk Engine + Daily Brief + Task Annotation Sync deployed. FCM push notifications pending. |
-| Phase 4 | Bharatvarsh Lore module (DEPLOYED) + Admin + extended views | 2-3 days | Partial — lore module deployed (revision 00037, image lore-v1). Admin module + extended dashboard views not started. |
+| Phase 4 | Bharatvarsh Lore (DEPLOYED) + Composite Queries (BUILT) + Visual Content (BUILT) + extended views | 2-3 days | Partial — lore deployed, composite + media_gen built (not deployed). Admin module + extended dashboard views not started. |
 | Phase 5 | Local STDIOs + WhatsApp + Content Tracker + Dashboard extended views | 2-4 weeks | Not started |
 
 ---

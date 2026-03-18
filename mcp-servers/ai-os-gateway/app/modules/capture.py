@@ -75,7 +75,11 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
         "For quick entries, optionally specify capture_type: idea, epiphany, memory_recall, observation. "
         "domain: optional life_domains slug to associate the entry with a domain. "
         "tags: optional list of tags. urgency: low/medium/high (quick only). "
-        "linked_task_ids: optional list of task UUIDs to link (quick only)."
+        "linked_task_ids: optional list of task UUIDs to link (quick only). "
+        "Example (journal): capture_entry(type='journal', content='Productive day, shipped the lore layer...', mood='focused', energy_level=4, domain='003_career_professional'). "
+        "Example (quick): capture_entry(type='quick', content='Idea: use vector similarity for contact dedup', capture_type='idea', tags=['engineering'], urgency='medium'). "
+        "Returns (journal): {type, id, created_at, word_count, mood, energy_level, _meta}. "
+        "Returns (quick): {type, id, title, created_at, capture_type, _meta}."
     ))
     async def capture_entry(
         type: str,
@@ -126,6 +130,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                         "word_count": result["word_count"],
                         "mood": mood,
                         "energy_level": energy_level,
+                        "_meta": {"action": "captured", "related_tools": ["list_journals", "search_journals"]},
                     })
 
                 else:  # type == "quick"
@@ -163,6 +168,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                         "title": result["title"],
                         "created_at": result["created_at"],
                         "capture_type": resolved_capture_type,
+                        "_meta": {"action": "captured", "related_tools": ["search_knowledge"]},
                     })
 
         except Exception as exc:
@@ -171,7 +177,9 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
     @mcp.tool(description=(
         "List recent journal entries. Returns entries with content preview, mood, energy, "
         "word count, and domain. Filter by days_back (default 7), mood, or limit (default 20). "
-        "Use for 'what did I journal about this week?' queries."
+        "Use for 'what did I journal about this week?' queries. "
+        "Example: list_journals(days_back=30, limit=10). "
+        "Returns: {entries: [{id, content_preview, mood, energy_level, word_count, domain_name, ...}], count, total_in_period, undistilled, days_back, _meta}."
     ))
     async def list_journals(
         days_back: int = 7,
@@ -225,6 +233,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                     "total_in_period": stats["total"] if stats else 0,
                     "undistilled": stats["undistilled"] if stats else 0,
                     "days_back": days_back,
+                    "_meta": {"related_tools": ["search_journals", "capture_entry"]},
                 })
         except Exception as exc:
             return json.dumps({"error": f"Failed to list journals: {exc}"})
@@ -233,7 +242,9 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
         "Full-text search across journal content. Uses PostgreSQL tsvector for relevance-ranked results. "
         "Returns matching entries with relevance score and highlighted snippet. "
         "query: search terms. days_back: how far back to search (default 90). limit: max results (default 10). "
-        "For semantic/historical search of processed journals, use search_knowledge with source_type='journal_entry' instead."
+        "For semantic/historical search of processed journals, use search_knowledge with source_type='journal_entry' instead. "
+        "Example: search_journals(query='deployment strategy', days_back=60, limit=5). "
+        "Returns: {query, results: [{id, snippet, relevance, mood, energy_level, domain_name, ...}], count, days_searched, _meta}."
     ))
     async def search_journals(
         query: str,
@@ -271,6 +282,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                     "results": results,
                     "count": len(results),
                     "days_searched": days_back,
+                    "_meta": {"related_tools": ["list_journals", "search_knowledge"]},
                 })
         except Exception as exc:
             return json.dumps({"error": f"Failed to search journals: {exc}"})

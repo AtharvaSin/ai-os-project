@@ -66,7 +66,9 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
         "search: text search in name, summary, and full_description. "
         "tags: filter by tags (entities must have ALL specified tags). "
         "limit: max results (default 20). "
-        "Returns entities with id, type, name, slug, tagline, summary, disclosure, faction, tags."
+        "Returns entities with id, type, name, slug, tagline, summary, disclosure, faction, tags. "
+        "Example: query_lore(entity_type='character', faction='Rathore', disclosure='declassified', limit=10). "
+        "Returns: {entities: [{id, entity_type, name, slug, tagline, summary, disclosure, faction, tags}], count, filters, _meta}."
     ))
     async def query_lore(
         entity_type: str | None = None,
@@ -138,6 +140,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                         "search": search,
                         "tags": tags,
                     },
+                    "_meta": {"related_tools": ["get_character", "get_entity", "search_lore"]},
                 })
         except Exception as exc:
             return json.dumps({"error": f"Failed to query lore: {exc}"})
@@ -147,7 +150,9 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
     @mcp.tool(description=(
         "Get a full Bharatvarsh character profile including all relationships. "
         "slug: the character's slug (e.g., 'kahaan-arshad', 'rudra-rathore'). "
-        "Returns complete character data with visual_keys, metadata, and all relationships to other entities."
+        "Returns complete character data with visual_keys, metadata, and all relationships to other entities. "
+        "Example: get_character(slug='kahaan-arshad'). "
+        "Returns: {id, name, name_devanagari, slug, summary, full_description, visual_keys, metadata, relationships: [{relationship, related_entity, related_slug, direction, strength}], _meta}."
     ))
     async def get_character(slug: str) -> str:
         pool = get_pool()
@@ -185,6 +190,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                 relationships = [_row_to_dict(r) for r in rel_rows]
 
                 character["relationships"] = relationships
+                character["_meta"] = {"related_tools": ["query_lore", "get_chapter", "check_lore_consistency", "get_writing_style"]}
                 return json.dumps(character)
         except Exception as exc:
             return json.dumps({"error": f"Failed to get character: {exc}"})
@@ -196,7 +202,9 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
         "Works for characters, factions, locations, technology, concepts. "
         "slug: the entity's unique slug. "
         "include_relationships: whether to fetch relationships (default true). "
-        "Returns full entity data with optional relationship graph."
+        "Returns full entity data with optional relationship graph. "
+        "Example: get_entity(slug='the-nexus', include_relationships=True). "
+        "Returns: {id, entity_type, name, slug, summary, full_description, metadata, relationships?: [...], _meta}."
     ))
     async def get_entity(slug: str, include_relationships: bool = True) -> str:
         pool = get_pool()
@@ -234,6 +242,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                     rel_rows = await conn.fetch(rel_sql, entity_id)
                     result["relationships"] = [_row_to_dict(r) for r in rel_rows]
 
+                result["_meta"] = {"related_tools": ["query_lore", "search_lore", "check_lore_consistency"]}
                 return json.dumps(result)
         except Exception as exc:
             return json.dumps({"error": f"Failed to get entity: {exc}"})
@@ -244,7 +253,9 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
         "Full-text search across all Bharatvarsh lore entities. "
         "Uses PostgreSQL tsvector for relevance-ranked results across name, summary, and full_description. "
         "query: search terms. limit: max results (default 10). "
-        "Returns matching entities with relevance score and highlighted snippet."
+        "Returns matching entities with relevance score and highlighted snippet. "
+        "Example: search_lore(query='ancient weapon technology', limit=5). "
+        "Returns: {query, results: [{id, entity_type, name, slug, snippet, relevance, disclosure}], count, _meta}."
     ))
     async def search_lore(query: str, limit: int = 10) -> str:
         if not query or not query.strip():
@@ -284,6 +295,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                     "query": query,
                     "results": results,
                     "count": len(results),
+                    "_meta": {"related_tools": ["get_entity", "get_character", "query_lore"]},
                 })
         except Exception as exc:
             return json.dumps({"error": f"Failed to search lore: {exc}"})
@@ -295,7 +307,10 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
         "era: filter by era name. "
         "year_from/year_to: filter by year range. "
         "limit: max results (default 50). "
-        "Returns chronological events with year, era, title, description, significance."
+        "Returns chronological events with year, era, title, description, significance. "
+        "significance: 1-5 scale (1=minor, 5=world-altering). era: partial match (ILIKE). "
+        "Example: get_timeline(era='Golden', year_from=2000, year_to=2100, limit=20). "
+        "Returns: {events: [{id, year, era, title, description, significance, entities_involved, disclosure}], count, filters, _meta}."
     ))
     async def get_timeline(
         era: str | None = None,
@@ -350,6 +365,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                         "year_from": year_from,
                         "year_to": year_to,
                     },
+                    "_meta": {"related_tools": ["query_lore", "get_entity"]},
                 })
         except Exception as exc:
             return json.dumps({"error": f"Failed to get timeline: {exc}"})
@@ -360,7 +376,10 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
         "Get novel chapter metadata with linked character and location names. "
         "chapter_number: the chapter number. "
         "novel: novel name (default 'MahaBharatvarsh'). "
-        "Returns chapter summary, POV character, locations, characters, plot threads, mood."
+        "Returns chapter summary, POV character, locations, characters, plot threads, mood. "
+        "plot_threads: array of story thread names. mood: descriptive text (e.g., 'tense', 'contemplative'). "
+        "Example: get_chapter(chapter_number=1, novel='MahaBharatvarsh'). "
+        "Returns: {id, novel, chapter_number, title, summary, pov_character_name, word_count, mood, plot_threads, characters: [...], locations: [...], _meta}."
     ))
     async def get_chapter(chapter_number: int, novel: str = "MahaBharatvarsh") -> str:
         pool = get_pool()
@@ -405,6 +424,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                     )
                     result["locations"] = [_row_to_dict(r) for r in loc_rows]
 
+                result["_meta"] = {"related_tools": ["get_character", "get_writing_style", "check_lore_consistency"]}
                 return json.dumps(result)
         except Exception as exc:
             return json.dumps({"error": f"Failed to get chapter: {exc}"})
@@ -416,7 +436,9 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
         "Extracts entity names and key terms from the text, then validates them against the lore DB. "
         "content: the text to check. "
         "Returns a report of found entities, potential issues (unknown terms, mismatched facts), and suggestions. "
-        "Use this before publishing any Bharatvarsh content to ensure lore accuracy."
+        "Use this before publishing any Bharatvarsh content to ensure lore accuracy. "
+        "Example: check_lore_consistency(content='Kahaan Arshad walked through the Nexus gates...'). "
+        "Returns: {found_entities: [{name, entity_type, mentions, disclosure}], found_count, unknown_potential_terms[], unknown_count, warnings[], content_length, _meta}."
     ))
     async def check_lore_consistency(content: str) -> str:
         if not content or not content.strip():
@@ -506,6 +528,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                     "unknown_count": len(potential_terms),
                     "warnings": warnings,
                     "content_length": len(content),
+                    "_meta": {"related_tools": ["get_entity", "query_lore", "search_lore"]},
                 })
         except Exception as exc:
             return json.dumps({"error": f"Failed to check lore consistency: {exc}"})
@@ -517,7 +540,9 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
         "fragment_type: filter by type (dialogue/description/action/internal_monologue/world_detail). "
         "character_slug: get fragments for a specific character. "
         "limit: max fragments (default 10). "
-        "Returns exemplary prose passages with style notes for voice replication."
+        "Returns exemplary prose passages with style notes for voice replication. "
+        "Example: get_writing_style(fragment_type='dialogue', character_slug='kahaan-arshad', limit=5). "
+        "Returns: {fragments: [{fragment_type, content, style_notes, character_name, chapter_title, tags}], count, filters, _meta}."
     ))
     async def get_writing_style(
         fragment_type: str | None = None,
@@ -576,6 +601,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                         "fragment_type": fragment_type,
                         "character_slug": character_slug,
                     },
+                    "_meta": {"related_tools": ["get_character", "get_chapter"]},
                 })
         except Exception as exc:
             return json.dumps({"error": f"Failed to get writing style: {exc}"})

@@ -13,6 +13,7 @@ _openai_api_key: str | None = None
 _telegram_bot_token: str | None = None
 _telegram_chat_id: str | None = None
 _telegram_webhook_secret: str | None = None
+_gemini_api_key: str | None = None
 
 
 def _is_cloud_run() -> bool:
@@ -108,6 +109,13 @@ def get_anthropic_api_key() -> str | None:
     return os.environ.get("ANTHROPIC_API_KEY") or _load_secret("ANTHROPIC_API_KEY")
 
 
+def _load_gemini_env() -> None:
+    """Load Gemini API key from Secret Manager into env vars."""
+    key = _load_secret("GEMINI_API_KEY")
+    if key:
+        os.environ.setdefault("GEMINI_API_KEY", key)
+
+
 def _load_telegram_env() -> None:
     """Load Telegram secrets from Secret Manager into env vars.
 
@@ -154,6 +162,15 @@ def get_telegram_webhook_secret() -> str:
     return _telegram_webhook_secret
 
 
+def get_gemini_api_key() -> str | None:
+    """Get the Google Gemini API key for image generation."""
+    global _gemini_api_key
+    if _gemini_api_key:
+        return _gemini_api_key
+    _gemini_api_key = os.environ.get("GEMINI_API_KEY") or _load_secret("GEMINI_API_KEY")
+    return _gemini_api_key
+
+
 async def init_db_pool() -> None:
     """Initialize the asyncpg connection pool."""
     global _db_pool, _api_key
@@ -163,6 +180,7 @@ async def init_db_pool() -> None:
     _load_openai_env()
     _load_anthropic_env()
     _load_telegram_env()
+    _load_gemini_env()
 
     db_name = os.getenv("DB_NAME", "ai_os")
     db_user = os.getenv("DB_USER", "ai_os_admin")

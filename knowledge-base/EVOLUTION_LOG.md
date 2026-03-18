@@ -13,6 +13,21 @@ A running record of design decisions, architecture changes, brainstorming outcom
 
 ## Log Entries
 
+### Sprint 11 — Visual Content + Composite Queries + Gateway Improvements (2026-03-19)
+- [x] composite.py module: 3 tools (get_task_full, get_domain_overview, get_contact_brief) — reduces multi-query round-trips
+- [x] media_gen.py module: 5 tools (generate_image, edit_image, render_template, store_asset, list_assets) — brand-injected visual content via Google Gemini API
+- [x] 6 branded HTML templates: banner_wide, og_image, social_post_landscape, social_post_square, story, youtube_thumbnail
+- [x] Migration 016: media_assets table (brand_context, model tracking, Drive integration, domain FK)
+- [x] Migration 017: default_project_id in life_domains metadata for phone task routing
+- [x] Telegram /img command: image generation from mobile via @AsrAiOsbot
+- [x] Gateway-wide module improvements: all 10 existing modules modified
+- [x] Daily Brief Engine: cloudbuild, config, Drive delivery updates
+- [x] Drive structure redesign: DRIVE_STRUCTURE_REDESIGN.docx + migration script
+- [x] main.py: composite + media_gen modules registered (12 modules total)
+- [ ] Gateway deploy pending: 64 tools across 12 modules in codebase, 56/10 deployed
+- [ ] Migrations 016-017 pending application to Cloud SQL
+- [ ] Commit pending for all changes
+
 ### Sprint 10-B — Bharatvarsh Knowledge Layer Enrichment (2026-03-18)
 - [x] Migration 015: 5 new lore tables (lore_entities, lore_relationships, lore_timeline, lore_chapters, writing_fragments), 4 enums, 18 indexes, 3 triggers
 - [x] Seed 013: 139 records (35 entities, 57 relationships, 20 timeline events, 27 writing fragments) from 960K chars of source material

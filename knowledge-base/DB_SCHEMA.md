@@ -3,7 +3,7 @@
 > Auto-generated from `ai_os` database on 2026-03-14, updated 2026-03-18
 > Instance: `bharatvarsh-website:us-central1:bharatvarsh-db`
 > Database: `ai_os` | User: `ai_os_admin` | PostgreSQL 15 | Extensions: vector 0.8.1, moddatetime 1.0, ltree 1.2
-> **Note:** Migrations 001-015 all applied (38 tables live). Seed 013 applied (139 lore records). Extensions: vector 0.8.1, moddatetime 1.0, ltree 1.2. Live regeneration requires Cloud SQL Proxy connection.
+> **Note:** Migrations 001-015 applied (38 tables live). Migrations 016-017 written (not yet applied). 39 tables in codebase. Seed 013 applied (139 lore records). Extensions: vector 0.8.1, moddatetime 1.0, ltree 1.2. Live regeneration requires Cloud SQL Proxy connection.
 
 ## Overview
 
@@ -47,6 +47,7 @@
 | 36 | `lore_timeline` | 20 | 13 | Bharatvarsh Lore | 015 |
 | 37 | `lore_chapters` | 0 | 14 | Bharatvarsh Lore | 015 |
 | 38 | `writing_fragments` | 27 | 9 | Bharatvarsh Lore | 015 |
+| 39 | `media_assets` | 0 | 25 | Visual Content | 016 |
 
 **Migration 006 (Knowledge Functions — applied):**
 - 7 new source_type enum values, knowledge_domain enum, 3 new columns on knowledge_entries (sub_domain, project_id FK, drive_file_id), match_knowledge() function (semantic search), traverse_knowledge() function (graph traversal), 4 new indexes
@@ -92,6 +93,14 @@
 - **Indexes:** 18 total — GIN fulltext on lore_entities, GIN on tags/entities_involved arrays, type/disclosure/faction filters
 - **Triggers:** moddatetime on lore_entities, lore_timeline, lore_chapters
 - **Seed:** 013_seed_bharatvarsh_lore.sql (35 entities, 57 relationships, 20 timeline events, 27 writing fragments)
+
+**Migration 016 (Media Assets — written, not applied):**
+- **Table:** media_assets — tracks all generated and manually stored media across brand contexts (A/B/C). Columns: brand_context (A/B/C), asset_type, source (generated/manual/template/edited), model_used, prompt_used, original_prompt, content_type, aspect_ratio, dimensions, file_format, file_size_bytes, drive_file_id, drive_url, drive_folder_id, template_name, domain_id FK (→ life_domains), tags (TEXT[]), metadata (JSONB).
+- **Indexes:** 7 (brand_context, asset_type, source, domain_id, GIN on tags, created_at DESC, content_type)
+- **Trigger:** moddatetime(updated_at)
+
+**Migration 017 (Domain Default Project — written, not applied):**
+- **Data update:** Adds `default_project_id` to each life_domain's metadata JSONB. Maps domains to their default project for phone-created task routing (e.g., domain 006 → ai-os project, domain 004 → bharatvarsh, domain 009 → zealogics). All 10 domains updated.
 
 ---
 

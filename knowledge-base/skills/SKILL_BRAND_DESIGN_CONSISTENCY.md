@@ -351,7 +351,7 @@ This table is absolute. No exceptions.
 
 - **Full token tables:** `BRAND_IDENTITY.md` in this knowledge base (532 lines, all three contexts with complete hex values, type scales, spatial systems, component patterns, anti-patterns)
 - **Claude Code skills:** `.claude/skills/brand-guidelines/`, `.claude/skills/infographic/`, `.claude/skills/ui-design-process/`
-- **Drive templates:** `AI OS/BRAND_TEMPLATES/` (3 context subfolders with .docx templates)
+- **Drive templates:** `AI OS/Artifacts/Brand-Templates/` (3 context subfolders: context-a-ai-os, context-b-bharatvarsh, context-c-portfolio)
 - **Matplotlib theme:** `.claude/skills/infographic/assets/mpl-themes/ai_os_system.mplstyle` (Claude Code only)
 - **React templates:** `.claude/skills/infographic/assets/react-templates/` — MetricCard, ComparisonTable, ProcessFlow (Claude Code only)
 - **Extraction source:** wibify.agency dark mode — Context A accent #00D492 (electric emerald)
@@ -361,5 +361,5 @@ This table is absolute. No exceptions.
 ## Connectors Used
 
 - **BRAND_IDENTITY.md** — Knowledge base document (primary reference, always available)
-- **Google Drive** — For accessing pre-built .docx/.potx templates from `AI OS/BRAND_TEMPLATES/`
+- **Google Drive** — For accessing pre-built .docx/.potx templates from `AI OS/Artifacts/Brand-Templates/`
 - **AIOSMCP** — For uploading branded outputs to Drive via `upload_file` or `create_doc`

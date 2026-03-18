@@ -95,7 +95,9 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
 
     @mcp.tool(description=(
         "Execute a read-only SQL query against the ai_os database. "
-        "Only SELECT and WITH...SELECT are allowed. Use $1, $2... for params."
+        "Only SELECT and WITH...SELECT are allowed. Use $1, $2... for params. "
+        "Returns: JSON array of row objects [{column: value, ...}]. "
+        "Example: query_db(sql='SELECT id, title, status FROM tasks WHERE status = $1 LIMIT 5', params=['todo'])"
     ))
     async def query_db(sql: str, params: list[Any] | None = None) -> str:
         stripped = sql.strip().rstrip(";")
@@ -115,7 +117,14 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
     @mcp.tool(description=(
         "Insert a new record into an allowed table. Provide table name and a "
         "data dict of column->value pairs. UUID id auto-generated if omitted. "
-        "Returns the created record."
+        "Allowed tables: projects, project_phases, milestones, tasks, artifacts, "
+        "project_tags, contacts, contact_relationships, important_dates, "
+        "audiences, audience_members, pipelines, pipeline_runs, pipeline_logs, "
+        "campaigns, campaign_posts, knowledge_entries, knowledge_embeddings, "
+        "knowledge_connections, skill_registry, skill_evolution_log, task_annotations, "
+        "life_domains, domain_context_items, domain_health_snapshots. "
+        "Returns: {column: value, ..., _meta: {action, table}}. "
+        "Example: insert_record(table='tasks', data={'title': 'Review PR', 'status': 'todo', 'priority': 'high', 'project_id': '...', 'domain_id': '...'})"
     ))
     async def insert_record(table: str, data: dict[str, Any]) -> str:
         if table not in ALLOWED_TABLES:
@@ -132,13 +141,17 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
         try:
             async with pool.acquire() as conn:
                 record = await conn.fetchrow(sql, *list(data.values()))
-                return json.dumps(_row_to_dict(record))
+                result = _row_to_dict(record)
+                result["_meta"] = {"action": "inserted", "table": table}
+                return json.dumps(result)
         except Exception as exc:
             return json.dumps({"error": f"Insert failed: {exc}"})
 
     @mcp.tool(description=(
-        "Update an existing record by UUID id. Provide table name, record id, "
-        "and a data dict of columns to update. Returns the updated record."
+        "Update an existing record by UUID id. Provide table name, record id (UUID string), "
+        "and a data dict of columns to update. Only provided columns are changed. "
+        "Returns: {column: value, ..., _meta: {action, table}} or {error: string}. "
+        "Example: update_record(table='tasks', id='678ea4e5-...', data={'status': 'done', 'completed_at': '2026-03-18T10:00:00Z'})"
     ))
     async def update_record(table: str, id: str, data: dict[str, Any]) -> str:
         if table not in ALLOWED_TABLES:
@@ -158,13 +171,17 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                 record = await conn.fetchrow(sql, *values, id)
                 if record is None:
                     return json.dumps({"error": f"No record in '{table}' with id '{id}'."})
-                return json.dumps(_row_to_dict(record))
+                result = _row_to_dict(record)
+                result["_meta"] = {"action": "updated", "table": table}
+                return json.dumps(result)
         except Exception as exc:
             return json.dumps({"error": f"Update failed: {exc}"})
 
     @mcp.tool(description=(
         "Inspect the database schema. With a table name: returns columns, types, "
-        "constraints, and row count. Without: lists all tables with row counts."
+        "constraints, and row count. Without: lists all tables with row counts. "
+        "Returns: [{table, estimated_rows}] (no args) or {table, row_count, columns[], constraints[]} (with table). "
+        "Example: get_schema(table='tasks') or get_schema() for full table listing."
     ))
     async def get_schema(table: str | None = None) -> str:
         pool = get_pool()
@@ -231,7 +248,11 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
     @mcp.tool(description=(
         "Search knowledge entries using semantic similarity (vector), "
         "BM25 full-text search, or hybrid mode (semantic first, BM25 fallback). "
-        "Supports filtering by domain, sub_domain, and project_slug."
+        "mode: 'semantic'|'fulltext'|'hybrid' (default 'hybrid'). "
+        "Supports filtering by domain (knowledge_domain enum), sub_domain, and project_slug. "
+        "threshold: minimum similarity score 0.0-1.0 (default 0.3). "
+        "Returns: {mode, results[], count, _meta}. "
+        "Example: search_knowledge(query='deployment architecture', domain='technology', mode='hybrid', limit=5)"
     ))
     async def search_knowledge(
         query: str,
@@ -280,6 +301,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                                 "mode": "semantic",
                                 "results": [_row_to_dict(r) for r in rows],
                                 "count": len(rows),
+                                "_meta": {"related_tools": ["query_db"], "search_mode": "semantic"},
                             })
 
                     elif mode == "semantic":
@@ -327,6 +349,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                 "mode": "fulltext",
                 "results": [_row_to_dict(r) for r in rows],
                 "count": len(rows),
+                "_meta": {"related_tools": ["query_db"], "search_mode": "fulltext"},
             })
 
         except Exception as exc:
@@ -334,7 +357,11 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
 
     @mcp.tool(description=(
         "Log a pipeline execution run. Looks up pipeline by slug, inserts a "
-        "pipeline_runs record. Terminal statuses also set completed_at."
+        "pipeline_runs record. Terminal statuses also set completed_at. "
+        "status: 'running'|'success'|'failed'|'cancelled'. "
+        "trigger_type: 'scheduled'|'manual'|'event'|'webhook'. "
+        "Returns: {id, pipeline_id, status, trigger_type, started_at, completed_at, ...}. "
+        "Example: log_pipeline_run(pipeline_slug='daily-brief', status='success', trigger_type='scheduled', tokens_used=1500, cost_estimate_usd=0.02)"
     ))
     async def log_pipeline_run(
         pipeline_slug: str, status: str, trigger_type: str,

@@ -30,7 +30,7 @@ steps:
       - '--service-account=ai-os-cloud-run@ai-operating-system-490208.iam.gserviceaccount.com'
       - '--add-cloudsql-instances=bharatvarsh-website:us-central1:bharatvarsh-db'
       - '--set-secrets=AI_OS_DB_PASSWORD=AI_OS_DB_PASSWORD:latest,GOOGLE_CLIENT_ID=GOOGLE_CLIENT_ID:latest,GOOGLE_CLIENT_SECRET=GOOGLE_CLIENT_SECRET:latest,GOOGLE_REFRESH_TOKEN=GOOGLE_REFRESH_TOKEN:latest,ANTHROPIC_API_KEY=ANTHROPIC_API_KEY:latest,TELEGRAM_BOT_TOKEN=TELEGRAM_BOT_TOKEN:latest,TELEGRAM_CHAT_ID=TELEGRAM_CHAT_ID:latest'
-      - '--set-env-vars=DB_INSTANCE=bharatvarsh-website:us-central1:bharatvarsh-db,DB_USER=ai_os_admin,DB_NAME=ai_os,TELEGRAM_BRIEF_ENABLED=true,BRIEF_DRIVE_FOLDER=AI OS/AI Operating System/Daily Briefs'
+      - '--set-env-vars=DB_INSTANCE=bharatvarsh-website:us-central1:bharatvarsh-db,DB_USER=ai_os_admin,DB_NAME=ai_os,TELEGRAM_BRIEF_ENABLED=true,BRIEF_DRIVE_FOLDER=AI OS/Artifacts/Daily-Briefs'
       - '--memory=512Mi'
       - '--cpu=1'
       - '--timeout=120'

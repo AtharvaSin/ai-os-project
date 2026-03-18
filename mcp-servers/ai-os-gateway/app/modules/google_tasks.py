@@ -2,7 +2,7 @@
 
 Syncs tasks, objectives, and automations between Cloud SQL (source of truth)
 and Google Tasks (notification delivery rail). Creates items in domain-specific
-task lists organized by Life Graph domains (001-009).
+task lists organized by Life Graph domains (001-010).
 
 Task list naming: "{domain_number} {domain_name}" (one per numbered domain).
 Task list IDs stored in life_domains.metadata->>'google_task_list_id'.
@@ -236,7 +236,9 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
         description="List tasks from the Cloud SQL database, optionally filtered by project or life domain. "
         "Returns tasks with their Google Tasks sync status. "
         "Task lists are organized per life domain (001-009). "
-        "Use domain_slug to filter by life domain (recursively includes sub-domains)."
+        "Use domain_slug to filter by life domain (recursively includes sub-domains). "
+        "Returns: {tasks: [{id, title, status, priority, due_date, project_name, domain_name, google_synced, ...}], count, _meta}. "
+        "Example: list_tasks(project_slug='ai-operating-system') or list_tasks(domain_slug='003_career_professional')"
     )
     async def list_tasks(
         project_slug: str | None = None,
@@ -291,7 +293,11 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                     task["google_synced"] = bool(meta.get("google_task_id"))
                     tasks.append(task)
 
-                return json.dumps({"tasks": tasks, "count": len(tasks)})
+                return json.dumps({
+                    "tasks": tasks,
+                    "count": len(tasks),
+                    "_meta": {"related_tools": ["get_task_annotations", "update_task", "complete_task"]},
+                })
         except Exception as exc:
             return json.dumps({"error": f"Failed to list tasks: {exc}"})
 
@@ -299,7 +305,10 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
         description="Create a new task in Cloud SQL and sync to Google Tasks. "
         "The task appears in the domain's Google Task list with a due date notification. "
         "Priority is shown as a title prefix: [URGENT], [HIGH] for high/urgent tasks. "
-        "domain_slug is required to place the task in the correct domain task list."
+        "domain_slug is required to place the task in the correct domain task list. "
+        "priority: 'low'|'medium'|'high'|'urgent'. "
+        "Returns: {id, title, status, priority, due_date, google_task_id, google_synced, ..., _meta}. "
+        "Example: create_task(title='Review Q2 metrics', domain_slug='003_career_professional', project_slug='ai-operating-system', priority='high', due_date='2026-03-25')"
     )
     async def create_task(
         title: str,
@@ -314,7 +323,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
             async with pool.acquire() as conn:
                 # Resolve domain
                 domain = await conn.fetchrow(
-                    "SELECT id, name, domain_number FROM life_domains WHERE slug = $1",
+                    "SELECT id, name, domain_number, metadata FROM life_domains WHERE slug = $1",
                     domain_slug,
                 )
                 if not domain:
@@ -322,7 +331,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                 domain_id = str(domain["id"])
                 domain_name = domain["name"]
 
-                # Resolve project
+                # Resolve project — use domain's default_project_id when no slug given
                 if project_slug:
                     project = await conn.fetchrow(
                         "SELECT id, name FROM projects WHERE slug = $1", project_slug
@@ -331,13 +340,23 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                         return json.dumps({"error": f"Project '{project_slug}' not found"})
                     project_id = str(project["id"])
                 else:
-                    # Default to first project
-                    project = await conn.fetchrow(
-                        "SELECT id, name FROM projects ORDER BY created_at LIMIT 1"
-                    )
-                    if not project:
-                        return json.dumps({"error": "No projects found in database"})
-                    project_id = str(project["id"])
+                    dmeta = _parse_jsonb(domain["metadata"]) or {}
+                    default_pid = dmeta.get("default_project_id")
+                    if default_pid:
+                        project_id = default_pid
+                    else:
+                        # Fallback: project linked to domain, then 'personal'
+                        project = await conn.fetchrow(
+                            "SELECT id FROM projects WHERE domain_id = $1::uuid",
+                            domain["id"],
+                        )
+                        if not project:
+                            project = await conn.fetchrow(
+                                "SELECT id FROM projects WHERE slug = 'personal'"
+                            )
+                        if not project:
+                            return json.dumps({"error": "No projects found in database"})
+                        project_id = str(project["id"])
 
                 # Insert task into Cloud SQL
                 task_id = str(uuid.uuid4())
@@ -399,6 +418,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                 task_dict = _row_to_dict(record)
                 task_dict["google_task_id"] = google_task_id
                 task_dict["google_synced"] = google_task_id is not None
+                task_dict["_meta"] = {"action": "created", "related_tools": ["send_telegram_template", "get_task_annotations"]}
 
                 return json.dumps(task_dict)
         except Exception as exc:
@@ -409,7 +429,10 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
         "Updates title, due_date, description, priority, status, or domain_slug. "
         "If priority changes to urgent/high, the Google Task title prefix is updated. "
         "If domain_slug is provided, the task is moved to the new domain's Google Task list "
-        "(delete from old list + create in new list, preserving all data and user annotations)."
+        "(delete from old list + create in new list, preserving all data and user annotations). "
+        "status: 'todo'|'in_progress'|'blocked'|'done'|'cancelled'. priority: 'low'|'medium'|'high'|'urgent'. "
+        "Returns: {id, title, status, priority, due_date, google_synced, ..., _meta} or {error: string}. "
+        "Example: update_task(task_id='678ea4e5-...', fields={'status': 'in_progress', 'priority': 'urgent'})"
     )
     async def update_task(task_id: str, fields: dict) -> str:
         pool = get_pool()
@@ -587,7 +610,9 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
     @mcp.tool(
         description="Mark a task as completed in both Cloud SQL and Google Tasks. "
         "Sets status to 'done' and completed_at timestamp in the database, "
-        "and marks the corresponding Google Task as completed."
+        "and marks the corresponding Google Task as completed. "
+        "Returns: {id, title, status, project_name, domain_name, completed_at, google_synced, ..., _meta}. "
+        "Example: complete_task(task_id='678ea4e5-84a9-4a3f-88f7-9d4aac1adf68')"
     )
     async def complete_task(task_id: str) -> str:
         pool = get_pool()
@@ -601,7 +626,15 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                 if not record:
                     return json.dumps({"error": f"Task '{task_id}' not found"})
 
-                task_dict = _row_to_dict(record)
+                # Fetch full task context with project and domain names
+                enriched = await conn.fetchrow(
+                    "SELECT t.*, p.name AS project_name, d.name AS domain_name "
+                    "FROM tasks t "
+                    "JOIN projects p ON t.project_id = p.id "
+                    "LEFT JOIN life_domains d ON t.domain_id = d.id "
+                    "WHERE t.id = $1::uuid", task_id,
+                )
+                task_dict = _row_to_dict(enriched) if enriched else _row_to_dict(record)
                 metadata = task_dict.get("metadata") or {}
                 google_task_id = metadata.get("google_task_id")
                 google_list_id = metadata.get("google_task_list_id")
@@ -626,6 +659,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                     except Exception as e:
                         task_dict["google_sync_error"] = str(e)
 
+                task_dict["_meta"] = {"action": "completed", "related_tools": ["send_telegram_template", "get_task_annotations"]}
                 return json.dumps(task_dict)
         except Exception as exc:
             return json.dumps({"error": f"Failed to complete task: {exc}"})
@@ -633,15 +667,21 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
     @mcp.tool(
         description="Permanently delete a task from both Cloud SQL and Google Tasks. "
         "Removes the task row, deletes it from the Google Task list on the phone, "
-        "and cleans up related annotations. This action is irreversible."
+        "and cleans up related annotations. "
+        "WARNING: This permanently removes the task from both Cloud SQL and Google Tasks. This action is irreversible. "
+        "Returns: {deleted, task_id, title, project_name, domain, google_deleted, _meta}. "
+        "Example: delete_task(task_id='678ea4e5-84a9-4a3f-88f7-9d4aac1adf68')"
     )
     async def delete_task(task_id: str) -> str:
         pool = get_pool()
         try:
             async with pool.acquire() as conn:
                 row = await conn.fetchrow(
-                    "SELECT t.id, t.title, t.metadata, d.name AS domain_name "
-                    "FROM tasks t LEFT JOIN life_domains d ON t.domain_id = d.id "
+                    "SELECT t.id, t.title, t.metadata, "
+                    "p.name AS project_name, d.name AS domain_name "
+                    "FROM tasks t "
+                    "JOIN projects p ON t.project_id = p.id "
+                    "LEFT JOIN life_domains d ON t.domain_id = d.id "
                     "WHERE t.id = $1::uuid",
                     task_id,
                 )
@@ -684,8 +724,10 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                     "deleted": True,
                     "task_id": task_id,
                     "title": row["title"],
+                    "project_name": row.get("project_name"),
                     "domain": row.get("domain_name"),
                     "google_deleted": google_deleted,
+                    "_meta": {"action": "deleted", "related_tools": ["list_tasks", "sync_tasks_to_db"]},
                 })
         except Exception as exc:
             return json.dumps({"error": f"Failed to delete task: {exc}"})
@@ -696,7 +738,8 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
         "completion, title, due date, and annotations; (2) discovery of "
         "tasks created directly in Google Tasks (phone) and import to DB; "
         "(3) notes reconciliation to rebuild system zone after changes. "
-        "Returns a summary of all changes detected and applied."
+        "Returns: {synced, errors, changes[], total_checked}. "
+        "Example: sync_tasks_to_db() — no parameters needed, syncs all domain lists."
     )
     async def sync_tasks_to_db() -> str:
         service = _get_tasks_service()
@@ -879,9 +922,11 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                         errors += 1
 
                 # ── Phase 2: Discover phone-created tasks ──
+                # Query ALL active numbered domains (not just those with a list)
+                # so we can create missing task lists for domains like 010
                 domains = await conn.fetch(
                     "SELECT id, slug, name, metadata FROM life_domains "
-                    "WHERE metadata->>'google_task_list_id' IS NOT NULL "
+                    "WHERE domain_number IS NOT NULL "
                     "AND status = 'active'"
                 )
 
@@ -894,8 +939,20 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                 for domain in domains:
                     dmeta = _parse_jsonb(domain["metadata"]) or {}
                     google_list_id = dmeta.get("google_task_list_id")
+
+                    # Create task list for domains that don't have one yet (e.g. 010)
                     if not google_list_id:
-                        continue
+                        try:
+                            google_list_id = await _ensure_domain_task_list(
+                                conn, str(domain["id"]), service
+                            )
+                        except Exception:
+                            logger.warning(
+                                "Failed to create task list for domain %s",
+                                domain["slug"],
+                            )
+                        if not google_list_id:
+                            continue
 
                     try:
                         result = await run_google_api(
@@ -925,18 +982,22 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                             domain_id = domain["id"]
                             domain_slug = domain["slug"]
 
-                            # Resolve project from domain
-                            project_row = await conn.fetchrow(
-                                "SELECT id FROM projects WHERE domain_id = $1::uuid",
-                                domain_id,
-                            )
-                            if not project_row:
+                            # Resolve project: default_project_id → domain FK → 'personal'
+                            default_pid = dmeta.get("default_project_id")
+                            if default_pid:
+                                project_id = default_pid
+                            else:
                                 project_row = await conn.fetchrow(
-                                    "SELECT id FROM projects ORDER BY created_at LIMIT 1"
+                                    "SELECT id FROM projects WHERE domain_id = $1::uuid",
+                                    domain_id,
                                 )
-                            if not project_row:
-                                continue
-                            project_id = project_row["id"]
+                                if not project_row:
+                                    project_row = await conn.fetchrow(
+                                        "SELECT id FROM projects WHERE slug = 'personal'"
+                                    )
+                                if not project_row:
+                                    continue
+                                project_id = str(project_row["id"])
 
                             # Parse Google Task fields
                             clean_title = gt_title
@@ -1044,7 +1105,9 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
     @mcp.tool(
         description="Retrieve execution annotations captured from Google Tasks notes "
         "for a specific task. Returns the task brief (Item 1) alongside "
-        "timestamped annotations (Item 2), newest first."
+        "timestamped annotations (Item 2), newest first. "
+        "Returns: {task_id, task_title, item_1_brief, item_2_annotations[], annotation_count, _meta}. "
+        "Example: get_task_annotations(task_id='678ea4e5-84a9-4a3f-88f7-9d4aac1adf68')"
     )
     async def get_task_annotations(task_id: str, limit: int = 20) -> str:
         pool = get_pool()
@@ -1066,15 +1129,18 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                     'item_1_brief': task['description'] if task else None,
                     'item_2_annotations': [_row_to_dict(r) for r in rows],
                     'annotation_count': len(rows),
+                    '_meta': {'related_tools': ['update_task', 'complete_task']},
                 })
         except Exception as exc:
             return json.dumps({'error': f'Failed: {exc}'})
 
     @mcp.tool(
         description="Reset Google Tasks: delete ALL existing task lists, then create "
-        "domain-based lists (one per numbered life domain 001-009). Syncs all DB tasks, "
+        "domain-based lists (one per numbered life domain 001-010). Syncs all DB tasks, "
         "objectives, and automations to the appropriate domain list. "
-        "WARNING: This deletes all existing Google Task lists and items. Use with caution."
+        "WARNING: Destructive operation — deletes ALL existing task lists and recreates them. "
+        "Returns: {lists_deleted, lists_created, tasks_synced, objectives_synced, automations_synced, errors[]}. "
+        "Example: reset_task_lists() — no parameters."
     )
     async def reset_task_lists() -> str:
         service = _get_tasks_service()
@@ -1315,7 +1381,9 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
         description="Migrate all Google Tasks notes from old Unicode delimiter to new ASCII "
         "delimiter. Rebuilds the system zone of every synced task using the new "
         "'--- YOUR NOTES BELOW ---' format while preserving user-written annotations. "
-        "One-time migration tool — safe to run multiple times."
+        "One-time migration tool — safe to run multiple times. "
+        "WARNING: One-time migration operation. Only run once to update legacy Unicode delimiters to ASCII. "
+        "Returns: {migrated, already_new, no_notes, errors, total}."
     )
     async def migrate_notes_delimiter() -> str:
         service = _get_tasks_service()

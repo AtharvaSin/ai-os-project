@@ -137,7 +137,10 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
         "Fetches milestone and project from Cloud SQL, creates an all-day event "
         "on the 'AI OS Milestones' calendar with format '[PROJECT] Milestone: {name}'. "
         "Sets reminders: 1 day before (email) and day-of (popup). "
-        "Stores the event ID in milestones.google_calendar_event_id."
+        "Stores the event ID in milestones.google_calendar_event_id. "
+        "Milestone must have a due_date set. Fails if event already exists. "
+        "Example: create_milestone_event(milestone_id='a1b2c3d4-...'). "
+        "Returns: {milestone_id, milestone_name, event_id, event_url, calendar, date, _meta}."
     )
     async def create_milestone_event(milestone_id: str) -> str:
         service = _get_calendar_service()
@@ -184,6 +187,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                     "event_url": event.get("htmlLink", ""),
                     "calendar": "AI OS Milestones",
                     "date": str(milestone["due_date"]),
+                    "_meta": {"action": "created", "related_tools": ["update_milestone_event", "send_telegram_template"]},
                 })
         except ValueError as ve:
             return json.dumps({"error": str(ve)})
@@ -193,7 +197,11 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
     @mcp.tool(
         description="Update an existing Google Calendar event for a milestone. "
         "Patches the event title, date, or description when the milestone changes. "
-        "Only updates if google_calendar_event_id exists in the database."
+        "Only updates if google_calendar_event_id exists in the database. "
+        "Syncs title (from milestone name), date (from due_date), and description. "
+        "Creates no event if none exists — use create_milestone_event first. "
+        "Example: update_milestone_event(milestone_id='a1b2c3d4-...'). "
+        "Returns: {milestone_id, milestone_name, event_id, event_url, updated: bool, _meta}."
     )
     async def update_milestone_event(milestone_id: str) -> str:
         service = _get_calendar_service()
@@ -233,6 +241,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                     "event_id": updated["id"],
                     "event_url": updated.get("htmlLink", ""),
                     "updated": True,
+                    "_meta": {"action": "updated", "related_tools": ["delete_milestone_event"]},
                 })
         except ValueError as ve:
             return json.dumps({"error": str(ve)})
@@ -241,8 +250,11 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
 
     @mcp.tool(
         description="Delete a Google Calendar event for a milestone. "
-        "Removes the calendar event and clears google_calendar_event_id "
-        "from the milestones table."
+        "WARNING: Permanently removes the calendar event. "
+        "Clears google_calendar_event_id from the milestones table. "
+        "Safe if the calendar event was already deleted externally. "
+        "Example: delete_milestone_event(milestone_id='a1b2c3d4-...'). "
+        "Returns: {milestone_id, milestone_name, project_name, due_date, deleted: bool, _meta}."
     )
     async def delete_milestone_event(milestone_id: str) -> str:
         service = _get_calendar_service()
@@ -255,8 +267,9 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
 
             async with pool.acquire() as conn:
                 milestone = await conn.fetchrow(
-                    "SELECT id, name, google_calendar_event_id FROM milestones "
-                    "WHERE id = $1::uuid",
+                    "SELECT m.id, m.name, m.due_date, m.google_calendar_event_id, p.name AS project_name "
+                    "FROM milestones m JOIN projects p ON m.project_id = p.id "
+                    "WHERE m.id = $1::uuid",
                     milestone_id,
                 )
                 if not milestone:
@@ -287,7 +300,10 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                 return json.dumps({
                     "milestone_id": str(milestone["id"]),
                     "milestone_name": milestone["name"],
+                    "project_name": milestone["project_name"],
+                    "due_date": str(milestone["due_date"]) if milestone["due_date"] else None,
                     "deleted": True,
+                    "_meta": {"action": "deleted", "related_tools": ["create_milestone_event", "list_tasks"]},
                 })
         except Exception as exc:
             return json.dumps({"error": f"Failed to delete calendar event: {exc}"})

@@ -156,7 +156,8 @@ async def _process_update(update: TelegramUpdate) -> None:
                         "/j — Journal entry\n"
                         "/e — Quick capture\n"
                         "/ei — Capture idea\n"
-                        "/em — Capture memory"
+                        "/em — Capture memory\n"
+                        "/img — Generate an image"
                     ),
                     "parse_mode": "MarkdownV2",
                 }
@@ -251,6 +252,7 @@ async def register_commands() -> dict[str, Any]:
         {"command": "e", "description": "Quick capture: /e observation or thought"},
         {"command": "ei", "description": "Capture idea: /ei your idea here"},
         {"command": "em", "description": "Capture memory: /em recall or reference"},
+        {"command": "img", "description": "Generate image: /img prompt ctx:A|B|C type:social|hero"},
     ]
 
     result = await telegram_api("setMyCommands", {"commands": commands})

@@ -77,7 +77,9 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
         "List life domains, optionally filtered by parent and status. "
         "Returns domain hierarchy with paths. Use parent_slug to scope to a subtree. "
         "status filters: 'active', 'dormant', 'archived'. "
-        "include_children=True returns all descendants recursively."
+        "include_children=True returns all descendants recursively. "
+        "Example: list_domains(parent_slug='personal_projects', status='active'). "
+        "Returns: {domains: [{id, slug, name, path, parent_slug, status, domain_number, ...}], count: int, _meta}."
     ))
     async def list_domains(
         parent_slug: str | None = None,
@@ -123,14 +125,20 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                     if d.get("path"):
                         d["path"] = str(d["path"])
 
-                return json.dumps({"domains": domains, "count": len(domains)})
+                return json.dumps({
+                    "domains": domains,
+                    "count": len(domains),
+                    "_meta": {"related_tools": ["get_domain_tree", "get_domain_tasks", "get_domain_summary"]},
+                })
         except Exception as exc:
             return json.dumps({"error": f"Failed to list domains: {exc}"})
 
     @mcp.tool(description=(
         "Get the Life Graph hierarchy as a nested JSON tree. "
         "Includes active task/objective/automation counts per domain. "
-        "If root_slug provided, returns subtree from that root."
+        "If root_slug provided, returns subtree from that root. "
+        "Example: get_domain_tree(root_slug='personal_projects') or get_domain_tree() for full tree. "
+        "Returns: {tree: [{id, name, slug, children[], active_tasks, active_objectives, active_automations, ...}], _meta}."
     ))
     async def get_domain_tree(root_slug: str | None = None) -> str:
         pool = get_pool()
@@ -176,7 +184,10 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                         d["path"] = str(d["path"])
 
                 tree = _build_tree(flat)
-                return json.dumps({"tree": tree})
+                return json.dumps({
+                    "tree": tree,
+                    "_meta": {"related_tools": ["get_domain_tasks", "get_domain_summary", "list_domains"]},
+                })
         except Exception as exc:
             return json.dumps({"error": f"Failed to get domain tree: {exc}"})
 
@@ -184,7 +195,9 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
         "Get all tasks under a domain, recursively including sub-domains. "
         "Uses ltree for fast hierarchical query. Returns tasks with domain names. "
         "Filter by status: todo, in_progress, blocked, done, cancelled. "
-        "Filter by priority: low, medium, high, urgent."
+        "Filter by priority: low, medium, high, urgent. "
+        "Example: get_domain_tasks(domain_slug='003_career_professional', status='todo', priority='high'). "
+        "Returns: {domain, tasks: [{id, title, status, priority, due_date, domain_name, project_name, ...}], count, _meta}."
     ))
     async def get_domain_tasks(
         domain_slug: str,
@@ -237,6 +250,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                     "domain": domain_slug,
                     "tasks": tasks,
                     "count": len(tasks),
+                    "_meta": {"related_tools": ["update_task", "complete_task", "get_domain_summary"]},
                 })
         except Exception as exc:
             return json.dumps({"error": f"Failed to get domain tasks: {exc}"})
@@ -244,7 +258,11 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
     @mcp.tool(description=(
         "Get aggregate stats for a domain and all its children. "
         "Returns: total/active/completed/overdue tasks, objective count + avg progress, "
-        "automation count, and latest health score if available."
+        "automation count, and latest health score if available. "
+        "Overdue = due_date < today AND status not in ('done','cancelled'). "
+        "Health score: 0-100 scale from domain_health_snapshots. "
+        "Example: get_domain_summary(domain_slug='003_career_professional'). "
+        "Returns: {total, active, completed, overdue, objectives_count, avg_progress, automations_count, latest_health: {health_score, velocity_7d, ...}, _meta}."
     ))
     async def get_domain_summary(domain_slug: str) -> str:
         pool = get_pool()
@@ -270,6 +288,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                 if health:
                     summary["latest_health"] = _row_to_dict(health)
 
+                summary["_meta"] = {"related_tools": ["get_domain_tasks", "get_domain_tree", "add_context_item"]}
                 return json.dumps(summary)
         except Exception as exc:
             return json.dumps({"error": f"Failed to get domain summary: {exc}"})
@@ -277,7 +296,10 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
     @mcp.tool(description=(
         "Create a new life domain in the hierarchy. "
         "The ltree path is auto-computed from parent_slug via database trigger. "
-        "Slug must be unique and contain only lowercase letters, numbers, underscores."
+        "Slug must be unique and contain only lowercase letters, numbers, underscores. "
+        "status: 'active'|'dormant'|'archived' (default 'active'). "
+        "Example: create_domain(name='Side Projects', slug='side_projects', parent_slug='personal_projects', status='active'). "
+        "Returns: {id, slug, name, path, parent_id, status, sort_order, ..., _meta}."
     ))
     async def create_domain(
         name: str,
@@ -316,6 +338,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                 result = _row_to_dict(record)
                 if result.get("path"):
                     result["path"] = str(result["path"])
+                result["_meta"] = {"action": "created", "related_tools": ["add_context_item", "get_domain_tree"]}
 
                 return json.dumps(result)
         except Exception as exc:
@@ -323,7 +346,11 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
 
     @mcp.tool(description=(
         "Update domain properties: name, status, priority_weight, description, "
-        "color_code, icon. Status can be 'active', 'dormant', or 'archived'."
+        "color_code, icon. Status can be 'active', 'dormant', or 'archived'. "
+        "priority_weight: 0.0-1.0 (relative importance). color_code: hex string (e.g., '#00D492'). "
+        "icon: emoji or icon name. "
+        "Example: update_domain(domain_slug='003_career_professional', status='active', priority_weight=0.9). "
+        "Returns: {id, slug, name, path, status, priority_weight, color_code, icon, ..., _meta}."
     ))
     async def update_domain(
         domain_slug: str,
@@ -379,6 +406,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                 result = _row_to_dict(record)
                 if result.get("path"):
                     result["path"] = str(result["path"])
+                result["_meta"] = {"action": "updated", "related_tools": ["get_domain_summary", "get_domain_tree"]}
 
                 return json.dumps(result)
         except Exception as exc:
@@ -387,7 +415,10 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
     @mcp.tool(description=(
         "Add an objective or automation to a domain. "
         "item_type must be 'objective' or 'automation'. "
-        "For automations, use description to include trigger/schedule info."
+        "For automations, use description to include trigger/schedule info. "
+        "item_type: 'objective'|'automation'. priority: 'low'|'medium'|'high'|'urgent'. "
+        "Example: add_context_item(domain_slug='003_career_professional', item_type='objective', title='Complete AI OS Sprint 11', priority='high', target_date='2026-04-01'). "
+        "Returns: {id, domain_id, item_type, title, description, priority, status, target_date, ..., _meta}."
     ))
     async def add_context_item(
         domain_slug: str,
@@ -417,13 +448,18 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                     domain["id"], item_type, title, description, priority, target_date,
                 )
 
-                return json.dumps(_row_to_dict(record))
+                result = _row_to_dict(record)
+                result["_meta"] = {"action": "created", "item_type": item_type, "related_tools": ["get_domain_summary", "complete_context_item"]}
+                return json.dumps(result)
         except Exception as exc:
             return json.dumps({"error": f"Failed to add context item: {exc}"})
 
     @mcp.tool(description=(
         "Mark an objective or automation as completed. "
-        "Sets completed_at timestamp and status to 'completed'."
+        "Sets completed_at timestamp and status to 'completed'. "
+        "Also sets progress_pct to 100. item_id must be a valid UUID. Idempotent if already completed. "
+        "Example: complete_context_item(item_id='d1e2f3a4-...'). "
+        "Returns: {id, domain_id, item_type, title, status: 'completed', completed_at, progress_pct: 100, ..., _meta}."
     ))
     async def complete_context_item(item_id: str) -> str:
         pool = get_pool()
@@ -438,6 +474,8 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                 if not record:
                     return json.dumps({"error": f"Context item '{item_id}' not found"})
 
-                return json.dumps(_row_to_dict(record))
+                result = _row_to_dict(record)
+                result["_meta"] = {"action": "completed", "related_tools": ["get_domain_summary"]}
+                return json.dumps(result)
         except Exception as exc:
             return json.dumps({"error": f"Failed to complete context item: {exc}"})

@@ -20,7 +20,7 @@ def _find_or_create_folder(
 ) -> str:
     """Navigate/create folder hierarchy and return the leaf folder ID.
 
-    folder_path: "AI OS/AI Operating System/Daily Briefs"
+    folder_path: "AI OS/Artifacts/Daily-Briefs"
     """
     parts = [p.strip() for p in folder_path.split("/") if p.strip()]
     parent_id = "root"

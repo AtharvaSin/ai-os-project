@@ -11,7 +11,7 @@ from __future__ import annotations
 
 import json
 import uuid
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Any
 
 from fastmcp import FastMCP
@@ -64,8 +64,12 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
 
     @mcp.tool(
         description="Send a text message to the AI OS Telegram bot. "
-        "Supports MarkdownV2, HTML, or plain text. "
-        "Messages are logged to the notification_log table."
+        "parse_mode: 'MarkdownV2'|'HTML'|None (plain text). Default: MarkdownV2. "
+        "Note: MarkdownV2 requires escaping special chars: _ * [ ] ( ) ~ ` > # + - = | { } . ! "
+        "Max message length: 4096 characters (Telegram limit). "
+        "Messages are logged to the notification_log table. "
+        "Example: send_telegram_message(text='Task completed: Review PR', parse_mode='HTML'). "
+        "Returns: {sent: bool, message_id: int, preview: string, timestamp: string, _meta}."
     )
     async def send_telegram_message(
         text: str,
@@ -85,14 +89,21 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
             return json.dumps({
                 "sent": result.get("ok", False),
                 "message_id": msg_id,
+                "preview": text[:100],
+                "timestamp": datetime.now(tz=timezone.utc).isoformat(),
+                "_meta": {"action": "sent", "related_tools": ["edit_telegram_message", "get_telegram_bot_info"]},
             })
         except Exception as exc:
             return json.dumps({"error": f"Failed to send message: {exc}"})
 
     @mcp.tool(
         description="Send a pre-formatted notification using a template. "
-        "Templates: task_created, task_completed, milestone_approaching, "
-        "pipeline_result, custom. Data dict provides template variables."
+        "template_name: 'task_created'|'task_completed'|'milestone_approaching'|'pipeline_result'|'custom'. "
+        "Template variables — task_created: {title, project, priority}. task_completed: {title}. "
+        "milestone_approaching: {name, project, days_until}. pipeline_result: {pipeline, status, summary}. "
+        "custom: {text}. data: JSON string of template variables. "
+        "Example: send_telegram_template(template_name='task_created', data='{\"title\": \"Deploy v2\", \"project\": \"AI OS\", \"priority\": \"high\"}'). "
+        "Returns: {sent: bool, message_id: int, template: string, preview: string, _meta}."
     )
     async def send_telegram_template(
         template_name: str,
@@ -156,14 +167,22 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                 metadata=template_data,
             )
 
-            return json.dumps({"sent": result.get("ok", False), "message_id": msg_id})
+            return json.dumps({
+                "sent": result.get("ok", False),
+                "message_id": msg_id,
+                "template": template_name,
+                "preview": text[:100],
+                "_meta": {"action": "sent", "related_tools": ["edit_telegram_message"]},
+            })
         except Exception as exc:
             return json.dumps({"error": f"Failed to send template: {exc}"})
 
     @mcp.tool(
-        description="Send a message with an inline keyboard. "
-        "Buttons is a JSON string: [[{\"text\": \"Label\", \"callback_data\": \"action:id\"}]]. "
-        "Each inner array is one row of buttons."
+        description="Send a message with an inline keyboard (interactive buttons). "
+        "buttons_json: JSON string of button rows — [[{\"text\": \"Label\", \"callback_data\": \"action:id\"}]]. "
+        "Each inner array is one row. Max 8 buttons per row, 100 total. "
+        "Example: send_telegram_inline_keyboard(text='Choose action:', buttons_json='[[{\"text\": \"Approve\", \"callback_data\": \"approve:123\"}, {\"text\": \"Reject\", \"callback_data\": \"reject:123\"}]]'). "
+        "Returns: {sent: bool, message_id: int, button_count: int, _meta}."
     )
     async def send_telegram_inline_keyboard(
         text: str,
@@ -177,13 +196,19 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
             return json.dumps({
                 "sent": result.get("ok", False),
                 "message_id": result.get("result", {}).get("message_id"),
+                "button_count": sum(len(row) for row in buttons),
+                "_meta": {"action": "sent", "related_tools": ["edit_telegram_message"]},
             })
         except Exception as exc:
             return json.dumps({"error": f"Failed to send keyboard: {exc}"})
 
     @mcp.tool(
         description="Edit an existing Telegram message by message_id. "
-        "Can update text and/or reply markup (inline keyboard)."
+        "Provide text to update message content, or reply_markup_json to update buttons. "
+        "At least one of text or reply_markup_json must be provided. "
+        "Note: Messages can only be edited within ~48 hours of sending. "
+        "Example: edit_telegram_message(message_id=12345, text='Updated: Task approved'). "
+        "Returns: {edited: bool, message_id: int, updated_field: string, _meta}."
     )
     async def edit_telegram_message(
         message_id: int,
@@ -212,13 +237,17 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
             return json.dumps({
                 "edited": result.get("ok", False),
                 "message_id": message_id,
+                "updated_field": "text" if text else "reply_markup",
+                "_meta": {"action": "edited"},
             })
         except Exception as exc:
             return json.dumps({"error": f"Failed to edit message: {exc}"})
 
     @mcp.tool(
-        description="Get Telegram bot info and webhook status. "
-        "Returns bot username, webhook URL, pending update count."
+        description="Get Telegram bot info and webhook status. Returns bot username, webhook URL, "
+        "pending update count, and last error details. No parameters needed. "
+        "Example: get_telegram_bot_info(). "
+        "Returns: {bot: {id, username, ...}, webhook: {url, pending_update_count, last_error_date, last_error_message}, _meta}."
     )
     async def get_telegram_bot_info() -> str:
         try:
@@ -235,6 +264,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                     "last_error_date": wh.get("result", {}).get("last_error_date"),
                     "last_error_message": wh.get("result", {}).get("last_error_message"),
                 },
+                "_meta": {"related_tools": ["send_telegram_message"]},
             })
         except Exception as exc:
             return json.dumps({"error": f"Failed to get bot info: {exc}"})

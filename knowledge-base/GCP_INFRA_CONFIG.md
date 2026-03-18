@@ -2,7 +2,7 @@
 
 > **Purpose:** Canonical reference for all GCP project config, service accounts, database access, secrets, and deployment patterns. Referenced by /workflow-designer, /build-prd, /tech-eval, and any skill that deploys or connects to infrastructure.
 >
-> **Last updated:** 2026-03-18 (State v11. 13 Cloud Run services all LIVE. 14 Cloud Scheduler jobs (10 enabled, 4 paused). 13 secrets. Sprint 10-A Contact Intelligence + Sprint 10-B Bharatvarsh Lore Layer.)
+> **Last updated:** 2026-03-19 (State v12. 13 Cloud Run services all LIVE. 14 Cloud Scheduler jobs (10 enabled, 4 paused). 13 secrets. Gateway: 64 tools in codebase (12 modules), 56/10 deployed. Composite + Media Gen modules built.)
 
 ---
 
@@ -82,7 +82,7 @@ Enabled at 03:00 UTC, 7 retained, point-in-time recovery on, 7-day transaction l
 **Images:**
 | Image | Service | Status | Size |
 |-------|---------|--------|------|
-| ai-os-gateway | MCP Gateway (FastAPI) | LIVE (latest: be26f7c) | ~107MB |
+| ai-os-gateway | MCP Gateway (FastAPI) | LIVE (deployed: lore-v1). Next deploy adds composite + media_gen (64 tools) | ~107MB |
 | ai-os-dashboard | Dashboard PWA (Next.js) | LIVE (latest: sha256:b690e1a5...) | ~78MB |
 | telegram-notifications | Telegram Bot Notifications | LIVE | ~60MB |
 | embedding-generator | Knowledge Embedding Pipeline | LIVE | ~50MB |
@@ -171,7 +171,7 @@ gcloud run deploy ai-os-dashboard \
 
 | Service | Container | Purpose | Auth | Status | URL |
 |---------|-----------|---------|------|--------|-----|
-| ai-os-gateway | FastAPI | MCP Gateway — 56 tools (10 modules: postgres, google_tasks, drive_write, drive_read, calendar_sync, telegram, life_graph, capture, contacts, bharatvarsh), Telegram webhook | Bearer token / API key | LIVE (asia-south1, scale-to-zero) | https://ai-os-gateway-1054489801008.asia-south1.run.app |
+| ai-os-gateway | FastAPI | MCP Gateway — 64 tools in codebase (12 modules: postgres, google_tasks, drive_write, drive_read, calendar_sync, telegram, life_graph, capture, contacts, bharatvarsh, composite, media_gen), 56/10 deployed, Telegram webhook | Bearer token / API key | LIVE (asia-south1, scale-to-zero) | https://ai-os-gateway-1054489801008.asia-south1.run.app |
 | ai-os-dashboard | Next.js | PWA Dashboard — 9 pages, 23 API routes, 28 components | Google OAuth (NextAuth.js) | LIVE (asia-south1, scale-to-zero) | https://ai-os-dashboard-sv4fbx5yna-el.a.run.app |
 | task-notification-daily | Python + functions-framework | Daily overdue/upcoming task scan + Google Tasks sync | OIDC (Cloud Scheduler) | LIVE (asia-south1, scale-to-zero) | https://task-notification-daily-sv4fbx5yna-el.a.run.app |
 | telegram-notifications | Python + FastAPI | Telegram bot: scheduled briefs, overdue alerts, weekly digest, AI triage | OIDC (Cloud Scheduler) + Telegram webhook | LIVE (asia-south1, scale-to-zero) | https://telegram-notifications-sv4fbx5yna-el.a.run.app |
@@ -221,7 +221,23 @@ See INTERFACE_STRATEGY.md for full dashboard specification and TOOL_ECOSYSTEM_PL
 
 ---
 
-## 10. Deferred Items
+## 10. Google Drive Configuration
+
+| Property | Value |
+|----------|-------|
+| Account | atharvasingh.24@gmail.com |
+| Root Folder | AI OS/ |
+| OAuth | Desktop client ID via GOOGLE_CLIENT_ID/GOOGLE_CLIENT_SECRET/GOOGLE_REFRESH_TOKEN secrets |
+
+**Single account rule:** All MCP Drive tools (upload_file, create_doc, list_drive_files, read_drive_file, get_drive_changes_summary) operate exclusively on atharvasingh.24@gmail.com. No secondary account. No Shared Drive. No service account Drive.
+
+**Folder structure:** `AI OS/Knowledge/` (scanner input, 6 subfolders), `AI OS/Artifacts/` (Claude + pipeline output, 5 subfolders + 3 Brand-Template children), `AI OS/Weekly-Reviews/`. See INTERFACE_STRATEGY.md for the full canonical tree and routing rules.
+
+**Scanner state:** `drive_scan_state` table tracks 7 rows (1 parent + 6 leaf folders), all under `AI OS/Knowledge/`. `AI OS/Artifacts/` is NOT scanned.
+
+---
+
+## 11. Deferred Items
 
 - SSL enforcement on Cloud SQL instance — skipped to avoid disrupting live Bharatvarsh website
 - Authorized networks cleanup — a residential IP is in the allowlist; needs review

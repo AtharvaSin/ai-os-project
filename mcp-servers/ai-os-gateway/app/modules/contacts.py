@@ -60,7 +60,9 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
         "Uses PostgreSQL full-text search for name/company/notes queries. "
         "Filter by tags (array overlap), contact_type ('professional', 'personal', 'both'), "
         "or domain_slug (Life Graph domain). Returns up to `limit` results (default 20). "
-        "Example: search_contacts(query='Accenture', tags=['hr'], limit=10)"
+        "contact_type: 'professional'|'personal'|'both'. "
+        "Example: search_contacts(query='Accenture', tags=['hr'], limit=10). "
+        "Returns: {results: [{id, name, email, phone, company, title, contact_type, tags, location, ...}], count, total, _meta}."
     ))
     async def search_contacts(
         query: str | None = None,
@@ -123,6 +125,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                     "results": results,
                     "count": len(results),
                     "total": total,
+                    "_meta": {"related_tools": ["get_contact", "get_contact_network"]},
                 })
         except Exception as exc:
             return json.dumps({"error": f"Search failed: {exc}"})
@@ -130,7 +133,10 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
     @mcp.tool(description=(
         "Get a full contact profile by ID or name. Returns the contact with all fields, "
         "plus related relationships and important dates (joined). "
-        "Use id (UUID) for exact lookup or name (text) for fuzzy name match."
+        "Use id (UUID) for exact lookup or name (text) for fuzzy name match. "
+        "Fuzzy match uses case-insensitive LIKE on name. "
+        "Example: get_contact(name='Rahul') or get_contact(id='a1b2c3d4-...'). "
+        "Returns: {id, name, email, phone, company, ..., relationships: [{contact_a_name, contact_b_name, relationship_type, strength}], important_dates: [{date_type, date_value, label}], _meta}."
     ))
     async def get_contact(
         id: str | None = None,
@@ -180,6 +186,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                 )
                 result["important_dates"] = [_row_to_dict(d) for d in dates]
 
+                result["_meta"] = {"related_tools": ["update_contact", "add_relationship", "add_important_date", "get_upcoming_dates"]}
                 return json.dumps(result)
         except Exception as exc:
             return json.dumps({"error": f"Get contact failed: {exc}"})
@@ -188,7 +195,9 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
         "Create a new contact. Required: name. Optional: email, phone, company, title, "
         "contact_type ('professional'|'personal'|'both'), tags (string array), notes, "
         "linkedin_url, twitter_handle, location, domain_slug (Life Graph domain). "
-        "Returns the created contact."
+        "Returns the created contact. "
+        "Example: create_contact(name='Jane Doe', company='Accenture', contact_type='professional', tags=['engineering', 'cloud'], location='Mumbai'). "
+        "Returns: {id, name, email, phone, company, title, contact_type, tags, ..., _meta}."
     ))
     async def create_contact(
         name: str,
@@ -223,14 +232,19 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                     tags or [], notes, linkedin_url, twitter_handle,
                     location, domain_slug,
                 )
-                return json.dumps(_row_to_dict(record))
+                result = _row_to_dict(record)
+                result["_meta"] = {"action": "created", "related_tools": ["add_relationship", "add_important_date", "search_contacts"]}
+                return json.dumps(result)
         except Exception as exc:
             return json.dumps({"error": f"Create contact failed: {exc}"})
 
     @mcp.tool(description=(
         "Update an existing contact by UUID. Provide the fields to update. "
         "Supports progressive enrichment — only specified fields are changed. "
-        "Returns the updated contact."
+        "contact_type: 'professional'|'personal'|'both'. last_contacted_at: ISO 8601 timestamp (e.g., '2026-03-18T10:00:00Z'). "
+        "Returns the updated contact. "
+        "Example: update_contact(id='a1b2c3d4-...', company='Google', title='Senior PM', last_contacted_at='2026-03-18T10:00:00Z'). "
+        "Returns: {id, name, email, ..., (all updated fields), _meta}."
     ))
     async def update_contact(
         id: str,
@@ -307,7 +321,9 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                 record = await conn.fetchrow(sql, *params)
                 if not record:
                     return json.dumps({"error": f"Contact '{id}' not found"})
-                return json.dumps(_row_to_dict(record))
+                result = _row_to_dict(record)
+                result["_meta"] = {"action": "updated", "related_tools": ["get_contact", "search_contacts"]}
+                return json.dumps(result)
         except Exception as exc:
             return json.dumps({"error": f"Update contact failed: {exc}"})
 
@@ -315,7 +331,10 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
         "Get upcoming birthdays, anniversaries, and other important dates within the next N days. "
         "days_ahead: number of days to look ahead (default 7). "
         "Includes the contact name, date, type, and days until. "
-        "Useful for morning briefs and reminder workflows."
+        "Useful for morning briefs and reminder workflows. "
+        "date_type values in results: 'birthday'|'anniversary'|'work_anniversary'|'custom'. "
+        "Example: get_upcoming_dates(days_ahead=30). "
+        "Returns: {dates: [{date_type, date_value, contact_name, contact_phone, days_until, is_today, ...}], count, days_ahead, today, _meta}."
     ))
     async def get_upcoming_dates(
         days_ahead: int = 7,
@@ -393,6 +412,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                     "count": len(results),
                     "days_ahead": days_ahead,
                     "today": today.isoformat(),
+                    "_meta": {"related_tools": ["get_contact", "send_telegram_message"]},
                 })
         except Exception as exc:
             return json.dumps({"error": f"Get upcoming dates failed: {exc}"})
@@ -401,7 +421,9 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
         "Get contact network grouped by a dimension. "
         "group_by: 'company' | 'tag' | 'domain' | 'type' | 'location'. "
         "Returns groups with counts and sample contacts. "
-        "Useful for network health checks and 'who do I know at X?' queries."
+        "Useful for network health checks and 'who do I know at X?' queries. "
+        "Example: get_contact_network(group_by='company'). "
+        "Returns: {group_by, groups: [{group_key, count, members?}], group_count, total_contacts, _meta}."
     ))
     async def get_contact_network(
         group_by: str = "domain",
@@ -458,6 +480,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                     "groups": results,
                     "group_count": len(results),
                     "total_contacts": total[0] if total else 0,
+                    "_meta": {"related_tools": ["search_contacts", "get_contact"]},
                 })
         except Exception as exc:
             return json.dumps({"error": f"Get contact network failed: {exc}"})
@@ -467,7 +490,9 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
         "contact_id_a, contact_id_b: UUIDs of the two contacts. "
         "relationship_type: 'colleague'|'mentor'|'mentee'|'friend'|'family'|"
         "'client'|'collaborator'|'investor'|'advisor'|'acquaintance'. "
-        "Optional: description (text), strength (1-5, default 3)."
+        "Optional: description (text), strength (1-5, default 3). "
+        "Example: add_relationship(contact_id_a='a1b2...', contact_id_b='c3d4...', relationship_type='colleague', strength=4, description='Worked together at Accenture'). "
+        "Returns: {id, contact_id_a, contact_id_b, relationship_type, description, strength, ..., _meta}."
     ))
     async def add_relationship(
         contact_id_a: str,
@@ -500,7 +525,9 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                     contact_id_a, contact_id_b, relationship_type,
                     description, strength,
                 )
-                return json.dumps(_row_to_dict(record))
+                result = _row_to_dict(record)
+                result["_meta"] = {"action": "created", "related_tools": ["get_contact"]}
+                return json.dumps(result)
         except Exception as exc:
             return json.dumps({"error": f"Add relationship failed: {exc}"})
 
@@ -508,7 +535,9 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
         "Add an important date (birthday, anniversary, etc.) for a contact. "
         "contact_id: UUID. date_type: 'birthday'|'anniversary'|'work_anniversary'|'custom'. "
         "date_value: ISO date string (YYYY-MM-DD). year_known: whether the year is real (default true). "
-        "Optional: label (custom label), reminder_days_before (default 1)."
+        "Optional: label (custom label), reminder_days_before (default 1). "
+        "Example: add_important_date(contact_id='a1b2...', date_type='birthday', date_value='1995-06-15', year_known=True, reminder_days_before=3). "
+        "Returns: {id, contact_id, date_type, date_value, year_known, label, reminder_days_before, ..., _meta}."
     ))
     async def add_important_date(
         contact_id: str,
@@ -533,6 +562,8 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                     contact_id, date_type, date_value,
                     year_known, label, reminder_days_before,
                 )
-                return json.dumps(_row_to_dict(record))
+                result = _row_to_dict(record)
+                result["_meta"] = {"action": "created", "related_tools": ["get_upcoming_dates", "get_contact"]}
+                return json.dumps(result)
         except Exception as exc:
             return json.dumps({"error": f"Add important date failed: {exc}"})

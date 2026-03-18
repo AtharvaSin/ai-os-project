@@ -21,7 +21,7 @@ logger = logging.getLogger(__name__)
 # Constants
 # ---------------------------------------------------------------------------
 BRIEF_DRIVE_FOLDER = os.getenv(
-    "BRIEF_DRIVE_FOLDER", "AI OS/AI Operating System/Daily Briefs"
+    "BRIEF_DRIVE_FOLDER", "AI OS/Artifacts/Daily-Briefs"
 )
 TELEGRAM_BRIEF_ENABLED = os.getenv("TELEGRAM_BRIEF_ENABLED", "false").lower() == "true"
 PIPELINE_SLUG = "daily-brief-engine"

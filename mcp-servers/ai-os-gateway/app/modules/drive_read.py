@@ -130,7 +130,10 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
         description="List files in a Google Drive folder. "
         "Resolves folder_path (slash-delimited, e.g. 'AI OS/Knowledge/System') "
         "to a Drive folder ID. Optionally filter by modification date and file type. "
-        "Returns JSON array of file metadata: name, id, mimeType, modifiedTime, size, webViewLink."
+        "Returns JSON array of file metadata: name, id, mimeType, modifiedTime, size, webViewLink. "
+        "file_type: 'document'|'spreadsheet'|'text'|'pdf'|'image'. "
+        "Returns: {folder_path, file_count, files: [{id, name, mimeType, modifiedTime, size, webViewLink}], _meta}. "
+        "Example: list_drive_files(folder_path='AI OS/Knowledge/System', file_type='document', modified_since='2026-03-01')"
     )
     async def list_drive_files(
         folder_path: str,
@@ -190,6 +193,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                 "folder_path": folder_path,
                 "file_count": len(all_files),
                 "files": all_files,
+                "_meta": {"related_tools": ["read_drive_file", "get_drive_changes_summary"]},
             })
 
         except Exception as exc:
@@ -200,7 +204,9 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
         "Google Docs are exported as plain text. Google Sheets are exported as CSV. "
         "Markdown and text files are downloaded directly. "
         "PDFs, images, and other binary formats return metadata only (name, type, size, link). "
-        "Content is truncated at max_chars (default 50000) with a truncation notice."
+        "Content is truncated at max_chars (default 50000) with a truncation notice. "
+        "Returns: {name, mimeType, modifiedTime, charCount, truncated, content} or {name, mimeType, ..., content: null, note} for binary files. "
+        "Example: read_drive_file(file_id='1aBcDeFgHiJkLmNoPqRsT', max_chars=20000)"
     )
     async def read_drive_file(
         file_id: str,
@@ -309,7 +315,10 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
         "Cross-references with knowledge_entries to classify each file as 'new' (no matching entry), "
         "'modified' (entry exists but file has newer modifiedTime), or 'ingested' (up-to-date). "
         "Uses the drive_scan_state table for tracked folder paths. "
-        "Returns a grouped summary by folder path."
+        "Returns a grouped summary by folder path. "
+        "Status values: 'new' (no matching knowledge entry), 'modified' (entry exists but Drive file is newer), 'ingested' (up-to-date). "
+        "Returns: {days_back, cutoff, totals: {new, modified, ingested, folders_scanned}, folders: {path: [{file_name, file_id, mimeType, modified, status}]}, _meta}. "
+        "Example: get_drive_changes_summary(days_back=7)"
     )
     async def get_drive_changes_summary(
         days_back: int = 30,
@@ -432,6 +441,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                     "cutoff": cutoff_str,
                     "totals": totals,
                     "folders": summary,
+                    "_meta": {"related_tools": ["read_drive_file", "list_drive_files"], "action_hint": "Use read_drive_file on 'new' or 'modified' files to ingest updates."},
                 })
 
         except Exception as exc:

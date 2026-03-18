@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1200px;
+    height: 628px;
+    overflow: hidden;
+    font-family: var(--font-primary, 'DM Sans', 'Segoe UI', sans-serif);
+    background: var(--bg-color, #0F1419);
+    color: var(--text-color, #FFFFFF);
+    position: relative;
+  }
+  .bg-image {
+    position: absolute;
+    inset: 0;
+    background-image: var(--bg-image);
+    background-size: cover;
+    background-position: center;
+    opacity: var(--bg-opacity, 0.35);
+  }
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      rgba(15, 20, 25, 0.95) 0%,
+      rgba(15, 20, 25, 0.7) 50%,
+      rgba(15, 20, 25, 0.3) 100%
+    );
+  }
+  .content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding: 48px 56px;
+    max-width: 700px;
+  }
+  .accent-bar {
+    width: 60px;
+    height: 4px;
+    background: var(--accent-color, #00D492);
+    margin-bottom: 20px;
+    border-radius: 2px;
+  }
+  .title {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 14px;
+  }
+  .subtitle {
+    font-size: 20px;
+    font-weight: 400;
+    opacity: 0.85;
+    line-height: 1.4;
+    margin-bottom: 28px;
+  }
+  .footer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0.7;
+    font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  }
+  .footer-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent-color, #00D492);
+  }
+</style>
+</head>
+<body>
+  <div class="bg-image" style="--bg-image: url('{{bg_image_url}}'); --bg-opacity: {{bg_opacity}};"></div>
+  <div class="overlay"></div>
+  <div class="content">
+    <div class="accent-bar" style="--accent-color: {{accent_color}};"></div>
+    <div class="title">{{title}}</div>
+    <div class="subtitle">{{subtitle}}</div>
+    <div class="footer">
+      <span>{{footer_text}}</span>
+      <div class="footer-dot" style="--accent-color: {{accent_color}};"></div>
+      <span>{{footer_tag}}</span>
+    </div>
+  </div>
+</body>
+</html>
