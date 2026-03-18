@@ -1,0 +1,1103 @@
+Locked. Rolling into Street-Level Surveillance & Crowd Control — Sprint 1 (Set Bible v1) using your decisions to close the gaps. This is the production seed for boards, props, and prompt kits in later sprints.
+
+0) Intent & Tone
+
+Polite inevitability. Streets read orderly, bright, and safe; control tech is ever-present but restrained. Visual grammar favors monochrome marks, tri-lingual signage, clean glass & matte metal, and UI that’s translucent and illegible. Patrol optics are mixed: unobtrusive plain-clothes with armbands plus a small number of uniformed officers (right-shoulder TEXT-ONLY block, no emblem).
+
+1) Policy Locks (on-camera rules)
+
+Curfew: 21:00–06:00 within metropoles.
+
+Detention threshold (escalation from spot-fine → detain & route):
+
+Repeat violation (≥2 documented infractions in 30 days),
+
+Curfew breach,
+
+Flagged identity (watchlist/active alert).
+
+Data custody: Wrist-scan/hovercam/checkpoint logs are publicly retained for 30 days, then supposedly destroyed; private archival persists beyond 30 days (implied, not posted).
+
+Exemptions (curfew): Medical & emergency personnel, critical logistics/utility crews, accredited press, registered night-shift workers (employer QR), diplomats, and foreign tourists holding a curfew QR pass.
+
+Audio policy: All high-decibel signals are banned in public control use. Default is soft chimes; voice PA is one-way and kept low (values in Sprint 2).
+
+Color states: Green (pass) / Amber (additional scan) / Red (hold).
+
+Non-lethal tools permitted (defined for props later; avoid riot optics).
+
+2) Street Typologies & Checkpoint Layouts
+
+We standardize three site scales so every scene can be blocked consistently.
+
+A) Arterial Boulevard Checkpoint (Permanent Hybrid)
+
+Placement: Every 1.2–1.6 km on major boulevards and at metro mouths.
+
+Lanes (per carriageway): 3 lanes each side → 1 Pedestrian, 2 Automotive (cars/two-wheelers merge and are separated by light logic, not hard barriers).
+
+Footprint: 24–30 m long active zone; 10–12 m visual taper each side.
+
+Hardware mix: Curb-integrated scanner halos + ceiling/soffit wrist-scan strips at pedestrian lane; oxy-poles carry PA nodes + camera nests + ambient sensors; bolt-down sockets accept mobile tripod nodes during surges.
+
+Officer presence: 1–2 plain-clothes with armbands (floating), 2 uniformed patrol at the edges (visibility, not obstruction).
+
+B) Plaza / Festival Surge Node (Modular)
+
+Placement: Festival corridors, parade starts, stadium/riverfront entries.
+
+Footprint: 18–24 m modular span; mobile tripod halos with backpack power; temporary crowd rails (low, geometric, anti-trip).
+
+Overhead: Hovercams at 8–12 m AGL (festival band) with soft searchlight etiquette for lost-child, medical egress, and dispersal.
+
+C) Side-Street Micro Gate (Pop-up)
+
+Placement: Alley cut-throughs, school fronts, hospital perimeters.
+
+Footprint: 8–12 m; one Pedestrian micro-lane + one Automotive micro-lane; single oxy-pole upgraded to carry scanner head, PA, and camera nest.
+
+Behavior: Defaults to Green-bias to keep neighborhoods flowing; flips Amber when density rises or flagged identity pings.
+
+3) Flow Logic (Green / Amber / Red)
+
+Input signals: wrist-scan results, plate/QR reads, hovercam density feed, watchlist pings.
+
+Green (Pass):
+
+Automotive: speed-gated drift (≤ 20 kph) through green chevrons; overhead pod performs silent pass-scan.
+
+Pedestrian: walk-through arch with ceiling strip idle cyan; unobtrusive wrist-scan only on random sample (≤10%).
+
+Amber (Additional Scan):
+
+Automotive: gentle arrow LED guides to a halo bay; driver window QR or wrist; ≤30 s dwell.
+
+Pedestrian: wall inset at 1.2 m/1.6 m ambidextrous; operator glance from roving plain-clothes.
+
+Red (Hold):
+
+Lane light flips red; low modular rail extends (motorized or manual) to shape a bay; second officer steps in; detention causes limited to: repeat, curfew breach, flagged ID.
+
+Fail-safe: On equipment fault, system falls back to Green + manual spot-check only.
+
+4) Hardware & Furniture (Kit of Parts)
+
+All finishes: matte graphite anodize or low-iron glass with frosted bands; avoid chrome.
+
+Scanner Halo — Fixed: Curb-integrated half-ring (pedestrian) and upright hoop (automotive bay). Back-light swaps Green/Amber/Red; camera pod nested at 2.2 m.
+
+Scanner Halo — Mobile Tripod: 2.0–2.4 m telescopic mast; battery backpack dock; quick-plug to bolt-down sockets in pavement.
+
+Wrist-Scan Modules:
+
+Ceiling strip over thresholds (idle cyan → scan white),
+
+Wall insets at 1.2 m / 1.6 m (left/right) for ambidex use.
+
+Oxy-Pole Upgrade: Tri-mount bracketing for: PA node (chime + low voice), camera nest, environmental sensor; hidden conduits feed curb halos.
+
+Candy-Bot (Child Guidance Unit): Knee-high wheeled puck with soft LED “eyes”; pastel status ring; routes children to scanner pads during festivals.
+
+Consent: Parent taps wrist or QR at bot;
+
+Reward: issues candy tokens (physical chips or tappable voucher) via the pad kiosk.
+
+Modular Barriers: 1.1 m high, anti-trip base, stackable; geometry stays quiet and civic (no spikes, no chain-link).
+
+Hovercams:
+
+Festival band: 8–12 m AGL;
+
+Non-festival band: 12–20 m AGL;
+
+Emergency drop: min 6 m AGL;
+
+Spotlight etiquette: soft-edge beam, timed sweeps ≤ 5 s; used for lost-child, medical, dispersal; no face-dazzle.
+
+EMP-Safe Fallback: Hand-held wrist readers (120–150 lux mini-ring), amber egress strips, manual whistles not used (banned high-dB rule).
+
+Exemption Badges & Passes:
+
+Wearable badge skins (medical, logistics, press, diplomat).
+
+Curfew QR (tourist, night-shift, diplomatic convoy).
+
+Lane logic auto-Green on verified exemption.
+
+5) Signage, Marks & Typography (public-facing)
+
+Tri-lingual layout: Latin (top) / Devanagari (middle) / State line (bottom).
+
+Families: Condensed geometric sans (Latin), square-terminal grotesk (Devanagari), angular-join regional; equal stroke weight.
+
+Curfew Signs: “CURFEW 21:00–06:00” + exemptions pictos on secondary line.
+
+Spot-Fine Plaques: “INSTANT SPOT-FINES VIA WRIST-SCAN — CCTV ACTIVE — DATA PUBLIC 30D”.
+
+Checkpoint Codes: GREEN PASS / AMBER SCAN / RED HOLD band strips along lane heads; arrows at 30°.
+
+Accessibility: Wheelchair & white-cane icons co-equal in size/weight to enforcement marks.
+
+Uniform Law: Right shoulder TEXT-ONLY (e.g., DIRECTORATE HQ or local precinct), no emblem; emblem may appear left shoulder/back.
+
+6) Soundscape & PA Etiquette (visualized, values detailed in Sprint 2)
+
+Default: Chime > Voice; melody cues direction or state change (Green→Amber).
+
+Voice PA: One-way from CCTV/oxy-poles; brief, neutral, never hectoring.
+
+Bans: Sirens, air-horns, whistles, crowd-piercing alarms.
+
+Emergency carve-out: Medical evacuation vehicles may exceed limits transiently (documented).
+
+7) Data & Privacy Optics (posted + implied)
+
+Posted panel (public): “Data retention: 30 days public → purge” + appeal QR.
+
+Implied (camera read only): Archival persistence beyond 30 days within private repositories (never written on signs; alluded via restricted-access doors, operator UI light grammar).
+
+CCTV suite: Glassed booth visible from concourses; custody clock shows days-to-purge (counts down from 30).
+
+8) Camera Lanes & Blocking (for storyboards/prompting)
+
+Algorithmic Checkpoint (Day)
+
+Hero lane: 35–50 mm, shoulder height, along Pedestrian lane arch; halos read Green with occasional Amber tile.
+
+Operator lane: 70–85 mm between oxy-pole and halo; catch plain-clothes armband.
+
+Automotive lane: Low 35 mm toward drift-through; light strips track in asphalt.
+
+Festival Surge (Blue-Hour)
+
+Hero lane: 21:9, 35 mm across tripod halos; wet paving for reflection; hovercam halo at 10 m AGL.
+
+PA lane: 50 mm up-shot to oxy-pole PA node + chime grill.
+
+Curfew (Night)
+
+Hero lane: 50 mm parallel to curb LEDs and banner glow; street quiet, spot-fine wrist moment in foreground.
+
+Exemption lane: 70 mm on badge + QR pass; lane arrow green.
+
+CCTV Suite
+
+Hero lane: 50–70 mm from corridor through glass; pane bars rake across operator; tri-screen wall illegible.
+
+Ethics lane: 85 mm tight on custody clock and “30D public” line.
+
+9) ASCII Layouts (for quick mental staging)
+
+Arterial Boulevard (per direction)
+
+Sidewalk        Ped Lane   Auto Lane A   Auto Lane B       Median
+
+║  Oxy-Pole ║ ┌─[Halo]─┐ ┌─────▶─────┐ ┌─────▶─────┐ ║  Cam Nest ║
+
+             ↑ Ceiling  ↑ Curb LED    ↑ Curb LED    ↑ Hovercam (12–20 m)
+
+              Wrist-Scan   (Green)       (Green)
+
+Festival Surge (Plaza)
+
+Crowd →  [Tripod Halo]   [Tripod Halo]    [Info/QR Desk]   [Candy-Bot Pad]
+
+          ↑ Bolt-down     ↑ Bolt-down      ↑ Tourist QR       ↑ Parent consent
+
+          sockets         sockets            fallback            + token issue
+
+Hovercam altitude: 8–12 m AGL (soft searchlight sweeps ≤5 s)
+
+Curfew Street (Night)
+
+Banner: CURFEW 21:00–06:00 (tri-lingual)       Curb LEDs  ─ ─ ─ ─ 
+
+Ped Arch [Ceiling Strip: cyan idle]   Wrist-Scan Wall Inset 1.2m / 1.6m
+
+Plain-clothes (armband) floating; Uniform at edge; Candy-bot dock asleep.
+
+10) Scene Beats to Remember (writing & boarding)
+
+Spot-fine moment is quiet: a tap, a micro-tile glow, a white→cyan tick; no confrontation.
+
+Dispersal is light-led: hovercam soft spotlight + chimes, not siren shoves.
+
+Candy-bot is opt-in and friendly: LED “eyes” track only when consented; reward token dispensed at the pad.
+
+CCTV voice is measured and rare; most guidance is visual (arrows, chevrons, LEDs).
+
+11) Deliverables from Sprint 1 (what art/prompt teams can start now)
+
+Arterial Checkpoint (Day) block-out with lane geometry, halo placement, oxy-pole upgrade kit, and officer positions.
+
+Festival Surge node plan with tripod halos, bolt-down sockets, hovercam band, and QR desk + candy-bot pad.
+
+Curfew optics street with banners, curb LEDs, wrist-scan modules, and exemption badge examples.
+
+CCTV suite glass booth with pane bars, tri-screen wall (illegible), custody clock reading “Public 30D”.
+
+Policy placards (curfew/exemptions/spot-fine/data retention), color-state bands, and accessibility co-marks.
+
+Camera-lane overlays for each set (lens & blocking notes above).
+
+Locked. Moving into Street-Level Surveillance & Crowd Control — Sprint 2 (Light, Materials, Signage v2). This pins concrete CCT/lux/dBA values, materials, finishes, typography, iconography, and state logic so boards, props, and prompts remain consistent across artists and vendors.
+
+1) Lighting Look-Dev (states, levels, lenses)
+
+Global rules
+
+UI is translucent + illegible (steel-cyan → grey). One Brace-Comm tile at a time; quick fade; never wallpaper a frame.
+
+Lane state colors are light, not paint: Green / Amber / Red come from low-glare emitters—never reflective vinyl.
+
+Presets (targets; tweak per shot)
+
+Day
+
+CCT: 5200–5600 K.
+
+Ambient street: 8,000–20,000 lux (sunny range); boards paint at ~2,500–4,000 lux.
+
+Lane beacons & halos: ≤ 220 cd/m² (diffuse).
+
+Ped arch ceiling strip: idle cyan 40%, scan white 80%.
+
+Blue-Hour (Festival/Surge)
+
+CCT: sky 9000–10000 K; street keys ~4200–4600 K.
+
+Wet paving reflections encouraged (thin gloss pass).
+
+Lane beacons & halos: 260–320 cd/m² so color states read over crowd lights.
+
+Hovercam downlight: soft-edge 10–30 lux on subjects (no face-dazzle).
+
+EMP-Safe / Low-Power
+
+CCT: 3000–3200 K (amber egress strips only).
+
+Handheld wrist readers: 120–150 lux mini-ring on contact zone.
+
+Checkpoint field: drop to silhouettes; wayfinding stays legible via strips and arrows.
+
+Lens cues (for boards/prompts)
+
+Checkpoint day: 35–50 mm hero along Ped lane arch; 70–85 mm operator cut-in.
+
+Festival surge: 21:9 at 35 mm across tripod halos; hovercam halo visible at ~10 m AGL.
+
+Curfew night: 50 mm parallel to curb LEDs + banner glow; shallow DOF on spot-fine wrist.
+
+2) Acoustic & PA Spec (decibel policy, tone set)
+
+Ban line (public control use): any signal > 78 dBA (1 m) sustained or > 82 dBA peak.
+Default hierarchy: Chime → Voice (never sirens/whistles/air-horns).
+
+Chime cues: 54–60 dBA @1 m, 500–2000 Hz content, ≤ 1.5 s; 3-note rising = Amber, 1-note soft = Green resume, 2-note down = Red hold.
+
+Voice PA (one-way): −15 LUFS target, 60–65 dBA @1 m; limited to 5-second bursts; neutral register.
+
+Emergency carve-out: medical vehicles may exceed briefly; hovercam spotlight may pair with a single 2-note chime every 10 s during dispersal.
+
+3) Materials & Durability (swatches, finishes, ratings)
+
+Finish language across all furniture: matte graphite anodize + low-iron glass with frosted bands; zero chrome.
+
+Color chips (for consistency)
+
+Mono-Black (text/icons): #0E0F12
+
+Mid-Grey (UI glyphs): #7C8793 @ 40–60%
+
+Frost White (glass glow): #F4F6F8 @ 80–90%
+
+Cyan (system): #73D5E6 @ 35–55%
+
+Green (pass): #73E69D @ 70%
+
+Amber (scan): #F2C14E @ 70%
+
+Red (hold): #E05658 @ 70%
+
+Safety Yellow (chevrons/edges): #FFD34D @ 90%
+
+Saturations are ceilings; boards should bias toward desaturated, institutional reads.
+
+4) Hardware Implementation (street kit: photometrics + behavior)
+
+Scanner Halo — Fixed (Ped / Auto)
+
+Mount heights: Ped 2.2 m soffit; Auto 1.1 m curb hoop.
+
+Photometric: 180° forward throw, ≤ 220 cd/m² day, ≤ 320 cd/m² blue-hour.
+
+State swap: 300 ms crossfade between Green/Amber/Red; never hard strobe.
+
+Scanner Halo — Mobile Tripod (Festival)
+
+Mast: 2.0–2.4 m; collapses to 1.1 m.
+
+Power: 48 V backpack; 8 h at 50% output; hot-swap.
+
+Sockets: plaza bolts at 3 m centers; flush caps when not in use.
+
+Wrist-Scan Modules
+
+Ceiling strip: 300 mm fascia; idle cyan 40%; on-scan white 80%; auto-dim after 2 s.
+
+Wall insets: paired left/right at 1.2 m and 1.6 m heights (ambidextrous); 600 mm apart center-to-center; haptic tick on success.
+
+Oxy-Pole Upgrade
+
+Tri-mount: PA node (behind perforation), camera nest (gimbal micro-pod), environment sensor (PM/o³/weather).
+
+Optical discipline: nothing protrudes > 140 mm; silhouette stays civic.
+
+Hovercam Bands & Spotlight
+
+Altitude: 8–12 m AGL (festival), 12–20 m AGL (non-festival), 6 m AGL (emergency drop).
+
+Beam: 20–25° soft edge; 10–30 lux vertical on subjects; sweep ≤ 5 s per pass.
+
+Use cases: lost-child, medical egress, dispersal (allowed).
+
+Candy-Bot (Knee-High Puck)
+
+Height: 420 mm; Eyes: soft LED ovals (≤ 80 cd/m²).
+
+Speed: ≤ 1.2 m/s on plazas; obstacle stop at 300 mm.
+
+Consent flow: parent wrist or QR → bot blinks cyan twice → child routes to scanner pad.
+
+Reward: candy token (physical chip or tappable voucher) dispensed at pad; bot never dispenses directly.
+
+Modular Barrier Kit
+
+Heights/lengths: 600/900/1100 mm; 1.0 m and 1.5 m segments.
+
+Base: anti-trip ellipse; hidden mass pocket.
+
+Link: magnetic bump + mechanical tongue; stacks flat.
+
+5) Signage & Wayfinding (tri-lingual, sizes, leading, tracking)
+
+Type families (style, not brand names)
+
+Latin (primary): condensed geometric sans; tall x-height; tabular numerals.
+
+Devanagari (secondary): square-terminal grotesk; matches Latin cap weight.
+
+Regional (tertiary): angular joins, open counters; weight-matched to Devanagari.
+
+Hierarchy & letter sizes (legibility targets)
+
+Rule of thumb: 1 mm cap height ≈ 30 mm viewing distance.
+
+Curfew banners (over-street): Latin 180 mm / Dev 155 mm / Regional 130 mm (legible at ~5–6 m).
+
+Lane headers (arch/halo): Latin 90 mm / Dev 78 mm / Regional 68 mm.
+
+Plaques (data/spot-fine): Latin 40 mm / Dev 34 mm / Regional 30 mm.
+
+Tracking/leading
+
+Latin: +25 tracking for banners, +10 for plaques.
+
+Devanagari & Regional: +40 (banners), +20 (plaques).
+
+Leading: 1.15× for stacked tri-lingual blocks.
+
+Canonical strings (tri-lingual stacked)
+
+CURFEW 21:00–06:00 (exemptions pictos inline).
+
+GREEN PASS / AMBER SCAN / RED HOLD (band strips).
+
+INSTANT SPOT-FINES VIA WRIST-SCAN — CCTV ACTIVE — DATA PUBLIC 30D.
+
+ACCESSIBILITY LANES (wheelchair + white-cane pictos).
+
+Icon grammar
+
+Arrows: 30° chevrons; stroke = text weight +10%.
+
+Pictos: monochrome outlines; no skeuomorphs; accessibility icons equal weight/size to enforcement icons.
+
+Emblems & uniforms: right shoulder TEXT-ONLY (e.g., DIRECTORATE HQ or precinct); emblem never on right.
+
+6) Policy Placards & Privacy Optics (print-spec)
+
+Data custody (posted):
+
+“DATA RETENTION: 30 DAYS PUBLIC → PURGE. Appeals: scan QR. Custody clock visible in CCTV room.”
+
+Exemptions (posted small plate under curfew banner):
+
+Medical • Emergency • Logistics/Utilities • Accredited Press • Registered Night-Shift • Diplomatic • Foreign Tourist (QR).
+(Plate includes a thin row of corresponding pictos; no prose.)
+
+Detention threshold (operator-facing card, not public):
+
+Repeat violation (≥ 2 in 30 d), Curfew breach, Flagged identity.
+
+7) Accessibility (baked into layouts)
+
+Ped lane width: 2.2 m clear (2-way), 1.4 m (single file short choke).
+
+Automotive lanes: 3.2 m (cars), 2.4–2.6 m (two-wheelers/mix).
+
+Tactile paving: 600 mm warning band before wrist-scan arch; 300 mm cue tiles to halo bays.
+
+PA captions: scrolling tri-lingual caption band on oxy-pole nodes when voice PA is active.
+
+8) Flow Diagrams (operator logic; for storyboards)
+
+Green → Amber triggers
+
+Randomized audit (≤ 10% ped), density > threshold, incomplete QR, partial plate read, minor confidence drop.
+Amber → Red triggers
+
+Watchlist ping, curfew breach, repeat violation, tamper attempt at scanner.
+
+Fail-back
+
+Loss of compute/comms: default Green with manual spot checks only + PA announces reduced service in tri-lingual text band.
+
+9) Packaged Deliverables from Sprint 2
+
+Lighting keys (Day / Blue-Hour / EMP-Safe) with CCT/lux/cd/m² targets; spotlight spec for hovercams.
+
+Acoustic sheet with dBA limits, tone set, and message timing.
+
+Materials & durability swatches with IP/IK/COF targets and color chips.
+
+Signage/typography artboards (tri-lingual), including letter sizes, tracking/leading, icon grammar, and canonical strings.
+
+Hardware spec sheets for: fixed/mobile halos, wrist-scan strip/insets, oxy-pole node, hovercam bands, candy-bot, modular barriers.
+
+Privacy & exemption placards (print-spec) + custody clock guidance for CCTV rooms.
+
+Locked. Delivering Street-Level Surveillance & Crowd Control — Sprint 3 (Boards & Props v3). This gives your art/prompt teams production-ready environment boards (hero wides + detail inserts), and fully spec’d prop sheets that implement everything we locked in Sprints 1–2.
+
+A) Environment Boards (A2 each)
+
+Format per board: 1 Hero Wide (with aspect, lens, time, blocking, light values) + 3–5 Detail Inserts (callouts, textures, UI, signage) + Signage/Type note + Ban list. Keep the “polite inevitability” tone, tri-lingual marks, illegible UI, and no chrome.
+
+1) Algorithmic Checkpoint — Day (Arterial Boulevard)
+
+Hero Wide
+
+Aspect / Lens / Time: 16:9 • 35–50 mm • Day (5200–5600 K)
+
+Blocking: Carriageway with 3 lanes per side; foreground reads Pedestrian lane under a ceiling wrist-scan strip; mid-ground Auto A/B lanes drift through at ≤ 20 kph under curb halos; oxy-pole at sidewalk carries PA + cam nest + sensor. Two plain-clothes (armbands) float; two uniformed patrol stand back at edges (right shoulder = TEXT-ONLY).
+
+Light: Ambient street ~2,500–4,000 lux (for paint); halo output ≤ 220 cd/m²; ceiling strip idle cyan 40%, scan white 80%. Bars/gradients subtle, no hard glare.
+
+Detail Inserts (pick 4–5):
+
+Ceiling wrist-scan strip over Ped lane (300 mm fascia): idle cyan glow → white pulse on scan (2 s fall-off); wall insets at 1.2 m / 1.6 m for ambidextrous pass.
+
+Curb halo (Auto bay): graphite anodize ring, frosted diffuser; Green/Amber/Red crossfade 300 ms; no strobe.
+
+Oxy-pole upgrade: PA micro-grille (invisible at 3 m), camera pod, environmental node; conduits hidden.
+
+Spot-fine moment: wrist tap, micro-tile tick white→cyan; officer posture neutral.
+
+Accessibility: tactile band (600 mm) before arch; wheelchair & white-cane icons same size/weight as enforcement marks.
+
+Signage/Type note: Tri-lingual GREEN PASS / AMBER SCAN / RED HOLD band strips; plaque “INSTANT SPOT-FINES VIA WRIST-SCAN — CCTV ACTIVE — DATA PUBLIC 30D”.
+
+Ban list: riot gear, sirens/whistles, chrome, readable dashboards, right-shoulder emblems, chain-link.
+
+2) Festival Surge Node — Blue-Hour (Plaza Modular)
+
+Hero Wide
+
+Aspect / Lens / Time: 21:9 • 35 mm • Blue-Hour (sky 9000–10000 K; street keys 4200–4600 K)
+
+Blocking: Two mobile tripod halos mounted in bolt-down sockets at 3 m centers; wet paving for reflections; hovercam hangs at ~10 m AGL (festival band). Crowd density medium; QR fallback desk and candy-bot pad at frame right; low modular rails shape gentle chicanes.
+
+Light: Halos 260–320 cd/m²; hovercam soft spotlight 10–30 lux with 20–25° soft edge; chimes audible, no voice unless a 5-second call.
+
+Detail Inserts (pick 4–5):
+
+Tripod halo (2.0–2.4 m mast; battery backpack dock; quick-plug cabling to socket cap).
+
+Hovercam etiquette: altitude band tag (8–12 m AGL), soft sweeps ≤ 5 s; use cases: lost-child / medical / dispersal.
+
+Oxy-pole PA node: chime icon + caption band (tri-lingual) when voice PA is active; −15 LUFS target.
+
+QR fallback desk: tourist signage pictos + tri-lingual, compact.
+
+Candy-bot pad: rubberized 18% grey with soft accent ring; parent consent point (wrist/QR) and token dispenser at pad kiosk (bot never dispenses directly).
+
+Signage/Type note: Plaza strip with AMBER SCAN emphasis; “Crowd Rails — Accessibility Lane” pictos co-equal.
+
+Ban list: floodlights, siren bars, barricade spikes, branded booths, clownish bot faces.
+
+3) Curfew Optics — Night (Quiet Enforcement)
+
+Hero Wide
+
+Aspect / Lens / Time: 16:9 • 50 mm • Night/Curfew
+
+Blocking: Near-empty street at 22:30; CURFEW 21:00–06:00 banner glows across; curb LEDs run the edge; Ped arch ceiling strip idles cyan; uniformed patrol silhouette at far edge; plain-clothes with armband handles a spot-fine tap quietly.
+
+Light: EMP-safe look optional (amber egress strips only); otherwise keep curb LEDs subtle; voice PA rare.
+
+Detail Inserts (3–4):
+
+Curfew banner tri-lingual: exemptions plate below (Medical / Emergency / Logistics / Press / Night-Shift / Diplomatic / Tourist QR).
+
+Exemption badge: small, readable close-up; lane flips Green on verification.
+
+Wrist-scan inset: haptic tick icon; white→cyan tick, no audio.
+
+Curb LED: linear diffuse, 40°×120° spread; anti-trip paving.
+
+Signage/Type note: “DATA PUBLIC 30D → PURGE” posted plaque; appeal QR present.
+
+Ban list: loudspeakers blaring, red strobes, riot shields, right-shoulder emblems, graffiti-style warnings.
+
+4) Phoenix Mall CCTV Analysis Suite — Observe & Guide
+
+Hero Wide
+
+Aspect / Lens / Time: 16:9 • 50–70 mm • Interior
+
+Blocking: Glassed booth on mezzanine; pane bars rake across operator faces; tri-screen wall behind shows translucent, illegible glyph streams; custody clock digital strip: “Public 30D.” One-way voice PA mic with caption band visible on nearby oxy-pole in concourse.
+
+Light: 4200–4600 K keys; avoid glare; glyph panels at 120–160 cd/m².
+
+Detail Inserts (3–4):
+
+Custody clock close-up (countdown days:hours).
+
+Operator station: minimal hardware; UI translucency; single Brace-Comm tile at wrist.
+
+Door reader to booth: badge + wrist-scan Amber threshold.
+
+Caption band sample: tri-lingual, monochrome with safety-yellow separators.
+
+Signage/Type note: Outside glazing: “CCTV ACTIVE — PUBLIC 30D — APPEAL QR”.
+
+Ban list: readable dashboards, news-ticker spam, wall of tactical maps, heavy metal trims.
+
+B) Prop Sheets (A3 each)
+
+Each sheet shows orthographic views, dims, materials, photometrics, states, and etiquette. Finishes default to matte graphite anodize / frosted polycarbonate / low-iron glass. All UI illegible; crossfades, never strobes.
+
+P1 — Scanner Halo (Fixed & Mobile)
+
+Fixed Ped Halo: soffit mount 2.2 m; 180° forward throw; ≤ 220 cd/m² (day) / ≤ 320 cd/m² (blue-hour).
+
+Fixed Auto Halo: curb hoop 1.1 m; same diffuser; Green/Amber/Red 300 ms crossfade.
+
+Mobile Tripod: mast 2.0–2.4 m; collapses 1.1 m; 48 V backpack (8 h @ 50%); bolt-down sockets @ 3 m centers; flush caps when unused.
+
+Etiquette: no hard strobes; state shown as halo, not billboard.
+
+P2 — Wrist-Scan Modules (Ceiling Strip + Wall Insets)
+
+Ceiling Strip: 300 mm fascia; idle cyan 40%; scan white 80%; 2 s fade; EMP-safe 3000–3200 K amber.
+
+Wall Insets: pairs at 1.2 m / 1.6 m; haptic tick on success; 600 mm left-right spacing; tactile paving 600 mm prior.
+
+Icon set: minimal hand/wrist pictos; arrows at 30°; monochrome.
+
+P3 — Oxy-Pole Upgrade Node (PA + Cam + Sensor)
+
+Tri-mount: PA micro-grille, gimbal cam nest, enviro node (PM/ozone/weather).
+
+Caption band: tri-lingual text when PA voice runs; −15 LUFS; 5-second bursts; chime > voice.
+
+Profile: protrusions < 140 mm; civic silhouette.
+
+P4 — Hovercam (Policing Drone)
+
+Altitude bands: festival 8–12 m AGL; non-festival 12–20 m AGL; emergency drop 6 m AGL.
+
+Spotlight: 20–25° soft edge; 10–30 lux on subject; sweep ≤ 5 s; pair with 2-note chime every 10 s for dispersal.
+
+Privacy optics: no face-dazzle; lens hood minimizes reflection.
+
+P5 — Candy-Bot (Child Guidance Unit) & Scanner Pad
+
+Form: knee-high wheeled puck (H 420 mm); LED “eyes” ≤ 80 cd/m²; friendly—not toy-like.
+
+Consent flow: parent wrist or QR → bot blinks cyan ×2 → bot escorts child to pad.
+
+Pad kiosk: scanner slot + token dispenser (physical chip or tappable voucher); rubberized deck.
+
+Speed: ≤ 1.2 m/s; obstacle stop at 300 mm.
+
+Policy: never dispenses directly; logs visible for 30 days public.
+
+P6 — Modular Barrier Kit & Lane Rails
+
+Segments: heights 600/900/1100 mm; lengths 1.0/1.5 m; anti-trip elliptical bases with hidden ballast.
+
+Linkage: magnetic bump + tongue; stack flat; safety-yellow micro-edges optional for Blue-Hour.
+
+Use: shape bays/chicanes; never “pen” crowds.
+
+P7 — Exemption Badges & Curfew QR Desk
+
+Badges: medical, emergency, logistics/utilities, accredited press, night-shift, diplomatic, tourist QR—monochrome skins, scannable corner.
+
+Desk: compact, modular; tri-lingual plate; discrete light bar (≤ 160 cd/m²); paperless issuance preferred.
+
+P8 — Data Custody Clock & Privacy Placards
+
+Clock: 4-digit days:hours with small AM/PM; shows “Public 30D”; reset visible.
+
+Placards: “DATA PUBLIC 30D → PURGE (APPEAL QR)” + “VOICE PA ONE-WAY / HIGH-dB BANNED”.
+
+C) Board Footers (print on every sheet)
+
+Lighting preset stamp: Day / Blue-Hour / EMP-Safe (circle one) with CCT/lux/cd/m² targets.
+
+Lens & lane: Recommended lens (see board) + camera lane arrows.
+
+Etiquette crib: Illegible UI • One Brace-Comm tile • Chime > Voice • Right shoulder TEXT-ONLY • No chrome.
+
+Color chips: Mono-Black #0E0F12 • Mid-Grey #7C8793(40–60%) • Frost White #F4F6F8(80–90%) • Cyan #73D5E6(35–55%) • Green #73E69D(70%) • Amber #F2C14E(70%) • Red #E05658(70%) • Safety Yellow #FFD34D(90%).
+
+D) File Naming (source of truth)
+
+SCC_01_Checkpoint_Day_A2_16x9_v001
+
+SCC_02_FestivalSurge_BlueHour_A2_21x9_v001
+
+SCC_03_Curfew_Night_A2_16x9_v001
+
+SCC_04_CCTV_Suite_A2_16x9_v001
+
+Props: SCC_Prop_P1_ScannerHalo_v001 … SCC_Prop_P8_CustodyClock_v001
+
+E) Asset Checklists (per board)
+
+Checkpoint—Day
+
+Ped arch ceiling strip + wall insets (1.2 m / 1.6 m)
+
+Auto curb halos (A/B), Green drift arrows
+
+Oxy-pole node (PA + cam + sensor)
+
+Spot-fine plaque • Accessibility icons • Tactile bands
+
+Plain-clothes armbands • Uniform patrol (TEXT-ONLY right shoulder)
+
+Festival Surge—Blue-Hour
+
+Tripod halos + bolt-down sockets + battery backpacks
+
+Hovercam at ~10 m AGL (halo & soft spotlight)
+
+QR fallback desk • Candy-bot pad + consent point • Temporary rails
+
+Wet paving pass
+
+Curfew—Night
+
+Curfew banner + exemptions plate
+
+Curb LEDs + Ped arch idle cyan
+
+Wrist-scan inset close-up • Exemption badge
+
+EMP-safe variant (amber egress strips)
+
+CCTV Suite
+
+Pane bars across glazing • Tri-screen illegible glyphs
+
+Custody clock “Public 30D” • Operator station + Brace-Comm tile
+
+Access door reader (badge + wrist) • PA caption band sample
+
+F) “How to Use” (pipeline)
+
+Concept paint: Start with Hero Wide under the correct preset (Day / Blue-Hour / Night). Add 2–3 Inserts to direct focus.
+
+Prompting: Use Hero Wide paragraph + 2 Insert bullets as secondary cues. Keep UI terms generic (“illegible glyphs,” “soft halo crossfades”).
+
+Continuity: Paste the Board Footer crib on every vendor brief.
+
+If this reads good, say the word and I’ll roll into Sprint 4: Prompt Kits & Final Prose (v4) for this pack—ready-to-paste prompts for each scene plus short, novel-ready paragraphs you can drop into chapters around festival/crowd/curfew beats.
+
+Absolutely—rolling straight into Sprint 4 for Street-Level Surveillance & Crowd Control and wrapping the pack. Below is a production-ready bundle you can hand to concept artists, layout designers, UI/UX, and prop teams. It locks visual grammar, behaviors, edge-case flows, and gives you paste-ready prompt blocks + shotlists so the boards and sheets can move to paint/3D without further questions.
+
+Sprint 4 — Final Production Pack (Street Surveillance & Crowd Control)
+
+0) Canon recap (locked from S1–S3)
+
+What’s being policed: curfew breaches, repeat violations, flagged identities (hot list).
+
+Data policy: incident logs visible to the public for 30 days, then “destroyed” (in practice, archived to private vaults).
+
+Corridor geometry: arterial boulevards = 3 lanes each side → Lane A (pedestrian) curbside; Lanes B/C (automotive) inner/center; raised curb and bollard line separates A from B/C.
+
+Enforcer mix: blend of plain-clothes officers and uniformed patrols.
+
+Acoustic law: any sound above the posted dB cap is illegal (active monitoring).
+
+Signal states: color grammar (GREEN → AMBER → RED) governs kiosks, hovercams, bollards, and wall glyphs.
+
+Candy-bots: allowed LED “eyes”, give out candy tokens as reward (kids compliance funnel).
+
+Crowd limits: hard density / dwell-time caps per block (enforced by hovercams/kiosks); drones also authorized for dispersal.
+
+Exemptions: emergency medical, critical utilities, accredited press embeds, escorted dignitary convoys (all tagged in-band).
+
+Public address: live audio, one-way (citizens cannot talk back on the PA).
+
+No-go additions: none—no new hard bans beyond the above.
+
+1) Visual Language Lock (street pack)
+
+Palette (inherited from state optics)
+
+Enforcement signal: Green #1CCB5A → Amber #FFBF3C → Red #FF2E2E
+
+State/navy: Navy #0B2742, Powder-Blue #C9DBEE, Mustard Emblem #F1C232
+
+Public UI neutrals: Light Concrete #EDEFF1, Graphite #3C3F45
+
+Type system (street)
+
+Primary: condensed military block (ALL CAPS) for headers & lane codes, tight tracking, high x-height.
+
+Secondary: humanist grotesk for body labels in kiosks and wall plates.
+
+Numerals: tabular figures for timings, fines, dB meters.
+
+Shape grammar
+
+Rounded rectangles for citizen-facing elements (kiosk panes, ticket slips).
+
+Beveled diamonds for alerts and checkpoint stamps.
+
+Circle “halo bands” for hovercam status.
+
+Markings
+
+Right-shoulder text rule for uniforms remains (division text only). Large mustard emblem centered on back of coats; small emblem on left shoulder pad.
+
+2) System Behaviors & Exact Numbers (final)
+
+A. Sound-limit enforcement
+
+Street cap: 75 dB(A) at 1 m in curfew windows; 85 dB(A) during festival hours.
+
+Hovercams & pole mics triangulate; AMBER soft warning at 90% of limit; RED spot-fine at breach.
+
+Repeat within 10 minutes → mute zone (directional dampeners) over the violator’s bubble; log increments to “repeat” tier.
+
+B. Density & dwell
+
+Max standing density: 3.5 persons/m² (festival), 2.0 persons/m² (normal).
+
+Dwell cap at vendor ring: 8 minutes per ID during festival; 3 minutes on ordinary days at choke points.
+
+Exceed → AMBER nudge on wrist + kiosk arrow to move; second exceed in 30 min → RED fine + relocation prompt.
+
+C. Lane logic (per side)
+
+Lane A (Ped): 2.4–3.0 m wide, textured pavers, embedded light-strips with GREEN/AMBER/RED ticks every 5 m.
+
+Lane B (Auto-flow): glide-car stream; no stop except flagged pull-outs.
+
+Lane C (Auto-service): kerbside service + authorized stops; quick-scan bollards at pull-offs.
+
+D. Hovercam status (LED halo + “eye”)
+
+Green: passive patrol; audio off; LED eyes dim.
+
+Amber: observation focus; local PA primed; slow orbit at 6–8 m AGL.
+
+Red: enforcement; spotlight cone tightens; video to chain-of-custody; PA live.
+
+E. Checkpoint ladder (per individual)
+
+First breach: verbal warning (PA), on-wrist nudge, no fine.
+
+Second (7-day window): ₹250 spot-fine; ID flagged “observed.”
+
+Third: ₹1000 fine + 2-hr movement restriction on the grid (soft-gates redirect).
+
+Fourth: detain to curb-pen in Lane C; supervisor review.
+
+F. Candy-bot protocol (minors)
+
+Safe look: rounded cube, LED eyes (soft white/blue), mouth slot for token.
+
+Flow: “Scan → small task → token.” Tasks = step onto pad, hold still, follow line for 3 seconds.
+
+Reward: Candy tokens redeemable at marked kiosks (sugar or sugar-free).
+
+Optics: always supervised by overhead hovercam (eye and bot share the same color state).
+
+Hard rule: no identity enrollment beyond thumb; guardians can opt-out at kiosks.
+
+G. Dispersal
+
+Tooling: air-curtain pulses (non-injurious), fine water mist, dye-mist (expirable, 48 hrs), directional sound sweeps max 88 dB(A).
+
+Trigger: RED density + rising dB + ignition signature (fireworks) or thrown-object vector.
+
+H. Exemptions (visual tags)
+
+MED-EX: medical transit (white chevron on powder-blue badge).
+
+UTIL-EX: utilities/repairs (amber wrench glyph).
+
+PRESS-EMB: accredited press embed (navy plate + qr-glyph).
+
+DIGN-ESC: escorted dignitary (state seal strip + time window).
+
+I. Transparency board (public veneer)
+
+District wall displays: last 30 days incidents aggregate (heatmap + counts).
+
+Small print: “For individual record access, scan here.” (Link gates to redacted public view.)
+
+Back-end reality: full fidelity retained in private vaults (not advertised).
+
+3) Asset Checklists (ready to assign)
+
+Environment Boards (A2/A3)
+Each board: 1–2 hero wides + 4–5 detail panels + lighting notes.
+
+Algorithmic Checkpoint (Day & Blue-Hour)
+
+Hero: six-lane smart boulevard; Lane A ped flow; kiosks; bollards; hovercams; oxy-poles; verti-gardens on façades.
+
+Details: (a) wrist-scan pane, (b) bollard light grammar, (c) lane ticks, (d) PA horn cluster, (e) transparency board inset.
+
+Festival Control Ring (Night, High Saturation)
+
+Hero: crowd funnel with vendor ring; candy-bots at child pad; halo of hovercams.
+
+Details: (a) child pad floor decal set, (b) token slot + LED eyes, (c) density counters (overhead), (d) dye-mist nozzle at kiosk roofline, (e) sound meter pylons.
+
+Curfew Corridor (Blue-Hour Quiet)
+
+Hero: nearly empty street; AMBER ambient; lone violator being nudged.
+
+Details: (a) live PA flare, (b) decibel pylon reading, (c) curb-pen bay in Lane C, (d) exemption badge scan, (e) dwell timer UI.
+
+Rapid Dispersal (RED Event)
+
+Hero: non-lethal dispersal in progress; water mist and directional sound sweeps; escort corridor lit GREEN.
+
+Details: (a) dye-mist residue on pavement, (b) shielded med-corridor, (c) post-event cleanup drone, (d) chain-of-custody tag on feed.
+
+Prop Sheets
+
+Checkpoint Kiosk: footprint, screen states (GREEN/AMBER/RED), wrist pad, camera cluster.
+
+Hovercam: halo ring, eye, gimbal arms, spotlight cone sizes.
+
+Candy-bot: silhouette turns, port placements, child-safe edges.
+
+Bollards & Lane Ticks: dimensions, mount plates, light mappings.
+
+PA Horn & Mic Tree: branch spacing, cable management.
+
+dB Pylon: sensor apertures, numeric display, QR appeal plate.
+
+Signage & Decals
+
+Curfew 21:00–06:00 primary placard; lane codes; queue chevrons; hands & thumb pictos; child pad prints; privacy micro-copy (30-day veneer).
+
+UI Panels
+
+Wrist prompts (GREEN “You’re good”, AMBER “Move along”, RED “Fine applied”).
+
+Kiosk panels: scan → confirm → route arrow; incident receipt.
+
+Crowd Plates
+
+Silhouettes: “military employee vs civilian” (5 male / 5 female per), festival add-ons.
+
+Patrol @ curfew: plain-clothes and uniformed; must observe emblem placement rules; brace-comm visible.
+
+4) Shot-Lists (per board) + Aspect Ratios
+
+Camera conventions
+
+Hero wides: 24–28 mm equiv, eye-level or slight high (3.2–3.6 m), 16:9 and 21:9 variants.
+
+Details: 50–85 mm equiv, 4:5 and 1:1 crops for spec sheets.
+
+Board 1 — Algorithmic Checkpoint
+
+Wide A (16:9, day): approach view, GREEN flow, kiosks left, bollards right, hovercam in mid-air (halo GREEN).
+
+Wide B (21:9, blue-hour): same street, AMBER ambient strips, transparency wall glowing.
+
+Detail 1: wrist-pad close, thumb mid-press, small “OK” glyph.
+
+Detail 2: bollard top—LED ring triplets (green/amber/red).
+
+Detail 3: PA horn tree with mic cluster.
+
+Detail 4: scan-receipt (rounded ticket).
+
+Detail 5: transparency map tile (public veneer copy).
+
+Board 2 — Festival Control Ring
+
+Wide A (16:9, night): vendor arc, candy-bots at child pad, hovercams AMBER.
+
+Wide B (2:1): overhead density map (ghosted hex overlay).
+
+Detail 1: candy-bot face + token slot.
+
+Detail 2: child pad decal (“Stand / Scan / Smile”).
+
+Detail 3: dB pylon; reading 82 dB AMBER.
+
+Detail 4: dye-mist nozzle at kiosk cornice.
+
+Detail 5: exemption badge scan.
+
+Board 3 — Curfew Corridor
+
+Wide (21:9): empty boulevard, single violator, hovercam RED cone.
+
+Detail 1: on-wrist RED fine panel.
+
+Detail 2: curb-pen bay (Lane C) gates half-open.
+
+Detail 3: “MED-EX” badge pinging GREEN.
+
+Detail 4: PA caption ribbon (“Return home now.”).
+
+Board 4 — Rapid Dispersal
+
+Wide (16:9): water-mist curtain sweeping, GREEN evac corridor.
+
+Detail 1: dye-mist footprint on pavers.
+
+Detail 2: cleanup drone with brush head.
+
+Detail 3: chain-of-custody tag overlay (feed stamp).
+
+5) Paste-Ready Prompt Blocks (copy straight into your image-gen)
+
+A) Algorithmic Checkpoint (Day / Blue-Hour)
+
+Near-future Indian metropole boulevard, six lanes total, each side = 1 pedestrian lane with textured pavers + 2 automotive lanes; vertical-garden façades and slender oxy-poles; algorithmic checkpoint kiosks with rounded screens; bollards with LED rings (green/amber/red); hovering enforcement drone (“hovercam”) with circular halo and single “eye”; public transparency wall showing a 30-day incident heatmap; military patrols in navy coats (large mustard emblem on back, small emblem on left shoulder pad, right pad text-only); clean, utopian materials, minimal signage, no ad clutter. Two variants: (1) Daylight GREEN flow, soft shadows; (2) Blue-hour AMBER ambience, glass reflections casting bar-like light. 16:9 and 21:9.
+
+B) Festival Control Ring (Night)
+
+Night festival ring in Lakshmanpur: vendor arc lights, crowd funnels marked with floor chevrons; candy-bots (rounded cube body, LED eyes, token mouth slot) guiding kids to a glowing child pad (Stand/Scan/Smile decals); dB pylons reading 82 dB (AMBER); hovercams at 6–8 m AGL with AMBER halos; non-lethal nozzle arrays hidden on kiosk cornices (mist ports); joyous but tightly ordered crowd; wrist-scan holograms; navy patrol silhouettes; neon drones in the far distance. High saturation, micro-specs on wet pavers, 16:9.
+
+C) Curfew Corridor (Blue-Hour Silence)
+
+Almost-empty boulevard during curfew (21:00–06:00): powder-blue lane ticks glowing AMBER; a single violator being addressed by a hovercam (RED halo cone); on-wrist RED fine pane; curb-pen bay with translucent gates in Lane C; a MED-EX badge pinging GREEN on a bystander; clean glass façades, bar-light reflections; mood: quiet pressure. 21:9.
+
+D) Rapid Dispersal (Non-lethal)
+
+RED-state dispersal: directional water-mist curtain and low-dB sound sweeps pushing a dense crowd along a GREEN-lit evacuation corridor; dye-mist residue on ground (non-toxic color); hovercams in enforcement posture; navy patrol forming a calm line; cleanup drone arriving with brush head. Keep it humane, clinical, non-gory. 16:9.
+
+Props (drop-in close-ups)
+
+Hovercam: ring-halo + single lens “eye”, gimbal fins, spotlight cone options; GREEN/AMBER/RED.
+Kiosk: rounded upright; wrist pad; tri-state UI panels; camera bead line; QR plate.
+Candy-bot: child-safe rounded cube, LED eyes, token mouth slot; cute but not toy-like.
+dB Pylon: slim totem, numeric dB readout, tiny mic apertures.
+Bollard: 1 m height, chamfered top with tri-LED ring, anchor plate visible.
+
+6) Copy & Micro-text (ready for signage/UI)
+
+Primary placard (curfew)
+
+CURFEW HOURS: 21:00–06:00
+
+“Essential travel only. Sound cap 75 dB(A). Wrist-scan on request.”
+
+Kiosk states
+
+GREEN: “You’re clear. Proceed.”
+
+AMBER: “Area dense. Move along.”
+
+RED: “Fine applied. Follow arrow to Lane A.”
+
+Child pad
+
+STAND • SCAN • SMILE → TOKEN
+
+Transparency board micro-copy
+
+“Incidents (Last 30 Days). Data refreshed hourly. Individual records available via scan.”
+
+dB pylon
+
+“Area limit: 75 dB(A) curfew / 85 dB(A) festival. Stay under the cap.”
+
+7) Final Deliverables Map (what your folder should contain)
+
+/Street_Control_Pack/
+
+  /Boards/
+
+    01_Checkpoint_Day_&_Bluehour_(A2,A3)
+
+    02_Festival_Ring_Night_(A2,A3)
+
+    03_Curfew_Corridor_Bluehour_(A2,A3)
+
+    04_Rapid_Dispersal_Red_(A2)
+
+  /Props/
+
+    Hovercam_sheet.png
+
+    Kiosk_sheet.png
+
+    Candybot_sheet.png
+
+    Bollards_LaneTicks.png
+
+    PA_HornTree.png
+
+    dB_Pylon.png
+
+  /Signage_UI/
+
+    Curfew_Primary.ai
+
+    Lane_Codes.ai
+
+    ChildPad_Decals.ai
+
+    Transparency_Wall.ai
+
+    Wrist_Prompts_(GREEN_AMBER_RED).png
+
+  /Specs/
+
+    Palette_Type_Sheet.pdf
+
+    Behavior_Grammars.pdf
+
+    Density_Dwell_Matrix.pdf
+
+    Dispersal_NonLethal_SOP.pdf
+
+8) Edge-Case Plays (so storyboards don’t stall)
+
+Repeat violator + flagged identity during festival: hovercam goes RED, pathing arrow opens to a side pen in Lane C, candy-bots shut off within a 5 m bubble, kiosk refuses tokens to linked guardians; PA switches to short, calm phrasing (“Please comply. Lane C.”).
+
+Press exemption at dispersal: PRESS-EMB badge keeps GREEN halo, drones track but do not mist inside a 2 m press bubble; live PA continues one-way over them.
+
+Ambience spike (street musician): dB pylon flips AMBER at 80 dB → kiosk offers silent-busker permit (1 song / 90 sec) during non-curfew windows; curfew window = auto-mute zone, no permit offered.
+
+Done.
+
+This fully wraps Sprint 4. If you want, I can package the above into a printable PDF spec and a clean “/Street_Control_Pack” folder structure with placeholder boards—just say the word and which two boards you want rendered first.

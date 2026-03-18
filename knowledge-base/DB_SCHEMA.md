@@ -1,9 +1,9 @@
 # AI OS Database Schema
 
-> Auto-generated from `ai_os` database on 2026-03-14, updated 2026-03-17
+> Auto-generated from `ai_os` database on 2026-03-14, updated 2026-03-18
 > Instance: `bharatvarsh-website:us-central1:bharatvarsh-db`
 > Database: `ai_os` | User: `ai_os_admin` | PostgreSQL 15 | Extensions: vector 0.8.1, moddatetime 1.0, ltree 1.2
-> **Note:** Migrations 001-014 all applied (33 tables live). Extensions: vector 0.8.1, moddatetime 1.0, ltree 1.2. Live regeneration requires Cloud SQL Proxy connection.
+> **Note:** Migrations 001-015 all applied (38 tables live). Seed 013 applied (139 lore records). Extensions: vector 0.8.1, moddatetime 1.0, ltree 1.2. Live regeneration requires Cloud SQL Proxy connection.
 
 ## Overview
 
@@ -42,6 +42,11 @@
 | 31 | `domain_context_items` | 12 | 14 | Life Graph | 011 |
 | 32 | `domain_health_snapshots` | 0 | 14 | Life Graph | 011 |
 | 33 | `journals` | 0 | 13 | Capture System | 013 |
+| 34 | `lore_entities` | 35 | 17 | Bharatvarsh Lore | 015 |
+| 35 | `lore_relationships` | 57 | 9 | Bharatvarsh Lore | 015 |
+| 36 | `lore_timeline` | 20 | 13 | Bharatvarsh Lore | 015 |
+| 37 | `lore_chapters` | 0 | 14 | Bharatvarsh Lore | 015 |
+| 38 | `writing_fragments` | 27 | 9 | Bharatvarsh Lore | 015 |
 
 **Migration 006 (Knowledge Functions — applied):**
 - 7 new source_type enum values, knowledge_domain enum, 3 new columns on knowledge_entries (sub_domain, project_id FK, drive_file_id), match_knowledge() function (semantic search), traverse_knowledge() function (graph traversal), 4 new indexes
@@ -80,6 +85,13 @@
 **Migration 014 (Contact Intelligence — applied):**
 - **Columns added to contacts:** google_contact_id (TEXT, unique), import_source (TEXT), last_contacted_at (TIMESTAMPTZ), domain_slug (TEXT). Table now has 20 columns (was 16).
 - **Data:** 891 Google Contacts imported via idempotent CSV importer (scripts/import_google_contacts.py)
+
+**Migration 015 (Bharatvarsh Lore — applied):**
+- **Enums:** lore_entity_type (character/faction/location/technology/concept/creature/event), lore_disclosure (classified/declassified/redacted/public), lore_relationship_type (15 types), writing_fragment_type (dialogue/description/action/internal_monologue/world_detail)
+- **Tables:** lore_entities (characters, factions, locations, tech, concepts — 35 seeded), lore_relationships (directed typed edges between entities — 57 seeded), lore_timeline (chronological events 1717-2026 — 20 seeded), lore_chapters (novel chapter metadata), writing_fragments (style samples for voice matching — 27 seeded)
+- **Indexes:** 18 total — GIN fulltext on lore_entities, GIN on tags/entities_involved arrays, type/disclosure/faction filters
+- **Triggers:** moddatetime on lore_entities, lore_timeline, lore_chapters
+- **Seed:** 013_seed_bharatvarsh_lore.sql (35 entities, 57 relationships, 20 timeline events, 27 writing fragments)
 
 ---
 

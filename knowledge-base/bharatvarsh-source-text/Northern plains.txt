@@ -1,0 +1,1015 @@
+Locked on your choices. Rolling into Northern Plains — Sprint A (Canon Lock & Palette). This is the seed doc the rest of the art, prompt and set teams will reference. I’ve merged your decisions with canon anchors so everything stays consistent across boards, props, and prose.
+
+Northern Plains DNA (what it must feel like)
+
+Read at a glance: vast, geometric agriculture; orderly grids; spotless 4×4-lane expressways; polite-but-ever-present state optics. This is the bloc where “obedience feels normal.” 
+
+Surveillance texture: random road checkpoints at algorithmic intervals; AI traffic towers; plate + passenger scanning; hovercams when crowds form. 
+
+Green-tech veneer: highways lined with Oxy-Poles (photosynthetic air towers). 
+
+Language discipline: Hindi primary on public signage with English sublines; regional languages persist locally but not on state highway furniture. 
+
+Uniform law (for patrols on these sets): right shoulder = TEXT ONLY (bloc/command), e.g., “NORTHERN PLAINS COMMAND.” Never an emblem there. 
+
+Spatial & Infrastructure Locks (your choices, productionised)
+
+1) Highways & Control Stack
+
+Carriageway: 4 lanes per direction (8 total) with a vegetated median (3–5 m typical).
+
+Oxy-Poles: one every 200 m along the median; electrical poles every 50 m in between (offset to avoid visual clutter).
+
+AI Traffic Towers: slim pylons with camera/lidar clusters every 3 km on expressways; their presence is a known canon element (AI towers). 
+
+Night rule: no default curfew on the Plains; after dark the highway lighting drops to guidance studs only, with Oxy-Poles on low glow and towers in standby (beacons at hazard sites only).
+
+Highway patrol cadence: every ~15 km near towns, ~50 km across empty inter-city spans. Mix of hover-sedans and bikes (uniforms follow right-shoulder text law).
+
+Algorithmic checkpoint hardware: arch scanner + retractable bollards (median-deployed), capable of selectively “popping” a lane; randomised scheduling matches canon’s “algorithmic intervals.” 
+
+2) Agrarian Mesh & Irrigation
+
+Seasonal palette (hero wides):
+
+Mustard bloom (acid yellow ribbons) + wheat heads (gold-tan seas) as primary read.
+
+Sugarcane walls (deep mid-green) as windbreak bands and along canals.
+
+Field logic: center-pivot circles are primary (signature aerial geometry), drip grids are secondary near town perimeters and along feeder roads.
+
+Edges: vertical-stack paddy appears near metro edges but is background, not hero. 
+
+3) Service-Stops (propaganda-heavy, but “friendly”)
+
+Recurring sequence (order varies per site): Pledge Corner → School Exhibit → Memorial Wall.
+
+Pledge Corner: low dais, hand-scan plinth, tri-lingual credo; backdrop LED ribbon (muted).
+
+School Exhibit: rotating STEM diorama (precision farming, drones, Oxy-Pole science).
+
+Memorial Wall: local martyrs & disaster responders; monochrome names; QR for stories.
+
+Amenities: EV fast-charge bays; water + nutrient stations; biometric pay kiosks.
+
+Slogan families (canon tone: “peace-through-strength,” benevolent optics) :
+
+“Order Feeds All / अनुशासन से समृद्धि” (discipline → abundance)
+
+“Work. Rest. Rise. / काम. आराम. उन्नति.” (structured day)
+
+“Together We Keep the Peace / हम सब शांति निभाते हैं” (civic co-ownership)
+Placement strictly on civic surfaces; never on uniforms (per right-shoulder law). 
+
+4) Township Edge & Architecture
+
+Prosperity read: advanced, robust fabric—white micro-cement and pale stone, solar pergolas, rainwater buttresses, neat e-waste kiosks; glazing with sun-louvers; roof agro-beds.
+
+Civics cluster: clinic (sometimes in a repurposed shrine footprint—canon allows repurposing), panchayat/administration block, mandi bay with parallel freight line siding (grain hoppers + drone docks). 
+
+Dress code: modernised, functional tech-workwear—khadi-tech blends, modular pockets, breathable coatings; reflective trims for night riding.
+
+5) Logistics & Rail
+
+Parallel freight lines appear where the expressway skirts mandis or silos; show drone-loading sidings at some stops to sell the “mesh.” (Road remains hero; rail appears as a lateral motif.)
+
+Visual & Type System (for all Plains assets)
+
+Primary language: Hindi; English subline beneath (smaller cap height). 
+
+Highway wayfinding: condensed geometric sans (ALL CAPS) for Hindi transliteration headers; humanist grotesk for English sublines; tabular numerals.
+
+Command text on uniforms / official boards: NORTHERN PLAINS COMMAND in right-shoulder text blocks and gateway plaques; text-only—no slogans or emblems there. 
+
+Prop palette (shared with state optics): navy/powder-blue + mustard emblem pairings; keep propaganda surfaces monochrome with one accent, per canon discipline. 
+
+Scene Recipes (to guide boards later)
+
+Expressway Hero (Day / Blue-Hour): 4×4 lanes, center Oxy-Poles at 200 m intervals, arch-scanner idle; center-pivot circles and mustard ribbons beyond; one AI tower on horizon. (Night: studs only; poles glow low.) 
+
+Service-Stop Civic Theatre: pledge plinth + exhibit + memorial wall; biometric kiosks; subtle slogans; family silhouettes; sugarcane truck at rest bay. 
+
+Algorithmic Checkpoint (Active): arch lights shift GREEN→AMBER→RED; bollards rise; plate/passenger scan; officer mix present (plain-clothes armbands + uniform); bilingual signs. 
+
+Township Edge: drip-grid fields meet robust housing; clinic in a repurposed shrine footprint; freight siding with drone dock; kids on e-cycles; Hindi primary signage.
+
+Materials & Finish (quick locks for consistency)
+
+Asphalt: low-sheen, micro-aggregate; lane paint crisp; studs reflective only.
+
+Oxy-Poles: matte anodize frames with translucent photobioreactor windows (subtle green cast by day; soft white at night). 
+
+Arch-scanner & bollards: graphite anodize, anti-glare frosted diffusers for state color states (no hard strobes).
+
+Township façades: micro-cement (warm white), pale stone skirts, aluminum louvers; roof PV.
+
+Story & Propaganda Integration (writing hooks)
+
+Voice & POV: Plains chapters should feel like the world that works “too well”—roads whisper, kiosks smile, posters thank you for being good. The peace-through-strength story is friendly here, not loud. 
+
+Conflict beats: A “random” arch activation at a silent night crossing; an Oxy-Pole maintenance hatch used as a dead-drop; pledge corners as soft-indoctrination frames.
+
+Acceptance Criteria for Sprint A
+
+The Plains now read orderly, prosperous, and watched—with tech that hides in civic good manners. (Matches canon on Plains tone and security stack.) 
+
+Highway/Oxy-Pole/AI-tower logic aligns with world glossary & surveillance layers. 
+
+Language & uniform marking stay inside national rules. 
+
+What I’ll do next (Sprint B preview — Environment Boards)
+
+Boards to lay out (A2 each):
+
+Expressway + Oxy-Pole Median (Day/Blue-Hour/Night-Studs) — aerial + driver-eye.
+
+Propaganda-Heavy Service-Stop — pledge corner, school exhibit, memorial wall.
+
+Algorithmic Checkpoint (Idle vs Active) — arch-scanner + retractable bollards.
+
+Township Edge — drip-grid fields, robust housing, clinic (repurposed shrine), freight siding.
+
+Each board will include lighting keys, lens notes, detail inserts, signage strips, and negative lists to keep images on-model.
+
+Touchpoint before Sprint B
+
+If Sprint A reads right, say “locked” (or call tweaks: Oxy-Pole/tower spacing, slogan wording, township finish). I’ll proceed to Sprint B and build the four A2 boards exactly to this spec.
+
+Locked. Rolling into Northern Plains — Sprint B (Environment Boards A2). These boards translate your Sprint-A locks into production-ready scenes with lighting keys, lens notes, signage strips, and negative lists so images stay on-model across artists and prompt runs.
+
+Board 1 — Expressway + Oxy-Pole Median
+
+Hero Wide A (Day / Driver-eye)
+
+Aspect / lens / time: 16:9 • 35–50 mm • Day (5400 K).
+
+Blocking: 4 lanes per direction separated by a 3–5 m vegetated median. Oxy-Poles every 200 m on the median; electrical poles every 50 m offset between them. An AI traffic tower punctuates the horizon (~3 km spacing). Far fields show center-pivot circles; near verge shows mustard bloom ribbons and wheat heads; occasional sugarcane walls as windbreaks. Algorithmic arch-scanner is parked idle at the shoulder; bollards stowed flush. 
+
+Light grammar: Clean, civic; low-sheen asphalt; no glare from median hardware.
+
+Signage: Hindi primary, English sublines; km-marker, lane boards; no slogans on roadway furniture. 
+
+Hero Wide B (Night / Guidance-Studs mode)
+
+Aspect / lens / time: 21:9 • 35 mm • Night.
+
+Blocking: Overhead lighting off; studs only trace lanes; Oxy-Poles at soft white; AI tower beacon in standby; traffic sparse.
+
+Detail inserts (pick 4–5):
+
+Oxy-Pole module—matte frame, translucent bioreactor windows (soft green by day, white by night). 
+
+AI traffic tower—slim pylon; camera/lidar cluster; speaker port; maintenance hatch. 
+
+Median planting—low native grasses, litter-free; drainage slot rhythm.
+
+Center-pivot field aerial chip—circular irrigation arcs; farm track tangents. 
+
+Lane paint & studs—crisp thermoplastic; reflective studs spec.
+
+Ban list: Chrome hardware, billboard clutter, religious text on state assets, right-shoulder emblems on patrols (right shoulder is TEXT-ONLY). 
+
+Lens & lighting keys:
+
+Day: 5400 K; road paint ~50% reflectance; Oxy-Pole glow off.
+
+Night: 3000–3200 K studs; poles low; tower beacon single pulse.
+
+Board 2 — Propaganda-Heavy Service-Stop (Civic Theatre)
+
+Hero Wide (Blue-Hour)
+
+Aspect / lens / time: 16:9 • 35 mm • Blue-Hour (sky 9000–10000 K; forecourt keys 4300–4600 K).
+
+Blocking: Forecourt with EV fast-charge bays; program sequence varies but shows all three: Pledge Corner → School Exhibit → Memorial Wall. Small family groups move between kiosks; biometric pay visible; sugarcane truck parked in service bay; subtle slogan ribbons on civic surfaces only (no uniforms). 
+
+Detail inserts (pick 4–6):
+
+Pledge Corner—low dais; hand-scan plinth; tri-lingual credo “Order Feeds All / अनुशासन से समृद्धि / ORDER FEEDS ALL” (English subline smaller).
+
+School Exhibit—precision farming diorama (drone boom arm, seed map, Oxy-Pole cutaway). 
+
+Memorial Wall—monochrome names, QR for stories; calm lighting.
+
+Wayfinding—Hindi primary; English sublines; tabular numerals on time/price. 
+
+Civic slogans (approved families)—
+
+“Order Feeds All / अनुशासन से समृद्धि”
+
+“Work. Rest. Rise. / काम. आराम. उन्नति.”
+
+“Together We Keep the Peace / हम सब शांति निभाते हैं” (benevolent optics). 
+
+Ban list: Loud propaganda screens, red siren bars, corporate ads, soldier statues.
+
+Lens & lighting keys:
+
+Blue-Hour contrast; EV canopies 350–450 lux; exhibit boxes 220–300 cd/m²; no strobe.
+
+Board 3 — Algorithmic Checkpoint (Idle vs Active)
+
+Hero Wide A (Idle / Day)
+
+Aspect / lens: 16:9 • 35–50 mm.
+
+Blocking: Arch-scanner parked; retractable bollards flush; patrol lay-by bay visible; Hindi/English signage unobtrusive; mixed officer presence (plain-clothes armbands + uniform). 
+
+Hero Wide B (Active / Day or Blue-Hour)
+
+Blocking: Arch flashes GREEN→AMBER→RED crossfade; bollards rise to form a soft bay; plate & passenger scan in progress; hover-sedan idling at lay-by. Randomised activation sells the “algorithmic interval” behavior. 
+
+Detail inserts (pick 4–5):
+
+Bollard top—tri-LED ring (G/A/R), 300 ms crossfade; anti-trip chamfer.
+
+Arch fascia—matte graphite; frosted emitters; no hard strobe.
+
+Patrol uniform law—right-shoulder TEXT-ONLY block “NORTHERN PLAINS COMMAND”; emblem on left/back only. 
+
+Receipt UI—tri-lingual strip: “Scan clear / Amber re-scan / Red hold,” English subline smaller. 
+
+Lay-by cadence—sign “Patrol 15 km / 50 km” directional arrows (town v. inter-city).
+
+Ban list: Spike strips, barricade coils, readable data dashboards, right-shoulder emblems.
+
+Lens & lighting keys:
+
+Day 5400 K; Blue-Hour ambient 9000–10000 K; arch emitters ≤ 320 cd/m²; never strobe.
+
+Board 4 — Township Edge (Prosperous Fabric)
+
+Hero Wide (Day)
+
+Aspect / lens: 16:9 • 35 mm.
+
+Blocking: Drip-grid fields meeting a robust township: micro-cement & pale stone façades, aluminum sun-louvers, roof PV and agro-beds; clinic housed in a repurposed civic/sacral footprint (canon allows repurposing); mandi with parallel freight siding and drone dock; e-cycles and micro-vans; residents in modernised tech-workwear. 
+
+Detail inserts (pick 4–5):
+
+Façade detail—white micro-cement, stone plinths, louver rhythm; durable seals.
+
+Clinic plate—Hindi primary, English subline; monochrome emblem plaque on wall (not right-shoulder). 
+
+Freight siding—grain hopper car; drone dock; weighbridge.
+
+Workwear—khadi-tech weave, modular pockets, reflective trims at cuffs; clean silhouettes.
+
+Town gate—NORTHERN PLAINS COMMAND plaque at administrative annex (text-only law reflected in uniforms). 
+
+Ban list: Ramshackle huts, ad hoardings, aggressive militarization, messy wiring.
+
+Lens & lighting keys:
+
+Day: 5400 K; façades ~35–45% reflectance; sky mask soft; shadows tidy.
+
+Shared Footers to print on every board
+
+Lighting stamp: Day (5400 K) / Blue-Hour (ext 9000–10000 K; key 4400 K) / Night (studs only).
+
+Lens lanes: Driver-eye 35–50 mm; Aerial 24–28 mm; Detail 70–85 mm.
+
+Etiquette crib: Hindi primary + English sublines • UI illegible & minimal • Right-shoulder = TEXT-ONLY • No slogan on uniforms • No chrome • Benevolent optics first. 
+
+Deliverables (what the team can start painting / prompting now)
+
+Four A2 boards above, each with hero + inserts + signage strips + ban list.
+
+Type & signage strip assets (Hindi primary / English sublines; tabular numerals). 
+
+Palette & materials chips (asphalt, Oxy-Pole, arch-scanner, township façades). 
+
+Continuity stamps (Oxy-Pole 200 m; electric poles 50 m; traffic tower 3 km; patrol 15 km/50 km; studs-only nights). 
+
+Touchpoint before Sprint C
+
+If this reads clean, say “locked” (or call tweaks like: tower spacing, insert choices, or an added Board 5: Agrarian Grid Aerial dedicated to center-pivot patterns). I’ll proceed to Sprint C — Props & Signage Sheets (Oxy-Pole module, arch-scanner + bollards, AI tower, propaganda set, wayfinding pack) using exactly these specs.
+
+Locked. Delivering Northern Plains — Sprint C (Props & Signage Sheets v3). This is the master pack your concept/3D/UI teams can build from. I’ve turned your Sprint-A/B locks into precise, reusable modules with dimensions, materials, light/acoustic targets, behavior, and bilingual signage grammar (Hindi primary; English sublines). Everything below is designed to be consistent across all future images, boards, and prose.
+
+Prop Sheet P1 — Oxy-Pole (Highway Median Module)
+
+Purpose. Green-tech veneer first; quietly houses environment sensors and low-glow wayfinding at night. Not a police tower (that’s the AI Traffic Tower).
+
+Overall: H 9.0 m (tip), base Ø 650 mm, median footing 1.2 × 1.2 m (flush cap). Spacing 200 m center-to-center (as locked).
+
+Structure & materials
+
+Spine: extruded aluminum, graphite anodize (matte).
+
+Photobioreactor windows: laminated low-iron glass, 10 mm each ply; faint green cast by day; neutral-white internal wash at night.
+
+Access: lockable maintenance hatch at 0.9 m (north face); gasketed; tamper sensor.
+
+Electrical / optical
+
+Night mode: internal wash 3600–4000 K, 3–5% output (guidance only).
+
+Day mode: lights off; passive green tint only.
+
+Beacon (maintenance only): slow white pulse, ≤ 120 cd/m².
+
+IP/IK: IP66 / IK08. Wind: designed to V50 m/s.
+
+Mounting
+
+Median plinth with concealed drainage; anti-rust tie-downs; shear-keyed.
+
+Don’ts (for everyone): No siren horn clusters; no PA; no cameras on Oxy-Poles (keep optics “civic”, not policing).
+
+Prop Sheet P2 — Arch-Scanner & Retractable Bollards (Algorithmic Checkpoint Kit)
+
+Arch-Scanner
+
+Clear height 4.8 m; clear width 4.0 m (single lane).
+
+Fascia: graphite anodize; frosted emitters (no hard LEDs visible).
+
+State transitions: GREEN → AMBER → RED via 300 ms cross-fades; never strobe.
+
+Optics: multi-spectral plate reader at 2.8 m; cabin/passenger depth sensor at 2.2 m; angle 15° down.
+
+Power / comms: plinth cabinet at median; fiber in; UPS 20 min.
+
+Retractable Bollards
+
+Dia 210 mm; raised height 900 mm; top chamfer 30°.
+
+Rise/fall: 1.2 s normal / 0.7 s emergency; crush-safe skirt.
+
+Crown ring: tri-LED (G/A/R) to mirror arch state; ≤ 300 cd/m² blue-hour cap.
+
+Finish: graphite composite, anti-scuff; IP68 actuator.
+
+Behavior
+
+Idle: arch off, bollards flush.
+
+Active (algorithmic interval): arch to AMBER, bollards rise to form soft bay; scan; either GREEN pass or RED hold with side-rail.
+
+Fail-safe: power loss → bollards auto-drop; arch lamps off; manual triangle signs out.
+
+Signage (lane-head fascia)
+
+Hindi primary / English subline:
+
+हरित – पार करें / GREEN – PROCEED
+
+एम्बर – पुनः जाँच / AMBER – RESCAN
+
+रेड – प्रतीक्षा / RED – HOLD
+
+Etiquette locks: No spike strips, no strobing, no megaphone bark. Officers visible but not theatrical.
+
+Prop Sheet P3 — AI Traffic Tower (“Sutradhar”)
+
+Purpose. Road intelligence & incident orchestration (not propaganda).
+
+Overall: H 12.5 m; triangular mast (faces at 600 mm width); footing 1.6 × 1.6 m. Interval on expressways ~3 km.
+
+Modules (top→down)
+
+Optics crown: 3× gimballed 4K cams + solid-state lidar ring; sun hoods; wipers.
+
+Beacon ring: single white pulse for hazard; ≤ 180 cd/m²; duty ≤ 10%.
+
+V2X/mesh can: 5G/DSRC nodes; lightning diverter.
+
+PA node (rare use): one-way calm voice; −15 LUFS; 5 s burst max.
+
+Service bay: lock panel at 2.1 m; QR for maintenance logs (internal).
+
+Night behavior
+
+Default dark; beacon only for hazards; road illumination handled by studs and vehicle lights (per your rule).
+
+Finish: graphite anodize; no emblem; small asset ID only.
+
+Prop Sheet P4 — Service-Stop Civic Theatre (3-part Program)
+
+A) Pledge Corner
+
+Low dais 6.0 × 3.0 m; hand-scan plinth (900 mm); backdrop LED ribbon (monochrome).
+
+Copy (tri-lingual with English subline smaller):
+
+अनुशासन से समृद्धि
+
+Order Feeds All
+
+B) School Exhibit
+
+2–3 1.2 × 1.2 m vitrines; topics rotate: precision farming drone; center-pivot cutaway; Oxy-Pole science.
+
+Light: 220–300 cd/m² internal boxes; no carnival colors.
+
+C) Memorial Wall
+
+10–18 m run; monochrome names; QR story plaques; candle shelf (electric).
+
+Shared rules
+
+Slogans only on civic surfaces; never on uniforms. Volume levels low; “museum” vibe.
+
+Prop Sheet P5 — Wayfinding & Typography (Highway & Township)
+
+Language order: Hindi primary (largest) over English subline. Numerals: tabular.
+
+Type styles (style names for vendors; no real font calls)
+
+Hindi: condensed geometric sans (tall matras, square terminals), bold; tracking +20 banners, +8 plaques.
+
+English: humanist grotesk; tracking +8 banners, +4 plaques.
+
+Cap heights (legibility targets)
+
+Overhead gantry: Hindi 180 mm; English 130 mm (legible 60–70 m).
+
+Shoulder signs / km markers: Hindi 90 mm; English 65 mm.
+
+Township plates: Hindi 60 mm; English 42 mm.
+
+Color & reflectivity
+
+Background: powder-blue or concrete grey; text: navy/black; retro-reflective sheeting RA2; no glossy varnish.
+
+Examples (set these in files)
+
+एक्सप्रेसवे निकास 12 • सेवा केन्द्र
+EXPWY EXIT 12 • SERVICE STOP
+
+उत्तरी समतल कमान
+NORTHERN PLAINS COMMAND (for gates/plaques; uniforms keep right-shoulder TEXT-ONLY)
+
+Prop Sheet P6 — Township Architecture Kit
+
+Façades
+
+Micro-cement (warm white), WRI 0.35–0.45; pale stone skirts; aluminum sun-louvers (100 mm pitch); roof PV + agro-beds.
+
+Shopfronts: laminated glass, shade fin.
+
+Civic plates
+
+Clinic / Admin: Hindi header; English subline; monochrome emblem plaque to left of door (not on uniforms).
+
+Street furniture
+
+E-waste kiosk; water butt column; cycle stands with solar cap.
+
+Night
+
+Warm trim 3000–3200 K at entries; guidance studs on lanes; no floodlight spill.
+
+Prop Sheet P7 — Patrol Lay-By & Livery Notes
+
+Lay-By bay
+
+Setback 3.5 m from carriageway; length 30 m; crash cushions both ends.
+
+Fixtures: comms bollard, first-aid locker, AED, extinguisher, spill kit.
+
+Sign: पुलिस विश्राम स्थल 15 कि.मी. / 50 कि.मी.
+PATROL LAY-BY 15 km / 50 km
+
+Vehicle livery (highway variant)
+
+Base navy; two powder-blue rails; small monochrome emblem front doors; RIGHT SHOULDER TEXT-ONLY on uniforms: NORTHERN PLAINS COMMAND.
+
+Prop Sheet P8 — Freight Siding & Mandi Interface
+
+Elements
+
+Grain hopper siding parallel to road; weighbridge; drone dock (6 pads, 2.5 m Ø).
+
+Safety marks: yellow edge chevrons; Hindi primary warning plates; English sublines.
+
+Access: smart gate with QR + plate read; pedestrian bridge to mandi.
+
+Prop Sheet P9 — Center-Pivot & Drip-Grid Field Logos (Aerial Chips)
+
+Center-Pivot (primary)
+
+Radius variants: 200 m / 400 m circles; radial track ruts; irrigation arm rendered at 30–60° arc positions.
+
+Color: season swatches—mustard bloom, wheat gold, sugarcane green rings as windbreaks.
+
+Drip-Grid (secondary)
+
+20 × 40 m rectangles; drip lines at 1.0 m spacing; approach roads orthogonal to highway.
+
+Signage & Decal Files (deliver these as vectors)
+
+Gantry Overhead (Exit / Services) — bilingual layout.
+
+Checkpoint Fascia — GREEN / AMBER / RED headers (bilingual).
+
+Service-Stop Program — Pledge Corner credo; School Exhibit labels; Memorial Wall plaques.
+
+Township Plates — Clinic, Admin, Mandi.
+
+Patrol & Safety — Lay-by distance markers; AED/first-aid icons.
+
+Freight Siding — safety chevrons; access plates; platform numerals.
+
+UI Microcopy (locked phrases)
+
+Pledge Plinth: “हाथ रखें — वचन निभाएँ / PLACE HAND — KEEP THE PLEDGE”
+
+Arch-Scanner: GREEN “पार करें / PROCEED”; AMBER “पुनः जाँच / RESCAN”; RED “प्रतीक्षा / HOLD”
+
+Service Kiosk: “बायोमेट्रिक भुगतान / BIOMETRIC PAY”
+
+Mandi Dock: “लोडिंग पटरी • 06 / LOADING PAD • 06”
+
+Color & Material Chips (for all props)
+
+Graphite Anodize (hardware): NCS S 8000-N (matte)
+
+Concrete Grey: NCS S 4000-N
+
+Powder-Blue: NCS S 1515-R90B
+
+Navy: NCS S 7020-R90B
+
+Mustard Accent (civic only): NCS S 2050-Y
+
+Reflective White (text): RA2 sheeting
+
+Light caps
+
+Arch/Bollard emitters ≤ 320 cd/m² blue-hour; ≤ 220 cd/m² day.
+
+Oxy-Pole night wash ≤ 60 cd/m² (guidance only).
+
+Exhibit boxes 220–300 cd/m².
+
+Packaging & Filenames (source of truth)
+
+/Northern_Plains_Props_v3/
+
+  P1_OxyPole_Module_v003.ai
+
+  P2_ArchScanner_Bollards_v003.ai
+
+  P3_AI_Traffic_Tower_v003.ai
+
+  P4_ServiceStop_CivicTheatre_v003.ai
+
+  P5_Wayfinding_Bilingual_v003.ai
+
+  P6_Township_Architecture_Kit_v003.ai
+
+  P7_Patrol_Layby_Livery_v003.ai
+
+  P8_Freight_Siding_Mandi_v003.ai
+
+  P9_Field_AerialChips_v003.ai
+
+  /Decals/
+
+    Gantry_Exit_Services_bi.ai
+
+    Checkpoint_Fascia_GAR_bi.ai
+
+    ServiceStop_Pledge_School_Memorial_bi.ai
+
+    Township_Clinic_Admin_bi.ai
+
+    Patrol_Layby_Distance_bi.ai
+
+    Freight_Siding_Safety_bi.ai
+
+QA Do/Don’t (print on every sheet)
+
+Do
+
+Keep Hindi primary / English sublines with correct size hierarchy.
+
+Use text-only on right shoulder; never emblems or slogans on uniforms.
+
+Use guidance studs at night; Oxy-Poles low glow; AI towers dark unless hazard.
+
+Keep propaganda quiet and “museum-like” (service-stops), not blaring.
+
+Don’t
+
+No sirens, strobe bars, chrome trims, or billboard clutter.
+
+No religious text/icons on state hardware (civic neutrality).
+
+No ad hoc barriers (chain-link, spike strips).
+
+Deliverables Summary (Sprint C)
+
+Nine prop sheets with dims, materials, light/optical caps, behaviors.
+
+Full bilingual signage pack (vectors) + UI microcopy.
+
+Color/material swatches and lighting caps.
+
+Packaging + filenames for vendor handoff.
+
+Touchpoint before Sprint D
+
+If this reads right, say “locked” (or call tweaks: dimensions, light caps, copy tone). I’ll proceed to Sprint D — Vehicle & Crowd Plates + Generator Package, and then wrap the Northern Plains set with ready-to-paste prompt kits and prose stingers.
+
+Locked. Delivering Northern Plains — Sprint D (Vehicle & Crowd Plates + Staging v4). This is the “people and mobility” layer that plugs into your boards and props from Sprints A–C. Everything below is production-ready: silhouettes, dimensions, finishes, behaviors, staging rules, and packaging so multiple artists can stay on-model.
+
+D1) Vehicle Plates (highway + agrarian mesh)
+
+Notes for all vehicles: keep silhouettes clean, low-chrome; reflective accents minimal; bilingual safety decals (Hindi primary, English subline). Patrol uniforms obey the right-shoulder TEXT-ONLY law (e.g., “NORTHERN PLAINS COMMAND”)—no emblems on the right.
+
+V1 — Highway Patrol Hover-Sedan (HP-4, Plains Livery)
+
+Role: Expressway patrol, checkpoint liaison, convoy shadow.
+
+Dims: L 4.9 m × W 1.95 m × H 1.55 m (doors closed).
+
+Hover envelope: 0.45–1.0 m AGL road-follow mode; up to 5 m AGL for reposition; auto-level at crosswinds ≤ 20 m/s.
+
+Livery: Base navy body; two powder-blue rails (shoulder line + rocker); monochrome state emblem on front doors; rear chevrons powder-blue only. No brand shapes/logos.
+
+Lighting: Forward DRL bars (neutral white), rear slim lightband (amber/red); no strobe bars in public use; hazard mode uses tower PA/beacon, not roof strobes.
+
+Sensors: Plate reader (front lower), 360° short-range lidar crown; underbody terrain mapper for stud-only nights.
+
+Cabin kit: two secured Omni-Handle docks; AED kit; spill kit; restraint pack; encrypted dash recorder (30-day public veneer, archival beyond—locked policy).
+
+Markings: Hindi पुलिस header on rear fascia; English POLICE subline (smaller).
+
+Behavioral cues in frames: calm glide, no nose-dip; window acknowledgement is two fingers only.
+
+V2 — Highway Patrol Hover-Bike (HB-2)
+
+Role: Rapid stop-start enforcement and short median hops.
+
+Dims: L 2.25 m × W 0.78 m × H 1.1 m (with rider).
+
+Hover envelope: 0.30–1.5 m AGL; lateral “side-hop” burst ≤ 3 m.
+
+Livery: Same navy/powder-blue language; small monochrome emblem on fairing flank; pannier for first-aid & cones.
+
+Helmet: matte navy; visor neutral; ear-in comms (no boom mics on camera).
+
+V3 — Inter-City e-Bus (12 m)
+
+Role: Township <→ Metro corridor; Plains commuter optic.
+
+Dims: L 12 m × W 2.5 m × H 3.2 m.
+
+Finish: low-sheen white/grey; powder-blue belt line; Hindi destination blind primary, English subline.
+
+Interior: stand-and-lean bays + seated rows; USB rails; overhead airflow—not chrome vents.
+
+Safety: Guidance-stud following; V2X handshake with AI towers.
+
+V4 — Agri-Tractor (EV) + Drone Rack
+
+Role: Precision farming near highway corridors and drip-grid edges.
+
+Dims: L 3.8 m × W 1.9 m × H 2.1 m; Drone rack mounts 4 field drones (Ø 0.6 m props each).
+
+Finish: matte green/graphite; reflective tabs at corners; orange e-stop paddles visible.
+
+Staging note: Show on service roads/field tracks—never main carriageway.
+
+V5 — Freight Micro-Van (Mandi Runner)
+
+Role: Short hops between mandi, siding, and service-stop.
+
+Dims: L 3.6 m × W 1.6 m × H 1.8 m.
+
+Finish: utility grey; Hindi company mark; QR waybill square on rear door.
+
+Behavior: Obeys studs-only nights; parks in Lane-C pull-outs.
+
+Vehicle shot recipes (for plates)
+
+Side orthos: neutral light, 3/4 front + 3/4 rear, 50–70 mm.
+
+Detail crops: livery rails, emblem placement, safety decals, wheel/duct intakes, cabin kit.
+
+In-world stills: Blue-Hour patrol pairing HP-4 + HB-2 at lay-by; stud-night e-bus in motion; agri-tractor beside drip-grid.
+
+Negative list (vehicles)
+
+No chrome bullbars, no roof strobes, no sponsor logos, no exposed weapons.
+
+D2) Crowd & Costume Plates (Northern Plains)
+
+Civilians read prosperous, practical, modernised. Colors stay muted and earthy with 1 utilitarian accent. Fabrics trend khadi-tech (breathable weaves), rip-stops, and recycled blends. Footwear functional (mesh runners, composite-toe low boots), occasional sandals near town edges.
+
+Civilian silhouettes (10 primary, front + back + side)
+
+Field Worker (F) — khadi-tech salwar-set, breathable dupatta with reflective micro-piping, calf-length work trousers under; glove clip; brace-comm discreet.
+
+Field Worker (M) — kurta-cut work top with modular chest pockets; ripstop pants; brim cap with neck shade; reflective heel tabs.
+
+Agronomist (F/M) — cropped utility jacket, tablet sling, multipouch belt; neutral colorways + one accent (powder-blue or mustard).
+
+Truck/Van Driver (M) — lightweight overshirt, utility vest, elasticized trousers; fingerless gloves; neck gaiter.
+
+Service-Stop Attendant (F/M) — clean apron over tee; bilingual name patch; small scan-tag at hem.
+
+School Child (F) — polo + skort, reflective side tape, soft backpack; festival scarf variant.
+
+School Child (M) — polo + shorts, reflective hem tape; cap; wrist tag.
+
+Elder (F) — sari/salwar with stability sole shoes; shawl edges with micro-reflective bead; cane with rubber tip.
+
+Elder (M) — light vest over kurta, tech-workwear trousers; folding seat-stick; thin reflective spine strip.
+
+Mandi Porter (F/M) — back brace, finger guard sleeves, low back belt; breathable head wrap.
+
+Accessories & etiquette
+
+Brace-Comm: tiny cyan/white tile; ≤ 1 active at a time.
+
+Bags: body-hugging; no jangly charms; QR patches are neat rectangles, no stickers.
+
+Helmets: plain, matte; no brand decals.
+
+Patrol silhouettes (4 primary)
+
+A) Uniformed Patrol (F/M) — navy coat; powder-blue rails; left shoulder & back emblem; RIGHT SHOULDER TEXT-ONLY: “NORTHERN PLAINS COMMAND”; soft armor silhouette only; baton holstered; Omni-Handle docked.
+B) Plain-Clothes Officer (F/M) — everyday techwear + armband (navy with powder-blue trim); concealed comms; no visible weapon.
+C) Highway Bike Officer (F/M) — as A with bike pads; matte helmet; reflective wrist tabs.
+D) Service-Stop Liaison (F/M) — navy softshell, badge lanyard; clipboard slate; friendly posture.
+
+Color/fabric palette (civilians)
+
+Base neutrals: slate #3C3F45, sand #B9B2A0, off-white #EFEDE7.
+
+Work accents: powder-blue #C9DBEE, safety yellow #FFD34D, olive #7B8B54, mustard #F1C232 (sparingly).
+
+Fabrics: khadi-tech weave (matte), ripstop (micro-grid), mesh knit, reflective piping (2 mm width max).
+
+Crowd behaviors (for staging)
+
+Service-stop: queue geometry neat; family groups keep triangular spacing; kids drift to school exhibits or candy-bots if a festival is nearby.
+
+Township edge: cycles/e-scooters use stud-guided lanes; PPE (gloves, masks) appear seasonally during burns/husking.
+
+Expressway: pedestrians rare outside pull-outs; patrols visible but non-theatrical.
+
+Negative list (crowd)
+
+No ragged/“grim” looks; no garish corporate logos; no camo prints; no religious slogans on civic surfaces.
+
+D3) Stageable Microscene Library (plug-and-play tiles)
+
+8 compact scenarios you can drop into boards to add life without breaking canon.
+
+Stud-Night Glide: e-bus cruises with studs and Oxy-Pole low glow; family in van lane; AI tower beacon idle.
+
+Random Pop: Arch-scanner silently flips AMBER → bollards ease up; hover-bike drifts into the bay; driver calm.
+
+Pledge Moment: Teen at pledge plinth; hand on plate; parent reading Hindi credo; memorial wall glow behind.
+
+Mandi Shuffle: Micro-van at weighbridge; QR plate scans; drone lifts a grain sample.
+
+Field Edge Break: Agronomist reviews tablet under sugarcane windbreak; center-pivot arm swings in distance.
+
+Township Clinic: Elder scans at clinic plate (Hindi header/English subline); nurse in khadi-tech apron greets.
+
+Lay-By Pair: HP-4 and HB-2 at 15 km lay-by; officer points to signage; calm guidance.
+
+School Exhibit Demo: Attendant shows Oxy-Pole cutaway to kids; diorama lights 220–300 cd/m²; whispers, not pitch.
+
+D4) Camera & Lens Keys (for these plates)
+
+Vehicles: 50–70 mm 3/4 front; 85 mm detail crops; Blue-Hour for patrol pairs; Day for orthos.
+
+Crowd: 35–50 mm for groups; 85 mm for garment details (reflective trims, fabric texture).
+
+Microscene tiles: 35 mm establishing, 70 mm punch-in.
+
+D5) Packaging & Filenames
+
+/Northern_Plains_Vehicles_Crowds_v4/
+
+  V1_HoverSedan_HP4_Plains.png
+
+  V2_HoverBike_HB2_Plains.png
+
+  V3_Ebus_12m_Plains.png
+
+  V4_AgriTractor_DroneRack.png
+
+  V5_Freight_MicroVan.png
+
+  C1_Civilians_SetA_10Silhouettes.png
+
+  C2_Patrols_SetA_4Silhouettes.png
+
+  C3_Garment_Swatches_Palette.pdf
+
+  C4_Accessories_BraceComm_Badges.png
+
+  S1_MicroScenes_Tilesheet_A.png
+
+  READ_ME_Vehicles_Crowds.txt
+
+Read-me includes: color values, garment do/don’t, uniform text law reminder, and a 5-line quick brief for freelancers.
+
+D6) Acceptance Criteria (Sprint D)
+
+Vehicles render clean, institutional, with navy/powder-blue + monochrome emblem logic; no strobe clutter.
+
+Civilians read prosperous and practical, with tech-workwear cues, reflective safety trim used sparingly.
+
+Patrol silhouettes always show right-shoulder TEXT-ONLY; emblem never on the right.
+
+Microscene tiles drop into Boards 1–4 without contradictions (stud-night, pledge/exhibit, checkpoint pop, township clinic).
+
+Touchpoint before Sprint E
+
+If Sprint D looks good, say “locked” and I’ll deliver Sprint E — Generator Package & QA: paste-ready prompt kits for each board and microscene, negative prompts to enforce canon (language order, emblem placement, studs-night rules), and prose stingers for the novel draft (expressway day/blue-hour, service-stop theatre, checkpoint pop, township edge).
+
+Locked—rolling into Northern Plains — Sprint E (Generator Package & QA) and wrapping this pack. Below is a production-ready bundle: copy-paste prompt kits, consistent negatives, microscene tiles, and short prose stingers that match everything we locked in Sprints A–D (4×4-lane expressways, Oxy-Poles every 200 m, electric poles every 50 m, center-pivot circles + drip grids, mustard/wheat/sugarcane palette, arch-scanner + retractable bollards, Hindi primary with English sublines, studs-only nights, modernised tech-workwear, patrol cadence 15 km/50 km, parallel freight lines shown where relevant).
+
+Use as-is, or swap lens/time tokens where noted.
+
+0) Global style tokens (paste once per job)
+
+Tone: prosperous, orderly, “polite inevitability,” civic futurism; zero grime.
+
+Color discipline: navy / powder-blue / mustard accents; fields = mustard bloom + wheat gold + sugarcane green; roads = low-sheen grey; hardware = matte graphite.
+
+Uniform rule: right shoulder = TEXT-ONLY (e.g., “NORTHERN PLAINS COMMAND”); emblems left shoulder & back only.
+
+Language order: Hindi primary header, English subline smaller; tabular numerals.
+
+UI etiquette: translucent, illegible; one tiny tile at a time; no dashboards.
+
+Night rule: highways run guidance studs only; Oxy-Poles low glow; AI tower dark unless hazard.
+
+1) Prompt Kits (Boards) — paste-ready
+
+Board 1 — Expressway + Oxy-Pole Median
+
+Hero A — Day / Driver-Eye (16:9, 35–50 mm)
+
+Northern Plains expressway, 4 lanes per direction, clean vegetated median (3–5 m). On median: Oxy-Poles every 200 m; between them, electrical poles every 50 m offset. Far horizon: a slim AI traffic tower (~3 km spacing). Shoulders spotless; lane paint crisp. Beyond verge: center-pivot circles in fields, mustard bloom ribbons, wheat heads, sugarcane windbreaks. An arch-scanner and retractable bollards sit idle at the shoulder. Signage: Hindi primary with English sublines. Clean institutional futurism, no billboards, no chrome.
+
+Hero B — Night / Studs-Only (21:9, 35 mm)
+
+Same scene at night: overhead lights off, guidance studs trace lanes; Oxy-Poles glow soft white; AI tower beacon idle; sparse traffic; reflections minimal, sky deep.
+
+Blue-Hour Variant (16:9)
+
+Blue sky ~9000–10000 K, fore road ~4400 K; wet verge sheen; Oxy-Poles still low.
+
+Negatives (add): sirens, strobe bars, chrome hardware, brand ads, religious text on state assets, readable data walls.
+
+Board 2 — Service-Stop (Civic Theatre)
+
+Hero — Blue-Hour (16:9, 35 mm)
+
+Highway service-stop designed as civic theatre: EV fast-charge bays; human flow through three modules (order may vary) — Pledge Corner (low dais, hand-scan plinth, tri-lingual credo “Order Feeds All / अनुशासन से समृद्धि”), School Exhibit (precision farming + center-pivot + Oxy-Pole cutaway dioramas), Memorial Wall (monochrome names, QR stories). Families browse; biometric pay kiosks; one sugarcane truck in service bay. Slogans only on civic surfaces; uniforms obey right-shoulder text-only law. Lighting calm, museum-like.
+
+Day Variant (16:9)
+
+Hard sun, 5400 K; exhibit boxes 220–300 cd/m²; no carnival colors.
+
+Negatives: loud propaganda screens, corporate billboards, red flashing bars, soldier statues, slogans on uniforms.
+
+Board 3 — Algorithmic Checkpoint (Idle vs Active)
+
+Hero A — Idle / Day (16:9, 35–50 mm)
+
+Arch-scanner spans a single lane; retractable bollards flush; Hindi/English headers: Green—Proceed / Amber—Rescan / Red—Hold. Patrol lay-by signed 15 km / 50 km cadence. Mixed presence: plain-clothes with armbands + uniformed patrol (right-shoulder TEXT-ONLY: NORTHERN PLAINS COMMAND). Median Oxy-Poles at 200 m; fields neat.
+
+Hero B — Active / Blue-Hour (16:9, 35 mm)
+
+Arch cross-fades GREEN→AMBER→RED (300 ms, no strobe). Bollards rise to shape a soft bay; plate + passenger scan in progress; patrol hover-sedan idles at lay-by. Crowd calm; algorithmic interval reads as polite inevitability.
+
+Negatives: spike strips, chain-link, aggressive barking PA, readable data dashboards, shoulder emblems on right.
+
+Board 4 — Township Edge (Prosperous Fabric)
+
+Hero — Day (16:9, 35 mm)
+
+Drip-grid fields meet a robust township: warm white micro-cement, pale stone skirts, aluminum sun-louvers, roof PV and agro-beds. Clinic in a repurposed civic/sacral footprint; mandi with parallel freight siding and drone dock. Residents in modernised tech-workwear (khadi-tech, modular pockets, reflective micro-piping). Bikes and micro-vans obey stud-guided lanes; signage Hindi primary / English subline.
+
+Blue-Hour Variant: street trims warm (3000–3200 K), interiors glow; no flood spill.
+
+Negatives: ramshackle huts, ad hoardings, messy wiring, militarized barricades.
+
+Optional Board 5 — Agrarian Grid Aerial (24–28 mm, 16:9)
+
+High aerial over Plains: center-pivot circles dominant (200/400 m radii), mustard and wheat bands, sugarcane walls; secondary drip grids near township. Expressway cuts frame edge with Oxy-Poles at 200 m rhythm; one AI tower pin.
+
+Negatives: patchy/grimy fields, chaotic irrigation, billboard farms.
+
+2) Microscene Tile Prompts (drop-ins)
+
+Stud-Night Glide
+
+Inter-city e-bus cruising studs-only highway; Oxy-Poles low glow; AI tower beacon idle; passengers serene.
+
+Random Pop
+
+Arch flips AMBER; bollards rise smoothly; hover-bike drifts in; driver calm; scan receipt tile appears and fades.
+
+Pledge Moment
+
+Teen places hand on pledge plinth; tri-lingual credo above; parent reads Hindi first, English subline small; memorial glow behind.
+
+Mandi Shuffle
+
+Micro-van rolls onto weighbridge; QR waybill scans; drone lifts grain sample; siding runs parallel to road.
+
+Field Edge Break
+
+Agronomist under sugarcane windbreak; tablet shows center-pivot overlay; tractor with drone rack idling.
+
+Township Clinic Check-in
+
+Elder scans at clinic plate; nurse in khadi-tech apron; reflective micro-beads on shawl edge.
+
+Lay-By Pair
+
+Hover-sedan + hover-bike at 15 km lay-by; officer gestures to bilingual sign; demeanor friendly.
+
+School Exhibit Demo
+
+Attendant points at Oxy-Pole cutaway; diorama boxes 220–300 cd/m²; kids’ reflective trims catch light.
+
+3) Negative Prompt Master (append to every job)
+
+billboard clutter, corporate logos, chrome trims, siren bars, strobing LEDs, spike strips, chain-link fences, riot shields, right-shoulder emblems, religious slogans on state assets, readable UI dashboards, heavy grime, dystopian decay, camouflage prints, brand decals on helmets, messy overhead wiring, sandstorms, neon cyberpunk palettes.
+
+4) Parameter Macros (quick swaps)
+
+{ASPECT} = 16:9 | 21:9
+
+{LENS}   = 35mm | 50mm | 70mm
+
+{TIME}   = Day(5400K) | BlueHour(sky 9000–10000K, key 4400K) | Night(studs only)
+
+{WEATHER}= Clear | Light Haze | After Rain (subtle reflections)
+
+{DENSITY}= Sparse | Moderate | Surge (festival)
+
+Add to any kit like: ASPECT={16:9}, LENS={35mm}, TIME={BlueHour}, WEATHER={After Rain}, DENSITY={Moderate}
+
+5) Prose Stingers (novel-ready, canon-safe)
+
+Expressway — Day
+The road didn’t argue; eight lanes slid forward with the patience of a plough. Oxy-Poles rose from the median at a soldier’s cadence, greening the air; between them the lean rhythm of power masts kept time. Beyond the verge, the land turned to geometry—mustard flaring yellow against wheat, center-pivot circles biting perfect arcs out of the plain.
+
+Expressway — Night (Studs)
+After dark the highway spoke in dots. Studs stitched the lanes into quiet sentences while the Oxy-Poles breathed a soft white. An AI tower waited on the horizon like a lighthouse that had learned restraint.
+
+Service-Stop — Civic Theatre
+They asked for a hand before they asked for a wallet. The pledge plinth hummed under the palm, the credo rising in Hindi with an English echo. A child tugged a sleeve toward the school exhibit where a plastic crop and a small drone performed their tidy ballet. The memorial wall read the names without asking for applause.
+
+Checkpoint — Random Pop
+No siren, no bark, just a change in the light. The arch softened through green to amber and the bollards rose as if remembering their height. The hover-bike drifted in; a pane at the wrist blinked once. Proceed, please—or hold, if the system insisted.
+
+Township Edge — Prosperity Read
+Fields resolved into drip grids as the road met houses the color of cloud. Sun-louvers blinked; roofs wore gardens and PV like practical hats. At the clinic, an elder’s wrist met a glass plate and the door answered in Hindi before repeating itself softly in English.
+
+6) QA & Canon Validation (check before release)
+
+Highway rhythm: Oxy-Poles 200 m, electric poles 50 m, AI towers ~3 km; lanes 4×4; studs-only nights respected.
+
+Field logic: center-pivot circles primary; drip grids secondary near town; mustard/wheat/sugarcane palette visible.
+
+Checkpoint: arch + retractable bollards; cross-fades (no strobe); signage bilingual; patrol lay-by 15 km near towns / 50 km inter-city.
+
+Civic theatre: pledge → school exhibit → memorial wall present (any order), slogans only on civic surfaces.
+
+Language & uniforms: Hindi primary / English sublines; right-shoulder TEXT-ONLY; emblems never on right.
+
+No curfew default: nights are calm, with studs and low glows; no overhead flood barrages.
+
+7) Packaging (drop these into your repo)
+
+/Northern_Plains_Generator_v5/
+
+  01_Board_Prompts_Expressway.txt
+
+  02_Board_Prompts_ServiceStop.txt
+
+  03_Board_Prompts_Checkpoint.txt
+
+  04_Board_Prompts_TownshipEdge.txt
+
+  05_Optional_AerialPivotGrid.txt
+
+  10_MicroScenes_8pack.txt
+
+  20_Negative_Prompts_Master.txt
+
+  30_Parameter_Macros.txt
+
+  40_Prose_Stingers.txt
+
+  50_QA_Checklist.md
+
+  README_Using_This_Pack.md
+
+That’s the wrap on Sprint E for the Northern Plains. Want me to package these into printable A3 PDFs and plain-text prompt files, or jump straight to the next environment pack on your master list?

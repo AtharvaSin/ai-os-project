@@ -1,0 +1,908 @@
+ Arshi Face
+
+Phase 1 locked: Arshi’s Canon DNA and motion grammar are set for production.
+
+Arshi — Canon DNA Lock (Phase 1)
+
+Identity and role
+
+Name: Arshi of Akakpen.
+
+Status: Princess of Akakpen; heir-apparent while Kaali lives; assumes executive duties as arc progresses.
+
+Parentage: Daughter of Queen Kaali.
+
+Age: 23–25 now.
+
+Arc posture: begins defiant, ends authoritative.
+
+Physical spec (for model sheets)
+
+Height: 5'5" (165 cm). Build: slim athletic.
+
+Face seed: use /mnt/data/Arshi Face.jpg as the facial baseline. High cheekbones; soft angular jaw; straight brows; tapered monolid/inner fold; full, balanced lips.
+
+Eyes: dark blue, cool tone (lock: #0F2749). No heterochromia.
+
+Hair: long, straight, center part; glassy texture with two fine frontal braids framing the face; keep natural black-brown. Field variant allows quick tie-back loop; formal variant keeps micro-braids ornamental only.
+
+Skin tone: light-medium with neutral-warm undertone, matched to the face reference. No scars.
+
+Hands: climber’s conditioning implied, not calloused on-camera.
+
+Voice profile
+
+Timbre: strong but gentle. Low-mid register, even airflow.
+
+Cadence: measured, declarative; escalates only when necessary.
+
+Diction rules: no filler; short sentences for command mode.
+
+Motion grammar (repeatable tells)
+
+Defiance signature (early arc): chin lifts 2–3°, weight on rear foot, shoulders square, gaze steady 1–2 seconds before speech.
+
+Authority signature (late arc): feet planted shoulder-width, pelvis neutral, shoulders relaxed, elbows soft; minimal head movement; eye contact held through full clause.
+
+De-escalation: palms shown at rib height, fingers relaxed, wrists neutral.
+
+Readiness: subtle breath set, micro drop of center of gravity, right heel half-loaded for movement.
+
+Interrogation stillness: zero sway, blink rate lowered; voice drops half-step.
+
+Wardrobe governance (three sets)
+
+Use Akakpen cultural motifs modernized. Avoid queen-exclusive ornaments.
+
+Formal / Council
+
+Silhouette: tailored sleeveless overdress over fitted long-sleeve inner; structured sash.
+
+Fabrics: matte graphite base with woven micro-chevron; accent panels in deep teal and muted indigo.
+
+Motifs: fine loom-braid trims derived from Northeast textiles, translated into clean geometric tapes.
+
+Emblem: Akakpen knot logo (/mnt/data/b234043b-f711-44e1-baab-e0c48a88dd20.png) as a 28–32 mm chest brooch or sash clasp; monochrome, no gradients.
+
+Jewelry: princess-grade hair filigree or beadlines; never the queen’s gold hair-ring.
+
+Footwear: mid-shaft city boots, concealed grip.
+
+Battle-ready / Field
+
+Silhouette: white alpine cloak with balaclava and reflective goggles; fitted soft-armor underlayer; modular belt.
+
+Palette: winter white cloak; underlayer charcoal; signals in muted indigo.
+
+Emblem: 70–90 mm reflective heat-press at left pectoral; second 45 mm patch on cloak yoke.
+
+Footwear: mountain boots with integrated crampon “steel teeth.”
+
+Hair: tied low with braid-wrap to keep profile clean.
+
+Casual / Travel
+
+Silhouette: cropped utility jacket, high-waist tapered trousers, knit base.
+
+Palette: soft greys with teal piping; minimal metal.
+
+Emblem: woven label at cuff or pocket tab only.
+
+Arms and kit
+
+Training: sword, bow, mixed martial arts, and firearms. Reads as cross-trained, not ornamental.
+
+Sidearm: compact pulse gun carried IWB at 4-o’clock.
+
+Design cue: adapt /mnt/data/a67d16c6-717a-413b-91f3-2c88ca414a28.png to a sleeker matte-graphite chassis with white ceramic inlays; small amber status LEDs; integral recoil sink.
+
+Modes: stun, disrupt, lethal; default stun for palace carry.
+
+Field kit: rope micro-spool, med patch kit, map slate, soft restraints.
+
+Insignia rules (Akakpen logo)
+
+Never distort. Maintain exact geometry and negative spaces.
+
+Approved finishes: matte black, brushed silver, reflective micro-foil for field ID.
+
+Placements by set:
+
+Formal: sash clasp or brooch only.
+
+Battle-ready: chest heat-press + cloak yoke.
+
+Casual: cuff tab or pocket label.
+
+Scale guardrails: 28–32 mm (brooch), 45 mm (patch), 70–90 mm (field chest). Clear space = 0.5× mark height on all sides.
+
+Color tokens (provisional, tribe-aligned yet distinct from Kaali)
+
+Graphite #2B2E33, Deep Teal #0F4C5C, Muted Indigo #394B76, Winter White #E9ECEF, Soft Silver #B7BDC4, Accent Amber #D08A1C.
+
+Rationale: cool, sovereign, non-gaudy; reads modern-tribal.
+
+Hair and ornament policy
+
+Princess filigree and beadlines permitted.
+
+Queen’s gold hair-ring is disallowed unless succession occurs; if succession, upgrade to brushed-gold ring with Akakpen knot micro-engrave.
+
+Footwear
+
+Mountain treks: composite boots with toe “steel teeth,” heel brake, warm liner.
+
+Town: mid-shaft boots with silent rubber wedge and ankle support.
+
+Psychological anchors for boards
+
+Early beats: principled resistance, controlled heat.
+
+Mid beats: tactical calm, care under pressure.
+
+Late beats: executive stillness, compassionate authority.
+
+Reference bundle for artists
+
+Face and hair: /mnt/data/Arshi Face.jpg (primary).
+
+Emblem master: /mnt/data/b234043b-f711-44e1-baab-e0c48a88dd20.png.
+
+Sidearm cue: /mnt/data/a67d16c6-717a-413b-91f3-2c88ca414a28.png with modernization notes above.
+
+Arshi — Visual Bible (Phase 2)
+
+0) Global art style locks
+
+Modern comic realism; crisp vector-grade linework; painterly rendering for volume.
+
+Line weight: 0.75–2.5 px at 4K; weight tapers on cheek, clavicle, knuckles, braid edges.
+
+Shading: soft brush, two-step values per material plus rim. No airbrush bloom.
+
+Textures: woven micro-chevron for formal fabric; matte soft-armor grain for field; knit micro-rib for casual.
+
+Lighting for sheets: neutral D60 key, low-contrast mids, soft fill, faint rim at hairline.
+
+No visible text on garments except emblem marks.
+
+1) Proportions and body plan (model sheet baseline)
+
+Height 165 cm; frame slim-athletic.
+
+Head units: 7.25 heads tall.
+
+Shoulder width: 2.25 head-widths. Hip width: 2.2 head-widths.
+
+Limb notes: forearm 0.9 head; hand 0.75 head fingertip to wrist.
+
+Neutral stance: feet 1.2 shoulder widths; elbows soft; pelvis neutral.
+
+Deliver three orthographic plates at 4K:
+
+Front T-pose, arms relaxed.
+
+Side profile, left.
+
+Back, hair down and hair tied.
+
+2) Head/face sheet
+
+Source face: /mnt/data/Arshi Face.jpg as the anchor.
+
+Skull guides: low cranial vault, soft mandible angle, high cheekbones.
+
+Eyes: dark blue #0F2749; almond with slight inner fold; upper lid heavier line.
+
+Brows: straight, soft taper; 12–15° inward pitch.
+
+Nose: straight bridge; subtle ball highlight; light nostril line.
+
+Lips: full, balanced; top lip sharper cupid’s bow; spec highlight center.
+
+Skin: light-medium neutral-warm. No scars.
+
+Callouts: nasolabial softness, zygomatic highlight, chin plane.
+
+Include views: front, 3/4, profile. Add a mouth phoneme strip (A, E, O, M).
+
+3) Hair bible
+
+Base: long, straight, center part; glassy texture.
+
+Signature: two fine frontal braids framing the face. Braid gauge 3–4 mm.
+
+Variants:
+
+Formal: micro-braids clean; ends tucked; princess filigree pins only.
+
+Field: low tie with braid-wrap; goggles compatible.
+
+Casual: loose with braid tails free.
+
+Color: black-brown; cool sheen. No queen’s gold hair-ring pre-succession.
+
+4) Expression grid (8 cells)
+
+Neutral command: brows level; lids 60%; jaw relaxed.
+
+Quiet resolve: micro-squint; lips closed; chin stable.
+
+Warning: brows 2 mm down; gaze direct; nostrils flare 1 step.
+
+Contained grief: gaze off-axis; lower lid tense; mouth corners neutral.
+
+Tactical focus: pupils tightened; head tilt 3°; lips thin line.
+
+Contempt: one brow 2 mm up; lip corner minute lift.
+
+Private warmth: lids 70%; tiny inner brow rise; soft mouth.
+
+Post-victory calm: shoulders drop; half-smile; blink rate normal.
+
+Keep teeth visibility minimal. Hold symmetry except where noted.
+
+5) Hands and gesture mini-sheet
+
+Table-press: palms flat, fingers extended, load through thenar. For authority.
+
+Settle: hands clasped low, thumbs parallel. For de-escalation.
+
+Palms-up: ribs height, wrists neutral, fingers curved. For diplomacy.
+
+Ready draw: right hand hover over 4-o’clock IWB; index straight; elbow free.
+
+Grip references: sword hilt neutral-thumb; bow relaxed hook; pistol high tang.
+
+6) Pose library (neutral studio)
+
+A. Field-ready: cloak off, soft-armor visible; weight centered; pulse gun holstered.
+B. Trek stride: cloak on, goggles up; left foot forward; rope micro-spool at belt.
+C. Sidearm draw: coat clear, support hand chest-index; muzzle discipline.
+D. Interrogation stand: feet parallel; shoulders square; zero sway.
+E. Council seat: knees at 90°; spine tall; sash reads clean; emblem brooch visible.
+
+Angles: front, 3/4 left, 3/4 right for A–D; front only for E.
+
+7) Wardrobe boards
+
+7.1 Formal / Council
+
+Silhouette: tailored sleeveless overdress over fitted long-sleeve inner; structured sash crossing left-to-right.
+
+Fabrics: matte graphite micro-chevron; satin-matte indigo insets; teal piping.
+
+Motifs: Northeast loom-braid translated to narrow geometric tapes along neckline and sash edge.
+
+Emblem: Akakpen knot as brooch or sash clasp, 28–32 mm, monochrome. File: /mnt/data/b234043b-f711-44e1-baab-e0c48a88dd20.png.
+
+Jewelry: princess filigree pins; beadlines small; no gold hair-ring.
+
+Footwear: mid-shaft city boots with concealed grip.
+
+Plate set: front, back, side; seated variant.
+
+7.2 Battle-ready / Field
+
+Silhouette: white alpine cloak with balaclava; reflective goggles; fitted soft-armor top; articulated trousers; modular belt.
+
+Palette: Winter White #E9ECEF cloak; Charcoal #2B2E33 underlayer; Muted Indigo #394B76 accents; micro-reflective trims.
+
+Emblems: chest heat-press 70–90 mm; cloak yoke patch 45 mm.
+
+Footwear: mountain boots with integrated “steel teeth.”
+
+Hair: low tie with braid-wrap. Goggles must sit clear of braids.
+
+Plate set: cloak on/off; hood up/down; with and without rifle bow.
+
+7.3 Casual / Travel
+
+Silhouette: cropped utility jacket; high-waist tapered trousers; knit base.
+
+Palette: greys with Deep Teal #0F4C5C piping.
+
+Emblem: woven label at cuff or pocket tab only.
+
+Footwear: light trek boots.
+
+Plate set: front and 3/4.
+
+8) Color tokens
+
+Graphite #2B2E33
+
+Deep Teal #0F4C5C
+
+Muted Indigo #394B76
+
+Winter White #E9ECEF
+
+Soft Silver #B7BDC4
+
+Accent Amber #D08A1C
+Swatches to ship as ASE and SVG chips.
+
+9) Props and weapons
+
+Pulse gun (primary carry)
+
+Inspiration: /mnt/data/a67d16c6-717a-413b-91f3-2c88ca414a28.png.
+
+Finish: matte graphite chassis; white ceramic inlays; tiny amber status LEDs.
+
+Form: compact slide; integral recoil sink; trigger guard squared; low-snag.
+
+Modes: stun, disrupt, lethal. Palace default = stun. Selector aft-left.
+
+Marking: 12 mm Akakpen knot engraved flat on grip panel, monochrome only.
+
+Holster: IWB, 4-o’clock, inner suede lining; retention grade II.
+
+Secondary kit
+
+Rope micro-spool on belt; med patch kit; map slate; soft restraints.
+
+Traditional set for ceremonies: short sword and ceremonial bow (sheathed only).
+
+10) Emblem rules (repeat)
+
+Use file master only. No reinterpretation. Maintain all negative spaces.
+
+Finishes: matte black, brushed silver, reflective foil.
+
+Scales: 28–32 mm brooch/clasp; 45 mm patch; 70–90 mm chest.
+
+Clear space: 0.5× mark height. No overlaps with seams or darts.
+
+11) Sheet production specs
+
+Canvas per plate: 4096×4096 px, 300 ppi. Print-safe margins 64 px.
+
+Background: neutral mid-grey; soft vignette at 5%.
+
+Exports: layered PSD/AFPHOTO; flat PNG; vector SVG for emblem overlays.
+
+Layer naming: 00_guides, 10_lines, 20_flats, 30_shadows, 40_highlights, 50_textures, 60_emblems, 90_notes.
+
+12) Voice and motion overlays
+
+Caption blocks on sheets show command phrasing samples in short sentences.
+
+Arrows mark chin-lift (defiance) and stillness (authority) cues for animators.
+
+13) Deliverable list (Phase 2 package)
+
+3 orthographic body plates (front/side/back).
+
+Head/face sheet with 3 views + phonemes.
+
+Hair bible sheet with three variants.
+
+Expression grid (8).
+
+Hands/gesture mini-sheet (5 poses).
+
+Pose library A–E.
+
+Wardrobe boards for Formal, Field, Casual.
+
+Pulse gun prop sheet.
+
+Emblem placement overlays.
+
+Color chips (ASE + SVG).
+
+Phase 3 delivered. Narrative keyframes that chart Arshi from defiance to authority. Each frame is production-ready for thumbnails, boards, and eventual prompt plates.
+
+Arshi — Narrative Keyframes (Phase 3)
+
+KF1 — Alpine Search With Samar (early arc: defiance held in check)
+
+Purpose: establish trek competence, survival calm, and field uniform.
+
+Locale/time: high mountain pass, overcast noon, snow haze.
+
+Composition: medium-wide, Arshi leading frame left→right on a narrow ridge. Samar 2–3 m back, softer focus.
+
+Pose: trek stride. Chin lift ~2°. Right hand brushes cloak split for quick access. Breath visible.
+
+Wardrobe: white alpine cloak over charcoal soft-armor, reflective goggles up, low braid-wrap. Mountain boots with steel teeth. Emblem patch 45 mm on cloak yoke. Chest heat-press 80 mm under cloak reads faintly.
+
+Props: rope micro-spool, med patch kit, map slate at belt.
+
+Camera: 35 mm, eye level.
+
+Lighting: soft key from camera right. Cool rim on cloak edge.
+
+Palette: Winter White, Graphite, Muted Indigo accents.
+
+Continuity locks: no queen hair-ring. Eyes dark blue. IWB holster present but closed.
+
+KF2 — Downed-Chopper Perimeter (early arc: first snap of action)
+
+Purpose: show fast sidearm draw and controlled aggression.
+
+Locale/time: forest edge near crash smoke, late afternoon.
+
+Composition: three-quarter right. Foreground branch as mask. Wreck smoke background.
+
+Pose: coat clear with left hand, right hand on grip high-tang, index straight. Stance narrow but loaded. Defiance micro-tilt of chin.
+
+Wardrobe: cloak off and slung; soft-armor visible. Hair low tie with braid-wrap.
+
+Prop: compact pulse gun. Finish matte graphite with white ceramic inlays. Amber LED idle. Selector at STUN.
+
+Camera: 50 mm, slight low angle.
+
+Lighting: warm backlight from smoke fire, cool fill on face.
+
+Palette: graphite and amber pinpoints.
+
+Continuity locks: emblem 70–90 mm on chest. Safety discipline visible. No muzzle flash.
+
+KF3 — Gate Standoff With Kahaan (pivot: poise under pressure)
+
+Purpose: political steel without theatrics.
+
+Locale/time: fortress gate apron, evening blue hour.
+
+Composition: two-shot. Arshi foreground left in profile. Kahaan background right, squared. Shallow depth isolates Arshi.
+
+Pose: feet parallel shoulder-width. Palms visible at rib height for de-escalation. Voice caption box optional.
+
+Wardrobe: formal overdress with sash. Brooch 30 mm at clavicle. Hair formal micro-braids, princess filigree pins only.
+
+Props: none drawn. Pulse gun concealed IWB.
+
+Camera: 85 mm, eye level.
+
+Lighting: cool key, faint rim from gate torches.
+
+Palette: Graphite base, Deep Teal piping, Soft Silver trims.
+
+Continuity locks: no gold hair-ring. Emblem geometry exact.
+
+KF4 — Council Office, First Orders (mid arc: executive stillness emerges)
+
+Purpose: show command posture and governance attire.
+
+Locale/time: council chamber, morning neutral light.
+
+Composition: seated three-quarter front. Sash reads clean. Staffers blurred in background strip.
+
+Pose: spine tall. Elbows soft on armrests. Table-press gesture to conclude an order.
+
+Wardrobe: full formal set. Emblem as sash clasp. Minimal jewelry.
+
+Camera: 50 mm, slight high angle to read tabletop.
+
+Lighting: D60 softbox look. Low contrast mids.
+
+Palette: graphite and muted indigo. Accent amber only on UI glows if any.
+
+Continuity locks: short, declarative caption lines. No visible text UI; use abstract glyph blocks if screens appear.
+
+KF5 — Interrogation Bay Stillness (mid arc: nerve control)
+
+Purpose: intimidation without volume. Body-language mastery.
+
+Locale/time: plain holding room, overhead strip light.
+
+Composition: over-the-shoulder from detainee. Arshi centered, full height.
+
+Pose: authority stillness. Zero sway. Blink rate low. Hands relaxed at sides.
+
+Wardrobe: field set without cloak. Soft-armor top, modular belt closed. Emblem chest 80 mm.
+
+Camera: 35 mm, slight low angle to favor stature.
+
+Lighting: top-down hard strip, controlled spill. Rim on jawline.
+
+Palette: cool neutrals. No warm cues.
+
+Continuity locks: pulse gun holstered. No theatrics.
+
+KF6 — ICU Corridor With Kaali (late-mid: contained grief)
+
+Purpose: private cost. Human core without breaking discipline.
+
+Locale/time: dim hospital corridor, night.
+
+Composition: medium close. Arshi profile facing ICU glass. Kaali silhouette beyond bokeh.
+
+Pose: shoulders drop 1 step. Mouth neutral. One hand touches glass at chest height. Eyes dark blue catch a small spec.
+
+Wardrobe: casual travel set. Emblem woven tab at cuff only.
+
+Camera: 85 mm, shallow DOF.
+
+Lighting: cool corridor key, soft practicals. Tearless.
+
+Palette: Soft Silver, Winter White, a single muted indigo accent line.
+
+Continuity locks: no ring. No makeup shift.
+
+KF7 — Summit Courtyard Address (late arc: authoritative sovereign)
+
+Purpose: close the arc. Authority without excess.
+
+Locale/time: stone courtyard, morning sun.
+
+Composition: low three-quarter hero. Crowd shoulders as foreground scallop. Emblem banner abstractions behind.
+
+Pose: authority signature. Feet planted. Micro hand raise on last clause. Chin neutral. Gaze steady through full sentence.
+
+Wardrobe: formal overdress v2 with refined sash structure. Brooch 32 mm. Hair formal. Princess filigree pins sparing.
+
+Props: none drawn. Security at edges only as silhouettes.
+
+Camera: 35 mm, slightly low.
+
+Lighting: hard natural key with soft bounce fill. Clean rim on hair.
+
+Palette: full palette in balance. Accent amber limited to one UI light or sun glint.
+
+Continuity locks: still no queen hair-ring unless succession has occurred. If succession later, swap brooch for brushed-gold ring and update sheets.
+
+Transitional micro-beats to bridge boards
+
+Trek → Crash site: glove pull, goggle push, cloak release.
+
+Standoff → Council: sash clasp fastening as she walks.
+
+Council → Interrogation: table-press end-gesture to door open.
+
+ICU → Address: filigree pin removal then re-pin in daylight.
+
+Production checklist per keyframe
+
+Camera and lens set as above.
+
+Hair variant per scene. Braids never collide with goggles straps.
+
+Emblem placement within scale guardrails.
+
+Pulse gun always present when field or mixed, never brandished in council.
+
+Body-language cue annotated in margin arrows.
+
+Asset outputs for Phase 3
+
+7 thumbnail sheets (A4, greyscale) with composition boxes and arrows.
+
+7 color roughs (1920 px long side) to validate palette and light.
+
+Caption strips with 1–2 sample lines per scene, short and declarative.
+
+Phase 4 ready. Below are prompt plates. Use one plate per image. Attach refs each time:
+
+/mnt/data/Arshi Face.jpg (face baseline)
+
+/mnt/data/b234043b-f711-44e1-baab-e0c48a88dd20.png (Akakpen logo. copy geometry exactly)
+
+/mnt/data/a67d16c6-717a-413b-91f3-2c88ca414a28.png (pulse-gun cue)
+
+Plate A — Neutral Studio Front Full-Body
+
+Prompt
+Graphic-novel realism. Crisp vector line. Painterly volume. Neutral D60 studio.
+Subject: ARSHI of Akakpen. 165 cm. Slim athletic. Dark-blue eyes #0F2749. Skin light-medium neutral-warm. Hair long and straight with center part. Two fine frontal braids. Black-brown sheen.
+Wardrobe: fitted neutral bodysuit for silhouette read. Bare of armor. No cloak. Mid-shaft city boots.
+Stance: feet shoulder-width. Pelvis neutral. Elbows soft. Authority baseline. Chin level.
+Camera 35–50 mm. Eye level. Full height in frame. Soft vignette.
+Lighting: soft key front-right. Fill low. Faint hair rim.
+Attach emblem as overlay guide only. Do not place on this plate.
+No text. No lens halos. No bloom. Clean background.
+
+Plate B — Neutral Studio Back Full-Body
+
+Prompt
+Same model as Plate A. Back to camera. Head turn 5–10° left to show hair silhouette and neck.
+Hair down with twin micro-braids visible. Boots visible. Hands relaxed.
+Camera 35–50 mm. Eye level. Neutral studio. Soft rim along shoulders.
+No emblem. No props.
+
+Plate C — Neutral Studio Profile Full-Body (Left)
+
+Prompt
+Same model. Full profile left. Feet parallel. Posture tall.
+Hair center part with frontal braids. Nose and jaw planes clear.
+Camera 50 mm. Eye level. Neutral D60.
+No emblem. No props.
+
+Plate D — Head/Face Close Portrait (3 views in one sheet)
+
+Prompt
+Three panels: front, three-quarter left, profile left. Tight crop head and neck.
+Match /mnt/data/Arshi Face.jpg proportions. Straight brows. Almond eyes with slight inner fold. Full balanced lips. No scars.
+Eyes dark blue #0F2749. Skin light-medium neutral-warm.
+Hair center part. Two fine frontal braids. Glassy straight texture.
+Lighting soft. Catchlights small. No beauty retouch artifacts. No jewelry.
+
+Plate E — Field Full-Body (Battle-Ready)
+
+Prompt
+Arshi in alpine field set. White cloak with hood and balaclava stowed. Reflective goggles parked on crown. Charcoal soft-armor top. Articulated trousers. Modular belt.
+Emblems: Akakpen knot chest heat-press 80 mm on armor. Cloak yoke patch 45 mm. Use /mnt/data/b234043b-f711-44e1-baab-e0c48a88dd20.png. Copy geometry exactly. Monochrome. No gradients.
+Hair low tie with braid-wrap. Boots with integrated “steel teeth”.
+Carry compact pulse-gun holstered IWB at 4-o’clock. Finish matte graphite body. White ceramic inlays. Tiny amber LEDs. Selector at STUN.
+Pose: field-ready. Weight centered. Cloak split reads. Right hand free.
+Camera 35 mm. Eye level. Neutral studio. Full height.
+Palette locks: Winter White #E9ECEF. Graphite #2B2E33. Muted Indigo #394B76. Deep Teal #0F4C5C accents only.
+No dirt. No weathering. No extra gear.
+
+Plate F — Council Standing (Formal)
+
+Prompt
+Arshi in formal council set. Tailored sleeveless overdress over fitted long-sleeve inner. Structured sash left→right.
+Fabrics: matte graphite micro-chevron. Indigo inset panels. Teal edge tapes with Northeast-inspired geometric trims.
+Emblem: Akakpen knot as brooch or sash clasp 30 mm. Exact geometry from file. Monochrome metal.
+Hair formal. Twin micro-braids neat. Princess filigree pins small. No queen gold ring.
+Pose: authority stillness. Hands at sides or light table-press variant.
+Camera 50 mm. Slight high angle option for sash read.
+Lighting D60 soft. Low contrast mids. No readable text in scene.
+
+Plate G — Council Seated (Formal)
+
+Prompt
+Same formal wardrobe. Seated three-quarter front at council desk. Knees 90°. Spine tall.
+Gesture: table-press to conclude an order.
+Emblem brooch 30 mm visible at clavicle. Sash reads clean.
+Camera 50 mm. Slight high angle for tabletop. Neutral studio background or soft chamber abstraction with glyph-block UI only.
+No weapons drawn. Pulse-gun concealed.
+
+Plate H — Action Micro 1: Sidearm Draw
+
+Prompt
+Arshi mid-draw from IWB 4-o’clock. Field set without cloak. Soft-armor visible.
+Support hand chest-index. Garment clear. High-tang grip. Index straight. Muzzle low. Safety discipline.
+Pulse-gun design from /mnt/data/a67d16c6-717a-413b-91f3-2c88ca414a28.png but modernized: matte graphite body, white ceramic inlays, tiny amber status LED. No extra logos. 12 mm Akakpen knot engraved flat on grip panel.
+Chin micro-lift 2–3° (defiance echo). Eyes locked.
+Camera 50 mm. Slight low angle. Neutral studio.
+No muzzle flash. No spent cases. Clean lines.
+
+Plate I — Action Micro 2: Knee Strike Finish
+
+Prompt
+Arshi completing a decisive knee strike on a generic padded dummy. Field set. Soft-armor. Belt secured.
+Pose: hips drive through. Support hand frames target. Face composed. No rage.
+Hair low tie secure. Boots read with steel teeth.
+Camera 35 mm. Eye level. Neutral studio.
+No blood. No torn fabric. Keep it clinical.
+
+Global guardrails for all plates
+
+Art style: modern comic realism. Crisp vector line. Painterly shading. No airbrush bloom.
+
+Emblem: copy exact geometry from the PNG. Maintain negative spaces. Approved finishes only. Sizes: 30 mm (brooch). 45 mm (patch). 70–90 mm (chest).
+
+Color tokens: Graphite #2B2E33. Deep Teal #0F4C5C. Muted Indigo #394B76. Winter White #E9ECEF. Soft Silver #B7BDC4. Accent Amber #D08A1C.
+
+No queen’s gold hair-ring. Princess filigree pins only.
+
+No readable text anywhere. Replace with abstract glyph blocks if needed.
+
+No extra straps, pouches, or capes beyond what is specified.
+
+Confirm when to proceed to Phase 5 (QA and consistency).
+
+Phase 5 complete. QA and consistency system ready to run across Plates A–I and future scenes.
+
+Arshi — QA and Consistency (Phase 5)
+
+1) Non-negotiable locks
+
+Height 165 cm. Slim athletic.
+
+Eyes dark blue #0F2749. No glow. No lens halos.
+
+Skin light-medium, neutral-warm. No scars.
+
+Hair long, straight, center part. Two fine frontal braids visible in all variants.
+
+Princess only. No queen gold hair-ring before succession.
+
+Emblem = Akakpen knot from the PNG file. Copy exact geometry. Monochrome. No gradients.
+
+Palette tokens: Graphite #2B2E33. Deep Teal #0F4C5C. Muted Indigo #394B76. Winter White #E9ECEF. Soft Silver #B7BDC4. Accent Amber #D08A1C.
+
+Pulse gun: matte graphite body. White ceramic inlays. Tiny amber LED. Mode at STUN unless action demands otherwise.
+
+Stance grammar: early defiance chin-lift 2–3°. Late authority stillness.
+
+2) Art-style guards
+
+Graphic-novel realism. Clean vectors. Painterly volume.
+
+Line weights 0.75–2.5 px at 4K. Taper at cheek, clavicle, braid edges.
+
+Two-step shadows per material plus rim. No bloom. No film grain.
+
+No readable text. Replace UI with abstract glyph blocks only.
+
+3) Emblem integrity checks
+
+Source match: place the PNG as a locked layer. No redraw.
+
+Clear space: ≥0.5× mark height on all sides.
+
+Scales allowed: 30 mm brooch/clasp. 45 mm patch. 70–90 mm chest heat-press.
+
+Finishes allowed: matte black, brushed silver, reflective micro-foil.
+
+Disallow: outline strokes, drop shadows, color fills beyond approved finishes, skew, warp.
+
+4) Wardrobe rule checks
+
+Formal: overdress + inner. Sash L→R. Brooch 30 mm. Princess filigree pins only.
+
+Field: white alpine cloak and goggles. Soft-armor top. Belt modular. Chest heat-press 70–90 mm. Cloak yoke patch 45 mm. Boots with steel teeth.
+
+Casual: cropped utility jacket. Tapered trousers. Knit base. Emblem woven tab only.
+
+Hair variants: formal micro-braids tidy; field low tie braid-wrap; casual loose. Goggles never crush braids.
+
+5) Weapon and safety checks
+
+Carry IWB at 4-o’clock. Holster present when field or mixed.
+
+Mid-draw: index straight. Muzzle low. High-tang grip. Support-hand chest-index.
+
+No muzzle flash in studio plates. No ejected cases. No extra logos.
+
+Grip panel micro-engrave of emblem ≤12 mm. Monochrome.
+
+6) Body-language verification
+
+Defiance: chin +2–3°, rear-foot load, shoulders square, 1–2 s gaze hold.
+
+Authority: feet shoulder-width, pelvis neutral, elbows soft, chin level, steady gaze.
+
+De-escalation: palms at rib height, wrists neutral.
+
+Interrogation: zero sway. Lower blink rate.
+
+7) Technical output checks
+
+Canvas 4096×4096 px, 300 ppi. Neutral mid-grey background. 5% vignette.
+
+Layer names: 00_guides, 10_lines, 20_flats, 30_shadows, 40_highlights, 50_textures, 60_emblems, 90_notes.
+
+Exports: layered (PSD/AFPHOTO), flat PNG, SVG chips for emblems and color swatches.
+
+8) Plate-by-plate checklist
+
+Plate A — Front full-body
+
+Height and proportions match model sheet.
+
+Eyes #0F2749.
+
+Twin frontal braids visible.
+
+No emblem, no props.
+
+Authority baseline stance.
+
+Plate B — Back full-body
+
+Head turn 5–10° left.
+
+Hair length and braids read.
+
+Boots visible.
+
+No emblem, no props.
+
+Plate C — Profile full-body
+
+Full profile. Feet parallel.
+
+Jaw and nose planes clean.
+
+No emblem, no props.
+
+Plate D — Head/Face sheet
+
+Front, 3/4, profile match reference face.
+
+Eyes dark blue.
+
+Skin tone consistent.
+
+Hair center part + two braids.
+
+Phoneme strip present.
+
+Plate E — Field full-body
+
+Cloak white, hood stowed. Goggles parked on crown.
+
+Chest emblem 80 mm. Cloak yoke patch 45 mm. Geometry exact.
+
+Pulse gun holstered IWB. Finish and LEDs correct.
+
+Boots show steel teeth.
+
+Palette within locks.
+
+Plate F — Council standing
+
+Sash L→R. Brooch 30 mm.
+
+Trim tapes geometric, not floral.
+
+Hair formal. No queen ring.
+
+Hands neutral or table-press.
+
+Plate G — Council seated
+
+Posture tall. Knees 90°.
+
+Brooch visible. Sash clean.
+
+Pulse gun concealed.
+
+No readable text on desk UI.
+
+Plate H — Action micro: draw
+
+Index straight. Muzzle low.
+
+High-tang grip. Garment clear.
+
+Pulse gun details match.
+
+Chin micro-lift 2–3°.
+
+Plate I — Action micro: knee strike
+
+Hips through target.
+
+Face composed. No rage.
+
+Boots read steel teeth.
+
+No blood. Clean training dummy.
+
+9) Failure traps and quick fixes
+
+Wrong eye color → enforce #0F2749 via overlay check.
+
+Extra jewelry or queen ring → remove and replace with small filigree pins.
+
+Emblem distortion → replace with the master PNG at approved sizes.
+
+Braids missing or crushed by goggles → add twin micro-braids and adjust strap path.
+
+Text leaks on monitors → swap to glyph blocks.
+
+Bloom or gradients on emblem → flatten finishes to matte or brushed.
+
+Pulse gun over-detailed sci-fi greebles → simplify to clean matte panels and ceramic inlays.
+
+Safety errors in draw pose → correct index, muzzle angle, support-hand placement.
+
+10) Version control and naming
+
+File code: ARSHI_P4_[PlateID]_[v###].afphoto and .psd.
+
+Color chips: ARSHI_COLORCHIPS_v###.ase and .svg.
+
+Emblem overlays: AKAKPEN_EMBLEM_OVERLAY_[30|45|80]mm.svg.
+
+11) Approval gates
+
+Plate A–D pass.
+
+Plate E–G pass.
+
+Plate H–I pass.
+
+One full-set sweep for emblem, palette, hair, stance.
+
+Freeze Phase 5 report as the QC SOP.
+
+Confirm to move to Phase 6. I will package final visual bible PDF, PNGs, emblem SVGs, prompt blocks, and the one-page usage card.

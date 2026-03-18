@@ -4,7 +4,7 @@
 >
 > **Decision:** Option C — Google Rails + Custom Intelligence Layer
 >
-> **Last updated:** 2026-03-17
+> **Last updated:** 2026-03-18 (State v11. 25 skills. Dashboard: 9 pages, 23 API routes, 28 components. MCP Gateway: 56 tools deployed, 10 modules.)
 
 ---
 
@@ -33,7 +33,7 @@ The interface layer is built on a strict separation between three roles:
 - Message compose tool for email drafting
 - Interactive artifacts (React/HTML) for visual outputs
 - Past chats search for session continuity
-- Skills (22 active) for structured workflows
+- Skills (25 active) for structured workflows
 
 **What it creates for the interface layer:**
 - Tasks → written to Cloud SQL via MCP Gateway → synced to Google Tasks
@@ -71,12 +71,18 @@ User completes in Dashboard → API updates Cloud SQL + Google Tasks
 | `tasks.project_id` | Task list | One Google Task List per project |
 | `tasks.status` | Completed flag | `done` ↔ completed, all others ↔ not completed |
 
-**Task list structure:**
-- `AI OS` — tasks for the operating system build
-- `AI&U` — YouTube channel tasks
-- `Bharatvarsh` — novel and transmedia tasks
-- `Zealogics` — professional work tasks (when active)
-- `Personal` — non-project tasks
+**Task list structure (domain-based since Life Graph v2):**
+- `001 Friends and Gatherings` — social domain tasks
+- `002 Health` — health and fitness tasks
+- `003 Home` — home management tasks
+- `004 Finance` — financial tasks
+- `005 Learning` — personal learning tasks
+- `006 AI Operating System` — AI OS build tasks
+- `007 AI&U` — YouTube channel tasks
+- `008 Bharatvarsh` — novel and transmedia tasks
+- `009 Career` — professional work tasks
+- `010 Career Network` — contact/networking tasks (155 contacts linked)
+- See LIFE_GRAPH.md for full domain hierarchy.
 
 ### 3. Google Calendar — Deadline Alerts (Phase 2 — extend existing connector)
 

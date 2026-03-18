@@ -1,0 +1,239 @@
+Here’s a consolidated Armory & Tech Visual Bible for Bharatsena (Army) characters—built from the novel’s canon and formatted so image-generation LLMs can render scenes consistently. I’ve also added a short, clearly marked “visual analogies” appendix with external references to help ground the look of a few devices without changing canon.
+
+Bharatsena Armory & Tech — Visual Bible
+
+Use these sections as “drop-in” spec sheets when describing soldiers, their gear, and scenes. Unless a variant is explicitly listed, stick to the default (canon) look.
+
+0) Uniform touch-points (for placement consistency)
+
+Palette: navy outer layers, powder-blue shirts.
+
+Logo colors: mustard yellow on navy, navy on powder-blue.
+
+Logo placement: large mark centered on the back; small mark on left shoulder pad; right shoulder pad = division/command text only (ALL CAPS; no logo).
+
+1) Sidearms (standard pistols)
+
+1A. Visual language
+
+Type: compact service pistols (clean, regulation silhouettes).
+
+Carry: twin high-riding shoulder holsters under/over coat depending on office vs field.
+
+Finish: matte, non-reflective; minimal ornament.
+
+Controls: simple slide serrations; low-profile iron sights (no laser dots by default).
+
+1B. Pose & staging cues
+
+Office/HQ: holsters mostly concealed by the open navy coat; grips just visible at ribs.
+
+Field: holsters exposed; one pistol frequently drawn, with two others floating near shoulder level around Kahaan (see §3 for the control tech).
+
+1C. Prompt kit (drop-in)
+
+“Compact matte-black service pistol; low-profile sights; crisp slide; no accessories. Holstered high along the ribs (twin shoulder rig). One pistol drawn; stance squared and steady.”
+
+2) Holster system — “Mag-Holster” plates (standard issue)
+
+2A. Visual language
+
+Mount: slim magnetic plates integrated into the shoulder rig/under-coat webbing.
+
+Read: almost invisible under the officer’s open coat; gives the impression of frictionless lock/unlock when drawing or stowing pistols.
+
+Motion cue: tiny metallic “settle” when a holstered pistol snaps home.
+
+2B. Prompt kit
+
+“Slim magnetic holster plates hugging the rib line; pistols click into place with a frictionless, magnet-lock motion; nearly invisible under the open navy coat.”
+
+(Visual analogy: consumer magnetic gun mounts/holsters exist; cite for plausibility only, not canon.) (JM4 Tactical Holsters, The Stinger Tools, UnderTech UnderCover)
+
+3) Remote weapon control — “float” behavior (Kahaan’s signature)
+
+3A. Visual language
+
+Effect: two service pistols hover near Kahaan at shoulder height, subtly tilting as if on invisible gimbals.
+
+Control cue: a faint electric-blue shimmer line between Kahaan and the floating guns (minimal, tasteful), echoing his HUD tone.
+
+Discipline: never clutter with holograms; keep the effect understated and precise.
+
+3B. Prompt kit
+
+“Two compact pistols floating at shoulder height with a faint electric-blue control shimmer; micro-adjusting in the air as if magnetically gimballed; no sci-fi noise or excessive UI.”
+
+4) HUD Monocle (augmented officers; Kahaan)
+
+4A. Visual language
+
+Form: a floating, curved rectangular lens in front of one eye (Kahaan: left eye), thin and translucent.
+
+Color: electric blue glow; tiny HUD ticks/glyphs, never legible text.
+
+Reflections: soft blue highlight on cheekbone/eyelid; keep it subtle.
+
+4B. Behavior
+
+Office: powered down or quiescent (barely visible).
+
+Field: active—micro-animations in the lens; occasional glance-flares when he pivots.
+
+4C. Prompt kit
+
+“Single electric-blue HUD monocle—thin, floating lens over the left eye; translucent with faint ticks and arcs; soft blue reflections on the cheekbone; minimal, surgical UI.”
+
+(Visual analogy: tiny clip-on AR HUD ‘monocle’ devices exist in the real world.) (Wearable Technologies, Hackster, Medium)
+
+5) Brace-Comm (wrist device)
+
+5A. Visual language
+
+Form: a military wrist band with clean casing; projects small holographic cards (call pane, map tile, payment confirm).
+
+Projection: compact 3D panes hovering inches above the wrist; cyan/blue-white light; edges fade quickly.
+
+Etiquette: kept low-key in HQ; more dynamic in field briefings.
+
+5B. Prompt kit
+
+“Military Brace-Comm wrist band; crisp 3D holo panes (call/map/payment) floating just above the wrist—clean cyan/blue-white light, fast falloff, no clutter; officer gestures to dismiss.”
+
+(Visual analogy: research and patents for wrist-worn holographic projection/mid-air displays exist.) (Google Patents, Columbia University Computer Science, Chalmers Publication Library (CPL))
+
+6) Long guns (only when scene requires)
+
+The novel centers visuals on sidearms; long guns appear rarely and should remain generic unless a chapter specifies otherwise.
+
+6A. Visual language (generic)
+
+Type: standard patrol carbines.
+
+Look: matte; no rails or gadgets; sling-carried; keep shapes readable and unbranded.
+
+6B. Prompt kit
+
+“Plain patrol carbine, matte finish, slung low; no accessories, no rails; regulation silhouette.”
+
+7) Non-lethal & field medical
+
+7A. Field braces / supports
+
+Seen post-engagement (Kahaan, Manan): shoulder support, neck braces, straps—functional, minimal, hospital-issue white/neutral.
+
+7B. Prompt kit
+
+“Clean medical braces (shoulder/neck), fabric straps and buckles; white/neutral materials; no branding.”
+
+8) Command & battlespace visuals (HQ / war room)
+
+8A. Screens & maps
+
+Look: translucent panels, abstract glyphs/graphs; text illegible by design.
+
+Light: cold back-light; reflections cue duty/bar motif on glass walls.
+
+8B. Prompt kit
+
+“Translucent command panels with abstract glyphs/graphs; cold back-light; reflections cast soft ‘bars of duty’ across glass.”
+
+9) Kahaan’s Bike (include when scenes call for mobility)
+
+Canon establishes that Kahaan operates with speed and precision; the bike reinforces that visual. Keep the description tactical and clean, with no brand names.
+
+9A. Visual language
+
+Silhouette: scout-class combat motorcycle—lean, minimal bodywork; upright stance; medium knobbies for mixed terrain.
+
+Finish: matte navy/graphite with mustard emblem stenciled small on the tail or side panel (if on powder-blue paneling, switch emblem to navy).
+
+Lighting: slit-style headlamp; optional blackout cover for stealth.
+
+Mounts: low-profile pannier hardpoints (usually empty), under-seat tool roll; no ostentatious racks.
+
+Sync: the Brace-Comm can flash a tiny blue status icon in his HUD when the bike acknowledges commands (keep cues minimal).
+
+9B. Optional variants to match scene tone (choose one)
+
+Urban pursuit: road-biased tires; slightly lower bars; tighter turning posture.
+
+Rural/rough terrain: higher ride height; bash plate hint; dust veil off the rear.
+
+Stealth patrol: de-emphasized exhaust note; headlamp off; darker paint.
+
+(Visual analogy: special-operations and military scout/stealth motorcycles are real; e.g., modern electric SOF bikes used for silent approach. Use only as mood reference, not as a brand or spec.) (WIRED)
+
+9C. Prompt kit
+
+“Scout-class combat motorcycle—lean, minimal bodywork; matte navy/graphite; slit headlamp; medium knobbies. Small army emblem stenciled on tail (mustard on navy / navy on powder-blue). Low-profile pannier hardpoints, usually empty. Dust trails over an empty battlefield; bike cues Kahaan’s HUD with a tiny blue status flicker.”
+
+10) Division/command text (right shoulder only)
+
+Use an existing bloc exactly (ALL CAPS): NORTHERN PLAINS COMMAND, PENINSULAR COMMAND, or EASTERN & HIMALAYAN TREATY ZONE.
+
+Type is plain military block; no slogans, no quotes.
+
+11) Scene assembly recipes (ready-to-use)
+
+A) “Office brief / contained threat”
+
+Powder-blue shirt + open navy coat; twin holsters mostly hidden.
+
+Monocle off (glass faint); Brace-Comm shows a small call tile.
+
+Large back emblem (mustard on navy); small left-shoulder emblem; right shoulder pad shows bloc text.
+
+One pistol discreetly checked under the coat hem.
+
+B) “Active field contact (Kahaan focal)”
+
+Coat open or shed; holsters exposed; one pistol drawn; two float near shoulders with a faint blue shimmer.
+
+Monocle active (electric blue); tiny UI ticks only.
+
+Dusty empty battleground; spent casings; low sun rim light.
+
+Bike staged in background (three-quarter view), matte navy/graphite; emblem stencil small on tail.
+
+C) “Aftermath / evac”
+
+Weapons holstered; Brace-Comm projects a small blue-white medevac tile.
+
+Medical braces visible on injured; stretcher edge in frame.
+
+Background: rooftop infirmary or helipad wash; keep tech minimal and clean.
+
+12) Strict “Do / Don’t” (to keep everything on-model)
+
+Do
+
+Keep weapons unbranded, clean, and regulation.
+
+Use mustard-on-navy / navy-on-powder-blue for all emblems.
+
+Reserve the right shoulder for text only (no emblem).
+
+Keep HUD/Brace-Comm UI minimal and illegible.
+
+Don’t
+
+No camouflage patterns, rails, lasers, or aftermarket optics unless a scene explicitly requires it.
+
+No slogans, mottos, or quotes on uniforms.
+
+No extra medals/ribbons beyond what the story shows.
+
+No visible serials or real-world logos.
+
+Appendix — Visual analogies (NOT canon; for look-and-feel only)
+
+Tiny HUD monocle devices exist in the real world (clip-on AR display; programmable; Bluetooth). Use this to gauge lens scale and HUD subtlety. (Wearable Technologies, Hackster, Medium)
+
+Wrist-worn holographic displays have patents and research prototypes; use to ground the Brace-Comm’s projection look. (Google Patents, Columbia University Computer Science, Chalmers Publication Library (CPL))
+
+Magnetic holster/mount concepts exist commercially; use sparingly as inspiration for the Mag-Holster’s snap-lock feel. (JM4 Tactical Holsters, The Stinger Tools, UnderTech UnderCover)
+
+Stealth/scout military motorcycles (including electric special-ops platforms) provide mood/stance reference for Kahaan’s bike. (WIRED)
+
+If you want, I can convert this into a JSON “style profile” (keys for color, placements, per-item prompts) so your pipeline can auto-condition Gemini/Stable Diffusion prompts for any army character.

@@ -1,0 +1,1669 @@
+awesome—Phase 1 is executed. Below is a self-contained, production-ready Design System Lock for Pack-01 (Hyper-Tech Metropoles). It’s structured so you (or any artist/PM) can lift directly into boards, 3D blockouts, or prompt scaffolds later.
+
+Phase 1 — Design System Lock (Pack-01 Hyper-Tech Metropoles)
+
+A) Topo & Climate Cards
+
+Three distinct geographies drive how light, air, water, and crowds behave. Each card gives: seasonal cycles, sky/air behavior, material responses, flora silhouette rules, and weather vignettes to reuse in environments.
+
+A1. Lakshmanpur — Northern River-Plain Metropole
+
+Geographic read. Broad alluvial plain; a meandering river with levees and shallow flood terraces; low relief; dense inner city giving way to regimented new sectors.
+
+Seasonal cycle (visual consequences).
+
+Winter (Dec–Jan): Cool and fog-prone mornings. Low contrast; soft shadows. OxyPoles ghost in haze.
+Lighting recipe: 5800–6200K diffuse key; low specular; aerial perspective on mid-rises.
+
+Pre-Monsoon (Apr–May): Hot, dusty “brass heat”; glare off pale stone/concrete; heat shimmer above hover lanes.
+Recipe: 5200–5600K hard key; high contrast; desat mid-tones; faint amber in highlights.
+
+Monsoon (Jun–Sep): Heavy rain; mirror asphalt; saturated greens on vertical gardens; river swells.
+Recipe: 6200–6800K overcast day / 3500–4200K mixed urban night; strong reflections; puddle caustics.
+
+Post-Monsoon (Oct–Nov): Clearer skies; fresh vegetation; evening air crisp.
+
+Materials & surfaces. Pale limestone/sandstone; pale concrete; oxidized bronze rails; ceramic jali panels. Fog reduces apparent saturation—lean into texture (micro-pitting, efflorescence) over color.
+
+Flora silhouettes. Tall columnar street trees for sightline continuity; planter trenches at medians; climber-faced façades on east/north to catch soft light.
+
+Weather vignettes (reusable).
+
+“Milk-glass morning”: human silhouettes emerge through fog; muted banners; OxyPole halos.
+
+“Brass noon”: wavering road markings, mirage ripples at 20–30 m.
+
+“Monsoon mirror night”: puddled neon; hovercam cones reflected; raindrop bokeh.
+
+A2. Mysuru — Interior Plateau Tech-Hub
+
+Geographic read. Slight elevation; granitic shelves; dry winters and a pronounced wet season. Crisp horizons; stronger sun angles.
+
+Seasonal cycle (visual consequences).
+
+Dry Season (Dec–Mar): Clear air, hard shadows; stone warms quickly.
+Recipe: 5400–6000K; high contrast; strong occlusion shadows; speculars on polished basalt.
+
+Pre-Monsoon (Apr–Jun): Heat build-up; dust in the late afternoons; vegetation slightly stressed.
+
+Monsoon (Jul–Sep): Sudden lushness; heavy sheets of rain; runoff rills off terraces.
+Recipe: 6000–6600K overcast; glossy stone; directional rain streaks; waterfall gutters.
+
+Shoulder (Oct–Nov): Pleasant; balanced light; good time for civic ceremonies.
+
+Materials & surfaces. Granite, basalt plinths, laterite blocks; fiber-cement louvers; matte ceramic in plazas (no specular glare during dry months).
+
+Flora silhouettes. Xeric shrubs and hardy lawn bands in dry months; pergola vines over transit forecourts; rooftop gardens with shallow-soil species.
+
+Weather vignettes.
+
+“Granite glare noon”: bold shadow geometry; hover lanes read as crisp ribbons.
+
+“Monsoon terrace sheet”: rain cascading from step-eaves; water chains beating in courtyards.
+
+A3. Kolkata Corridor — Deltaic Aerotropolis
+
+Geographic read. Lowland delta; embankments; mangrove influence; very humid summers; short winter; frequent pre-monsoon evening squalls.
+
+Seasonal cycle (visual consequences).
+
+Pre-Monsoon (Mar–May): Humid, storm-prone evenings; turbulent clouds; sodium street pools + distant lightning.
+Recipe: 6200–7000K storm decks by day; 3200–3800K sodium pools at night with cool spill from holo screens.
+
+Monsoon (Jun–Sep): Long, wind-driven rain; flooded curb edges; soft, low-contrast days; thunderheads.
+
+Winter (Dec–Jan): Brief, mild; clearer nights; cooler daylight.
+
+Post-Monsoon (Oct–Nov): Sparkling air after downpours; algae sheens on stone near water.
+
+Materials & surfaces. Corrosion-aware metals; anti-slip terracotta tiles; sealed concrete for salt-air; deep balconies with rain-chains.
+
+Flora silhouettes. Wind-flex palms; mangrove-inspired planters near waterways; lush planter boxes on skywalks.
+
+Weather vignettes.
+
+“Nor’wester street”: banners whipping, raindrops at oblique, reflections streaked by wind.
+
+“Blue-hour levee”: puddled embankments, long sodium reflections, hover berths pulled back from the waterline.
+
+B) Typography & Signage Spec (Tri-Script System)
+
+Every public sign uses a three-line hierarchy: English (Latin) → Hindi (Devanagari) → State line (Telugu for Mysuru, Bengali for Kolkata Corridor, Hindi repeats for Lakshmanpur where state line overlaps). Typeface choices emphasize legibility, wide glyph coverage, and consistent stroke logic.
+
+Type families (lock).
+
+Latin (English): Inter — weights 400/600/800; variable axis allowed in UI and large-format signs.
+
+Devanagari (Hindi): Noto Sans Devanagari — 400 (body) / 600 (wayfinding) / 800 (monumental).
+
+Telugu (Mysuru state line): Noto Sans Telugu — 400/600/800.
+
+Bengali (Kolkata state line): Noto Sans Bengali — 400/600/800.
+
+Stacking & layout (apply everywhere).
+
+Header (facility/road name): EN / Inter 800 / ALL CAPS / +5% tracking / Optical size ≥ 72 pt (physical signs: 120–220 mm cap height depending on throw).
+
+Subhead (Hindi): Noto Dev 600 / Title Case / optical size −1 tier from header.
+
+State line: Noto Telugu/Bengali 600 / same point size as Hindi; if lines exceed width, wrap state line first.
+
+Body copy: All three scripts at 400; use tabular numerals; metric units first.
+
+Grid. 8-pt baseline grid for print/UI; physical signs use an 8-mm module. Margins ≥ 3 modules; line gap = 1–1.25× cap height.
+
+Pictograms (lock set).
+
+Biometric gate (thumb + face outline): shown as paired icon to the left of text;
+
+QR gate (square finder corners + arrow);
+
+Hover lane (0–5 m hover band icon);
+
+OxyPole (stylized trunk + halo leaves);
+
+Curfew (moon + barred stripe).
+Stroke: 2.5 px (UI) / 6–10 mm (physical); rounded joins; no gradients.
+
+Contrast & legibility.
+
+Minimum contrast aim: ≥ 4.5:1 for all text/background combinations.
+
+Day mode signs: dark text (#0B1D2A) on light panels (#F2F5F7).
+
+Night mode: backlit panels with reversed text (white on #0B1D2A) and luminous accent bands.
+
+Emblem & flag usage.
+
+State emblem appears top-right of government signage; safe area = emblem width all around; never scaled under 24 mm.
+
+Tricolor reserved for flags, ceremony backdrops, and “Authority” bands on official gantries; not used as gradients or textures.
+
+C) Palette Sheets
+
+Two tiers: Base Civic Palette (permanent) and Festival Overlays (annual themes you can swap in). All HEX locked here; you may derive tints/shades at ±5/±10/±20.
+
+C1. Base Civic Palette (shared across cities)
+
+Deep Navy (Structure/Background): #0B1D2A
+
+Graphite (Secondary Panels): #2A2F36
+
+Stainless (Hardware/Edges): #B9C3C8
+
+Oxidized Bronze (Rails/Accents): #7A5A3A
+
+Concrete Light (Walls/Plinths): #D8DCDF
+
+Garden Deep (Vertical Green, Deep): #3A6E47
+
+Garden Mid (Planters, Foliage): #6EA66B
+
+Hologram Cyan (Tech Accent): #17D0E3
+
+Control Blue (UI/Wayfinding Highlight): #0B84F3
+
+Safety Amber (Caution/Temporary Barriers): #FFB200
+
+Usage rules.
+
+Structure: Navy/Graphite/Concrete dominate.
+
+Metals: Stainless for contact points; Bronze for ceremonial and heritage interfaces.
+
+Greenery: Deep/Mid greens are real plant colors; avoid plastic green paints.
+
+Tech accent: Hologram Cyan limited to HUD, scanners, hover lane beacons (≤ 5% area in any frame).
+
+Safety Amber reserved for curfew cones, construction, emergency.
+
+C2. Festival Overlays (5-year cycle)
+
+Y25 – Solar Indigo + Saffron Ember
+Indigo #4B4C9C, Saffron #FF6A00, Off-white #F5F1E6
+
+Y26 – Monsoon Teal + Copper Leaf
+Teal #146C70, Copper #B26A3D, Cloud #E7F0F2
+
+Y27 – River Jade + Vermilion Beam
+Jade #29A474, Vermilion #E03C31, Mist #F0F6F3
+
+Y28 – Plateau Umber + Electric Mint
+Umber #7E5039, Mint #26F2B0, Parchment #F6F3ED
+
+Y29 – Delta Cyan + Marigold Gold
+Cyan #0096C7, Marigold #FFC933, Pearl #EFF7FA
+
+Overlay discipline. Overlays affect banners, drones, kiosks, ribbons, and festival-mode UI chrome only. Base civic colors remain visible for continuity. Never exceed 30% overlay coverage in a single frame.
+
+D) Smart-Street & Transit Baseline (applies across cities)
+
+OxyPole grid. Spacing 60–80 m on primary boulevards; 40–50 m on festival axes. OxyPole halo luminance limited to ≤ 200 cd/m² in night scenes; cyan shimmer permitted only in diagnostic/service modes.
+
+Hover lanes. Operational altitude band 0–5 m; dashed lane beacons at 3 m; curbside service bay every 250–300 m with charging couplers and safety amber strobes.
+
+Metro gates. Banks must always show both Biometric and QR pictograms; tourist line uses multilingual prompt bars; non-reflective top panels for scanners.
+
+Checkpoints & curfew optics. Algorithmic checkpoint towers read as ambient architecture: slim profiles, no sci-fi clutter. Curfew scenes priority: cone lights, shutters, tape bands; drones stay in bokeh or secondary read.
+
+E) Heritage Micro-Sets (triads per city; abstracted, not 1:1 with real sites)
+
+Lakshmanpur (river-plain).
+
+Hindu: compact sandstone mandir with a single shikhara; shallow forecourt water-mirror.
+
+Muslim: three-bay prayer hall; twin low minarets; geometric jali.
+
+Christian: basilica plan with short bell tower; pale stone ribs; quiet side garden.
+
+Mysuru (plateau).
+
+Hindu: gopuram-inspired gateway simplified into parametric fins; stepped court.
+
+Muslim: deep arcade for shade; low domes; granite plinth.
+
+Christian: hill-slope chapel in granite; single bell arch; wind-ward porch.
+
+Kolkata Corridor (delta).
+
+Hindu: terracotta-heavy curved roofs; patterned brick.
+
+Muslim: broad eaves; curved cornices; river-breeze verandahs.
+
+Christian: riverside basilica with screened verandah; long nave; anti-slip stone.
+
+Interface rules. Sacred plots meet smart-streets via green buffers (planter bands + shade trees); signage reduces to two-line stack (EN+State; Hindi optional) to declutter; no drones directly above worship roofs.
+
+F) Crowd, Commerce & Brand Locks
+
+Population optics. The visible social axis is “military-employee vs civilian” rather than class-by-wealth; uniforms and ID bands read cleanly against the civic palette. Civilian streetwear trends—sleek, breathable fabrics; small holo-badges; pragmatic footwear.
+
+Utility brands (use across props & signage).
+
+Ahuja Automobiles — mobility hubs, glide-car service nodes.
+
+Mehta Electricals — power cabinets, lighting, street panels.
+
+Junaid Steels — structural members, gantries, stanchions.
+
+Verma Optics Co. — hologrid panels, HUD projectors.
+
+Shastri Polymers — kiosks, rain-chain fittings, curb scanners.
+
+Commerce skins by city.
+
+Lakshmanpur: more sandstone/bronze accents; fog-friendly matte signage.
+
+Mysuru: stone-forward storefronts; pergolas; dark stone contrasts.
+
+Kolkata Corridor: anti-corrosion trims; sealed edges; canopy drainage visible.
+
+G) Packaging this for Artboards (how to use instantly)
+
+Attach the Topo & Climate card for the city to every board—pick one Weather Vignette as the scene’s driver (e.g., Lakshmanpur “Monsoon mirror night”).
+
+Apply the tri-script stack exactly (EN → Hindi → State) with the sizes above; place emblem top-right and keep tricolor limited to official plots.
+
+Pick ONE palette overlay (the year) and keep it within the 30% limit; base civic palette still defines the environment.
+
+Drop in the correct micro-set rules when a sacred site is in frame (reduced signage, buffers, no drones overhead).
+
+Keep surveillance “second-read.” Drones/checkpoints should never dominate the composition unless intentionally story-critical.
+
+What’s locked after Phase 1
+
+Geography-driven seasonality and its lighting/atmosphere recipes.
+
+Tri-script typography system with weights, grid, pictograms, and emblem/flag rules.
+
+Base civic palette and 5-year festival overlays with HEX codes.
+
+Smart-street & transit baseline (OxyPole grid, hover lanes, metro gates).
+
+Heritage micro-set archetypes per city and their interface rules.
+
+Utility brand pack (5 canonical names and their domains).
+
+Touch-base (before Phase 2)
+
+I’m ready to proceed to Phase 2 – Kit-of-Parts (OxyPole turnarounds, vertical-garden cassettes, checkpoint towers, metro gate banks, hover pads, civic furniture, etc.).
+
+If you want tweaks before I lock the kit:
+
+Swap or fine-tune any HEX in the palettes.
+
+Adjust type sizes (e.g., larger state line on heritage precincts).
+
+Add/remove a weather vignette per city (e.g., introduce “dust devil” for the plateau, or “river fog at dawn” variants).
+
+Promote/demote any utility brand.
+
+If all good, just say “Proceed Phase 2” and I’ll build the shared 2D/3D kit with measured callouts and re-usable detail plates.
+
+amazing—rolling out Phase 2 (Kit-of-Parts) for Pack-01: Hyper-Tech Metropoles. This is a production-grade spec you can hand to artists, environment/blockout folks, or image-gen pipelines. Everything below is self-contained and inherits the Phase-1 locks (tri-script type, palettes, emblem+flag rules, climate per city).
+
+Phase 2 — Kit-of-Parts (Shared System + City Variants)
+
+Design intent: a modular smart-street you can re-skin to Lakshmanpur (river-plain fog), Mysuru (plateau stone & dry season glare), and the Kolkata Corridor (delta humidity & flood logic). Specs are realistic enough for 3D blockout and richly described for artboards & prompts.
+
+1) Smart-Street Modules
+
+1.1 OxyPole v2 (Air-Scrub Tower)
+
+Purpose. Street-scale air scrubbing + ambient light landmark.
+Silhouette. Slender “trunk” with a crown of ringed vanes; reads as civic greenery tech, not a lamp post.
+
+Geometry & Envelope
+
+Overall height: 8.5–9.2 m (crown top depends on street section).
+
+Mast diameter: 280 mm at base, 180 mm mid, flares to 240 mm under the crown.
+
+Crown: 4–5 concentric vanes (Ø 1.6 m outer) at 12° pitch; micro-louver underside hides emitters.
+
+Base plinth: 650×650×220 mm, filleted edges; concealed service hatch on leeward face.
+
+Materials & Finishes
+
+Mast: powder-coated aluminum (Graphite #2A2F36) with anti-graffiti nano-coat.
+
+Crown vanes: stainless composite (Stainless #B9C3C8) with matte micro-texture.
+
+Base collar: oxidized bronze (#7A5A3A) for ceremonial streets; Concrete Light (#D8DCDF) for general.
+
+Lighting & States
+
+Day: passive.
+
+Night (normal): 3× 60° wash heads inside crown, ≤200 cd/m²; subtle Hologram Cyan #17D0E3 status tick (≤2% area).
+
+Service/Diagnostic: brief cyan pulse; maintenance hatch glow (amber).
+
+Emergency/Curfew: Safety Amber #FFB200 ring at base, 30 BPM.
+
+Acoustic & VFX
+
+Low hum (40–42 dB at 1 m); faint vapor shimmer in cold mornings (Lakshmanpur winter).
+
+Placement
+
+Primary boulevards: 60–80 m spacing; Festival axes: 40–50 m.
+
+Clear radius 1.0 m; no signage attached (avoid visual clutter).
+
+Per-City Micro-Variants
+
+Lakshmanpur: anti-condensation lip on crown; de-fog micro-heaters; sandstone-tone base collar option.
+
+Mysuru: dust-mesh louvers; darker basalt-tone base; UV-resistant topcoat for high UV months.
+
+Kolkata Corridor: salt-fog spec (anodized finish); drain spout channels through plinth; anti-slip service step.
+
+LOD Guidance (for 3D & image-gen baselines)
+
+LOD2 (streetwide): clean silhouette, single tone; no louvers.
+
+LOD1 (mid): vane layering, base hatch seam, status tick.
+
+LOD0 (hero): louver pattern, fasteners, weld seams, micro-texture.
+
+1.2 Vertical-Garden Cassette System (S/M/L)
+
+Purpose. Living façade system with rain capture + heat mitigation; doubles as city identity surface.
+
+Module Sizes
+
+S: 600×900×180 mm
+
+M: 900×1200×180 mm
+
+L: 1200×1800×220 mm (integrated drip gutter)
+
+Frame & Substructure
+
+Powder-coated aluminum rails; stainless anchors at 400 mm centers; removable planter trays.
+
+Irrigation
+
+Dripline manifold per 2 m vertical; integrated rain-chain ports at every third column for monsoon (delta city uses larger Ø outlets).
+
+Planting Rules (silhouette, not species)
+
+Lakshmanpur: soft leaf mats + fog-tolerant climbers; winter browning allowed at edges.
+
+Mysuru: xeric clusters + pergola vines; higher leaf gloss in monsoon only.
+
+Kolkata Corridor: broadleaf, glossy; aggressive drainage; auto-flush after nor’westers.
+
+Surface & Color
+
+Frames in Graphite; planter lips in Concrete Light. No painted “fake green” allowed.
+
+Wear/Weather Behavior
+
+Mineral streaking under M/L gutters after monsoon; dust film in Mysuru pre-monsoon; algae sheen near waterlines in Kolkata.
+
+Tiling & Noise
+
+Use 60/30/10 ratio (S/M/L) to avoid repetition; rotate 90° on every third unit; randomize tray depth ±10 mm.
+
+1.3 Curb Scanner Bollard (Biometric/QR)
+
+Purpose. Curb-level compliance & quick checks; second-read authoritarian cue.
+
+Dimensions
+
+Height 1100 mm; Ø 180 mm; beveled top with dual interface:
+
+Thumb/Face panel (frosted window 160×110 mm)
+
+QR panel (matte black, 130×130 mm, finder-mark corners embossed)
+
+Lighting
+
+Idle: Control Blue #0B84F3 thin halo.
+
+Scan active: Cyan pulse; success: soft green tick; fail: amber band.
+
+Accessibility
+
+Duplicate QR panel at 900 mm height on adjacent pylon for wheelchair approach; tactile edge at pavement.
+
+Finish
+
+Body Graphite; base Safety Amber chevron only on service lanes (not pedestrian plazas).
+
+Sound
+
+1 kHz soft chirp on success; low volume, non-startling.
+
+1.4 Algorithmic Checkpoint Tower (Slim Mast)
+
+Purpose. Ambient enforcement node without sci-fi clutter.
+
+Form
+
+4.6 m mast; 350×120 mm teardrop profile; sensor head at 4.2 m with tri-camera cluster + lidar slit; no visible weapons.
+
+Base
+
+900×450×180 mm plinth; cable access; sealed ports.
+
+Mounts
+
+Optional side arm for hover-lane beacon (see 1.5); do not mount ads or banners.
+
+Legal Optics
+
+Emblem plaque (top-right); tri-script “Checkpoint” label on mast, 80 mm cap height; contrast 4.5:1 minimum.
+
+Curfew Mode
+
+Projected cone markers on pavement (blue-white); amber strobe at mast top; audible 400 Hz tone at 70 dB max, 10 s on the hour.
+
+1.5 Hover-Lane Beacon & Surface Pack
+
+Purpose. Define 0–5 m hover band, egress pads, and visual safety.
+
+Beacons
+
+3.0 m pole with horizontal ring (Ø 260 mm) at 2.6 m; ring emits low-intensity blue; spacing 25 m on medians.
+
+Markings
+
+Lakshmanpur: pale concrete chevrons with bronze inlays on ceremonial avenues.
+
+Mysuru: basalt inlays; high contrast; dust-resistant.
+
+Kolkata Corridor: anti-slip ceramic tiles; high-visibility edge paint; flood line markers at +250 mm from pavement where applicable.
+
+Egress Pads
+
+5.0×7.5 m rectangles with Safety Amber perimeter tick marks (every 1.0 m).
+
+2) Mobility Nodes
+
+2.1 Glide-Car Pad (Urban Berth)
+
+Envelope
+
+Pad: 6.0×10.0 m clear landing rectangle, load 3.5 t; Buffer: 1.5 m all sides; Canopy clearance: 5.8 m.
+
+Charging & Couplers
+
+Under-pad inductive coils; optional side coupler column (Verma Optics HUD projector integrated).
+
+Lighting
+
+Edge LEDs at 300 mm spacing; Control Blue idle; amber on maintenance lockout.
+
+Per-City Canopy Skins
+
+Lakshmanpur: minimal truss canopy; Concrete Light soffit; fog gutters; bronze trim option.
+
+Mysuru: pergola canopy with stone posts; open lamellae; vines in monsoon.
+
+Kolkata Corridor: curved composite canopy; rain-chains at corners; salt-resistant fasteners; downspout to planter.
+
+Safety & Crowd
+
+Bollard ring at 1.2 m high; tri-script “Stay Behind Line” on deck edge; pictograms for hover downdraft (hair/loose items).
+
+Service Bay (adjacent)
+
+2.5×6.0 m module with Mehta Electricals cabinet; Shastri Polymers spill tray; tool pylon (non-diegetic in wide shots).
+
+3) Transit & Metro
+
+3.1 Turnstile Banks (Biometric + QR)
+
+Block
+
+Standard bank: 6 lanes (4 standard, 1 wide/accessible, 1 staff).
+
+Module width: 1100 mm lane; Gate height: 1020 mm.
+
+Interfaces
+
+Biometric head: 1.35 m high; dual camera + thumb pad; monochrome OLED strip for prompts.
+
+QR head: 1.15 m high; matte panel; QR angle at 12°.
+
+Flow
+
+Throughput target 35–40 ppl/min/lane; accessible lane 25–30.
+
+Pictograms & Type
+
+Paired icons for biometric+QR; tri-script labels above every other lane; no scrolling text in heritage precincts (static only).
+
+Finishes
+
+Body Graphite; cap Stainless; safety edges Amber; deck tiles Concrete Light with tactile wayfinding nodes.
+
+Acoustics
+
+Enter: soft chime; Deny: two-tone descending; Volume < 75 dB peak.
+
+Fail States
+
+Fail-open on evacuation; Fail-closed on tamper.
+
+Climate Fit
+
+Lakshmanpur: anti-condensation on optics; heated thumb pad option.
+
+Mysuru: dust gaskets; micro-mesh vents.
+
+Kolkata Corridor: anti-corrosion bolts; drip trays; anti-slip matting.
+
+3.2 Platform Furniture Set
+
+Seating. Modular aluminum benches, 1.8 m segments; slat spacing 15 mm; armrests at 600 mm spacing.
+Wayfinding Pylon. 600×2100×160 mm; backlit; tri-script stack; emblem top-right; maintenance hatch rear.
+Edge Safety. 300 mm luminous strip; “mind the gap” tri-script at 4 m repeats; tactile nodes.
+Air Control. Kolkata Corridor platforms: air curtains at portal entrances; condensate drains integrated into curb.
+
+4) Civic Furniture & Ritual Overlays
+
+4.1 Wayfinding Pylon (Street)
+
+Structure. Aluminum honeycomb core; 8-mm glass face; 8-mm module grid.
+Typography. Inter 800 (EN); Noto Dev 600; Noto Telugu/Bengali 600; Body 400.
+Color. Day: text #0B1D2A on panel #F2F5F7; Night: reversed, backlit.
+Emblem. Top-right; 24 mm min; safe area = emblem width.
+
+4.2 Flag & Emblem Hardware
+
+Flag base. 600×600×120 mm; bronze socket; removable cover.
+Ceremonial ribbon bars. Tricolor only on government forecourts; never used as textures or grunge.
+
+4.3 Festival Overlay Kit
+
+Drone rig. 200×200 mm truss clamps; payload 3 kg; LED strips adopt annual palettes.
+Banner truss. 600-mm deep gantry; clear height 5.0 m; corner plates in Stainless; overlays never exceed 30% of the frame area (visual rule).
+Kiosks. Shastri Polymers shells with swappable color skins (annual palette); Verma Optics holo fins.
+
+4.4 Rain-Chain & Drainage Pack (Delta Priority)
+
+Chain. Ø 40 mm cups; 2.5 m drop; catch basin with grating; anti-mosquito siphon.
+Downpipe. Concealed channels; inspection ports every 5 m; overflow scuppers at +250 mm flood line.
+
+5) City Variant Notes (Concise “Skins” for Shared Kit)
+
+Lakshmanpur (river-plain)
+
+Light/atmo: winter fog halation; soft specular on Concrete Light.
+
+Materials: sandstone accents; bronze trims on ceremonial streets.
+
+Behavior: de-fog heaters on OxyPoles; anti-condensation optics on gates.
+
+Boards to favor: “Milk-glass morning,” “Monsoon mirror night.”
+
+Mysuru (plateau)
+
+Light/atmo: crisp shadows; bold occlusion; dusty pre-monsoon afternoons.
+
+Materials: granite/basalt plinths; pergola wood/stone in mobility nodes.
+
+Behavior: dust mesh on vents; matte finishes to avoid noon glare.
+
+Boards to favor: “Granite glare noon,” “Monsoon terrace sheet.”
+
+Kolkata Corridor (delta)
+
+Light/atmo: humidity bloom; violent evening squalls; long wet reflections.
+
+Materials: anti-corrosion metals; terracotta anti-slip; covered skywalks.
+
+Behavior: flood line markers; rain-chains; air curtains at portals.
+
+Boards to favor: “Nor’wester street,” “Blue-hour levee.”
+
+6) Production Specs (for 3D, Layout, or Image-Gen Controls)
+
+Scale & Street Section
+
+Ceremonial boulevard: 41–45 m ROW (6 vehicular lanes equivalent, hover band above median), 5–6 m sidewalks, median planting with OxyPole spacing 60–80 m.
+
+Neighborhood spine: 24–28 m ROW, OxyPole spacing 80–100 m, check-tower at intersections only.
+
+Delta embankment road: 18–24 m ROW, flood step on river side (+250 mm), hover berths offset.
+
+Texture & Material Budgets (if modeling)
+
+LOD2: 2× 2k atlases per block segment; tileable concrete/stone; baked AO.
+
+LOD1: 1–2× 4k for hero assets (OxyPole, pylon, gate); normal maps for louvers/jali.
+
+LOD0: 1× 8k for hero close-ups (diagnostic panels, emblem, banner cloth).
+
+UDIM & Reuse
+
+OxyPole shares one UDIM across cities; city variants via material overrides only.
+
+Vertical-garden cassettes share geometry; swap trim sheets per city.
+
+FX/Animation Cues
+
+Rain: streaks on canopy edges; splash rings in puddles; rain-chain sheets.
+
+Fog: bloom around light heads; aerial perspective ramps (Lakshmanpur).
+
+Dust: heat shimmer shader above hover lanes; soft particulate shafts at low angles (Mysuru).
+
+Wind: banner flutter; palm lean (delta); vine sway (monsoon months).
+
+Foley Sound Notes (optional)
+
+OxyPole hum (low); hover pad whine at touchdown; QR gate chirp; rain-chain patter.
+
+7) Data, Naming & Governance (keep your library sane)
+
+Asset Prefixes
+
+MTL_ (Metropole), LKP_ (Lakshmanpur), MSR_ (Mysuru), KCC_ (Kolkata Corridor).
+
+Example: MTL_OxyPole_v2, variant materials LKP_OxyPole_MAT_SandstoneBase, KCC_OxyPole_MAT_SaltGuard.
+
+Color Tokens (HEX locked from Phase-1)
+
+COL_Navy=#0B1D2A, COL_Graphite=#2A2F36, COL_Concrete=#D8DCDF, COL_Bronze=#7A5A3A,
+COL_Cyan=#17D0E3, COL_Blue=#0B84F3, COL_Amber=#FFB200, Greens #3A6E47/#6EA66B.
+
+Type Tokens
+
+TYPE_EN=Inter, TYPE_HI=NotoSansDevanagari, TYPE_TE=NotoSansTelugu, TYPE_BN=NotoSansBengali.
+
+Lock weights 400/600/800; tri-script stack order fixed.
+
+Signage Do/Don’t
+
+✅ Tri-script, emblem top-right, 8-mm (physical) grid.
+
+❌ Tricolor as textures/backgrounds; ❌ strobe signage; ❌ drone mounts on sacred roofs.
+
+8) QA Checklists (per board or scene)
+
+Visual Continuity
+
+City climate/read evident (fog vs dry glare vs humidity).
+
+OxyPoles within spacing rule; correct variant materials.
+
+Hover band and beacons read clearly; safe distances respected.
+
+Typography & Signage
+
+EN→HI→State order; weights 800/600/600 (headers).
+
+Emblem safe area preserved; contrast ≥ 4.5:1.
+
+Heritage precincts: static signs only; simplified stacks.
+
+Palette Discipline
+
+Base civic palette dominates.
+
+Festival overlay ≤ 30% of frame; correct year colors.
+
+Surveillance as Second-Read
+
+Check towers slim, non-threatening; no weaponized optics.
+
+Bollards & scanners present but not focal unless story requires.
+
+Climate Behavior
+
+Rain/fog/dust correct for city & season.
+
+Drainage or defog details visible where relevant (delta/fog).
+
+What you can produce immediately with this kit
+
+Hero streets (day/night/festival/curfew) by swapping canopy and planting skins.
+
+Transit interiors with gate banks + tri-script pylons.
+
+Mobility nodes (glide-car pads) that feel native to each city with just a material/roof swap.
+
+Heritage edge shots by applying the sacred micro-set rules from Phase-1 with these street modules.
+
+Touch-base before Phase 3
+
+Phase-2 kit is locked. If you want any tuning (e.g., OxyPole height, checkpoint mast profile, glide-pad dimensions, festival rig geometry, or extra flood hardware for the delta), tell me now and I’ll roll it in before we start Phase 3 — Environment Boards (three per city: Day Clean, Festival Night, Curfew/Weather Beat).
+
+amazing—Phase 3 is now fully built. Below are nine production-ready Environment Boards (three per city). Each board gives you a hero-wide composition blueprint plus 3–6 detail panels with exact set-dressing, signage copy (tri-script), light & weather recipes, and do/don’ts. You can hand this straight to artists or pipe it into your image-gen workflow.
+
+I’ve kept every rule from Phase-1/2 (tri-script type stacks, emblem/flag etiquette, base palette + festival overlays, OxyPole spacing, “second-read” surveillance).
+
+CITY 01 — LAKSHMANPUR (Northern River-Plain Metropole)
+
+LKP-B1 — “Day Clean / Winter Fog” (Hero Wide + Details)
+
+Intent. The civic utopia read: disciplined greenery, clean streets, light surveillance—fog softens edges.
+
+Hero Wide
+
+Aspect / Lens / Height. 16:9 at 5600×3150; 35 mm equiv; camera 1.65 m; horizon mid-lower third.
+
+Vanishing. Two-point along a 40 m ceremonial boulevard with a shallow curve (river city cue).
+
+Foreground → Mid → Back.
+FG: tactile curb tiles, Curb Scanner (idle—thin Control Blue halo), chai-cart shutter half-open.
+MID: OxyPole v2 every ~70 m (bronze collar option), vertical-garden cassettes (S/M/L 60/30/10), hover-lane beacons faint.
+BG: dome-and-spine civic mass with parametric jali; river-side skywash lost into fog.
+
+Lighting recipe. 6000 K soft key, low specular, fog density 0.25–0.35; AO softened.
+
+Palette discipline. Base Civic only (Navy/Graphite/Concrete/Greens). No festival overlays.
+
+Signage (tri-script, Inter/Noto weights locked).
+Header (EN, Inter 800): “RIVER BOULEVARD – SECTOR 6”
+Hindi (Noto Dev 600): “नदी बुलेवार्ड – सेक्टर 6”
+State line (Hindi repeat 600): “राज्य मार्ग – सेक्टर 6”
+Wayfinding pylon shows emblem top-right; contrast ≥ 4.5:1.
+
+Crowd & motion. Commuters in breathable layers, subdued colors; hover-cars at 3 m with mirage haze; no loud drones.
+
+Detail Panels (pick 4–5):
+
+OxyPole Crown (Hero LOD0): louvers beaded with fog, cyan status tick ≤ 2% area.
+
+Vertical-Garden Cassette (M/L seam): dew droplets; drip gutter mineral streak.
+
+Curb Scanner: frosted biometric window vs matte QR; idle halo; tactile curb nodes.
+
+Jali corner: warm limestone pores; soft shadow lattice.
+
+Lane Beacon: faint blue ring; spacing read; no glare in fog.
+
+Common mistakes. Over-glowy fog; tricolor as background; scanner made focal.
+
+Checklist (must see in frame). Fog halation on light heads; OxyPole spacing 60–80 m; emblem safe-area respected.
+
+LKP-B2 — “Festival Night / Boulevard Expo”
+
+Intent. Same boulevard reskinned with annual overlay (Y25 default: Solar Indigo + Saffron Ember). Surveillance stays “second read”.
+
+Hero Wide
+
+Aspect / Lens / Height. 21:9 at 6720×2880; 28 mm; cam 1.8 m.
+
+Composition. OxyPole rhythm + banner truss spine; kiosks (Shastri Polymers shells) at 15 m cadence; hovercams in bokeh above 2nd story.
+
+Lighting. 4300 K ambient + indigo/saffron accents; wet micro-gloss optional (post-clean drizzle).
+
+Overlay control. Festival coverage ≤ 30% of visible surfaces.
+
+Signage & kiosks (tri-script).
+Header (EN): “FESTIVAL PLAZA — GATE 2”
+Hindi: “उत्सव प्रांगण — द्वार 2”
+State line: “राज्य प्रवेश — द्वार 2”
+Kiosk decals include Verma Optics holo fins; Omni-demo pictos ok.
+
+Detail Panels:
+
+Drone Light Rig: 200×200 truss; payload ≤ 3 kg; LED strips in overlay colors.
+
+Banner Fabric: Indigo base with saffron edge binding; stitch detail; no flag misuse.
+
+Kiosk Counter: QR purchase glyph; candy-bot tray; soft white underlight.
+
+OxyPole Night Mode: ≤ 200 cd/m²; cyan tick; bronze collar catchlights.
+
+Crowd Control: waist-high stanchions; amber safety caps; emblem on pass arch.
+
+Mistakes to avoid. Tricolor banners; strobe overload; drones too close to faces.
+
+LKP-B3 — “Curfew Sweep / Monsoon Mirror”
+
+Intent. Authoritarian optics as mood, not spectacle.
+
+Hero Wide
+
+Aspect / Lens / Height. 4:5 at 3200×4000; 40 mm; cam 1.7 m.
+
+Set. Rain at 10–12° angle; reflective asphalt; shuttered chai kiosks; Checkpoint Tower projects cone markers; hover lane empty.
+
+Lighting. 3700 K sodium pools + 6500 K holo spill; specular streaks; puddle caustics.
+
+Signage (tri-script).
+EN: “CURFEW IN EFFECT 21:00–06:00”
+HI: “कर्फ़्यू लागू 21:00–06:00”
+State (HI): “राज्य आदेश 21:00–06:00”
+
+Detail Panels:
+
+Cone Projection on Wet Pavement (soft fringe, no laser look).
+
+Drain Grate with leaf litter and bronze flecks.
+
+Closed Kiosk with ribbon seal; emblem wax.
+
+Rain Beads along OxyPole crown; cyan tick reflected.
+
+Hand Poster (civil announcement; non-political wording; tri-script).
+
+Do/don’t. Don’t show weapons; keep audible tone implied (never visual siren arrays).
+
+CITY 02 — MYSURU (Interior Plateau Tech-Hub)
+
+MSR-B1 — “Day Clean / Granite Glare Noon”
+
+Intent. Dry-season clarity and hard shadow geometry.
+
+Hero Wide
+
+Aspect / Lens / Height. 16:9; 24 mm; cam 1.6 m; horizon mid.
+
+Set. Tech-park terrace stepping down granite shelves; pergola-shaded Glide-Car Pad; basalt plinth street edge; vertical-garden with xeric clusters.
+
+Lighting. 5600 K, high contrast; crisp occlusion; minimal atmospheric haze.
+
+Palette. Base Civic + basalt accents; greens subdued (non-monsoon).
+
+Signage (tri-script).
+EN: “TERRACE LINK — BLOCK C”
+HI: “टैरेस लिंक — ब्लॉक C”
+TE: “టెర్రస్ లింక్ — బ్లాక్ C”
+
+Detail Panels:
+
+Pergola Slats casting strong bars; Inter 800 header on pylon.
+
+Basalt Inlay hover-lane chevrons; dust film; high contrast edges.
+
+Curb Scanner with dust mesh vent; QR matte shows micro-scratches.
+
+Planter Band with xeric shrubs; shallow soil depth rim.
+
+Glide-Pad Bollard (tri-script “STAY BEHIND LINE”).
+
+Pitfalls. Over-lush greens; glossy basalt in dry months.
+
+MSR-B2 — “Festival Night / Terrace Rain Sheet”
+
+Intent. Monsoon alive: sheets of water, stone comes to life; overlay Y26 (Monsoon Teal + Copper Leaf).
+
+Hero Wide
+
+Aspect / Lens / Height. 21:9; 28 mm; cam 1.7 m.
+
+Set. Terraces become waterfalls; rain-chains hammer catch basins; pergola vines glossy; kiosks with teal/copper trims; hover-car touchdown spray.
+
+Lighting. 6000–6400 K overcast + warm kiosk pools; speculars on wet stone.
+
+Signage (tri-script).
+EN: “FESTIVAL TERRACE — SOUTH ENTRY”
+HI: “उत्सव टैरेस — दक्षिण प्रवेश”
+TE: “ఉత్సవ టెర్రస్ — దక్షిణ ప్రవేశం”
+
+Detail Panels:
+
+Rain-Chain Close (cup Ø 40 mm; splash crown).
+
+Copper Leaf Trim on banner arm; water beads.
+
+Glide-Pad Edge—amber tick marks every 1.0 m, droplets catching light.
+
+Pergola Vine Leaf with monsoon gloss; occlusion water rivulets.
+
+Kiosk Counter QR—rain shield lip; teal reflection.
+
+Avoid. No tricolor textures; no festival coverage > 30%.
+
+MSR-B3 — “Curfew / Dry-Season Afterglow”
+
+Intent. Minimalism and long shadows; quiet, watchful order.
+
+Hero Wide
+
+Aspect / Lens / Height. 3:2; 35 mm; cam 1.65 m.
+
+Set. Empty terrace street; slim Checkpoint Tower; hover-beacons idle; flag base capped; dust in slant light.
+
+Lighting. Golden-hour 5000 K; strong shadow bars.
+
+Signage (tri-script).
+EN: “CURFEW BOUNDARY — HOLD”
+HI: “कर्फ़्यू सीमा — ठहरें”
+TE: “కర్ఫ్యూ సరిహద్దు — నిలుచుండండి”
+
+Detail Panels:
+
+Tower Sensor Head—no weapon shapes; emblem plaque; 80 mm cap-height label.
+
+Dust-Mesh Vent on scanner; tactile curb nodes.
+
+Flag Socket with bronze cap; no flag after hours.
+
+Basalt Edge Wear—micro chips; warm speculars.
+
+Don’t. Don’t add fog; don’t wet the ground—this is a dry-season read.
+
+CITY 03 — KOLKATA CORRIDOR (Deltaic Aerotropolis)
+
+KCC-B1 — “Day Clean / Skywalk & Levee”
+
+Intent. Delta logic: flood-aware edges, humidity, covered linkages.
+
+Hero Wide
+
+Aspect / Lens / Height. 16:9; 28 mm; cam 1.7 m; horizon low.
+
+Set. Embankment road (ROW 22 m) with +250 mm flood step; covered skywalk crossing; stilted service block; glide-pad set back from waterline.
+
+Lighting. 6200 K soft haze; slight humidity bloom; calm water reflections.
+
+Palette. Base Civic with stainless edges; anti-slip terracotta at crossings.
+
+Signage (tri-script).
+EN: “EMBANKMENT ROAD — SKYLINK 4”
+HI: “बंध मार्ग — स्काईलिंक 4”
+BN: “বাঁধ সড়ক — স্কাইলিংক ৪”
+
+Detail Panels:
+
+Flood Line Marker (+250 mm) on pylon; enamel paint edge.
+
+Rain-Chain Basin with anti-mosquito siphon grill.
+
+Skywalk Fascia—sealed joints; vent slots; salt-guard fasteners.
+
+Hover Berth Setback—planter buffer; warning pictos.
+
+Anti-Slip Terracotta Tile—sand-etched surface, damp sheen.
+
+Avoid. Don’t park hover berths over water; keep corrosion-aware metals.
+
+KCC-B2 — “Festival Night / Nor’wester Street”
+
+Intent. The famous pre-monsoon squall: banners whip, sodium pools smear, energy in the air. Overlay Y29 (Delta Cyan + Marigold Gold).
+
+Hero Wide
+
+Aspect / Lens / Height. 21:9; 24 mm; cam 1.75 m.
+
+Set. Street perpendicular to water; banner truss flex; kiosks lashed; palms bent; puddles streaked by crosswind.
+
+Lighting. 3600–3800 K sodium + cyan holo spill; lightning rim hits clouds.
+
+Signage (tri-script).
+EN: “FESTIVAL CORRIDOR — EAST GATE”
+HI: “उत्सव गलियारा — पूर्व द्वार”
+BN: “উৎসব করিডর — পূর্ব ফটক”
+
+Detail Panels:
+
+Banner Grommet—strain; stitch pull; cyan edge light.
+
+Palm Fronds—motion blur; rain streaks at 20°.
+
+Kiosk Lash Points—Shastri Polymers cleats; water beads.
+
+Puddle Streak—wind-driven reflection of OxyPole crown.
+
+HUD/Sign Panel—Inter 800 cap, Bengali 600 subhead; backlit diffusion.
+
+Don’t. No hard “laser” reflections; keep the street safe, not apocalyptic.
+
+KCC-B3 — “Curfew / Blue-Hour Levee”
+
+Intent. Quiet control on the water’s edge; reflective, solemn.
+
+Hero Wide
+
+Aspect / Lens / Height. 4:5; 40 mm; cam 1.7 m.
+
+Set. Levee top walk; Checkpoint Tower with blue-white cones onto damp stone; skywalk lights dim; river haze.
+
+Lighting. 8000 K blue hour + warm sodium in pockets; deep blues; long reflections.
+
+Signage (tri-script).
+EN: “LEVEe ACCESS RESTRICTED — 21:00–06:00”
+HI: “बंध प्रवेश निषिद्ध — 21:00–06:00”
+BN: “বাঁধে প্রবেশ নিষিদ্ধ — ২১:০০–০৬:০০”
+
+Detail Panels:
+
+Cone on Wet Stone—soft gradient; slip-safe sparkle.
+
+Air Curtain Edge at portal (faint shimmer).
+
+Salt-Guard Bolt macro; water droplet surface tension.
+
+Skywalk Glazing—condensation beads, not fog.
+
+Avoid. Don’t overpopulate with drones; keep the emptiness poignant.
+
+BOARD DELIVERABLES — HOW TO PACKAGE
+
+For each of the nine boards above, create one A2 sheet with this layout:
+
+Hero Wide (top 65% of sheet).
+
+Five Detail Panels (bottom grid, 5× equal cells).
+
+Left Rail (specs):
+
+City code + Board code (e.g., LKP-B1).
+
+Aspect/Lens/Height/Vanishing.
+
+Light & Weather recipe.
+
+Palette callout (Base vs Overlay + year).
+
+Mandatory signage stack (exact copy above).
+
+OxyPole spacing / special variants in frame.
+
+QA checkboxes (from Phase-2 list).
+
+Right Rail (annotations): Pictogram rules, emblem safe-area sketch, don’t-dos.
+
+File naming.
+ENV_LKP_B1_DayCleanWinterFog_A2_v01.png
+ENV_LKP_B2_FestivalNight_Y25_A2_v01.png
+ENV_LKP_B3_CurfewMonsoon_A2_v01.png
+…and similarly for MSR/KCC.
+
+“SECOND-READ SURVEILLANCE” REMINDER (applies to all)
+
+Check towers = slim and quiet.
+
+Drones/bots = bokeh, rimlit, or partial silhouettes.
+
+Enforcement tones implied (no siren arrays).
+
+Authoritarian energy is felt, not center-framed—unless a story beat demands it.
+
+READY-CHECK BEFORE PHASE 4
+
+Phase-3 boards are locked. If you want me to export this into ready-to-paste prompt blocks for any specific board (exact camera callouts, material tokens, and seed-style phrasing), say which codes (e.g., “Do LKP-B2 and KCC-B2”).
+
+Otherwise, if you’re happy with these boards, say “Proceed Phase 4” and I’ll create the Heritage Micro-Set Capsules (one triad per city + neighborhood edge studies) with the same level of detail.
+
+amazing—here’s Phase 4 (Heritage Micro-Set Capsules + Neighborhood Edge Studies) locked for all three hyper-tech metropoles. This is a production-grade reference you can hand to environment artists, set dressers, or an image-gen pipeline. It reuses every rule from Phases 1–2 (tri-script typography, emblem/flag etiquette, base civic palette, annual festival overlays, OxyPole spacing, “second-read” surveillance). No prompts—just the canon you’ll render from.
+
+0) Goals & Global Rules
+
+Purpose. Each city gets three sacred micro-sets—Hindu / Muslim / Christian—designed as stylized archetypes (no real-world lifts) that integrate with smart-streets without dilution or kitsch.
+
+Always.
+
+Respect bands: no drones directly above worship roofs; algorithmic checkpoint towers remain outside the sacred perimeter by ≥ 25 m; scanners (if any) sit on the civic edge, never at the threshold.
+
+Signage discipline (heritage variant): simplify to two-line stack (EN header, State-language subhead). Use Hindi as a body line only if needed for wayfinding clarity.
+
+Palette: base civic palette; tricolor never as décor; annual festival overlays allowed on temporary civic devices only (banners, kiosks, crowd rails), max 20% in the sacred plot.
+
+Sound & light: natural voices/music dominate; reinforcement is low and warm; exterior lighting always warm-white (3000–3500K), interior ≤ 3000K.
+
+Accessibility: every threshold has a ramp (1:12 slope), tactile pavers, and a 1.5 m turning circle at doors.
+
+Weathering: show honest use—stone darkens at drip lines, bronze goes umber at touch points, terracotta takes a soft sheen where handled.
+
+Crowd comfort: shade first, seating second, vendors third. Trees create micro-climates; benches face open space, not doorways.
+
+Dimensional conventions. Unless stated otherwise, modules use the 300 mm grid. Doors clear 1.2 m. Colonnade center-to-center 2.4–3.0 m. Parapets 900 mm. Handrails 900 mm, children rails 700 mm.
+
+1) Lakshmanpur — River-Plain Heritage Triad (Fog-prone winters, hot/dusty pre-monsoon, heavy monsoon)
+
+LKP-H1 — Sandstone Mandir (compact shikhara + water mirror)
+
+Site & Orientation. 32 m × 28 m walled precinct; east-facing entry; shallow reflecting pool (18 m × 6 m) before the mandir.
+Massing. One primary shikhara over sanctum; low mandapa (assembly hall) with 1:1.5 proportion; courtyard wraps around the hall.
+Structure & Materials. Warm sandstone ashlar; carved jali screens on the east and south; oxidized bronze door bands; paved in pale sandstone with anti-slip finish.
+Roof & Drainage. Hidden gutters feeding a runnel that spills gently into the pool; monsoon scuppers have lion-mouth motifs simplified to clean spouts.
+Light & Atmosphere.
+
+Morning (winter): fog dilates edges; lamp glow from within the mandapa; shikhara reads as a soft silhouette.
+
+Evening (monsoon): reflected diya and halo of warm uplights (≤ 3000K) on lower wall courses only—never uplight the crown.
+Threshold & Flow. Three-step plinth with ramp to side; footwear shelf alcoves recessed; queue naturally forms under a shallow eave.
+Soundscape & Scent. Brass bell (fundamental ~392 Hz), mild floral incense; water trickle from runnel.
+Signage (two-line heritage variant).
+
+EN header (Inter 800): “RIVERSIDE MANDIR”
+
+HI subhead (Noto Sans Devanagari 600): “नदी तट मंदिर”
+(If needed, a third, small HI line for timings in 400 weight.)
+Civic Interface. 8 m forecourt to smart-street: planter band + OxyPole outside the compound wall; no scanners at the gate; any scanner bollard sits beyond the forecourt on civic pavement.
+
+LKP-H2 — Three-Bay Masjid (low minarets + geometric jali)
+
+Site & Orientation. 40 m × 30 m rectangle; qibla wall aligned; ablution (wudu) court 10 m × 8 m on the north edge under pergola.
+Massing. Prayer hall with three equilibrated bays; two low cylindrical minarets (no balconies) flank the façade; a continuous shaded arcade fronts the hall.
+Structure & Materials. Pale stone, geometric jali panels; timber or metal pergola for wudu area; floor in honed sandstone with tactile change near the prayer line.
+Roof & Drainage. Low-pitch roof with concealed gutters; monsoon downspouts into gravel trench; no visible flashings at the façade.
+Light & Atmosphere. Soft, even interior light via high jali; exteriors stay matte for winter fog reads. Night lighting recesses into arcade soffits.
+Sound & Scent. Quiet water in wudu court; restrained PA for calls (warm, non-piercing).
+Signage (two-line heritage variant).
+
+EN header: “RIVERSIDE MASJID”
+
+HI subhead: “नदी तट मस्जिद”
+Civic Interface. Arcaded edge opens to city; movable rope stanchions (festival days) keep pedestrian drift off the prayer line; scanner (if required) is paired, accessible height, outside the arcade line.
+
+LKP-H3 — Basilica Court (short bell tower + side garden)
+
+Site & Orientation. 36 m × 30 m plot; nave runs west–east; side garden on south with benches.
+Massing. Single-nave basilica; modest bell tower (no spire) integrated with front wall; shallow narthex; clerestory ribbon windows.
+Structure & Materials. Pale stone ribs; plastered walls (off-white); doors with bronze hardware.
+Roof & Drainage. Gabled roof; hidden gutters; water chains at corners to stone bowls (safe in monsoon).
+Light & Atmosphere. 3000K warm interior; late-afternoon sun paints ribs; winter fog makes the bell tower dissolve gently.
+Signage (two-line).
+
+EN header: “RIVERSIDE BASILICA”
+
+HI subhead: “नदी तट गिरजाघर”
+Civic Interface. Low wall with gaps (no railings); planter buffer to boulevard; OxyPole and wayfinding pylon outside sacred plot. No banners on façade.
+
+Neighborhood Edge Study — LKP (applies to all three):
+
+Street section @ heritage edge: 28–32 m overall; 5 m sidewalk (sacred side), 2 m planted buffer, 2 m colonnade/arcade depth (where applicable).
+
+Vendor logic: 6 m setback from thresholds; 3×3 m vendor pads marked in Concrete Light; power via Mehta Electricals cabinets; noise cap after dusk.
+
+Crowd days (festival/common): detachable Shastri Polymers barriers painted Safety Amber on civic side only; tri-script temporary boards at kiosk height; no overhead truss inside sacred plot.
+
+2) Mysuru — Plateau Heritage Triad (crisp shadows, dry season glare, lush monsoon)
+
+MSR-H1 — Gateway Mandir (parametric fins + stepped court)
+
+Site & Orientation. 34 m × 34 m stepped plinth rising 900 mm; east entry via generous stair + side ramp.
+Massing. Compact sanctum; procession under a gateway tower whose ornament is reduced to repeating fins (deep shadows at noon).
+Structure & Materials. Granite/laterite plinth; smooth sandstone body; oxidized bronze thresholds; plaza tiles in matte ceramic (no glare).
+Roof & Drainage. Wide eaves; water spills into terrace runnels; monsoon sends sheets down the fin faces—beautiful for night shots.
+Light & Atmosphere. Dry season: hard bar shadows; monsoon: glossy stone, silver streaks.
+Signage (two-line).
+
+EN header: “TERRACE MANDIR”
+
+TE subhead: “టెర్రస్ దేవాలయం”
+Civic Interface. Pergola walk from smart-street; bench bands under vines; scanner (if any) on civic side beneath pergola shade, not at the stair.
+
+MSR-H2 — Arcade Masjid (deep shade + low domes)
+
+Site & Orientation. 44 m × 28 m; deep arcade fronts the hall; small, shaded wudu court to the west.
+Massing. Low domes read as gentle bulges; façade rhythm from thick columns casting sharp noon shadows.
+Structure & Materials. Granite plinth; pale plaster; basalt details at thresholds; floor is cool ceramic.
+Light & Atmosphere. Arcade shade stays 5–8°C cooler in dry months; monsoon reflections under the arcade.
+Signage (two-line).
+
+EN header: “TERRACE MASJID”
+
+TE subhead: “టెర్రస్ మస్జిద్”
+Civic Interface. Arcade aligns to boulevard trees; rope stanchions clip to basalt sockets on crowd days; algorithmic tower remains beyond the trees line.
+
+MSR-H3 — Hill-Slope Chapel (granite + single bell arch)
+
+Site & Orientation. 30 m × 26 m terraced slice; chapel carved into the slope; west-facing bell arch.
+Massing. One-volume nave; porch facing the descent; side sacristy low and recessive.
+Structure & Materials. Granite blockwork; timber doors; ironmongery with weathered finish.
+Light & Atmosphere. Golden hour gives long, crisp shadows; monsoon turns steps into reflective bands.
+Signage (two-line).
+
+EN header: “HILLSIDE CHAPEL”
+
+TE subhead: “గుట్ట పై చాపెల్”
+Civic Interface. Stone benches face outward to the city; no banners on bell arch; hover-pad canopy sits one terrace below line of sight.
+
+Neighborhood Edge Study — MSR:
+
+Street section: 24–28 m; pergola band 2.4 m deep along sacred edge; OxyPoles align with pergola posts to keep a calm rhythm.
+
+Vendor logic: 2×3 m stalls under pergolas during festivals; copper-leaf trims (Y26 overlay) allowed only on civic stalls; sacred façades stay overlay-free.
+
+Crowd days: dust-mesh covers on scanners; water points every 30 m; emergency access kept clear at 4 m width.
+
+3) Kolkata Corridor — Delta Heritage Triad (humid, flood-aware, violent evening squalls)
+
+KCC-H1 — Terracotta Mandir (curved rooflines + patterned brick)
+
+Site & Orientation. 36 m × 30 m plot raised on +300 mm flood plinth; east entry via three shallow steps plus ramp.
+Massing. Sanctum under gently curved rooflines; low ambulatory walks with terracotta-latticed spandrels.
+Structure & Materials. Baked terracotta brickwork; lime plaster highlights; bronze threshold plates; floors in anti-slip terracotta.
+Drainage. Deep eaves with rain-chains; perimeter channel drains to silt traps; overflow scuppers at +250 mm.
+Light & Atmosphere. Evening humidity blooms sodium halos; terracotta glows under lanterns.
+Signage (two-line).
+
+EN header: “DELTA MANDIR”
+
+BN subhead: “ডেল্টা মন্দির”
+Civic Interface. Embankment banister lines the outside; flood markers etched on civic pylons—not on sacred walls.
+
+KCC-H2 — Eaved Masjid (broad eaves + curved cornices)
+
+Site & Orientation. 42 m × 28 m; broad eaves shelter the façade; verandah runs the length; ablution cistern under canopy.
+Massing. Low, wide body; cornices with soft curves; verandah columns at 2.7 m c-c.
+Structure & Materials. Moisture-resistant plaster; treated timber for eaves; corrosion-guarded fasteners.
+Drainage. Oversize downpipes hidden in column cores; gutters discharge to pump-assisted sumps.
+Light & Atmosphere. Blue-hour mist, sodium pools; soft interior lanterns; wind rakes across puddles during nor’westers.
+Signage (two-line).
+
+EN header: “DELTA MASJID”
+
+BN subhead: “ডেল্টা মসজিদ”
+Civic Interface. Crowd control prefers braided rope, not steel rails; scanners sit across the road near wayfinding pylons, never at the verandah.
+
+KCC-H3 — Riverside Basilica (screened verandah + long nave)
+
+Site & Orientation. 38 m × 30 m just off the levee top; screened verandah faces river breeze; nave long and high.
+Structure & Materials. Salt-aware metals; polished stone thresholds; glazing with anti-condensation edge seals.
+Drainage. Verandah gutters to chain bowls; overflows into planted swales; slip-safe stone on approach.
+Light & Atmosphere. Blue-hour gloss; long interior light pools; subtle organ/choir practice audible.
+Signage (two-line).
+
+EN header: “RIVERSIDE BASILICA”
+
+BN subhead: “নদীতীর গির্জা”
+Civic Interface. Hover berths offset land-side; flood line markers on civic parapets only; no trusses attached to verandah screens.
+
+Neighborhood Edge Study — KCC:
+
+Street section @ levee: 22–24 m crown; +250 mm flood step; covered skywalks ensure dry access; air curtains at portals.
+
+Vendor logic: kiosks on the leeward side of the street during nor’westers; lash points integral to kiosk feet; cyan/marigold (Y29) trims on banners only.
+
+Crowd days: water-safe cable trays; emergency dewatering pumps staged at 80 m intervals; signage uses extra-wide glyph tracking for legibility in rain.
+
+4) Shared Asset Library for Heritage Sets
+
+Re-usable geometry.
+
+Doors & thresholds: bronze banded double door (1.8 m clear), single leaf (1.2 m).
+
+Jali library: square/hex repeaters at 200/250/300 mm modules; depth 70–120 mm; three finish presets (stone matte, terracotta matte, plaster wash).
+
+Benches: stone block (1.8 m), timber slat (2.1 m); both with 450 mm seat height, 900 mm back height.
+
+Lighting: bollard (800 mm, 2700K), soffit slot (2700–3000K), lantern (wall mount).
+
+Drainage kit: rain-chains (Ø 40 mm cups), scupper mouths, runnels, bowl basins with anti-mosquito siphons.
+
+Wayfinding pylons (heritage variant): 500 × 1800 × 120 mm; two-line stack; emblem absent unless the plot abuts a government building.
+
+Material presets (tie to Phase-1 palette).
+
+Stone: Concrete Light base with warm sandstone tint; basalt (Mysuru) with low gloss; terracotta (Kolkata) with seal where wet.
+
+Metal: Stainless for hardware; Oxidized Bronze for sacred hand-touch areas; Graphite for rails off sacred walls.
+
+Timber: Weathered teak tone; matte oil finish (no plastic sheen).
+
+FX/Atmospherics per city.
+
+Lakshmanpur: fog halation mornings; monsoon “mirror” nights; bell/diya flicker.
+
+Mysuru: dust bloom in dry afternoons; rain-sheet in monsoon; hard shadow geometry.
+
+Kolkata Corridor: humidity bloom; wind-blown rain; puddle streaks; salt-spray sparkle.
+
+5) Do / Don’t (Heritage)
+
+Do
+
+Keep surveillance as ambient (second-read).
+
+Reduce signage density; use the simplified two-line stack.
+
+Let materials tell time: stains, patina, hand-polish on touch zones.
+
+Place shade first; keep queues in shade.
+
+Don’t
+
+Don’t mount truss, ads, or banners on sacred façades.
+
+Don’t use the tricolor as décor or pattern.
+
+Don’t place scanners at thresholds or drones over roofs.
+
+Don’t backlight stone to fake translucency; use warm grazing light instead.
+
+6) Packaging & Naming
+
+File names.
+
+HER_LKP_H1_SandstoneMandir_A2_v01.png
+
+HER_LKP_H2_ThreeBayMasjid_A2_v01.png
+
+HER_LKP_H3_BasilicaCourt_A2_v01.png
+
+HER_MSR_H1_GatewayMandir_A2_v01.png …
+
+HER_KCC_H3_RiversideBasilica_A2_v01.png
+
+Sheet layout (A2 per micro-set).
+
+Top: Hero Elevation/3-Quarter (60–70% area).
+
+Bottom grid: 6 detail panels (threshold, lighting, drainage, signage, patina, interface to street).
+
+Left rail: dimensions, materials, light recipe, signage copy (two-line), accessibility notes.
+
+Right rail: crowd flow arrows (normal vs festival), scanner placement (civic side only), drone exclusion cone.
+
+Touch-base (before Phase 5)
+
+Phase 4 is locked. If you want any micro-tuning (e.g., enlarge verandahs by 600 mm in the delta, change the bell fundamental, adjust signage language order in a specific precinct, or define a special “silent zone” lighting recipe), tell me now.
+
+If you’re happy, say “Proceed Phase 5” and I’ll deliver the QA & Consistency Toolkit for heritage + street composites (shot-by-shot checklists, failure modes, and renderer-agnostic light rigs) so teams can crank out scenes without drift.
+
+awesome—here’s Phase 5 (QA & Consistency Toolkit) for Pack-01: Hyper-Tech Metropoles. This is your drift-proofing layer: checklists, acceptance criteria, light/FX recipes, failure modes, and packaging rules so any artist (or image-gen pipeline) can hit the same canon every time.
+
+1) Purpose & Scope
+
+Guarantee that every frame—streets, transit, mobility pads, festivals, curfew sweeps, and heritage micro-sets—reads as the same world, regardless of who renders it or which tool is used (hand-paint, Blender/Unreal, Midjourney/SD/GPT, etc.). This toolkit hard-locks:
+
+Language stack & signage (EN → Hindi → State line).
+
+Palette discipline (base civic vs. festival overlays).
+
+Surveillance optics (second-read).
+
+City geographies (river-plain vs. plateau vs. delta) and their seasonal light/air/water behavior.
+
+Heritage integration (sacred edges + civic buffer etiquette).
+
+2) Global Acceptance Criteria (GAC)
+
+For a board/shot to pass:
+
+GAC-01 – Language order. All public signage uses tri-script in this order:
+
+Header: English (Inter 800, ALL CAPS).
+
+Subhead: Hindi (Noto Sans Devanagari 600).
+
+State line: Telugu (Mysuru) or Bengali (Kolkata corridor) at 600.
+Body copy (if present): 400 weight in all three. Fail if order or weight deviates.
+
+GAC-02 – Emblem & flag etiquette.
+
+State emblem only on government furniture/pylons; safe area = emblem width on all sides; min size 24 mm physical.
+
+Tricolor appears only on flags, ceremony backdrops, and “Authority” bands on official gantries. Never as textures, grunge, or banners.
+
+GAC-03 – Festival overlay coverage. Annual palettes may skin banners/drones/kiosks/UI chrome only, ≤ 30% of visible area (≤ 20% inside sacred plots). Base civic palette must dominate.
+
+GAC-04 – OxyPole spacing & states.
+
+Spacing: 60–80 m on boulevards; 40–50 m on festival axes.
+
+Night luminance ≤ 200 cd/m²; cyan tick ≤ 2% of crown area; no neon glow tubes.
+
+GAC-05 – Hover band clarity.
+
+Operational band 0–5 m. Beacons at ~25 m cadence; egress pads 6×10 m (±); amber perimeter ticks every 1 m. Fail if vehicles appear over water (delta) or beyond 5 m in non-emergency scenes.
+
+GAC-06 – Surveillance as second-read.
+
+Checkpoint masts: slim, unarmed silhouettes; never center-framed unless story-critical.
+
+Drones: rim-lit/bokeh/partial—not hero subjects in civic beauty shots.
+
+GAC-07 – Heritage perimeter rules.
+
+No drones over roofs; algorithmic mast ≥ 25 m away; scanners only on civic side of the buffer, never at thresholds.
+
+Heritage signage uses two-line stack (EN header + State subhead). Hindi optional as small body line.
+
+GAC-08 – Climate honesty.
+
+Lakshmanpur: fog in winter, heat shimmer pre-monsoon, mirror asphalt in monsoon.
+
+Mysuru: dry-season hard shadows; monsoon terrace sheets; dust film pre-monsoon.
+
+Kolkata corridor: humidity bloom; flood logic (flood line +250 mm), nor’wester wind/rain vectors.
+
+GAC-09 – Contrast & accessibility.
+
+Text/background contrast ≥ 4.5:1; tactile curb nodes present at crossings; at least one accessible gate (wider lane) in metro banks.
+
+GAC-10 – Utility brands domain.
+
+Ahuja (mobility), Mehta (power/lighting), Junaid (structural), Verma (optics/HUD), Shastri (polymers/fixtures). No cross-contamination (e.g., don’t put “Verma” on steel gantries).
+
+If any single GAC fails, the shot is flagged for correction.
+
+3) City-Specific Acceptance Matrix
+
+4) Scene-Type Checklists (clip to every board)
+
+4.1 Day Clean (civic beauty)
+
+Base civic palette only; no festival overlays.
+
+Two or more kit anchors in frame (OxyPole + vertical garden; or hover beacons + pylon).
+
+People silhouettes: practical fabrics, not couture; small holo badges ok.
+
+Surveillance: visible but quiet (edge/bokeh).
+
+4.2 Festival Night (overlay active)
+
+Year code visible (Y25/Y26/…Y29) via banners/drone LEDs/kiosk trims.
+
+Overlay ≤ 30%; base palette dominant.
+
+Drone rigging plausible (truss clamps, lash points).
+
+No tricolor banners; emblem safe area kept.
+
+4.3 Curfew/Weather Beat
+
+Cones on ground (projected, soft-edged), amber strobe subtle.
+
+Kiosks shuttered/sealed; civic ribbons/stamps visible.
+
+Rain/fog/dust matches city/season recipe (see §7).
+
+Authoritarian read is mood (composition leads with place, not gear).
+
+4.4 Heritage Micro-set
+
+Two-line signage; emblem absent unless adjacent to a gov building.
+
+Buffers landscaped; vendors ≥ 6 m from thresholds.
+
+Drainage logic (runnels, chains, scuppers) respects city type.
+
+No banners/truss on sacred façades.
+
+5) Typography & Signage Audit
+
+Header sizes (physical):
+
+Highway gantry: EN cap 220 mm; HI/State 140–160 mm.
+
+Street pylon: EN cap 90–120 mm; HI/State 70–90 mm.
+
+Heritage pylon: EN cap ~80 mm; State 60–70 mm.
+
+Grid: 8-mm physical module; margins ≥ 3 modules; line gap ≈ 1.1× cap.
+
+Pictograms: Paired Biometric (thumb+face) + QR always shown for metro and scanners; stroke round, no gradients.
+
+Common fails: State line missing; weights wrong (all 800); emblem crammed into corners; QR panel glossy (should be matte).
+
+6) Palette & Overlay Audit
+
+Base civic HEX (locked):
+Navy #0B1D2A, Graphite #2A2F36, Stainless #B9C3C8, Concrete #D8DCDF, Bronze #7A5A3A, Green-Deep #3A6E47, Green-Mid #6EA66B, Holo-Cyan #17D0E3, Control-Blue #0B84F3, Safety-Amber #FFB200.
+
+Overlay packs (locked names + HEX):
+
+Y25 Solar Indigo #4B4C9C + Saffron Ember #FF6A00 + Off-white #F5F1E6
+
+Y26 Monsoon Teal #146C70 + Copper Leaf #B26A3D + Cloud #E7F0F2
+
+Y27 River Jade #29A474 + Vermilion #E03C31 + Mist #F0F6F3
+
+Y28 Plateau Umber #7E5039 + Electric Mint #26F2B0 + Parchment #F6F3ED
+
+Y29 Delta Cyan #0096C7 + Marigold #FFC933 + Pearl #EFF7FA
+
+Manual %-check (quick visual):
+
+Squint test: if overlay reads first at arm’s length, it’s > 30%—dial down.
+
+Greyscale pass: overlays should not dominate the value histogram.
+
+7) Renderer-Agnostic Light & FX Rigs
+
+Treat values as starting points; scale to your engine. List uses CCT (K), EV at ISO100, and qualitative volumetric settings.
+
+7.1 Lakshmanpur (river-plain)
+
+Winter Fog Day (Day Clean): Dome 6000 K (EV 13), Sun 6000 K (EV 12, soft), Fog density 0.25–0.35, Anisotropy 0.2, Bloom low. Roughness ↑ on concrete.
+
+Pre-Monsoon Noon (Heat): Sun 5600 K (EV 15, hard), Dome 6500 K (EV 12), Heat-shimmer post over hover band; dust motes subtle; contrast ↑.
+
+Monsoon Night (Curfew): Key pools 3700 K sodium (EV 8), Holo spill 6500 K (EV 9), Wetness maps high, Specular streaks long, Puddle caustics medium.
+
+7.2 Mysuru (plateau)
+
+Dry Noon (Day Clean): Sun 5800 K (EV 15.5, hard), Dome 6000 K (EV 11.5), AO strong; basalt roughness 0.55 matte; pergola bar-shadows crisp.
+
+Monsoon Terrace Night (Festival): Dome 6200 K (EV 9.5), Area lights 3200–3400 K under pergolas (EV 8), Rain particle size 0.8–1.5 mm, Streak bias vertical; copper trims pop.
+
+7.3 Kolkata Corridor (delta)
+
+Nor’wester Evening (Festival): Sky 7000 K storm deck (EV 11), Street pools 3600–3800 K (EV 9), Lightning rim 8000–9000 K bursts, Wind 8–12 m/s, Rain slant 18–25°.
+
+Blue-Hour Levee (Curfew): Sky 8000 K (EV 10), Walkway slots 3200 K (EV 8.5), Humidity bloom medium, Air curtain shimmer at portals.
+
+Universal FX bank:
+
+Rain: spawn height ≥ 10 m; collision splashes; micro-ripples on puddles.
+
+Fog: height fog up to 6–8 m; camera-near fade 0.5–1.0 m in heavy scenes.
+
+Dust: warm tint; low altitude; avoid sandstorm looks.
+
+8) Failure Modes & Fast Fixes (Top 20)
+
+Tricolor used as décor. → Replace with overlay palette or base civic colors; keep tricolor to flags/ceremony bars only.
+
+Language order wrong. → Rebuild sign with EN→HI→State; adjust weights to 800/600/600.
+
+Over-glow OxyPoles. → Cap luminance; switch cyan tick to 2% area max.
+
+Drones center-frame. → Push to bokeh; recompose around place, not gear.
+
+Heritage scanners at threshold. → Move to civic side beyond buffer.
+
+No flood logic in delta. → Add +250 mm markers, drains, chains, setbacks.
+
+Glossy basalt in dry-season Mysuru. → Lower spec; raise roughness; add dust film.
+
+Alpine skies in Lakshmanpur winter. → Add fog layer; mute contrast.
+
+Hover band too high. → Cap at 5 m; add beacon ring rhythm.
+
+Overlay > 30%. → Desaturate, reduce coverage, or shift to night micro-glow.
+
+Wrong brand domain. → Swap decals: Ahuja=mobility; Mehta=power; Junaid=steel; Verma=optics; Shastri=polymers.
+
+Emblem cramped. → Enforce safe area; don’t share panel with dense text.
+
+Checkpoint mast looks weaponized. → Remove visible barrels; keep slender head.
+
+No tactile cues at crossings. → Add curb nodes and ramp cues.
+
+Heritage façade with banners. → Remove; place truss on civic side only.
+
+Rain reflections without overcast. → Add cloud dome; cool highlights.
+
+Fog hiding all detail. → Lower density; rely on soft spec + AO to read forms.
+
+Cash registers as norm. → Keep biometric/QR as default; cash is rarity or quaint prop.
+
+Over-saturated greens on façades. → Shift to realistic plant hues; add mineral streaking.
+
+QR panel glossy / unreadable. → Matte the panel; angle 12°; add finder-mark emboss.
+
+9) Packaging, Metadata & Naming
+
+A2 sheet layout (must follow):
+
+Hero (top 65%).
+
+Detail grid (5–6 panels).
+
+Left rail: City code, Board code, Light recipe (Kelvin/EV), Weather, Palette callouts, OxyPole spacing, Signage copy, QA checkboxes.
+
+Right rail: Do/Don’t, emblem safe-area sketch, surveillance second-read reminder.
+
+File names.
+QA_<CITY>_<BOARD>_<SCENE>_v01.png (e.g., QA_KCC_B2_NorwesterFestival_v01.png)
+
+Embedded metadata (text layer or JSON sidecar):
+
+{
+
+  "city": "KCC",
+
+  "board": "B2",
+
+  "scene": "Festival-Night",
+
+  "year_overlay": "Y29",
+
+  "palette_pct_overlay": 0.24,
+
+  "language_stack": ["EN-Inter-800", "HI-NotoDev-600", "BN-NotoBn-600"],
+
+  "emblem_safe_area_mm": 24,
+
+  "oxypole_spacing_m": 60,
+
+  "hover_band_m": "0-5",
+
+  "surveillance_mode": "second-read",
+
+  "heritage": false
+
+}
+
+10) Review Workflow (fast & repeatable)
+
+Pre-flight (artist self-check, 3 min):
+Run the Scene-Type Checklist (4.1–4.4), then GAC-01..10. If any red flag, fix before hand-off.
+
+Peer pass (5–7 min):
+A different artist checks City-Specific Matrix and Failure Modes. Annotate directly on the A2 sheet (right rail).
+
+AD sign-off (≤ 5 min):
+AD confirms emblem/flag etiquette, overlay %, and surveillance second-read; stamps with “Pack-01 QA PASS vX.Y”.
+
+11) Ready-to-paste Micro-Cards (print and pin)
+
+Card A — Language & Emblem
+EN→HI→State, weights 800/600/600; emblem top-right, 24 mm min, safe area = emblem width.
+
+Card B — Overlay %
+Festival skins on banners/drones/kiosks only; ≤ 30% (≤ 20% inside sacred plots).
+
+Card C — OxyPole
+60–80 m (boulevards), 40–50 m (festival axes); ≤ 200 cd/m² at night; cyan tick small.
+
+Card D — Heritage
+Two-line signage; no scanners at thresholds; no truss/banners on sacred façades; drones off the roof cone.
+
+Card E — City Climate
+LKP=fog/heat shimmer/mirror asphalt; MSR=hard bars/sheet rain; KCC=humidity/flood/nor’wester vectors.
+
+Phase 5 status
+
+✅ Checklists and acceptance criteria locked.
+
+✅ Light/FX rigs and failure-mode playbook locked.
+
+✅ Packaging, naming, and metadata schema locked.

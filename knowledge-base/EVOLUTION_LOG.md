@@ -13,6 +13,27 @@ A running record of design decisions, architecture changes, brainstorming outcom
 
 ## Log Entries
 
+### Sprint 10-B — Bharatvarsh Knowledge Layer Enrichment (2026-03-18)
+- [x] Migration 015: 5 new lore tables (lore_entities, lore_relationships, lore_timeline, lore_chapters, writing_fragments), 4 enums, 18 indexes, 3 triggers
+- [x] Seed 013: 139 records (35 entities, 57 relationships, 20 timeline events, 27 writing fragments) from 960K chars of source material
+- [x] bharatvarsh.py MCP module: 8 tools (query_lore, get_character, get_entity, search_lore, get_timeline, get_chapter, check_lore_consistency, get_writing_style)
+- [x] Gateway updated: 48 → 56 tools, 9 → 10 modules
+- [x] 6 knowledge base files written from source material:
+  - BHARATVARSH_BIBLE.md (1,931 lines — comprehensive world reference, REPLACES old 152-line file)
+  - BHARATVARSH_CHARACTERS.md (1,475 lines — 7 character bibles with visual keys, voice, psychology, arcs)
+  - BHARATVARSH_LOCATIONS.md (777 lines — 3 zones, 12+ locations with architecture, atmosphere, security)
+  - BHARATVARSH_VISUAL_GUIDE.md (572 lines — art direction, palettes, uniforms, weapons, insignia)
+  - BHARATVARSH_WRITING_GUIDE.md (395 lines — narrative voice, dialogue conventions, terminology, themes)
+  - BHARATVARSH_TIMELINE.md (298 lines — 1717-2026 chronology across 6 eras)
+- [x] 3 Claude.ai skills: SKILL_BHARATVARSH_CONTENT.md (v2.0), SKILL_LORE_CHECK.md, SKILL_BHARATVARSH_WRITER.md
+- [x] Updated Claude Code skill: bharatvarsh-content v2.0 (MCP lore validation + expanded KB)
+- [x] Source text files stored in knowledge-base/bharatvarsh-source-text/ (19 files, 960K chars)
+- [x] Documentation updated: DB_SCHEMA.md, TOOL_ECOSYSTEM_PLAN.md, CLAUDE.md, EVOLUTION_LOG.md
+- [x] Migration 015 applied to Cloud SQL (38 tables live)
+- [x] Seed 013 applied to Cloud SQL (35 entities, 57 relationships, 20 timeline, 27 fragments)
+- [x] Gateway deployed to Cloud Run (revision ai-os-gateway-00037-ggg, 56 tools, 10 modules, healthy)
+- [x] Cleaned up duplicate temp files (docs/temp/bharatvarsh_text/ removed)
+
 ### Sprint 10-A — Contact Intelligence Layer (2026-03-18)
 - [x] Migration 014: Added google_contact_id, import_source, last_contacted_at, domain_slug to contacts table
 - [x] Built idempotent CSV importer (scripts/import_google_contacts.py) — 891 Google Contacts imported

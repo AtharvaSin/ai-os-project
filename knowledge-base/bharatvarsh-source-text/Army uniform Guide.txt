@@ -1,0 +1,135 @@
+Bharatsena Army Uniform — Canon Reference (Logo placement, cut variants, office vs. battle wear)
+
+This spec consolidates what is shown or stated in the novel materials so an LLM can describe soldiers consistently. Any field not mentioned below should be left unspecified by default rather than invented.
+
+1) Core look shown on-page
+
+Day/office wear (“dress blues”): officers are seen in a powder-blue shirt with navy trousers and an open navy officer’s over-coat. Major Kahaan habitually wears this combination; it reads clean, precise, and regulation-sharp. 
+
+Battle/field wear (“combat dress”): when deployed, Kahaan’s silhouette swaps to combat dress with twin shoulder holsters and a single electric-blue HUD monocle active over one eye. 
+
+Second-in-command example: Major Hana appears in a clipped navy-blue uniform, hair in dark-brown wedges, rank badge catching light above the left breast pocket. This confirms the same navy/powder-blue palette and tidy, poster-officer presentation for women. 
+
+2) Emblem (logo) usage — fixed placements
+
+Use the exact army emblem already defined (the wheel-with-triangular frame design). Apply in flat monochrome. 
+
+Large Mustard yellow mark (mandatory on coats, jackets, field outer layers): center the emblem on the back panel, spanning shoulder-blade to shoulder-blade; treat it as the dominant back graphic.
+
+Logo color usage – Mustard yellow on navy Blue, Navy blue on Powder blue
+
+Left shoulder pad (small mark): place a reduced emblem on the left shoulder pad only.
+
+Right shoulder pad (division text): reserve this site for division/command name text only (no emblem on the right).
+
+When division/command is unspecified, default to one of the canon administrative blocs for HQ personnel: “Northern Plains Command,” “Peninsular Command,” or “Eastern & Himalayan Treaty Zone.” Use these names verbatim. 
+
+Text treatment on right shoulder pad
+
+Typeface: plain, high-legibility, military block (no serifs, no ornament).
+
+Casing: ALL CAPS.
+
+Content: just the bloc/division name (no ranks, no slogans).
+
+3) Carried/visible tech that integrates with uniform (as shown)
+
+Twin shoulder holsters (concealable under the open over-coat in office wear; externally accessible in field wear). 
+
+HUD monocle for certain augmented officers in the field (e.g., Kahaan). 
+
+Brace-Comm: military-grade wrist-band that projects 3-D comms and handles payments; appears across the world bible and in HQ usage. Leave wrist unspecified unless context requires dominance hand. 
+
+Mag-Holster plates hugging the ribs under the coat — explicitly worn by Kahaan with day dress; surface visibility kept neat. 
+
+4) Identification conventions (what the world shows)
+
+Name policy: the regime abolishes surnames; people are addressed and identified by first name only, with biometrics used for formal verification. If a name tag or display is needed in a scene, show first name only. 
+
+Rank display: shown on Hana as a badge above the left breast pocket. (Keep rank depiction minimal; do not add new ornament.) 
+
+5) Palette and finish (as depicted)
+
+Primary colors: powder-blue (shirt), navy (trousers and over-coat). 
+
+Field activation cue: the HUD monocle’s electric-blue glow signals combat/operations mode. 
+
+6) Cut & fit variants (women / men)
+
+The story shows women in identical palette and comparable sharpness of line; keep functional parity.
+
+Women’s cut: mirror the men’s silhouette with tailored shaping (clean, clipped lines). Maintain the same garment components (powder-blue shirt, navy outer layer). Reference Hana’s presentation as the canonical example of fit and bearing. 
+
+Hair: Hana’s dark-brown wedge cut is explicit; treat it as regulation-appropriate. Avoid elaborate styles on duty. 
+
+Equipment parity: women can be depicted with the same shoulder holsters/Brace-Comm/rank badge conventions when their role warrants it (no gender-based equipment differences are shown in canon).
+
+7) Office vs. battle uniform — how to cue it in prose
+
+Office / Day Uniform (HQ, formal briefings)
+
+Powder-blue shirt + navy trousers + open navy officer’s over-coat.
+
+Holsters typically concealed under the coat; the overall read is polished, regulation, “poster-officer.” 
+
+Rank badge may catch light above the left pocket. 
+
+Back: large emblem centered on the coat. Left shoulder pad: small emblem. Right shoulder pad: division text only.
+
+Battle / Field Uniform (operations, raids, convoy work)
+
+“Combat dress” silhouette with twin shoulder holsters accessible; over-coat may be absent or replaced by field outerwear. 
+
+HUD monocle active on augmented officers; this single detail flips the visual mode from office to field. 
+
+Back: if a jacket/field outer layer is worn, retain the large back emblem; otherwise omit on bare tactical rigs (to avoid inventing unshown gear surfaces).
+
+8) Division/command naming on the right shoulder pad
+
+When a soldier’s command is relevant, print one of the canon blocs exactly as written (ALL CAPS if stylized):
+
+NORTHERN PLAINS COMMAND
+
+PENINSULAR COMMAND
+
+EASTERN & HIMALAYAN TREATY ZONE 
+
+(If a specific division is later introduced on-page, use that text verbatim in this slot.)
+
+9) Dos and Don’ts for generators
+
+Do
+
+Default to powder-blue shirt + navy outer layer for HQ/office scenes. 
+
+Show first-name-only identity when badges or greetings appear. 
+
+Use the large back emblem, left small emblem, right division text rule on any coat/jacket with shoulder pads.
+
+Turn on the HUD monocle to signal combat/active deployment for augmented officers. 
+
+Include Brace-Comm on the wrist when comms/payments appear. 
+
+Don’t
+
+Add camouflage patterns, cap/helmet styles, or new ribbons/medals not shown in canon.
+
+Print surnames, mottos, or ornamental trim on the uniform. 
+
+Place the emblem on the right shoulder pad (reserve right side for bloc/division text only).
+
+10) Quick templates for LLMs
+
+Office/HQ soldier (gender-neutral)
+
+“Powder-blue shirt under an open navy officer’s coat, navy trousers, twin pistols holstered high along the ribs beneath the coat. Rank badge glints above the left breast pocket. A large monochrome army emblem spans the coat’s back; a small emblem sits on the left shoulder pad. The right shoulder pad reads ‘NORTHERN PLAINS COMMAND.’ A Brace-Comm band floats a holo-call over the wrist.”
+
+Field/raid (augmented officer)
+
+“Combat dress with exposed twin shoulder holsters; a single electric-blue HUD monocle burns over one eye as systems come online. The coat is shed or replaced by field outerwear; where a jacket is worn, the back carries the large emblem; the left shoulder pad keeps the small emblem; the right shoulder pad carries the command text.”
+
+Female officer variant (Hana-style)
+
+“Clipped navy-blue uniform tailored close; hair in tidy dark-brown wedges; rank badge above the left pocket. Same palette and equipment options as male counterparts; left shoulder pad bears the small emblem, right shoulder pad carries the bloc name.”
+
+If you want this turned into a one-page printable style sheet or a JSON schema for conditioning prompts, say the word and I’ll package it.

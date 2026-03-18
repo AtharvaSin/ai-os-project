@@ -1,0 +1,1593 @@
+Phase 1 — Surya Bible: Identity + Canon Lock
+
+Role and rank
+
+Major, Bharatsena. Off-record special ops lead. 【turn4file2L31-L35】
+
+Present-day age anchor: 32 at 2022. 【turn4file9L55-L59】
+
+Core canon (locked)
+
+No family. No armband.
+
+Betrayed by own chain. Black-bag captured after Treaty Hills. Intake at Thar sublevels. 【turn3file10L93-L111】
+
+Facility IV = Operation KACHA program floor. Surya sees A-Δ / B-Ω collar system and KACHA glyphs during intake. 【turn3file4L39-L51】
+
+Escapes before any experiment begins.
+
+Moral rails: Justice over Order. Aimed vengeance only after exposure. Civilians off-limits. 【turn4file9L61-L62】【turn4file2L153-L156】
+
+Voice profile
+
+Hyderabad Telugu inflection. Terse. Seed lexicon: “ekkada,” “namaste ram.”
+
+Caption style for inner reflection per lettering spec. 【turn4file10L227-L233】
+
+Timeline anchors (use for all cross-refs)
+
+2016/02 Ice Ridge rescue. First crack in “order = right.” 【turn4file9L79-L90】
+
+2017/08 Jungle Camp deny-wipe. HUD microline appears. 【turn4file9L91-L101】
+
+2018/11 Coastal Port reagent trail. A-Δ stamp, tri-dot watermark. 【turn4file9L103-L113】
+
+2019/09 Glass City drill→live. Overwatch-9 cadence. 【turn4file9L115-L126】
+
+2020/03 Solar-Lab manifests mismatch. Sublevel −2/−4 clue. 【turn4file9L127-L137】
+
+2021/06 African Lithium Corridor. Prateek KIA. 【turn3file10L109-L116】
+
+2021/10 Treaty Hills (final past mission). Surya confronts Raaga; Rudra aborts; internal flagging. 【turn3file10L93-L101】
+
+2021/11 Thar Intake & Escape. Iris/voice gauntlet. 【turn3file4L39-L52】【turn4file5L3-L10】
+
+2022/02–05 Indore ledger heist during blackout. 【turn4file5L11-L17】
+
+2022/06 Offshore rig scientist flip confirms KACHA scope. 【turn4file5L19-L26】
+
+2022/10 Return to Thar. Confront Bhanu. 【turn3file8L61-L68】
+
+Uniform, kit, and tradecraft locks
+
+Standard ID marks: tricolor right shoulder, emblem left chest. Covert runs may tape/blank. 【turn4file2L71-L80】
+
+Loadout spec: modular plate carrier, soft armor, comms left, thigh sidearm; variant palettes per arena. 【turn4file2L167-L176】
+
+Weapons: draws from Prateek’s cache post-escape (user canon).
+
+Panel grammar to enforce: one Spine Panel, one Silent Page; plant→payoff rule of three. 【turn4file10L67-L71】【turn4file10L139-L161】
+
+Facility IV / Thar sublevels cues
+
+Biometric fortress. Iris/voice locks. A-Δ/B-Ω collars. KACHA Venus glyph on binders. 【turn3file4L39-L51】
+
+Three canonical proof scenes to carry forward
+
+Treaty Hills “illegal op” + Raaga reveal → internal flag → black-bag capture. Use as final past set-piece. Residues: RTE:7C–Kβ plate, empty plinth bolts. 【turn3file10L93-L107】【turn3file8L7-L16】
+
+Thar intake and iris-ghost escape. Aperture frames at each eye-scan; waveform backdoor; night shaft exfil. Residues: A-Δ/B-Ω collars, Venus glyph paperwork. 【turn3file4L49-L51】【turn4file5L3-L10】
+
+Indore blackout ledger heist. Power-grid ally kills a block; inside leak. Line: “The paper is clean. The world isn’t.” 【turn4file3L9-L21】【turn4file3L1-L6】
+
+Redlines (apply everywhere)
+
+Remove all armband mentions and visuals. Replace with austerity: no token.
+
+Keep “no family” references true across lore, timeline, and dialogue.
+
+Maintain KACHA naming and Venus glyph for all program assets. 【turn4file9L51-L57】
+
+Phase-1 deliverables (what I’ll produce from this lock)
+
+Identity sheet: name, rank, unit, ROE, diction, moral rails, silhouette.
+
+Canon matrix: missions × residues × payoffs. Seeded from above citations. 【turn4file5L37-L56】
+
+Visual control starter: uniform variants per arena with do/don’t. 【turn4file2L91-L121】
+
+Scene one-pagers for the three proof scenes: objective, conflict, value shift, residue note, panel motif.
+
+Open inputs to finalize Phase 1
+
+Confirm “no symbol replacement” for the armband is final.
+
+Confirm exact unit name or leave “classified special ops team” generic.
+
+Approve Telugu lexicon scope beyond the two examples.
+
+Phase 2 — Surya Timeline + Dossier (lock)
+
+A) Chronology 2016–2022 (mission anchors + residues)
+
+2016/02 — Ice Ridge “Rescue Window.” Extract surveyors before blizzard; minimal radio. Residues: safety pin, breath/pulse HUD micro-line. 
+
+2017/08 — Jungle Camp “Green Vines.” Hostage rescue + deny-wipe at proto telemetry sink. Residue: HUD micro-line. 
+
+2018/11 — Coastal Port “Black Water.” Track reagent crates and shell vendors. Residues: A-Δ stamp, tri-dot watermark. 
+
+2019/09 — Glass City drill→live. Evacuation vs live-fire; Overwatch-9 cadence plants. 
+
+2020/03 — Solar-Lab Quadrangle “Red Earth.” Manifests list Sublevel −2/−4 not on plan; hex grilles motif. 
+
+2020/12 — Treaty Hills “Mesh-Spine Node” S&D. Destroy Akakpen SDR relay; residue RTE:7C–Kβ scratched on survey plate. 
+
+2021/06 — African Lithium Corridor. Document tampered Li shipments; A-Δ cooler labels point to Indore. Prateek KIA here. 
+
+2021/10 — “Congo Route – Copper Snake.” UN-cover liaison patrol turns kill/capture funnel; mags “III,” Overwatch-9 cadence, RTE:7C–Kβ header. 
+
+2021/10 — Treaty Hills is the final past mission in canon. Surya meets Raaga; Rudra aborts on moral grounds; Surya flagged. 
+
+2021/11 — Thar Sublevels intake → escape. Iris/voice waveform backdoor + service shaft to night desert. 
+
+2022/02–05 — Indore Procurement “Ledger Heist.” Power-grid ally kills a block; tri-dot/Q-stroke proofs. 
+
+2022/06 — Offshore Oil Rig “Scientist Turn.” Venus/KACHA on badge; scientist flips, gives waveform backdoor. 
+
+2022/10 — Return to Thar: evidence room, Handler confrontation, expose Overwatch-9. 
+
+2022/11–12 — Bridge: leak + “KAHAAN” handshake; series enters novel timeline. 
+
+B) Capture→Escape chain (Facility IV, Operation KACHA)
+
+Black-bag capture occurs after Treaty Hills; Thar intake inside ~2–3 weeks. 
+
+Sublevels: biometric gauntlet requires voiceprint→iris→keycard; Surya shadows Dr. Dey to spoof path. 
+
+Tank room reveal: A-Δ/B-Ω collars confirm KACHA pipeline; crates↔collars collapse. 
+
+Escape vector: service shaft to surface; present-thread begins with safehouses. 
+
+C) Unit dossier — Guhyakas (people, status, residues)
+
+Major Surya: unit lead; flagged post-Treaty Hills; alive and off-record by 2022/10. Age 32 in 2022. 
+
+Lt. Prateek Punya: equal-footing friend since camp; copper tag motif; KIA in Africa ambush. 
+
+Sgt. Dev “Scout” Nair: recon; vellum route overlays; captured/MIA; property-bag residue. 
+
+Capt. Mira Rao: XO; fake-ally opponent; hex glare motif; captured in ambush; later tied to lab ideology. 
+
+Handler: Prithviraj Bhanu a.k.a. Overwatch-9; sarcastic coercion; exposed at Thar. 
+
+D) Evidence matrix — “plant → payoff” (use to plot proofs)
+
+A-Δ / B-Ω asset codes: Port 2018 (crate) → Africa 2021 (cooler) → Thar 2021 (collars). 
+
+Overwatch-9 cadence: Glass City 2019 → Africa 2021 ambush → safehouse packet links to Handler. 
+
+RTE:7C–Kβ route hash: Treaty Hills plate → ambush header → Sublevel wing code. 
+
+Tri-dot mark (Directorate): Port watermark → Indore ledgers → Sublevel badges. 
+
+Q-stroke signature (Arshad/consortium): Solar-Lab POs → Indore audit chain. 
+
+Waveform lock: seeded in Glass City audio and Dey poster → backdoor used in Thar and on rig. 
+
+E) Logistics, allies, and choke points (operational)
+
+Flow of material: Africa Li Corridor → Port → Indore procurement spine → Solar-Lab (−2/−4) → Thar Sublevels; rig shows Venus/KACHA. 
+
+Power-grid engineer (Indore): creates blind minutes; “ninety seconds” line; schedule-card residue. 
+
+Dey (Thar): academic poster seeded; followed for iris sequence. 
+
+Raaga stairwell: hold the stairwell, keep civilians flowing; packet reveals Overwatch-9. 
+
+Choke points to reuse: eye-scan corridors, Indore rail siding, desert black-flight pads, rig ladder cages. 
+
+F) ROE, ethics, and voice (carry into scripts)
+
+ROE: civilians off-limits; intervene to preserve flows. 
+
+Voice: terse, Hyderabad Telugu inflection; casual inserts approved (e.g., “ekkada?”, “namaste rām,” “aithe”).
+
+Unit name: Guhyakas (classified special-ops).
+
+No tokens or armband motifs anywhere. (Retcon already locked in Phase 1.)
+
+G) Ready-to-script dossiers (per mission)
+
+For each mission above, keep this 5-line card in your bible:
+
+Objective (modern, plausible). 2) Insertion/Exfil. 3) Residues to plant. 4) Moral test axis. 5) Exit beat. Templates mirror the set-piece blueprints you’ve already standardized. 
+
+H) Continuity checks to enforce during drafting
+
+Treaty Hills = final past mission; capture happens after, not on-road; update any conflicting captions. 
+
+Prateek’s KIA belongs to Africa 2021; move copper-tag and “III” magazine payoffs accordingly. 
+
+Handler = Bhanu; Overwatch-9 net timestamps must mismatch Army protocol in all scenes that seed betrayal. 
+
+I) “Three proof scenes” flagged for art + script (pull from Phase 1)
+
+Thar iris-gauntlet escape (Spine/Aperture/Sliver/Drowned). 
+
+Indore blackout ledger heist with grid ally. 
+
+Treaty Hills mesh-node op with RTE:7C–Kβ plant. 
+
+Next phase: Phase 3 — Psychology + Motion Grammar micro-beats (CQB, disable/kill tree, stairwell clears) mapped against the above arenas.
+
+Phase 3 — Psychology + Motion Grammar (ready to use)
+
+A) Psychology model
+
+Core wound: institutional betrayal by command.
+
+Surface goal: punish betrayers and expose Operation KACHA.
+
+Real need: regain agency without becoming what he hunts.
+
+Moral rails: civilians off-limits; precision violence only; no spectacle.
+
+Values under stress: truth over chain of command; teammates over mission optics.
+
+Blind spots: reflex distrust of uniforms; over-rotation to “solo” when trust wobbles.
+
+Triggers: biometric chokepoints; handler cadence; sublevel signage; cuffs/collars.
+
+Stress tells: jaw set, lip wet, micro head-tilt before breach; right hand checks mag base.
+
+Decompression: weapon strip, dry-fire cadence 3×3×3, boots unlaced, five slow Telugu breaths.
+
+Recovery rituals: palm press on doorframe before sleep; kit laid in L-shape within arm’s reach.
+
+Hard lines: no civilian body count; no planted evidence; no torture.
+
+Redemption lever: choosing exposure over execution when presented clear proof.
+
+B) Voice, interaction, interrogation
+
+Speech: clipped declaratives. Minimal qualifiers.
+
+Diction: Hyderabad Telugu flavor. Allowed inserts for cadence only: “ekkada?”, “namaste rām,” “aithe,” “sāru,” “inka,” “chalu.”
+
+Interrogation method: silence first, then single-lane prompts. Avoids threats; uses facts + timing.
+
+Radio brevity: time, action, place. Example: “Two up. Left clear. Ladder down.”
+
+C) Disable/kill decision tree (operational ROE)
+
+Identify non-combatants → disengage or redirect flow.
+
+Hostile armed?
+
+No → verbal check → flex-cuff if obstructive.
+
+Yes → cover available?
+
+Yes → non-lethal first: Akakpen dart, throw-light, shoulder lock, zip-tie.
+
+No → flash→two-step angle→center-mass stop with suppressed sidearm or pulse-gun analog.
+
+Multiple hostiles or handler present → escalate to decisive fire, then immediate exfil.
+
+Medical check on downed civilians or allies before movement.
+
+Always clear for cameras and comms sniffers before leaving.
+
+D) Motion grammar (global rules)
+
+Economy: no extra steps; no flourish.
+
+Stance: narrow athletic; elbows kept in; muzzle never crosses friendly lanes.
+
+Transitions: low light = heel-toe; open asphalt = forefoot roll; ladders = three points.
+
+Signature control: uses ambient noise spikes, grid flickers, and crowd pulses to mask motion.
+
+Breach rhythm: breathe→count 3→hinge or charge→slice→decide in <2 s.
+
+Vanish rhythm: break line of sight in 2 moves; change height or axis; dump heat.
+
+E) Micro-beats: CQB entry (single door, hostile unknown)
+
+Pre-set: wedge ready, mirror check, light at 30%.
+
+Breach: hinge pop or latch lift; shoulder sliver.
+
+Slice: step-out 15–30°, muzzle low-ready lifting with eyes.
+
+Clear near-corner → far-corner → dead space.
+
+ID friend/foe; act per decision tree; secure hands first.
+
+Signal “in” with two taps on frame; pull the room to cold.
+
+F) Micro-beats: Hallway run (two doors, one T-junction)
+
+Hug cover; pie door one.
+
+Shoulder flash to draw aim; re-peek opposite.
+
+Move past door on the far wall side; hand checks latch as you pass.
+
+At T, knee dip, slice left 30°, then right; commit only after auditory confirm.
+
+Mark cleared doors with minimal tape glyph; no written text.
+
+G) Micro-beats: Stairwell clears (three arenas)
+
+Civilian building during blackout
+
+Announce “move, right side” in neutral tone.
+
+Keep rail side; muzzle 45° down.
+
+Allow down-flow; interleave on the rise; protect a child if present.
+
+Pause at each landing; listen for metallic cadence; proceed when flow thins.
+
+Thar service stairs
+
+Gloves dry; soles checked.
+
+Count steps per flight to time camera sweep.
+
+Cross from shadow to shadow; avoid center mesh that vibrates.
+
+Stop below lens height; use lens dead-zone to pass.
+
+Indrapur office core
+
+Use glass reflections to read top landing.
+
+Mirror for stairwell camera; toss soft light to bait auto-exposure.
+
+Ascend on inner arc; plant throw-light above hostile eye line.
+
+H) Micro-beats: Crowd ethics and flow control
+
+Hands out from body; no muzzle in frame lines.
+
+Use flat palm + Telugu cue “ikkada—left, chalu” to set lane.
+
+If panic rises, turn back to crowd and wave a steady metronome arc.
+
+Never push. Always redirect.
+
+I) Micro-beats: Breach kits and choreography
+
+Tools: micro-charge, door wedge, under-door mirror, throw-light, flex-cuffs, line tool.
+
+Pack map: left mag wall; right tools; top med flat; charge pouch on belt rear.
+
+Choreography: wedge→mirror→charge tape→mask on→click→push→flood→decide.
+
+J) Arena plates (scriptable action sheets)
+
+Thar iris-gauntlet escape
+
+Objective: exit sublevels before intake begins.
+
+Beats: badge trail on Dey → mimic cadence → voiceprint hum → iris offset with lens glare → service shaft climb → desert night exfil.
+
+Risks: camera sweep, handler patrol, biometric retry lock.
+
+Non-lethal bias: dart only if cornered; no facility staff fatalities.
+
+Exit: dunes, low crawl, cold-soak, cache rendezvous.
+
+Indore blackout ledger heist
+
+Objective: extract procurement proofs under 90-second grid dip.
+
+Beats: stairwell flow control → panel pop → offline mirror copy → ledger snap set → replace seals → rooftop hop across HVAC.
+
+Risks: backup genset auto-start, guard with flashlight cadence.
+
+Non-lethal bias: throw-light + cuff; avoid gunfire near offices.
+
+Exit: freight elevator down two floors, then fire stairs out.
+
+Treaty Hills mesh-node op
+
+Objective: destroy illicit relay and plant route hash proof.
+
+Beats: approach under festival audio cover → micro-charge on node → snap RTE:7C–Kβ plate → hostile approach → disable, don’t kill → timed det → melt into crowd.
+
+Risks: whistle patrols, handheld cams.
+
+Non-lethal bias: shoulder lock, cuff, vanish.
+
+Exit: vendor lane, cap pulled, hands empty.
+
+K) Contingencies
+
+Jammed door: reverse hinge pry with line tool; if fail, reroute vertical.
+
+Magazine misfeed: tap-rack; if repeat, transition to sidearm; clear later.
+
+Dart misfire: throw-light, close distance, wrist lock, cuff.
+
+Camera caught face: change axis within 10 s; hit a different level; mask up.
+
+L) Kit maintenance cadence
+
+Post-op: unload, clear, strip, lube, re-mag to 90%.
+
+Battery rule: any cell below 70% is swapped; old cell becomes bait device.
+
+Med check: finger cuts, knee impact, hydration.
+
+Log: three-line entry only; never names; timestamp, place, action.
+
+M) Visual direction hooks (for artists)
+
+Posture: vertical spine, minimal sway.
+
+Hands: quiet, near belt line until action.
+
+Eyes: read corners first, faces second.
+
+Wardrobe: austere; no tokens; tape-blank when covert.
+
+Motion lines: short, straight, efficient; no flourish arcs.
+
+N) QA tripwires (to catch canon breaks)
+
+Any family or armband reference = error.
+
+Any mention of implants or ports on Surya = error.
+
+Any civilian KIA by Surya = error.
+
+“Guhyakas” must appear in dossiers; “KACHA” must label cyborg program assets.
+
+Next: Phase 4 — Visual Canon (silhouette, wardrobe variants, kit boards) + prompt pack.
+
+Phase 4 — Visual Canon + Prompt Pack (Surya)
+
+A) Silhouette and body language
+
+Build: lean-athletic, compact power.
+
+Posture: vertical spine, shoulders relaxed, chin neutral.
+
+Gait: economical, heel-toe indoors, forefoot roll on hardscape.
+
+Hands: quiet at belt line; explode only on action.
+
+Eye behavior: corners first, faces second.
+
+B) Wardrobe system (no tokens, no armband)
+
+Overt uniform (rare, flashback or dossier only)
+
+Plate carrier low-profile. Left chest: Bharatsena emblem. Right shoulder: tricolor. Left bicep: GUHYAKAS tab. Boots matte. No gloss.
+
+Grooming strict. Zero decorative items.
+
+Covert urban field set (default)
+
+Matte graphite shell or plain field jacket over soft armor. Hood compressible.
+
+Base layers breathable; elbow patches optional.
+
+Pants minimalist cargo. Belt: tool loops only.
+
+Gloves thin, tactile. Neutral beanie or hood if needed.
+
+Desert/night set (Thar)
+
+Breathable scarf/balaclava; dust mesh.
+
+Lightweight overshirt, sleeves taped.
+
+Lighter boot tread pattern; no white midsoles.
+
+Rain set
+
+Unbranded rain shell. Drips kept small.
+
+Tape-blank any stray insignia.
+
+HQ/civil disguise
+
+Plain work shirt, neutral chinos, soft shoes.
+
+No visible tactical pattern. Empty wrists.
+
+Global prohibitions
+
+No sentimental charms. No bright logos. No military fashion cues when undercover.
+
+C) Kit board (operational)
+
+Primary
+
+Compact rifle/carbine or pulse-gun analog with under-barrel micro-rail.
+
+Suppressed sidearm with simple iron sights.
+
+Non-lethal
+
+Akakpen tranquilizer darts + compact launcher.
+
+Throw-light pucks, flex-cuffs, rope restraints.
+
+Entry tools
+
+Micro-charge, under-door mirror, line tool, wedge, signal blocker.
+
+Comms
+
+Brace-Comm forearm device. Default state: display OFF. Projection allowed only on action beats.
+
+Medical
+
+Flat med kit, hemostatic pads, tape strips.
+
+Carry logic
+
+Left: mags. Right: tools. Top: med. Belt rear: charges. Inside pocket: throw-lights.
+
+Wear and maintenance
+
+Finish is matte. Scratches localized. Optics clean. Tape only where needed.
+
+D) Color and finish language
+
+Base: graphite, basalt, charcoal.
+
+Ops accents: muted olive, sand, slate.
+
+UI light: soft cyan/white, low intensity.
+
+Blood/gore: minimal, controlled.
+
+E) Iconography and environment rules
+
+Operation KACHA marks appear on facility assets and documents only. Never on Surya.
+
+Facility IV visual grammar: biometric gates, iris/voice panels, sterile binders, collar racks.
+
+Street tech: tri-script signage rendered illegible. No readable brands.
+
+Civilian safety cues prioritized in crowd scenes.
+
+F) Face, hair, marks
+
+Hyderabad Telugu features. Hair short, practical. Facial hair minimal or stubble.
+
+Captivity evidence: fine scar lines or healed biopsy dots. No ports, no implants.
+
+G) Camera, lens, framings
+
+Card shots: 1:1 at 4096×4096, 50–70 mm, eye-level.
+
+Banners: 21:9 at 6720×2880, 28–35 mm, slightly above eye.
+
+Full-body plates: 4:3 at 4096×3072, 35–50 mm.
+
+Action plates: 16:9 at 5120×2880, 35 mm.
+
+Lighting: modern comic-book realism; crisp inks; painterly volume; two-step shadows; no bloom.
+
+H) DO / DON’T checklist
+
+DO
+
+Keep display UIs faint and unreadable.
+
+Use dust, rain, breath only as operational cues.
+
+Keep muzzle discipline and safe lanes visible.
+
+DON’T
+
+No heroic capes, flares, or lens blooms.
+
+No readable text or logos.
+
+No implants on Surya. No armband. No family relics.
+
+I) Prompt pack (production-ready)
+
+ID Card — “Profile Bust, Urban Night”
+
+1:1, 50 mm, eye-level. Modern comic-book realism; crisp inks; painterly volume; two-step shadows.
+
+Surya half-turn toward camera, quiet hands near belt line. Matte graphite jacket over soft armor; no insignia.
+
+Background: city night bokeh, faint sodium rim; no logos; tri-script glyphs illegible.
+
+Brace-Comm visible but dark. No UI glow.
+
+Alt text: “Surya, covert profile at night; austere field jacket; forearm comm dark.”
+
+Banner — “Rooftop Overwatch, Monsoon Edge”
+
+21:9, 35 mm, slight high angle.
+
+Surya kneeling behind low parapet; compact rifle canted; suppressed sidearm holstered. Rain beads small.
+
+City grid flicker in distance. No readable signage.
+
+Alt text: “Surya on a wet rooftop, low parapet cover, city grid beyond.”
+
+Full-Body — “Stairwell Flow Control, Blackout”
+
+4:3, 35 mm, eye-level.
+
+Civilian crowd descending. Surya ascending inner arc, palm out setting lane, muzzle 45° down.
+
+Throw-light clipped to pocket; cuffs on belt.
+
+Alt text: “Surya guiding civilians on stairs during blackout; weapon lowered.”
+
+Action Plate — “Thar Iris-Gauntlet Escape”
+
+16:9, 35 mm.
+
+Corridor with iris and voice panels. Surya mirrors lens glare with head tilt; service hatch ajar.
+
+Collar racks and sterile binders out of focus. No lab work on him.
+
+Alt text: “Surya spoofing iris gate in Facility IV; service hatch ready.”
+
+Action Plate — “Indore Ledger Heist, 90-Second Window”
+
+16:9, 35 mm.
+
+Power panel open; portable mirror reflecting ledger screen.
+
+Surya’s brace-comm HUD faint, short-lived; throw-light poised; no gunfire.
+
+Alt text: “Indore procurement room during grid dip; Surya copying ledgers.”
+
+Action Plate — “Treaty Hills Mesh Node”
+
+16:9, 35 mm.
+
+Festival audio in distance; mesh-node totem at lane edge.
+
+Micro-charge set; route-hash plate photographed; approaching hostile disabled, not killed.
+
+Alt text: “Surya plants proof on illicit relay during festival cover.”
+
+Tool Close-ups — “Kit Macros”
+
+1:1 macros: suppressed sidearm slide, Akakpen dart tip on slate kit, throw-light puck, line tool hook, under-door mirror hinge.
+
+All labels illegible.
+
+Alt text per item: concise, functional.
+
+Brace-Comm — “HUD Lattice, Squad Context”
+
+21:9, 35 mm.
+
+Forearm device 30° angle, display off in foreground; faint aerial HUD lattice mid-air as gesture cue only.
+
+Unit markers as abstract dots; unreadable.
+
+Alt text: “Brace-Comm forearm device with faint HUD lattice in air.”
+
+J) File specs and naming
+
+Cards: surya_card_[scene]_1x1_4096.png
+
+Banners: surya_banner_[scene]_21x9_6720.png
+
+Full-body: surya_full_[scene]_4x3_4096.png
+
+Action plates: surya_action_[scene]_16x9_5120.png
+
+Macros: surya_macro_[item]_1x1_4096.png
+
+Always export PNG, 300 ppi masters. Web copies at 1600 px long edge.
+
+K) Accessibility and UI
+
+Alt text required on all assets (max 140 chars).
+
+Contrast: maintain clear subject separation; avoid heavy crush.
+
+Spoiler label on any image that exposes Facility IV interiors.
+
+L) Review gates (redlines)
+
+Any family token = reject.
+
+Any implant/port on Surya = reject.
+
+Armband present = reject.
+
+Civilian harm implied by Surya = reject.
+
+KACHA mark on Surya’s gear = reject.
+
+Readable text or brands = fix.
+
+M) Handoff checklist (Figma/website)
+
+Place cards in Lore → Characters → Surya.
+
+Banners in Books and Timeline hero carousels.
+
+Action plates linked to their scene beats.
+
+Add kit macros to “Objects” with short copy.
+
+Verify alt text and filenames.
+
+Tag assets with “Surya | Phase4 | Approved”.
+
+Ready for Phase 5: Script-ready scene plates + dialog cadence overlays.
+
+Phase 5 — Script-ready scene plates + dialog cadence overlays
+
+Global rules
+
+Tone: terse. No slogans.
+
+No family, no armband, no implants on Surya.
+
+Civilians off-limits. Non-lethal first when feasible.
+
+Unit: Guhyakas. Program: KACHA. Place: Facility IV, Thar sublevels.
+
+Lettering keys: CAP = narration caption. BAL = speech balloon. RAD = radio box. SFX = sound effect. TEL = casual Telugu insert.
+
+Timing bars: each panel lists on-page seconds to help layout beats.
+
+Scene 1 — Thar iris-gauntlet escape
+
+Page count: 4 pages. Panel rhythm: 5p, 6p, 5p, 4p. Palette: cold stone, cyan UI, low dust.
+
+Page 1 — Intake corridor
+
+P1 wide, 21:9 crop inside page top. 28–35 mm. Iris pad and voice grill glow faint.
+
+CAP: “Facility IV. Sublevel intake.”
+
+SFX: hum
+
+Time: 3 s
+
+P2 medium on Surya profile. 50 mm. Chin neutral. Brace-Comm dark.
+
+CAP: “No procedure yet.”
+
+Time: 2 s
+
+P3 insert on iris ring. Micro scratches.
+
+CAP: “Gates count cadence.”
+
+SFX: tick
+
+Time: 1 s
+
+P4 over-shoulder on a handler lanyard sliding past. Glyphs unreadable.
+
+BAL (Handler, low): “Clear path.”
+
+Time: 1 s
+
+P5 low angle at service hatch seam, taped.
+
+CAP: “Exit is a seam.”
+
+Time: 1 s
+
+Page 2 — Spoof and slip
+
+P1 tight lips. Breath held.
+
+CAP: “Voiceprint, hum only.”
+
+Time: 1 s
+
+P2 mouth shape.
+
+SFX: mm
+
+Time: 1 s
+
+P3 eye close-up. Lens glare offsets iris sensor.
+
+CAP: “Glare buys margin.”
+
+Time: 1 s
+
+P4 corridor wide. Handler turns away. Surya steps through.
+
+SFX: chirp green
+
+Time: 1 s
+
+P5 kneel at hatch. Line tool hooks tape.
+
+SFX: prr
+
+Time: 1 s
+
+P6 hatch cracks. Black shaft.
+
+SFX: kchk
+
+Time: 1 s
+
+Page 3 — Shaft climb
+
+P1 top-down into shaft. Ladder rungs dusty.
+
+CAP: “Three flights.”
+
+Time: 1 s
+
+P2 boot on rung. Quiet tread.
+
+SFX: grit
+
+Time: 1 s
+
+P3 pause below camera dome. Lens sweep arc faint.
+
+CAP: “Lens sweep. Count.”
+
+BAL (whisper): “aidi… aaru… edu.” TEL
+
+Time: 3 s
+
+P4 move past dome under dead-zone.
+
+SFX: slip
+
+Time: 1 s
+
+P5 palm to hatch above.
+
+SFX: thup
+
+Time: 1 s
+
+Page 4 — Night desert exfil
+
+P1 hatch opens to dunes. Moon rim.
+
+CAP: “Surface.”
+
+Time: 1 s
+
+P2 low crawl. Brace-Comm stays dark.
+
+RAD (Surya, clipped): “One out. Heading west. No tail.”
+
+Time: 2 s
+
+P3 hands brush sand off face. Eyes scan horizon.
+
+BAL: “ekkada patrol… zero.” TEL
+
+Time: 2 s
+
+P4 footprint erase with a branch.
+
+CAP: “No signatures.”
+
+Time: 2 s
+
+Lettering notes
+
+Surya never yells. Balloons small.
+
+Handler lines low opacity.
+
+CAP boxes square. No rounded corners.
+
+Safety and canon flags
+
+No lab gear on Surya.
+
+KACHA marks appear only on doors, binders, collars in background.
+
+Do not show harm to non-combatant staff.
+
+Scene 2 — Indore blackout ledger heist
+
+Page count: 3 pages. Panel rhythm: 6p, 5p, 5p. Palette: warm office neutrals. Flicker blacks. No gunfire.
+
+Page 1 — The 90-second window
+
+P1 stairwell crowd descends. Surya ascends inner arc, palm signals lane.
+
+BAL: “Right side. Chalu.” TEL
+
+Time: 3 s
+
+P2 power panel close-up. Breaker tagged.
+
+CAP: “Grid ally. Ninety seconds.”
+
+RAD (ally): “Now.”
+
+SFX: thunk
+
+Time: 1 s
+
+P3 corridor darkens.
+
+SFX: whumm
+
+Time: 1 s
+
+P4 office door pick. Wedge sets gap.
+
+SFX: tik tik
+
+Time: 1 s
+
+P5 inside room, lights out. Throw-light puck on desk, low.
+
+CAP: “No silhouette in glass.”
+
+Time: 2 s
+
+P6 portable mirror aimed at ledger screen.
+
+SFX: chk
+
+Time: 1 s
+
+Page 2 — Copy and cover
+
+P1 ledger page reflected. Numbers abstract.
+
+CAP: “Proof, not names.”
+
+Time: 2 s
+
+P2 phone snap through mirror.
+
+SFX: tap
+
+Time: 1 s
+
+P3 seal replace on cabinet.
+
+SFX: press
+
+Time: 1 s
+
+P4 guard flashlight outside. Beam crosses frosted glass.
+
+SFX: step step
+
+BAL (Guard, muffled): “Backup gen in sixty.”
+
+Time: 2 s
+
+P5 Surya freezes. Breath small.
+
+CAP: “Stillness wins.”
+
+Time: 2 s
+
+Page 3 — Exit
+
+P1 panel back. Cover closed.
+
+SFX: clak
+
+Time: 1 s
+
+P2 rooftop hop over HVAC. Knees bent.
+
+SFX: thup
+
+RAD: “Window closed.”
+
+Time: 2 s
+
+P3 stairwell return into crowd flow.
+
+BAL: “Namaste rām.” TEL
+
+Time: 2 s
+
+P4 alley fade. Hood up.
+
+CAP: “Leave less than you took.”
+
+Time: 2 s
+
+P5 phone locked. Files move to dead drop.
+
+SFX: blip
+
+Time: 1 s
+
+Lettering notes
+
+RAD boxes square with tiny glyph header.
+
+TEL inserts italicized within balloons.
+
+Safety and canon flags
+
+No lethal force.
+
+No readable brands or names on ledgers.
+
+Keep KACHA as downstream implication, not shown here.
+
+Scene 3 — Treaty Hills mesh-node op
+
+Page count: 3 pages. Panel rhythm: 5p, 6p, 4p. Palette: festival audio warm, lane shadows cool.
+
+Page 1 — Approach under cover
+
+P1 crowd mid-shot. Audio pylon shows 82 dB amber. UI illegible.
+
+CAP: “Festival noise. Good mask.”
+
+Time: 2 s
+
+P2 mesh-node totem at lane edge. Slim. Ports etched.
+
+CAP: “Illegal relay.”
+
+Time: 1 s
+
+P3 Surya kneel. Micro-charge seats.
+
+SFX: tack
+
+Time: 1 s
+
+P4 photograph route-hash plate on a side plinth.
+
+SFX: tap
+
+Time: 1 s
+
+P5 approaching hostile silhouette.
+
+CAP: “Contact.”
+
+Time: 1 s
+
+Page 2 — Disable not kill
+
+P1 shoulder feint. Hostile overcommits.
+
+SFX: scuff
+
+Time: 1 s
+
+P2 wrist lock. One step pivot.
+
+SFX: snap
+
+BAL (Hostile): “Arre—”
+
+Time: 1 s
+
+P3 throw-light strobe. Hostile squints.
+
+SFX: chk
+
+Time: 1 s
+
+P4 flex-cuff zip.
+
+SFX: zt-zt
+
+BAL (Surya, low): “Chup. Sit.”
+
+Time: 1 s
+
+P5 crowd blocks sightline.
+
+CAP: “Cover returns.”
+
+Time: 2 s
+
+P6 thumb on trigger for timed det.
+
+SFX: beep
+
+Time: 1 s
+
+Page 3 — Vanish
+
+P1 charge pops inside node casing. No shrapnel.
+
+SFX: whump
+
+Time: 1 s
+
+P2 Surya merges into vendor lane. Cap low. Hands empty.
+
+CAP: “Hands tell stories. Keep them clean.”
+
+Time: 2 s
+
+P3 quick check on cuffed hostile. Airway clear.
+
+BAL: “Alive.”
+
+Time: 1 s
+
+P4 high wide of lane. Flow normal.
+
+CAP: “Proof is planted. Route is cut.”
+
+Time: 2 s
+
+Lettering notes
+
+All action verbs short.
+
+No crowd chatter unless needed for masking.
+
+Safety and canon flags
+
+No civilian harm.
+
+Node blast is muffled.
+
+Plant proof plate cleanly.
+
+Dialog cadence overlays — reusable patterns
+
+Interrogate-minimal
+
+Beat 1 silence.
+
+Beat 2 single prompt. Example: “Who signed intake.”
+
+Beat 3 pause.
+
+Beat 4 second prompt. Example: “Room code only.”
+
+Beat 5 finish. “Walk.”
+
+Radio brevity
+
+Time, action, place.
+
+Examples: “Two up. Left clear.” “Ladder down.” “Ninety live.” “Window shut.”
+
+Crowd control
+
+Two words plus gesture.
+
+Examples: “Right side.” “Slow down.”
+
+TEL variants: “ikkada right.” “chalu, chalu.”
+
+Panel tooltips for artists and letterers
+
+Place balloons on the short path of the eye.
+
+Keep tails short.
+
+SFX set lowercase.
+
+CAP boxes align to gutters.
+
+Never cover Surya trigger finger or muzzle check with lettering.
+
+Visual prompt stubs per panel type
+
+“Covert urban stairwell, blackout, 35 mm, eye-level, no logos, brace-comm dark.”
+
+“Facility IV corridor, cyan iris ring, 28 mm, cold stone, unreadable glyphs.”
+
+“Festival lane, mesh-node totem, 35 mm, restrained strobe, no bloom.”
+
+“Office interior, power dip, warm neutrals, mirror-shot ledger, 50 mm.”
+
+“Night dunes, low crawl silhouette, moon rim, 35 mm.”
+
+Continuity checklist per page
+
+KACHA appears only on facility assets.
+
+Guhyakas named only in dossiers or flashbacks.
+
+No sentimental tokens.
+
+Civilians unharmed.
+
+Surya kit austere, matte.
+
+Backup beats if a page overruns
+
+Compress double inserts to a single caption.
+
+Merge two action panels by using a diagonal split.
+
+Drop one SFX and let the art carry the beat.
+
+Move a CAP to the next page opener.
+
+Hand-off packet
+
+PDF: “Surya_Phase5_ScenePlates_v1.pdf”
+
+Figma page sections: S1 Thar, S2 Indore, S3 Treaty Hills.
+
+Alt text file for web import.
+
+Dialogue JSON: scene → page → panel → {CAP, BAL, RAD, SFX, seconds}.
+
+Ready for Phase 6: Lore and website integration pack.
+
+Phase 6 — Lore + Website Integration Pack (Surya)
+
+1) Canon IDs and routing
+
+Canon ID: char_surya_v1
+
+Slug: /lore/characters/surya
+
+Taxonomy: type=character, affiliation=Bharatsena (past), unit=Guhyakas, program=Operation KACHA (antagonist system), status=rogue operative
+
+Spoiler tier: S1=public, S2=mid, S3=deep
+
+Canon locks: no family, no armband, no implants, civilians off-limits
+
+2) CMS schema (JSON)
+
+Use this as the single source of truth in your CMS/Airtable. Keys map 1-to-1 to UI.
+
+{
+
+  "id": "char_surya_v1",
+
+  "title": "Surya",
+
+  "type": "character",
+
+  "slug": "surya",
+
+  "rank": "Major",
+
+  "unit": "Guhyakas",
+
+  "alignment_now": "Rogue operative aligned with Rudra's outcomes",
+
+  "origin": "Hyderabad Telugu",
+
+  "voice": {
+
+    "style": "terse",
+
+    "dialect": ["ekkada?", "namaste rām", "aithe", "sāru", "inka", "chalu"]
+
+  },
+
+  "ethics": {
+
+    "civilians_off_limits": true,
+
+    "precision_violence": true,
+
+    "no_tokens": true
+
+  },
+
+  "program_links": ["Operation KACHA"],
+
+  "facility_links": ["Facility IV — Thar Sublevels"],
+
+  "biography_short": "Ex-Bharatsena Major from Guhyakas. Betrayed post-Treaty Hills, black-bagged to Facility IV, escaped pre-procedure. Now exposes KACHA while avoiding civilian harm.",
+
+  "timeline_anchors": [
+
+    {"id":"2016-02-ice-ridge","title":"Ice Ridge Rescue","spoiler":"S1"},
+
+    {"id":"2017-08-jungle-camp","title":"Green Vines Deny-wipe","spoiler":"S1"},
+
+    {"id":"2018-11-port-trace","title":"Coastal Port Reagents","spoiler":"S1"},
+
+    {"id":"2019-09-glass-city","title":"Drill → Live","spoiler":"S1"},
+
+    {"id":"2020-03-solar-lab","title":"Sublevel −2/−4 Clue","spoiler":"S2"},
+
+    {"id":"2021-06-africa-ambush","title":"Lithium Corridor; Prateek KIA","spoiler":"S2"},
+
+    {"id":"2021-10-treaty-hills","title":"Illegal Mesh-Node Op","spoiler":"S2"},
+
+    {"id":"2021-11-thar-escape","title":"Facility IV Iris-Gauntlet Escape","spoiler":"S3"},
+
+    {"id":"2022-02-indore-ledger","title":"Indore Blackout Heist","spoiler":"S2"}
+
+  ],
+
+  "relationships": [
+
+    {"with":"Rudra","state":"operational alignment; methods friction"},
+
+    {"with":"Kahaan","state":"foil axis; probationary trust"},
+
+    {"with":"Pratap/command","state":"primary betrayal vector"},
+
+    {"with":"Raaga","state":"logistics transactional"}
+
+  ],
+
+  "kit": {
+
+    "primary_set":"compact rifle/carbine or pulse-gun analog",
+
+    "sidearm":"suppressed pistol",
+
+    "non_lethal":["Akakpen darts","throw-lights","flex-cuffs","rope restraints"],
+
+    "tools":["micro-charge","under-door mirror","line tool","wedge","signal blocker"],
+
+    "comms":"Brace-Comm forearm device (display off by default)"
+
+  },
+
+  "visuals": {
+
+    "silhouette":"lean-athletic, vertical spine, quiet hands",
+
+    "wardrobe_default":"matte graphite jacket over soft armor; no insignia",
+
+    "prohibitions":["no armband","no readable logos","no implants/ports"]
+
+  },
+
+  "assets": {
+
+    "card": "surya_card_profile_1x1_4096.png",
+
+    "banner": "surya_banner_rooftop_21x9_6720.png",
+
+    "full_body": "surya_full_stairwell_4x3_4096.png",
+
+    "action_thar": "surya_action_thar_16x9_5120.png",
+
+    "action_indore": "surya_action_indore_16x9_5120.png",
+
+    "action_treaty": "surya_action_treaty_16x9_5120.png",
+
+    "macros": [
+
+      "surya_macro_sidearm_1x1_4096.png",
+
+      "surya_macro_akakpen_1x1_4096.png",
+
+      "surya_macro_throwlight_1x1_4096.png",
+
+      "surya_macro_line_tool_1x1_4096.png"
+
+    ]
+
+  },
+
+  "alt_text": {
+
+    "card":"Surya in austere field jacket at night; forearm comm dark.",
+
+    "banner":"Surya on a wet rooftop behind a low parapet; city grid beyond.",
+
+    "full_body":"Surya guiding civilians on blackout stairs; weapon lowered.",
+
+    "action_thar":"Surya spoofing iris gate at Facility IV; service hatch ajar.",
+
+    "action_indore":"Surya copying ledgers during a 90-second power dip in Indore.",
+
+    "action_treaty":"Surya plants proof on an illicit mesh node during a festival lane."
+
+  },
+
+  "search_keywords":[
+
+    "Surya","Guhyakas","Bharatsena","Operation KACHA","Facility IV",
+
+    "Thar sublevels","Indore ledger","Treaty Hills","Hyderabad Telugu"
+
+  ]
+
+}
+
+3) Airtable/CSV fields (for bulk ops)
+
+id, type, title, slug, rank, unit, alignment_now, origin, voice_style, voice_dialect[], ethics_civilians_off_limits, ethics_precision_violence, program_links[], facility_links[], biography_short, timeline_ids[], relationship_map[], kit_primary, kit_sidearm, kit_nonlethal[], kit_tools[], comms, silhouette, wardrobe_default, prohibitions[], asset_card, asset_banner, asset_full_body, asset_action_thar, asset_action_indore, asset_action_treaty, asset_macros[], alt_card, alt_banner, alt_full, alt_thar, alt_indore, alt_treaty, search_keywords[]
+
+4) Next.js integration
+
+Routes
+
+app/lore/characters/[slug]/page.tsx → pulls by id=char_surya_v1
+
+app/api/lore/characters/[slug]/route.ts → JSON for client widgets
+
+Components
+
+<CharacterHero/> uses assets.banner, spoiler gate S2+ via query ?spoiler=on
+
+<LoreTabs/> tabs: Overview | Timeline | Kit | Proofs
+
+<RelationGraph/> seeded by relationships[]
+
+MDX block (drop-in)
+
+---
+
+id: char_surya_v1
+
+title: Surya
+
+slug: surya
+
+spoiler: S1
+
+---
+
+<SpoilerGate tier="S1">
+
+  Ex-Bharatsena Major (Guhyakas). Betrayed post-Treaty Hills. Escaped Facility IV pre-procedure.
+
+</SpoilerGate>
+
+<ImageCard src="/img/surya_card_profile_1x1_4096.png" alt="Surya in austere field jacket at night; forearm comm dark." />
+
+<Tabs items={['Overview','Timeline','Kit','Proofs']}>
+
+  <Tab>**Ethics.** Civilians off-limits. Precision violence only. No tokens.</Tab>
+
+  <Tab><Timeline from="2016-02-ice-ridge" to="2022-02-indore-ledger" /></Tab>
+
+  <Tab><KitList id="char_surya_v1" /></Tab>
+
+  <Tab><ProofGallery ids={['action_treaty','action_indore','action_thar']} /></Tab>
+
+</Tabs>
+
+5) Figma Make prompt (paste verbatim)
+
+Add character detail page and asset set for "Surya" using the existing Lore template.
+
+Data:
+
+- Title: Surya
+
+- Canon ID: char_surya_v1
+
+- Rank/Unit: Major, Guhyakas (Bharatsena)
+
+- One-line: Ex-Bharatsena Major; betrayed post-Treaty Hills; escaped Facility IV pre-procedure; hunts Operation KACHA.
+
+- Ethics chips: Civilians off-limits • Precision violence • No tokens
+
+- Accent note: Hyderabad Telugu; terse lines
+
+Assets (placeholders ok; wire file slots):
+
+1x1 Card: surya_card_profile_1x1_4096.png
+
+21x9 Banner: surya_banner_rooftop_21x9_6720.png
+
+4x3 Full: surya_full_stairwell_4x3_4096.png
+
+16x9 Actions: surya_action_thar_16x9_5120.png, surya_action_indore_16x9_5120.png, surya_action_treaty_16x9_5120.png
+
+1x1 Macros: sidearm, akakpen, throwlight, line tool
+
+Layout:
+
+- Hero banner top with spoiler toggle chip (S1 default).
+
+- Left column: bio short, rank/unit, ethics chips, voice chips.
+
+- Right column: Relation mini-graph (Rudra, Kahaan, Pratap/Command, Raaga).
+
+- Mid section: Timeline strip with anchors (2016–2022).
+
+- Lower: Kit board grid (6 items) and Proof gallery (3 actions).
+
+- Alt text attached to each image layer. No readable logos, no armband, no implants.
+
+6) Timeline page hooks
+
+Event IDs to link: 2016-02-ice-ridge, 2017-08-jungle-camp, 2018-11-port-trace, 2019-09-glass-city, 2020-03-solar-lab, 2021-06-africa-ambush, 2021-10-treaty-hills, 2021-11-thar-escape, 2022-02-indore-ledger
+
+On hover: show Surya chip + spoiler tier.
+
+On click: open event modal with “Surya present” badge and link back to /lore/characters/surya.
+
+7) Books page hooks
+
+If the current novel includes Surya: add “Featured: Surya” card that deep-links to /lore/characters/surya#proofs.
+
+OG image: use surya_banner_rooftop_21x9_6720.png cropped to 1200×630.
+
+8) Asset map and filenames (final)
+
+Keep Phase-4/5 names exactly. Web renditions at 1600 px long edge: suffix _web.
+
+Store under /public/img/characters/surya/.
+
+9) Spoiler control logic
+
+Default S1 only.
+
+If ?spoiler=on or user toggle → show S2.
+
+S3 requires author flag in session or build-time env SHOW_DEEP_SPOILERS=true.
+
+Hide S2/S3 alt text until unlocked.
+
+10) Accessibility
+
+Alt text ≤ 140 chars from alt_text.
+
+Focus order: hero → bio → timeline → kit → proofs.
+
+aria-describedby from ethics chips to hero image.
+
+Ensure text contrast ≥ 4.5:1 over banners.
+
+11) SEO
+
+<title>Surya — Mahabharatvarsh Lore</title>
+
+<meta name="description" content="Ex-Bharatsena Major from Guhyakas. Betrayed and escaped Facility IV; targets Operation KACHA.">
+
+JSON-LD @type: Person with affiliation, knowsAbout: ["Operation KACHA","Bharatsena"].
+
+12) QA checklist (reject if any fail)
+
+Any family or armband mention.
+
+Any implant/port on Surya.
+
+Civilian KIA by Surya.
+
+Readable logos/text in imagery.
+
+KACHA mark on Surya’s gear.
+
+Unit not labeled “Guhyakas” in dossiers.
+
+13) n8n ingestion flow (summary)
+
+Trigger: manual or Git push.
+
+Read /data/lore/char_surya_v1.json.
+
+Validate against JSON schema.
+
+Upload images to CDN and write URLs back.
+
+Update Airtable row by id.
+
+Purge CDN cache for /lore/characters/surya.
+
+Slack/Email summary: fields changed, asset diffs, spoiler gates.
+
+14) Search index mapping (Algolia/Meilisearch)
+
+Index: lore_characters
+
+Attributes for faceting: unit, program_links, spoilerTier
+
+Searchable: title, biography_short, search_keywords
+
+Ranking tie-breakers: spoiler ASC, title ASC.
+
+15) Hand-off bundle
+
+char_surya_v1.json (as above)
+
+surya_assets_manifest.json (file names + alt text)
+
+Figma Make prompt (section 5)
+
+MDX file surya.mdx (section 4)
+
+QA checklist (section 12)
+
+Confirm when you want me to generate the JSON, MDX, and a ready-to-paste Figma Make block as files.

@@ -1,13 +1,15 @@
 ---
 name: bharatvarsh-content
-description: "Lore-grounded Bharatvarsh marketing content per platform with visual direction. Use when user asks for novel marketing, lore reveal, character teaser, or Bharatvarsh social content."
+description: "Lore-grounded Bharatvarsh marketing content per platform with visual direction and MCP lore validation. Use when user asks for novel marketing, lore reveal, character teaser, or Bharatvarsh social content."
 ---
 
-# Skill: Bharatvarsh Content
+# Skill: Bharatvarsh Content v2.0
 
-> **Scope:** This skill operates within the AI Operating System project only. It references project-specific knowledge base documents and connectors available in this project.
+> **Scope:** This skill operates within the AI Operating System project only. It references project-specific knowledge base documents, MCP lore tools, and connectors available in this project.
 >
 > **Type:** Workflow skill — Claude follows these instructions when triggered.
+>
+> **Version:** 2.0 — Now loads expanded KB files (CHARACTERS, VISUAL_GUIDE) and validates via MCP lore tools.
 
 ---
 
@@ -15,19 +17,23 @@ description: "Lore-grounded Bharatvarsh marketing content per platform with visu
 
 Activate this workflow when the user asks to create marketing content, social media posts, promotional material, lore teasers, character reveals, or any public-facing content related to the Bharatvarsh novel and transmedia universe. Trigger phrases include: "Bharatvarsh post," "novel marketing," "lore reveal," "character teaser," "promote the book," "Bharatvarsh social," or any content creation request tied to the novel, website, or universe.
 
-Do NOT use for novel writing (chapter drafting, plot development, dialogue) — that's creative world-building work, not marketing content. This skill is for promotional and engagement content.
+Do NOT use for novel writing (chapter drafting, plot development, dialogue) — use the `bharatvarsh-writer` skill instead.
 
 ---
 
 ## Process
 
 ### Step 1: Load Context
-Always load both:
-- **BHARATVARSH_BIBLE.md** — lore, characters, factions, tech, themes. All content must be lore-accurate.
-- **BHARATVARSH_PLATFORM.md** — website features, purchase links, lead magnet funnel, current marketing status.
+Always load these knowledge-base files:
+- **BHARATVARSH_BIBLE.md** — world reference: politics, economy, surveillance, society, themes
+- **BHARATVARSH_CHARACTERS.md** — character profiles: identity, psychology, arc, visual keys, voice
+- **BHARATVARSH_VISUAL_GUIDE.md** — art direction: color palettes, character visual keys, uniforms, weapons
+- **BHARATVARSH_PLATFORM.md** — website features, purchase links, lead magnet funnel
 
-If CONTENT_CALENDAR.md exists in KB, check it to avoid duplicating recently published content and to identify gaps.
-If MARKETING_PLAYBOOK.md exists in KB, load for brand voice and platform strategy.
+If available, also load:
+- **CONTENT_CALENDAR.md** — avoid duplicating recently published content and identify gaps
+- **MARKETING_PLAYBOOK.md** — brand voice and platform strategy
+- **BRAND_IDENTITY.md** — Context B design tokens for visual direction
 
 ### Step 2: Determine Content Type
 Identify what's being created:
@@ -42,6 +48,8 @@ Identify what's being created:
 | Community Prompt | A question or discussion starter for the forum | Forum, Twitter/X |
 | Purchase CTA | Direct drive to buy the book | All platforms |
 | Website Feature | Highlight Bhoomi AI, lore archive, timeline, forum | Twitter/X, LinkedIn |
+| Character Dossier | In-universe intelligence file format | Instagram carousel, Twitter thread |
+| Tech Spotlight | Spotlight a Bharatvarsh technology | Twitter/X, Instagram |
 
 ### Step 3: Generate Platform-Specific Content
 
@@ -54,7 +62,7 @@ Identify what's being created:
 
 **For Instagram:**
 - Caption (150-300 words) with visual direction
-- Visual direction note: describe the ideal image — style, mood, composition, text overlay
+- Visual direction note: describe the ideal image referencing BHARATVARSH_VISUAL_GUIDE.md
 - Hashtags: 15-20 relevant tags in a separate block
 - CTA in caption: "Link in bio" or "Comment your theory"
 
@@ -64,21 +72,26 @@ Identify what's being created:
 - No hashtag spam — 3-5 relevant tags max
 - Author voice: thoughtful, ambitious, builder-storyteller
 
-### Step 4: Ensure Lore Accuracy
-Cross-check every piece of content against the Bible:
+### Step 4: Validate Lore Accuracy (NEW in v2.0)
+Use MCP lore tools to validate every draft:
+1. **`check_lore_consistency`** — Pass the full draft text. Fix any flagged issues.
+2. **`get_character`** — If featuring a character, verify visual details and voice.
+3. **`search_lore`** — If referencing any entity, verify it exists and details match.
+
+Also cross-check against KB files:
 - Character names spelled correctly (Kahaan, Rudra, Pratap, Hana, Arshi)
 - Faction names correct (Bharatsena, Akakpen, Tribhuj)
 - World mechanics accurate (The Mesh, Bracecomm, Oxy Poles, Directorate)
-- Timeline events consistent (1717 refusal, 1980s collapse, 20-10 event)
-- Classified/Declassified status respected — don't reveal classified information in public content
+- Timeline events consistent (1717 refusal, 1978 emergency, 20-10 event)
+- Classified/Declassified status respected — don't reveal classified information
 
 ### Step 5: Deliver with Visual Direction
 For every piece of content, include:
 - The text (ready to copy-paste)
 - Platform label
-- Visual direction (what the accompanying image should look like)
+- Visual direction (specific enough to generate — reference VISUAL_GUIDE.md character keys and color palettes)
+- Context B brand tokens: obsidian background, mustard gold (#F1C232) accent, Bebas Neue display font
 - Posting recommendation (best time/day if relevant)
-- Suggest whether to use Canva connector to create the graphic
 
 ---
 
@@ -94,23 +107,34 @@ Avoid:
 - Generic book marketing language ("thrilling page-turner," "must-read")
 - Over-explaining the plot
 - Breaking the fourth wall in lore-focused posts (stay in-universe)
+- Revealing content marked as Classified in the lore database
 
 ---
 
 ## Quality Rules
 
-- Every post must be lore-accurate. One factual error breaks trust with engaged readers.
+- Every post must be lore-accurate. Use `check_lore_consistency` MCP tool on every draft.
 - Content should work standalone — someone seeing it for the first time should be intrigued without context.
-- Purchase CTAs should be subtle except in dedicated CTA posts. Don't turn every post into a sales pitch.
-- Visual direction must be specific enough to generate or commission the image. "Cool sci-fi image" is useless. "Dark cityscape with glowing Oxy Poles, Mesh surveillance grid visible as faint blue lines in the sky, Bharatsena patrol in foreground" is actionable.
+- Purchase CTAs should be subtle except in dedicated CTA posts.
+- Visual direction must reference specific character visual keys from BHARATVARSH_VISUAL_GUIDE.md.
 - Vary content types across the week. Don't post 5 lore reveals in a row.
 
 ---
 
-## Connectors Used
+## Tools & Connectors Used
 
-- **Knowledge base: BHARATVARSH_BIBLE.md** — lore accuracy (required)
-- **Knowledge base: BHARATVARSH_PLATFORM.md** — website/marketing context (required)
-- **Knowledge base: CONTENT_CALENDAR.md** — avoid duplicates, fill gaps (when available)
-- **Knowledge base: MARKETING_PLAYBOOK.md** — brand voice and strategy (when available)
-- **Canva connector** — offer to create graphics (when available)
+**MCP Tools (bharatvarsh module):**
+- `check_lore_consistency` — validate every draft
+- `get_character` — character profile verification
+- `search_lore` — entity verification
+- `query_lore` — browse for content ideas
+- `get_timeline` — timeline-based content
+
+**Knowledge Base Files:**
+- `BHARATVARSH_BIBLE.md` — lore accuracy (required)
+- `BHARATVARSH_CHARACTERS.md` — character accuracy (required)
+- `BHARATVARSH_VISUAL_GUIDE.md` — visual direction (required)
+- `BHARATVARSH_PLATFORM.md` — website/marketing context (required)
+- `CONTENT_CALENDAR.md` — avoid duplicates (when available)
+- `MARKETING_PLAYBOOK.md` — brand voice (when available)
+- `BRAND_IDENTITY.md` — Context B design tokens (when available)

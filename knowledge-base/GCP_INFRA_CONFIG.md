@@ -2,7 +2,7 @@
 
 > **Purpose:** Canonical reference for all GCP project config, service accounts, database access, secrets, and deployment patterns. Referenced by /workflow-designer, /build-prd, /tech-eval, and any skill that deploys or connects to infrastructure.
 >
-> **Last updated:** 2026-03-18 (State v10. 13 Cloud Run services live. 13 Cloud Scheduler jobs. 13 secrets. Capture system complete.)
+> **Last updated:** 2026-03-18 (State v11. 13 Cloud Run services all LIVE. 14 Cloud Scheduler jobs (10 enabled, 4 paused). 13 secrets. Sprint 10-A Contact Intelligence + Sprint 10-B Bharatvarsh Lore Layer.)
 
 ---
 
@@ -93,6 +93,7 @@ Enabled at 03:00 UTC, 7 retained, point-in-time recovery on, 7-day transaction l
 | daily-brief-engine | Daily Brief Engine | LIVE | ~50MB |
 | task-annotation-sync | Task Annotation Sync | LIVE | ~50MB |
 | domain-health-scorer | Domain Health Scorer | LIVE | ~50MB |
+| journal-monthly-distill | Journal Monthly Distill | LIVE | ~50MB |
 
 ---
 
@@ -170,8 +171,8 @@ gcloud run deploy ai-os-dashboard \
 
 | Service | Container | Purpose | Auth | Status | URL |
 |---------|-----------|---------|------|--------|-----|
-| ai-os-gateway | FastAPI | MCP Gateway — 40 tools (8 modules), Telegram webhook, capture module | Bearer token / API key | LIVE (asia-south1, scale-to-zero) | https://ai-os-gateway-1054489801008.asia-south1.run.app |
-| ai-os-dashboard | Next.js | PWA Dashboard — 9 pages, 23 API routes, 27 components | Google OAuth (NextAuth.js) | LIVE (asia-south1, scale-to-zero) | https://ai-os-dashboard-sv4fbx5yna-el.a.run.app |
+| ai-os-gateway | FastAPI | MCP Gateway — 56 tools (10 modules: postgres, google_tasks, drive_write, drive_read, calendar_sync, telegram, life_graph, capture, contacts, bharatvarsh), Telegram webhook | Bearer token / API key | LIVE (asia-south1, scale-to-zero) | https://ai-os-gateway-1054489801008.asia-south1.run.app |
+| ai-os-dashboard | Next.js | PWA Dashboard — 9 pages, 23 API routes, 28 components | Google OAuth (NextAuth.js) | LIVE (asia-south1, scale-to-zero) | https://ai-os-dashboard-sv4fbx5yna-el.a.run.app |
 | task-notification-daily | Python + functions-framework | Daily overdue/upcoming task scan + Google Tasks sync | OIDC (Cloud Scheduler) | LIVE (asia-south1, scale-to-zero) | https://task-notification-daily-sv4fbx5yna-el.a.run.app |
 | telegram-notifications | Python + FastAPI | Telegram bot: scheduled briefs, overdue alerts, weekly digest, AI triage | OIDC (Cloud Scheduler) + Telegram webhook | LIVE (asia-south1, scale-to-zero) | https://telegram-notifications-sv4fbx5yna-el.a.run.app |
 | embedding-generator | Python | Knowledge embedding pipeline (text-embedding-3-small) | OIDC (Cloud Scheduler) | LIVE (asia-south1, scale-to-zero) | — |
@@ -182,9 +183,9 @@ gcloud run deploy ai-os-dashboard \
 | risk-engine | Python | AI Risk Engine — 5 risk types, Telegram alerts | OIDC (Cloud Scheduler) | LIVE (asia-south1, scale-to-zero) | https://risk-engine-1054489801008.asia-south1.run.app |
 | daily-brief-engine | Python + FastAPI | Daily brief — collectors + AI composer + multi-channel | OIDC (Cloud Scheduler) | LIVE (asia-south1, scale-to-zero) | https://daily-brief-engine-1054489801008.asia-south1.run.app |
 | task-annotation-sync | Python | Google Tasks annotation capture every 15 min | OIDC (Cloud Scheduler) | LIVE (asia-south1, scale-to-zero) | https://task-annotation-sync-1054489801008.asia-south1.run.app |
-| journal-monthly-distill | Python | Monthly journal distillation via Claude Haiku (28th) | OIDC (Cloud Scheduler) | BUILT (pending deploy) | — |
+| journal-monthly-distill | Python | Monthly journal distillation via Claude Haiku (28th) | OIDC (Cloud Scheduler) | LIVE (asia-south1, scale-to-zero) | — |
 
-13 Cloud Run services (12 live + 1 pending deploy). Gateway and Dashboard share service account `ai-os-cloud-run`. Task notification and telegram-notifications use `ai-os-cloud-functions`. All use Cloud SQL Auth Proxy sidecar and scale to zero independently.
+13 Cloud Run services (all live). Gateway and Dashboard share service account `ai-os-cloud-run`. Task notification and telegram-notifications use `ai-os-cloud-functions`. All use Cloud SQL Auth Proxy sidecar and scale to zero independently.
 
 See INTERFACE_STRATEGY.md for full dashboard specification and TOOL_ECOSYSTEM_PLAN.md for full gateway module inventory.
 
@@ -201,11 +202,11 @@ See INTERFACE_STRATEGY.md for full dashboard specification and TOOL_ECOSYSTEM_PL
 
 | Job Name | Schedule | Target | Auth | Status |
 |----------|----------|--------|------|--------|
-| task-notification-daily-trigger | `0 6 * * *` (06:00 IST) | https://task-notification-daily-sv4fbx5yna-el.a.run.app | OIDC (ai-os-cloud-functions SA) | Enabled |
-| telegram-morning-brief | `30 1 * * *` (06:30 AM IST / 01:30 UTC) | https://telegram-notifications-sv4fbx5yna-el.a.run.app/cron/morning-brief | OIDC (ai-os-cloud-functions SA) | Enabled |
-| telegram-overdue-alerts | `30 3 * * *` (09:00 AM IST / 03:30 UTC) | https://telegram-notifications-sv4fbx5yna-el.a.run.app/cron/overdue-alerts | OIDC (ai-os-cloud-functions SA) | Enabled |
-| telegram-weekly-digest | `30 13 * * 0` (07:00 PM IST Sunday / 13:30 UTC) | https://telegram-notifications-sv4fbx5yna-el.a.run.app/cron/weekly-digest | OIDC (ai-os-cloud-functions SA) | Enabled |
-| embedding-generator-trigger | `*/5 * * * *` (every 5 min) | embedding-generator Cloud Run | OIDC (ai-os-cloud-functions SA) | Enabled |
+| task-notification-daily-trigger | `0 6 * * *` (06:00 IST) | https://task-notification-daily-sv4fbx5yna-el.a.run.app | OIDC (ai-os-cloud-functions SA) | Paused |
+| telegram-morning-brief | `30 1 * * *` (06:30 AM IST / 01:30 UTC) | https://telegram-notifications-sv4fbx5yna-el.a.run.app/cron/morning-brief | OIDC (ai-os-cloud-functions SA) | Paused |
+| telegram-overdue-alerts | `30 3 * * *` (09:00 AM IST / 03:30 UTC) | https://telegram-notifications-sv4fbx5yna-el.a.run.app/cron/overdue-alerts | OIDC (ai-os-cloud-functions SA) | Paused |
+| telegram-weekly-digest | `30 13 * * 0` (07:00 PM IST Sunday / 13:30 UTC) | https://telegram-notifications-sv4fbx5yna-el.a.run.app/cron/weekly-digest | OIDC (ai-os-cloud-functions SA) | Paused |
+| embedding-generator-trigger | `0 2 * * 0` (weekly Sunday 2 AM UTC) | embedding-generator Cloud Run | OIDC (ai-os-cloud-functions SA) | Enabled |
 | drive-scanner-trigger | `0 0 * * *` (06:00 IST / 00:30 UTC) | drive-knowledge-scanner Cloud Run | OIDC (ai-os-cloud-functions SA) | Enabled |
 | weekly-summary-trigger | `0 16 * * 0` (22:00 IST Sunday / 16:30 UTC) | weekly-knowledge-summary Cloud Run | OIDC (ai-os-cloud-functions SA) | Enabled |
 | auto-connector-trigger | `0 17 * * 0` (23:00 IST Sunday / 17:30 UTC) | knowledge-auto-connector Cloud Run | OIDC (ai-os-cloud-functions SA) | Enabled |
@@ -213,9 +214,10 @@ See INTERFACE_STRATEGY.md for full dashboard specification and TOOL_ECOSYSTEM_PL
 | risk-engine-daily-trigger | `30 1 * * *` (06:30 IST) | risk-engine Cloud Run (POST /cron/assess-risks) | OIDC (ai-os-cloud-functions SA) | Enabled |
 | daily-brief-engine-trigger | `45 0 * * *` (06:15 IST) | daily-brief-engine Cloud Run (POST /cron/daily-brief) | OIDC (ai-os-cloud-functions SA) | Enabled |
 | task-annotation-sync-trigger | `*/15 * * * *` (every 15 min) | task-annotation-sync Cloud Run | OIDC (ai-os-cloud-functions SA) | Enabled |
+| journal-monthly-distill | `0 3 28 * *` (28th monthly, 08:30 IST) | journal-monthly-distill Cloud Run | OIDC (ai-os-cloud-functions SA) | Enabled |
 | monthly-knowledge-distill-reminder | `0 0 1 * *` (1st of month) | — (reminder only) | — | Enabled |
 
-13 Cloud Scheduler jobs.
+14 Cloud Scheduler jobs (10 enabled, 4 paused). Paused jobs: task-notification-daily-trigger, telegram-morning-brief, telegram-overdue-alerts, telegram-weekly-digest.
 
 ---
 

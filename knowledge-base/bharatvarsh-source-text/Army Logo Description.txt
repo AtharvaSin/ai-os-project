@@ -1,0 +1,51 @@
+Here’s a detailed textual breakdown of the attached logo—designed to guide an LLM or image-generation model in recreating the emblem precisely:
+
+Visual Description: Army Logo
+
+Overall Structure & Composition
+
+Core Shape: A large, bold circle forms the centerpiece, representing the Ashoka-style wheel.
+
+Spokes: Inside the circle are 24 equally spaced radial spokes, all converging at the exact center, maintaining perfect symmetry—much like the Ashoka Chakra on the Indian flag (Wikipedia).
+
+Encircling Rim: The circle is enclosed by a thick ring (rim) drawn as a solid, bold stroke that defines the boundary of the wheel.
+
+Supporting Geometry: Triangular Frame
+
+Attached to the wheel is a downward-pointing equilateral triangle:
+
+The apex of this triangle intersects or aligns with the bottom of the wheel.
+
+The triangle’s sides and edges are drawn with a line thickness matching the wheel’s bold rim, giving uniform visual weight.
+
+From the top outer edges of this equilateral triangle, two elongated triangular “wings” extend outward and slightly upward:
+
+These wings are isosceles triangles, thin and elongated, creating a stylized, angular frame around the wheel.
+
+They angle outward at approximately 45 degrees from the wheel’s horizontal diameter; the upper edges of these triangular frames are nearly horizontal or have a very slight upward tilt.
+
+The wings meet the wheel near its top-left and top-right arcs.
+
+The result is a three-pronged structure: one downward triangle directly beneath the wheel, and two outward-leaning triangular wings flanking the top sides.
+
+Linework & Styling Notes
+
+Line Weight: Uniform, bold black strokes outline all shapes—the rim of the wheel, spokes, and triangle frames alike.
+
+Fill Style: It’s a solid black-and-white (monotone) design—no color fills or shading. The wheel’s interior (between spokes) appears white; spokes and rim are black.
+
+Symmetry: The overall logo is precisely symmetrical along the vertical axis.
+
+Negative Space:
+
+The downward triangle forms a white negative-space cutout directly beneath the wheel.
+
+The triangular “wings” frame the wheel without filling interior space—thus, most areas inside them appear white.
+
+Recommended Prompt for LLM/Image Generation
+
+"Create a minimalistic black-and-white emblem featuring a central Ashoka-style wheel: a bold circular rim enclosing 24 evenly spaced, straight radial spokes that converge at the center. Beneath the wheel is a downward-pointing equilateral triangle, its apex touching the wheel’s bottom rim. From the top-left and top-right of the circle, extend two elongated isosceles triangular frames outward and slightly upward—forming wing-like angular outlines. Use uniform thick black strokes for all shapes; interiors remain white, ensuring a flat, monochrome, highly symmetrical design."
+
+Summary Table
+
+Let me know if you'd like additional interpretations—like variations (e.g., colored fills), line textures, or a more stylized version for specific contexts.

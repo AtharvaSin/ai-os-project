@@ -1,0 +1,1303 @@
+Character Bible – Major Kahaan Arshad
+
+Schema note – This profile follows the “Demographics → Physical → History → Psychology → Relationships → Arc” structure championed in modern character-bible guides such as Dabble’s 100-point template and Reedsy’s three-layer profile method (dabblewriter.com, blog.reedsy.com)
+
+1. Core Identity
+
+2. External Description & Gear
+
+Physique / style – Trim athletic build; light beard; short military-regulation hair. Standard dress blues with open officer’s over-coat; twin shoulder holsters and a high-tech monocle in combat dress .
+
+Cybernetic implants – Experimental neural-diode lattice embedded after the Africa incident lets him magnetically manipulate compact firearms (“flying guns”) and pilot vehicles (bike, Giddh X-200 scout chopper) by thought; larger machines require external circuitry .
+
+Limits / side-effects – Neural fatigue, tinnitus and transient paralysis if he exceeds the safety threshold; a broken circuit severs control mid-battle (tunnel ambush) .
+
+Casual wear – Earth-tone utility shirts and boots; blends with civilian crowds during covert surveillance (Phoenix Mall sequence) .
+
+3. Backstory & Family
+
+Mother – Aaliyah Khan Arshad, died of blood-cancer when Kahaan was four. Her absence breeds his perfection-driven insecurity (user data).
+
+Father – Dr. Sahil Arshad (Omar), lead defence-biotech scientist and confidant of General Pratap; oversaw the diode program. Their relationship is cordial but morally estranged, culminating in a subterranean lab confrontation where Kahaan learns of the army’s cyborg experiments .
+
+Formative trauma – Africa peace-keeping mission ambush: suicide bomber decimates his squad; Kahaan is rebuilt with implants, triggering chronic PTSD and survivor’s guilt plus user note.
+
+Grooming for service – From prep school onward his father channels him into elite cadet programs; senior officers temper his rebellious streak into institutional loyalty (user note).
+
+4. Psychological Profile
+
+5. Skills & Resources
+
+Military mastery – Elite marksmanship, small-team tactics, surveillance analysis (mall CCTV deconstruction) .
+
+Cyber-kinetic warfare – Remote weapon flight and drone-like vehicle control, but vulnerable to EMP or circuit damage .
+
+Investigation – Pattern recognition, psychological interrogation (Surya cabin scene) .
+
+Political capital – Popular war-hero reputation; envied by some peers / courted by media (user note).
+
+6. Relationships & Dynamics
+
+7. Ideology & Public Image
+
+Initially lauded as a patriotic prodigy—decorated with a Purple Heart equivalent—Kahaan publicly defends the army’s cradle-to-grave oversight. Critics brand him “Pratap’s golden cub,” while admirers hail him as the modern Samrat in the making. His approval ratings drive his own obsession with optics . By Act III, exposure to clandestine war crimes pushes him to renounce absolute rule and side with civilian emancipation.
+
+8. Symbolism & Aesthetic Markers
+
+Signature tech – Twin Mag-Holster pistols that hover at palm-height when summoned—visual shorthand for his blend of tradition and trans-humanism.
+
+Visual motif – Electric-blue HUD reflections on his face whenever he mind-pilots machines, symbolizing the thin line between man and weapon.
+
+Keepsake – A scorched squad patch from Africa sewn inside his over-coat; reminds him of the cost of blind obedience (proposed).
+
+Costume evolution – Starts spotless and medal-polished; by climax the over-coat is shed and sleeves rolled, signalling discarding of hierarchical trappings.
+
+9. Transformational Arc
+
+10. Chronology of Key Life Events
+
+1999 – Born, New Delhi barracks hospital.
+
+2003 – Mother dies (cancer).
+
+2015 – Enters elite cadet academy.
+
+2021 – Africa Peace-Corps mission; losing squad → cybernetic surgery .
+
+2024 – Promoted to Major after decisive border skirmish.
+
+Oct 20, 2025 – Nationwide bombings; leads task-force.
+
+Nov 2025 – Tunnel ambush; Manan gravely injured .
+
+Dec 2025 – Confronts father in Facility IV, rejects coup .
+
+Finale – Publicly testifies to atrocities, surrenders command credentials.
+
+11. Continuity & Writing Notes
+
+EMP = Achilles heel – Any scene with EMP risk must address temporary loss of his weapon control.
+
+Power vs. legacy dialectic – Dialogue should reveal his calculation of public optics alongside genuine strategic concern.
+
+Speech cadence – Confident, mildly sardonic; lapses into terse staccato under PTSD stress.
+
+Romance – Canonically limited to fleeting flings; keep overt romance out unless it serves ethical conflict.
+
+Growth metric – Visual shorthand: number of medals displayed (starts 4 → ends 0).
+
+12. Log-line (quick reference)
+
+“A decorated young officer enhanced by experimental tech hunts terrorists to secure his path to power—until uncovering his own army’s crimes forces him to choose between legacy and conscience.”
+
+This document now acts as the single-source authority on Kahaan for future drafting, ensuring consistent portrayal across revisions.
+
+Major Kahaan Arshad – a Complete Character Bible
+
+The following narrative profile is organised according to the “outside-in” method of character-bible building—moving from demographic facts through history, psychology, relationships, and finally dramatic arc—an approach recommended by professional craft guides on creating story or series bibles. (writersinthestormblog.com, blog.reedsy.com)
+
+1. Face and First Impressions
+
+Kahaan Arshad is twenty-six: lean-muscled, quick-footed, always turned out with regimental precision. In day uniform he favours a powder-blue shirt beneath an open navy over-coat whose twin holsters cradle the famous flying pistols the weapons-lab built for him . During field operations a single electric-blue HUD monocle flashes across one eye—a visual reminder that part of his brain is threaded with neural diodes that let him magnetically steer compact firearms and pilot light vehicles by thought. Those same diodes leave a faint surgical scallop behind his right ear and gift him migraines, tinnitus and transient paralysis if he over-exerts them . Off-duty his clothes turn earth-toned and practical; Kahaan’s need to blend is as strong as his need to dominate.
+
+2. Origins: the Soldier Shaped by Loss
+
+He was born in 1999 in a Delhi barracks hospital, an only child who lost his mother, Aaliyah Khan Arshad, to leukaemia before he could form more than a handful of tactile memories. That absence wired a permanent, almost frantic hunger for significance into him. His father, Dr Sahil “Omar” Arshad, poured his grief into work and his hopes into the boy—brokering early introductions to cadet-school mentors, feeding him a steady diet of nationalist hero-tales, and eventually overseeing the diode-implant trial that would save Kahaan’s life after Africa and bind him ever tighter to the military-industrial machine .
+
+Kahaan’s file is littered with precocious milestones: top-of-class at the academy, a début mission in Congo that won him his first Purple Heart for extracting twelve men from a rebel-held town , instant battlefield legend status, and a rapid climb to the rank of major at an age that provokes both admiration and envy among the ranks.
+
+3. The Africa Fracture
+
+Everything that follows bends around the peace-keeping fiasco in eastern Africa. Kahaan, leading a relief detail, tried to body-shield a comrade from a burqa-clad suicide bomber. The blast shredded flesh and future in equal measure; battlefield surgeons grafted in the diode lattice as a last resort. The tech turned him into a living weapons-platform—yet it also sowed chronic PTSD. The smell of burning circuitry or an echoing energy blast can still jerk him back into the smoke and sand of that street, paralysing him mid-conversation . From that day onward the army Prince carried a private fear: What if the institution I bleed for grinds me into a disposable pawn?
+
+4. Physical and Technical Competence
+
+Core talents – elite marksman; squad-level tactician; fluent drone & sensor analyst (his dissection of Phoenix Mall CCTV is textbook) .
+
+Augmented skills – thought-guided “Mag-Holster” pistols and the ability to spin up a Giddh-X scout-chopper hands-free, provided the craft’s circuitry is tuned to his implant frequency .
+
+Vulnerabilities – implant circuits break under EMP or heavy concussion, stranding him with an ordinary body and ringing eardrums; over-use triggers nose-bleeds, shakes, and black-outs.
+
+5. Psychological Machinery
+
+Dominant traits – incandescent ambition, charismatic command presence, analytic speed, sardonic humour.
+
+Primary motivation – to etch his name into history as the youngest Supreme Commander of Bharatvarsh; the hunger for a legacy outlives every briefing and bullet.
+
+Secondary fear – obscurity: becoming “just another piece” on the general’s board.
+
+Ethical stance (Act I) – “Ends first, ethics later—so long as the long-term optics survive.” He will bend rules, stage raids on treaty land, even leverage hostages if it forwards the mission .
+
+Catalyst for change – discovering that the very army he worships is breeding cyborg suicide-bombers in Facility IV, masterminded by his own father . The revelation detonates his moral compass and forces a re-alignment from statist zealot to reluctant humanist.
+
+Final credo (Act IV) – “Power concentrated corrupts; leadership worthy of loyalty must be given back to the led.”
+
+6. Emotional Weather & Contradictions
+
+Kahaan’s swagger is wallpaper over fractures: routine nightmares, a lingering survivor’s guilt, and the lonely cold of a man who treats romance as off-duty recreation—one-night stands that end before breakfast, never a relationship that could threaten the timetable of command. When Hana, his closest comrade, needles him about yet another honey-trap incident, her words land hard precisely because they touch this hollow centre .
+
+7. Web of Relationships
+
+8. Public Image and Symbolism
+
+To the citizenry Kahaan is “the Military Prince”—poster child of the regime, bearer of two Purple Hearts, the major who never cracks under fire . His flying guns circling at shoulder-height have become a hologram-banner in recruitment ads. Yet those same weapons symbolise the fine thread that tethers him to institutional control: a literal extension of the state’s engineering inside his skull.
+
+Inside his over-coat he has stitched the scorched squad patch he tore from a Congo uniform, a private reliquary reminding him who paid the price for his medals.
+
+9. Ideological Trajectory
+
+Act I – Loyalist Riser
+Kahaan embraces the army manifesto that argues democracy has corroded; only a martial hand keeps chaos at bay .
+
+Act II – Fracture
+The discovery of black-ops bio-wing corpses and the father’s confession of state-manufactured terror shatter that certainty .
+
+Act III – False Accord
+Briefly he flirts with the generals’ vision of a utopian military decade—immortality, predictive oracles, the “necessary” purge —only to watch Manan’s ruined spine and the civilian death-toll contradict every promise.
+
+Act IV – Break & Gift
+In the climax he refuses Pratap’s offer of succession, exposes the cyborg programme to the world press, and relinquishes command credentials, choosing civic accountability over personal supremacy (novel finale outline ).
+
+10. Residual Mystery and Story Seeds
+
+Romantic Future – The novel ends without a love-plot, but Hana’s unspoken loyalty and Kahaan’s first steps toward vulnerability leave space for slow-burn intimacy—or a painful ideological rift—in sequels.
+
+Diode Degradation – Engineers warned the lattice has a finite half-life. Will Kahaan one day face total neural failure as karmic debt for past power?
+
+Public Trial – Having testified against Pratap, does “the Prince” become folk-hero reformer or convenient scapegoat when the regime reels?
+
+11. Voice and Dialogue Notes for Writers
+
+Kahaan’s speech pattern tilts crisp-military with knife-edge sarcasm. Under extreme stress (PTSD flash, implant overload) his sentences fragment into clipped combat shorthand. Post-revelation humility should soften—but not erase—the native precision; readers must hear the same mind wrestling new ideals.
+
+12. Log-Line (Quick Reference)
+
+A decorated, cyber-enhanced major races to quash a terror plot that could crown his career—until he uncovers his own army’s complicity and must decide between the legacy he craves and the humanity he once vowed to protect.
+
+Kahaan Arshad now stands on the page as a three-dimensional figure: scarred child of bereavement, glittering product of a militarised nation, living weapon haunted by the blast that birthed him, and—ultimately—a man who learns that real command lies not in hovering guns or ranks on a collar, but in the courage to set both down.
+
+Perfect—locking Phase 1: Canon Board & Model Sheet for Major Kahaan with your new specs applied. I’ve merged your updates with the existing army bible so generators stay perfectly on-model. Citations point to the exact canon lines I used.
+
+Phase 1 — Visual Locks (ready for art boards & LLM prompts)
+
+Core frame (demographics & build)
+
+Age: 34 (override of earlier notes).
+
+Height & build: 6′1″, lean but fit (think athletic/wiry rather than bulky).
+
+Handedness: Right-hand dominant, but competent off-hand—pose grammar should allow either hand to draw while the other manages float control.
+
+Face map (Sidharth-coded features, then your unique marks)
+
+Skull & jaw: straight, squared jaw with a gentle, athletic taper; pronounced but clean mandibular angle; cheekbones defined, not gaunt.
+
+Eyes & brows: almond-set dark brown eyes, upper lid crease visible; brows straight with a slight lateral lift (gives alert/assessing read).
+
+Nose & mouth: straight dorsum with a subtle break near the bridge; medium-full lips with a crisp Cupid’s bow; smile forms a one-sided, sardonic tuck.
+
+Skin tone: fair-wheatish (a touch lighter than classic wheatish; neutral-warm undertone).
+
+Hair & facial hair: dark brown-black, short textured quiff with tight sides (regulation neat); cycles between clean-shave and short stubble depending on scene mood.
+
+Signature scar (new canon): right side, ~2″. Starts at eyebrow level, drops straight, then bends along the cheekbone angle. Hue is a muted cyan at rest; it faint-glows when the HUD is active or he’s exerting remote weapon control (tie this glow to the HUD’s electric-blue family).
+
+Uniform, marks, and identity rules (fixed canon)
+
+Office/Day wear: powder-blue shirt + navy trousers + open navy officer’s coat; holsters mostly concealed; reads “poster-officer.” 
+
+Field/Battle wear: “combat dress,” coat shed or open; holsters exposed; HUD monocle active signals ops mode. 
+
+Emblem placement: large emblem on coat back, small emblem on left shoulder, right shoulder = text only (division/command). Emblem colors: mustard on navy, navy on powder-blue. 
+
+Right-shoulder text (default): NORTHERN PLAINS COMMAND (ALL CAPS, plain military block). You can switch to another bloc if story demands. 
+
+Name rule: regime shows first-name only if a name tag appears. 
+
+Medals & rank (display logic you asked to lock)
+
+Rank badge: minimal badge above the left breast pocket (keep this uncluttered). 
+
+Medal canon: visual growth metric = medals 4 → 0 across arc (ensure scenes never exceed “a few”). 
+
+Display layout (consistent with minimalism rules):
+
+Ceremonial/HQ poster: one single-row ribbon rack of up to four mini ribbons above the right breast pocket, keeping the rank badge unblocked on the left; no pendant medals unless a formal ceremony shot. (This respects “no extra medals beyond canon” while keeping the left side clean.) 
+
+Field/raid frames: omit medal display entirely (focus on holsters/HUD). 
+
+Sidearms & carry (Kahaan signatures)
+
+Pistols: compact, matte service pistols; twin high-ride shoulder holsters. In office: mostly hidden; in field: exposed; one often drawn. 
+
+Mag-Holster plates: slim magnetic plates hugging the rib line; near-invisible under coat; tiny metallic “settle” when a pistol snaps home. (Use this sound/pose cue.) 
+
+Remote-control “float”: two pistols hover at shoulder height on invisible gimbals; faint electric-blue shimmer threads between him and the guns. Keep it understated. 
+
+HUD monocle (shape override + behavior)
+
+Shape lock: Dragon Ball Z–style lens silhouette (curved rectangular lens), but apparatus-less—a floating, thin translucent lens over the left eye. Tone: electric blue, tiny ticks/arcs only. OFF in official portraits, ON in battle-ready posters (your rule), which already matches the office/field canon switch. 
+
+Reflections: soft blue on cheekbone/eyelid—stay subtle. 
+
+Brace-Comm (wrist)
+
+Look & use: clean military band; projects small cyan/blue-white panes (call/map/payment); polite in HQ, livelier in field—use sparingly. 
+
+Bike — single variant (locked to your reference image)
+
+You said: one variant only, shaped like the attached. So we’re overriding the optional multi-variant list and locking a stealth scout motorcycle with these visual cues:
+
+Overall silhouette: low, monocoque-like body with continuous faceted panels; aggressive, angular fairings; razor tail.
+
+Front view: narrow shoulders; triple vertical front LEDs in a tight spine (pilot-light look); aero “cheek” planes pinch inward.
+
+Side profile: partially shrouded front wheel; deep-dish/hub-shrouded rear wheel (turbine-rim feel); flush intakes and a slim mid-body fin; tiny amber/gold accent slits at cowl and mid-fairing.
+
+Rear view: twin vertical red light bars flanking a central spine; winglet hints at the tail.
+
+Finish: matte graphite/black primary with micro-satin panels; small mustard emblem stenciled on the tail (or navy on powder-blue if that panel flips color per coat logic). Keep unbranded/tactical. (Color & emblem usage per army spec.) 
+
+Sync etiquette: allow a tiny blue HUD status flicker when the bike acknowledges his control—no busy UI. 
+
+Palette & typography (never improvise)
+
+Palette anchors: powder-blue shirt; navy outer layers; HUD/tech = electric blue; emblems mustard on navy / navy on powder-blue. 
+
+Right-shoulder text: ALL CAPS, plain military block; no slogans. 
+
+“Office vs Field” toggles (for prompt conditioning)
+
+Office poster: coat on, holsters mostly hidden; HUD OFF; ribbon rack (≤4) right chest; rank badge left; Brace-Comm idle. 
+
+Field contact: coat open/shed; holsters exposed; one pistol drawn + two floating; HUD ON; bike may park 3/4 in BG. 
+
+Phase-1 Output Pack (what to draw/build now)
+
+A. Turnarounds (full-body)
+
+Neutral front/side/¾ in day wear (coat open; holsters ghosted under coat seam). 2) Field kit with one pistol drawn + two floating at shoulder height. Include scar placement (right side, 2″ with cheekbone bend) and ribbon rack (≤4) right chest.
+
+B. Face sheet (static)
+Front + profiles + ¾ with: clean-shave vs stubble; HUD OFF vs ON (DBZ-lens silhouette); cyan-tint scar glow in “systems active” version.
+
+C. Tech tiles
+
+Mag-Holster close-up (ribline plates + “snap-settle” caption). 
+
+Float control (two pistols hovering, faint blue shimmer thread). 
+
+HUD lens (shape callout + reflection rule). 
+
+Brace-Comm (three micro-cards: call/map/payment). 
+
+D. Marks & typography tile
+Back-emblem size; left-shoulder emblem; right-shoulder bloc text (NORTHERN PLAINS COMMAND sample). Emblem color swaps. 
+
+E. Medal logic tile
+Row of up to four mini ribbons (HQ only), growth note 4→0; “no extra medals beyond canon” warning. 
+
+F. Bike sheet (single variant)
+Front, side, rear elevations matching your reference (triple front LEDs; hub-shrouded rear; amber/gold slits; matte graphite/black; small mustard emblem). Keep unbranded; add mini note on HUD status flicker. 
+
+Prompt chips (drop-in, Phase-1 tested)
+
+Office poster (HUD OFF):
+“Major Kahaan, 34, 6′1″, lean athletic. Powder-blue shirt under open navy officer’s coat; ribbon rack (≤4) on right chest, rank badge above left pocket. Large army emblem across coat back; small emblem on left shoulder; right shoulder reads NORTHERN PLAINS COMMAND (ALL CAPS). Twin high-ride shoulder holsters mostly hidden under the coat; Mag-Holster plates suggested at the rib line. HUD monocle off. Fair-wheatish skin; dark brown eyes; textured short quiff; clean-shave/stubble alt. Right-side 2″ scar that bends along the cheekbone (muted cyan at rest). Clean inks, painterly shading.” 
+
+Field contact (signature):
+“Combat dress; coat shed or open. One compact service pistol drawn; two more floating at shoulder height with a faint electric-blue control shimmer. HUD monocle (left eye) active—DBZ-style floating lens, thin translucent with tiny arcs; soft blue reflections on cheekbone. Stubble variant; scar glows faint cyan. Dust motes, low sun rim-light.” 
+
+Bike (single-variant ride-in):
+“Stealth scout motorcycle (one variant only), monocoque angular body, partially shrouded front wheel, hub-shrouded/turbine-rim rear, triple vertical front LEDs, twin vertical red tail bars, flush amber/gold accent slits. Matte graphite/black with a small mustard emblem on the tail. Parked 3/4 behind Kahaan; tiny blue HUD status flicker.” 
+
+Confirmed toggles for art & web CMS
+
+HUD: OFF in official portraits; ON in battle posters (matches office/field canon). 
+
+Bloc text: default NORTHERN PLAINS COMMAND; can swap to other canon blocs. 
+
+Medals: ribbon rack ≤4 (HQ only), trend 4→0 across timeline. 
+
+—
+
+If you’re happy with this lock, I’ll move straight into Phase 2 (Head, expressions & micro-tells) using these specs—no need for more inputs unless you want a different right-shoulder bloc or a tweak to the bike’s accent lights.
+
+Locked—rolling Phase 2: Head, Expressions & Micro-tells for Major Kahaan. I’ve fused your new specs (age 34, 6′1″, right-handed, DBZ-style floating HUD lens, right-cheekbone scar with cyan glow, Siddharth-coded features, fair-wheatish tone, stubble/clean-shave cycles, one bike variant) with canon from the army bibles so this becomes a zero-ambiguity guide for illustration and prompt generation.
+
+Phase 2 — Head & Expression Bible (production-ready)
+
+A) Head geometry & facial feature map (Sidharth-coded, adapted to Kahaan)
+
+Cranial & jaw structure: athletic oval skull; strong mandibular angle; straight squared jaw taper; high, clean zygoma (cheekbone) that reads in ¾ view.
+
+Eyes: almond-set, dark brown; upper lid crease visible; mild canthal tilt neutral to +1°. Default gaze is assessing—pupils slightly tightened, “searching the edges.”
+
+Brows: straight-to-soft-arched with a subtle lateral lift; command set = inner brow tightened, outer brow restrained (avoid cartoon V’s).
+
+Nose: straight dorsum; subtle break at bridge; narrow tip—reads “precise,” not delicate.
+
+Mouth: medium-full with crisp Cupid’s bow; asymmetric micro-smile favored (right corner leads by 1–2 mm)—his signature sardonic read aligns with the character report’s speech cadence notes .
+
+Ears: regulation-neat; behind the right ear is a faint surgical diode scallop from the implant lattice (include in side and back heads).
+
+Complexion: fair-wheatish with neutral-warm undertone; low specular unless sweating or in hard rim-light.
+
+Hair: dark brown-black; short textured quiff up top; tight sides (regulation neat).
+
+Facial-hair states: alternate between clean-shave and short stubble (1–3 mm). Keep mustache connected at stubble length.
+
+B) Signature mark & tech tells
+
+Scar (new canon, lock): right side, ~2″. Starts at eyebrow level → descends straight → bends along the cheekbone angle.
+
+Hue states: muted cyan at rest; faint glow when the HUD is active or when he’s exerting remote weapon control (ties visually to the HUD/“float” tone). Remote-weapon “float” is canon; keep the cue minimal and tasteful【turn3file0†Army Weapon & Tech Bible.docx†L65-L70】【turn3file1†Army Weapon & Tech Bible.docx†L21-L26】.
+
+HUD monocle (shape override locked): DBZ-style curved rectangular lens, but apparatus-less, a thin floating pane over the left eye; electric-blue with tiny ticks; soft blue reflections on cheek/eyelid; OFF in official portraits, ON in battle (this OFF/ON split is consistent with uniform guides)【turn3file1†Army Weapon & Tech Bible.docx†L35-L47】【turn3file10†Army uniform Guide.docx†L63-L67】.
+
+Diode side-effects (for expression triggers): migraines, tinnitus, transient paralysis when over-exerted; PTSD flashes on concussive blasts or burning-circuit smell—use these to drive specific micro-expressions and freezes.
+
+C) Head sheet deliverables (5-view + toggles)
+
+Generate: Front, Profile-L, Profile-R, ¾-L, Back.
+Toggles per view: (1) Clean-shave / (2) Stubble, (A) HUD OFF / (B) HUD ON, (i) scar idle / (ii) scar glow.
+Back view must show coat collar break and hint of large back emblem in uniform contexts per spec (when jacket present)【turn3file6†Army uniform Guide.docx†L21-L29】.
+
+D) Expression grid (12 cells) — names, emotion logic, muscle notes, camera & toggles
+
+Each cell includes HUD, scar glow, camera, and pose instructions so LLMs render consistently.
+
+Command-Calm (Default Officer Read)
+
+Emotion: composed authority.
+
+Muscles: brows neutral, lids 60–70% open; lips closed, corners neutral.
+
+Camera: 50 mm, front ¾. HUD: OFF. Scar: idle.
+
+Notes: dress blues; rank glint L-pocket; right-shoulder bloc text readable【turn3file10†Army uniform Guide.docx†L53-L61】.
+
+Assessing Scan (Tactical Parse)
+
+Micro-tells: pupils tighten; head tilt <5°; tiny jaw set.
+
+Cam: 85 mm, eye-level; crop mid-brow to chin. HUD: OFF. Scar: idle.
+
+Use to preface “float” sequences (guns may be out of frame).
+
+Sardonic Half-Smile (Control with Edge)
+
+Mouth: right corner +1–2 mm; left barely follows; nostrils narrow.
+
+Brows: slight lateral lift. Cam: 50 mm, ¾. HUD: OFF. Scar: idle.
+
+Matches voice cadence notes on knife-edge sarcasm.
+
+Precision-Lock (Target Acquisition)
+
+Eyes: one-eye micro-squint (dominant right) with other widened a touch; breath held.
+
+Cam: 85 mm tight. HUD: ON (tiny ticks), cyan cheek highlight; scar glow low.
+
+Pair with one pistol drawn + two floating off-frame per canon “float” behavior【turn3file0†Army Weapon & Tech Bible.docx†L65-L73】.
+
+HUD Intake (Data Bloom)
+
+Lids track left pane; slight brow knit only on HUD side; mouth neutral.
+
+Cam: 35–50 mm; lens visible, translucent. Scar glow low.
+
+Keep UI minimal and illegible as per HUD rules【turn3file1†Army Weapon & Tech Bible.docx†L49-L53】.
+
+EMP Jolt / Circuit Loss (Micro-Freeze)
+
+Triggers: EMP risk or heavy concussion.
+
+Muscles: blink stutter, jaw slack 1–2 mm, breath hitch; pupils dilate.
+
+Cam: 85 mm; slight handheld feel. HUD: flicker → OFF. Scar: glow collapses.
+
+Justification: implant failure & vulnerability are canon.
+
+PTSD Flash (Africa Scent/Blast)
+
+Eyes unfocus 0.2–0.4s; brows pull medially; lips part; micro head jerk.
+
+Cam: 85–100 mm; shallow DOF; introduce a frame-edge bright smear. HUD: OFF. Scar: idle.
+
+Canon: flashback trigger by concussive sound/smell.
+
+Interrogator’s Silence (Tactical Pause)
+
+Mouth sealed, submental tension; gaze steady; brow inner corners slightly raised (not pity).
+
+Cam: 50 mm; shoulder in foreground. HUD: OFF.
+
+Rooftop Mercy (Ethic Breakthrough)
+
+Eyes soften; exhale visible; lower lip slackens; brow inner corners relax.
+
+Cam: 85 mm close ¾. HUD: OFF. Scar: tiny glow may linger if guns are hovering then settle off as he resolves to de-escalate (aligns with arc toward humanitarian stance).
+
+Pain-Hold (Migraine/Tinnitus Under Fire)
+
+One eye pinches; temple muscle ticks; nostrils flare; breath through nose.
+
+Cam: 85 mm; hard key from one side. HUD ON but dim; scar glow mid.
+
+Canon link: diode over-exertion → migraines/tinnitus.
+
+Public Mask (Poster-Officer)
+
+PR smile: symmetrical, brief tooth reveal; brows smoothed; eyes “bright.”
+
+Cam: 50 mm; clean, even light; medals ribbon-rack (≤4) visible on right chest; rank on left (HQ frame rules).
+
+Break & Gift (Final Choice)
+
+Shoulders drop; eyes damp but steady; mouth rests open a breath; anger dissolves.
+
+Cam: 50–85 mm. HUD: OFF. Scar: idle.
+
+Arc anchor: choosing service over supremacy.
+
+E) Mouth shapes & phoneme pack (animation-ready, optional)
+
+Core visemes: MBP, FV, WQ, L, EE, AH, OH, TH. Keep lips efficient, no cartoon stretch; beard stubble should barely break silhouette.
+
+Speech style cues: default crisp-military diction; under stress, clipped combat shorthand (jaw tighter, faster MBP cycles) per voice notes.
+
+F) Micro-tells & habits (repeatable)
+
+Assess-edges habit: eyes sweep exits/angles before faces (ties to tactical mind).
+
+Holster discipline: right-hand dominant; off-hand ready to cue “float” (guns may hover just off-frame)【turn3file0†Army Weapon & Tech Bible.docx†L33-L36】【turn3file0†Army Weapon & Tech Bible.docx†L65-L69】.
+
+HUD etiquette: OFF in office/HQ stills; ON for contact/ops; reflections always subtle【turn3file10†Army uniform Guide.docx†L63-L67】.
+
+G) Lighting & render notes for head shots
+
+Office portraits: neutral 3-point; low specular; HUD OFF; medal ribbon-rack ≤4 on right chest, rank left (if torso in frame).
+
+Field close-ups: single hard key + cool rim; dust motes permitted; HUD ON (dim ticks), scar glow low; include spent-casing bokeh if weapons implied.
+
+H) Prompt chips (copy-paste ready for expression sheet)
+
+Base head (neutral + toggles):
+“Major Kahaan, 34, 6′1″, lean-athletic; fair-wheatish skin; dark brown eyes; short textured quiff; right-cheekbone scar (2″) that bends along cheekbone, muted cyan at rest; diode scallop behind right ear. Two variants: clean-shave and short stubble. HUD OFF vs HUD ON (DBZ-style floating lens, electric-blue ticks). Clean inks, painterly shading.”
+
+Precision-Lock (expression 4):
+“One-eye micro-squint, breath held; HUD ON with faint ticks; soft cyan cheek reflection; scar glow low; matte regulation vibe; tight 85 mm crop.”
+
+EMP Jolt (expression 6):
+“Blink stutter; pupils dilate; jaw slack; micro freeze; HUD flickers then OFF; scar glow collapses; handheld feel; 85 mm.”
+
+Sardonic Half-Smile (expression 3):
+“Right corner mouth lift 1–2 mm; eyes steady; brows lateral lift; HUD OFF; ¾ 50 mm.”
+
+Public Mask (expression 11):
+“Poster-officer HQ portrait; dress blues; ribbon-rack ≤4 right chest, rank left; gentle symmetric smile; HUD OFF; even light.”
+
+Why these locks are canon-safe
+
+HUD shape/behavior & tech tone draw from the army tech bible (floating, minimal, left eye; OFF in office, ON in field)【turn3file1†Army Weapon & Tech Bible.docx†L35-L47】【turn3file7†Army Weapon & Tech Bible.docx†L1-L6】.
+
+Holsters, Mag-Holster plates, float-control shimmer are fixed as signature Kahaan visuals【turn3file0†Army Weapon & Tech Bible.docx†L25-L35】【turn3file0†Army Weapon & Tech Bible.docx†L47-L55】【turn3file0†Army Weapon & Tech Bible.docx†L65-L71】.
+
+Uniform marking rules (back emblem, left-shoulder small emblem, right-shoulder text) are rigid in the uniform guide【turn3file6†Army uniform Guide.docx†L21-L29】.
+
+Medal display discipline (few ribbons, HQ only visuals) aligns with the tech bible’s scene recipes & “no extra medals” rule.
+
+PTSD/diode failure triggers for specific expressions come from the character report.
+
+If you’re happy with this Phase-2 lock, I’ll proceed to Phase 3 — Wardrobe & Gear Packs next (HQ/Field/Civilian), carrying these head/expression rules through every outfit so nothing drifts.
+
+Locked and delivered — here’s Phase 3: Wardrobe & Gear Packs for Major Kahaan (age 34). I’ve fused your new specs (DBZ-style floating HUD lens, right-cheek scar with cyan glow, one bike variant, medals shown “a few,” HUD OFF in official portraits/ON in battle) with the uniform + tech bibles so this is zero-ambiguity for art and LLM prompting.
+
+Phase 3 — Wardrobe & Gear Packs (HQ / Field / Civilian)
+
+A) HQ / Office (“dress blues”) — poster-officer read
+
+Silhouette & palette. Powder-blue shirt, navy trousers, open navy officer’s coat; polished, regulation shoes. This exact office combo is canon for Kahaan and signals “poster-officer.” 
+
+Marks & typography (strict).
+
+Back: large army emblem centered shoulder-to-shoulder.
+
+Left shoulder: small emblem.
+
+Right shoulder: bloc text only (ALL CAPS, plain military block), e.g., NORTHERN PLAINS COMMAND. No logos or slogans on the right. 
+
+ID & rank discipline. First-name-only if a name tag is shown; rank badge minimal above the left breast pocket. 
+
+Medal display (your “few medals” rule encoded). Use a single ribbon row (≤4 mini ribbons) on the right chest, clear of the rank badge; no pendants unless ceremonial. This keeps to the canon “few medals” growth cue (4→0). 
+
+Carry & tech in HQ. Twin shoulder holsters mostly concealed under the open coat; Mag-Holster plates hug the ribs and remain nearly invisible. HUD monocle: OFF in official portraits (glass quiescent). Brace-Comm present but idle unless needed. 
+
+Prompt chip (HQ poster).
+“Major Kahaan, 34, 6′1″, lean-athletic. Powder-blue shirt under open navy officer’s coat; rank badge above left pocket; ribbon rack (≤4) on right chest. Large emblem across coat back; small emblem left shoulder; right shoulder reads NORTHERN PLAINS COMMAND (ALL CAPS). Twin high-ride shoulder holsters mostly hidden; Mag-Holster plates suggested at rib line. HUD OFF.”
+
+B) Field / Combat (“combat dress”) — active deployment read
+
+Silhouette & cue. Combat dress with shoulder holsters accessible/exposed; coat open or shed; turning the HUD ON is the single strongest field cue. 
+
+Marks (when a jacket is worn). Keep the large back emblem, small left emblem, right shoulder = bloc text. Omit marks on bare tactical rigs (no invented surfaces). 
+
+Weapons behavior. One pistol frequently drawn, while two pistols hover at shoulder height on invisible gimbals; control is a faint electric-blue shimmer linking Kahaan to the guns—clean and understated. 
+
+HUD lens (shape + behavior). DBZ-style curved rectangular lens, apparatus-less, floating over the left eye; electric-blue ticks only; subtle cheek/eyelid reflection. ON in battle frames. 
+
+Brace-Comm. Wrist band may project small cyan/blue-white cards (call/map/medevac) — keep minimal. 
+
+Scar tell. Right-cheek scar (2″, bends along cheekbone) glows faint cyan when HUD/remote-control is active (visual handshake with HUD color family). (User rule; consistent with canon float/HUD tones.)
+
+Prompt chip (Field contact).
+“Combat dress; coat open/shed. One pistol drawn; two pistols floating at shoulder height with a faint electric-blue shimmer. HUD ON (DBZ-style floating lens, left eye); tiny ticks only; soft blue reflections. Scar glow low. Dust motes, low sun rim-light.”
+
+C) Civilian / Undercover — blend & observe
+
+Look. Earth-tone utility jacket or tee + straight pants/jeans; practical boots; no military marks; holster profile minimized (concealment). This undercover palette and blending behavior are on record for Kahaan. 
+
+Tech etiquette. HUD OFF; Brace-Comm dark unless a covert transaction or ping is essential (use tiny, quickly-fading panes). 
+
+Prompt chip (Civilian shadow).
+“Civilian mode; earth-tone utility jacket over fitted tee; straight pants/jeans; practical boots. Holsters concealed; HUD OFF; Brace-Comm dark.”
+
+Gear Packs (detail sheets & promptable specs)
+
+1) Sidearms (standard pistols)
+
+Type & finish. Compact, matte service pistols; low-profile irons; minimal ornament. 
+
+Carry logic. Twin high-ride shoulder holsters; office = mostly concealed under coat; field = exposed; right-hand dominant draw, but he can mirror left-hand. 
+
+Prompt chip. “Compact matte-black service pistol; twin high-ride shoulder rig; one pistol drawn; regulation silhouette.” 
+
+2) Mag-Holster plates (rig)
+
+Look & motion. Slim magnetic plates under the coat webbing, nearly invisible; a tiny metallic ‘settle’ when a pistol snaps home. 
+
+Prompt chip. “Slim magnetic holster plates hugging the rib line; frictionless magnet-lock ‘snap’; almost invisible under the open navy coat.” 
+
+3) Remote-control “float” (signature)
+
+Behavior. Two pistols hover near shoulder height, micro-tilting as if gimballed; faint electric-blue shimmer control-line; no heavy UI. 
+
+Prompt chip. “Two compact pistols floating at shoulder height with a faint electric-blue control shimmer; micro-adjusting in air; understated.” 
+
+4) HUD Monocle (DBZ-shape)
+
+Form & color. Curved rectangular floating lens, left eye, thin translucent; electric-blue with tiny ticks; subtle cheek highlights.
+
+Mode. OFF in HQ stills; ON in field; micro-animations allowed. 
+
+5) Brace-Comm (wrist)
+
+Form & projection. Clean military band; small cyan/blue-white 3-D panes: call, map, payment; fast fall-off; discreet in HQ, livelier in field. 
+
+6) Bike (single variant — locked to your reference)
+
+Read the silhouette like this: low monocoque angular body, faceted aero planes; part-shrouded front wheel, hub-shrouded/turbine-rim rear; nose with triple vertical front LEDs; tail with twin vertical red light bars; small amber/gold accent slits on the cowl and mid-fairing; matte graphite/black finish. Add a small mustard emblem on the tail to match army brand rules (mustard on navy / navy on powder-blue). (Bike specifics from your image; emblem/color usage per army spec.) 
+
+HUD sync etiquette. A tiny blue status flicker on the dash or tail when Kahaan links—no extra holograms. 
+
+Prompt chip (bike sheet).
+“Stealth scout motorcycle, one variant only: monocoque, faceted body; partially shrouded front wheel; hub-shrouded rear; triple vertical front LEDs; twin red tail bars; amber/gold accent slits. Matte graphite/black; small mustard emblem on tail; tiny blue HUD sync flicker.”
+
+Color & finish constants (do not improvise)
+
+Primary: navy outer layers, powder-blue shirts.
+
+Emblem color pairs: mustard on navy, navy on powder-blue.
+
+Field cue: HUD’s electric-blue glow flips office→field. 
+
+What to export now (boards you can hand to artists or generators)
+
+HQ Turnarounds (front/side/¾/back)
+
+Coat open; holsters ghosted; rank badge left, ribbon row ≤4 right; marks placement (back/left/right shoulder). 
+
+Field Turnarounds
+
+Coat open/shed; one pistol drawn, two floating; HUD ON; scar glow faint; optional bike ¾ in BG. 
+
+Civilian Turnarounds
+
+Earth-tone jacket/tee/jeans; HUD OFF; holsters concealed. 
+
+Gear Close-ups
+
+Mag-Holster plate detail; Brace-Comm panes; HUD lens shape/reflections; pistol elevations. 
+
+Bike Elevations (front/side/rear)
+
+Triple LEDs front; hub-shrouded rear; twin red tail bars; accent slits; finish & small emblem placement. 
+
+Don’ts (QA guardrails)
+
+Don’t put an emblem on the right shoulder (text-only zone). 
+
+Don’t add new medals or rows beyond the ribbon rack ≤4 or invent ceremonial pendants in non-ceremonial frames. 
+
+Don’t over-UI the HUD or float (no hologram clutter). 
+
+Don’t print surnames or mottos on uniforms. 
+
+—
+
+If this Phase-3 lock looks good, I’ll roll into Phase 4 — Body-language & Pose Library next (12 inked poses optimized for lore cards + website), carrying these wardrobe/gear rules through every pose so nothing drifts.
+
+Locked—here’s Phase 4: Body-Language & Pose Library for Major Kahaan. This is a production-ready, zero-ambiguity guide you can hand to artists or drop straight into LLM image generators. I’ve baked in every visual lock from Phases 1–3 (age 34, 6′1″ lean-athletic; right-hand dominant; DBZ-style floating HUD lens on left eye; right-side cyan scar that glows when HUD/remote control is active; twin compact pistols with Mag-Holsters; medals = few; single stealth-scout bike variant; uniform marking rules; HUD OFF in official portraits, ON in battle).
+
+Phase 4 — Body-Language DNA (how Kahaan “reads” in any frame)
+
+Baseline stance: squared and economical; pelvis neutral; feet shoulder-width, right foot subtly forward; knees unlocked. Weight sits slightly on the balls of the feet (ready to pivot).
+
+Gait: smooth, heel-to-toe with muted arm swing; elbows close when clearing corners; economy over flourish.
+
+Hands discipline: right hand prefers draw/point; left hand is “controller” (brief splay/tilt gesture when engaging hover/recall).
+
+Head/eye habits: eyes scan edges/exits before faces; micro-tilt <5°; one-eye micro-squint when locking precision.
+
+Tech tells: DBZ-style HUD lens appears only in ops (left eye, thin translucent, electric-blue ticks); scar glow = OFF at rest, low when HUD/hover engaged, mid under strain (migraine/tinnitus), collapse after EMP shock.
+
+Uniform etiquette: medals/ribbons only in HQ posters; none in combat. Right shoulder = bloc text only; left shoulder = small emblem; back = large emblem. (Keep this across every pose.)
+
+Energy: “calm vector” — lines are straight, movements controlled. Even when dynamic, he reads deliberate, not chaotic.
+
+The 12-Pose Library (each with camera, wardrobe, HUD, weapons, and prompt chips)
+
+For each pose: Purpose | Silhouette cues | Camera/lens | Wardrobe | HUD & scar | Weapons | Common pitfalls | Prompt chip.
+
+1) Officer-at-Ease (HQ poster anchor)
+
+Purpose: default PR stance; use on bio pages and medals context.
+
+Silhouette: feet shoulder-width; hands behind back or relaxed down; coat open; chest proud, not puffed.
+
+Camera/lens: 50 mm, front ¾, mid-thigh crop; neutral 3-point light.
+
+Wardrobe: HQ dress (powder-blue + open navy coat); ribbon rack ≤4 (right chest), rank left.
+
+HUD & scar: HUD OFF; scar idle.
+
+Weapons: holsters mostly hidden; no hover.
+
+Pitfalls: don’t center medals on the left; don’t add slogans to right shoulder.
+
+Prompt chip: “Officer-at-Ease, HQ dress; coat open, ribbon-rack ≤4 (right), rank left; 50 mm front ¾; HUD OFF, scar idle; clean neutral light.”
+
+2) Command Halt (field authority)
+
+Purpose: signals a unit stop or civilian crowd control.
+
+Silhouette: left palm out at shoulder height; right elbow tucked, hand near holster.
+
+Camera/lens: 35–50 mm, low angle 10–15°, half-body.
+
+Wardrobe: combat dress; coat open.
+
+HUD & scar: HUD ON (thin DBZ lens); scar low glow.
+
+Weapons: pistols holstered (no hover yet).
+
+Pitfalls: avoid wide splayed fingers (keep the palm crisp).
+
+Prompt chip: “Command Halt: left palm up; right hand near holster; combat dress; low angle; HUD ON, scar glow low; disciplined posture.”
+
+3) Draw-and-Float (signature grammar)
+
+Purpose: iconic Kahaan image; used for lore cards and covers.
+
+Silhouette: right arm extends with one pistol drawn; two pistols hover at shoulder height, micro-tilting like gimbals; left hand slightly splayed (controller cue).
+
+Camera/lens: 35 mm dynamic ¾; slight motion blur on hover; dust motes in rim light.
+
+Wardrobe: combat dress, coat open/shed.
+
+HUD & scar: HUD ON; scar low→mid glow.
+
+Weapons: electric-blue shimmer thread between him and hovering guns—subtle.
+
+Pitfalls: don’t render thick holograms; keep UI minimal.
+
+Prompt chip: “Draw-and-Float: right-handed aim; two compact pistols hovering at shoulder height with faint electric-blue control shimmer; combat dress; 35 mm dynamic ¾; HUD ON; scar glow low-mid; dust rim-light.”
+
+4) L-Check Slice (corner clear)
+
+Purpose: tactical movement through architecture.
+
+Silhouette: body bladed; right shoulder forward; left hand flat to wall; knees soft.
+
+Camera/lens: 24–28 mm close, architectural lines converging; low-key light.
+
+Wardrobe: combat dress.
+
+HUD & scar: HUD ON (dim ticks); scar low glow.
+
+Weapons: one hover pistol peeks past the corner; the drawn pistol stays tight to chest.
+
+Pitfalls: don’t over-lean; center of gravity stays inside feet.
+
+Prompt chip: “Corner clear: body bladed, left hand on wall; right pistol close to chest, second pistol hovering just beyond corner; HUD ON dim; low-key.”
+
+5) Rooftop Perch (long-sight scan)
+
+Purpose: surveillance/overwatch without sniper gear.
+
+Silhouette: one knee up on parapet; elbows on knee; posture relaxed but alert.
+
+Camera/lens: 85 mm, eye-level, city bokeh; golden-hour rim.
+
+Wardrobe: field jacket open; no medals.
+
+HUD & scar: HUD ON (soft ticks); scar idle unless hover engaged.
+
+Weapons: holstered; may add a very subtle hover drift for mood.
+
+Pitfalls: avoid full crouch (he observes, not hides).
+
+Prompt chip: “Rooftop Perch: knee up, elbows resting; city bokeh; warm rim; field jacket open; HUD ON soft ticks; holsters closed.”
+
+6) Precision-Lock (target acquisition close-up)
+
+Purpose: micro-squint and breath-hold moment.
+
+Silhouette: head slightly forward; right eye micro-squint; jaw set.
+
+Camera/lens: 85–100 mm tight head; shallow DOF.
+
+Wardrobe: combat dress.
+
+HUD & scar: HUD ON; cheek gets electric-blue reflection; scar low glow.
+
+Weapons: in frame edge: blurred muzzle/hover pistol to imply action.
+
+Pitfalls: no over-strain veins; he’s calm.
+
+Prompt chip: “Precision-Lock: one-eye micro-squint; breath held; tight 85–100 mm head; HUD ON with thin DBZ lens; cyan cheek highlight; scar glow low.”
+
+7) EMP Flinch (implant failure beat)
+
+Purpose: vulnerability/jeopardy.
+
+Silhouette: shoulders tense; blink stutter; gun dips 2–3°.
+
+Camera/lens: 85 mm; handheld jitter; sharp key + cold rim.
+
+Wardrobe: combat dress.
+
+HUD & scar: HUD flickers → OFF; scar glow collapses.
+
+Weapons: hover pistols sink a few centimeters (gravity hints).
+
+Pitfalls: don’t over-dramatize; it’s a half-second beat.
+
+Prompt chip: “EMP Flinch: micro-freeze; handheld feel; hover pistols sink slightly; HUD flicker then OFF; scar glow collapses; cold rim-light.”
+
+8) Brace-Comm Medevac (field triage)
+
+Purpose: shows compassion under fire; character depth.
+
+Silhouette: kneeling, left forearm braced under a casualty’s shoulders; right wrist Brace-Comm projecting two small panes (call + med grid).
+
+Camera/lens: 35–50 mm; low angle; warm key on faces.
+
+Wardrobe: combat dress; sleeves pushed.
+
+HUD & scar: HUD ON (dim); scar low.
+
+Weapons: holstered; no hover.
+
+Pitfalls: keep panes minimal (no sci-fi clutter).
+
+Prompt chip: “Field triage: Kahaan kneels, supporting casualty; Brace-Comm emits two small cyan panes; HUD ON dim; compassionate focus; minimal UI.”
+
+9) Interrogator’s Silence (tactical pause)
+
+Purpose: intimidation without shouting.
+
+Silhouette: lean-in over table; hands flat; shoulders square.
+
+Camera/lens: 50 mm, eye-level; overhead practical light cone.
+
+Wardrobe: HQ dress or plain field shirt; HUD OFF (office) or ON (field).
+
+Scar: idle unless hover present.
+
+Weapons: holsters concealed; add hover pistol reflection in steel tabletop if it’s a field scene.
+
+Pitfalls: don’t slouch; he radiates control.
+
+Prompt chip: “Interrogator’s Silence: lean-in over table, hands flat; overhead cone; HUD OFF for office; minimal menace through stillness.”
+
+10) Bike Glide-In (stealth arrival)
+
+Purpose: integrates the single-variant scout bike.
+
+Silhouette: seated low, elbows in; head forward; tail’s twin vertical red bars glowing; nose shows triple vertical LEDs.
+
+Camera/lens: 24–35 mm tracking ¾ front; night or blue hour; wet asphalt reflections.
+
+Wardrobe: combat dress; coat zipped or wind-tucked.
+
+HUD & scar: HUD ON; scar low; tiny blue status flicker on bike dash.
+
+Weapons: holstered; no hover while riding.
+
+Pitfalls: don’t add extra gadgets; keep bike monocoque & clean.
+
+Prompt chip: “Bike Glide-In: monocoque stealth bike; triple vertical front LEDs; twin red tail bars; matte graphite/black; tiny blue sync flicker; ¾ tracking; HUD ON.”
+
+11) Bike Hard-Brake + Pivot Draw
+
+Purpose: kinetic hero panel.
+
+Silhouette: rear wheel kicks dust; left foot plants; right arm draws while body torques; coat flares.
+
+Camera/lens: 28–35 mm, Dutch tilt 5–10°, shutter blur.
+
+Wardrobe: combat dress.
+
+HUD & scar: HUD ON; scar mid glow.
+
+Weapons: drawn pistol in right hand; one hover pistol rises to shoulder height on his left.
+
+Pitfalls: keep center of gravity over planted foot (believable physics).
+
+Prompt chip: “Bike brake-turn: dust kick, left foot plant, torso torque; right-hand draw; one pistol hovering up left; 28–35 mm with motion blur; HUD ON, scar glow mid.”
+
+12) Night Alley De-Escalation (mercy beat)
+
+Purpose: showcases restraint—core character note.
+
+Silhouette: arms lower; shoulders soften; chin dips; hover pistols settle down and re-holster.
+
+Camera/lens: 50 mm street-level; neon spill; breath visible in cool air.
+
+Wardrobe: field jacket open.
+
+HUD & scar: HUD ON → dims; scar glow fades.
+
+Weapons: hover ends with the subtle metallic settle at ribs.
+
+Pitfalls: don’t make it melodramatic—quiet power.
+
+Prompt chip: “De-Escalation: weapons lower; hover pistols settle with a tiny metallic snap; 50 mm neon street; HUD dimming, scar glow fading; exhale plume.”
+
+Crops & aspect guidance (so art lands where the site needs it)
+
+Lore card portraits (4:5 vertical): prioritize Poses 3, 6, 2, 12. Leave clean negative space on one side for text (20–30%).
+
+Banners (16:9): 10 and 11 with the bike; horizon line low; UI-safe left or right third empty.
+
+Ultra-wide (21:9 hero): 3 (subject on right, hover pistols centered) or 12 (subject left, negative space right). Maintain 55–65% negative space where requested.
+
+Lighting cheatsheet
+
+HQ: neutral key + soft fill; color temps balanced; HUD OFF; medals visible if in frame.
+
+Field day: hard key + cool rim (dust motes allowed).
+
+Night/blue hour: neon spill; keep HUD and scar glow readable but subtle (never the brightest element).
+
+EMP beat: let highlights stutter or smear 1–2 frames; immediately reduce HUD/Scar output.
+
+Export list (deliver these boards)
+
+12 inked poses (line + flats), each with a 1–2 line caption and the prompt chip.
+
+Alt crops for Poses 3, 6, 10, 11 (4:5, 16:9, 21:9).
+
+Micro-gesture sheet (left-hand controller splay; right-hand draw path; “metallic settle” icon).
+
+Lighting thumbnails (HQ / day field / night field / EMP).
+
+Bike insert kit (front, side, rear silhouettes ready to comp behind Poses 10–11).
+
+QA guardrails (to prevent drift)
+
+Never place medals in field scenes; never exceed a single ribbon row ≤4 in HQ.
+
+Right shoulder is text only; left shoulder small emblem; back large emblem—don’t swap.
+
+Keep HUD DBZ-shape thin and apparatus-less; UI marks are tiny ticks/lines only.
+
+Hover shimmer is faint; no thick beams or sci-fi hologram clutter.
+
+Scar glows only in sync with HUD/remote control; otherwise muted cyan.
+
+If this looks good, I’ll proceed to Phase 5 — Lore Card Copy + CMS Blocks (short/long bios, powers/limits, timeline anchors, affiliations, spoiler gating), wired to these poses so you can drop art and copy into the website with zero guesswork.
+
+Alright—here’s a production-ready Phase 5: Lore Card Copy + CMS Blocks for Major Kahaan (age 34, author-retcon), wired to your Phase-1–4 visuals. I’ve embedded canon citations anywhere the facts come from your files; your new specs (age 34; DBZ-style floating HUD lens; right-cheek scar with cyan glow; single bike variant; right-hand dominant; fair-wheatish) are locked as creator overrides.
+
+Lore card copy (drop-in text)
+
+Micro-tagline (≤20 words)
+Decorated officer with floating pistols and a conscience under fire—built for control, forced to choose mercy.
+
+Short bio (≈60 words)
+Major Kahaan is a lean, regulation-sharp officer whose augmented HUD and “floating” pistols make him a myth on the street. In office dress he’s all polish and medals; in the field, a single blue lens flips him into hunter mode . Africa left implants, migraines, and a hair-trigger PTSD—plus a private fear of becoming the regime’s pawn .
+
+Long bio (≈140 words)
+Kahaan projects calm precision: powder-blue shirt, open navy coat, twin shoulder holsters tucked high along the ribs . In operations, a thin, floating electric-blue lens slides over his left eye while two compact pistols hover at shoulder height on a faint control shimmer—his signature “float” behavior . The implants that enable this give him migraines and momentary paralysis under strain; EMP is an Achilles heel . He begins as a rank-hungry prodigy chasing promotion, then uncovers a false-flag machine inside the army and chooses country over power, ceding authority and helping dismantle the surveillance state . Visual shorthand of his moral arc: medals reduce from four to zero across the story .
+
+Powers, gear & limits (for the “Abilities” tab)
+
+Core skills
+
+Elite marksman; squad-level tactician; deft with drones/sensors (Phoenix Mall CCTV analysis as exemplar). 
+
+Augmentations
+
+HUD monocle (left eye): thin, floating, curved rectangular lens; electric-blue ticks; reflections kept subtle; OFF in office, ON in field. 
+
+Remote pistol control (“float”): two pistols hover at shoulder height; faint electric-blue control shimmer; effect must remain understated. 
+
+Carry & rig
+
+Twin high-ride shoulder holsters; Mag-Holster plates nearly invisible; tiny metallic “settle” when a pistol snaps home. 
+
+Comms
+
+Brace-Comm wrist band projects small cyan/blue-white panes (call/map/payment); polite in HQ, livelier in field. 
+
+Limits & vulnerabilities
+
+EMP knocks out control systems; over-exertion triggers migraines/tinnitus/brief paralysis; PTSD flashes on certain blasts/smells. 
+
+Timeline anchors (use “spoiler gating”)
+
+Tier-0 (safe)
+
+Fast-track cadet → Major; augmented after Africa mission; HUD/float become operational signature. 
+
+Tier-1 (mid-story, light spoilers)
+
+Africa fiasco leads to diode lattice; chronic PTSD established; promotion precedes 20-Oct bombing investigations. 
+
+Tier-2 (heavy spoilers – gate behind “Reveal”)
+
+Evidence of state-supplied explosives; Pratap’s orchestration revealed; coup confrontation; Kahaan cedes power, moves to dismantle dictatorship. 
+
+Affiliations & opponents
+
+Command bloc (right-shoulder text): default NORTHERN PLAINS COMMAND—ALL CAPS, plain military block; right shoulder is text-only. 
+
+Key ally: Hana, lieutenant/truth-teller challenging his selfish tactics. 
+
+Mentor-foil: Rudra, hermit legend embodying the democratic ideal he must accept. 
+
+Primary antagonist: General Pratap, dictator running staged terror. 
+
+Dark mirror: Surya/Punisher, anti-tech vigilante (shows where Kahaan could end up). 
+
+Uniform & medal display (website rules)
+
+Office/HQ (poster): powder-blue shirt, navy trousers, open navy coat; large emblem back; left shoulder small emblem; right shoulder bloc text only. Ribbon rack (≤4 mini ribbons) on right chest; rank badge above left pocket. 
+
+Field/combat: combat dress; holsters exposed; HUD ON; back emblem retained on any jacketed outer layer. 
+
+Growth metric: medals shown as a visual meter 4 → 0 across the arc (reflect in timeline slider). 
+
+Equipment card (for the “Loadout” tab)
+
+Sidearms: compact, matte service pistols; low-profile irons; one often drawn in field frames. 
+
+Holster system: twin high-ride shoulder rig; Mag-Holster plates hugging ribs; nearly invisible under coat. 
+
+HUD monocle: floating thin lens, left eye, electric-blue; minimal UI ticks. 
+
+Brace-Comm: clean band; small cyan/blue-white panes. 
+
+Bike (single variant for this project): visual match to your reference; keep canon accents small: matte navy/graphite with a small mustard emblem; slit/LED lighting; tiny blue sync flicker when linked. 
+
+Spoiler-gating map (how the page reveals info)
+
+Open by default: bio, office/field visuals, loadout basics, medals meter (without endpoint explanation), HUD/float description. 
+
+Gate Tier-1: Africa implant origin; EMP vulnerability context. 
+
+Gate Tier-2: state-supplied explosives; Pratap as puppeteer; final cession of power. 
+
+CMS blocks (schema + filled example)
+
+Schema (keys you can keep in JSON/YAML):
+id, name, rank, age, height_cm, build, handedness, skin_tone, eye_color, hair, facial_hair, scar, hud.shape, hud.eye, hud.behavior_office, hud.behavior_field, medals.start, medals.end, bloc_text_right_shoulder, emblem.left_shoulder, emblem.back, loadout.sidearms, loadout.holsters, loadout.mag_holster, loadout.hud, loadout.brace_comm, loadout.bike, bio.short, bio.long, abilities, limits, allies, opponents, timeline.tier0[], timeline.tier1[], timeline.tier2[], gallery.pose_keys[], alt_text[]
+
+Filled example (condensed):
+
+{
+
+  "id": "kahaan",
+
+  "name": "Kahaan",
+
+  "rank": "Major",
+
+  "age": 34,
+
+  "height_cm": 185,
+
+  "build": "lean-athletic",
+
+  "handedness": "right (ambidextrous-capable)",
+
+  "skin_tone": "fair-wheatish, neutral-warm",
+
+  "eye_color": "dark brown",
+
+  "hair": "dark brown-black, short textured quiff",
+
+  "facial_hair": "cycles clean-shave ↔ stubble",
+
+  "scar": "right-side 2\" angled; muted cyan at rest; glows faintly with HUD/weapon control",
+
+  "hud": { "shape": "DBZ-style thin floating lens", "eye": "left", "behavior_office": "off", "behavior_field": "on, minimal ticks" },
+
+  "medals": { "start": 4, "end": 0 }, 
+
+  "bloc_text_right_shoulder": "NORTHERN PLAINS COMMAND",
+
+  "emblem": { "left_shoulder": "small", "back": "large mustard on navy" },
+
+  "loadout": {
+
+    "sidearms": "compact matte service pistols",
+
+    "holsters": "twin high-ride shoulder",
+
+    "mag_holster": "slim ribline plates; metallic 'settle'",
+
+    "hud": "electric-blue thin lens (left)",
+
+    "brace_comm": "cyan/blue-white panes (call/map/payment)",
+
+    "bike": "stealth scout motorcycle, monocoque angular; matte graphite/navy; small mustard emblem; LED spine lights"
+
+  },
+
+  "bio": {
+
+    "short": "Major Kahaan is a lean, regulation-sharp officer whose augmented HUD and ‘floating’ pistols make him a myth on the street…",
+
+    "long": "Kahaan projects calm precision… chooses country over power… medals meter 4→0."
+
+  },
+
+  "abilities": ["elite marksman", "squad tactician", "drone/sensor analyst"],
+
+  "limits": ["EMP vulnerability", "migraines/tinnitus under strain", "PTSD flash triggers"],
+
+  "allies": ["Hana", "Rudra"],
+
+  "opponents": ["General Pratap", "Surya/Punisher"],
+
+  "timeline": {
+
+    "tier0": ["Augmented after Africa; HUD/float become signature"],
+
+    "tier1": ["PTSD and diode side-effects; promotion precedes 20-Oct attacks"],
+
+    "tier2": ["Exposes state-supplied explosives; rejects coup; cedes power"]
+
+  },
+
+  "gallery": { "pose_keys": ["Officer-at-Ease", "Draw-and-Float", "Precision-Lock", "Bike Glide-In", "De-Escalation"] },
+
+  "alt_text": [
+
+    "Major Kahaan in dress blues with ribbon rack on right chest and command text on right shoulder",
+
+    "Combat pose with one pistol drawn and two hovering at shoulder height; electric-blue HUD lens active"
+
+  ]
+
+}
+
+Visual consistency reminders for content editors
+
+Never put the emblem on the right shoulder (text only); left = small emblem; back = large emblem. 
+
+Keep HUD/UI minimal; no chunky holograms. 
+
+Medal ribbons appear only in HQ/office visuals; don’t add pendants to field frames; meter 4→0 tells the arc. 
+
+If this Phase-5 pack looks good, I’ll jump straight to Phase 6 — Generator Prompt Kit & Export Checklist (C1 office poster, signature field contact, and stealth ride-in with your bike), all pre-keyed to the CMS fields above for one-pass rendering.
+
+Alright—here’s your Phase 6: Generator Prompt Kit & Export Checklist for Major Kahaan. This gives you copy-paste prompts (with built-in guardrails), a master template, negative prompts, and a bulletproof export plan tied to your web/CMS needs. Everything obeys your locks from Phases 1–5 (age 34; 6′1″ lean-athletic; right-hand dominant but capable off-hand; fair-wheatish; Siddharth-coded face; DBZ-style floating HUD lens on the left eye; right-side cyan scar; medals = few, HQ-only; single scout-bike variant; strict emblem/text rules).
+
+Master Prompt Template (fill-in slots → [BRACKETS])
+
+Use this to author any new scene while staying on-model.
+
+[Scene purpose] — Major Kahaan, 34, 6′1″, lean-athletic; fair-wheatish skin; dark brown eyes; short textured quiff; right-side 2″ angled scar that drops from eyebrow and bends along cheekbone (muted cyan at rest). Face reads calm-precise, sardonic half-smile optional.
+Wardrobe: [HQ / Field / Civilian]. If HQ: powder-blue shirt under open navy officer’s coat; ribbon rack ≤4 on right chest, rank badge above left pocket; left shoulder = small emblem, right shoulder = TEXT ONLY: “NORTHERN PLAINS COMMAND”; large emblem on back. If Field: combat dress; coat open/shed; no medals.
+Weapons: twin compact matte service pistols in high-ride shoulder holsters; in Field you may show two pistols hovering at shoulder height with a faint electric-blue control shimmer; one pistol often drawn in right hand (left hand can control hover).
+HUD lens: DBZ-style curved rectangular lens, floating, apparatus-less, on the LEFT eye; electric-blue tiny ticks only; subtle cheek/eyelid reflections. HUD OFF in official portraits; ON in battle posters.
+Body language: squared, economical, weight forward on balls of feet; right hand = draw/aim, left = controller.
+Camera & composition: [lens & angle], [framing], negative space [left/right, %] for UI.
+Lighting: [HQ neutral / hard day with cool rim / night neon / blue hour].
+Background & props: [environment], bike variant: monocoque stealth scout, matte graphite/navy, triple vertical front LEDs, twin vertical red tail bars, small mustard emblem, tiny blue sync flicker when linked.
+Absolute DO / DON’T: DO keep HUD thin & minimal; DO keep right shoulder text only; DON’T add apparatus to HUD; DON’T add extra medals or pendant medals in field; DON’T move scar to the left; DON’T put emblems on right shoulder; DON’T add hologram clutter.
+Aspect: [4:5] or [16:9] or [21:9]; sRGB; crisp inks + painterly shading; no film grain/bloom unless specified.
+
+Ready-to-Paste Hero Prompts (high-confidence)
+
+C1 — HQ Poster (Official Portrait, 4:5, HUD OFF)
+
+“Major Kahaan / HQ Poster / 4:5.
+34, 6′1″, lean-athletic; fair-wheatish; dark brown eyes; short textured quiff; right-side scar (2″, angled along cheekbone), cyan muted at rest. Powder-blue shirt under open navy officer’s coat; rank badge above left pocket; ribbon rack (≤4) on right chest. Left shoulder: small emblem; Right shoulder: TEXT ONLY ‘NORTHERN PLAINS COMMAND’ (ALL CAPS); large emblem across the coat back. Twin high-ride shoulder holsters mostly hidden; Mag-Holster plates suggested at rib line. HUD monocle OFF. Stance: Officer-at-Ease. Camera 50 mm front ¾, mid-thigh crop; neutral 3-point light. sRGB, clean inks + painterly shading. Do not add holograms or apparatus; do not show pendant medals.”
+
+S1 — Field Contact (Signature Draw-and-Float, 4:5, HUD ON)
+
+“Kahaan / Draw-and-Float / 4:5.
+Combat dress; coat open/shed. One pistol drawn in right hand; two compact pistols hovering at shoulder height on faint electric-blue control shimmer; left hand slightly splayed (controller cue). HUD monocle ON — DBZ-style thin floating lens on left eye, tiny ticks only; soft blue reflection on cheek/eyelid. Scar glows low cyan. Camera 35 mm dynamic ¾; rim-lit dust; shallow DOF. sRGB, crisp inks + painterly shading; no heavy UI clutter.”
+
+S2 — Stealth Ride-In (Bike Glide, 16:9 Banner, HUD ON)
+
+“Kahaan / Bike Glide-In / 16:9.
+Night/blue hour. Monocoque stealth scout motorcycle (single variant): faceted body; part-shrouded front wheel; hub-shrouded/turbine-rim rear; triple vertical front LEDs; twin vertical red tail bars; matte graphite/navy with small mustard emblem on tail; wet asphalt reflections. Kahaan in combat dress, elbows in, head forward. HUD ON; tiny blue sync flicker on dash. No extra gadgets. Tracking ¾ front, subtle motion streaks; clean negative space on the left 40% for UI.”
+
+S3 — Brake-Pivot Draw (Action Banner, 16:9, HUD ON)
+
+“Kahaan / Brake-Pivot Draw / 16:9.
+Bike hard-brakes; dust kick; left foot plants; torso torques; coat flares. Right hand drawing a pistol; one hover pistol lifts to shoulder height on the left with faint control shimmer. HUD ON; scar glow mid. Camera 28–35 mm, slight Dutch tilt (≤10°), motion blur on wheel & coat hem; neon spill accents; sRGB. No extra HUD hardware; keep hover lines thin.”
+
+S4 — Ultra-Wide Hero (21:9, Negative Space)
+
+“Kahaan / Ultra-Wide Hero / 21:9.
+Place subject in the right third; reserve left 60% as clean negative space for text/UI. Combat dress; Draw-and-Float grammar: right-hand aim; two hover pistols steady at shoulder height (thin electric-blue shimmer). HUD ON (DBZ lens, left eye); scar glow low. Background: moody urban roofline; light haze. sRGB; crisp inks; no hologram clutter; no film grain.”
+
+S5 — Precision-Lock (Head Close-Up, 4:5, HUD ON)
+
+“Kahaan / Precision-Lock / 4:5.
+Tight head 85–100 mm. One-eye micro-squint (dominant right), breath held; jaw set. HUD ON (thin floating lens on left eye; tiny ticks), soft cyan reflection on cheek. Scar glow low; stubble variant. Background abstracted with bokeh; cool rim-light. sRGB; clean inks, painterly shading.”
+
+S6 — Night Alley De-Escalation (Narrative Beat, 4:5, HUD Dim)
+
+“Kahaan / De-Escalation / 4:5.
+Field jacket open; urban night alley; faint neon. Arms lowering; shoulders soften; hover pistols settling with a tiny metallic snap back to Mag-Holsters at rib line. HUD dims toward OFF; scar glow fading. Breath plume visible. 50 mm eye-level; quiet, restrained energy. sRGB; keep UI minimal; no extra medals.”
+
+S7 — Civilian Undercover (Lore Variant, 4:5, HUD OFF)
+
+“Kahaan / Civilian Shadow / 4:5.
+Earth-tone utility jacket over fitted tee; straight pants/jeans; practical boots. Holster profile minimized under jacket; hands relaxed. HUD OFF; Brace-Comm dark. Street-level background, soft sodium highlights. 50 mm front ¾. sRGB; no military marks or medals visible.”
+
+Negative Prompt Pack (paste after any prompt)
+
+Do NOT: add hardware/apparatus to the HUD; add thick holograms, UI clutter, or bright neon grids; move the scar to the left; change scar color; add beard beyond clean-shave ↔ short stubble; change eye color; add chestful medals/pedants (HQ uses ≤4 ribbons only); place emblems on the right shoulder (text-only zone); print slogans or mottos anywhere; change HUD to the right eye; swap hand dominance; add non-canon bike mods (side boxes, big exhausts, wide bars); add capes/flow robes; add sci-fi bloom/film grain.
+
+Quick “Pose Keys” (for your CMS / file names)
+
+officer_at_ease • command_halt • draw_and_float • l_check_slice • rooftop_perch • precision_lock • emp_flinch • brace_comm_medevac • interrogators_silence • bike_glide_in • bike_brake_pivot_draw • de_escalation • civilian_shadow
+
+Export Checklist (wrap-up for art & website)
+
+Aspects & sizes
+
+4:5 portraits: 2048×2560 (lore cards), plus 1024×1280 (thumb).
+
+16:9 banners: 3840×2160 (hero), plus 1920×1080 (fallback).
+
+21:9 ultra-wides: 3840×1646 or 3840×1600 (site hero).
+All in sRGB, PNG (master) + WEBP (delivery). No film grain/bloom unless a scene calls for it.
+
+File naming (stable)
+
+kahaan_[posekey]_[aspect]_[bg]_v01.png
+
+e.g., kahaan_draw-and-float_4x5_dark-vignette_v01.png
+
+Layered masters (if painting)
+
+Keep HUD lens on its own layer (opacity 35–55%, additive glow layer for ticks).
+
+Keep scar base + scar glow on separate layers.
+
+Keep hover pistols on a linked group with anchor nulls (for easy reposition).
+
+Tokens JSON (attach next to images)
+
+{
+
+  "character": "Kahaan",
+
+  "age": 34,
+
+  "height_cm": 185,
+
+  "build": "lean-athletic",
+
+  "skin": "fair-wheatish",
+
+  "eyes": "dark brown",
+
+  "hair": "short textured quiff, dark brown-black",
+
+  "facial_hair": "clean-shave|stubble",
+
+  "scar": "right cheek, 2in angled, cyan glow when HUD/remote active",
+
+  "hud": { "eye": "left", "shape": "DBZ thin floating lens", "office": "off", "field": "on" },
+
+  "medals": { "ribbons_max": 4, "display": "HQ only" },
+
+  "uniform": {
+
+    "hq": { "shirt": "powder-blue", "coat": "open navy" },
+
+    "marks": { "left_shoulder": "small emblem", "right_shoulder": "NORTHERN PLAINS COMMAND", "back": "large emblem" }
+
+  },
+
+  "weapons": { "type": "compact service pistols", "carry": "twin high-ride shoulder", "float": "two pistols hover at shoulder height, faint blue shimmer" },
+
+  "bike": "monocoque stealth scout; matte graphite/navy; triple front LEDs; twin red tail bars; small mustard emblem",
+
+  "poses": ["officer_at_ease","draw_and_float","precision_lock","bike_glide_in","de_escalation"]
+
+}
+
+Alt text (examples)
+
+“Major Kahaan in dress blues with right-chest ribbon rack and right-shoulder command text; HUD lens off.”
+
+“Kahaan in combat stance with one pistol drawn and two hovering at shoulder height; thin blue HUD lens active over left eye.”
+
+QA guardrails
+
+HQ only: ribbon rack ≤4 (right chest), rank badge left; no medals in field.
+
+Right shoulder is text only (NORTHERN PLAINS COMMAND by default).
+
+HUD lens always left eye, thin and apparatus-less; OFF in official portraits.
+
+Scar always right side, cyan glow scales with HUD/remote activity.
+
+Bike remains monocoque stealth variant; no luggage boxes/aftermarket junk.
+
+Hand-off checklist
+
+PNG master + WEBP delivery for each scene
+
+Tokens JSON per image
+
+Alt text per image
+
+Thumbs generated (≤300 KB)
+
+License/credit (internal)
+
+CMS entries mapped to pose keys and timeline spoiler tier where relevant
+
+Finishing Touch: Two Ready “One-Shot” Prompts (drop-in, zero edits)
+
+One-Shot A — HQ Bio Card (4:5)
+“Major Kahaan, 34, 6′1″ lean-athletic; fair-wheatish; dark brown eyes; short textured quiff; right-side 2″ angled scar (cyan muted). HQ dress: powder-blue shirt, open navy officer’s coat; rank badge left, ribbon rack ≤4 right; left shoulder small emblem, right shoulder text only ‘NORTHERN PLAINS COMMAND’, large back emblem (implied). Twin shoulder holsters mostly hidden; HUD OFF. Officer-at-Ease stance; 50 mm front ¾; neutral light; 4:5, sRGB; crisp inks, painterly shading; no hologram clutter.”
+
+One-Shot B — Signature Action (4:5)
+“Major Kahaan in Draw-and-Float: combat dress; coat open/shed. Right hand aiming a compact pistol; two more pistols hovering at shoulder height on faint electric-blue shimmer. HUD monocle ON — DBZ-style thin floating lens, left eye; tiny ticks only; soft cyan cheek reflection; scar glow low. Dust motes, low sun rim; 35 mm dynamic ¾; 4:5, sRGB; crisp inks, painterly shading; negative space right 20% for UI; no apparatus on HUD, no extra medals.”
+
+That wraps Phase 6. You’re now fully equipped to generate consistent, on-model Kahaan visuals across posters, lore cards, and banners—without drift. If you want, I can also bundle these prompts + tokens into a single .jsonl (one scene per line) for bulk generation pipelines.

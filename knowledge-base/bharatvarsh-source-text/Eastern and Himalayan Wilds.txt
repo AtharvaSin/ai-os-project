@@ -1,0 +1,2039 @@
+awesome—locking Eastern & Himalayan Wilds with your decisions. I’ll run the plan phase-by-phase. Here’s Phase A in full (map scaffolding + treaty symbol sheet + control logic). I’ll stop after this to sync before moving to Phase B.
+
+Phase A — Canon & Map Scaffolding (Lock v1)
+
+A1) Political & geographic frame (what the map must show)
+
+Treaty macro-logic. The “Eastern & Himalayan Treaty Zone” is a semi-autonomous band where regular troops cannot enter without tribal consent; state doctrine acknowledges no-fly pockets and drone-jammer sanctuaries. The bloc’s narrative role: birthplace of insurgent logistics/alternative philosophies. 
+
+Akakpen heartlands (your lock).
+
+Begin at the far-eastern edge of the river delta provinces (adjacent to the Nepal-Treaty hills); sweep north along the foothills; wrap the highlands equivalent to “Bhutanic” massifs; extend south-east over the western half of the tea-belt plains into the inner hills (our Assam-analog).
+
+This belt is Akakpen-only. Other treaty tribes ring them to the west, north and east; collectively, the entire Indian-side Himalayan/Northeast arc falls under treaty compacts.
+
+Nepal-Treaty Hills. A separate yet allied highland band (Sagarmatha-side hamlets, monasteries, sky-pass yak routes) where Rudra self-exiled; functionally “friend borderlands” rather than core Akakpen. (Treaty language in the bible supports these semi-sovereign hill pockets.) 
+
+Military posture in the zone. Checkpoints at approach roads, helipads only at treaty-cleared saddles, and black-boxed no-fly valleys honored even by state hovercams. Convoys entering hills expect stingers/mines; doctrine anticipates ambushes. 
+
+A2) Map layers & naming (how we’ll draw and refer to things)
+
+I’m defining a neutral, diegetic naming system that keeps us clean of modern cartography while staying printable on props/signage.
+
+Grid & codes.
+
+Macro tiles: AHZ (Akakpen Himalayan Zone) squares ~40×40 km, numbered west→east, south→north (e.g., AHZ-E3).
+
+Micro tiles: AHZ-E3-b (quarter-tile) for site plans.
+
+Passes / saddles (canon names to use).
+
+Wolf Pass (AHZ-D2): main treaty egress from south-west plains into Akakpen.
+
+Juniper Gate (AHZ-E3): closest saddle to Queen’s hamlet; treaty helipad allowed on the outer terrace only.
+
+Prayer-Flag Notch (AHZ-F4): wind-raked cut into Nepal-Treaty Hills; outright no-fly (your lock).
+
+Cloud Ladder (AHZ-G3): switchback climb used by yak trains; convoy blackout on new moons.
+
+Valleys (transport and culture).
+
+Amber River Fold: inner heartland grain and timber corridor.
+
+Stone-Milk Vale: dairy ring (yak milk/cheese/wool), school circuit trails.
+
+Raven Span: rope-bridge cluster; emergency evac route to monastery shelf.
+
+No-fly valleys (hard lock).
+
+Silent Throat (AHZ-E4), Knife-Wind Chute (AHZ-F3), Raven Span floor: state aircraft, drones, and hovercams prohibited; treaty jammers are permanent fixtures. (World bible: “no-fly pockets,” “hidden drone-jammers”.) 
+
+Control points (security & customs).
+
+Treaty Gates (tri-script: Tribal + EN): scan-gate chokepoints sit outside Akakpen township perimeters; helipad pads signed as “Permissioned Only”; algorithmic masts are slim, unarmed optics. (Matches surveillance style, second-read.) 
+
+A3) Elevation, climate & movement (visual grammar)
+
+Altitude bands.
+
+Foothill green (900–1,600 m): teak/oak belts, terrace fields; fog belts in shoulder seasons.
+
+Cold spruce (1,600–2,800 m): deodar/spruce, mixed cliffs and meadows; ambushable switchbacks.
+
+High alpine (2,800–4,200 m): rock tongues, crusted snow & matte ice; “knife-thin” air; pikas/ravens/dogs. (Novel cues for high-hills texture and breath.) 
+
+Seasonal behaviors.
+
+Winter: whiteouts, wind-carved cornices, doors barred at stranger approach.
+
+Pre-monsoon: dry glare, landslide risk afternoons; convoy spacing increases.
+
+Monsoon: road shoulders slump; rope-bridges drum; no-fly maintains (gust shear).
+
+Autumn: clearest skies; long-haul herding and timber runs.
+
+Movement rules.
+
+Silent lanes on ridgelines; glitter-ice traps marked by wooden T-stakes; counted-pace navigation when fog swallows markers (Akakpen movement doctrine). 
+
+A4) Settlements we will map in Phase B (your chosen civic triad)
+
+We’ll place and detail these three at AHZ-E3 (Queen’s seat region):
+
+Queen’s Council Hall — on a sun-catching mid-slope shelf above the hamlet square.
+
+Training Courtyard / Dojo — south-east of the hall, walled, with bow-lanes and staff rings; orange dojo flag with grey trident is historical (Rudra legacy). 
+
+The School — downhill from the square on the safer slope, with wind-screened yard and bell. (You mentioned a school in the novel; I’ll standardize its yard, signage and safety codes next phase.)
+
+Nepal-Treaty cabin cluster (Rudra pattern) for Phase B elsewhere: porch-yard cabins, iron stoves, verandah-like front room, upslope sentry pine, dojo wall inside with wooden weapons, two live spears, orange flag. 
+
+A5) Governance & rules-of-engagement overlays (map legends)
+
+Treaty shield (Akakpen).
+
+Non-lethal first in tribal-tribal interactions (bolas, caltrops, sleep darts).
+
+Lethal authorized for invaders on Akakpen soil; non-lethal always between tribes. (Aligns with Rudra’s mercy/discipline doctrine.) 
+
+Outsider corridors.
+
+Convoys are escorted to outer terraces only; no entry to inner lanes without council writ.
+
+Blackout discipline on new-moon traverses; mines/rockslides anticipated. 
+
+Comms discipline.
+
+Brace-Comm permitted but on silent bands; low-signal mesh nodes at hamlets; signal-quiet sanctuaries around Council/School radii. 
+
+A6) Scripts, signage, and treaty glyph (field-ready locks)
+
+Language stack (wilds).
+
+Header: Akakpen Tribal Script (custom letterforms; see below).
+
+Subhead: English (Inter 800).
+
+Body (small): English 400 as needed. (Cities use EN→HI→State; wilds standardize Tribal + EN per your lock.) 
+
+Tribal Script design notes (to guide artists now, full pack in Phase D).
+
+Stroke grammar: angular stems with slight inward flares; counters tend triangular; diacritics as short chevrons.
+
+x-height (optical): 1.0; cap height: 1.25×; stroke contrast low for woodcarving legibility.
+
+Spacing: wide; feels carved/stitched rather than printed.
+
+Numerals: stick-tally variants preferred on trail boards.
+
+Materials: carved timber, painted slate, yak-wool applique.
+
+Treaty Glyph (final geometry).
+
+Form: two nested mountain chevrons (▲ over ▲) enclosing a hollow circle (sanctuary void).
+
+Proportions: Outer chevron baseline = 1.00; inner = 0.66; circle Ø = 0.33 of chevron height, centered.
+
+Line weight: 1/18 of height.
+
+Meaning: “Mountain within mountain, life at the center.”
+
+Usage:
+
+Gate plaques: left of text, 1× cap height;
+
+Maps: marks no-fly valleys and council sanctuaries;
+
+Dojo flags: never replaces the trident emblem (Rudra-lineage spaces keep the grey trident on orange separate). 
+
+Danger & caution colors (wilds standard).
+
+Adopt Kaali’s deep-green family for civic identity, with high-contrast warning pairs:
+
+Identity base: #162B18 / #223F1C / #4B6B32 (textiles, timber trims).
+
+Caution pair: Marigold Gold #FFC933 on Deep Green #162B18 (signs/edge paint).
+
+Hazard pair: Vermilion #E03C31 on Slate Charcoal #2F3E3A (rockfall, minefield edge).
+(Kaali palette locks pulled from her character bible.) 
+
+A7) Ecology & livelihoods (encounter realism anchors)
+
+Herding & fauna (use real-world analogs).
+
+Herd: yak, dzomo, hill goats; dogs for guard and trailfinding.
+
+Wild: Himalayan tahr/serow, pheasants and ravens at mid-bands; snow leopard/wolf in high bands (rare, dusk/dawn); pikas in rock tongues.
+
+Protocol: Bell discipline (cloth wrap in patrol hours), scat markers along child routes; tether points at wind breaks.
+(Use these for background motion and encounter tables; this aligns with your “relevant to geography” directive.)
+
+A8) What gets produced from Phase A (deliverables list)
+
+Master Map – Clean: AHZ macro tiles, passes/valleys/no-fly pockets, convoy roads, helipads (permissioned).
+
+Master Map – Annotated: arrows for monsoon landslide flows; blackout corridors; treaty gates & mesh nodes.
+
+Gate & Post Signs (spec): two-line Tribal/EN layouts + Treaty Glyph; caution/hazard pairs in Kaali palette context.
+
+Symbol Sheet: Treaty Glyph construction; dojo trident usage note (grey on orange, never corporatized). 
+
+Legend & Rules: non-lethal first doctrine; outsider corridor etiquette; signal-quiet rings.
+
+A9) Open decisions (very small, optional tweaks now)
+
+Approve the four pass names (Wolf Pass, Juniper Gate, Prayer-Flag Notch, Cloud Ladder).
+
+Confirm Raven Span as a rope-bridge cluster that doubles as a cinematic bottleneck set.
+
+Any monastery shelf you want singled out now (we’ll dot “learning houses” across Nepal-Treaty Hills in Phase B/C regardless).
+
+Phase A — Status
+
+Treaty geography & no-fly valleys integrated with your locks.
+
+Language & glyph system for wilds standardized.
+
+Color governance extended from Kaali’s palette for identity vs. danger.
+
+Map schema (AHZ tiles, names, control points) ready for downstream boards.
+
+Touch-base: Want me to roll with these names and produce Phase B — Settlement Typologies next (Queen’s Council Hall, Training Courtyard/Dojo, School + a Rudra-pattern Nepal-Treaty cluster), or change any pass/valley names or color pairs first?
+
+awesome—Phase B is executed. Below is the Settlement Typologies Pack for the Eastern & Himalayan Wilds, built from your locks. It’s formatted so artists, level designers, and prompt pipelines can lift specs straight into boards and block-outs later.
+
+Phase B — Settlement Typologies (Lock v1)
+
+B0) Design pillars (applies to every set here)
+
+Treaty land ≠ state city. Visuals privilege wood, stone, felt, slate, and hand-mended tech. Surveillance is invisible; authority is communal.
+
+Non-lethal first. Tribe-vs-tribe interactions use bolas, caltrops, sleep-darts; lethal only for invaders. Danger language appears as high-contrast signs (see color governance below).
+
+Language stack (wilds): Tribal Script (header) + English (subhead). Treaty Glyph marks gates/sanctuaries.
+
+No-fly valleys are absolute. Any sky asset near sacred or no-fly zones is a fail.
+
+Modules & grids. Use a 300 mm base grid. Doors clear 1.2 m; thresholds step 150 mm (ramps 1:12). Colonnade C-to-C 2.4–3.0 m. Parapets/rails 900 mm.
+
+Color governance (Kaali family + warnings).
+
+Identity base: Deep Greens #162B18, #223F1C, #4B6B32 (textiles, trims).
+
+Caution: Marigold Gold #FFC933 on Deep Green #162B18.
+
+Hazard: Vermilion #E03C31 on Slate Charcoal #2F3E3A.
+
+Metals stay weathered; no neon. Flags for dojos keep Grey Trident on Orange (humane resistance lineage).
+
+B1) Akakpen Capital Hamlet — Master Site (AHZ-E3)
+
+Topography. Mid-slope shelf with three terraces stepping down to a small square; a wind break of conifers on the north; sun from SE–SW sweeps the day.
+
+Zoning (west→east):
+
+Arrival Terrace (outer civic): treaty gate, small market line (vendor pads 3×3 m, 6 m off thresholds), water steps, community notice board.
+
+Commons / Square (mid civic): Queen’s Council Hall on the upslope edge; Training Courtyard/Dojo to the SE; School on the safer leeward terrace down-slope.
+
+Hearth Belt (inner residential): hut rings, wood stacks, yak pens, grain sheds.
+
+Circulation. Two switchback lanes in and out; a signal-quiet ring (30 m radius) around Council + School—mesh nodes sit outside that ring. Wayfinding uses Tribal+EN boards with the Treaty Glyph.
+
+Utilities. Micro-hydro wheel on the arrival rill; roof-slate solar on south-facing slopes; iron stoves; spark arrestors. No holy rivers; meltwater cisterns are purely functional.
+
+Defense etiquette. Rope-bar gate at night; non-lethal traps on blind corners (flagged); lethal caches are locked in council armory (invader-only doctrine).
+
+B2) Queen’s Council Hall (Civic Anchor)
+
+Placement. Upslope edge of the square, commanding view; south façade gets winter sun.
+
+Massing & envelope.
+
+Plan: 18 m (W) × 24 m (D) rectangle on a 600 mm plinth.
+
+Roof: twin-pitch slate with generous 1.2 m eaves; snow-hooks; copper chain downspouts.
+
+Structure: stacked stone base to 900 mm; heavy timber frame (300×300 posts); infill boards; pegged joinery.
+
+Threshold & approach.
+
+Three broad steps + 1:12 ramp on the east.
+
+Double doors (1.8 m clear) with oxidized brace bands; carved lintel with Tribal Script motto; Treaty Glyph plaque on left jamb (cap-height scale).
+
+Interior program.
+
+Council nave (12×14 m): central hearth (smoke bell + flue), ring benches (timber, 450 mm seat), dais at upslope wall for the Queen and elders.
+
+Clerks’ alcove with slate tablet wall (chalk ledger); armory closet (locked, lethal-use protocol posted).
+
+Ceiling: open truss; rafter spacing 600 mm; banners (Deep Green) with minimal knotwork border.
+
+Light & HVAC.
+
+Day: clerestory slots on south; winter low sun enters deep.
+
+Night: warm lanterns (2700–3000 K).
+
+Heat: iron stove + hearth; radiant stone plinth retains warmth.
+
+Signage (heritage variant).
+
+Tribal header: “Council House” (carved, 800 weight feel)
+
+EN subhead: COUNCIL HALL (Inter 800, caps)
+
+No Hindi/State line in wilds core unless at treaty posts.
+
+Safety & defense.
+
+Non-lethal rack near door (bolas, shields).
+
+Evacuation arrow boards (Marigold on Deep Green) to School yard muster point.
+
+Drone exclusion cone sketched on inside notice board (visual law).
+
+Seasonal skins.
+
+Winter: felt curtains over door; vestibule inner door added.
+
+Monsoon: woven splash mats; chain bowls at corners; gutter to rill.
+
+B3) Training Courtyard / Dojo (Discipline & Skill)
+
+Compound layout.
+
+Walled rectangle 22×30 m; walls 2.1 m high, topped with split-rail.
+
+South yard: bow lanes (4 lanes × 20 m) with snow backstop berm; staff rings (Ø 4.5 m, sanded).
+
+North shed: weapon racks (wooden swords, staves), repair bench, first-aid chest.
+
+Flag mast at SE corner flying the Grey Trident on Orange. (Treaty Glyph not used on dojo flag.)
+
+Floor & drainage.
+
+Compacted earth with straw and fine gravel; perimeter French drain; deicer sand barrels at gates.
+
+Gates & thresholds.
+
+Twin gates (2.0 m clear) with drop bars; Tribal header: “House of Practice”; EN subhead: TRAINING COURTYARD.
+
+Safety boards at eye height (EN + Tribal pictos):
+
+“Non-lethal protocols first.”
+
+“War arrows by writ only.”
+
+“Spectator rail—beyond this line.”
+
+Program details.
+
+Archery: bale targets, slate plates (for sound feedback), rotating hay drums.
+
+Staff rings: faded chalk circles; rope-boundary pegs; sand rake for resurfacing.
+
+Mentor’s awning: shade with view across lanes; bell for halt.
+
+Medical.
+
+Wall-mounted kit (splints, salves, bandages, boiled tools).
+
+Snow-melt pot for warm compresses; bench with drain board.
+
+Lighting.
+
+Day: open sky; wind screens (felt) on west in winter.
+
+Night: four lantern posts inside wall at 3000 K; no glare outside.
+
+B4) The School (Learning & Shelter)
+
+Placement. Down-slope, leeward of prevailing wind; nearest to water steps.
+
+Massing & plan.
+
+U-shape around a wind-screened yard (18×12 m).
+
+Class North (6×9 m), Class South (6×9 m), Warm Core (hearth, library shelves, 6×6 m), Kitchen Nook, Clinic Nook, Teacher’s Room.
+
+Roof slate, deep eaves; clerestory windows into the Warm Core.
+
+Materials. Timber walls; lime-washed interior; wool wall-rugs (acoustic + thermal). Floor is planed boards with insulated underlay.
+
+Yard design.
+
+Windscreen: 2.1 m board fence with sight cutouts; prayer-wheel line at gate; bell on cross beam.
+
+Play/Drill grid (painted on boards) doubles as evacuation muster map.
+
+Signage & marks.
+
+Tribal header: “Learning House”; EN subhead: SCHOOL.
+
+No-Kill Zone boards at both gates (Vermilion on Slate for prohibited icons; Marigold on Green for guidance).
+
+Pictograms: child route arrows, muster icon, med cross (carved).
+
+Utilities & comms.
+
+Micro-hydro power tap for lights; stove + spark arrestor; mesh node stays outside the fence; signal-quiet in yard.
+
+Emergency doctrine.
+
+Muster in yard; second muster at Raven Span trail if square is unsafe.
+
+Teacher keeps a Tribal+EN card set for visiting convoys.
+
+Seasonal skins.
+
+Winter: felt door-hangings; heat curtains; boot scraper racks.
+
+Monsoon: gutter box drains; duckboards; rain cloak pegs.
+
+B5) Nepal-Treaty Cabin Cluster (Rudra Pattern)
+
+Site. High shelf with an upslope sentry pine; three to five cabins around a common yard; rope-bridge path to a monastery shelf uphill.
+
+Cluster plan.
+
+Yard ellipse ~14×10 m with fire pit (wind-shadowed).
+
+Cabins (x3–5), each 6×8 m footprint; porches facing the yard.
+
+Work shed (tools, bow press, fletching bench).
+
+Cache hut (grain, dried meat).
+
+Cabin anatomy.
+
+Porch (1.8 m deep) with bench and boot boards; door bar hooks.
+
+Front room that “breathes like a verandah”; iron stove; low stools/bench; repair table with goggles/tools.
+
+Dojo wall inside: wooden swords, bamboo sticks, two live spears; orange flag with grey trident above.
+
+Sleep loft; tiny window slots; storm shutters.
+
+Defense etiquette.
+
+Non-lethal first caches under porch (bolas, caltrops).
+
+Lethal (invader) quiver is separate, locked; protocol sheet posted inside (not public).
+
+Utilities.
+
+Roof-slate solar for a low lamp and comms charge; wood stack; water rill; latrine downslope, leeward.
+
+Weatherization.
+
+Snow anchors on roof; rope lash points for nor’wester gusts; drip chains to stone bowls; duckboards around the yard.
+
+Signage.
+
+Gate post: Tribal “Cabin Circle” + EN CABIN CLUSTER; small Treaty Glyph if on treaty route; otherwise no emblem.
+
+B6) Prop Library & Reusable Details (to build in your asset set)
+
+Doors & hardware. Heavy plank doors (45 mm), bronze strap hinges, lift-bar latches; leather draught snakes for winter.
+
+Furniture. Ring benches (council), low stools, long tables, children’s bench-desks, ladder-back chairs.
+
+Fixtures. Prayer-wheel racks (hand-polished), slate notice boards, carved lintels with Tribal script, felt windscreens, copper chain bowls, snow-hooks, rope lash points.
+
+Defense props. Bolas, caltrops, sap darts, shield boards, rope-bar gates, rockslide lever posts (painted Vermilion/Slate).
+
+Wayfinding. Carved signboards (Tribal header, EN subhead), Treaty Glyph plaques (cap-height scale), No-Kill pictos for School & Dojo spectating lines.
+
+Mesh/comms. Low mast (wooden, 4.2 m) with line-of-sight panel; mesh node icon (three chevrons and a dot) outside signal-quiet rings.
+
+B7) Lighting & Atmosphere Recipes (per set)
+
+Council Hall (Evening Council). 2700–3000 K lanterns; hearth flicker; smoke bell glow; snow bounce in through door at toe level in winter.
+
+Dojo (Dawn Discipline). Rim light over staff rings; frost glitter at yard edges; breath visible; flags stir minimal.
+
+School (Blue-hour Shelter). Warm core lanterns; yard in cool ambient; bell silhouette; rain on slate when monsoon.
+
+Cabin Cluster (Storm Watch). Lantern halos at porches; rope lines taut; wind-driven sleet; pine whine; long, cold speculars.
+
+B8) Acceptance criteria (for these sets)
+
+Language order: Tribal header, EN subhead; correct weights; carved/painted materials only.
+
+Color discipline: Kaali greens for identity; Marigold/Deep Green for caution; Vermilion/Slate for hazards; no neon.
+
+Defense etiquette on-screen: Non-lethal gear accessible; lethal rules posted inside, not public.
+
+Comms: Mesh nodes kept outside signal-quiet rings; no antenna forests.
+
+No-fly: Any sky asset over Silent Throat / Knife-Wind / Raven Span is a fail.
+
+Child safety: School shows No-Kill boards and muster arrows.
+
+B9) Packaging & File Naming
+
+SET_AHZ_E3_CouncilHall_A2_v01.png (hero 3/4 ext + plan + 6 detail panels)
+
+SET_AHZ_E3_DojoCourtyard_A2_v01.png
+
+SET_AHZ_E3_School_A2_v01.png
+
+SET_NTH_CabinCluster_Rudra_A2_v01.png
+
+Left rail: plan dims, materials, signage text, defense doctrine, utilities. Right rail: color swatches, glyph + emblem etiquette, do/don’t.
+
+Phase B — Status
+
+✅ Queen’s Council Hall, Dojo/Courtyard, School fully specced.
+
+✅ Nepal-Treaty Cabin Cluster (Rudra pattern) specced.
+
+✅ Prop library + lighting recipes + acceptance criteria locked.
+
+Touch-base: If this looks good, say “Proceed Phase C” and I’ll deliver the Materials & Climate System (PBR-style swatches, seasonal wear maps, lighting exposures, snow/ice/rain shaders, and how each city/wilds band affects color/contrast)—all in the same production-ready format. If you want any small tweaks (e.g., Council Hall width, number of bow lanes, School yard size, or different hazard icon shapes), tell me now and I’ll fold them in before moving on.
+
+awesome—here’s Phase C (Materials & Climate System) for the Eastern & Himalayan Wilds. It’s a production-ready spec that your artists and scene builders can apply across all wilds environments (Akakpen heartlands + Nepal-Treaty hills), fully consistent with the locks from Phases A–B. I’ve organized it so you can lift swatches, PBR parameters, shader notes, and seasonal behavior straight into boards, 3D, or image-gen.
+
+Phase C — Materials & Climate System (Lock v1)
+
+C0) Design pillars (inheritance recap)
+
+Material truth > decoration. Wood, stone, slate, wool, leather/rope, oxidized metals; minimal plastics; tech reads quiet and hand-mended.
+
+Identity & safety colors. Identity = Kaali Deep Greens; Safety = Marigold on Deep Green; Hazard = Vermilion on Slate (see chips below).
+
+Language stack (wilds). Tribal Script header + English subhead on signs; Treaty Glyph as a mark, not a logo.
+
+No-fly valleys are absolute. Any aerial or drone presence inside those cones is a fail.
+
+C1) Swatch bank (HEX + PBR guidance)
+
+Use these as the canonical color chips. For 3D/PBR, I’ve given typical albedo/roughness/metalness (A/R/M) ranges and normal map intent. For 2D paint or image-gen, treat A/R/M as look targets.
+
+Naturals — Structure & Ground
+
+Stacked Fieldstone (Grey Mix)
+HEX (albedo midpoint): #898C90
+A 0.64–0.72 / R 0.55–0.70 / M 0.00
+Normal: mid-frequency 0.30; micro-pitting 0.15
+Notes: cold splash darkens 10–15%; algae tints toward #7C887B in monsoon.
+
+Granite Plinth (Dark)
+HEX: #5A5F65
+A 0.50–0.58 / R 0.60–0.72 / M 0.00
+Normal: crystalline break 0.25; chipped edges 0.35
+Notes: dry season → matte; rain → specular ribbons, not mirror.
+
+Slate Roof (Weathered Blue-Grey)
+HEX: #56606A
+A 0.42–0.48 / R 0.55–0.68 / M 0.00
+Normal: laminated striations 0.30; nail heads 0.10
+Notes: monsoon beads; snow anchors read as darker nubs.
+
+Timber Frame (Smoked Pine)
+HEX: #5B4633
+A 0.30–0.36 / R 0.55–0.65 / M 0.00
+Normal: grain 0.20; hand-tool chatter 0.10
+Notes: polish on hand-height; soot bands near stoves.
+
+Planed Board Interior (Lime-wash Off-White)
+HEX: #E9E5DB
+A 0.86–0.92 / R 0.20–0.30 / M 0.00
+Normal: almost flat; hairline cracks 0.05
+Notes: warms under lanterns; scuffs toward #C9C2B3.
+
+Compacted Earth (Yard / Rings)
+HEX: #6B5A46 dry → #4F463B wet
+A 0.24–0.32 / R 0.65–0.80 / M 0.00
+Normal: footprints & rake 0.25
+Notes: frost = brittle sparkle; monsoon = dark, firm sheen.
+
+Naturals — Textiles & Rope
+
+Felted Yak-Wool (Cloaks/Windscreens)
+HEX: #3C3E3B (charcoal) / #7D7A70 (light)
+A 0.14–0.22 / R 0.70–0.85 / M 0.00
+Normal: fiber fuzz 0.25
+Notes: absorbs spec; rims softly in frost.
+
+Hemp Rope / Lash
+HEX: #8B6E4C
+A 0.40–0.46 / R 0.65–0.80 / M 0.00
+Normal: twist 0.35
+Notes: monsoon darken; add subtle drip marks below knots.
+
+Metals & Hardware
+
+Oxidized Bronze (Touch Zones)
+HEX: #7A5A3A mid-patina → edges brighten toward #A67D53
+A 0.22–0.30 / R 0.35–0.48 / M 1.00
+Normal: cast texture 0.10; edge polish 0.18
+Notes: warm hand-polish at handles, cooler matte elsewhere.
+
+Blackened Iron (Stoves/Straps)
+HEX: #2A2B2C
+A 0.06–0.12 / R 0.35–0.50 / M 1.00
+Normal: hammered 0.18; oxide pits 0.12
+Notes: stove tops bloom with oil highlights near 3000K light.
+
+Copper Chain & Bowls (Drainage)
+HEX: #B26A3D fresh → #7C5436 aged
+A 0.30–0.36 / R 0.28–0.38 / M 1.00
+Normal: casting lines 0.08
+Notes: verdigris creeps in monsoon; keep subtle.
+
+Identity & Safety (Locked)
+
+Deep Green Base 1 #162B18
+
+Deep Green Base 2 #223F1C
+
+Deep Green Mid #4B6B32
+
+Marigold (Caution) #FFC933 on Deep Green
+
+Vermilion (Hazard) #E03C31 on Slate Charcoal #2F3E3A
+Typography: Tribal header carved/painted; EN subhead Inter 800 (white or marigold depending on ground).
+Reflectivity: signs are matte (R 0.75–0.85) to avoid glare in snow or rain.
+
+C2) Band-by-Band environment behavior
+
+Three altitude bands govern color/contrast, moisture, and edge wear.
+
+Foothill Green (≈ 900–1,600 m)
+
+Palette feel. Warmer stones, mossy seams, terraced soil; greens richer, contrast moderate.
+
+Surface behavior. Morning fog dew; algae on stone steps; timber silvering on sun faces.
+
+Typical vignettes. Fog shafts through pines; prayer wheels with hand-polish rings; mule shoes scrape sparks on granite at night.
+
+Cold Spruce (≈ 1,600–2,800 m)
+
+Palette feel. Cooler neutrals, deodar shadow bands; higher contrast; dust in dry months.
+
+Surface behavior. Wind scoring on slate edges; rope fibers chalk with frost; bronze handles warm up with touch.
+
+Typical vignettes. Switchbacks; caltrops flagged with marigold dots; silent lanes on ridges.
+
+High Alpine (≈ 2,800–4,200 m)
+
+Palette feel. Blue-grey rocks; sparse greens; snow/ice dominate micro-spec.
+
+Surface behavior. Crusted snow (not powder) holds boot edges; matte ice sits like glass with micro-pitting.
+
+Typical vignettes. Pikas skitter; breath plumes; flags stiff, not fluttery; sound becomes small.
+
+C3) Seasonal look & shader recipes (renderer-agnostic)
+
+Use these as starting points; adapt EV/ratios to engine.
+
+Winter (whiteout → clear cold)
+
+Sky/Key. 6200–6800K overcast; clear-cold days push 5600K hard key.
+
+Fog/Snow. Height-fog 0–6 m; light snow flakes 0.5–1 mm; wind 3–6 m/s.
+
+Materials.
+
+Stone darkens 10–15% near base; frost glitter normal mask (0.1–0.15) on upper edges.
+
+Wool/felt absorb spec; rim-light them.
+
+Slate gets rime lines on windward.
+
+FX cues. Breath volumetrics; stove heat shimmer; crunch audio.
+
+Pre-Monsoon (dry glare, landslide hours)
+
+Sky/Key. 5400–5800K hard sun; dome fill 6000–6500K, low intensity.
+
+Air. Dust motes; heat shimmer above yards/hover bands in plains approaches.
+
+Materials.
+
+Granite becomes matte; avoid “wet” looks.
+
+Rope/wood lighten; chalk build-up on lashes.
+
+FX cues. Frisks of wind; distant thunder without rain; falling grit on switchbacks.
+
+Monsoon (sheets, puddles, drums)
+
+Sky/Key. 6200–7000K storm decks; interiors warm 2700–3000K.
+
+Rain. 1–2.5 mm drops; oblique vectors (10–25°) in gusts; puddles drift.
+
+Materials.
+
+Stone: long specular ribbons; water coursing along runnels.
+
+Slate: bead chains; copper bowls splash.
+
+Yard earth: dark firm sheen; duckboards glisten.
+
+FX cues. Chain-bowl splatter; rope creak; banner strain.
+
+Autumn (clear reach, long air)
+
+Sky/Key. 5200–5600K soft sun; nights crisp.
+
+Materials. Low moisture; high clarity; wood warms slightly.
+
+FX cues. Carry sound farther; prayer flags regain suppleness.
+
+C4) Special surfaces & micro-recipes
+
+Snow types (make or break the look)
+
+Crust Snow (default high-alpine).
+Albedo #F3F6F7; R 0.20–0.30; subtle micro-normal; crunchy foot edges; spec tight and dim.
+
+Fresh Dusting (overnight).
+Albedo #FAFBFC; R 0.15–0.25; powder normal 0.05; footprints soft.
+
+Packed Tread (lane).
+Albedo #E7EBEF; R 0.35–0.45; compressed sheen; embedded gravel flecks.
+
+Ice (matte, not rink)
+
+Matte Ice Plate.
+Albedo #C9D4DB; R 0.35–0.50; normal micro-pitting 0.12; subsurface cool tone; specular elongated by wind.
+
+Glitter Trap (thin).
+Albedo #DCE6EC; R 0.30–0.40; anisotropic sparkles; edge cracks; flag with marigold dot stakes.
+
+Water handling
+
+Runnels. Shallow V-grooves in stone; algae tint in monsoon; flow sound low.
+
+Chain bowls. Add crown splash; mask for verdigris; overflow to gravel pans.
+
+Cisterns (no holy rivers). Stone lips; ice bloom in winter; lids with rope handles.
+
+C5) Wear maps (time & touch)
+
+Hand zones (doors, prayer wheels). Color shift toward warmer, gloss ↑ 0.05–0.10, normal flattening.
+
+Sills & steps. Edge chips; smooth centers; darkening bands near soil.
+
+Rope lash points. Burnish on knot faces; chalk or salt crystals seasonally.
+
+Dojo rings. Fresh rake strokes; scuff spirals; marigold safety dots fade first.
+
+School yard. Boot polish at muster grid intersections; bell pull darkens.
+
+C6) Signage materials & icon discipline (wilds standard)
+
+Substrate. Carved timber (Deep Green base) or painted slate.
+
+Paints.
+
+Identity text: off-white #F2F2EB on Deep Green.
+
+Caution: Marigold #FFC933 on Deep Green #162B18.
+
+Hazard: Vermilion #E03C31 on Slate #2F3E3A.
+
+Finish. Matte; no retroreflective films.
+
+Typography. Tribal header (carved/painted, heavy strokes); EN subhead (Inter 800 caps).
+
+Glyph. Treaty Glyph left of text at cap-height size; never oversized; dojo flags retain Grey Trident on Orange (glyph not used there).
+
+Pictos to include (carved style). No-kill zone, muster arrow, evacuation, rockfall, caltrops area, silent zone (bell crossed), mesh node (chevrons+dot) outside quiet rings.
+
+C7) Set-specific material stacks (apply to Phase-B typologies)
+
+Queen’s Council Hall
+
+Exterior. Fieldstone base; smoked-pine frame; slate roof with copper chains; Deep Green banners (subtle knot border).
+
+Interior. Lime-wash walls, timber benches, bronze straps; hearth stone darkened; felt curtains in winter.
+
+Seasonal swap. Vestibule door in winter; woven splash mats in monsoon; banner removal in storms.
+
+Training Courtyard / Dojo
+
+Walls. Fieldstone lower + timber upper; rope crown.
+
+Ground. Compacted earth (sand rake micro-normal); snow backstop berm in winter.
+
+Fixtures. Wooden racks; bamboo staves; target bales & slate plates; Grey Trident on Orange flag.
+
+Safety paint. Spectator line (Marigold on Deep Green); hazard posts (Vermilion/Slate) at rock-lever and bow-lane ends.
+
+School (Learning House)
+
+Exterior. Timber lime-wash; slate roof; windscreen boards (Deep Green trims).
+
+Interior. Warm board floors; wool rugs; chalk shelves; low desks.
+
+Yard. Muster grid (Marigold lines); prayer-wheel row polished.
+
+Signage. No-Kill boards at gates; evacuation arrows to Raven Span fallback.
+
+Nepal-Treaty Cabin Cluster (Rudra Pattern)
+
+Cabins. Timber walls; iron stove; porch boards; storm shutters; orange dojo flag inside.
+
+Yard. Compacted earth ring; rope lash points; duckboards in monsoon.
+
+Defense props. Non-lethal cache under porch; lethal quiver locked inside.
+
+C8) Light rigs & capture recipes (per band & set)
+
+Quick rigs for paintovers, 3D, or image-gen to hit “the feel” fast.
+
+Council Hall — Evening Council (Cold Spruce band).
+Key: 3000K lantern cluster EV ~7.5; Fill: moon 8000K EV ~6; Hearth bloom; AO soft.
+Aim: warm interior pools against blue-cold exterior.
+
+Dojo — Dawn Practice (High Alpine edge).
+Key: 5600K low sun EV ~12 hard; Rim on staff rings; Breath volumetrics; Flags stiff.
+Aim: crisp resolve, humane discipline.
+
+School — Blue-Hour Shelter (Foothill/Cold Spruce).
+Key: 3000K warm core EV ~7; Ambient sky 8000K EV ~6.5; Wet boards spec low.
+Aim: safety and care first.
+
+Cabin Cluster — Storm Watch (High Alpine shelf).
+Key: sodium-warm porch lamps EV ~6.5; Storm sky 6800–7200K EV ~7; Wind 10–14 m/s; Sleet streak 15–20°.
+Aim: resilience, not misery.
+
+C9) QA triggers (fast fail list)
+
+Glossy granite in dry season → drop spec/raise roughness.
+
+Mirror-ice rink in high-alpine lanes → convert to matte ice with micro-pitting; tighten spec.
+
+Plastic-looking greens on façades → switch to real plant hues or timber paint; add mineral streaks.
+
+Retroreflective signs → replace with matte carved/painted boards.
+
+Treaty Glyph oversized or used as brand → reduce to cap-height; keep as mark.
+
+Dojo using Treaty Glyph instead of trident → fix: dojo flag = Grey Trident on Orange.
+
+No-fly violations (any drone/hover over Silent Throat / Knife-Wind / Raven Span) → hard fail.
+
+C10) Packaging & tokens
+
+Color tokens. ID_Green1=#162B18, ID_Green2=#223F1C, ID_Green3=#4B6B32, CAUTION_Marigold=#FFC933, HAZ_Vermilion=#E03C31, HAZ_Slate=#2F3E3A.
+
+Material presets. MAT_Fieldstone_Grey, MAT_Granite_Dark, MAT_Slate_Roof, MAT_Pine_Smoked, MAT_Limewash_Interior, MAT_Earth_Compacted, MAT_Wool_Felt, MAT_Rope_Hemp, MAT_Bronze_Ox, MAT_Iron_Black, MAT_Copper_Patina.
+
+Shader notes. Prefer roughness-first tuning; micro-normal for patina; anisotropic sparkle on glitter ice only; subsurface off except for felt/wool (very shallow).
+
+Phase C — Status
+
+✅ Swatch bank with PBR targets locked.
+
+✅ Band/season behavior + shader recipes locked.
+
+✅ Signage substrates, icon discipline, and color usage locked.
+
+✅ Set-specific stacks + QA triggers locked.
+
+Want me to Proceed to Phase D (Culture & Signage)—where I’ll deliver the Tribal Script letterform sheet, pictogram set, signboard grids, flag/fabric rules, and ritual fixtures (prayer-wheel racks, cairns, ancestor poles, learning-house plaques)? Or any tweaks to the swatches/parameters before we lock the typography pack?
+
+awesome—rolling out Phase D (Culture & Signage) for the Eastern & Himalayan Wilds. This locks the Tribal Script, pictogram suite, signboard grids, flags & fabrics, and ritual fixtures so every artist gets identical results. It inherits the treaty reality (semi-autonomous hill bloc with no-fly pockets and hidden drone-jammers) and the humane resistance lineage (dojo trident legacy; non-lethal first) you’ve already canonized. 
+
+Phase D — Culture & Signage (Lock v1)
+
+D1) Tribal Script (letterforms, weights, and materials)
+
+Purpose. The Wilds use Tribal Script header + English subhead as the default stack (cities keep the tri-script). The script must read as carved/stitched, legible in fog/snow, and compatible with timber/slate substrates. (The political reality is a treaty mosaic that resisted full assimilation—our typography must read “self-ruled,” not state-issued.) 
+
+Stroke grammar (visual DNA).
+
+Skeleton: angular stems with slight inward flares; triangular counters; short chevron diacritics.
+
+Pen model: flat cut; low contrast; terminals square, ~100–110% stem width.
+
+x-height: 1.00; “cap” height ~1.25×; ascender 1.35×; descender 0.35×.
+
+Join logic: elbows meet with a tiny chamfer (prevents mud/frost clog).
+
+Spacing: set wide; target 3–4% inner-counter daylight in carved timber.
+
+Weights.
+
+800 (Header/carved): door lintels, gates, large pylons.
+
+600 (Board/subhead): secondary lines, distances, times.
+
+400 (Body): small rules, opening hours.
+
+Numerals & tallies.
+
+Prefer five-bar tallies for trail counts and distances; Arabic numerals only on safety boards.
+
+Materials & paints.
+
+Timber: Deep Green base, letters cut 4–5 mm and in-painted off-white (matte).
+
+Slate: letters painted off-white or Marigold depending on message tier.
+
+Textile applique: wool cut-outs with whip-stitch edge; letter thickness ≈ finger mid-phalanx.
+
+Transliteration key (for names on mixed boards).
+
+Tribal header stays native; the EN subhead is the canonical Romanization; keep one-to-one across gates, maps, and school placards.
+
+Do/Don’t.
+
+✅ Carve/paint matte; ✅ keep counters open; ✅ add chamfers on elbows.
+
+❌ No neon strokes; ❌ no chrome foils; ❌ no state tri-band color use on Wilds boards.
+
+D2) Pictogram Suite (carved style, high-contrast)
+
+All icons are one-stroke weight silhouettes designed for carving/paint. Use Marigold on Deep Green for Caution, Vermilion on Slate for Hazard (your request for strong, contrasting danger reads). Kaali’s deep-green identity family remains the “frame” for civic and cultural items. 
+
+Core Safety & Movement
+
+No-Kill Zone (school/dojo spectating): dove head over crossed spear/arrow with a small heart—Caution tier.
+
+Muster Point: four inward arrows to hollow circle—Caution.
+
+Evacuation Arrow: long chevron with tail ticks every 10 paces—Caution.
+
+Rockfall: ridge triangle dropping chips—Hazard.
+
+Caltrops Area: three-point star cluster—Hazard.
+
+Silent Zone: small bell with a diagonal hush-bar—Caution.
+
+Glitter-Ice Trap: jagged plate with sparkle ticks—Hazard.
+
+Avalanche Risk: cornice wedge above hut icon—Hazard.
+
+Yak Crossing: yak silhouette mid-stride—Caution.
+
+Rope-Bridge: two towers with catenary curve—Caution.
+
+First Aid / Clinic: leaf-cross (peepal leaf over cross) —Caution.
+
+Cistern/Water: bowl with three drops—Caution.
+
+Lightning Shelter: hut with grounding spike—Caution.
+
+Governance & Treaty
+
+Treaty Gate: Treaty Glyph (double chevrons enclosing a sanctuary circle) at cap-height left of text (see construction below).
+
+No-Fly Valley: the Treaty Glyph rotated into a “valley” V-frame—post at valley mouths only.
+
+Mesh Node (Comms): three step-chevrons feeding a dot—Caution; place outside signal-quiet rings.
+
+D3) Signboard Grids (sizes, stacking, contrast)
+
+Language order (Wilds standard): Tribal Script (header) → English (subhead), with optional small EN body notes. (City signage remains EN→HI→State.) 
+
+Physical sizes (cap heights).
+
+Gate plaque: Tribal 120–140 mm; EN 80–90 mm; left margin ≥ 1× cap; Treaty Glyph at cap-height.
+
+Street/Trail pylon: Tribal 80–100 mm; EN 60–70 mm.
+
+School/Dojo safety boards: pictos 120–160 mm on the long side; text 60–80 mm.
+
+Map boards: Tribal region name 140–180 mm; EN 100–120 mm; legend body 30–40 mm.
+
+Grid & margins.
+
+8-mm module; outer safe margin ≥ 3 modules; line gap ≈ 1.05–1.15× cap.
+
+Left-hang the glyph or picto; text columns align to a 1-module gutter from icon edge.
+
+Contrast rules.
+
+Timber (Deep Green) → text Off-White; Caution Marigold; Hazard Vermilion.
+
+Slate (Slate Charcoal) → text Off-White; Hazard Vermilion only.
+
+Mounting.
+
+Two hidden keyholes; anti-rust sleeves; lash points for storms; lower edges beveled to shed melt.
+
+Example layouts (copy locked):
+
+Treaty Gate:
+
+(Glyph) [Tribal] “Wolf Pass Gate”
+
+(EN) WOLF PASS — TREATY GATE
+
+School No-Kill:
+
+(Dove icon) [Tribal] “Learning Yard — No-Kill Zone”
+
+(EN) SCHOOL YARD — NO-KILL ZONE
+
+Dojo Spectator Line:
+
+(Footprints icon) [Tribal] “Stand Beyond Line”
+
+(EN) SPECTATORS — BEHIND THIS LINE
+
+D4) Flags & Fabrics (identity vs. dojo lineage)
+
+Akakpen Civic Fabric (identity).
+
+Base cloth in Deep Greens (#162B18 / #223F1C / #4B6B32); knotwork or leaf-band borders stitched in slightly lighter green; no metallic sheen. (Aligns with Kaali’s locked palette and matte, alt-advanced restraint.) 
+
+Treaty Glyph (construction & use).
+
+Form: ▲ (outer) over ▲ (inner), hollow ○ at center.
+
+Proportions: inner ▲ = 0.66 outer; ○ Ø = 0.33 chevron height; stroke = 1/18 height.
+
+Where allowed: gate plaques, map legends, sanctuary markers, treaty wayfinding.
+
+Where not: dojo flags or personal standards—those remain Trident-lineage spaces.
+
+Dojo Flag (legacy, never corporatized).
+
+Grey Trident on Orange cloth; matte; hand-stitched hems; no Treaty Glyph overlay; sits inside training compounds only. (This preserves Rudra’s humane resistance symbol and keeps it separate from treaty governance branding.) 
+
+Festival bunting (Wilds).
+
+Low-saturation cloth triangles in identity greens; a few Marigold accent pennants permitted along civic lines (not sacred thresholds); never exceeds 20% coverage in sacred plots.
+
+D5) Ritual Fixtures (neutral-heritage set)
+
+Cities lock one temple/masjid/church each; the Wilds instead read as learning-houses and way-rituals scattered across terraces and monastery shelves (you approved “several monasteries among the hills”). 
+
+Prayer-Wheel Rack
+
+Timber beam with 5–9 wheels; patina rings from hands; lintel board holds a Tribal couplet (not EN).
+
+Mount on stone plinth; drip edge above; small Silent Zone board nearby.
+
+Cairn & Ancestor Pole
+
+Stacked stone cairn with a carved pole (family glyphs burned in); Treaty Glyph never appears here; small offering bowls in stone (not “holy river” linked).
+
+Learning-House Plaque
+
+Timber plaque at door: [Tribal] Learning House / EN: SCHOOL; a small No-Kill symbol; bell rope with hand-polish (safety and care first).
+
+Monastery Way-Boards
+
+Slate boards at switchbacks: [Tribal] Monastery Shelf Ahead / EN: MONASTERY SHELF; Rope-bridge and Avalanche pictos inline.
+
+D6) Copy deck (ready text blocks)
+
+Treaty Gate
+
+[Tribal]: “Treaty Land — By Writ Only”
+
+EN: TREATY LAND — BY WRIT ONLY
+
+Signal-Quiet Ring (Council/School)
+
+[Tribal]: “Quiet Band — Comms Off”
+
+EN: QUIET BAND — COMMS OFF
+
+Non-Lethal Doctrine
+
+[Tribal]: “First, do no harm; between tribes—no kill”
+
+EN: NON-LETHAL FIRST; BETWEEN TRIBES — NO-KILL
+
+Invader Warning (Outer Terrace)
+
+[Tribal]: “Turn back. Invaders meet iron.”
+
+EN: TURN BACK. INVADERS WILL BE MET WITH FORCE.
+
+(These align with the humane-first doctrine you set and the broader political stakes.) 
+
+D7) QA & Failure Modes (signage/culture)
+
+Wrong stack order (EN above Tribal) → Fail; fix to Tribal→EN. 
+
+Treaty Glyph used on dojo flag → Fail; dojo flag is Grey Trident on Orange, Treaty Glyph stays civic. 
+
+Glossy/LED signage → Fail; Wilds = carved or matte-paint boards only.
+
+State tricolor motifs → Fail; Wilds identity = greens; hazards/cautions use Marigold/Vermilion pairs.
+
+No-fly icon missing at valley mouths (Silent Throat/Knife-Wind/Raven Span) → Fail; those are absolute. 
+
+English-only safety boards in schools → Fail; always Tribal header present (respect autonomy).
+
+Over-branding (oversized glyphs) → Fail; keep glyph at cap-height.
+
+D8) Packaging & Names
+
+SIG_WILDS_TribalScript_Spec_A2_v01.png (stroke grammar, weights, counters, examples)
+
+SIG_WILDS_Pictos_Core_A2_v01.png (caution/hazard set, carved style)
+
+SIG_WILDS_SignGrids_GatesTrails_A2_v01.png (grids, cap sizes, margins, mounting)
+
+SIG_WILDS_FlagsFabrics_A2_v01.png (Akakpen civic cloths, Treaty Glyph construction, dojo flag rule)
+
+SIG_WILDS_RitualFixtures_A2_v01.png (prayer-wheel rack, cairn/pole, learning-house plaque, monastery way-boards)
+
+SIG_WILDS_CopyDeck_EN-Tribal_v01.docx (all locked wordings)
+
+Left rail (each sheet): color swatches; A/R/M note for substrate; glyph size rules; icon stroke weight; do/don’t.
+Right rail: usage photos/paintovers; QA checklist.
+
+Phase D — Status
+
+✅ Tribal Script visual DNA + weights locked.
+
+✅ Pictogram suite (caution/hazard/governance) locked.
+
+✅ Signboard grids, sizes, and contrast rules locked.
+
+✅ Flags & fabrics: Treaty Glyph vs. Dojo Trident separation locked.
+
+✅ Ritual fixtures (prayer-wheel racks, cairns, learning-house plaques, monastery way-boards) locked.
+
+Touch-base: If this all looks good, say “Proceed Phase E” and I’ll deliver Movement, Defense & Encounter Design (safe-step grammar, silent-lane protocols, trap fixtures with non-lethal/ lethal escalation maps, patrol loops, child routes, and cinematic set-pieces for ambush/rescue/parley). If you want tweaks—extra pictos, different cap heights, or an alternate Treaty Glyph thickness—tell me now and I’ll fold it in before we move on.
+
+awesome—here’s Phase E (Movement, Defense & Encounter Design) for the Eastern & Himalayan Wilds. It’s built on all the locks you’ve approved so far (treaty geography, no-fly valleys, Tribal+EN signage, Kaali’s deep-green identity, non-lethal first, lethal only for invaders). This is production-grade: you can hand it to layout artists, level designers, or an image-gen pipeline to get consistent results.
+
+Phase E — Movement, Defense & Encounter Design (Lock v1)
+
+E0) Design tenets (inheritance recap)
+
+Non-lethal first between tribes and toward civilians; lethal only when invaders breach treaty ground.
+
+No-fly valleys are absolute. No aircraft, no hovercams, no drones inside those cones.
+
+Quiet tech. Radios and Brace-Comm run on silent bands; mesh nodes stay outside “signal-quiet rings” at Council and School.
+
+Signage & color. Tribal header + English subhead; caution Marigold on Deep Green; hazard Vermilion on Slate.
+
+Material truth. Traps and defenses look hand-made (timber, rope, stone, felt, bronze/iron), not sci-fi.
+
+E1) Movement Grammar (how people, herds, and convoys actually move)
+
+E1.1 Trail classes (visual + rules)
+
+Ridge Silent Lanes (windward spines): narrow, staked with marigold dot-stakes; used by runners and sentries.
+
+Visual: compacted snow line, felted boot polish at edges; low cairns every 70–100 paces.
+
+Rule: whisper-only; no bells, no tinware; handsign code active.
+
+Terrace Work Paths (between huts, pens, granaries): broadest; sled ruts in winter; duckboards in monsoon.
+
+Visual: rake marks; rope lash points on corners; “Yield to Herds” pictos.
+
+Valley Corridors (approach roads, rope-bridges): where outsiders arrive.
+
+Visual: treaty gate boards; Treaty Glyph plaques; rope-bridge silhouettes and avalanche boards.
+
+E1.2 Step & footing doctrine
+
+Rock-tongue first: step onto natural stone tongues; avoid glitter sheens.
+
+Probe, then place: staff taps twice at ankle depth before weight; kids use color-coded sticks (red = adult only).
+
+Counter count: 60 paces per trail module; tally cut into posts; resets at each cairn.
+
+Whiteout line: hemp guide ropes along exposed spans; knots every 5 paces; cloth flags every 20.
+
+E1.3 Switchback protocols (for climbs/descents)
+
+Eyes-up corners: convex mirrors are replaced by shale reflectors (slate plates) set at 45°.
+
+Turn-call: leader taps staff twice at each hairpin; rear echoes once.
+
+Landslide clock: after 15:00 (pre-monsoon), descent only; uphill movement restricted to local writ.
+
+E1.4 Rope-bridge & river shelf crossing
+
+One-third rule: never more than one third the planks occupied; runners cross last.
+
+Lash check: visual on four anchor knots and midspan joint before crossing; lashing pictos show “OK/NOT OK”.
+
+Wind gate: above Beaufort ~6 equivalent (palms bend, flags snap straight), crossing halts.
+
+E1.5 Night & blackout movement
+
+New-moon convoy: no lamps; cat-eye beads on collars; staff-tip glow caps (hooded) allowed.
+
+Sound discipline: felt wraps on metal; no clack from staff ferrules; wool mufflers on harness rings.
+
+Checkpoint chant: soft tribal call/response (two-syllable code, changes weekly).
+
+E1.6 Child routes & school circuits
+
+Yellow-thread routes: staked child trails with Marigold dots every 8–10 paces; adult shade points every 100–120 paces.
+
+Muster grid (school yard): lettered rows A–D (Tribal), numerals in EN below; arrows to Raven Span fallback.
+
+Chaperone cadence: eldest front, teacher rear; dogs flank; pace count half-speed in fog.
+
+E1.7 Herd movement windows
+
+Dawn upslope / Dusk downslope spring & autumn; mid-morning only in winter (to avoid black ice); avoid ridge silent lanes during parley/ceremony hours.
+
+E2) Defensive Architecture & Devices (non-lethal → lethal escalation)
+
+E2.1 Perimeter zoning (hamlets, Council, School)
+
+Observation Ring (~60–90 m out): pine nests with bow rests; mirrored slate reflectors.
+
+Buffer Ring (~30–60 m): silent alarm triplines; bolas cache posts; smoke pots (white only, windward).
+
+Inner Ring (~0–30 m): rope-bar gates; caltrop mats (lifted for market hours); shield boards stored at thresholds.
+
+Rule of display: Non-lethal tools visible and reachable; lethal tools stored inside armories with writ postings—never on public walls.
+
+E2.2 Silent alarms (no bells near Quiet Rings)
+
+Felt-head thumpers: weighted pucks on triplines that thud against plank shields.
+
+Sand flutes: slow hiss in hollow reed at gate posts (monsoon-safe).
+
+Prayer-wheel “stallers”: weighted to spin once and halt—visual cue for sentries without sound.
+
+E2.3 Non-lethal devices (default response)
+
+Bolas posts: two-cord, leather weights; marked Caution yellow bands.
+
+Caltrop mats: fold-out, slat-based; hazard board posted 10 paces ahead; stored rolled.
+
+Sap-dart throwers: low-draw ballistas (10–15 m effective) using sleep saps; red cap kept on triggers in peace hours.
+
+Net drops: weighted mesh from porch beams; release pegs above thresholds.
+
+E2.4 Lethal escalation (invaders only; never near School/Dojo/Sanctuaries)
+
+Rockslide levers: painted Vermilion/Slate; sited outside residential arcs; clear “FALL LINE” boards.
+
+Deadfall gates: spiked beams (timber/iron) at choke alleys; warning boards in Tribal only (inner-side).
+
+Arrow slits: in stone corners; dust curtains hide openings when not in use.
+
+Spearnests: at pine platforms; backup javelins; writ stored at nest ladder (invader-only clause).
+
+E2.5 Drone & air denial
+
+Jammer totems: carved posts with copper coils; Treaty No-Fly boards at valley mouths; placed outside School/Council quiet rings.
+
+Reflective veils: fabric nets across narrow cuts; visually read as prayer-cloth but functionally occlude UAV optics.
+
+Heat discipline: stoves baffled; vents rerouted under stone in watch hours.
+
+E3) Patrols, Posts & Protocols
+
+E3.1 Sentry shifts & patterns
+
+Two-up rule: never alone; pairs offset by 5–7 paces.
+
+Shift ladder: Dawn (grey) → Midday → Dusk → Midnight (short); rotate nests clockwise.
+
+Sightlines: every nest must see at least two others; mirror signals on cloud days.
+
+E3.2 Challenge & writ
+
+Token bark: two-syllable Tribal challenge; response changes weekly.
+
+Writ cords: braided pass tokens with knot code; cut and re-tie each lunar cycle.
+
+Outsider compliance: stand on Caution stripe; hands visible; weapons peace-tied.
+
+E3.3 Mesh & quiet rings
+
+Mesh nodes: wooden mast 4.2 m; panel faces ridge; icon on pylon outside ring.
+
+Quiet ring: 30 m radius around Council/School; boards: QUIET BAND — COMMS OFF; spot checks polite, swift.
+
+E4) Encounter Design (story-ready set-pieces)
+
+Below are four repeatable sequences with blocking, props, crowd logic, and camera notes.
+
+E4.1 Ambush on Switchback (Invaders breach)
+
+Setup. Convoy climbs the Cloud Ladder; dust, late-day glare.
+Civilians. Cleared earlier by school bell; market shutters half-down at outer terrace.
+Defenders. Two nests triangulate; buffer ring set (caltrop mats staged, bolas ready).
+Beats.
+
+Call (mirror flash → two staff taps).
+
+Non-lethal volley (nets/bolas) to halt outriders.
+
+Warning board raised: TURN BACK — INVADERS WILL BE MET WITH FORCE.
+
+Escalation: rockslide lever (only if breach continues); dust curtain; spear nest covers retreat.
+Cameras.
+
+A: Long lens down-slope; mirage shimmer; lever silhouette.
+
+B: Over-shoulder through rope lashed to a pine nest.
+
+C: Ground-level on caltrop mat as tire slides to a stop.
+
+E4.2 Parley at Wolf Pass Gate (Treaty contact)
+
+Setup. Overcast morning; treaty gate boards; market line 6 m off threshold.
+Civilians. Vendors paused; kids routed to School via Yellow-thread path.
+Defenders. Council envoys with shield boards; writ cords at belt.
+Beats.
+
+Challenge/response; writ inspection; weapons peace-tied.
+
+Quiet band enforced; mesh node checked for power.
+
+Staged open of rope-bar gate; convoy stops at Caution stripe.
+Cameras.
+
+A: Pylon close—Treaty Glyph at cap height; matte carved letters.
+
+B: Vendor hands over a kettle—steam silhouette; peace as power.
+
+E4.3 Rescue in Whiteout (School circuit lost)
+
+Setup. Sudden squall; visibility 10–15 m; Yellow-thread route half buried.
+Civilians. Children + teacher; dogs flank; tally sticks up.
+Defenders. Runners from dojo; felt thumpers, guide rope, sled with warm rugs.
+Beats.
+
+Signal via sand flute hiss at buffer ring.
+
+Guide rope shot to child group; teacher checks muster grid card.
+
+Warm core at School; bell rope rings once (success code).
+Cameras.
+
+A: Macro on rope knot—frost on fibers.
+
+B: POV through goggles—white field, marigold stakes pulsing into view.
+
+E4.4 Rope-Bridge Standoff (Raven Span)
+
+Setup. Wind picks up before monsoon; outsiders at far tower; defenders atop near tower.
+Civilians. Kept back at marker boards; vendors lashed.
+Defenders. Net drop readied; dart throwers checked.
+Beats.
+
+Parley board raised (Tribal/EN).
+
+Net drop warning fired (dummy weight splashes).
+
+If breach: cut secondary lash to sag deck—non-lethal tumble; recovery lines deployed after retreat.
+Cameras.
+
+A: Wide along catenary; cloth pennants snapping.
+
+B: Under-deck view—rope fibers straining in gusts.
+
+E5) Child-Safety & Sanctuary Enforcement
+
+No-Kill Zones: School yard, Dojo spectator rail, Learning-house porches, Monastery shelves. Boards at every entry; hazard devices disabled within 30 m.
+
+Muster discipline: roll call at grid; teacher carries Tribal+EN card set; secondary muster at Raven Span trail if square unsafe.
+
+Predator protocol: dogs form wedge; children behind shield boards; no arrows unless all children behind solid cover.
+
+E6) Emergency Response & Medical
+
+Avalanche: shout down-slope only; pull rope-gate across exposed lanes; search by probe line; color flag for “found” vs. “clear”.
+
+Landslide: halt movement after 15:00 (pre-monsoon); detour boards; lever lines locked.
+
+Fire: bucket chains from cisterns; stove caps on; ember rugs over thatch eaves.
+
+Medical: triage at Clinic Nook (School) or infirmary bench (Council); warm packs; boiled tools; sled evac to helipad at Juniper Gate (permissioned only, outside no-fly).
+
+Comms: mesh ping to neighboring hamlets; Brace-Comm on silent band; quiet rings remain enforced.
+
+E7) Drone-Avoidance & Optics Denial
+
+Overhead occlusion: timber pergolas over key lanes; cloth veils in storm season; canopies break LOS from ridge cams.
+
+Heat masking: stove baffles; vent through ground runs; thermal signature diluted.
+
+Glare trick: set shale reflectors to flash sky color at common UAV viewpoints—confuses auto-exposure, not a weapon.
+
+E8) QA Checklists (clip to every scene in the Wilds)
+
+Movement
+
+Trail class reads (ridge silent vs terrace vs valley).
+
+Stakes/rope lines present where they should be (fog, whiteout, bridges).
+
+Child routes show Yellow-thread and muster logic.
+
+Defense
+
+Non-lethal tools visible; lethal tools inside armories or clearly invader-only.
+
+Hazard/caution boards use the right color pairs and substrates (matte).
+
+No traps within 30 m of School/Dojo/Sanctuaries.
+
+Air & Comms
+
+No-fly valleys respected; no sky assets in cones.
+
+Mesh nodes outside quiet rings; QUIET BAND — COMMS OFF signage visible.
+
+Ethos
+
+Parley attempts shown before escalation.
+
+Dojo flag = Grey Trident on Orange; Treaty Glyph not on dojo fabrics.
+
+E9) Failure Modes & Fixes (fast triage)
+
+Metallic/neon traps → swap to timber/rope/stone; matte finishes.
+
+English-only safety boards → add Tribal header; widen tracking for carving look.
+
+Drones in no-fly pockets → remove; add jammer totems and No-Fly boards at mouths.
+
+Lethal gear on public walls → move inside armory; post invader-only writ inside.
+
+Glossy hazard signs → repaint matte; correct color pairs.
+
+Mesh node inside quiet ring → relocate mast outside ring; add Quiet Band boards.
+
+Rockslide lever in residential arc → relocate to buffer or outer ring; add FALL LINE board.
+
+E10) Packaging & File Names
+
+MOV_WILDS_TrailGrammar_A2_v01.png (trail classes, stakes, ropes, whiteout kits)
+
+DEF_WILDS_Perimeter_Zones_A2_v01.png (observation/buffer/inner, device callouts)
+
+ENC_WILDS_Setpieces_A2_v01.png (Ambush, Parley, Rescue, Rope-Bridge standoff)
+
+SAFE_WILDS_ChildRoutes_A2_v01.png (Yellow-thread, muster grids, dog wedges)
+
+EMS_WILDS_Response_A2_v01.png (avalanche/landslide/fire/med evac flowcharts)
+
+COMMS_WILDS_QuietRings_A2_v01.png (mesh mast siting, signage, jammer totems)
+
+Each sheet’s left rail: color chips, icon refs, rules. Right rail: QA list + failure-mode fixes.
+
+Phase E — Status
+
+✅ Movement grammar and protocols locked.
+
+✅ Defensive architecture (non-lethal→lethal) locked.
+
+✅ Patrols, writ, and quiet-ring behavior locked.
+
+✅ Set-pieces with blocking and camera notes locked.
+
+✅ Child safety, emergency, and drone-avoidance rules locked.
+
+Touch-base: If you’re happy with Phase E, say “Proceed Phase F” and I’ll deliver Tech & Utility Integration (power/heat schematics, mesh/comms etiquette with diagrams, clinic layouts and med kits, plus a consolidated prop library with measured callouts). If you want any tweaks (extra set-piece, different switchback rules, a new non-lethal device), tell me now and I’ll fold it in before we move on.
+
+awesome—here’s Phase F (Tech & Utility Integration) for the Eastern & Himalayan Wilds. This locks how power, heat, water, sanitation, comms, and medical systems look and behave across Akakpen heartlands + Nepal-Treaty hills, so any scene you make will feel consistent and believable. It inherits every rule you’ve already approved (Tribal+EN signage, Kaali deep-green identity, non-lethal first, treaty no-fly valleys, signal-quiet rings around Council & School).
+
+Phase F — Tech & Utility Integration (Lock v1)
+
+F0) Design pillars (what every asset should express)
+
+Quiet, alt-advanced tech. Solutions are low-glare, hand-serviceable, and storm-proof. Wood/stone/slate first; metals are darkened, oiled, or oxidized. No neon, no chrome.
+
+Autonomy over spectacle. Gear integrates into terraces and roofs; utility is backgrounded behind ritual and daily life.
+
+Safety signage. Tribal Script header + English subhead; Marigold on Deep Green for caution; Vermilion on Slate for hazards.
+
+Doctrines in force. Non-lethal first (tribe↔tribe and civilian spaces); invader-only lethal escalations; no-fly valleys absolute.
+
+F1) Power & Heat
+
+F1.1 Micro-Hydro Wheel (rill-drive)
+
+Purpose. Base electricity for lights, radios, and clinics without inviting attention or noise.
+
+Site fit. Mounted on a stone cradle beside a stepped rill; intake at a small forebay with a leaf-screen.
+
+Envelope. Wheel Ø 1.6 m, width 0.45 m; cedar paddles on blackened-iron spokes; bronze axle bushings.
+
+Head/flow. Works from 1.2–2.5 m head; optimal ~1.8 m with 50–80 L/s flow.
+
+Shaft & drive. Leather-belt to a slow generator in a timber hut (600×900 mm footprint), felt-lined for sound damping.
+
+Covers. Split-plank cowling over top quadrant; winter ice-lip deflector; child-safe rail at 900 mm height.
+
+Signage. Pylon:
+Tribal: “Rill Wheel — Keep Clear”
+EN: MICRO-HYDRO — KEEP CLEAR (Caution colorway)
+
+Visual tells. Wet sheen on paddles; moss at splash zone; muted thrum. No bright wiring; hemp-wrapped leads where exposed.
+
+F1.2 Roof-Slate Solar (stealth PV)
+
+Purpose. Daytime trickle charge for lamps, Brace-Comm, clinic tools.
+
+Panels. Dark blue-grey “slate” laminates, 300×450 mm, built into the roofing grid; matte anti-glare finish.
+
+Array size. 12–36 tiles per large roof; 4–12 tiles per cabin.
+
+Wiring. Under-slate channels to a clay-lined junction box; braided cloth-sheathed cable drops to interior.
+
+Winter/monsoon. Snow hooks keep sliding sheets; drip chains route water away from junctions.
+
+Visual tells. Panels disappear until they catch a soft, cold specular line; never the shiny glassy look.
+
+F1.3 Heat & Stoves (iron + stone)
+
+Purpose. Clean heat, cooking, and safe venting without smoke signatures at sensitive hours.
+
+Stove body. Blackened iron, 600×400×500 mm; door with mica window; rope-wrapped pull.
+
+Flue. 100–120 mm pipe into a stone heat-sink wall; hidden baffles for thermal draw; spark arrestor cap at roof (mesh cone).
+
+Fuel. Split pine; yak-dung cakes (outer rings only); ash bucket with lid.
+
+Quiet mode. Bypass through under-stone channels before exiting at a low wall, diffusing thermal plume.
+
+Visual tells. Warm rim highlights at 2700–3000 K; soot bloom where flue meets stone; felt draught snakes at door bottoms.
+
+F2) Water, Drainage & Sanitation
+
+F2.1 Melt-Cisterns (non-sacred)
+
+Form. Stone-lined, lid-covered cisterns; Ø 1.2–1.8 m; depth 0.8–1.2 m; rope-handle lid.
+
+Inflow. Roof chain bowls → runnels → settling pan → cistern; screen basket catches debris.
+
+Signage.
+Tribal: “Covered Water”
+EN: CISTERN — KEEP LID ON (Caution)
+
+Visual tells. Ice bloom at rim in winter; mineral rings on stone; drip grooves at bowl edges.
+
+F2.2 Drainage grammar (monsoon logic)
+
+Runnels. Shallow V-grooves cut along alleys; fall to gravel pans; algae tint in storms.
+
+Duckboards. Plank walkways across yard low points; lash points for gusts.
+
+Overflows. Carved lion-mouth spouts simplified to clean ellipses—water shoots clear of walls.
+
+F2.3 Latrines & Compost (leeward, dry)
+
+Placement. Down-slope, leeward of dwellings; 15–25 m off lanes; never in school/dojo rings.
+
+Pit & box. Timber box with lid; ash bucket; lime scoop; hand-wash pitcher and drain trench.
+
+Signage. Small Tribal + EN icon board; no oversized text.
+
+Visual tells. Matte timber, no plastic seats; a discreet bucket chain; marigold dot on the path stake.
+
+F3) Communications & Signal Discipline
+
+F3.1 Mesh Node Mast (LoS, outside Quiet Rings)
+
+Mast. 4.2 m timber post; triple-guyed; small LoS panel (350×300 mm) facing ridge.
+
+Base. Stone pad; lash cleats; lightning strap to buried rod.
+
+Power. Slate-PV trickle + hydro buffer; battery in wood box (vented).
+
+Icon. Mesh pictogram (three chevrons feeding a dot) at cap-height on a Deep-Green pylon.
+
+Rule. Masts must sit outside 30 m signal-quiet rings around Council & School. Inside the ring: QUIET BAND — COMMS OFF boards.
+
+F3.2 Brace-Comm etiquette (human behavior)
+
+Bands. Silent band default; burst packets on the hour only in curfew nights; village code rolls weekly.
+
+Posture. Brace at chest, eyes up; never mid-conversation; antennae shrouded in felt.
+
+Scrub. After parley or alarm drills, logs wiped at Council clerk’s board.
+
+F3.3 Jammers & No-Fly Markers (treaty enforcement)
+
+Jammer totem. Carved post with copper coil helix; buried box; grounded to slate plate. Don’t over-design—should read as local craft + copper glint.
+
+Boards at mouths.
+Tribal: “No Sky — Treaty Sanctuary”
+EN: NO-FLY VALLEY — TREATY SANCTUARY (Hazard colorway, Vermilion on Slate)
+
+Optics denial. Reflective shale plates to kick skylight toward common UAV view angles (exposure spoof, not a weapon).
+
+F4) Medical — Clinics, Kits & Evac
+
+F4.1 Clinic Nook (School) & Infirmary Bench (Council)
+
+School Clinic Nook (6×3 m).
+
+Zones. Two low beds (500 mm high), warm shelf (blankets, stones), instrument board, hand-wash.
+
+Light. 3000 K lanterns under shades; slit window with felt curtain.
+
+Hygiene. Boiling pot; drying rack; sealed bin; soap & ash.
+
+Council Infirmary Bench (4×2 m).
+
+Bench. 2.0 m timber with under-storage; curtain rail for privacy.
+
+Comms. Brace-Comm shelf (felt wrapped); chart slate; writ clips.
+
+Signage.
+Tribal: “Healing Place” / EN: CLINIC (Caution).
+Pictogram: leaf-cross.
+
+F4.2 Med Kits (layered)
+
+Pocket kit. Cloth roll: bandage, sling, splinter forceps, salve, tourniquet strap, sugar/salt sachets.
+
+Patrol kit. Sled bag: blankets, hot-water bladders, splints (shin/forearm), ophthalmo shield, sap antidote.
+
+Clinic chest. Boiled tools, sutures, gauze, tinctures, bone needle, lantern with spare wick, pulse oximeter (low-power), spare Brace battery.
+
+Visual tells. Cloth wraps, corked bottles, matte metal instruments; no plastic boxes.
+
+F4.3 Evac & Helipad (permissioned only)
+
+Primary evac. Sled to Juniper Gate outer terrace; stretcher hand-off; helipad ring in painted Marigold on Stone.
+
+Helipad hardware. Stone ring Ø 12 m, low cairns at cardinal points, wind sock on timber pole, Treaty Gate board nearby (Tribal + EN).
+
+No-fly doctrine. Pad sits outside no-fly valleys; flights by writ only; hover berth never over valleys.
+
+F5) Consolidated Prop Library (measured callouts)
+
+Use these dimensions for modeling or consistent image details. All timber thicknesses 35–55 mm unless noted.
+
+F5.1 Power & Water
+
+Micro-Hydro Wheel PRP_HYDRO_WHEEL_v1 — Ø 1.6 m; hub 180 mm; paddle 300×20 mm (cedar).
+
+Generator Box PRP_GEN_BOX_v1 — 900×600×700 mm; felt liner; louver slots.
+
+Slate PV Tile PRP_SLV_PV_300x450 — 300×450×8 mm; hidden clips.
+
+Chain Bowl PRP_COP_CHAIN_BOWL_v1 — Ø 380 mm; depth 120 mm; drain grate 8 mm bars.
+
+Cistern Lid PRP_CISTERN_LID_v1 — Ø 1200–1800 mm; rope handles; bevel edge.
+
+F5.2 Heat & Fixtures
+
+Stove PRP_STOVE_IRON_v1 — 600×400×500 mm; door 220×160 mm; ash drawer.
+
+Spark Arrestor PRP_FLUE_CAP_v1 — Ø 140 mm; mesh cone height 180 mm.
+
+Duckboard PRP_DUCKBOARD_v1 — 1500×600×35 mm; lash eyelets.
+
+F5.3 Comms & Treaty
+
+Mesh Mast PRP_MESH_MAST_v1 — 4.2 m; base pad 500×500 mm; panel 350×300 mm.
+
+Jammer Totem PRP_JAMMER_TOTEM_v1 — 2.1 m post; copper helix 600 mm span.
+
+Treaty Gate Pylon SIG_TREATY_PYLON_v1 — 600×1800×120 mm; glyph at cap height.
+
+F5.4 Medical
+
+Sled PRP_EVAC_SLED_v1 — 2000×650×140 mm runners; rope loops; canvas deck.
+
+Clinic Bed PRP_CLINIC_BED_v1 — 1900×700×500 mm; blanket stack.
+
+Instrument Board PRP_TOOL_BOARD_v1 — 800×600 mm with leather loops.
+
+F5.5 Signage & Icons
+
+No-Kill Board SIG_NOKILL_v1 — 500×700×22 mm; dove-spear icon 160 mm; text cap 70 mm.
+
+Quiet Band Board SIG_QUIET_v1 — 400×600×22 mm; bell-hush icon 140 mm.
+
+F6) Lighting, Noise & Footprint (so tech never steals the frame)
+
+Lighting. Warm lamps (2700–3000 K) for interiors/evenings; no exposed cold LEDs. Exterior utility lights hooded; spill kept low.
+
+Noise. Hydro = low thrum; generators muffled in felt; jammers silent; Brace-Comm beeps off.
+
+Footprint discipline. No exposed conduit runs; cable crossings are braided rope-sleeved; gear painted or stained to match Deep-Green trims or stone tones.
+
+F7) QA Checklists (apply whenever tech shows up)
+
+Power/Heat
+
+PV tiles matte, slate-colored; not shiny blue glass.
+
+Stove vents show spark arrestors; no smoke plumes during “quiet” hours.
+
+Hydro wheel guarded; child-safe rail present.
+
+Water/Drainage/Sanitation
+
+Chain bowls drain to runnels; algae/wet logic in monsoon.
+
+Cistern lids on; signage in Tribal+EN.
+
+Latrines leeward; simple matte boards, not big signs.
+
+Comms/Treaty
+
+Mesh mast outside quiet ring; Quiet Band boards visible.
+
+No-Fly boards at valley mouths; jammer totems in plausible sites (not sacred precincts).
+
+Brace-Comm posture respectful (no mid-parley tapping).
+
+Medical
+
+Clinic tools look boiled/oiled; no plastic kits.
+
+Evac flow to Juniper Gate, not into no-fly cones.
+
+No lethal gear visible in clinics/schools.
+
+F8) Failure Modes & Fast Fixes
+
+Glare-glass solar panels → swap to matte slate PV; break up spec.
+
+Visible plastic conduit → replace with rope-sleeved or hidden runs.
+
+Mesh mast inside quiet ring → relocate; post Quiet Band boards at boundary.
+
+High-contrast LED utility light → hood lamp; shift to warm lantern temp.
+
+Stove smoke trail during curfew → route through under-stone baffles; reduce draw.
+
+Cistern without lid → add lid; “Covered Water” board; child-safe latch.
+
+Jammer totem on monastery threshold → move to civic edge; never on sacred lines.
+
+Helipad inside no-fly valley → relocate to treaty saddle; mark with Marigold ring only.
+
+F9) Packaging & File Names
+
+UTIL_WILDS_PowerHeat_A2_v01.png (micro-hydro, slate PV, stoves, flue caps)
+
+UTIL_WILDS_WaterDrain_A2_v01.png (runnels, chain bowls, cisterns, duckboards)
+
+UTIL_WILDS_CommsTreaty_A2_v01.png (mesh mast, Quiet rings, jammers, no-fly boards)
+
+UTIL_WILDS_Medical_A2_v01.png (clinic nook, infirmary bench, med kits, evac flow)
+
+UTIL_WILDS_PropLibrary_CALLS_v01.pdf (all prop SKUs, dims, materials, paint codes)
+
+Each sheet’s left rail: materials (A/R/M), color chips, cap heights; right rail: QA checklist + failure-mode fixes.
+
+Phase F — Status
+
+✅ Power & heat systems specced (micro-hydro, slate PV, stoves).
+
+✅ Water, drainage, sanitation behaviors locked.
+
+✅ Comms mesh etiquette, Quiet rings, jammers, and No-Fly signage locked.
+
+✅ Medical layouts, kits, and evac logic locked.
+
+✅ Prop library with measured callouts locked.
+
+Touch-base: If Phase F looks good, say “Proceed Phase G” and I’ll deliver the Final Handoff Bundle: a single indexed canon (maps, sets, materials, signage, movement/defense, utilities), directory structure, naming tokens, and a one-page “director’s intent” so any new collaborator can jump in without drift. If you want tweaks (e.g., bigger hydro wheel, different clinic bed count, alternative PV tile size, or a specific jammer totem ornament), tell me and I’ll fold them in before we wrap.
+
+amazing—here’s your Phase G (Final Handoff Bundle) for Eastern & Himalayan Wilds. It consolidates every lock from Phases A–F into one canonical package you can drop into art pipelines, 3D, or image-gen. I’ve included a clean directory tree, file naming, tokens, cross-refs, QA forms, and a one-page Director’s Intent. If you want this exported into working templates (PSD/FIG/Unreal scene), say the word and I’ll assemble those next.
+
+1) What this bundle guarantees
+
+One truth for maps, settlements, materials, signage, movement/defense, utilities.
+
+Wilds signage standard = Tribal Script header + English subhead (cities keep EN→HI→State).
+
+Ethos locks: non-lethal first (tribe↔tribe/civilians), lethal for invaders only; no-fly valleys absolute.
+
+Identity vs. danger: Kaali Deep-Green family for civic identity; Marigold on Deep Green for caution; Vermilion on Slate for hazards.
+
+Symbols: Treaty Glyph (civic/treaty) kept separate from the Grey Trident on Orange (dojo lineage).
+
+2) Directory & file naming (drop-in structure)
+
+/WILDS_Pack
+
+  /_INDEX
+
+    WILDS_Pack_Index_v01.pdf                <-- start here
+
+    CHANGELOG_WILDS_SemVer_v01.md
+
+  /A_Maps
+
+    MAP_AHZ_Master_Clean_v01.png
+
+    MAP_AHZ_Annotated_Control_v01.png
+
+    LEGEND_AHZ_Tokens_v01.png
+
+  /B_Settlements
+
+    SET_AHZ_E3_CouncilHall_A2_v01.png
+
+    SET_AHZ_E3_DojoCourtyard_A2_v01.png
+
+    SET_AHZ_E3_School_A2_v01.png
+
+    SET_NTH_CabinCluster_Rudra_A2_v01.png
+
+  /C_Materials_Climate
+
+    MAT_WILDS_Swatches_PBR_v01.png
+
+    MAT_WILDS_SeasonalShaders_v01.png
+
+  /D_Culture_Signage
+
+    SIG_WILDS_TribalScript_Spec_A2_v01.png
+
+    SIG_WILDS_Pictos_Core_A2_v01.png
+
+    SIG_WILDS_SignGrids_GatesTrails_A2_v01.png
+
+    SIG_WILDS_FlagsFabrics_A2_v01.png
+
+    SIG_WILDS_RitualFixtures_A2_v01.png
+
+    SIG_WILDS_CopyDeck_EN-Tribal_v01.docx
+
+  /E_Movement_Defense
+
+    MOV_WILDS_TrailGrammar_A2_v01.png
+
+    DEF_WILDS_Perimeter_Zones_A2_v01.png
+
+    ENC_WILDS_Setpieces_A2_v01.png
+
+    SAFE_WILDS_ChildRoutes_A2_v01.png
+
+    EMS_WILDS_Response_A2_v01.png
+
+    COMMS_WILDS_QuietRings_A2_v01.png
+
+  /F_Utilities
+
+    UTIL_WILDS_PowerHeat_A2_v01.png
+
+    UTIL_WILDS_WaterDrain_A2_v01.png
+
+    UTIL_WILDS_CommsTreaty_A2_v01.png
+
+    UTIL_WILDS_Medical_A2_v01.png
+
+    UTIL_WILDS_PropLibrary_CALLS_v01.pdf
+
+  /G_QA
+
+    QA_WILDS_GlobalAcceptance_v01.pdf
+
+    QA_WILDS_SceneType_Checklists_v01.pdf
+
+    QA_WILDS_FailureModes_Fixes_v01.pdf
+
+  /H_Templates (optional)
+
+    TEMPLATE_A2_Sheet_WILDS_v01.psd
+
+    TEMPLATE_A2_Sheet_WILDS_v01.fig
+
+Naming discipline: PREFIX_SCOPE_Thing_SizeOrType_vNN.ext (bump vNN only when a lock changes).
+
+3) Canon tokens (copy/paste into briefs & engines)
+
+Region codes & geography
+
+Macro tiles: AHZ-[A..H][1..8] (Akakpen Himalayan Zone).
+
+Passes/Saddles: Wolf Pass (AHZ-D2), Juniper Gate (AHZ-E3), Prayer-Flag Notch (AHZ-F4), Cloud Ladder (AHZ-G3).
+
+Valleys: Amber River Fold, Stone-Milk Vale, Raven Span (rope-bridge cluster).
+
+No-fly valleys (absolute): Silent Throat (AHZ-E4), Knife-Wind Chute (AHZ-F3), Raven Span floor.
+
+Color tokens (HEX)
+
+Identity: ID_Green1=#162B18, ID_Green2=#223F1C, ID_Green3=#4B6B32
+
+Caution: CAUTION_Marigold=#FFC933 on ID_Green1
+
+Hazard: HAZ_Vermilion=#E03C31 on HAZ_Slate=#2F3E3A
+
+Naturals (key): Fieldstone #898C90, Granite Dark #5A5F65, Slate Roof #56606A, Smoked Pine #5B4633, Limewash #E9E5DB, Earth Dry #6B5A46 / Wet #4F463B.
+
+Type & script
+
+Wilds signage stack: Tribal Script (800/600/400) → English (Inter 800/600/400).
+
+City signage (for cross-pack scenes): EN (Inter) → HI (Noto Devanagari) → State (Telugu/Bengali).
+
+Treaty Glyph proportions: outer ▲ : inner ▲ = 1 : 0.66; center ○ Ø = 0.33 of height; stroke = 1/18.
+
+Symbols (use exactly)
+
+Treaty Glyph = civic/treaty boards, gates, maps; never on dojo flags.
+
+Dojo flag = Grey Trident on Orange (legacy/humane discipline).
+
+Mesh node icon = “three chevrons feeding a dot” (always outside Quiet Rings).
+
+4) Cross-reference index (where to find each decision)
+
+Map logic & no-fly → /A_Maps/* + /E_Movement_Defense/COMMS_WILDS_QuietRings*
+
+Council/Dojo/School/Cabin sets → /B_Settlements/*
+
+PBR swatches & seasonal shaders → /C_Materials_Climate/*
+
+Tribal Script, pictos, sign grids, flags, ritual fixtures → /D_Culture_Signage/*
+
+Trail grammar, defense devices, set-pieces, child routes, EMS → /E_Movement_Defense/*
+
+Utilities (power/heat/water/comms/medical) & props → /F_Utilities/*
+
+QA & failure modes → /G_QA/*
+
+5) Scene templates (drop-ready archetypes)
+
+Each template is a one-liner you can give to an artist or slot into a tool; it points to the right sheets and light recipes.
+
+Evening Council (Cold Spruce band)
+
+Look: warm 3000K interior pools vs cold blue exterior; smoke bell glow.
+
+Use: SET_AHZ_E3_CouncilHall, MAT_WILDS_SeasonalShaders, QA_WILDS_GlobalAcceptance.
+
+Dawn Dojo Practice (High Alpine edge)
+
+Look: 5600K low sun, crisp shadow bars, breath volumetrics, Grey Trident flag.
+
+Use: SET_AHZ_E3_DojoCourtyard, MOV_WILDS_TrailGrammar.
+
+Blue-Hour School Shelter (Foothill/Cold Spruce)
+
+Look: warm core lanterns, yard in cool ambient, muster grid visible.
+
+Use: SET_AHZ_E3_School, SAFE_WILDS_ChildRoutes, EMS_WILDS_Response.
+
+Parley at Wolf Pass Gate (Overcast)
+
+Look: matte carved boards (Tribal+EN), Treaty Glyph cap-height, vendors 6 m off threshold.
+
+Use: ENC_WILDS_Setpieces, SIG_WILDS_SignGrids_GatesTrails.
+
+Whiteout Rescue (Yellow-thread route)
+
+Look: 10–15 m vis, marigold stakes, guide rope macro, dog wedge.
+
+Use: SAFE_WILDS_ChildRoutes, EMS_WILDS_Response.
+
+Switchback Ambush (Cloud Ladder)
+
+Look: late-day glare, non-lethal first, rockslide lever only if breach.
+
+Use: DEF_WILDS_Perimeter_Zones, ENC_WILDS_Setpieces.
+
+6) QA & acceptance (clip-in forms)
+
+Global Acceptance (Wilds)
+
+Signage order = Tribal → English; carved/painted matte only.
+
+Identity vs danger colors applied (no neon, no tricolor décor).
+
+Non-lethal tools visible; lethal tools inside armories; dojo flag ≠ treaty glyph.
+
+No-fly valleys respected; mesh masts outside Quiet Rings; Quiet Band boards present.
+
+Child safety: No-Kill boards on school/dojo, muster arrows, dog wedge if children shown.
+
+Scene-type add-ons (see /G_QA/*): Day Clean / Festival Night / Curfew Weather (for cross-pack shots touching city edges).
+
+7) Prop & geometry registry (SKUs you can reference)
+
+Power/Water: PRP_HYDRO_WHEEL_v1, PRP_GEN_BOX_v1, PRP_SLV_PV_300x450, PRP_COP_CHAIN_BOWL_v1, PRP_CISTERN_LID_v1
+
+Heat: PRP_STOVE_IRON_v1, PRP_FLUE_CAP_v1
+
+Comms/Treaty: PRP_MESH_MAST_v1, PRP_JAMMER_TOTEM_v1, SIG_TREATY_PYLON_v1, SIG_QUIET_v1
+
+Medical: PRP_EVAC_SLED_v1, PRP_CLINIC_BED_v1, PRP_TOOL_BOARD_v1
+
+Safety boards: SIG_NOKILL_v1, SIG_ROCKFALL_v1, SIG_GLITTERICE_v1, SIG_EVAC_ARROW_v1, SIG_MUSTER_v1
+
+All callouts + dims are in /F_Utilities/UTIL_WILDS_PropLibrary_CALLS_v01.pdf.
+
+8) Integration guide (for image-gen & 3D)
+
+Do this
+
+Seed every board with: band (Foothill/Cold Spruce/High Alpine), season, ethos (non-lethal first), no-fly compliance.
+
+Use matte, carved, hand-mended adjectives for materials; keep tech quiet.
+
+Keep surveillance second-read; keep writ and parley visible before any escalation.
+
+Avoid this
+
+Neon edge lights, chrome trims, glassy solar panels, glossy hazard signage.
+
+Treaty Glyph on dojo fabrics; tricolor decor; drones hovering in no-fly cones; plastic medical kits.
+
+9) Director’s Intent (one page to onboard anyone)
+
+Tone. Resilient, humane, austere. The Wilds are not “primitive”—they’re deliberately quiet: wood, stone, slate, felt, oxidized metal, alt-advanced craft. Technology serves people and terrain rather than announcing itself.
+
+Civics. Authority is communal. The Treaty Glyph marks places where outsiders move by writ, mesh nodes stay outside Quiet Rings, and no-fly valleys are inviolate. Parley precedes power.
+
+Ethos. Non-lethal first isn’t softness—it’s discipline. Lethal force is for invaders only. Schools and dojos are No-Kill sanctuaries. Dojo identity is the Grey Trident on Orange—never replaced by treaty branding.
+
+Look. Kaali’s greens lead the identity; Marigold cautions; Vermilion on Slate warns. Carving, stitching, and patina replace neon and chrome. Winter whiteouts reduce the world to breath and shape; monsoon sculpts stone with water; pre-monsoon glare demands matte, not gloss.
+
+Movement. Trails are logic: ridge Silent Lanes, terrace Work Paths, valley Corridors with treaty gates. Count paces, probe steps, read stakes. Children follow Yellow-thread routes; dogs flank; bell ropes speak quietly.
+
+What never happens. Drones in no-fly pockets. Chrome and neon. Tricolor as décor. Dojo flags co-branded. Loud tech where silence is law.
+
+10) Versioning & change control
+
+SemVer: MAJOR (world rule changes), MINOR (new assets/sets), PATCH (typos, small dims).
+
+Start at WILDS_Pack v1.0.0. Log changes in / _INDEX/CHANGELOG_WILDS_SemVer_v01.md.
+
+Every exported board includes metadata (city/region code, scene type, overlay %, language stack, no-fly compliance).
+
+Example metadata block
+
+{
+
+  "region":"AHZ-E3",
+
+  "band":"Cold Spruce",
+
+  "season":"Winter",
+
+  "scene":"Evening Council",
+
+  "language_stack":["Tribal-800","EN-Inter-800"],
+
+  "no_fly":"respected",
+
+  "ethos":"non-lethal-first",
+
+  "quiet_ring":true,
+
+  "dojo_flag":false
+
+}
+
+11) Wrap status
+
+✅ All phases A–F consolidated and indexed.
+
+✅ Tokens, symbols, signage, geography, set archetypes, utilities, QA, and acceptance criteria locked.
+
+✅ Deliverable structure and naming ready for your repo or DCC/tooling.
+
+Touch-base: Phase G is complete and the bundle is locked. If you want me to package these into actual files (A2 sheets, PSD/FIG templates, metadata sidecars) or generate starter boards for any two scene templates (your pick), tell me which and I’ll produce them next. Otherwise, I can now move on to the next location family from your original list whenever you’re ready.

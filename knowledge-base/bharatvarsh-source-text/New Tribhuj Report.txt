@@ -1,0 +1,2216 @@
+Phase 1 — Canon Harvest & Scene Tags (New Tribhuj)
+
+1) Who they are (on-page roster → roles you just canonized)
+
+Core seven (now locked per your list): Adil (first-built PoC, operational head), Jwala (on-air face), Sthir (access/keys & stage team), Jeraya (door/lock/elevator specialist), Aarush (signal & stairwell jammer net), Raaka (comms discipline, stage prep), Salman/Salmaan (advance recon & route mapping).
+
+Textual anchors (with scene evidence):
+
+Jwala delivers the BVN hijack message (“greetings from the Tribhuj… BVN-24x7 studio in Mumbai…”), establishing her as the faction’s broadcast face. 
+
+Adil runs the studio op, hands the drive to the graphics tech, and later pulls the trigger—clear operational authority. 
+
+Jeraya deploys the door-wedge micro-jammer, then hotwires the elevator—this is your entry/egress specialist. 
+
+Aarush places the bigger jammers in stairwells; buys 2–4 minutes—your signals/time-buy engineer. 
+
+Raaka issues ear-comms and enforces radio discipline, then helps Aarush “set the stage.” 
+
+Sthir operates with Jwala and Jeraya during building entry; tied to Adil’s access plan. 
+
+Salman (spelled “Salman” in draft) runs advance mapping & mimicry—memorises routes, timings, staff behaviors. 
+
+Tiny canon note to confirm: KB uses “Salman”; you gave “Salmaan.” Tell me which spelling wins and I’ll freeze it across the pack.
+
+2) What they’ve done (public actions timeline)
+
+20-10 Lakshmanpur Fest: a band hijacks the open mic, rains TRIBHUJ-stamped pamphlets; this is the first theatrically branded claim seen by civilians. 
+
+Seven-site campaign (same night): Bhojpal, Mysuru, Gopakapattana, Jammu, Kathmandu, Kolkata + Lakshmanpur (the outlier for performance). “Whether this connects to the old Tribhuj is unknown” is stated in-room. 
+
+BVN-24x7 studio hijack (Mumbai): Infiltration with overcoats + spoofed keycards + bio-signature sleeves, door-wedge jammer, stairwell jammers, Adil in live disguise, Jwala on camera, montage rolls, exits under fire. 
+
+3) How they look (visual language that’s already canon)
+
+Emblem & propaganda: The geometric trident is rendered “neat and ruthless;” graffiti + stickers appear across the montage (HN/MR/TN scripts). 
+
+Jwala’s screen look: Maroon dress, textured pixie cut, stark, centered on lens. 
+
+Lakshmanpur stage persona: cyber-punk band energy + pamphlet rain; crowd sees TRIBHUJ stamped in red. 
+
+Your update: impostor trident keeps the same silhouette as the covenant symbol—use the attached blue “glitch-flare” finish as reference. We’ll encode that into Phase 2 palettes and mark specs.
+
+4) How they operate (tradecraft distilled from scenes)
+
+Infiltration & disguise
+
+Overcoats/sunglasses; spoofed keycards backed by derma-mesh + forearm sleeves that tweak heat/sweat/heartbeat to fool faceprint thresholds. 
+
+Adil’s morph tech: sub-dermal micro-scales change tone/texture; weighted insoles + cuff band to beat lift camera math; impersonates BVN’s SVP. 
+
+Access control & time-buying
+
+Door-wedge micro-jammer on the studio; bigger stairwell jammers give 2–4 minutes. 
+
+Comms discipline: ear-clips distributed by Raaka, “no hero moves.” 
+
+Violence envelope
+
+Guns out when needed; Adil executes the graphics tech mid-operation; tactical grenade rolls to deny stairwell. (Matches your “no ceiling” directive.) 
+
+Recon & set-up
+
+Salman pre-maps routes, staff tics, light failures; Aarush seeds building-wide jammers; Sthir and Jeraya shepherd entry/egress. 
+
+Army-grade tech provenance (your twist made canon-consistent):
+
+The draft already hints this kit “trickled down from Defence R&D” and the Rajputana range—so your “secret Army patrons” align naturally. 
+
+5) Environments & hides (how to dress sets consistent with your decision)
+
+Because they’re secret Army assets, safehouses can believably be borrowed facilities—production offices, telecom roof shacks, training floors, or news-affiliate backrooms—equipped with jammer lockers, disguise racks, access-card printers, and Faraday totes. The BVN op already shows building-internal staging (lift galleries, stair cores, studio control). 
+
+Prompt-friendly set motifs: elevator service panels hanging open; taped foam around doors; floor plan printouts pinned with static-safe tape; cheap acoustic panels; a plastic crate labeled “Locker K” (Adil’s drop). 
+
+6) Visual guardrails for artists (now including your Borderlands/Cyberpunk note)
+
+Style DNA: semi-futuristic cyberpunk hardware + paramilitary neatness; think Borderlands line confidence with Cyberpunk-grade materials—but keep our world’s finishes (no neon chrome toys without purpose).
+
+Wardrobe cues: asymmetrical jackets, tactical seams, visible prosthetics, under-sleeve biosleeves, ear-clip comms, weight-chip insoles. (Jwala’s maroon/pixie remains a signature.) 
+
+Emblem: same trident silhouette as original, but rendered “neat & ruthless,” electric-blue glitch-flare (from your image). 
+
+No scripture quotes: per your rule, they do not cite or misquote the Puran (good—keeps them as a pure black-ops brand).
+
+7) Camera & lighting seeds (for consistent prompt blocks later)
+
+Broadcast room: 50–70 mm lens, shoulder-height, cool top-light + screen spill, low-contrast mid-tones to let overlays sit.
+
+Entry scans: 28–35 mm, low angle along the keycard gates, shallow DOF to isolate sleeve/derma mesh. 
+
+Door wedge: 85–105 mm macro-ish crop; wedge half under door; faint LED point. 
+
+Disguise reveal: 70–85 mm, ¾ profile; skin-micro-scale texture visible; muted industrial background. 
+
+Pamphlet rain: 24–28 mm, upward tilt, papers tumbling; red TRIBHUJ stamp legible as a block (no readable manifesto text). 
+
+8) Minimal contradictions resolved
+
+Original vs impostor ethos: Investigation calls out uncertainty; your new canon (Army-run cut-outs) explains their sophistication and theatrics without requiring Puran rhetoric. 
+
+Tech ceiling: The R&D “trickle-down” line supports high-end gear (face-morph skins, bio-sleeves, jammers) with plausible provenance. 
+
+9) Tag bank (copy-pasteable nouns/adjectives for prompts)
+
+People: Adil—face-morph commander; Jwala—maroon-dress pixie; Sthir—keycard shepherd; Jeraya—door-wedge/elevator whisperer; Aarush—stairwell jammer rig; Raaka—ear-clip comms sergeant; Salman/Salmaan—route-mapper mimic.
+
+Props: door-wedge micro-jammer; stairwell can-jammers; ear-clip comms; bio-sleeves; derma-mesh; weighted insoles; Locker K drop; TRIBHUJ pamphlets; pistol; tactical stair-grenade. 
+
+Environments: BVN gate & scan posts; lift gallery; studio desk & “deck” PC; stair core; rooftop egress; Lakshmanpur open-arena stage.
+
+Marks & graphics: geometric trident (blue glitch-flare); multilingual stencils (HN/MR/TN) as illegible glyph blocks; no readable copy. 
+
+A) Visual North Star (one-liner you can paste into briefs)
+
+“Paramilitary neatness meets cyberpunk hardware: cold, surgical, Army-grade tech in civilian skins. Same trident silhouette as the covenantal mark, but rendered as an electric-blue glitch-flare brand—ruthless, precise, broadcast-ready.”
+
+Inspirations: Cyberpunk 2077 materials discipline (plastics, ceramics, stealth textiles); Borderlands-style line confidence (but keep it subtle; not cartoony); modern surveillance architecture (gates, lifts, studio decks).
+
+No scripture or quotes. Visual communication uses symbols, glyph blocks, and montage grammar only.
+
+Violence envelope: unrestricted (can go hard-R). Blood/gore styling is cold and technical, not gratuitously chaotic.
+
+B) Emblem & Mark System (the impostor trident)
+
+Silhouette: identical three-prong trident outline as the canonical symbol.
+Finish: reference the cover you shared — electric blue core with a cyano-indigo falloff, subtle scanline/glitch bloom, micro-chromatic aberration (<1 px).
+Edge treatment: hairline inner rim (2–3% of icon width) as a hotter blue; faint outer haze (2–4% spread) for screen presence.
+
+3 canonical render modes
+
+Broadcast/Screen (“Glitch-Flare”)
+
+Core: #29B6F6 → halo: #1A73E8 → deep edge: #0B2D5A
+
+Add 10–15% horizontal banding noise, 0.6–0.8px RGB split, 3–5% vertical smear on fast cuts.
+
+Graffiti/Poster (Vector-Perfect)
+
+Solid vector fill, no distress. Two variants: flat cyan (#18D2FF) and nocturne cyan (#00B8D4) on gunmetal walls.
+
+Allow holographic sticker sheen (anisotropic highlight, not glitter).
+
+Tactical Patch/Emboss
+
+Matte silicon transfer (duotone cyan on black) or low-relief emboss on armor/holsters; never gold/royal tones.
+
+Placement logic: treat it like a brand, not a faith mark. Surfaces: wrist slates, drone casings, jammer shells, studio overlays, alley posters. Avoid placing on skin or as a ritual tattoo.
+
+C) Color Palette & Grade
+
+Core Faction Palette
+
+Electric Cyan (Core): #29B6F6
+
+Nocturne Cyan (Deep): #00B8D4
+
+Gunmetal / Graphite (Base): #1E2328 / #2A2F34
+
+Carbon Black: #0B0D10
+
+Steel Blue (Neutral light): #3C4E5C
+
+Maroon Accent for Jwala wardrobe call-backs: #6E1E2A (satin, not velvet)
+
+Secondary Accents (sparingly)
+
+Signal Magenta for UI LEDs: #FF2D6C (tiny pixels, not panels)
+
+Toxic Lime (safety indicators): #C3F73A (micro LEDs, fuse rings)
+
+Scene Grade Recipes
+
+Ops Interior: cool neutral (D55–D60), contrast medium-low; steel mids; cyan highlights reserved for devices/emblem.
+
+Night Exterior: blue-hour plate, cyan signage accents, warm sodium spill only when needed for subject separation.
+
+Broadcast: evenly lit mid-tones, cool top-light + screen spill; avoid deep blacks near text overlay zones.
+
+Cropping/Composition safety (for web hero + comic):
+
+Keep a Quiet Title Zone in the central 55–60% width × 40% height (clean mids, no bright flares).
+
+Safe logo/OG crops: top-left 12% × 12% remains calm.
+
+D) Wardrobe & Gear System (semi-futuristic, Army-issue capability; no fixed tells)
+
+Layer stack (shared logic):
+
+Base: moisture-wick knit (charcoal/graphite), seam-mapped to hide sensor patches and under-sleeve bio-mods.
+
+Mid: soft-armor vest or structured jacket with clean geometries (no MOLLE spam); concealed holster channels; ceramic plates (matte).
+
+Outer: context costume (press jacket, studio blazer, maintenance coverall, city overcoat).
+
+Footwear: weighted insoles (morph gait), carbon midsole, non-slip matte outsole.
+
+Texture library: matte ceramic, soft-touch polymer, stealth nylon, laser-cut hems, sparse seam taping, micro-mesh vents.
+
+Head & face:
+
+Fitted comms ear-clip (graphite shell; 2 mm cyan status LED).
+
+Optional derma-mesh overlays for face/neck tone shift; clear nasal bridges; neutral lip tones.
+
+Hair guideline: practical cuts (pixie/bob/undercut) or wig units for disguise; no neon dye unless mission cover requires.
+
+Role-leaning (non-binding) options
+(not “tells,” just common loadout leanings for artists to choose among)
+
+Adil — disguise-capable blazers/overcoats; micro-scale skin panel close-ups; weighted insoles; cuff UID band.
+
+Jwala — satin-finish maroon dress or structured blouse; minimal jewelry; in-ear comms invisible on front angles.
+
+Sthir — access pouch (keycards, coils), slimline EM probe pen; jacket seams hide flat tools.
+
+Jeraya — fold-flat door-wedge in a holster pocket; compact breacher tool; elevator service key.
+
+Aarush — stairwell jam-can with antenna stub; slingable utility bag with mesh pockets.
+
+Raaka — micro-mixer/relay tile for comms; extra ear-clips; checklist slate.
+
+Salmaan — route maps, floor plan printouts, fake badge sets; neutral “staffer” fits.
+
+E) Prosthetics & Bio-Mods (semi-futuristic realism)
+
+Sub-dermal pigment scales (Adil): micro-hex array that adjusts hue/value and pore sheen; visible only in tight close-ups; avoids uncanny-valley plasticity.
+
+Forearm bio-sleeve: thermoregulating sleeve that spoofs pulse/heat; matte knit with faint hex pattern that “crawls” under sidelight.
+
+Haptic wrist slate: narrow matte screen, silent-vibrate; cyan micro-glyphs (unreadable).
+
+Optional limb prosthetics for select agents (not mandatory): matte ceramic forearm or calf module; hidden charging ports; mechanical realism over chrome flash.
+
+F) Weapons & Devices — Design Language
+
+Pistols
+
+Compacts with squared slides; matte DLC finish; cyan 1 mm tritium pip option; suppressor with concentric ridge pattern.
+
+Mag plates laser-etched with vector trident (2–3 mm, no glare).
+
+Entry/Control
+
+Door-wedge micro-jammer: trapezoid polymer wedge, 10–12 cm, rubberized base; tiny cyan LED, etched trident.
+
+Stairwell jam-can: short aluminum cylinder with telescoping stub antenna; side latch, rubber gasket; stickered trident.
+
+Breacher tool (Jeraya): folding handle + rotating micro-bit; acts on lock cores and access panels.
+
+Identity & Disguise
+
+Derma-mesh (face), cuff UID band, weighted insoles (gait morph), keycard printer shells (off-white ABS).
+
+Over-glasses with AR-dumb optics (clear, anti-reflect).
+
+Grenades (denial, not spectacle unless ordered)
+
+Stair denial grenade: short oval body, matte, with cyan ring; bright white-hot spark on pull, hard shadow; fragments minimal; blast-pattern signage optional.
+
+Comms
+
+Ear-clip with tooth-mic; low-poly shell; single micro-LED.
+
+Palm relay/mixer the size of a pager; silent operation; ridged grip.
+
+G) Environments, Safehouses & Set Dressing
+
+(Army provided; civilian camo)
+
+Safehouse types
+
+Telecom roof shacks — AC hum, mesh racks, patch panels, Faraday totes.
+
+Training floors in government complexes — roll-up mats, mirrored pillars, locker “K” crates, camera blind spots.
+
+Media affiliate backrooms — greenroom furniture, makeup ring lights, garment racks, cable trunks.
+
+Service corridors — lift galleries, panel boxes, keycard gates, mop stations.
+
+Dress cues
+
+Floor plan printouts secured with static tape.
+
+Blackout cloth draped on glass; foam tape on door edges.
+
+Supply crates with coded labels (“Locker K”).
+
+Tool trays: probe pens, card shells, tape rolls, ear-clips, spare batteries.
+
+Posters/graffiti: vector-perfect trident in cyan; no slogans (glyph blocks only); occasional bilingual letterforms rendered as abstract shapes.
+
+H) Motion / FX / Camera / Lighting Grammar
+
+Cameras & lenses
+
+Infiltration: 28–35 mm, shoulder height, long hallway lines; shallow DOF on sleeves/keycards.
+
+Broadcast desk: 50–70 mm, chest to eye level; even key light; screen spill; cyan catchlights.
+
+Device close-ups: 85–105 mm macro; matte textures; micro LED peeks.
+
+Violence beats: 35–50 mm; crisp shutter; minimal motion blur; emphasize muzzle gas & particulate, not Hollywood lens flares.
+
+Lighting
+
+Ops: cool neutral (D60), soft top; cyan accents limited to devices/emblem.
+
+Rooftop/blue hour: soft rim; city sodium as separation only.
+
+Safehouse: overhead industrials, 50 Hz flicker optional; spotlight cones on work surfaces.
+
+FX language
+
+Glitch-flare on emblem only.
+
+Chromatic aberration: micro (<1 px).
+
+Banding: gentle across screens; per-line misalignment on cheap LCDs.
+
+Blood/Gore (allowed): deep maroon, non-specular; add sharp particulate and fabric soak; avoid candy reds.
+
+I) Prompt “Atoms” (reusable tags for GPT-5)
+
+(Copy these fragments into any prompt. I’ll deliver full scene prompts in a later phase; this is your consistent vocabulary.)
+
+Surfaces/Materials
+
+“matte ceramic plates,” “soft-touch polymer,” “stealth nylon weave,” “laser-cut hems,” “brushed gunmetal,” “anti-glare AR glass”
+
+Emblem rendering
+
+“same trident silhouette, electric-blue glitch-flare, vector-perfect edges, micro chromatic aberration, faint scanlines”
+
+Wardrobe/Body
+
+“disguise overcoat,” “structured blazer,” “weighted insoles,” “derma-mesh face scales (subtle),” “forearm bio-sleeve (hex micro-pattern),” “in-ear tooth-mic clip, 1mm cyan LED”
+
+Devices/Weapons
+
+“door-wedge micro-jammer (trapezoid polymer),” “stairwell jam-can with stub antenna,” “fold-flat breacher tool,” “compact pistol DLC finish, concentric-ridge suppressor,” “keycard shells (off-white ABS)”
+
+Environment
+
+“lift gallery keycard gates,” “control room desk with deck PC,” “stair core concrete, painted safety lines,” “telecom roof shack, mesh racks, Faraday totes,” “service corridor mop station, panel boxes,” “Locker K crate”
+
+Lighting/Camera
+
+“cool neutral light D60,” “screen spill cyan,” “28–35 mm infiltration, shallow DOF,” “50–70 mm broadcast portrait,” “85–105 mm device macro,” “low contrast mids”
+
+Graphic Language
+
+“glyph blocks (no legible text),” “bilingual letterform shapes abstracted,” “cyan trident stickers on gunmetal”
+
+Violence styling
+
+“hard, surgical, non-theatrical blood spray,” “fabric soak edges,” “ejected particulate dust, no Hollywood sparks”
+
+J) Acceptance Criteria (QA guardrails for every render)
+
+Trident silhouette matches the covenant form; impostor flavor comes only from finish (electric cyan glitch-flare / vector-perfect).
+
+No scripture or readable slogans. All text as glyph blocks or abstract letter shapes.
+
+Palette discipline: cyan highlights reserved for emblem/devices; everything else sits in graphite/gunmetal/steel-blue.
+
+Semi-futuristic, Army-grade kit: devices plausible, materials grounded; avoid shiny sci-fi toys without mechanical logic.
+
+Wardrobe practicality: pockets, seams, structure—no cosplay clutter.
+
+Violence direction: clinical and efficient; camera prioritizes mechanics (recoil, blast, debris) over melodrama.
+
+Cropping safety: maintain Quiet Title Zone and calm top-left for UI/overlays; works in 16:9, 4:5, 1:1, and 2:3 without losing the emblem or subject.
+
+No fixed tells. Role leanings are optional; disguises permitted per mission.
+
+Phase 3 — Character Plates (7 dossiers + prompt blocks)
+
+Format: each dossier gives a production brief (visuals, kit, behavior) followed by ready-to-paste GPT-5 prompts for four aspect ratios (4:5 portrait, 16:9 story frame, 1:1 poster/square, 2:3 comic-vertical).
+Global rules baked into every prompt: same trident silhouette, reactive maroon→neon-pink or navy→neon-pink finish; semi-futuristic Army-grade kit; no readable text (glyph blocks only); clinical violence allowed; palette discipline (graphite/gunmetal + controlled accent).
+
+1) ADIL — Proof-of-Concept, Field Commander, Disguise Architect
+
+Silhouette & presence
+
+Tall, composed, understated power. Shoulders clean, center of mass steady. “Executive” lines over a concealed armor core.
+
+Face often “quiet”—save close-ups for derma-mesh micro-scale texture shifts.
+
+Head & hair
+
+Cropped, practical cut; beard stubble optional. Eyes calm; pupils steady (reads as predator-still).
+
+Wardrobe & kit
+
+Structured blazer or city overcoat over soft-armor; weighted insoles; cuff UID band; micro-holster under jacket; matte compact pistol (suppressor optional).
+
+Trident appears as a lapel pin/patch in daylight (maroon or dark navy); flips to neon-pink in shadow and broadcast reflections.
+
+Bio-mods
+
+Sub-dermal pigment scales around jawline/cheeks (visible only in close-ups), mild jaw sculpt.
+
+Behavior grammar
+
+Minimal motion, maximum control. Rarely raises voice. Executes without flourish.
+
+Environments
+
+Lift galleries, studio foyers, executive corridors; urban nights with glass and subdued signage.
+
+Artist Do / Don’t
+
+Do: keep fabric matte, seams rational, gun handling disciplined.
+
+Don’t: neon jackets, greebly sci-fi gadgets, dramatic capes.
+
+Prompts — ADIL
+
+A1 — 4:5 Character Plate (front + ¾ inset)
+Paste as one block:
+“Graphic-novel character plate, 4:5, crisp linework + painterly shading. ADIL, tall field commander in structured graphite overcoat over soft-armor, compact pistol holstered, cuff UID band, weighted insoles. Sub-dermal face micro-scales barely visible on cheek in close-up inset. Same trident silhouette pinned on lapel — daylight maroon finish that flips to neon-pink in the coat’s shadow edge. Environment hint: lift gallery and keycard gates blurred behind. Camera: 70–85 mm portrait, shoulder height; lighting: cool neutral D60 with soft screen spill; palette: gunmetal/graphite with restrained accents. No readable text, only glyph blocks. Clinical realism, zero cosplay clutter.”
+
+A2 — 16:9 Story Frame (disguise in motion)
+“16:9 cinematic still. ADIL strides past keycard gates, overcoat swaying, face morphology mid-transition (derma-mesh micro-scale shimmer). Door guard bokeh. Trident lapel pin in dark navy daylight mode, turning neon-pink where a monitor’s glow hits. Camera 35 mm, slight low angle; shallow DOF on sleeve + keycard. Cool overheads, cyan screen spill controlled; debris motes. No legible text, glyph blocks only.”
+
+A3 — 1:1 Poster Icon
+“Square poster, vector-clean geometry. ADIL in half-profile; trident silhouette floating behind, maroon→neon-pink reactive flare. Minimalist gunmetal field, soft scanlines. Quiet Title Zone centered; top-left calm.”
+
+A4 — 2:3 Comic Vertical (clinical execution beat)
+“2:3 vertical panel. ADIL in close quarters, compact pistol, suppressor fitted, muzzle gas tight; blood spatter minimal and directional (non-glam). Trident patch on inner vest—dark navy daylight, flipping neon-pink where the hallway goes dark. Camera 50 mm, hard rim from emergency light; no readable signage.”
+
+Negative atoms (append to any of the above if needed): “no fantasy runes, no glowing swords, no readable text, no chrome sci-fi armor, no over-saturated neon.”
+
+2) JWALA — Broadcast Face, Psychological Operations
+
+Silhouette & presence
+
+Centered on lens; maroon dress (satin micro-sheen), short pixie cut; posture upright, still.
+
+Wardrobe & kit
+
+Discreet in-ear tooth-mic; matte haptic wrist slate. A minimal trident studio overlay behind her (glitch-flare neon-pink on black), or as a subtle pendant maroon→pink.
+
+Behavior grammar
+
+Calm cadence; weapon rarely visible—her power is message + presence.
+
+Environments
+
+Studio desk, control room glass, light panels; clean mids for typography overlays.
+
+Prompts — JWALA
+
+J1 — 4:5 Character Plate
+“4:5 portrait. JWALA centered, maroon dress with satin micro-sheen, textured pixie cut, eyes on lens. In-ear tooth-mic almost invisible. Behind her: SAME trident silhouette as an on-air graphic—neon-pink glitch-flare on deep gunmetal. Even broadcast lighting, D60; low-contrast mids; crisp linework and painterly skin.”
+
+J2 — 16:9 Studio Hijack
+“16:9 broadcast frame. JWALA delivers a message at the anchor desk; control-room glass and decks behind, bokeh LEDs. On-screen trident mark in lower third, maroon→neon-pink reactive pulse. Camera 70 mm, shoulder height; gentle screen banding; no readable text, glyph blocks only.”
+
+J3 — 1:1 Poster Icon
+“Square poster. JWALA’s gaze forward, trident halo—dark navy daylight ring flipping to neon-pink edges. Matte grain, Quiet Title Zone center.”
+
+J4 — 2:3 Comic Vertical (countdown cut-in)
+“2:3 vertical. JWALA in profile, wrist slate showing abstract glyph countdown (unreadable). Trident pendant glows neon-pink as studio lights dip. Soft rim from monitor; painterly shadows; no slogans.”
+
+3) STHIR — Access Shepherd, Keys & Credentials
+
+Silhouette & presence
+
+Medium build, quick hands; moves like a floor manager.
+
+Jacket seams conceal flat tools and card sets.
+
+Wardrobe & kit
+
+Graphite work-jacket, pocket slate with glyph icons (no text), probe pen, stack of keycard shells (off-white ABS).
+
+Trident appears as a sticker on the probe case: maroon in ambient, turns neon-pink under phone light.
+
+Bio-mods
+
+Forearm bio-sleeve (hex pattern) for thermal spoofing.
+
+Behavior grammar
+
+Eye contact brief; hands always busy; murmurs checklists.
+
+Environments
+
+Lobby security islands, backstage corridors, service doors.
+
+Prompts — STHIR
+
+S1 — 4:5 Plate
+“4:5 plate. STHIR in graphite work-jacket, probe pen between fingers, fan of keycard shells in other hand. Bio-sleeve hex pattern visible at wrist. Probe case bears trident sticker—maroon body, edge catch neon-pink from phone light. 70–85 mm portrait; cool neutral light; gunmetal background.”
+
+S2 — 16:9 Gate Pass
+“16:9. STHIR guides a group past keycard gates, hand hovering over badge reader; shallow DOF, reader bokeh. Jacket seam hides a flat toolkit. Trident sticker on toolkit flips neon-pink as he passes a monitor glow. 35 mm, shoulder height.”
+
+S3 — 1:1 Poster
+“Square graphic: STHIR’s hands, keycards fanned; trident sticker in reactive maroon→neon-pink state. Minimal background.”
+
+S4 — 2:3 Comic Vertical (caught at door)
+“2:3. STHIR half-turned at a service door, probe pen tip lit; sweat bead, but posture steady. Door placard abstracted to glyph blocks. Trident decal glows neon-pink in the jamb’s shadow.”
+
+4) JERAYA — Entry/Egress Specialist, Doors & Elevators
+
+Silhouette & presence
+
+Lean, fast; wrists and hands are the focus.
+
+Fold-flat breacher tool and door-wedge micro-jammer are signature kit.
+
+Wardrobe & kit
+
+Dark utility trousers, soft-armor underlayer, overjacket that moves.
+
+Ceramic forearm prosthetic (optional; matte graphite), tool ports flush with skin seam.
+
+Behavior grammar
+
+Direct, kinetic, solves problems with hands.
+
+Elevator wisdom: always steals a second camera glance.
+
+Environments
+
+Door frames, lift panels, stair cores.
+
+Prompts — JERAYA
+
+Je1 — 4:5 Plate
+“4:5 character plate. JERAYA mid-motion with a fold-flat breacher tool and a trapezoid door-wedge micro-jammer between fingers. Matte ceramic forearm prosthetic (optional) with subtle ports. Same trident silhouette as a tiny patch on tool pouch—dark navy daylight; the wedge LED emits neon-pink edge. 70–85 mm portrait; cool industrial light.”
+
+Je2 — 16:9 Elevator Hack
+“16:9. JERAYA kneels by an elevator panel, micro-bit rotating, panel box open. The trident sticker on the panel cover reads maroon in the corridor, flips neon-pink near the indicator light. 35 mm, low angle to hands, shallow DOF.”
+
+Je3 — 1:1 Poster (tool icon)
+“Square poster. Breacher tool and wedge jammer cross-laid on gunmetal; trident reactive navy→neon-pink micro emblem; soft banding.”
+
+Je4 — 2:3 Comic Vertical (threshold breach)
+“2:3 dynamic panel. Door cracking on the wedge; Jeraya’s shoulder drive; metal specks fly. Hard rim from emergency light; no legible signage; clinical, kinetic.”
+
+5) AARUSH — Signal Architecture, Time-Buying Jammers
+
+Silhouette & presence
+
+Calm, methodical; shoulders carry a small jam-can sling.
+
+Eyes map rooms; fingers calibrate.
+
+Wardrobe & kit
+
+Slim sling bag with mesh pockets; stairwell jam-cans (telescoping stub antenna), small relay/mixer tile.
+
+Trident printed on jam-can cap: dark navy idle, neon-pink when active.
+
+Behavior grammar
+
+Counts seconds in head; gestures crew to move on set intervals.
+
+Environments
+
+Stair cores, service tunnels, rooftops with telecom gear.
+
+Prompts — AARUSH
+
+Aa1 — 4:5 Plate
+“4:5 character plate. AARUSH adjusting a stairwell jam-can with antenna stub; sling bag open with relay tile visible. Jam-can trident cap dark navy in idle, glowing neon-pink on activation. 70–85 mm portrait; cool concrete backdrop; painterly shadows.”
+
+Aa2 — 16:9 Stairwell Setup
+“16:9. AARUSH places jam-cans along a stair core; long diagonal lines; depth repeating. One can active (neon-pink ring), others maroon/navy idle. 28–35 mm, shoulder height; industrial overheads.”
+
+Aa3 — 1:1 Poster
+“Square. Jam-can close-up, trident reactive halo neon-pink, safety rings lime micro-LED; gunmetal plate.”
+
+Aa4 — 2:3 Comic Vertical (countdown)
+“2:3. AARUSH holding up two fingers—‘two minutes’—as pink LED on jam-can blinks. Crew blur exits down stairs. Controlled tension, no chaos.”
+
+6) RAAKA — Comms Discipline, Relay & Control
+
+Silhouette & presence
+
+Compact, alert; voice-of-god in the ear.
+
+Keeps ear-clip comms inventory; palm relay/mixer tile.
+
+Wardrobe & kit
+
+Utility vest under a neutral jacket; pockets labeled by glyph blocks.
+
+Trident stamped on relay tile: maroon/navy idle, neon-pink when channel is live.
+
+Behavior grammar
+
+Short commands, clarity fetish; cuts chatter, kills hero moves.
+
+Environments
+
+Control nooks, van backs, backstage tech corners.
+
+Prompts — RAAKA
+
+R1 — 4:5 Plate
+“4:5. RAAKA with a palm relay/mixer tile, spare ear-clip comms fanned in the other hand. Relay tile trident glowing neon-pink (channel live). 70–85 mm, neutral background; matte materials.”
+
+R2 — 16:9 Backstage Net
+“16:9. RAAKA at a backstage corner, monitoring three feeds (abstract glyph UIs), hand signals to proceed. Ear-clip on subject glints; relay tile edge neon-pink. 35 mm; cool top light; quiet chaos.”
+
+R3 — 1:1 Poster
+“Square. Relay tile centered; trident reactive halo neon-pink; ear-clips arranged like petals; clean negative space.”
+
+R4 — 2:3 Comic Vertical (channel cut)
+“2:3. RAAKA slashes a finger across the throat: ‘cut comms’; relay tile goes from neon-pink to maroon/navy. Hard shadow, strong gesture.”
+
+7) SALMAAN — Advance Recon, Mimic, Route Mapping
+
+Silhouette & presence
+
+Average build, forgettable face by design; masters staff gait & habits.
+
+Carries plan prints and a Locker K crate tag.
+
+Wardrobe & kit
+
+Neutral “staffer” outfits (maintenance, courier, assistant), fake badge sets; small camera; folded floor plans.
+
+Trident appears as a tiny stamp on the plan tube—maroon or dark navy by day; pops neon-pink in dim tunnels.
+
+Bio-mods
+
+Haptic feedback bead under collarbone (silent cues).
+
+Behavior grammar
+
+Head down, efficient; does not linger; becomes furniture.
+
+Environments
+
+Service corridors, telecom roofs, metro nodes, dock bays.
+
+Prompts — SALMAAN
+
+Sa1 — 4:5 Plate
+“4:5. SALMAAN in neutral staffer coverall, carrying rolled floor plans and a clipboard with abstract glyph blocks. Plan tube bears tiny trident stamp—dark navy daylight; edge glows neon-pink under a flicker light. 70–85 mm portrait; soft industrial backdrop.”
+
+Sa2 — 16:9 Route Ghost
+“16:9. SALMAAN ghosting through a service corridor past a mop station, shadow weaving; badge flashes; camera low, 28–35 mm. Trident on tube flips neon-pink where corridor turns dark. No readable text.”
+
+Sa3 — 1:1 Poster
+“Square. Corridor map overlaid as faint lines; SALMAAN’s silhouette mid-stride; trident stamp maroon→neon-pink reactive detail.”
+
+Sa4 — 2:3 Comic Vertical (handoff)
+“2:3. SALMAAN slides a Locker K tag to a gloved hand in a stair landing; only hands and chest frames in shot. Trident micro-sticker on tag glows neon-pink. Grainy, tense, clinical.”
+
+Global negative prompt (append to any):
+
+“no readable text or numbers, no fantasy runes, no medieval weapons, no cartoon neon, no glossy chrome armor, no anime eyes, no steampunk gears, no angel wings.”
+
+Cross-character consistency notes (for your artists & prompters)
+
+Trident discipline: keep the exact silhouette; let finish do the talking. Daylight = maroon or dark navy; darkness/screen/reflection = neon-pink flare. Never gold, never ritual tattoos.
+
+Materials: matte ceramic, stealth nylon, soft-touch polymer; keep chrome to fasteners only.
+
+Comms & UI: always glyph blocks; oscilloscopes and banding are motific but not readable.
+
+Violence: you allowed gore; when used, render it precise: directional spatter, fabric absorption, particulate; skip splashy stylization.
+
+Color headroom: in blue-hour/night shots, give the neon-pink trident halo space—surround with gunmetal/graphite and very controlled magenta spill.
+
+Phase 4 — Ops & Tradecraft Bible
+
+1) Operating Doctrine (one screen for the whole crew)
+
+Cover > Speed > Control. Success is measured by untraceable execution, not by theatrics (theatrics are assigned strategically).
+
+Two-Minute Rule. Every intervention (jammer, breach, on-air insertion) is designed to buy 120–240 seconds; team choreography is built around those windows.
+
+Civilian Camouflage. Overcoats, staffer fits, and exec silhouettes are chosen to read as ordinary in CCTV at a glance.
+
+Brand as Blade. The impostor trident is a fear brand, not a faith mark; use it strategically (broadcast overlays, stickers on devices, safehouse signage) and keep it visually consistent: maroon/navy by day → neon-pink at threshold.
+
+No fixed tells. Tool finishes, sticker placements, and carry positions rotate per mission to avoid patterning; only device families are consistent.
+
+2) Role Grid (who does what, and who backs them up)
+
+Reserve bench (Army handlers): logistics cell (weapons, safehouse keys), tech cell (card printers, derma-mesh consumables), cover cell (paperwork, IDs, uniforms).
+
+3) Mission SOPs (step-by-step)
+
+3.1 Pre-Op Recon (Salmaan lead, Adil supervision)
+
+Pass 0: Mapping. Sketch routes, dead corners, camera cones, and illumination breaks. Photograph reader models and panel nomenclature (blur into glyph blocks for art).
+
+Pass 1: Rhythm. Note shift changes, elevator latency, badge etiquette, guard posture.
+
+Pass 2: Identity. Capture a candidate authority figure (gait, hand talk, micro-rituals).
+
+Drop Kit: stash a Locker K crate in a blind spot: overcoats, ear-clips, wedges, jam-cans, wipes, spare badges.
+
+Signal Survey: Aarush sweeps for RF noise and carrier chatter, plans jammer constellation (stair cores first).
+
+Forensics footprint (what we expect to leave): faint adhesive ghosts where temporary cam covers sat; micro-black foam residue on door edges; tiny maroon/navy trident micro-stickers on inside surfaces (rotate placement per op).
+
+3.2 Infiltration (Adil lead; Sthir + Jeraya at doors; Aarush shadowing)
+
+Dress & Disguise: Overcoats, weighted insoles (gait morph), derma-mesh on Adil (tone and pore sheen shift).
+
+Gate Cross: Sthir sets badge order; group moves two-by-two with a beat of air between pairs to avoid reader anti-tailgating logic.
+
+Keycard Etiquette: Cards face logo up (industry norm) to avoid “odd” finger choreography on CCTV.
+
+Elevator Logic: Jeraya calls lift one level away, opens panel on arrival, rides eyes-front; if camera is dome-mounted, Adil drifts inside SVP-style (hands loosely clasped).
+
+Wedge & Jam: At target door, wedge-jammer slides under, LED stays dark until go-signal. Inside, stairwell jam-cans deploy outward first, then inward.
+
+Abort criteria: more than two live badges fail; guard deviates from route; elevator dwell > 30 s without floor movement.
+
+3.3 On-Site Control (Aarush clock; Raaka voice; Jwala on lens)
+
+Clock: Aarush calls “T-120” on first jammer actuation; Raaka echoes; clocks tick at T-90, T-60, T-30, T-15.
+
+Comms Discipline: brevity only; no free talk. Raaka will cut a channel if chatter rises.
+
+Message Geography: Jwala sits dead-center frame; trident overlay lives lower-third or background column; light stays even.
+
+Device Etiquette: Only glyph blocks visible on screens; never readable code, never slogans.
+
+Authority Shield: If challenged, Adil answers exactly once in SVP voice; second challenge escalates to denial grenade or exit.
+
+3.4 Execution & Escalation (clinical, not theatrical)
+
+Primary tool: compact pistol (suppressed on indoor ops).
+
+Escalation path: voice → posture → denial grenade → pistol.
+
+Adil’s principle: one shot, one fall; hard directional spatter, no second shot on camera.
+
+Jammer refresh: if clock goes under T-30 and exit isn’t clear, Aarush swaps one can near the egress path to buy +60–90 seconds.
+
+Jeraya prosthetic options (when equipped):
+
+Metallic forearm (matte graphite) with fold-out micro-spike for door strike plates.
+
+Weapon-upgrade pack:
+
+palm micro-dart (short-range sedative),
+
+telescoping baton half-sheath inside forearm,
+
+wrist smoke bead (2 s puff),
+
+mag spool for 2 m wire (panel latch pull).
+Note: weapon pack adds bulk—use on breaching ops or hostile exfil runs; otherwise stay ceramic/minimal.
+
+3.5 Exit (silent wins)
+
+Reverse Constellation: pull inner jam-cans first, then outer; toss into tote.
+
+Wedge Pull: retrieve door wedge; wipe rubber base; check for pink LED residue (some units stain on heat—rotate).
+
+Costume Drop: overcoats into Locker K crate with spent badges; swap to staffer fits.
+
+Route Blur: Salmaan leads through mop station and service corridors, not front lobby.
+
+Trace Kill: Raaka runs a “dead channel” ping to briefly flood any on-site RF fingerprinting.
+
+Debrief: 30 min later at safehouse—wipe, pack, inventory, no victory talk.
+
+4) COMSEC (comms security)
+
+Channel plan:
+
+Primary: Ear-clip encrypted low-power net (Raaka host).
+
+Backup: Hand signals + slate glyphs.
+
+Outage: “Touch chain”—shoulder tap relays; if three taps travel >10 s without response, abort to Egress B.
+
+Brevity codes (examples):
+
+“Blue” = continue as planned.
+
+“Grey” = hold position 10 s.
+
+“Pink” = trident visible to camera—adjust angle.
+
+“Curve” = guard off-route; Adil to front.
+
+“Empty” = stair core clear.
+
+“Lock” = wedge set.
+
+“Chalk” = jam-cans active (clock starts).
+
+Radio habits: Raaka times acknowledgments in half-beats so overlapping voices become a pattern (reduces recognisable speech cadence in analysis).
+
+5) Device Sheets (for artists & prop builders)
+
+5.1 Door-Wedge Micro-Jammer
+
+Form: trapezoid polymer wedge, 11–12 cm, rubberized base.
+
+Face: single micro-LED that pings neon-pink when active; off looks maroon/navy.
+
+Decal: 8 mm trident; day = maroon/navy, dark = neon-pink edge.
+
+Carry: Jeraya chest pocket; wipe pad included.
+
+Visual tells: faint rubber scuff arcs under doors; micro-LED bloom on dust.
+
+5.2 Stairwell Jam-Can
+
+Form: short aluminum cylinder, telescoping stub antenna, knurled band.
+
+Cap mark: trident reactive (day navy/maroon, active neon-pink ring).
+
+Sound: nearly silent; artists can draw a thin heat shimmer when live.
+
+Placement logic: one can per landing corner, ankle height, away from camera cones.
+
+5.3 Derma-Mesh / Bio-Sleeve
+
+Derma-mesh: sub-dermal micro-hexes; works best at 1–2 m camera distance; avoid close, flat lighting (it gives the trick away).
+
+Bio-sleeve: hex knit that spoofs pulse/heat; glints under sidelight.
+
+Paint-in cue: in close-ups, a whisper of moiré along the jaw/forearm under cool rim.
+
+5.4 Relay/Mixer Tile (Raaka)
+
+Form: palm device, matte, four corner LEDs; trident at center.
+
+State: channel live → center trident neon-pink; idle → maroon/navy.
+
+UX: finger rolls across ridged edge; no text; glyph blips pulse.
+
+5.5 Compact Pistol (All)
+
+Finish: matte DLC slide, concentric-ridge suppressor (when attached).
+
+Sights: 1 mm cyan pip; mag plate micro-etch trident (2–3 mm).
+
+Handling: elbows in, stance narrow in corridors, single shot then reassess.
+
+6) Safehouses & Stashes (Army supplied; civilian camo)
+
+Types & dress
+
+Telecom Roof Shack: mesh racks, patch panels, Faraday totes, ground wires, coil of RF coax.
+
+Training Floor: roll-up mats, mirrored pillars, taped hazard lines; lockers with Locker K crates.
+
+Media Affiliate Backroom: garment racks, ring lights, makeup desk, cable trunks.
+
+Service Corridor Nook: mop station, panel boxes, rolling bins, cleaning signs (convert to glyph blocks).
+
+Standard cache (each location)
+
+2× overcoats (assorted sizes), 4× ear-clips, 2× derma-mesh kits, 3× jam-cans, 1× wedge, 1× breacher, 12× fake badges, wipes, small tote, trident stickers (reactive), gaffer tape, first-aid, burn kit.
+
+Burn protocol
+
+Wipes first; bag consumables; leave decoy trash (paper cups, food wrappers) to simulate ordinary use.
+
+7) Forensics & Counter-Forensics (what investigators might see—and how art can show it)
+
+Expected “tells”
+
+Adhesive ghosts from cam covers (soft rectangular haze).
+
+Rubber scuffs at door thresholds (wedge).
+
+LED spill recorded on glossy tiles (faint pink aura on frame grabs).
+
+Reader logs with perfect timing cadence (Sthir’s metronome habit).
+
+RF gaps: 120–240 s silences in stair cores (Aarush signature).
+
+Counter-tells
+
+Rotation of decal placements and tool color micro-variances across missions to defeat pattern analysis.
+
+Noise flooding: Raaka’s “dead channel” ping to create RF fog post-op.
+
+Art cues for “investigator POV” panels
+
+Blue-tinted lab benches; gloved hands; evidence bags with glyph labels; screenshots with trident halo appearing neon-pink only in dark zones of frames.
+
+8) Lethality & Escalation Matrix
+
+Visualization note: when gore is present, render technical realism (entry/exit physics, fabric soak), not stylized splashes.
+
+9) Scene Prompt Kits (ready to paste; consistent styling)
+
+Global atoms (append silently in your engine presets): “same trident silhouette, daylight maroon/dark navy → neon-pink in dark, matte materials, no legible text (glyph blocks only), clinical camera, cool neutral light, restrained color headroom.”
+
+9.1 Lakshmanpur “Pamphlet Rain” (public theatrics)
+
+16:9:
+“Cinematic wide at festival night. A band on an open stage flings pamphlets; papers tumble, each stamped with the SAME trident silhouette (tiny neon-pink halos in darkness). Crowd silhouettes, Oxy-poles and conduit hints in bokeh. Camera 24–28 mm, low tilt up, shallow DOF. Cool blue-hour ambience, even mid-tones. No readable text, only glyph blocks.”
+
+4:5 (close):
+“4:5, upward tilt on a single pamphlet mid-air, trident mark maroon at edge, neon-pink where a spotlight hits shadow. Paper fibers sharp; background crowd blur; rain specks.”
+
+2:3 (energy):
+“2:3 vertical, motion-streaked hands throwing pamphlets, micro confetti of stickers with trident navy→neon-pink. Hard rim light, drummer silhouette with metallic forearm bokeh (optional).”
+
+9.2 BVN Studio Takeover (entry chain)
+
+Gate Cross, 16:9:
+“Adil leads the crew through keycard gates; Sthir’s hand hovers over reader; Jeraya’s coat flares. Trident pin on Adil dark navy in daylight; flips neon-pink near a monitor. 35 mm, shoulder height; cool office light; shallow DOF.”
+
+Wedge Set, 1:1:
+“Square macro on a trapezoid door-wedge micro-jammer under a studio door; LED active neon-pink; rubber base texture; tiny maroon trident decal. Floor dust catches light; painterly grain.”
+
+Stair Jammers, 2:3:
+“2:3 vertical down a stair core. Aarush kneels placing a jam-can at ankle height; one active (neon-pink ring), others idle (navy/maroon). Receding landings, industrial lines.”
+
+On-Air, 16:9:
+“Jwala centered at the desk, calm expression; background control panes glow. On-screen trident in lower third pulses neon-pink. Even broadcast lighting, mid-tone discipline.”
+
+Execution Beat, 2:3 (hard-R allowed):
+“Close corridor. Adil fires suppressed pistol; single directional blood spatter, fabric soak precise. Trident pin catches neon-pink from an exit sign. 50 mm, crisp shutter.”
+
+9.3 Safehouse Teardown
+
+16:9:
+“Telecom roof shack after action: mesh racks, patch panels, Faraday totes open, Locker K crate half-packed. Trident stickers maroon/navy on jam-can caps in a tray. Overhead fluorescent, mild 50 Hz flicker.”
+
+1:1 Macro:
+“Square macro on derma-mesh kit and ear-clip comms laid on a black towel; tiny trident decal reads maroon; edge glows neon-pink from a phone’s torch.”
+
+9.4 Rooftop Egress (no signature vehicle)
+
+16:9:
+“Blue-hour rooftop, vent stacks, cable trays; crew shadows crossing to a service door. No vehicles. Trident sticker on a relay box shifts navy→neon-pink in shadow. 28 mm, gentle fog.”
+
+2:3:
+“Vertical: Jeraya cracking a roof access, baton tucked, wedge in teeth (or pocket), city grid behind. Hard rim.”
+
+9.5 Investigator POV (forensics montage)
+
+16:9 Lab:
+“Cold lab bench; gloved hands swab a reader housing; monitor shows RF gap graph. A confiscated jam-can cap with trident maroon under white light; flickers neon-pink as the room darkens.”
+
+4:5 CCTV Still:
+“Grainy still frame of gate cross; Adil’s overcoat; trident pin barely navy; only turns neon-pink in the darker second frame. Red timestamp as glyph blocks, not numbers.”
+
+9.6 Jeraya Prosthetic Variants
+
+Metallic forearm (4:5):
+“Character close on a matte graphite metallic forearm opening an elevator panel; micro-ports; subtle machining lines; trident micro-etch maroon/navy.”
+
+Weapon pack (2:3 action):
+“Jeraya flicks a wrist: micro-dart snaps out; panel smoke bead puffs; trident emblem on cuff flashes neon-pink. 50 mm, dynamic crop.”
+
+10) QA Guardrails (apply to every panel/shot)
+
+Trident silhouette remains exact; only finish changes (maroon/navy by day, neon-pink in dark/low lux/backlight).
+
+Glyph blocks only for any text-like shapes; never readable slogans or UI.
+
+Materials plausibility: ceramic, polymer, stealth nylon; no chrome sci-fi.
+
+Camera discipline: 28–35 mm for spaces, 50–70 mm for people, 85–105 mm for devices.
+
+Violence realism: directional, technical; avoid splashy FX tropes.
+
+No signature vehicle sneaks into background; extractions are on foot, through architecture.
+
+No repeatable “tells.” Rotate decal placements, tool scuffs, carry choices.
+
+Phase 5 — Weapons & Devices Spec Pack
+
+(for art direction, prop notes, and prompt generation — not operational instructions)
+
+This pack defines how the New Tribhuj’s kit looks, feels, and behaves on page and on camera. All measurements, materials, and tech cues below are visual placeholders for consistency in your novel, comic, and marketing renders — not real-world guidance. Where a detail might risk “how-to,” I’ve abstracted it to safe, nonfunctional language (e.g., “status LED,” “jammer can”) so your artists can show it without enabling misuse.
+
+Global visual rules (recap + locks from you)
+
+Trident silhouette: exactly the covenant shape.
+
+Reactive finishes (two daylight variants):
+
+Variant A (day): deep maroon body → neon-pink glow in darkness / backlight.
+
+Variant B (day): dark navy body → neon-pink glow in darkness / backlight.
+
+Day variants appear more often (roughly 70/30 day:dark usage), but dark environments are allowed to sing with the neon glow.
+
+Clinical violence: render mechanics (recoil, fabric soak, particulate), avoid splashy glamor.
+
+Semi-futuristic, Army-grade: matte ceramics, soft-touch polymers, stealth nylon; no toy chrome.
+
+No scripture, no readable UI: use glyph blocks where text would appear.
+
+Jeraya’s weapon forearm: high-profile missions only (otherwise the plain/ceramic or metallic prosthetic).
+
+Palette chips for reference
+
+Maroon day body: #6E1E2A (satin/matte)
+
+Dark navy day body: #0B2D5A (satin/matte)
+
+Neon pink glow: #FF2D6C (emissive/LED; do not flood scenes)
+
+Gunmetal/graphite bases: #1E2328 / #2A2F34
+
+Neutral steel blue mid: #3C4E5C
+
+Materials & surface library (use across all kit)
+
+Matte ceramic plates/panels (subtle micro-grain; catches a soft rim beautifully).
+
+Soft-touch polymer frames (oil-resistant, no fingerprints glam).
+
+Stealth nylon weaves (laser-cut hems; seam taping minimal).
+
+DLC-coated steel (pistol slides, fasteners; read as low specular).
+
+Anodized aluminum (jam-can shell, breacher pivots; elegant knurling).
+
+ABS/PA-GF industrial plastics (badge shells, wedge body).
+
+Aging & wear cues (keep consistent for continuity)
+
+Rims polish slightly at repeatedly gripped edges.
+
+Rubber wedge feet pick up dust arcs; jam-can knurling shows lint.
+
+Suppressors charcoal at the muzzle crown (tight, not smoky cartoon).
+
+Device Catalog (exploded-view notes + prompt seeds)
+
+For every item: silhouette & proportions (for consistent drawing), finish & graphics (where the trident lives), states & indicators, handling beats, camera/lighting guidance, and prompt blocks for 4:5 / 16:9 / 1:1 / 2:3. Dimensions are prop-scale guidelines so everything relates believably on page.
+
+1) Compact Pistol + Suppressor (all agents)
+
+Silhouette & proportions
+
+Slide length ~170–180 mm; height ~120 mm with flush mag; width 24–26 mm.
+
+Concentric-ridge suppressor: Ø 30–32 mm × length 130–150 mm (when used).
+
+Finish & graphics
+
+Slide: matte DLC graphite; frame: soft-touch polymer.
+
+Trident micro-etch on mag plate (2–3 mm). Day = maroon/navy; dark = neon-pink edge glow if backlit.
+
+States & indicators
+
+Sights: 1 mm front pip (cool cyan); chamber indicator purely visual (no mechanics shown).
+
+Handling beats
+
+Close-quarters stance; elbows compact; single shot, single fall; clean eject (if shown).
+
+Suppressor attach: quarter-turn inset (no threads drawn).
+
+Camera / light
+
+50–70 mm for body + weapon; 85–105 mm for muzzle/sight macro.
+
+Hard, narrow rim; no lens flares.
+
+Prompt seeds
+
+4:5 “Adil, compact pistol half-raised, DLC slide, concentric-ridge suppressor; mag plate with micro-etched trident (maroon/navy by day, neon-pink edge in shadow); clinical framing, 70 mm portrait, cool neutral light, glyph-only UI.”
+
+16:9 “Corridor execution: single directional spatter, fabric soak; pistol steady; trident etch catches pink rim; 50 mm, crisp shutter.”
+
+1:1 “Poster macro of suppressor crown and sight pip; micro-etched trident on mag plate; matte textures; quiet negative space.”
+
+2:3 “Vertical tactical crop: hands, trigger discipline, muted recoil; no flashy sparks; glyph signs only.”
+
+2) Denial Grenade (stairwell / corridor control)
+
+Silhouette & proportions
+
+Oval body, palm-length ~95 mm; safety ring band; smooth halves.
+
+Finish & graphics
+
+Matte polymer with neon-pink status ring when armed; inert reads maroon/navy.
+
+Tiny trident on the band.
+
+Behavior (on camera)
+
+Rolls, brief white-hot flare inside housing slit (do not show internals), sharp pressure snap; fragments minimal, dust & paper flick.
+
+Prompt seeds
+
+16:9 “Stair core denial: grenade rolls to a halt; thin neon-pink ring glows; dust jump; 28–35 mm wide, industrial lines.”
+
+1:1 “Macro: band with micro trident; inert navy body under white light.”
+
+3) Door-Wedge Micro-Jammer (Jeraya signature device)
+
+Silhouette & proportions
+
+Trapezoid wedge, 110–120 mm long; 35 mm tall at heel; rubber base.
+
+Finish & graphics
+
+ABS/PA-GF body, matte; single micro-LED at the heel.
+
+Trident decal (8 mm) on flank: maroon/navy at rest; neon-pink when active.
+
+States & indicators
+
+Idle → dark; Armed → micro-LED neon-pink; no beeps, no blinkenlights circus.
+
+Handling beats
+
+Push under door with thumb in the scallop; wipe base on exit (small cloth in the same pocket).
+
+Prompt seeds
+
+1:1 “Macro of trapezoid wedge under studio door; micro-LED neon-pink; rubber textures and dust; tiny trident decal.”
+
+2:3 “Vertical crop: Jeraya’s gloved fingers place wedge; door seam glow.”
+
+4) Stairwell Jam-Can (Aarush constellation)
+
+Silhouette & proportions
+
+Short cylinder Ø 58–60 mm × height 90–100 mm; telescoping stub antenna 30–40 mm.
+
+Finish & graphics
+
+Anodized aluminum; knurled ring; cap with trident medallion.
+
+Idle = maroon/navy; active = neon-pink halo around cap medallion (subtle emissive).
+
+Handling beats
+
+Placed at ankle height against baseboard; constellation repeats down the core (one per landing corner).
+
+Prompt seeds
+
+16:9 “Down-angle stairwell: three jam-cans in perspective; foremost active with a neon-pink cap halo; repeating landings; 28–35 mm.”
+
+4:5 “Aarush calibrates a can; mesh sling open; relay tile visible; cool concrete.”
+
+5) Relay / Mixer Tile (Raaka control)
+
+Silhouette & proportions
+
+Palm slab ~88 × 58 × 12 mm; ridged edge.
+
+Finish & graphics
+
+Matte polymer; center trident inlay; four corner pinholes as LEDs (dim).
+
+States
+
+Live channel → center trident neon-pink; idle → maroon/navy.
+
+Glyph pulses (no readable text).
+
+Prompt seeds
+
+4:5 “Raaka holds palm relay; trident glowing neon-pink; spare ear-clips fanned; 85 mm macro.”
+
+1:1 “Tile centered on black towel; glyph pulses; negative space.”
+
+6) Ear-Clip Comms (all agents)
+
+Silhouette & proportions
+
+Low-poly crescent, ~22–24 mm; tooth-mic stem barely visible.
+
+Finish & graphics
+
+Graphite shell; 1 mm LED dot (only one); trident micro-etch inside curve.
+
+States
+
+Muted → dark; Live → dot flickers neon-pink every few seconds (not every frame).
+
+Prompt seeds
+
+1:1 “Three ear-clips arrayed; one live with tiny pink blink; soft reflection.”
+
+2:3 “Vertical portrait: ear-clip barely seen, light catches the curve; clinical.”
+
+7) Derma-Mesh (Adil) & Bio-Sleeve (heat spoof)
+
+Derma-Mesh (face)
+
+Sub-dermal micro-hex field at jaw/cheeks; only visible at 1–2 m under a cool rim.
+
+Shows as micro-moire shimmer when Adil morphs tone.
+
+Bio-Sleeve (forearm)
+
+Matte knit with hex micro-pattern; faint crawl under sidelight; seam vanishes at cuff.
+
+Prompt seeds
+
+4:5 “Adil three-quarter; jawline micro-scales barely shimmering; cuff reveals hex bio-sleeve; 70–85 mm, cool rim.”
+
+1:1 “Macro on sleeve texture; trident label tab shows maroon/navy thread.”
+
+8) Cuff UID Band (identity accessory)
+
+Silhouette
+
+Slim band 12–14 mm width; flush face.
+
+Finish & graphics
+
+Matte ceramic face with trident ghost that reads maroon/navy by day; a thin neon-pink edge under monitor glow.
+
+Prompt seeds
+
+1:1 “Cuff close-up; trident ghost flares pink on one edge; screen spill.”
+
+9) Weighted Insoles (gait morph)
+
+Silhouette & finish
+
+Carbon midsole insert; graphite top sheet; hex relief on heel.
+
+Visual behavior
+
+Adds slight heel-first gait; artists show this as tiny posture shift in lift-cam shots.
+
+Prompt seeds
+
+16:9 “Lift cam angle: Adil’s footfalls read heavier at heel; reflective floor; clinical.”
+
+10) Fold-Flat Breacher (Jeraya)
+
+Silhouette & proportions
+
+Folded: ~160 × 40 × 18 mm; unfolded: 260 mm with rotating micro-bit.
+
+Tool head has twin prongs + micro-bit turret.
+
+Finish & graphics
+
+Anodized aluminum spine; polymer scales; small trident engraving near hinge.
+
+Not a weapon unless Jeraya’s forearm pack is present (then baton is separate).
+
+Prompt seeds
+
+4:5 “Jeraya, fold-flat breacher half-open; hinge macro; trident engraving; door plate in bokeh.”
+
+2:3 “Threshold pry, metal specks; emergency rim.”
+
+11) Keycard Shell Set (Sthir)
+
+Silhouette
+
+Off-white ABS cards, slight edge bevel; no logos; glyph blocks only.
+
+Graphics
+
+Micro trident watermark visible at angle: maroon/navy; neon-pink if a phone torch crosses it.
+
+Prompt seeds
+
+1:1 “Fan of blank keycards in gloved hand; watermark trident flares pink at edge.”
+
+12) Haptic Wrist Slate (Jwala / crew)
+
+Silhouette
+
+Narrow strap screen, ~36 × 10 mm view; matte; zero chrome.
+
+Graphics
+
+Glyph countdowns only; trident tick in corner pink when time-critical.
+
+Prompt seeds
+
+2:3 “Vertical crop on wrist slate: abstract glyph countdown; trident tick neon-pink; low key.”
+
+13) Jeraya’s Prosthetic Forearm (High-Profile missions only)
+
+(a) Plain / Ceramic
+
+Matte ceramic shell, soft seam over radius; trident micro-etch near wrist (day maroon/navy; rim pink in shadow).
+
+(b) Metallic
+
+Matte graphite alloy, fine machining lines; tool ports flush along ulnar edge.
+
+(c) Weapon-Upgrade Pack (attach only for high-profile orders)
+
+Micro-dart: wrist slot extends a 25–30 mm dart; keep visuals symbolic (no needles).
+
+Telescoping baton: half-sheath within forearm; extends to ~42 cm; matte black.
+
+Smoke bead: single knuckle capsule; exhale two-second soft puff; purely visual.
+
+Mag spool: 2 m line hidden within ulna seam; used to “fish” panel latches.
+
+Prompt seeds
+
+4:5 “Prosthetic forearm close: ceramic finish; trident micro-etch; ports dormant (navy/maroon).”
+
+2:3 “High-profile action: baton half-extended; smoke bead exhale; micro-dart housing visible; trident flash neon-pink in dark edge.”
+
+14) “Locker K” Crate (stash)
+
+Silhouette
+
+Half-height crate ~550 × 350 × 220 mm; latches; stencil K in glyph style.
+
+Contents (visual)
+
+Two overcoats, ear-clips, jam-cans, wedge, breacher, badges in bundles, wipes, trident sticker sheet.
+
+Prompt seeds
+
+16:9 “Open crate on telecom roof shack floor; kit neatly arrayed; overhead fluorescents; cool mids.”
+
+15) Trident Stickers / Patches Set
+
+Forms
+
+Sticker: 20–40 mm; vector-perfect; day maroon/navy; glow pink in low lux.
+
+Patch: silicon transfer, low relief, same behavior.
+
+Usage
+
+Devices, relay lids, jam-can caps, lapels; never ritual tattoos or body paint.
+
+Prompt seeds
+
+1:1 “Sticker sheet at oblique angle: half the marks read maroon/navy, edges flare neon-pink toward shadow.”
+
+Packouts (who carries what)
+
+Adil — compact pistol (+ suppressor on indoor ops), cuff UID, weighted insoles, derma-mesh, lapel trident pin, one ear-clip.
+Jwala — wrist slate, ear-clip, minimalist trident pendant or studio overlay.
+Sthir — probe pen, keycard shells, pocket wedge (backup), toolkit flat in jacket seam.
+Jeraya — wedge (primary), breacher tool; prosthetic pack only on high-profile; compact pistol.
+Aarush — 3–5 jam-cans, relay tile backup, sling with batteries, ear-clip.
+Raaka — relay/mixer tile (primary), ear-clip inventory, spare batteries, checklist slate.
+Salmaan — plan tubes, fake badge bundles, “Locker K” key tag, small camera.
+
+(Add blood wipes, gaffer, and sticker sheet to any pack at director’s discretion.)
+
+VFX & SFX language (consistent for all renders)
+
+Neon-pink emissive: small, localized; 1–2 px halo on edges; avoid scene floods.
+
+Glitch/banding: reserved for broadcast overlays and screens; never on physical devices.
+
+Muzzle gas: tight, conical, faint; no Hollywood fireworks.
+
+Dust/particulate: fine grain in stairwells and control rooms; settles quickly.
+
+Blood: deep maroon, non-specular; directional; fabric soak edges; no “floating gobbets.”
+
+Forensics & residue (visual breadcrumbing only)
+
+Wedge rubber scuff arcs beneath doors.
+
+Jam-can cap prints on dusty baseboards (ring shape).
+
+Trident micro-decals under handles or on inner panel faces (rotate positions across scenes).
+
+Relay tile finger rub patterns on ridges.
+
+Suppressor crown soot after one shot (tight circle).
+
+Prompt Appendix (copy-ready fragments to stitch into any scene)
+
+Material atoms: “matte ceramic panels,” “soft-touch polymer frame,” “stealth nylon weave,” “DLC steel slide,” “anodized aluminum knurling”
+Trident atoms: “same trident silhouette, day maroon or dark navy, flips to neon-pink glow in shadow”
+UI atoms: “glyph blocks only, no readable text”
+Light/camera atoms: “cool neutral D60,” “hard rim, low specular,” “28–35 mm architecture,” “70–85 mm portrait,” “85–105 mm macro”
+Violence atoms: “directional spatter, fabric soak edge, particulate dust; no glam, no sparks”
+Environment atoms: “lift gallery with keycard gates,” “stair core with painted safety lines,” “telecom roof shack, mesh racks,” “service corridor mop station”
+
+Acceptance criteria (QA for every illustrator / prompter)
+
+Trident silhouette exact; only finish varies (maroon/navy day → neon-pink dark).
+
+Devices read as plausible props (no real schematics, no readable labels).
+
+Colors: keep cyan/magenta accents tiny; avoid neon floods.
+
+Violence: clinical; technical realism; no gore spectacle unless explicitly briefed.
+
+Jeraya’s weapon forearm appears only on high-profile missions (otherwise ceramic/metallic plain).
+
+No vehicles as signatures; extractions use architecture, not branded transport.
+
+Glyph blocks only wherever text would be; never numbers or slogans.
+
+A) North-Star: “Brand as Blade”
+
+One-liner:
+A surgical, Army-polished insurgent brand—clean geometry, cool restraint—wielding a familiar trident silhouette as a psychological scalpel. Daylight reads as maroon or dark navy (controlled, plausible). In thresholds and darkness, that same mark flips to a clinical neon-pink glow. No slogans. No scripture. Only symbol and sequence.
+
+Why it works (in-world):
+
+The impostors exploit icon familiarity without overt messaging; the symbol alone creates association and dread.
+
+Reactive finish (maroon/navy → neon-pink) becomes the “aha” moment on air and in photographs, teaching the public to look for the glow.
+
+Army-grade production (clean vector, exact silhouette) makes every asset feel inevitable and anonymous.
+
+Hard rules (recap):
+
+Exact trident silhouette (identical geometry to the covenant).
+
+Two daylight variants (choose per scene):
+
+Variant A: maroon body → neon-pink in dark/backlight.
+
+Variant B: dark navy body → neon-pink in dark/backlight.
+
+No readable text anywhere. When language is implied, render glyph blocks or abstract letterforms only.
+
+Violence tone: clinical and technical (directional spatter, fabric soak), never splash-glam.
+
+B) Semiotics & Color Logic (what the mark “says” without words)
+
+Daylight maroon reads as bureaucratic legitimacy (paper seals, cloth patches).
+
+Daylight dark navy reads as institutional neutrality (appliance labels, access plates).
+
+Neon-pink in darkness reads as surgical intrusion (you only see it when the scene is compromised).
+
+Result: a two-state identity—“perfectly ordinary” to security cameras when lit; indisputably present to humans when lights dip or a screen glows.
+
+Usage bias: ~70% of shots show day variants; save neon-pink for thresholds (door seams, stair corners, monitor spill, pendant shadows) to maximize impact.
+
+C) Poster Families (print/graffiti/sticker)
+
+(Three canonical aesthetics; each is a visual recipe + layout grid + prompt blocks)
+
+Family P1 — “Authority Mirage”
+
+Concept: Executive silhouettes / hands / laps once associated with order—now ghosted by a small trident that flips pink at the edges.
+
+Layout grid: Golden-ratio column; subject ⅔ frame, background gunmetal. Quiet Title Zone centered (for web crops).
+Color: graphite / steel blue mids; maroon→pink or navy→pink micro-accents only.
+
+Motifs: lapel pins, desk corners, keycard stations, lift mirror reflections, foreshortened hands.
+
+Artist notes: keep faces calm; let a single edge of pink carry the dread.
+
+Prompt blocks:
+
+4:5 (Portrait):
+“Authority Mirage poster, 4:5, clean vector + painterly blend. Executive torso at desk, hands folded; SAME trident silhouette as a lapel pin—maroon body, edge flickers neon-pink where monitor spill touches. Gunmetal field, low contrast mids, glyph blocks only. Quiet Title Zone centered.”
+
+1:1 (Square):
+“Square poster icon. Cropped jacket lapel with trident pin dark navy, neon-pink glow along shadow seam. Matte grain, restrained palette.”
+
+2:3 (Vertical):
+“2:3 poster. Lift mirror OTS; reflection doubles the pin; only the reflected edge shows pink. Graphite/steel blue, no text.”
+
+Family P2 — “Threshold Glow”
+
+Concept: The mark is visible only where light fails—door cracks, stair corners, under-desk shadows.
+
+Layout grid: Diagonal split with a dark wedge (15–30% frame) where the pink can live; rest in cool mids.
+Color: graphite base; neon-pink confined to the dark wedge; day variant maroon/navy elsewhere.
+
+Motifs: door wedge, jam-can cap, relay tile corner, shadowed signage.
+
+Prompt blocks:
+
+16:9 (Landscape):
+“Threshold Glow poster, 16:9. Studio door seam at left; trapezoid wedge barely seen; tiny trident decal maroon in lit area, a neon-pink rim in the dark seam. Clean geometry, glyph blocks on wall placard.”
+
+4:5 (Portrait):
+“4:5. Stair landing corner with a jam-can; cap shows steady neon-pink ring; distant cans idle navy/maroon. Industrial paint lines, cool concrete.”
+
+1:1 (Square):
+“Square crop. Relay box lid half in shadow: trident navy in light, pink halo in shadow. Matte noise.”
+
+Family P3 — “Vector Silence”
+
+Concept: Pure geometry, almost corporate. The trident stands alone on textured grounds; the threat is how neat it is.
+
+Layout grid: strict central mark; outer ring for glow when used.
+Color: gunmetal gradients; maroon or navy fill; optional pink outer bloom (thin).
+
+Motifs: sticker sheets, patches, embossed silicon transfers.
+
+Prompt blocks:
+
+4:5:
+“Vector Silence poster, 4:5. SAME trident silhouette centered; dark navy fill on graphite; hairline neon-pink outer bloom; light paper grain. No copy.”
+
+1:1:
+“Square sticker sheet at oblique angle: alternating tridents maroon and navy; at sheet edge the angle produces a neon-pink rim. Clean vector edges.”
+
+D) Broadcast Overlay Kit (for studio hijacks & cut-ins)
+
+Philosophy: overlays must look like a sober, technically competent news package—not a rebel sizzle. The chill professionalism is the menace.
+
+Elements
+
+Bug (corner logo)
+
+Position: upper right (default); swap to lower right if it conflicts with screen data.
+
+State: day maroon/navy body; neon-pink edge only when lights dip or the frame’s average luminance falls below a threshold (artists: fake this by giving the corner a darker panel).
+
+Size: ~5% of vertical frame.
+
+Lower-third bar
+
+Structure: two-band rectangle with glyph blocks (no readable words).
+
+Trident sits left as a 24–36 px icon; day maroon/navy; do not animate in pink unless the whole frame darkens.
+
+Ticker (if used)
+
+Slow, glyph ribbon; no numbers; moves 8–12 px/s; no parallax.
+
+Watermark
+
+6–8% opacity giant trident in background; visible only in still, not during active speech (keep it subtle).
+
+Frame Mask
+
+Occasional clean line mask (top/bottom) to create a calm typography bed; still no readable text.
+
+Color discipline: overlays are monochrome gunmetal with one accent—the trident (day variant by default).
+
+Micro-effects:
+
+Glitch is reserved for bumper open/close or the moment of seizure (first 0.5–1.0 s); do not leave it on.
+
+Prompt blocks:
+
+16:9 On-Air with Overlays:
+“Broadcast hijack still, 16:9. Clean lower-third with glyph blocks, SAME trident icon at left in maroon; corner bug navy. Even broadcast light; no legible text; cool mids. If a back panel falls dark, the bug edge blooms neon-pink.”
+
+1:1 Bug/Lower-Third Sheet:
+“Square UI sheet: four lower-third variants in gunmetal, glyph lines; corner bug in maroon/navy; one sample with pink rim for dark frame demo. Vector, precise.”
+
+E) Bumper Grammar (5–7 second open/close)
+
+Open (standard 6s):
+
+0.0–0.5 s — Black with faint banding; a maroon/navy trident flickers once at 5% opacity (no sound spec needed).
+
+0.5–2.0 s — Cross-fades of architectural negatives (gate pedestals, stair corners, glass decks), each two frames of faint pink edge glimpses only where dark troughs occur.
+
+2.0–4.5 s — The trident resolves center, day variant (maroon or navy depending on scene); background gunmetal gradient.
+
+4.5–6.0 s — Camera pushes to 102% scale; a subtle neon-pink rim appears, then snaps off at cut.
+
+Close (5s):
+
+Reverse logic: symbol holds pink rim for 0.7 s, then bleeds to maroon/navy and disappears into black with scanlines.
+
+Prompt blocks:
+
+16:9 Sequence Board (Open):
+“Six-panel storyboard, 16:9 each: black/banding → architecture negatives with threshold pink → centered trident maroon/navy → slight push → blink of neon-pink rim → cut. Vector + painterly blend, glyph blocks only.”
+
+1:1 Symbol Hold:
+“Square poster of the closing frame: trident centered with a thin neon-pink rim over gunmetal; no text.”
+
+F) Montage Edit Templates (how to cut sequences so they “feel” impostor-made)
+
+These are timing grammars and shot lists. They avoid operational detail and focus on rhythm and composition.
+
+Template M1 — “Seizure 30” (studio hijack mini-montage, ~30 s)
+
+Beat 1 (0–3 s): Cold open on Jwala, center frame.
+
+Beat 2 (3–6 s): Deck macro (glyph meters).
+
+Beat 3 (6–9 s): Gate cross (Sthir hand → reader bokeh).
+
+Beat 4 (9–12 s): Stair constellation (steady pink ring cap; others idle).
+
+Beat 5 (12–16 s): Relay tile pink at center (channel live).
+
+Beat 6 (16–22 s): CCTV still (lift cam fisheye; timestamp as glyph blocks).
+
+Beat 7 (22–27 s): Jwala again; lower-third trident.
+
+Beat 8 (27–30 s): Symbol hold: day variant trident with faint pink rim, cut to black.
+
+Prompt blocks for key stills:
+
+“16:9 Jwala master with lower-third trident maroon.”
+
+“16:9 jam-can corner, steady neon-pink ring.”
+
+“16:9 CCTV fisheye, glyph timestamp.”
+
+Template M2 — “City Night Paste” (street montage, ~20–25 s)
+
+Frames: hand placing vector-perfect trident stickers on gunmetal, each time revealed by a doorway glow that turns the edge pink.
+
+Cut pattern: sticker → door seam → sticker → stair corner → sticker sheet at oblique angle → rooftop relay box.
+
+Prompt blocks:
+
+“4:5 hand placing trident sticker, maroon in streetlight, pink where threshold darkens.”
+
+“1:1 sticker sheet tilt; some edges pink.”
+
+Template M3 — “Aftermath Deflection” (~20 s; used in news jacks)
+
+Frames: forensic glove swabs wedge scuff; evidence bag with jam-can (cap maroon/navy under lab light); CCTV still pair where the pin only glows pink in the darker second frame; symbol hold.
+
+Prompt blocks:
+
+“1:1 lab macro with jam-can cap navy (no glow) under bright white.”
+
+“16:9 CCTV pair, second frame shows edge pink.”
+
+G) Social / OG / Card System (for site & campaign assets)
+
+Formats & safe zones (no text, but UI will sit on top in your site/app):
+
+Web hero: 16:9 @ 2400×1350. Quiet Title Zone: center 55–60% width × 40% height; calm top-left 12% × 12%.
+
+OG: 1200×630; place trident off-center so crops to 1:1 still keep symbol.
+
+Square: 1080×1080; keep symbol inside middle 60% to survive mobile safe areas.
+
+Story/Vertical: 1080×1920; reserve top 15% clean for app UI, bottom 20% for swipe zones.
+
+Families to output:
+
+OG-P1 (Authority Mirage), OG-P2 (Threshold Glow), OG-P3 (Vector Silence), plus two “Seizure 30” stills.
+
+Prompt blocks:
+
+OG (Authority Mirage):
+“1200×630 landscape poster. Jacket lapel with SAME trident silhouette maroon; a monitor spill gives a neon-pink edge. Gunmetal field; quiet center.”
+
+Square (Threshold Glow):
+“1080×1080. Door seam wedge; tiny trident decal with pink rim; rest in graphite.”
+
+H) Glyph Language (how to imply “message” without readable text)
+
+Principles:
+
+No words. Use rectangles and bars as if they were captions; break lines like subtitling; vary block weights to suggest emphasis.
+
+Multilingual feel comes from mixing shapes (wide vs tall blocks, occasional angled ticks), not fonts.
+
+Numbers become dotted clusters or stepped bars; never Arabic numerals.
+
+Use cases:
+
+Lower-thirds, posters with “fake” captions, deck screens, evidence labels.
+
+Keep them secondary—the symbol is the message.
+
+Prompt atom (append anywhere):
+“replace all text with abstract glyph blocks; no readable letters or numbers; captions indicated only by block weights.”
+
+I) Violence & Censorship Dial (visual guardrail)
+
+Default: clinical, technical, PG-16 framing even when lethal.
+
+Permissible “shock panels”: 1–2 per major arc; specify when commissioning (we flag them explicitly).
+
+How to render: tight shutter, no lens flares; blood as deep maroon fabric soak + directional particulate; no free-floating gore.
+
+Prompt atom:
+“clinical violence: directional spatter, fabric soak, zero glam; crisp shutter; no stylized sparks.”
+
+J) Consolidated Prompt Atoms (copy-paste library)
+
+Mark & color:
+
+“same trident silhouette, day maroon or dark navy, flips to neon-pink in darkness/backlight”
+
+“neon-pink used only in thresholds and shadow seams”
+
+“vector-perfect edges; micro chromatic aberration ≤1 px on digital overlays”
+
+Materials:
+
+“matte ceramic,” “soft-touch polymer,” “stealth nylon,” “graphite gunmetal gradient”
+
+UI & overlays:
+
+“lower-third with glyph blocks only, corner bug maroon/navy, watermark trident 6–8% opacity”
+
+“no readable text; all signage rendered as glyph blocks”
+
+Light/camera:
+
+“cool neutral (D60), low-contrast mids,” “28–35 mm architecture,” “50–70 mm portrait,” “85–105 mm macro”
+
+“Quiet Title Zone centered (clean mid-tones); calm top-left for UI”
+
+Montage verbs:
+
+“cold open,” “architecture negatives,” “symbol hold,” “threshold pink,” “cut to black”
+
+K) QA Checklist (every poster/overlay/montage still)
+
+Silhouette: trident matches covenant geometry exactly.
+
+Finish: day maroon/navy by default; neon-pink appears only in dark/backlight moments or screens.
+
+Readability: zero real words or numbers—glyph blocks only.
+
+Tone: clinical, not punky. If it starts to look like fan art, reduce color, increase geometry.
+
+Cropping: preserves Quiet Title Zone (center), and calm top-left for UI.
+
+Continuity tokens: where relevant, include wedge scuff arcs, steady pink jam-can rings, braided dark-grey line on high-profile door work.
+
+Variability: rotate between maroon and navy day variants so the world doesn’t look templated (roughly 60/40 or 70/30 per your call).
+
+L) Approvals & Small Knobs (optional, to lock before Phase 8)
+
+Day variant bias: keep maroon:navy at 70:30 (default) or shift to 60:40 for cooler overall grade?
+
+Bug position: default top-right; do we allow bottom-right on interview shots when lower-thirds are heavy?
+
+Bumper length: Keep 6 s / 5 s or shorten to 4 s / 4 s for snappier hijacks?
+
+1) One-Block Prompt Schema (drop-in template)
+
+Paste this as a single block for GPT-5 Image. Replace items in {braces}. Do not add readable text—use glyph blocks only.
+
+SCHEMA — “Canon Prompt”
+
+“Graphic-novel quality with crisp vector-grade linework + painterly rendering, semi-futuristic realism, no readable text (replace with abstract glyph blocks).
+Subject: {who/what} {pose/action}, faction = New Tribhuj (Army-run impostor cell).
+Mark (mandatory): SAME trident silhouette. Day variant = {maroon|dark navy}. In dark/low-lux/backlight zones the mark flips to neon-pink (thin, clinical glow).
+Wardrobe/gear: {overcoat/soft-armor/derma-mesh/bio-sleeve/etc.}, matte ceramic and soft-touch polymer finishes.
+Devices (as relevant): {jam-can (cap ring steady neon-pink when active), door-wedge micro-jammer, relay/mixer tile, ear-clip, keycards, breacher}.
+Environment: {studio / lift gallery / stair core / rooftop / service corridor / metro nook / training floor}, signage/UI rendered as glyph blocks (never words or numbers).
+Camera: {28–35 mm spaces | 50–70 mm portraits | 85–105 mm macros}.
+Lighting/grade: cool neutral D60, low-contrast mids; cyan/pink accents very restrained.
+Palette: graphite/gunmetal/steel-blue base; accents only from trident/device LEDs.
+Violence (if any): clinical and technical (directional spatter, fabric soak; no glam).
+Aspect target: {16:9 | 4:5 | 1:1 | 2:3}.
+Negative: no readable text, no numbers, no fantasy runes, no chrome sci-fi armor, no over-saturated neon, no cosplay clutter.”
+
+2) Global Atoms & Guardrails (always safe to append)
+
+Mark behavior: “same trident silhouette; day = maroon or dark navy; in dark/backlight it glows neon-pink (thin, clinical rim).”
+
+Jam-can state: “cap ring steady neon-pink when active, maroon/navy when idle.”
+
+Jeraya high-profile only: “weapon-upgrade prosthetic forearm appears only in high-profile missions; braided dark-grey line when mag spool is used.”
+
+Typography ban: “no readable text anywhere—convert all signage, UI, tags to glyph blocks.”
+
+Violence dial: “clinical, not glam; directional spatter, fabric soak edges, particulate dust; crisp shutter, no Hollywood sparks.”
+
+Materials: “matte ceramic plates; soft-touch polymer; stealth nylon; DLC steel; anodized aluminum; laser-cut hems.”
+
+Camera defaults: “28–35 mm for spaces; 50–70 mm for people; 85–105 mm for devices.”
+
+Crop safety: “Quiet Title Zone centered 55–60% × 40%; calm top-left 12% for UI/bugs.”
+
+3) Ready-to-Paste Prompt Library (40 prompts)
+
+You can copy these exactly as written. Each already includes aspect, camera, lighting, palette, and canon atoms.
+
+A) Character Plates (14)
+
+A1 — Adil | 4:5 Character plate (front + ¾ inset)
+“4:5 character plate. ADIL, tall field commander in structured graphite overcoat over soft-armor; compact pistol holstered; cuff UID band; weighted insoles. Derma-mesh micro-scales barely visible on jaw in a small inset. SAME trident silhouette pinned on lapel — day = maroon; its edge flips neon-pink where coat shadow deepens. Lift gallery bokeh behind. Camera 70–85 mm; cool neutral D60; low-contrast mids; graphite/gunmetal palette; no readable text (glyph blocks only).”
+
+A2 — Adil | 16:9 Disguise stride
+“16:9 cinematic still. Adil strides past keycard gates; derma-mesh tone shift subtle; overcoat sways. Lapel trident dark navy in light, catches a neon-pink rim from monitor spill. 35 mm; shallow DOF on sleeve + badge; cool office light; glyph signage only.”
+
+A3 — Jwala | 4:5 Broadcast portrait
+“4:5 portrait. JWALA centered at anchor desk, maroon dress with satin micro-sheen, textured pixie cut. On-air graphic behind: SAME trident silhouette in neon-pink glitch-flare on deep gunmetal. Even broadcast light (D60). Clean mids; no text, glyph blocks on UI.”
+
+A4 — Jwala | 16:9 Studio hijack
+“16:9. Jwala delivers a message; lower-third bar with glyph blocks; trident icon at left in maroon. Control gallery bokeh. If a back panel falls dark, the icon’s rim blooms neon-pink. 70 mm, shoulder height; restrained palette.”
+
+A5 — Sthir | 4:5 Keys & credentials
+“4:5. STHIR fans off-white keycard shells (glyph watermark), probe pen between fingers; bio-sleeve hex texture at wrist. Probe case bears a trident sticker—maroon body; edge pops neon-pink under phone light. 70–85 mm; gunmetal wall; cool neutral.”
+
+A6 — Sthir | 16:9 Gate choreography
+“16:9. Sthir guides two-by-two gate crossing, hand hovering over reader. Reader bokeh; jacket seam hides flat toolkit. Trident sticker flips neon-pink by a screen seam. 35 mm; office overheads.”
+
+A7 — Jeraya | 4:5 Door tech
+“4:5. JERAYA mid-motion with fold-flat breacher and trapezoid door-wedge micro-jammer. Optional prosthetic forearm in matte ceramic (no weapons visible). Tiny pouch patch shows trident dark navy; wedge micro-LED is neon-pink when active. 70–85 mm; industrial cool light.”
+
+A8 — Jeraya | 2:3 High-profile breach (weapon pack enabled)
+“2:3 vertical action. High-profile mission. Jeraya cracks a threshold: telescoping baton half-extended; wrist smoke bead exhale; braided dark-grey mag-spool line snakes to a latch. Forearm ports subtle. Trident cuff edge flashes neon-pink in the door’s shadow. 50 mm; clinical.”
+
+A9 — Aarush | 4:5 Stair constellation lead
+“4:5. AARUSH adjusts a stairwell jam-can; cap shows steady neon-pink ring (active). Sling bag open with relay tile. Concrete backdrop; painted safety lines (glyphs). 70–85 mm; cool D60.”
+
+A10 — Aarush | 16:9 Constellation wide
+“16:9 down-angle. Three jam-cans at successive landings: nearest steady neon-pink ring; others idle (maroon/navy). 28–35 mm; repeating industrial geometry; low-contrast mids; glyph markings only.”
+
+A11 — Raaka | 4:5 Relay control
+“4:5. RAAKA holds a palm relay/mixer tile; center trident glows neon-pink (live channel); spare ear-clips fanned in the other hand. Matte polymer; 85 mm macro-leaning portrait; cool neutral.”
+
+A12 — Raaka | 16:9 Backstage net
+“16:9. Backstage corner; three abstract feeds (glyph UI) reflect in a matte screen; Raaka signals ‘move’. Relay tile edge neon-pink. 35 mm; soft top light; tidy chaos.”
+
+A13 — Salmaan | 4:5 Staffer ghost
+“4:5. SALMAAN in neutral staffer coverall; rolled floor plans/clipboard (glyph blocks); plan tube bears tiny trident stamp dark navy in light, edge neon-pink in flicker shadow. 70–85 mm; industrial background.”
+
+A14 — Salmaan | 16:9 Route vanish
+“16:9. Service corridor long shot; Salmaan mid-distance, head down, forgettable gait; mop station bokeh. Trident on tube flips neon-pink where corridor darkens. 35 mm; cool overheads.”
+
+B) Operations & Scene Beats (8)
+
+B1 — Gate Cross | 16:9
+“16:9. Two-by-two movement through keycard gates; Adil calm at front; Sthir’s badge passes reader; derma-mesh shimmer at Adil’s jaw. Lapel trident maroon; monitor spill gives hairline pink. 35 mm; office light; glyph signage only.”
+
+B2 — Wedge Set | 1:1 macro
+“1:1 macro. Trapezoid door-wedge micro-jammer half under studio door; micro-LED neon-pink (active); rubber base texture; tiny trident decal maroon. Dust motes; cool rim.”
+
+B3 — Stair Countdown | 2:3
+“2:3 vertical. AARUSH signals ‘two minutes’ (T-120) by fingers; active jam-can glows steady neon-pink; idle can navy below. Repeating landings; industrial lines; no text.”
+
+B4 — Execution Beat | 2:3 (clinical)
+“2:3. Adil fires suppressed pistol in a narrow corridor; single directional spatter, fabric soak on target; muzzle gas tight. Lapel trident catches thin neon-pink from exit sign. 50 mm; crisp shutter; zero glam.”
+
+B5 — Rooftop Egress | 16:9
+“16:9 blue-hour rooftop; crew silhouettes crossing to telecom shack; no vehicles. Trident sticker on relay box reads maroon/navy; in door shadow, edge pink. 28 mm; restrained haze.”
+
+B6 — Safehouse Teardown | 4:5
+“4:5. Telecom shack interior: Locker K crate open—wedge, jam-cans, ear-clips, breacher, badges; one jam-can active (steady neon-pink ring); others idle. Overhead strip light; matte textures; glyph labels.”
+
+B7 — Service Corridor Exit | 16:9
+“16:9. Neutral gait through service corridor; conduit and bins; mop sign as glyph blocks. Panel lid trident dark navy; in doorway gloom, edge pink. 28–35 mm; low-contrast mids.”
+
+B8 — Metro Nook Hand-Off | 16:9
+“16:9. Salmaan passes a Locker K key tag, hands only; platform bokeh behind; tag micro-sticker flares neon-pink at the edge. Sodium + cold spill mix; glyph caution stripes.”
+
+C) Devices & Macro Iconography (9)
+
+C1 — Pistol Crown | 1:1 macro
+“1:1 macro. Compact pistol muzzle crown and sight pip; mag plate micro-etch trident maroon/navy; rim pink where backlit. DLC slide, concentric ridges; negative space; clinical.”
+
+C2 — Suppressor Fit | 2:3
+“2:3. Quiet attach—suppressor aligns; no threads drawn; hands disciplined. Trident etch on mag plate. Cool rim; glyph warning placard bokeh.”
+
+C3 — Denial Grenade | 16:9
+“16:9 stair step. Oval grenade rolls, safety band; thin internal flare; dust jump; fragments minimal. Band carries tiny trident maroon/navy (no glow). Industrial palette.”
+
+C4 — Jam-Can Cap | 4:5 macro
+“4:5 macro. Jam-can cap with trident medallion; steady neon-pink ring active; anodized knurl detail; concrete blur.”
+
+C5 — Door-Wedge Underframe | 1:1
+“1:1 underside view at floor level: wedge pressed under door; LED neon-pink; rubber scuff arc; grainy dust; tiny trident decal.”
+
+C6 — Relay Tile | 4:5
+“4:5. Palm relay/mixer tile centered; center trident neon-pink (live); ear-clips arranged around; matte towel; soft top light.”
+
+C7 — Ear-Clips Array | 1:1
+“1:1. Three ear-clips in a row; one LED dot blinks softly pink (others dark). Graphite shells; minimal reflections.”
+
+C8 — Keycard Fan | 4:5
+“4:5. Off-white keycards fanned in gloved hand; watermark trident reads dark navy; at one corner, phone torch gives pink rim. Glyph watermark only.”
+
+C9 — Breacher Hinge | 2:3 macro
+“2:3 macro. Fold-flat breacher hinge and micro-bit turret; tiny trident engraving near pivot; brushed aluminum, polymer scales; door plate blur.”
+
+D) Propaganda / Posters / Broadcast Overlays (6)
+
+D1 — Poster: Authority Mirage | 4:5
+“4:5 poster. Executive torso at desk; jacket lapel with SAME trident silhouette maroon; monitor spill creates a hairline neon-pink edge on the pin. Gunmetal field; Quiet Title Zone centered; no text (glyph blocks only).”
+
+D2 — Poster: Threshold Glow | 16:9
+“16:9 poster. Studio door seam with wedge; trident decal navy in light, neon-pink rim inside the seam. Diagonal dark wedge composition; restrained palette.”
+
+D3 — Poster: Vector Silence | 1:1
+“1:1 poster icon. Centered trident on graphite gradient; dark navy fill; thin neon-pink outer bloom; paper grain; immaculate vector edges.”
+
+D4 — Overlay Sheet | 1:1
+“1:1 broadcast overlay sheet: four lower-third bars in gunmetal with glyph blocks; corner bug trident in maroon/navy; one demo tile shows bug rim neon-pink over a darker swatch. Precise vectors.”
+
+D5 — Bumper Open Board | 16:9 storyboard
+“16:9 six-panel storyboard: black/banding → architecture negatives with occasional threshold pink → centered trident maroon/navy → 102% push-in → thin neon-pink rim → cut to program. Glyph blocks only.”
+
+D6 — Sticker Sheet Tilt | 1:1
+“1:1. Sticker sheet at oblique angle; alternating tridents maroon/navy; sheet edge catches light and produces neon-pink rim. Clean vector; matte grain.”
+
+E) Investigator POV (3)
+
+E1 — Lab Bench | 16:9
+“16:9 forensic table: gloved hands bag a jam-can; under white lab light the cap appears maroon/navy (no glow). Evidence label rendered as glyph blocks. Cold palette.”
+
+E2 — CCTV Pair | 2:3 split
+“2:3 vertical split-panel. Frame A: lift cam fisheye, lapel trident navy in light; Frame B (darker): the pin’s edge reveals neon-pink. Timestamps as glyph blocks only.”
+
+E3 — Wedge Residue | 1:1 macro
+“1:1 macro. Rubber scuff arc under door; dust pattern; ruler with glyph ticks; cool rim; no readable text.”
+
+4) Batch-Render Cheatsheet (optional but handy)
+
+Naming: NT_{Scene}_{Char/Device}_{Aspect}_{VariantDay|ThresholdPink}_{NN}.png
+e.g., NT_Studio_Jwala_169_DayMaroon_01.png, NT_Stairs_Aarush_23_ThresholdPink_02.png
+
+Day variant bias: render ~70% maroon/navy day; reserve neon-pink for threshold/dark beats to keep glow special.
+
+Review pass: check (1) trident silhouette exact, (2) no readable text, (3) jam-can ring steady when active, (4) braided dark-grey line only in Jeraya HP scenes, (5) Quiet Title Zone honored.
+
+Phase 9 — QA & Handoff (Final)
+
+This is the production “source-of-truth” for artists, editors, and you-as-director. It consolidates every hard rule, how to review, how to store, and how to evolve the pack without losing canon.
+
+1) Canon Locks (non-negotiables)
+
+Faction identity: New Tribhuj = Army-run impostor cell; sleek, surgical, semi-futuristic.
+
+Mark: exact trident silhouette (identical geometry to the covenant).
+
+Day variants: Maroon (#6E1E2A) or Dark Navy (#0B2D5A).
+
+In dark/low-lux/backlight → clean Neon-Pink glow (#FF2D6C) on edges/rims.
+
+Jam-can state: steady neon-pink cap ring when active (no pulsing).
+
+Jeraya’s prosthetic: optional; weapon pack only on high-profile ops; mag-spool is a braided dark-grey line.
+
+No signature vehicle. Architecture is the vehicle.
+
+Typography ban: absolutely no readable text or numbers anywhere. All signage/UI = glyph blocks only.
+
+Violence tone: clinical, technical; directional spatter, fabric soak, particulate; zero glam.
+
+2) Final Acceptance Criteria (what every image must pass)
+
+Trident geometry matches canon exactly; finish changes (maroon/navy by day; neon-pink only in dark/backlight).
+
+Palette discipline: graphite/gunmetal/steel-blue base; cyan/pink used sparingly (devices/mark only).
+
+Camera grammar:
+
+28–35 mm = spaces/architecture
+
+50–70 mm = people/portraits
+
+85–105 mm = devices/macros
+
+Light/grade: cool neutral D60; low-contrast mids; no harsh speculars except controlled edge rims.
+
+COMSEC aesthetics: overlays/posters use glyph blocks; never readable claims or slogans.
+
+Device truth: wedge looks like a wedge, jam-can cap ring steady when live, relay tile center trident pink only when channel live.
+
+Jeraya rules: prosthetic plain most of the time; weapon pack appears only in declared high-profile scenes; mag-spool braided if visible.
+
+Cropping safety: preserve Quiet Title Zone (center 55–60% × 40%) and calm top-left 12% for UI.
+
+Continuity tokens (at least one per ops scene): wedge scuff arc, dust ring where can sat, subtle banding on screens, trident edge flash at thresholds.
+
+Zero fan-art drift: if it starts looking punky/cartoony, reduce saturation, increase geometry/discipline.
+
+3) Preflight Review Checklists
+
+A) Single-Image Preflight (artist self-check)
+
+Trident silhouette exact; finish behaves as scene lighting dictates.
+
+No readable text/nums; glyph blocks only.
+
+Lens matches subject (28–35 / 50–70 / 85–105).
+
+Neon-pink confined to mark/devices/thresholds.
+
+If jam-can shown and “on,” ring is steady pink; if “off,” maroon/navy.
+
+If Jeraya shows mag-spool, line is braided dark-grey.
+
+Violence (if any) is clinical; no glam sparks/flares.
+
+B) Scene Continuity (editor/AD)
+
+Day distribution vs threshold: ~70% day looks; pink reserved for reveals.
+
+If one panel shows wedge set, later panel carries wedge scuff or removal.
+
+If stair constellation appears, at least one cap shows steady pink and others idle.
+
+Overlays consistent (bug position, lower-third glyphs, no text leakage).
+
+No accidental vehicles creeping into “architecture-only” exfils.
+
+4) Foldering & Naming (drop-in to your Brand/Canon pack)
+
+/NewTribhuj_FactionPack_v1/
+
+  01_VisualLanguage/
+
+    Palette.md
+
+    Trident_Specs.svg
+
+    Finish_Samples_Day_Maroon_Navy_PinkThreshold.png
+
+  02_Characters/
+
+    Adil/
+
+      Plates_4x5/
+
+      Story_16x9/
+
+      Square_1x1/
+
+      Comic_2x3/
+
+    Jwala/ ...
+
+    Sthir/ ...
+
+    Jeraya/ ...
+
+    Aarush/ ...
+
+    Raaka/ ...
+
+    Salmaan/ ...
+
+  03_Devices/
+
+    Pistol/
+
+    DenialGrenade/
+
+    DoorWedge/
+
+    JamCan/
+
+    RelayTile/
+
+    EarClips/
+
+    Breacher/
+
+    BioSleeve_DermaMesh/
+
+  04_Environments/
+
+    Studio/
+
+    LiftGallery/
+
+    StairCore/
+
+    Rooftop/
+
+    Backroom/
+
+    TrainingFloor/
+
+    ServiceCorridor/
+
+    MetroNook/
+
+  05_Propaganda_Overlays/
+
+    Posters_P1_AuthorityMirage/
+
+    Posters_P2_ThresholdGlow/
+
+    Posters_P3_VectorSilence/
+
+    Broadcast_Overlays/
+
+    Bumpers_Storyboards/
+
+  06_Montage/
+
+    M1_Seizure30/
+
+    M2_CityNightPaste/
+
+    M3_AftermathDeflection/
+
+  07_PromptLibrary/
+
+    CanonPrompt_Schema.txt
+
+    PromptAtoms.md
+
+    40_Prompts/
+
+  08_QA/
+
+    AcceptanceCriteria.md
+
+    PreflightChecklist.pdf
+
+    SceneContinuityChecklist.pdf
+
+  09_Changelogs/
+
+    CHANGELOG.md
+
+Filename pattern
+NT_{SetOrChar}_{Shot}_{Aspect}_{DayMaroon|DayNavy|ThresholdPink}_{vNN}.png
+Example: NT_StairCore_Constellation_169_ThresholdPink_v01.png
+
+5) Versioning & Change Control
+
+Semantic-ish: vMAJOR.MINOR.PATCH
+
+MAJOR = canon changes (trident geometry, violence policy)
+
+MINOR = new assets or families (new poster family, new set)
+
+PATCH = art corrections, tone/grade tweaks
+
+Changelog template
+
+## v1.1.0 — 2025-09-22
+
+Added: ServiceCorridor “Exit Blur” 2:3 prompt & render
+
+Tweaked: Jam-can ring intensity −10% to avoid overglow
+
+Fixed: Lift-Cam timestamp reverted to glyph blocks
+
+6) Prompt Mixer (fast assembly without thinking)
+
+Fill these 7 blanks; paste as one block.
+
+Subject & Role: {Adil commander stride | Jwala on-air | Sthir at gate | Jeraya wedge set (HP?) | Aarush jam constellation | Raaka relay live | Salmaan hand-off}
+
+Mark Day Variant: {Maroon | Dark Navy}
+
+Threshold Use: {none | door seam edge pink | monitor spill pink}
+
+Devices: {jam-can (steady pink) | wedge | relay tile pink | ear-clips | breacher | none}
+
+Environment: {Studio | Lift Gallery | Stair Core | Rooftop | Backroom | Training Floor | Service Corridor | Metro Nook}
+
+Camera: {35 mm space | 70 mm portrait | 100 mm macro}
+
+Aspect: {16:9 | 4:5 | 1:1 | 2:3}
+
+The rest (materials, lighting, palette, negatives) stay constant from the schema.
+
+7) Quick Color & Grade Card (pin next to the artists)
+
+Day bodies: Maroon #6E1E2A | Dark Navy #0B2D5A
+
+Neon threshold: Pink #FF2D6C (use as rim/edge only, keep halo thin; never flood)
+
+Base: Gunmetal #1E2328 / Graphite #2A2F34; Steel Blue #3C4E5C
+
+Light: D60, low-contrast mids; screen spill subtle cyan allowed on decks/screens
+
+Do not add warm tungsten flares unless narratively motivated.
+
+8) Final “Gotchas” (things that break canon most often)
+
+Readable text sneaks in via labels, timestamps, signage → convert to glyph blocks.
+
+Pink overuse blows the brand reveal → keep for thresholds/backlight; 70% of frames should be day maroon/navy.
+
+Jeraya’s weapon pack appears in routine ops → restrict to high-profile only, and show braided line if mag-spool is visible.
+
+Pulsing jam-cans → ring must be steady when active.
+
+Vehicle crutch → do not introduce a signature van/bike; use stairs, roofs, corridors.
+
+9) Delivery Readiness (what you already have across phases)
+
+Phase 1: Canon harvest & scene tags (appearances, behaviors).
+
+Phase 2: Visual Language Board (emblem specs, palette, wardrobe, prosthetics, devices, camera/lighting grammar).
+
+Phase 3: Seven character plates + prompts (Adil, Jwala, Sthir, Jeraya, Aarush, Raaka, Salmaan spelling locked).
+
+Phase 4: Ops & Tradecraft Bible (SOPs, comms, device sheets, forensics tells, scene kits).
+
+Phase 5: Weapons & Devices Spec Pack (exploded notes, finishes, prompt seeds; steady jam-can ring; braided mag-spool).
+
+Phase 6: Environments & Hides (eight measured sets + prompt packs).
+
+Phase 7: Propaganda & Montage Grammar (poster families, overlays, bumpers, montage templates).
+
+Phase 8: Prompt Library & Schema (40 ready prompts + schema + atoms).
+
+This Phase 9 wraps QA, file architecture, naming, versioning, and the prompt mixer.
+
+10) Optional Defaults (set now so teams don’t stall)
+
+Day variant bias: lock at 70:30 (Maroon:Navy) unless scene mood demands cooler overall (then 60:40).
+
+Broadcast bug position: top-right by default; shift to bottom-right only if lower-third content collides.
+
+Rooftop skyline: vary by city (avoid a single skyline “tell”).
+
+Metro stations: mix warm sodium + colder LED refurb to suggest layered modernity.
+
+11) Ready-to-ship “director’s OK” line (drop in briefs)
+
+“Approve only those frames where the trident silhouette is exact, day finish is maroon/navy, pink appears only at thresholds or on device edges, jam-can active rings are steady, Jeraya’s weapon pack appears only on high-profile missions (braided line visible if used), all signage/UI are glyph blocks, and the violence reads clinical rather than glam.”
+
+12) What success looks like
+
+Artists can pick any character/scene and generate a frame that instantly reads “New Tribhuj” without a single word on screen.
+
+Editors can cut a 20–30 s montage using the M1/M2/M3 grammars and your audience still “gets it.”
+
+You can hand this pack to a new collaborator and they’ll ship canon-safe assets on the first pass.

@@ -3,7 +3,7 @@
 ## Project Overview
 This is Atharva Singh's AI-enabled Personal Operating System. This directory is the execution layer — where code gets written, workflows get built, infrastructure gets deployed, and the OS grows.
 
-The primary interface is a Claude.ai project (Category A) with 24 skills, 3 connectors (Gmail, Calendar, Drive), and a rich knowledge base. This Claude Code workspace handles what can't happen inside chat: terminal operations, multi-file code generation, git management, deployment, and MCP server development.
+The primary interface is a Claude.ai project (Category A) with 25 skills, 3 connectors (Gmail, Calendar, Drive), and a rich knowledge base. This Claude Code workspace handles what can't happen inside chat: terminal operations, multi-file code generation, git management, deployment, and MCP server development.
 
 **Current State:** See `knowledge-base/PROJECT_STATE.md` for the authoritative, filesystem-verified project state snapshot. Run `/update-project-state` to refresh it.
 
@@ -18,7 +18,7 @@ Based in Hyderabad, India. Full profile in `knowledge-base/OWNER_PROFILE.md`.
 
 ## Tool Ecosystem (Three-Tier Model)
 - **Tier 1 — Directory Connectors:** Gmail, Calendar, Drive (connected). Slack, Notion, Canva, GitHub (pending). Zero infrastructure. One-click OAuth via Claude.ai.
-- **Tier 2 — Unified MCP Gateway:** ONE FastAPI Cloud Run service (`mcp-servers/ai-os-gateway/`) with 40 tools (8 modules). PostgreSQL (6), Google Tasks (9), Drive Write (3), Drive Read (3), Calendar Sync (3), Telegram (5), Life Graph (8), Capture (3). Telegram bot webhook also hosted on Gateway. Scales to zero. $0-7/month. Dashboard PWA (`dashboard/`) on separate Cloud Run service.
+- **Tier 2 — Unified MCP Gateway:** ONE FastAPI Cloud Run service (`mcp-servers/ai-os-gateway/`) with 56 tools (10 modules). PostgreSQL (6), Google Tasks (9), Drive Write (3), Drive Read (3), Calendar Sync (3), Telegram (5), Life Graph (8), Capture (3), Contacts (8), Bharatvarsh (8). Telegram bot webhook also hosted on Gateway. Scales to zero. $0-7/month. Dashboard PWA (`dashboard/`) on separate Cloud Run service.
 - **Tier 3 — Local STDIO MCP:** Evernote, n8n, GitHub via npm packages in Claude Code. Zero cloud cost.
 See `knowledge-base/TOOL_ECOSYSTEM_PLAN.md` for full architecture, module inventory, decision tree for adding new tools, and implementation phases.
 
@@ -26,10 +26,10 @@ See `knowledge-base/TOOL_ECOSYSTEM_PLAN.md` for full architecture, module invent
 - **Cloud:** GCP (project: ai-operating-system-490208, region: asia-south1)
 - **Backend:** FastAPI, Python 3.12
 - **Orchestration:** LangGraph (Category C only)
-- **Database:** Cloud SQL PostgreSQL (pgvector, ltree) on shared bharatvarsh-db instance (bharatvarsh-website:us-central1:bharatvarsh-db). Database: ai_os. User: ai_os_admin. 33 tables live across 8 schema domains. Migrations 001-013 all applied.
+- **Database:** Cloud SQL PostgreSQL (pgvector, ltree) on shared bharatvarsh-db instance (bharatvarsh-website:us-central1:bharatvarsh-db). Database: ai_os. User: ai_os_admin. 38 tables live across 10 schema domains. Migrations 001-015 all applied.
 - **Frontend:** Next.js 14, React 18, Tailwind CSS, NextAuth.js, @hello-pangea/dnd (Dashboard PWA live on Cloud Run). Bharatvarsh website also live.
 - **AI Models:** Claude Sonnet 4.6 (default), Opus 4.6 (complex reasoning), Haiku 4.5 (classification)
-- **MCP:** Gmail, Calendar, Drive (Tier 1 connectors). AI OS Gateway deployed on Cloud Run with 40 tools (8 modules): PostgreSQL (6), Google Tasks (9), Drive Write (3), Drive Read (3), Calendar Sync (3), Telegram (5), Life Graph (8), Capture (3): capture_entry, list_journals, search_journals. Telegram bot @AsrAiOsbot webhook on Gateway with capture commands (/j, /e, /ei, /em). Evernote, n8n (Tier 3 local STDIO, to configure).
+- **MCP:** Gmail, Calendar, Drive (Tier 1 connectors). AI OS Gateway deployed on Cloud Run with 56 tools (10 modules): PostgreSQL (6), Google Tasks (9), Drive Write (3), Drive Read (3), Calendar Sync (3), Telegram (5), Life Graph (8), Capture (3), Contacts (8), Bharatvarsh (8). 56 tools / 10 modules total, all deployed. Telegram bot @AsrAiOsbot webhook on Gateway with capture commands (/j, /e, /ei, /em). Evernote, n8n (Tier 3 local STDIO, to configure).
 
 ## GCP Infrastructure (Provisioned)
 - **Project:** ai-operating-system-490208 (asia-south1)
@@ -55,19 +55,27 @@ ai-os-project/
 │   ├── DB_SCHEMA.md
 │   ├── INTERFACE_STRATEGY.md
 │   ├── BHARATVARSH_BIBLE.md
+│   ├── BHARATVARSH_CHARACTERS.md
+│   ├── BHARATVARSH_LOCATIONS.md
+│   ├── BHARATVARSH_TIMELINE.md
+│   ├── BHARATVARSH_VISUAL_GUIDE.md
+│   ├── BHARATVARSH_WRITING_GUIDE.md
 │   ├── BHARATVARSH_PLATFORM.md
 │   ├── CONTENT_CALENDAR.md
 │   ├── MARKETING_PLAYBOOK.md
 │   ├── LIFE_GRAPH.md
+│   ├── CAPTURE_GUIDE.md
 │   ├── BRAND_IDENTITY.md
 │   ├── profile-context-pack/
 │   ├── aiu-knowledge-pack/
-│   └── bharatvarsh-website-docs/
-├── .claude/skills/           ← Claude Code auto-discovered skills (24 skills)
+│   ├── bharatvarsh-website-docs/
+│   ├── bharatvarsh-source-text/
+│   └── skills/
+├── .claude/skills/           ← Claude Code auto-discovered skills (25 skills)
 ├── dashboard/                ← Dashboard PWA (Next.js 14, LIVE on Cloud Run)
 │   ├── src/
 │   │   ├── app/              ← Pages + API routes (9 pages, 23 API routes)
-│   │   ├── components/       ← 27 React components
+│   │   ├── components/       ← 28 React components
 │   │   ├── lib/              ← DB client, auth, types, utils
 │   │   └── middleware.ts     ← Auth gate
 │   ├── public/               ← PWA manifest, service worker, icons
@@ -84,42 +92,43 @@ ai-os-project/
 │   │   ├── drive-knowledge-scanner/ ← Drive folder scanner (LIVE on Cloud Run)
 │   │   ├── weekly-knowledge-summary/ ← Weekly project summaries (LIVE on Cloud Run)
 │   │   ├── knowledge-auto-connector/ ← Auto connection discovery (LIVE on Cloud Run)
-│   │   ├── risk-engine/       ← AI Risk Engine (BUILT, pending deploy)
-│   │   ├── daily-brief-engine/ ← Automated daily brief (BUILT, pending deploy)
-│   │   ├── task-annotation-sync/ ← Two-way task annotation sync (BUILT, pending deploy)
+│   │   ├── risk-engine/       ← AI Risk Engine (LIVE on Cloud Run)
+│   │   ├── daily-brief-engine/ ← Automated daily brief (LIVE on Cloud Run)
+│   │   ├── task-annotation-sync/ ← Two-way task annotation sync (LIVE on Cloud Run)
 │   │   ├── domain-health-scorer/ ← Domain health scoring (LIVE on Cloud Run)
 │   │   └── journal-monthly-distill/ ← Journal distillation via Haiku (LIVE on Cloud Run)
 │   ├── shared/               ← Shared Python libraries
 │   │   └── ai_os_knowledge.py ← KnowledgeClient for semantic search + graph traversal
 │   └── category-c/           ← LangGraph + FastAPI (agentic)
 ├── mcp-servers/
-│   └── ai-os-gateway/        ← Unified MCP Gateway (40 tools, 8 modules)
+│   └── ai-os-gateway/        ← Unified MCP Gateway (56 tools, 10 modules — all deployed)
 │       ├── app/
 │       │   ├── main.py
 │       │   ├── config.py
-│       │   ├── modules/      ← postgres.py, google_tasks.py, drive_write.py, drive_read.py, calendar_sync.py, telegram.py, life_graph.py, capture.py
+│       │   ├── modules/      ← postgres.py, google_tasks.py, drive_write.py, drive_read.py, calendar_sync.py, telegram.py, life_graph.py, capture.py, contacts.py, bharatvarsh.py
 │       │   ├── telegram/     ← Bot webhook, commands, AI triage, thread memory
 │       │   └── auth/         ← google_oauth.py, bearer.py
 │       ├── Dockerfile
 │       ├── requirements.txt
 │       └── cloudbuild.yaml
 ├── database/
-│   ├── migrations/           ← 001-013 all applied
-│   └── seeds/                ← 001-008 applied, 009-011 built (pending apply)
+│   ├── migrations/           ← 001-015 all applied
+│   └── seeds/                ← 001-013 all applied
 ├── scripts/
 │   ├── google_oauth_setup.py ← OAuth token flow helper
 │   ├── deploy_knowledge_layer_v2.sh ← Step-by-step deployment guide
 │   ├── seed_knowledge_connections.py ← Seed initial knowledge connections
 │   ├── generate_knowledge_snapshots.py ← Generate domain-level snapshots
-│   └── seed_knowledge_drive.py ← Seed knowledge from Drive
+│   ├── seed_knowledge_drive.py ← Seed knowledge from Drive
+│   └── import_google_contacts.py ← Idempotent CSV contact importer (891 contacts)
 ├── infra/
 └── docs/
 ```
 
 ## Active Projects
-1. **AI Operating System** — Personal Capture System built. 33 tables, 40 MCP tools (8 modules), domain-based Google Task lists (9 domains), Dashboard PWA (9 pages), Telegram Bot (9 commands incl. capture), Knowledge Layer V2 deployed, domain-health-scorer pipeline deployed, journal-monthly-distill pipeline built.
+1. **AI Operating System** — Sprint 10-B (Bharatvarsh Lore Layer) deployed. Sprint 10-A (Contact Intelligence) deployed. 38 tables live, 56 MCP tools (10 modules), 25 skills, Dashboard PWA (9 pages, 28 components), Telegram Bot (9 commands), 891 contacts imported. Bharatvarsh lore module deployed (image: lore-v1). Migration 015 + seed 013 applied.
 2. **AI&U YouTube** — Pre-launch. Content system designed. First 10-video library in progress.
-3. **Bharatvarsh** — Published. Website live at welcometobharatvarsh.com. Marketing phase.
+3. **Bharatvarsh** — Published. Website live at welcometobharatvarsh.com. Lore Layer complete (6 KB files, 5 DB tables, 8 MCP tools, 3 skills). Marketing phase.
 
 ## Coding Standards
 - Python: 3.12+, type hints, docstrings, f-strings. Use `ruff` for linting.
@@ -137,7 +146,7 @@ When calling the Anthropic API in code:
 Always use prompt caching for system prompts that repeat across runs.
 
 ## Current Sprint
-Sprint 9-B — Personal Capture System deployed. 33 tables, 40 MCP tools (8 modules), capture module (capture_entry, list_journals, search_journals), journals table, 2 new skills (capture-entry, entry-analysis), journal-monthly-distill pipeline (LIVE, scheduled 28th monthly), Telegram capture commands (/j, /e, /ei, /em), Dashboard /capture page with inbox + journals + stats tabs. All live on Cloud Run.
+Sprint 10-B — Bharatvarsh Knowledge Layer Enrichment (DEPLOYED). Sprint 10-A — Contact Intelligence Layer (DEPLOYED). Deployed state: 38 tables, 56 MCP tools (10 modules), 25 skills, 891 contacts. Sprint 10-B: bharatvarsh module (8 tools), migration 015 (5 lore tables), seed 013 (139 records), 6 KB files (5448 lines total), 3 Claude.ai skills, bharatvarsh-content v2.0. All deployed. Gateway image: lore-v1 (revision 00037). Migration 015 + seed 013 applied.
 
 ## Key Commands
 - `claude` — Start Claude Code session in this directory

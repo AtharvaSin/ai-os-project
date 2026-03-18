@@ -1,0 +1,915 @@
+Perfect—locking your decisions and delivering Sprint 1: Set Bible v1 for “Headquarters, Indrapur (Command Suite → War-Room → Helipad → Motorcade).” This seeds layout, circulation, marks, camera lanes, and lighting so the art team can start blocking boards immediately.
+
+Set Bible v1 — Indrapur Headquarters
+
+0) Site & Massing Overview
+
+Precinct: Government core of Indrapur, occupying the ceremonial axis of the old assembly grounds (our in-world “central government precinct”).
+
+Massing: Low-rise, large-footprint oval in plan; all-glass façade with deep mullion rhythm. Height: ~12 storeys / ~52 m (read as “not very tall but commanding”).
+
+Structural core: Central, sealed shaft (black design) that runs roof→basement→underground nuclear bunker. Shaft is isolated from public shafts; service/MEP ring sits just outside the black core.
+
+Roof: East-end helipad & evac apron (flush to roof skin), west-end skylight run for command level.
+
+Façade language: Low-iron laminated glass with pale grey interlayer; vertical fins at 3 m spacing create a quiet, institutional cadence. Minimal vertical-garden accents only at plaza—not on the tower (keeps optics “austere”).
+
+Security Zoning (building-wide)
+
+Public (plaza, entry hall, press gallery)
+
+Controlled (upper admin floors, brief rooms, motorcade ramps)
+
+Secure (command level, war-room suite, roof apron)
+
+Black (central shaft, bunker access, comms nodes)
+
+1) Top-Floor Plan (Command Level)
+
+A simplified map of the command level so camera and art teams place beats consistently.
+
+            North ↑
+
+     ┌───────────────────────────────────────────┐
+
+     │      ROOF LIGHTWELL  (glare-controlled)  │
+
+W ←  │                                           │  → E (Helipad)
+
+     │  ┌─────────────┐   GLASS CORRIDOR   ┌────┴─────┐
+
+     │  │ COMMAND     │ ─────────────────▶ │ WAR-ROOM │
+
+     │  │ SUITE       │◀────────────────── │ / SITREP │
+
+     │  │ (Tri-Anchor │   return traffic   └────┬─────┘
+
+     │  │ Wall)       │                        │
+
+     │  └──────┬──────┘                        │
+
+     │         │                               │
+
+     │  LIFT   │  SECURITY VESTIBULE           │   SERVICE
+
+     │  LOBBY  ├──(wrist-scan roof/door)───────┘   RING
+
+     │         │
+
+     │  MOTORCADE ELEV. (VIP only)                     ↘ CORE
+
+     │         │                                        │
+
+     │  STAIR  │     CENTRAL SEALED SHAFT (BLACK)       │
+
+     └─────────┴────────────────────────────────────────┘
+
+                   South ↓
+
+Command Suite and War-Room are connected by a short glass corridor (not directly adjacent).
+
+Lift Lobby / Security Vestibule sits behind controlled doors; wrist-scan access is embedded into walls + ceiling (see §5).
+
+Motorcade Elevator opens into the same vestibule (VIP arrival path).
+
+Helipad egress: a secure roof door + wind baffle leads from war-room side to east apron.
+
+2) Room Specs & Dressing
+
+A) Command Suite (Top-Floor Office)
+
+Orientation: West-biased for late-day backlight; skylight strip above adds soft top-fill.
+
+Signature background: Tri-Anchor Wall (centerline of frame behind desk):
+
+Foundational leader portrait relief (tone-on-tone metal),
+
+Framed national preamble (matte off-white),
+
+Strategic wall map (frosted glass overlay with low-chroma landmasses).
+All three float on a cold back-lit glass field that throws soft linear “bars” across faces and surfaces when shot ¾.
+
+Desk: Raised rostrum with stone-slab top (dark basalt; eased 2 mm chamfer), integrated cable well.
+
+Seating: 2–6 visitor chairs modular (we flex count per scene).
+
+Props (always-on): leather folio (blind-embossed emblem), two matte pens in a shallow tray, Omni-Handle dock (stone cradle at desk right). Brace-Comm panes appear only as discreet, single tiles when needed.
+
+Floor: Noise-damped composite in charcoal; 10% reflectivity to catch “bar” reflections without mirror.
+
+Acoustics: Micro-perforated ceiling band behind the camera axis to kill slap-back during tight scenes.
+
+B) War-Room / Situation Suite
+
+Plan: Elliptical glass map-table at center (2.6 m x 1.6 m), 900 mm high; perimeter standing rails at compass points.
+
+Screens: Translucent command panes—glyphic, illegible UI (no dense dashboards), pale cyan/steel gradients.
+
+Light grammar: Predominantly cool back-light through frosted partitions; reflections form the same soft bar motif.
+
+Action language: Stillness during intake; decisive space “cuts” using the Omni-Handle pointer to flip layers on the map-table.
+
+Dooring: Two-stage door (outer clear, inner frosted) with vestibule strip that runs ceiling wrist-scan across the threshold (see §5).
+
+C) Helipad & Evac Apron (Roof East)
+
+Markings: Plain “H” only (no numerics or codes).
+
+Chevrons: Low-saturation safety yellow baffles along wind edge; skid-resistant micro-texture.
+
+Hardware: Flush beacon rings, fold-flat stretcher rack at the apron edge.
+
+Transport: Twin-engine scout/transport capable of autonomous approach/hold.
+
+Egress: Blast-baffled corridor from helipad door to war-room foyer for rapid in/out.
+
+D) Motorcade Interfaces
+
+VIP lift dock: Sub-grade motorcourt with weather canopy; dedicated lift car rises to Top-Floor Security Vestibule.
+
+Arrival optics: Blue-hour arrivals favored; reflective plaza stones give paint-hue play.
+
+Escort grammar (locked):
+
+Formation (urban): Lead scout drone (Hawk-1) → two outrider hover-bikes → state sedan (glide-car) → tail security SUV → overwatch drone at 25 m AGL.
+
+Signals: Window Acknowledgement (two-finger salute) optional; Sleeve-tile Confirm on dock.
+
+Speed cap within precinct: 20 kph glide.
+
+3) Access Control & Corridor Tech (Locked)
+
+Wrist-scan architecture: Readers are flush into corridor walls and ceiling fascias. Each controlled threshold shows:
+
+Ceiling strip (300 mm wide) with soft cyan idle glow → turns white when scanning.
+
+Wall insets at 1.2 m and 1.6 m heights (left and right) for ambidextrous pass; an embossed arrow shows direction of flow.
+
+No freestanding pedestals in these zones to keep corridors clean for motorcade/VIP foot traffic.
+
+Zones in command level:
+
+Green (badge-only) → Lift Lobby
+
+Amber (badge + wrist-scan) → Security Vestibule
+
+Red (dual unlock: wrist-scan + escort presence) → War-Room / Helipad door
+
+Black (sealed—independent protocol) → Central Shaft access
+
+4) Signage, Marks & Typography (Locked)
+
+A) Shoulder/Uniform Text Law (for on-camera consistency)
+
+Right shoulder: TEXT-ONLY block in ALL CAPS; no emblem on right.
+
+For HQ optics, use: DIRECTORATE HQ.
+
+Left shoulder & back: emblem allowed (monochrome).
+
+B) Building/Wayfinding Typography
+
+We align with the existing military visual tone while staying system-agnostic (no real-world font names).
+
+Latin family (primary): Condensed geometric sans, tall x-height, squarish counters; numerals tabular; default spacing +5 tracking for door IDs.
+
+Devanagari family (secondary): Square-terminal grotesk with balanced matras; same stroke weight as Latin cap height; letter-spacing loose (+10) at small sizes for legibility.
+
+State language (tertiary line): Regional script lock with angular joins and open counters (match stroke weight to the Devanagari line).
+
+Hierarchy:
+
+Level IDs / Doors: 160 pt / 80 pt (Latin on top), Devanagari below at ~85% scale, State line at ~80% scale.
+
+Directional arrows: 30° chevron arrows; stroke = text weight +10%.
+
+Pictograms: Reduced, monochrome (no skeuomorphism).
+
+Color: Monochrome spectrum only (black → mid grey → white). Emergency overlays in safety yellow; no red on this level to avoid conflict with alert states.
+
+Signage placements (command level):
+
+Lift Lobby: Level code “L12—DIRECTORATE HQ” (tri-lingual).
+
+Security Vestibule: “SECURE—CLEARANCE AMBER” with scan-strip icon; tri-lingual small.
+
+War-Room Door: “WAR-ROOM / SITREP—CLEARANCE RED”.
+
+Helipad Door: “ROOF ACCESS—AUTHORIZED PERSONNEL”.
+
+5) Lighting Presets (Locked)
+
+(Chosen per your instruction; values guide lighters/photographers; adjust locally for shot.)
+
+Day (Command Calm)
+
+CCT: 5200–5600 K overall.
+
+Key: Soft frontal through façade (ND-controlled).
+
+Fill/Rim: Overhead skylight adds gentle top-rim in office; in war-room, translucent panes act as cool back-light.
+
+Target levels: Office 350–450 lux; War-room 250–350 lux (darker perimeter for screen legibility).
+
+Look: Crisp, institutional; bar-reflections present but subtle.
+
+Blue-Hour (Theatre)
+
+CCT: Exterior 9000–10000 K; Interior key 4300–4600 K; keep UI panes at steel-cyan.
+
+Target levels: Office 300 lux; War-room 220–280 lux.
+
+Look: Cooler, higher contrast; bar-reflections pronounced; best for arrivals, briefings, press optics.
+
+EMP-Safe / Low-Power (Continuity State)
+
+CCT: 3000–3200 K emergency strips and beacons only.
+
+Target levels: 50–80 lux egress; 120–150 lux at map-table (internal battery ring).
+
+Look: Deep shadows, clear silhouettes; critical UI runs on localized table glow and wrist-scan strips.
+
+6) Camera Lanes & Lens Kit (Per Space)
+
+Command Suite
+
+Hero lane: Doorway axis → desk, 35–50 mm.
+
+Authority lane: Over-shoulder to Tri-Anchor Wall, 50–70 mm; capture bar reflections.
+
+Intimacy lane: 85 mm tight, side-key.
+
+War-Room
+
+Table lane: 35 mm across ellipse to opposing faces.
+
+Reflection lane: 50 mm along translucent panes to rake bar light over eyes.
+
+Command pivot: 70–85 mm from rail to map-table for Omni-Handle gestures.
+
+Helipad
+
+Approach lane: 35 mm low to read skid texture + rotor wash.
+
+Exit lane: 50 mm tracking into baffle corridor.
+
+Motorcade
+
+Arrival lane: 50–70 mm dolly with sedan; keep wet-plaza reflection.
+
+Optics lane: 85 mm on window acknowledgement (two-finger salute).
+
+7) Materials & Palette (Guiding Locks)
+
+Desk: Dark basalt stone slab; satin finish.
+
+Floors (command level): Charcoal composite, low gloss.
+
+Walls/Partitions: Low-iron glass, frosted gradient panes at eye-level for bar effects.
+
+Metalwork: Brushed graphite anodize; fixings invisible.
+
+Accents: None mandated; neutrality preserves institutional tone.
+
+Exterior plaza: Pale granite with micro-bevels; drainage slots align with façade grid.
+
+8) Behavior & Etiquette (Recurring Rules)
+
+Brace-Comm: Use single, discreet tiles (call/map/confirm), cyan/white; never clutter a frame.
+
+HUD monocles: OFF within office/war-room unless explicitly story-critical.
+
+Right-shoulder law: DIRECTORATE HQ text block; emblem never on right.
+
+Map-table usage: Hands rest on outer 150 mm ring; inner field is projection only; Omni-Handle controls layer flips and pins.
+
+9) Deliverables Out of Sprint 1 (what the team can start drawing now)
+
+Annotated floor plan (top level) with circulation arrows and security thresholds (Green/Amber/Red/Black).
+
+Façade elevation vignette (glass rhythm + fin spacing + plaza module).
+
+Room block-outs for Command Suite, War-Room, Helipad egress corridor (with furniture footprints).
+
+Signage & typography sheet (tri-lingual hierarchy, arrow grammar, door IDs, shoulder text lock).
+
+Lighting keys for Day / Blue-Hour / EMP-Safe with target lux ranges.
+
+Camera lane overlays per space with lens notes.
+
+(If you’d like these as printable A3 PDFs, say the word and I’ll package the sheets next.)
+
+10) Locked Changes Reflected
+
+Command Suite ↔ War-Room via short corridor (not adjacent).
+
+Stone slab desk top locked.
+
+Glass map-table locked.
+
+Typography system aligned to military tone (tri-lingual hierarchy + right-shoulder text law).
+
+Lighting presets chosen (Day / Blue-Hour / EMP-Safe).
+
+Helipad uses plain “H” only.
+
+Motorcade escort grammar designed and locked.
+
+Wrist-scan access integrated into walls + ceiling (no pedestals).
+
+Right-shoulder bloc text updated to DIRECTORATE HQ.
+
+No additional material accents mandated.
+
+Locked—moving into Sprint 2: Light, Materials, Signage (v2) for “Headquarters, Indrapur (Command Suite → War-Room → Helipad → Motorcade).” This gives you production-ready values, swatches, and wayfinding so the art team can paint, and the prompt team can keep outputs consistent.
+
+Lighting Look-Dev (by set & state)
+
+Global principles (carry across all HQ sets)
+
+UI austerity: Brace-Comm panes are tiny, crisp cyan/blue-white and appear briefly; never wallpaper a frame with UI. 
+
+War-room glass “bars”: Cold back-lit translucent panes should cast soft, bar-like reflections across faces and coats; maintain illegible glyphs. 
+
+Monocle etiquette: OFF in office/HQ unless an officer is explicitly augmented; Pratap does not wear one. 
+
+Presets (target values)
+
+Values are guides for look-dev and prompt notes; tweak locally per frame.
+
+Day (Command Calm)
+
+CCT: 5400K ± 200.
+
+Office: 420 lux key, 260 lux fill; top-skylight adds 10–15% rim.
+
+War-room: 320 lux field, 240 lux perimeter; pane back-lights at 220 cd/m² (cool).
+
+Motorcourt (if Day): 18% reflectance floor read; soft shadow edges.
+
+Blue-Hour (Theatre)
+
+Exterior spill: 9000–10000K; Interior key: 4400K; panes stay steel-cyan.
+
+Office: 300 lux key, high contrast; bar reflections pronounced. 
+
+War-room: 240–280 lux; cool side-rim to carve jawlines; preferred for severe briefings. 
+
+Motorcade: blue-hour wet-plaza reflections + color-shifting paint to sell state optics. 
+
+EMP-Safe / Low-Power
+
+Egress strips at 3000–3200K only; 60–80 lux corridors.
+
+Map-table ring battery at 120–150 lux to keep hands/props readable while the room drops to silhouette.
+
+Lens cues (for prompt chips / boards)
+
+Office authority: 50–70 mm, neutral key + cool back. 
+
+War-room severity: 85 mm side-key; let panes rake bars across faces. 
+
+Helipad authority: 35 mm wides; top-light; rotor-motion cues. 
+
+Motorcade control: 50–70 mm tracking; keep door geometry and paint flip readable. 
+
+Materials & Finishes (specs & swatches)
+
+Envelope & structure (your oval HQ)
+
+Façade glass: low-iron laminated glass; visible light transmission 62–68%; neutral grey interlayer to keep the austere, institutional cadence.
+
+Vertical fins: 3 m pitch; graphite anodize (matte) so they stay quiet in reflections.
+
+Central sealed shaft: clad internal matte black; no signage; independent lighting (EMP-safe).
+
+Command Suite (office)
+
+Desk: dark basalt stone slab top; satin, low specular (gloss unit ~10 of 100). (Stone slab is user-locked.)
+
+Floor: acoustic composite tile, charcoal; 10–12% reflectance so bar reflections read but never mirror.
+
+Partitions: low-iron glass w/ frosted gradient band at eye-line (30–60% opacity across 120 mm) to create controlled bar-reads.
+
+Micro-props: leather folio (blind-deboss emblem), matte black fountain pens, Omni-Handle resting on a stone cradle; Brace-Comm only as a single, discreet tile when needed. 
+
+War-Room (situation suite)
+
+Table: Elliptical glass map-table (2.6 × 1.6 m), 900 mm height; edge bevel 2 mm; internal LED ring (cool) for hands/props.
+
+Pane walls: cool back-light strips tuned so glyphs are illegible and read as system-noise, not content. 
+
+Rails: perimeter standing rails (graphite anodize), no chrome.
+
+Helipad & evac apron
+
+Deck skin: anti-skid microtexture; neutral grey; safety yellow chevrons on wind edge; no alphanumeric codes, H only at center (your lock).
+
+Prop grammar: stretcher rack low-profile; aides’ med-tiles (tiny cyan glow) are acceptable. 
+
+Motorcade interfaces
+
+Glide-Car paint: controlled navy→graphite color-shift; keep silhouette near-future, logo-less; ≤5 m hover profile. 
+
+Motorcourt floor: light granite (pale), micro-bevels; wet coat during blue-hour arrivals to capture reflections. 
+
+Metals & accents (across sets)
+
+Brushed graphite anodize (fixtures, rails, door frames).
+
+No polished chrome in camera; keep all trim subdued to preserve the “benevolent technocracy” read. 
+
+Signage & Wayfinding (tri-lingual system)
+
+Canon anchors to respect
+
+Right-shoulder law: right shoulder = TEXT-ONLY block (ALL CAPS); never place the emblem on the right. (Updated text: DIRECTORATE HQ per your lock.) 
+
+State emblem geometry: Ashoka-style wheel in a downward tri-frame; monochrome only. Use on plaques/seals/walls, not on the right shoulder. 
+
+Type families (style, not brand names)
+
+Latin (primary): condensed geometric sans; tall x-height; tabular numerals; tracking +5 for doors.
+
+Devanagari (secondary): square-terminal grotesk; match Latin cap weight; tracking +10 at small sizes.
+
+Regional line (tertiary): angular joins & open counters; weight-matched to Devanagari.
+
+Hierarchy & sizes (command level)
+
+Door IDs: L12—DIRECTORATE HQ (Latin 160 pt / Dev 135 pt / Regional 115 pt).
+
+Zone markers: “SECURE—CLEARANCE AMBER”, “WAR-ROOM—CLEARANCE RED”, “ROOF ACCESS—AUTHORIZED PERSONNEL”.
+
+Arrows: 30° chevrons; stroke = text weight +10%.
+
+Pictos: monochrome outline set; no skeuomorphs.
+
+Color discipline
+
+Monochrome scale (black → mid grey → white).
+
+Emergency/safety: safety yellow for chevrons/egress; avoid red on this level to keep alert states special.
+
+Uniform emblem pairs: mustard-on-navy / navy-on-powder-blue; do not mix. 
+
+Placement logic (command level)
+
+Lift lobby: tri-lingual level code + emblem plaque (monochrome).
+
+Security vestibule: ceiling wrist-scan strip iconography + “AMBER” marker.
+
+War-room threshold: dual-door band with RED clearance; glass keeps bar-light readable. 
+
+Helipad door: “ROOF ACCESS” in Latin/Dev/Regional; no numerics on the pad surface per your lock.
+
+Access Control Hardware (wall/ceiling integrated)
+
+Ceiling strip readers: 300 mm-wide fascia with idle cyan glow; turns white on scan; pairs with left/right wall insets at 1.2 m & 1.6 m heights for ambidextrous use.
+
+Threshold zoning: Green (badge) → Amber (badge + wrist-scan) → Red (dual unlock with escort) → Black (sealed shaft).
+
+Aesthetics: no pedestals in corridors; keep paths clear for VIP/motorcade foot traffic. (Matches canon’s clean, uncluttered HQ etiquette and minimal tech presence.) 
+
+Tech Etiquette (quick reins)
+
+Brace-Comm: minimal, polite; single tile only in HQ/motorcade; cyan/blue-white; fast fall-off. 
+
+War-room UIs: translucent, illegible glyphs—never dashboard noise. 
+
+Omni-Handle: primary interaction prop at the table; executive baton/pointer modes are canon-safe. 
+
+Motorcade Arrival Grammar (locked)
+
+Formation (urban): scout drone → two outrider hover-bikes → Glide-Car (state sedan) → tail security SUV → overwatch drone (25 m AGL).
+
+Optics: blue-hour, wet granite; gull door open; Window Acknowledgement (two-finger salute) optional; Cabin Brief uses a single sleeve tile. 
+
+Vehicle read: ≤5 m hover, color-shifting paint; keep silhouette clean (no brand shapes). 
+
+Deliverables for Sprint 2 (what I’ve locked and how you can use it)
+
+Lighting keys (Day / Blue-Hour / EMP-Safe) with target lux, CCT, and pane cd/m² for each set; lens notes mirrored from canon. 
+
+Material swatch sheet: façade glass transmission band; frosted gradient stops; basalt desk finish; floor reflectance; rail/metal finish; helipad coatings.
+
+Wayfinding artboards: door IDs, zone markers, tri-lingual layout, arrow grammar, pictograms; emblem plaque spec per state geometry. 
+
+Access control pack: ceiling strip + wall inset icons, threshold color coding (Green/Amber/Red/Black).
+
+Motorcade optics sheet: paint-flip swatches, arrival lane blocking, press-pen negative space, blue-hour wet-floor setup. 
+
+QA “Do/Don’t” (environment-facing)
+
+Do: keep right shoulder TEXT ONLY (now DIRECTORATE HQ) in any uniform plates tied to these sets. 
+
+Do: preserve war-room glass bar reflections; keep glyphs intentionally unreadable. 
+
+Don’t: add extra medals, right-shoulder emblems, busy holograms, or sci-fi brand logos. 
+
+Locked-in. Here’s Sprint 3: Boards & Props (v3) for “Headquarters, Indrapur (Command Suite → War-Room → Helipad → Motorcade).” This gives you four production-ready environment boards (what to paint / shoot / prompt), plus prop sheets and a compact etiquette crib so every output stays on-model.
+
+A. Environment Boards (A2 each)
+
+Format for each board: 1 Hero Wide (with lens, time of day, and blocking notes) + 3–5 Detail Inserts (callouts, textures, signage, UI, props). Use the lighting presets and materials you locked in Sprint 2. Aspect ratio defaults are listed; swap as needed for layout.
+
+Board 1 — Command Suite (Top-Floor Office)
+
+Hero Wide (16:9 / 50 mm)
+
+Camera: Eye-level from the doorway axis, framing the Tri-Anchor Wall behind the raised basalt stone-slab desk.
+
+Time: Blue-Hour is the canonical look (cool exterior spill, warm neutral interior key).
+
+Blocking: Principal seated or standing at desk edge; Omni-Handle dock on desk-right; two visitor chairs in frame left (leave empty space to read “authority”).
+
+Light grammar: Cool “bar” reflections across glass fields; subtle top-rim from skylight.
+
+Detail Inserts (choose 4–5):
+
+Tri-Anchor Wall close-up: leader relief (tone-on-tone), framed preamble, frosted strategic map layer with low-chroma landmasses; soft bar-reflections.
+
+Desk kit: leather folio (blind-emboss emblem), matte pen tray, Omni-Handle on stone cradle (inactive), cable slit invisible.
+
+Partition treatment: low-iron glass with frosted band at eye-line (30–60% opacity gradient across 120 mm).
+
+Floor & footfalls: charcoal acoustic composite, 10–12% reflectance (enough to catch bars but avoid mirror).
+
+Brace-Comm etiquette: single tiny cyan/blue-white tile hovering over sleeve (if any), then gone (never wallpaper).
+
+Signage/Type note: Door ID inside frame: L12 — DIRECTORATE HQ (tri-lingual lines stacked; monochrome).
+
+Board 2 — War-Room / Situation Suite
+
+Hero Wide (21:9 / 35 mm)
+
+Camera: Slightly elevated ¾ view, centered on the elliptical glass map-table (2.6 × 1.6 m, 900 mm high) with perimeter standing rails.
+
+Time: Blue-Hour default for severity; EMP-Safe variant as secondary card.
+
+Blocking: 3–5 principals standing at cardinal points; one operator manipulating layers with Omni-Handle.
+
+Light grammar: Cool back-lit translucent panes generating soft bar reflections; glyph streams are illegible system-noise.
+
+Detail Inserts (pick 4–5):
+
+Map-table ring: internal cool LED ring for hands/props; outer 150 mm hand-rest band; layer flip animation stylized (no sci-fi clutter).
+
+Pane glyphs: frosted strips with pale cyan/steel gradients; scrolling cadence slow, never readable.
+
+Vestibule threshold: two-stage door (outer clear, inner frosted) with ceiling wrist-scan strip; wall inset readers at 1.2 m / 1.6 m.
+
+Standing rails: graphite anodize; soft matte; no chrome.
+
+EMP-Safe variant plate: room at silhouette, map-table ring at 120–150 lux, egress strips 3000–3200K only.
+
+Signage/Type note: “WAR-ROOM / SITREP — CLEARANCE RED” rastered into the inner door band; tri-lingual microline beneath.
+
+Board 3 — Helipad & Evac Apron (Roof East)
+
+Hero Wide (16:9 / 35 mm)
+
+Camera: Knee-high near skid-texture, looking across to the oval roofline; rotor wash motion lines, wind baffle at frame right.
+
+Time: Day for clinical clarity, Blue-Hour for hero arrivals.
+
+Markings: Plain “H” only at center; safety-yellow chevrons along wind edge; anti-skid microtexture.
+
+Detail Inserts (3–4):
+
+H marking close-up: plain, proportioned to pad; no numerics or alphas.
+
+Beacon rings & drains: flush detail; micro-bevels catch speculars.
+
+Stretcher rack: fold-flat, graphite anodize; position at apron edge; med-tile cyan flicker permitted.
+
+Baffled corridor: blast-baffle tunnel leading inward to war-room foyer (doors: Red clearance).
+
+Signage/Type note: Roof access door: “ROOF ACCESS — AUTHORIZED PERSONNEL” in tri-lingual stack; monochrome.
+
+Board 4 — Motorcade Arrival (Sub-grade Motorcourt → VIP Lift → Command Level)
+
+Hero Wide (2:1 / 50–70 mm tracking)
+
+Camera: Track alongside the state glide-car entering a pale-granite motorcourt under canopy; wet floor for reflections.
+
+Time: Blue-Hour is canonical (paint flip reads best).
+
+Blocking: Formation in frame or on secondary plate (see Formation diagram below). VIP steps out, Window Acknowledgement optional, sleeve-tile confirm at lift.
+
+Detail Inserts (4–5):
+
+Door geometry & paint flip: navy→graphite color-shift; silhouette clean, logo-less; ≤5 m hover.
+
+Escort Formation (overhead diagram): Scout drone → two outrider hover-bikes → state sedan → tail security SUV → overwatch drone at 25 m AGL.
+
+Press pen: low barriers with monochrome tape; photographers framed as geometric silhouettes (no brand clutter).
+
+VIP lift dock: lift doors marked L12—DIRECTORATE HQ; tri-lingual lines; emblem plaque in monochrome on side wall.
+
+Sleeve-tile “Cabin Brief” micro-moment: single cyan tile pulse, then off.
+
+B. Prop Sheets (A3 each)
+
+Each sheet shows orthographic views, dimensions, materials, states, and usage etiquette. Keep all finishes subdued; no sci-fi ornament.
+
+Prop Sheet 1 — Omni-Handle (Executive Baton / Pointer / Short Blade)
+
+Form & Size: 285 mm overall, 24 mm max diameter; mass 380 g.
+Materials: Graphite-anodized body; stone-grey elastomer inlay; micro-seams only.
+States & Emitters:
+
+Pointer Mode (default): 6 mm forward emitter; 1-pixel cyan beam (visible only in haze); haptic click.
+
+Baton Mode (compliance): Telescopes to 360 mm; center of mass shifts +20 mm forward.
+
+Dagger Mode (rare): 80 mm mono-edge extension; matte; no gleam.
+Gestural Grammar:
+
+Tap-Hold at map-table edge = layer flip.
+
+Double-Tap = pin waypoint.
+
+Swipe = rotate strata.
+Docking: Stone cradle on desk; inductive charge; indicator is a single white ember (no pulsing).
+Etiquette: Use sparingly; no theatrical twirls; it’s a tool, not a magic wand.
+
+Prop Sheet 2 — Brace-Comm (Discreet Sleeve-Tile UI)
+
+Hardware: Under-fabric sleeve nodes (invisible); haptics low.
+Tile Sizes:
+
+Call/Confirm: 80 × 160 mm translucent tile.
+
+Map Peek: 120 × 240 mm, fades in ≤ 2 s, persists ≤ 4 s.
+Palette: Cyan/blue-white only; 30–50% opacity; no full-screen UIs in HQ.
+Motion: Smooth ease-in/out; never jitter.
+Sound: Sub-audible tap; never beeps in HQ.
+Etiquette: Single tile at a time; auto-dismiss if a second person speaks.
+
+Prop Sheet 3 — Wrist-Scan Access (Ceiling & Wall Integrated)
+
+Ceiling Strip Module: 300 mm-wide fascia; idle glow cyan; scan glow white; arrow marker subtly embossed.
+Wall Insets: Paired left/right panels at 1.2 m and 1.6 m heights; ambidextrous use.
+Threshold Codes:
+
+Green = badge only.
+
+Amber = badge + wrist-scan.
+
+Red = wrist-scan + escort.
+
+Black = sealed (central shaft).
+Icons: Monochrome outline; angular chevrons at 30°.
+
+Prop Sheet 4 — State Emblem & Applications
+
+Geometry: Ashoka-style wheel within downward tri-frame; monochrome only.
+Approved Placements:
+
+Plaques: Lift lobby, press backdrop, conference wall (small).
+
+Door Frosts: War-room inner door micro-seal (10% opacity).
+
+Uniforms: Left shoulder and back only (monochrome patch).
+Prohibitions: Never on right shoulder; right shoulder is TEXT-ONLY.
+Uniform Right-Shoulder Text: DIRECTORATE HQ (ALL CAPS; condensed geometric sans).
+
+Prop Sheet 5 — War-Room Pane Language
+
+Material: Low-iron glass with internal frosted strips (layered).
+Opacity: 30–60%; gradient bands tuned to throw soft “bars.”
+Glyphs: Non-semantic strokes, angular joins, open counters; lines jitter at 0.5–1.0 px; scroll at 6–10 px/s.
+Color: Steel-cyan to pale grey; never saturated.
+Behavior: Autonomy—UI persists as environmental system noise, not user dashboards.
+
+Prop Sheet 6 — Glass Map-Table
+
+Planform: Ellipse 2.6 × 1.6 m; height 900 mm; 2 mm edge bevel.
+Ring Light: Continuous cool ring at 120–150 lux (EMP-Safe mode); 220–260 lux (Day/Blue-Hour).
+Interaction Zones:
+
+Outer 150 mm ring: hands rest + haptics.
+
+Inner field: projection only (no hand contact).
+UI Discipline: Thin layers; pins; radial arcs; no 3D hologram stacks.
+
+C. Material Callouts (quick reference on the boards)
+
+Façade glass: low-iron laminated; VLT 62–68%; neutral grey interlayer.
+
+Vertical fins & rails: graphite anodize, matte.
+
+Desk top: dark basalt stone slab; satin (gloss ~10/100).
+
+Floor (command level): charcoal acoustic composite; 10–12% reflectance.
+
+Helipad: neutral-grey anti-skid; “H” only; safety-yellow wind-edge chevrons.
+
+Plaza/motorcourt: pale granite; micro-bevels; wet for blue-hour optics.
+
+D. Camera & Lens Keys (print on each board footer)
+
+Office: 50–70 mm authority lane; 85 mm intimacy lane; Blue-Hour preferred.
+
+War-Room: 35 mm table lane; 85 mm severity lane; EMP-Safe variant.
+
+Helipad: 35 mm low wide; Day and Blue-Hour variants.
+
+Motorcade: 50–70 mm tracking; Blue-Hour; overhead formation diagram included.
+
+E. Tech Etiquette Crib (to paste on every board)
+
+Brace-Comm: one tile at a time; cyan/blue-white; ≤4 s on-screen.
+
+HUD monocles: OFF in Command Suite/War-Room unless explicitly story-critical.
+
+Right shoulder: DIRECTORATE HQ text block, no emblem.
+
+UI minimalism: translucent, illegible panes; never dashboard clutter.
+
+Omni-Handle: tool, not spectacle; controlled gestures only.
+
+F. Board File Naming & Ratios (for image-gen / paint passes)
+
+HQ_01_CommandSuite_A2_16x9_v001
+
+HQ_02_WarRoom_A2_21x9_v001
+
+HQ_03_Helipad_A2_16x9_v001
+
+HQ_04_Motorcade_A2_2x1_v001
+
+Each board includes: Hero Wide + Inserts + Material chips + Signage strip + Lighting stamp (Day / Blue-Hour / EMP-Safe).
+
+G. Asset Checklist (per board)
+
+Command Suite
+
+Tri-Anchor Wall assets (3 frames + back-lit glass field)
+
+Desk slab + cradle + folio + pens + Omni-Handle (docked)
+
+Partition gradient band spec
+
+Door ID (L12 — DIRECTORATE HQ) tri-lingual
+
+War-Room
+
+Elliptical map-table (outer hand-ring, internal ring light)
+
+Pane glyph strip (illegible), back-light bars
+
+Vestibule threshold (ceiling strip + wall insets), door bands with “RED” clearance
+
+Perimeter rails
+
+Helipad
+
+H marking; chevrons; anti-skid texture
+
+Beacon rings; stretcher rack (fold-flat)
+
+Baffled corridor to war-room foyer
+
+Motorcade
+
+Glide-car shell (navy→graphite flip; ≤5 m hover)
+
+Escort formation: scout drone, two outrider hover-bikes, tail SUV, overwatch drone
+
+Press pen barricade; VIP lift dock; sleeve-tile brief
+
+H. How to use (workflow hints)
+
+Concept paint: Start with Hero Wide under the chosen preset (Blue-Hour for office/motorcade; Day for helipad; Blue-Hour/EMP-Safe alternates for war-room).
+
+Prompting (if image-gen): Lift the Hero Wide paragraph verbatim as your base seed, then add 2–3 Insert bullets as secondary cues. Keep UI terms minimal (“illegible glyphs,” “soft bar reflections”).
+
+Continuity: Paste the Tech Etiquette Crib into your doc so any new artist/vendor stays inside canon.
+
+If this reads clean to you, I’m ready to roll into Sprint 4: Prompt Kits & Final Descriptions (v4) next—i.e., ready-to-paste prompts (one per set, with aspect ratios and lens/light baked in) plus the final prose scene-descriptions that match the boards.
+
+Sprint 4 — Prompt Kits & Final Descriptions (v4)
+
+Headquarters, Indrapur: Command Suite → War-Room → Helipad → Motorcade
+
+Below are ready-to-paste prompt kits (hero + alternates) and novel-ready scene descriptions that encode every lock you approved in Sprints 1–2–3. These prompts are tuned for high-quality, modern comic-book realism (clean, institutional futurism; minimal UI; controlled lighting). Each includes lens, aspect ratio, time-of-day, materials, signage, and etiquette. A short “ban list” is embedded to keep outputs on-model.
+
+1) Command Suite (Top-Floor Office)
+
+Hero Wide — “Authority at the Tri-Anchor Wall”
+
+Aspect: 16:9 Lens: 50 mm Time: Blue-Hour (interior neutral-warm, exterior cool)
+Prompt (paste as one block):
+“Indrapur Headquarters, top-floor Command Suite—austere, all-glass oval HQ at the old government precinct. Interior: Tri-Anchor Wall (leader relief, framed preamble, frosted strategic map) floating over a cold back-lit glass field that throws soft bar-like reflections. Foreground: raised basalt stone-slab desk (satin, low specular), stone cradle docking an Omni-Handle (inactive), leather folio with blind-emboss emblem, matte pen tray. Two modular visitor chairs off-axis. Partitions: low-iron glass with a 120 mm frosted band at eye-line (30–60% opacity gradient). Floor: charcoal acoustic composite, subtle sheen (10–12% reflectance). Lighting: Blue-Hour; exterior spill 9000–10000 K, interior key ~4400 K; skylight adds gentle top-rim; bar reflections pronounced but controlled. Brace-Comm etiquette: at most one tiny cyan/blue-white tile for a second, then auto-dismiss. Signage: door ID ‘L12 — DIRECTORATE HQ’ in tri-lingual stack (Latin/Devanagari/State), monochrome. Camera: doorway axis framing desk + Tri-Anchor Wall; calm authority.”
+Ban list: busy holograms, sci-fi chrome, right-shoulder emblems (TEXT-ONLY “DIRECTORATE HQ” on uniforms), cluttered dashboards, red warning glows, wood-grain desk, free-standing security pedestals.
+
+Detail inserts to add (choose 2–3 per render):
+
+Tri-Anchor close-up (relief metal, matte preamble, low-chroma map under frost).
+
+Partition gradient band generating soft bars across faces.
+
+Macro of stone slab edge (2 mm eased chamfer) + Omni-Handle cradle.
+
+Alternate A — Day (Command Calm)
+
+16:9, 50 mm. Daylight 5400 K; office 420 lux key / 260 lux fill. Bars subtle, color neutral. Same ban list.
+
+Alternate B — Intimacy Cut-In
+
+3:2, 85 mm profile. Side-key, bars raking over eyes; Brace-Comm off; add shallow DOF on basalt grain.
+
+2) War-Room / Situation Suite
+
+Hero Wide — “Ellipse of Decision”
+
+Aspect: 21:9 Lens: 35 mm Time: Blue-Hour (severity)
+Prompt:
+“Indrapur HQ War-Room reached by a short glass corridor from the Command Suite. Centerpiece: elliptical glass map-table (2.6 m × 1.6 m, 900 mm high) with a cool internal ring light; outer 150 mm hand-rest band (no fingerprints on the inner field). Perimeter standing rails (graphite anodize, matte). Enclosure: low-iron glass with translucent pane strips that emit cool back-light and carry illegible glyphs (steel-cyan/grey), creating soft bar reflections across coats and faces. Vestibule threshold: two-stage door (outer clear, inner frosted) with ceiling wrist-scan strip and paired wall insets at 1.2 m and 1.6 m. Lighting: Blue-Hour interior levels 240–280 lux; high contrast; bars pronounced. Brace-Comm: single micro-tile only if needed. Signage: ‘WAR-ROOM / SITREP — CLEARANCE RED’ banded on inner door; tri-lingual microline beneath. Camera: slightly elevated ¾ to read the ellipse and rails; 3–5 principals at cardinal points; one Omni-Handle gesture flipping a layer on the table.”
+Ban list: dashboard walls, readable text blocks, neon candy UIs, chrome, hologram stacks above eye level, freestanding turnstiles.
+
+Alternate A — EMP-Safe (Continuity State)
+
+21:9, 85 mm tight on hands + ring-lit table. Room in silhouette; egress strips at 3000–3200 K; table ring 120–150 lux. UI minimal, illegible.
+
+Alternate B — Day Brief
+
+16:9, 50 mm. 5400 K daylight softened; pane luminance dialed down; still keep bars readable.
+
+3) Helipad & Evac Apron (Roof East)
+
+Hero Wide — “The Plain H”
+
+Aspect: 16:9 Lens: 35 mm Time: Day (clinical)
+Prompt:
+“Rooftop helipad on the all-glass oval HQ (old government core). Markings: a single plain ‘H’ centered; no numerics or alphas. Wind-edge safety chevrons in low-saturation yellow; anti-skid microtexture visible at knee-high angle. Flush beacon rings, low drains, fold-flat stretcher rack at apron edge. Egress: blast-baffled corridor leading inward toward the war-room foyer (Red clearance at inner door). Transport: twin-engine scout/transport capable of autonomous approach/hold. Lighting: Day preset—neutral, crisp; read deck skin and bevels; zero ornament. Camera: knee-high across skid texture to the oval roofline; turbine blur implied.”
+Ban list: helipad numbers/letters beyond H, brand logos, glossy chrome, rooftop vegetation, sci-fi billboards.
+
+Alternate — Blue-Hour Arrival
+
+16:9, 50 mm. Wet roof sheen, cool ambient; door to baffle corridor open, warm interior spill.
+
+4) Motorcade Arrival (Motorcourt → VIP Lift → Command Level)
+
+Hero Wide — “Blue-Hour Optics”
+
+Aspect: 2:1 Lens: 50–70 mm tracking
+Prompt:
+“Sub-grade motorcourt under canopy at the all-glass oval HQ. Formation: lead scout drone → two outrider hover-bikes → state glide-car (hover sedan) → tail security SUV → overhead overwatch drone at ~25 m AGL. Glide-car: clean silhouette, navy→graphite color-shift paint; ≤ 5 m hover profile; no logos. Plaza/motorcourt floor: pale granite, micro-bevels, wet surface for reflections. VIP egress: sedan door geometry emphasized; optional two-finger Window Acknowledgement; sleeve-tile ‘Cabin Brief’ (single cyan tile, 1–2 s). Lift dock: doors marked ‘L12 — DIRECTORATE HQ’ tri-lingually; monochrome emblem plaque on side wall. Lighting: Blue-Hour is canonical; cool exterior, neutral interior pockets. Camera: lateral track with the sedan; hold reflections and paint flip.”
+Ban list: police strobes, brand badges, red carpet, oversized decals, shoulder emblems on right (TEXT-ONLY there), chaotic crowds.
+
+Alternate — Overhead Formation Diagram
+
+16:9, orthographic top-down. Draw formation spacing (drone lead, outriders, sedan, tail SUV, overwatch).
+
+Micro-Prompts (drop-ins you can append anywhere)
+
+“Illegible glyph UI: translucent, slow scroll, steel-cyan to grey, never readable.”
+
+“Soft bar reflections across glass and faces; never hard stripes.”
+
+“Brace-Comm etiquette: one tile at a time, cyan/white, ≤4 s.”
+
+“Right-shoulder law: TEXT-ONLY ‘DIRECTORATE HQ’, emblem never on right.”
+
+“Wrist-scan access: integrated ceiling strip (idle cyan → white on scan) + wall insets (1.2 m, 1.6 m).”
+
+“Omni-Handle use: tap-hold to flip table layer; gestures restrained.”
+
+Final Prose Scene Descriptions (novel-ready, canon-safe)
+
+Command Suite — “Bars of Duty”
+
+The office sat at the west crown of the oval, a quiet aerie of glass and stone. Behind the raised desk, three anchors floated in a pale field—the founder’s profile pressed into metal, the preamble in matte cream, and a frosted map whose landmasses barely dared a tint. Cold back-light laid soft bars across the room as the evening bled blue outside. The basalt slab kept its own counsel; the Omni-Handle slept in a stone cradle; a leather folio waited where decisions were signed, not dramatized. When calls came, a single sleeve tile brightened, then vanished, as if embarrassed to interrupt.
+
+War-Room — “Ellipse of Decision”
+
+The war-room didn’t roar; it absorbed. A short corridor away from the office, glass gave way to cooler glass, and the light turned deliberate. The elliptical map-table held the scene at waist height, its inner field pure projection, its outer ring warm enough for human hands. Around it, translucent panes whispered with unreadable glyphs, long bars of light drifting across faces as briefers took their marks. Someone tapped the Omni-Handle against the rim and the terrain flipped without fanfare. No dashboards. No spectacle. The room preferred conclusions.
+
+Helipad — “Plain H”
+
+On the roof the wind had a job. The deck was a neutral plane—anti-skid under the boots, a lone H stamped into the world, safety-yellow chevrons biting the gusts along the edge. Rotors paled the sky and the beacon rings winked once; then the corridor door thumped open and warm air from the building’s throat rolled out to meet the wash. No numerics, no slogans—just a place to land and a promise to leave again.
+
+Motorcade — “Blue-Hour Optics”
+
+The motorcourt took the day’s last color and fed it back as reflection. A scout drone arrived first, almost apologetically, then the outriders, then the state sedan riding a clean cushion of air. The paint flipped from navy to graphite as it slid beneath the canopy—no logos, no chrome. Press pens kept their geometry. The door found its angle; the salute, if it came, was two fingers and nothing else. A single cyan tile brightened at the wrist, a brief “Cabin Brief,” and was gone. The lift doors read L12 — DIRECTORATE HQ, in three scripts that said the same thing: inside is where choices get their verbs.
+
+One-Page QA (paste under every request)
+
+Canon: all-glass oval HQ at the old government core; central sealed shaft to an underground bunker; Command Suite ↔ War-Room via short corridor.
+
+Lighting presets: Day (5400 K calm), Blue-Hour (cool exterior + neutral interior, bars pronounced), EMP-Safe (ring-lit table + egress only).
+
+Markings: Helipad H only; safety-yellow chevrons; no alphanumeric codes.
+
+Signage/Type: tri-lingual; monochrome; arrows at 30°. Right shoulder = TEXT-ONLY “DIRECTORATE HQ.”
+
+Tech etiquette: UI minimal, illegible; Brace-Comm one tile max; Omni-Handle is a tool, not spectacle.
+
+Access: wrist-scan integrated (ceiling strip + wall insets).
+
+Motorcade: scout drone → 2 outriders → state sedan → tail SUV → overwatch drone (25 m AGL); blue-hour wet floor for optics.
+
+If you want, I can also package these as printable A3 boards/PDFs with the lighting stamps and material chips embedded, or generate prompt macros you can reuse programmatically (e.g., swap only lens/time). Ready to proceed to visual production whenever you are.
