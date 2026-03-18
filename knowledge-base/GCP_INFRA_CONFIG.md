@@ -2,7 +2,7 @@
 
 > **Purpose:** Canonical reference for all GCP project config, service accounts, database access, secrets, and deployment patterns. Referenced by /workflow-designer, /build-prd, /tech-eval, and any skill that deploys or connects to infrastructure.
 >
-> **Last updated:** 2026-03-18 (State v9. 12 Cloud Run services live. 13 Cloud Scheduler jobs. 13 secrets. Brand system + reconciliation complete.)
+> **Last updated:** 2026-03-18 (State v10. 13 Cloud Run services live. 13 Cloud Scheduler jobs. 13 secrets. Capture system complete.)
 
 ---
 
@@ -170,8 +170,8 @@ gcloud run deploy ai-os-dashboard \
 
 | Service | Container | Purpose | Auth | Status | URL |
 |---------|-----------|---------|------|--------|-----|
-| ai-os-gateway | FastAPI | MCP Gateway — 37 tools (7 modules), Telegram webhook. Latest revision: ai-os-gateway-00020-ws5 | Bearer token / API key | LIVE (asia-south1, scale-to-zero) | https://ai-os-gateway-1054489801008.asia-south1.run.app |
-| ai-os-dashboard | Next.js | PWA Dashboard — 8 pages, 20 API routes, 26 components | Google OAuth (NextAuth.js) | LIVE (asia-south1, scale-to-zero) | https://ai-os-dashboard-sv4fbx5yna-el.a.run.app |
+| ai-os-gateway | FastAPI | MCP Gateway — 40 tools (8 modules), Telegram webhook, capture module | Bearer token / API key | LIVE (asia-south1, scale-to-zero) | https://ai-os-gateway-1054489801008.asia-south1.run.app |
+| ai-os-dashboard | Next.js | PWA Dashboard — 9 pages, 23 API routes, 27 components | Google OAuth (NextAuth.js) | LIVE (asia-south1, scale-to-zero) | https://ai-os-dashboard-sv4fbx5yna-el.a.run.app |
 | task-notification-daily | Python + functions-framework | Daily overdue/upcoming task scan + Google Tasks sync | OIDC (Cloud Scheduler) | LIVE (asia-south1, scale-to-zero) | https://task-notification-daily-sv4fbx5yna-el.a.run.app |
 | telegram-notifications | Python + FastAPI | Telegram bot: scheduled briefs, overdue alerts, weekly digest, AI triage | OIDC (Cloud Scheduler) + Telegram webhook | LIVE (asia-south1, scale-to-zero) | https://telegram-notifications-sv4fbx5yna-el.a.run.app |
 | embedding-generator | Python | Knowledge embedding pipeline (text-embedding-3-small) | OIDC (Cloud Scheduler) | LIVE (asia-south1, scale-to-zero) | — |
@@ -182,8 +182,9 @@ gcloud run deploy ai-os-dashboard \
 | risk-engine | Python | AI Risk Engine — 5 risk types, Telegram alerts | OIDC (Cloud Scheduler) | LIVE (asia-south1, scale-to-zero) | https://risk-engine-1054489801008.asia-south1.run.app |
 | daily-brief-engine | Python + FastAPI | Daily brief — collectors + AI composer + multi-channel | OIDC (Cloud Scheduler) | LIVE (asia-south1, scale-to-zero) | https://daily-brief-engine-1054489801008.asia-south1.run.app |
 | task-annotation-sync | Python | Google Tasks annotation capture every 15 min | OIDC (Cloud Scheduler) | LIVE (asia-south1, scale-to-zero) | https://task-annotation-sync-1054489801008.asia-south1.run.app |
+| journal-monthly-distill | Python | Monthly journal distillation via Claude Haiku (28th) | OIDC (Cloud Scheduler) | BUILT (pending deploy) | — |
 
-12 Cloud Run services. Gateway and Dashboard share service account `ai-os-cloud-run`. Task notification and telegram-notifications use `ai-os-cloud-functions`. All use Cloud SQL Auth Proxy sidecar and scale to zero independently.
+13 Cloud Run services (12 live + 1 pending deploy). Gateway and Dashboard share service account `ai-os-cloud-run`. Task notification and telegram-notifications use `ai-os-cloud-functions`. All use Cloud SQL Auth Proxy sidecar and scale to zero independently.
 
 See INTERFACE_STRATEGY.md for full dashboard specification and TOOL_ECOSYSTEM_PLAN.md for full gateway module inventory.
 

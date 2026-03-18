@@ -3,7 +3,7 @@
 > Auto-generated from `ai_os` database on 2026-03-14, updated 2026-03-17
 > Instance: `bharatvarsh-website:us-central1:bharatvarsh-db`
 > Database: `ai_os` | User: `ai_os_admin` | PostgreSQL 15 | Extensions: vector 0.8.1, moddatetime 1.0, ltree 1.2
-> **Note:** Migrations 001-012 all applied (32 tables live). Extensions: vector 0.8.1, moddatetime 1.0, ltree 1.2. Live regeneration requires Cloud SQL Proxy connection.
+> **Note:** Migrations 001-013 all applied (33 tables live). Extensions: vector 0.8.1, moddatetime 1.0, ltree 1.2. Live regeneration requires Cloud SQL Proxy connection.
 
 ## Overview
 
@@ -41,6 +41,7 @@
 | 30 | `life_domains` | 12 | 16 | Life Graph | 011 |
 | 31 | `domain_context_items` | 12 | 14 | Life Graph | 011 |
 | 32 | `domain_health_snapshots` | 0 | 14 | Life Graph | 011 |
+| 33 | `journals` | 0 | 13 | Capture System | 013 |
 
 **Migration 006 (Knowledge Functions — applied):**
 - 7 new source_type enum values, knowledge_domain enum, 3 new columns on knowledge_entries (sub_domain, project_id FK, drive_file_id), match_knowledge() function (semantic search), traverse_knowledge() function (graph traversal), 4 new indexes
@@ -68,6 +69,13 @@
 
 **Migration 012 (Domain FK additions — applied):**
 - Added domain_id UUID FK (→ life_domains, SET NULL) to tasks and projects tables. Both nullable — existing rows unaffected.
+
+**Migration 013 (Capture System — applied):**
+- **Enum additions:** source_type += 'quick_capture', 'journal_entry'
+- **Table:** journals — personal journal entries with mood, energy_level (1-5), domain_id FK, word_count (generated), is_embedded, distilled_at. Separate from knowledge_entries to avoid polluting operational knowledge with raw reflections.
+- **Indexes:** created_at DESC, mood, domain_id, GIN on tags, full-text GIN on content, partial indexes for undistilled and unembedded journals
+- **Trigger:** moddatetime(updated_at)
+- **Pipeline registration:** journal-monthly-distill (28th of each month, Category B)
 
 ---
 

@@ -116,15 +116,47 @@ Update the AI Operating System section in `knowledge-base/WORK_PROJECTS.md`:
 - Update the `Pending decisions:` list
 - Update the `Last updated:` timestamp in the file header
 
-### Step 8: Flag CLAUDE.md Staleness
+### Step 8: Update Knowledge Base Files
 
-Check the root `CLAUDE.md` and the project-level `CLAUDE.md` for any sections that reference project state. If they're stale, list the specific lines/sections that need updating in the drift report. Do NOT auto-edit CLAUDE.md files — just report what's stale so the user can decide.
+Scan all knowledge-base/*.md files for stale counts or references that conflict with the newly computed state. Common drift targets:
+- **TOOL_ECOSYSTEM_PLAN.md** — Module inventory table, tool counts, module status, "Last updated" line
+- **GCP_INFRA_CONFIG.md** — Cloud Run services table, service counts, scheduler jobs, "Last updated" line
+- **INTERFACE_STRATEGY.md** — Skills count, dashboard spec, component counts
+- **DB_SCHEMA.md** — Table count, migration count (only update the "Last updated" / overview section, not individual table schemas)
+- **EVOLUTION_LOG.md** — Add a new entry for the current sprint/build if significant changes occurred
+- **CAPTURE_GUIDE.md**, **LIFE_GRAPH.md**, **BRAND_IDENTITY.md** — Check for stale cross-references
 
-### Step 9: Report to User
+Update these files directly with the corrected counts and references.
+
+### Step 9: Update CLAUDE.md Files
+
+Check the root `CLAUDE.md` (project-level, at repo root) for any sections that reference project state — tool counts, module counts, table counts, skills count, dashboard pages/routes/components, Telegram commands, Cloud Run services, sprint info, directory structure comments. Update these directly to match the newly verified state.
+
+Also check `C:\Users\ASR\CLAUDE.md` (the parent directory CLAUDE.md used by the RAKBANK project) — this file should NOT be modified as it belongs to a different project.
+
+### Step 10: Update PROJECT_INSTRUCTIONS.md
+
+Update `PROJECT_INSTRUCTIONS.md` at the repo root with all state changes. This file is the Claude.ai project's primary context document and must reflect the latest verified state. Update these sections:
+- **Knowledge Base — Source of Truth** — Version numbers, entry counts, file descriptions
+- **Architecture & Orchestration** — Tool counts, service counts, pipeline lists
+- **Technology Stack** — Layer descriptions with current counts
+- **Tool Ecosystem** — Module inventory, tool counts per module
+- **Dashboard Service** — Page count, API route count, component count
+- **Telegram Integration** — Command count and list
+- **MCP Connector Usage** — Total tool count, add new module sections if needed
+- **Current Build State** — Sprint info, phase completion status
+- **Current Priorities** — Update based on what's now complete vs still pending
+- **Active Focus Projects** — Summary line with current counts
+- **Knowledge Base Contents** — Skills count, new KB docs
+- **Session Protocol** — Phase check reference, state version
+- Any section-specific counts (e.g., "40 tools via AIOSMCP connector")
+
+### Step 11: Report to User
 
 Present a concise summary:
 - What changed since last state update
 - Any drift detected (overclaimed, undocumented, stale)
+- Files updated (list each file and what was changed)
 - Current blockers
 - Suggested next actions (top 3)
 

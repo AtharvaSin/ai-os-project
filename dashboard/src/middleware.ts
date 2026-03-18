@@ -10,6 +10,8 @@ export const config = {
     '/projects/:path*',
     '/tasks',
     '/gantt',
+    '/risks',
+    '/pipelines',
     '/api/((?!auth).*)',
   ],
 };

@@ -13,6 +13,34 @@ A running record of design decisions, architecture changes, brainstorming outcom
 
 ## Log Entries
 
+### Entry 016 — Personal Capture System (Sprint 9-B)
+- **Date:** 2026-03-18
+- **Domain:** Capture System / MCP Gateway / Telegram / Dashboard / Database / Skills
+- **Status:** [COMPLETED]
+- **Summary:** Built end-to-end Personal Capture System. New `capture.py` MCP module (3 tools: capture_entry, list_journals, search_journals). Migration 013 adds `journals` table (33 total tables). 2 new skills (capture-entry, entry-analysis). journal-monthly-distill Category B pipeline (Cloud Run, scheduled 28th monthly, Claude Haiku-powered distillation). 4 new Telegram capture commands (/j, /e, /ei, /em). Dashboard /capture page with inbox, journals, and stats tabs. CAPTURE_GUIDE.md in knowledge base.
+- **Architecture Decisions:**
+  - **Journals separate from knowledge_entries:** Raw journal entries stored in dedicated `journals` table to avoid polluting operational knowledge with personal reflections. Quick entries (observations, ideas, epiphanies) flow into `knowledge_entries` with `source_type='quick_capture'` for immediate searchability via embedding pipeline.
+  - **Monthly distillation:** journal-monthly-distill pipeline runs on 28th of each month using Claude Haiku to extract actionable themes, recurring patterns, and domain insights from raw journals. Distilled output feeds back into knowledge_entries.
+  - **Telegram capture commands:** 4 new shorthand commands (/j for journals, /e for quick entries, /ei for ideas, /em for memory recalls) enable mobile-first capture without opening Claude.ai or Dashboard.
+  - **Dashboard capture page:** Three-tab design (inbox for unprocessed entries, journals for browsing, stats for capture analytics) provides visual triage interface.
+- **Files Created:**
+  - NEW: mcp-servers/ai-os-gateway/app/modules/capture.py (3 MCP tools)
+  - NEW: database/migrations/013_capture_system.sql (journals table, enum additions, pipeline registration)
+  - NEW: .claude/skills/capture-entry/SKILL.md
+  - NEW: .claude/skills/entry-analysis/SKILL.md
+  - NEW: workflows/category-b/journal-monthly-distill/ (Dockerfile, cloudbuild.yaml, main.py, requirements.txt)
+  - NEW: dashboard/src/app/capture/page.tsx
+  - NEW: dashboard/src/app/api/capture/inbox/route.ts
+  - NEW: dashboard/src/app/api/capture/journals/route.ts
+  - NEW: dashboard/src/app/api/capture/stats/route.ts
+  - NEW: dashboard/src/components/CaptureContent.tsx
+  - NEW: knowledge-base/CAPTURE_GUIDE.md
+- **Files Modified:**
+  - MODIFIED: mcp-servers/ai-os-gateway/app/main.py (capture module registration)
+  - MODIFIED: mcp-servers/ai-os-gateway/app/telegram/router.py (4 capture command handlers, 9 total commands)
+  - MODIFIED: knowledge-base/DB_SCHEMA.md (33 tables, migration 013 documentation)
+- **Counts Updated:** Skills 22→24, MCP tools 37→40 (8 modules), tables 32→33, Dashboard pages 8→9, API routes 20→23, components 26→27, Telegram commands 5→9
+
 ### Entry 015 — Brand Consistency System (Sprint 9-A)
 - **Date:** 2026-03-18
 - **Domain:** Brand System / Skills / Knowledge Base / Drive

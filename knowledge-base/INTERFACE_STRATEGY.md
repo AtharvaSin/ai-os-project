@@ -134,7 +134,7 @@ Claude generates document → MCP Gateway saves to Drive (correct folder)
 ### 5. Telegram Bot — Pocket Command Channel (Phase 3a — deployed)
 
 **Bot:** @AsrAiOsbot
-**What it does:** Provides a mobile-first notification channel and lightweight command interface. Receives scheduled briefs, overdue alerts, and weekly digests. Supports 5 slash commands for quick task management and project status checks from the phone.
+**What it does:** Provides a mobile-first notification channel, lightweight command interface, and personal capture input. Receives scheduled briefs, overdue alerts, and weekly digests. Supports 9 slash commands for quick task management, project status checks, and personal capture from the phone.
 
 **Commands:**
 | Command | Action |
@@ -144,6 +144,10 @@ Claude generates document → MCP Gateway saves to Drive (correct folder)
 | `/done <task_id>` | Mark a task complete |
 | `/status` | Project status summary |
 | `/log <note>` | Log a quick note to the knowledge base |
+| `/j <text>` | Capture a journal entry (mood, energy optional) |
+| `/e <text>` | Quick capture (observation) |
+| `/ei <text>` | Capture an idea |
+| `/em <text>` | Capture a memory recall |
 
 **Scheduled notifications (via Cloud Scheduler):**
 - **Morning Brief** (6:30 AM IST) — project snapshot, today's tasks, upcoming milestones

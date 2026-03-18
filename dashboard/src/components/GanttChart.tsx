@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { cn, formatDate, statusColor } from '@/lib/utils';
 import { StatusBadge } from './StatusBadge';
 import type { GanttPhase, GanttMilestone } from '@/lib/types';
@@ -54,13 +54,26 @@ export function GanttChart({ phases, onMilestoneReschedule }: GanttChartProps) {
     return Math.max(0, Math.min(100, (differenceInDays(d, start) / totalDays) * 100));
   };
 
+  const closeReschedule = () => {
+    setRescheduleTarget(null);
+    setNewDate('');
+  };
+
   const handleConfirmReschedule = () => {
     if (rescheduleTarget && newDate) {
       onMilestoneReschedule(rescheduleTarget.id, newDate);
-      setRescheduleTarget(null);
-      setNewDate('');
+      closeReschedule();
     }
   };
+
+  useEffect(() => {
+    if (!rescheduleTarget) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeReschedule();
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [rescheduleTarget]);
 
   return (
     <div className="card overflow-x-auto">
@@ -165,8 +178,8 @@ export function GanttChart({ phases, onMilestoneReschedule }: GanttChartProps) {
 
       {/* Reschedule dialog */}
       {rescheduleTarget && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
-          <div className="card w-full max-w-sm p-6 space-y-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4" onClick={closeReschedule}>
+          <div className="card w-full max-w-sm p-6 space-y-4" onClick={(e) => e.stopPropagation()}>
             <h3 className="font-display text-lg text-text-primary">Reschedule Milestone</h3>
             <p className="text-sm text-text-secondary">{rescheduleTarget.name}</p>
             <div>
@@ -179,7 +192,7 @@ export function GanttChart({ phases, onMilestoneReschedule }: GanttChartProps) {
               />
             </div>
             <div className="flex justify-end gap-3">
-              <button onClick={() => setRescheduleTarget(null)} className="btn-ghost">Cancel</button>
+              <button onClick={closeReschedule} className="btn-ghost">Cancel</button>
               <button onClick={handleConfirmReschedule} className="btn-primary">Confirm</button>
             </div>
           </div>

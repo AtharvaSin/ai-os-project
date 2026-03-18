@@ -23,6 +23,14 @@ export function QuickAddTask({ onClose, onCreated }: QuickAddTaskProps) {
   const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [onClose]);
+
+  useEffect(() => {
     fetch('/api/projects')
       .then((r) => r.json())
       .then((json) => {
@@ -61,8 +69,9 @@ export function QuickAddTask({ onClose, onCreated }: QuickAddTaskProps) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4" onClick={onClose}>
       <form
+        onClick={(e) => e.stopPropagation()}
         onSubmit={handleSubmit}
         className="card w-full max-w-md p-6 space-y-4"
       >

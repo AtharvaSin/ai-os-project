@@ -10,8 +10,10 @@ artifact metadata in Cloud SQL. Drive folder hierarchy:
 
 from __future__ import annotations
 
+import base64
 import io
 import json
+import mimetypes
 import uuid
 from datetime import date, datetime
 from decimal import Decimal
@@ -112,17 +114,47 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
 
     @mcp.tool(
         description="Upload a file to Google Drive in the correct project folder. "
+        "Supports both text and binary files. For text, pass file_content (string). "
+        "For binary (images, PDFs, DOCX, etc.), pass base64_content (base64-encoded string). "
+        "Provide exactly one of file_content or base64_content. "
+        "mime_type is auto-detected from filename if omitted. "
         "Resolves the target folder from project_slug and optional subfolder "
         "(e.g., 'PRDs', 'Architecture', 'Scripts'). "
         "Logs the artifact in Cloud SQL with drive_file_id and drive_url. "
         "Returns the artifact record with the Drive URL for sharing."
     )
     async def upload_file(
-        file_content: str,
         filename: str,
         project_slug: str,
+        file_content: str | None = None,
+        base64_content: str | None = None,
+        mime_type: str | None = None,
         subfolder: str | None = None,
     ) -> str:
+        if not file_content and not base64_content:
+            return json.dumps({
+                "error": "Provide either file_content (text) or base64_content (binary)."
+            })
+
+        # Resolve file bytes and MIME type
+        if base64_content:
+            try:
+                file_bytes = base64.b64decode(base64_content)
+            except Exception as exc:
+                return json.dumps({"error": f"Invalid base64_content: {exc}"})
+            resolved_mime = (
+                mime_type
+                or mimetypes.guess_type(filename)[0]
+                or "application/octet-stream"
+            )
+        else:
+            file_bytes = file_content.encode("utf-8")
+            resolved_mime = (
+                mime_type
+                or mimetypes.guess_type(filename)[0]
+                or "text/plain"
+            )
+
         service = _get_drive_service()
         if not service:
             return NOT_CONFIGURED_MSG
@@ -145,9 +177,9 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
 
                 # Upload the file
                 media = MediaIoBaseUpload(
-                    io.BytesIO(file_content.encode("utf-8")),
-                    mimetype="text/plain",
-                    resumable=False,
+                    io.BytesIO(file_bytes),
+                    mimetype=resolved_mime,
+                    resumable=len(file_bytes) > 5 * 1024 * 1024,
                 )
                 file_metadata: dict[str, Any] = {
                     "name": filename,

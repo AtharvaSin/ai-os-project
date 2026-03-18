@@ -152,7 +152,11 @@ async def _process_update(update: TelegramUpdate) -> None:
                         "/add — Create a task\n"
                         "/done — Complete a task\n"
                         "/status — Project health\n"
-                        "/log — Capture a thought"
+                        "/log — Capture a thought\n"
+                        "/j — Journal entry\n"
+                        "/e — Quick capture\n"
+                        "/ei — Capture idea\n"
+                        "/em — Capture memory"
                     ),
                     "parse_mode": "MarkdownV2",
                 }
@@ -243,6 +247,10 @@ async def register_commands() -> dict[str, Any]:
         {"command": "done", "description": "Complete a task: /done <short_id>"},
         {"command": "status", "description": "Project health snapshot"},
         {"command": "log", "description": "Capture a thought to knowledge base"},
+        {"command": "j", "description": "Journal entry: /j content mood=X energy=N"},
+        {"command": "e", "description": "Quick capture: /e observation or thought"},
+        {"command": "ei", "description": "Capture idea: /ei your idea here"},
+        {"command": "em", "description": "Capture memory: /em recall or reference"},
     ]
 
     result = await telegram_api("setMyCommands", {"commands": commands})

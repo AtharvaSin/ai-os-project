@@ -355,3 +355,46 @@ export interface CreateContextItemPayload {
   target_date?: string;
   automation_config?: Record<string, unknown>;
 }
+
+/* ── Capture System types ── */
+
+export type CaptureType = 'idea' | 'epiphany' | 'memory_recall' | 'observation';
+export type CaptureUrgency = 'low' | 'medium' | 'high';
+
+export interface JournalEntry {
+  id: string;
+  content_preview: string;
+  mood: string | null;
+  energy_level: number | null;
+  word_count: number | null;
+  tags: string[];
+  is_embedded: boolean;
+  distilled_at: string | null;
+  created_at: string;
+  domain_name: string | null;
+  domain_slug: string | null;
+}
+
+export interface QuickEntry {
+  id: string;
+  title: string;
+  content_preview: string;
+  domain: string | null;
+  tags: string[];
+  metadata: Record<string, unknown>;
+  created_at: string;
+  capture_type: CaptureType;
+  urgency: CaptureUrgency;
+  source_interface: string | null;
+  analysed_at: string | null;
+}
+
+export interface CaptureStats {
+  total_journals: number;
+  journals_this_week: number;
+  undistilled_journals: number;
+  total_quick_entries: number;
+  unprocessed_entries: number;
+  entries_this_week: number;
+  distilled_entries: number;
+}

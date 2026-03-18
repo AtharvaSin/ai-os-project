@@ -531,6 +531,152 @@ async def handle_status(args: str, pool: asyncpg.Pool) -> dict[str, Any]:
     return {"text": "\n".join(lines), "parse_mode": "MarkdownV2"}
 
 
+async def handle_journal(args: str, pool: asyncpg.Pool) -> dict[str, Any]:
+    """Handle /j — capture a journal entry.
+
+    Usage: /j Had a productive day. mood=energized energy=4
+    Stores in journals table. Optional inline: mood=X energy=N (1-5).
+    """
+    if not args.strip():
+        return {
+            "text": escape_md(
+                "Usage: /j Your journal entry here\n\n"
+                "Optional inline metadata:\n"
+                "  /j mood=reflective energy=3 Quiet day...\n"
+                "  /j Great sprint review today!"
+            ),
+            "parse_mode": "MarkdownV2",
+        }
+
+    content = args.strip()
+    mood = None
+    energy_level = None
+
+    # Extract mood= and energy= hints from content
+    mood_match = re.search(r"\bmood=(\S+)", content)
+    if mood_match:
+        mood = mood_match.group(1)
+        content = content[:mood_match.start()] + content[mood_match.end():]
+
+    energy_match = re.search(r"\benergy=(\d)", content)
+    if energy_match:
+        energy_level = int(energy_match.group(1))
+        if not (1 <= energy_level <= 5):
+            energy_level = None
+        content = content[:energy_match.start()] + content[energy_match.end():]
+
+    content = content.strip()
+    if not content:
+        return {"text": escape_md("Please provide journal content.")}
+
+    async with pool.acquire() as conn:
+        record = await conn.fetchrow(
+            "INSERT INTO journals (content, mood, energy_level, tags, metadata) "
+            "VALUES ($1, $2, $3, $4, $5) RETURNING id, created_at, word_count",
+            content,
+            mood,
+            energy_level,
+            ["telegram"],
+            json.dumps({"source_interface": "telegram"}),
+        )
+
+        entry_id = str(record["id"])
+        short = entry_id[:8]
+        word_count = record["word_count"] or 0
+
+    meta_parts = []
+    if mood:
+        meta_parts.append(f"mood={mood}")
+    if energy_level:
+        meta_parts.append(f"energy={energy_level}")
+    meta_str = f" \\({escape_md(', '.join(meta_parts))}\\)" if meta_parts else ""
+
+    text = (
+        f"📓 Journal stored \\({code(short)}\\){meta_str}\n"
+        f"{escape_md(f'{word_count} words')}"
+    )
+
+    return {"text": text, "parse_mode": "MarkdownV2"}
+
+
+async def handle_entry(args: str, pool: asyncpg.Pool, capture_type: str = "observation") -> dict[str, Any]:
+    """Handle /e, /ei, /em — capture a quick entry.
+
+    /e <content>  → observation
+    /ei <content> → idea
+    /em <content> → memory_recall
+    """
+    if not args.strip():
+        return {
+            "text": escape_md(
+                "Usage: /e Your quick entry here\n\n"
+                "Variants:\n"
+                "  /e General observation\n"
+                "  /ei An idea worth capturing\n"
+                "  /em A memory or recall"
+            ),
+            "parse_mode": "MarkdownV2",
+        }
+
+    content = args.strip()
+
+    # Auto-generate title from first 60 chars
+    title = content[:60].strip()
+    if len(content) > 60:
+        cut = title.rfind(" ")
+        if cut > 20:
+            title = title[:cut] + "..."
+        else:
+            title = title + "..."
+
+    entry_tags = ["quick_capture", "telegram"]
+    if capture_type != "observation":
+        entry_tags.append(capture_type)
+
+    metadata = json.dumps({
+        "capture_type": capture_type,
+        "urgency": "low",
+        "linked_tasks": [],
+        "source_interface": "telegram",
+    })
+
+    async with pool.acquire() as conn:
+        record = await conn.fetchrow(
+            "INSERT INTO knowledge_entries "
+            "(title, content, domain, source_type, confidence_score, tags, metadata) "
+            "VALUES ($1, $2, 'personal', 'quick_capture', 0.5, $3, $4) "
+            "RETURNING id, title",
+            title,
+            content,
+            entry_tags,
+            metadata,
+        )
+
+        entry_id = str(record["id"])
+        short = entry_id[:8]
+
+    type_label = {"idea": "💡", "epiphany": "⚡", "memory_recall": "🧠", "observation": "📝"}.get(
+        capture_type, "📝"
+    )
+
+    text = (
+        f"{escape_md(type_label)} Captured {bold(escape_md(capture_type))} \\({code(short)}\\)\n"
+        f"{escape_md(record['title'])}"
+    )
+
+    return {"text": text, "parse_mode": "MarkdownV2"}
+
+
+async def handle_entry_idea(args: str, pool: asyncpg.Pool) -> dict[str, Any]:
+    """Handle /ei — capture an idea."""
+    return await handle_entry(args, pool, capture_type="idea")
+
+
+async def handle_entry_memory(args: str, pool: asyncpg.Pool) -> dict[str, Any]:
+    """Handle /em — capture a memory recall."""
+    return await handle_entry(args, pool, capture_type="memory_recall")
+
+
 async def handle_log(args: str, pool: asyncpg.Pool) -> dict[str, Any]:
     """Handle /log — capture a quick thought to knowledge_entries.
 
@@ -601,6 +747,10 @@ COMMANDS: dict[str, Any] = {
     "/done": handle_done,
     "/status": handle_status,
     "/log": handle_log,
+    "/j": handle_journal,
+    "/e": handle_entry,
+    "/ei": handle_entry_idea,
+    "/em": handle_entry_memory,
 }
 
 
@@ -623,7 +773,11 @@ async def handle_command(command: str, args: str, pool: asyncpg.Pool) -> dict[st
             "/add — Create a task\n"
             "/done — Complete a task\n"
             "/status — Project health\n"
-            "/log — Capture a thought"
+            "/log — Capture a thought\n"
+            "/j — Journal entry\n"
+            "/e — Quick capture\n"
+            "/ei — Capture idea\n"
+            "/em — Capture memory"
         ),
         "parse_mode": "MarkdownV2",
     }
