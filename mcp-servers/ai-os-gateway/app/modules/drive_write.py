@@ -36,6 +36,52 @@ PROJECT_FOLDERS = {
 
 ROOT_FOLDER_NAME = "AI OS"
 
+# Explicit MIME map — mimetypes.guess_type() is unreliable in minimal Docker images
+_MIME_MAP: dict[str, str] = {
+    # Microsoft Office
+    ".docx": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    ".doc": "application/msword",
+    ".xlsx": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    ".xls": "application/vnd.ms-excel",
+    ".pptx": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+    ".ppt": "application/vnd.ms-powerpoint",
+    # Documents
+    ".pdf": "application/pdf",
+    ".csv": "text/csv",
+    ".txt": "text/plain",
+    ".md": "text/markdown",
+    ".json": "application/json",
+    ".yaml": "text/yaml",
+    ".yml": "text/yaml",
+    # Images
+    ".png": "image/png",
+    ".jpg": "image/jpeg",
+    ".jpeg": "image/jpeg",
+    ".gif": "image/gif",
+    ".svg": "image/svg+xml",
+    ".webp": "image/webp",
+    ".ico": "image/x-icon",
+    # Video / Audio
+    ".mp4": "video/mp4",
+    ".mp3": "audio/mpeg",
+    ".wav": "audio/wav",
+    # Archives
+    ".zip": "application/zip",
+    ".gz": "application/gzip",
+}
+
+
+def _guess_mime_type(filename: str, fallback: str = "application/octet-stream") -> str:
+    """Return MIME type for *filename* using the explicit map, with stdlib fallback."""
+    dot = filename.rfind(".")
+    if dot != -1:
+        ext = filename[dot:].lower()
+        if ext in _MIME_MAP:
+            return _MIME_MAP[ext]
+    # Fall back to stdlib (works on most systems for common types)
+    guessed = mimetypes.guess_type(filename)[0]
+    return guessed or fallback
+
 
 def _serialize(value: Any) -> Any:
     if isinstance(value, uuid.UUID):
@@ -142,18 +188,10 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                 file_bytes = base64.b64decode(base64_content)
             except Exception as exc:
                 return json.dumps({"error": f"Invalid base64_content: {exc}"})
-            resolved_mime = (
-                mime_type
-                or mimetypes.guess_type(filename)[0]
-                or "application/octet-stream"
-            )
+            resolved_mime = mime_type or _guess_mime_type(filename)
         else:
             file_bytes = file_content.encode("utf-8")
-            resolved_mime = (
-                mime_type
-                or mimetypes.guess_type(filename)[0]
-                or "text/plain"
-            )
+            resolved_mime = mime_type or _guess_mime_type(filename, fallback="text/plain")
 
         service = _get_drive_service()
         if not service:
