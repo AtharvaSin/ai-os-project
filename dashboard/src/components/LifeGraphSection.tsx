@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useCallback } from 'react';
 import { Activity, ListTodo, AlertTriangle, Target } from 'lucide-react';
-import { DomainTree } from './DomainTree';
+import { RadialLifeGraph } from './RadialLifeGraph';
 import { DomainDetailPanel } from './DomainDetailPanel';
 import { AddDomainModal } from './AddDomainModal';
 import type { DomainWithCounts, LifeGraphResponse } from '@/lib/types';
@@ -122,12 +122,11 @@ export function LifeGraphSection() {
         )}
       </div>
 
-      {/* Domain tree */}
-      <DomainTree
+      {/* Radial mind map */}
+      <RadialLifeGraph
         domains={domains}
-        onSelectDomain={setSelectedSlug}
-        onAddDomain={setAddModalParentId}
         selectedSlug={selectedSlug}
+        onSelectDomain={setSelectedSlug}
       />
 
       {/* Detail panel */}
