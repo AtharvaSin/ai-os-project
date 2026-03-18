@@ -93,7 +93,7 @@ function AddItemForm({ domainId, itemType, onCreated, onCancel }: AddItemFormPro
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="w-full rounded-lg border border-border bg-primary px-3 py-1.5 text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-accent-purple"
+          className="w-full rounded-lg border border-border bg-primary px-3 py-1.5 text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-accent-primary"
           placeholder={`New ${itemType}...`}
           autoFocus
           required
@@ -105,7 +105,7 @@ function AddItemForm({ domainId, itemType, onCreated, onCancel }: AddItemFormPro
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           rows={2}
-          className="w-full rounded-lg border border-border bg-primary px-3 py-1.5 text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-accent-purple resize-none"
+          className="w-full rounded-lg border border-border bg-primary px-3 py-1.5 text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-accent-primary resize-none"
           placeholder="Optional details..."
         />
       </div>
@@ -115,7 +115,7 @@ function AddItemForm({ domainId, itemType, onCreated, onCancel }: AddItemFormPro
           <select
             value={priority}
             onChange={(e) => setPriority(e.target.value as TaskPriority)}
-            className="w-full rounded-lg border border-border bg-primary px-3 py-1.5 text-sm text-text-primary focus:outline-none focus:ring-2 focus:ring-accent-purple"
+            className="w-full rounded-lg border border-border bg-primary px-3 py-1.5 text-sm text-text-primary focus:outline-none focus:ring-2 focus:ring-accent-primary"
           >
             <option value="low">Low</option>
             <option value="medium">Medium</option>
@@ -129,7 +129,7 @@ function AddItemForm({ domainId, itemType, onCreated, onCancel }: AddItemFormPro
               type="date"
               value={targetDate}
               onChange={(e) => setTargetDate(e.target.value)}
-              className="w-full rounded-lg border border-border bg-primary px-3 py-1.5 text-sm text-text-primary focus:outline-none focus:ring-2 focus:ring-accent-purple"
+              className="w-full rounded-lg border border-border bg-primary px-3 py-1.5 text-sm text-text-primary focus:outline-none focus:ring-2 focus:ring-accent-primary"
             />
           </div>
         )}
@@ -228,7 +228,7 @@ function ContextItemsTab({ items, domainId, itemType, onItemCompleted, onItemCre
               <span className={cn(
                 'badge text-[10px] shrink-0',
                 item.status === 'completed' ? 'bg-accent-teal/15 text-accent-teal'
-                : item.status === 'in_progress' ? 'bg-accent-purple/15 text-accent-purple'
+                : item.status === 'in_progress' ? 'bg-accent-primary/15 text-accent-primary'
                 : 'bg-text-muted/15 text-text-muted',
               )}>
                 {item.status.replace('_', ' ')}
@@ -288,7 +288,7 @@ function ContextItemsTab({ items, domainId, itemType, onItemCompleted, onItemCre
       ) : (
         <button
           onClick={() => setShowAddForm(true)}
-          className="flex items-center gap-1.5 text-xs text-text-muted hover:text-accent-purple transition-colors mt-2"
+          className="flex items-center gap-1.5 text-xs text-text-muted hover:text-accent-primary transition-colors mt-2"
         >
           <Plus className="h-3.5 w-3.5" />
           Add {label}
@@ -314,7 +314,7 @@ function TasksTab({ tasks }: { tasks: (Task & { domain_name: string; domain_slug
       {tasks.map((task) => {
         const statusCls =
           task.status === 'done' ? 'bg-accent-teal/15 text-accent-teal'
-          : task.status === 'in_progress' ? 'bg-accent-purple/15 text-accent-purple'
+          : task.status === 'in_progress' ? 'bg-accent-primary/15 text-accent-primary'
           : task.status === 'blocked' ? 'bg-accent-red/15 text-accent-red'
           : 'bg-text-muted/15 text-text-muted';
 
@@ -342,7 +342,7 @@ function TasksTab({ tasks }: { tasks: (Task & { domain_name: string; domain_slug
       })}
       <a
         href="/tasks"
-        className="flex items-center gap-1.5 text-xs text-accent-purple hover:text-accent-purple/80 transition-colors mt-2"
+        className="flex items-center gap-1.5 text-xs text-accent-primary hover:text-accent-primary/80 transition-colors mt-2"
       >
         View all tasks
         <ChevronRight className="h-3 w-3" />
@@ -378,7 +378,7 @@ function HealthTab({ snapshots, currentScore, currentTrend }: {
       {/* Current score prominently */}
       {latestPct !== null && (
         <div className="card p-4 text-center">
-          <p className="text-[10px] font-mono text-text-muted uppercase tracking-wider mb-1">
+          <p className="text-[10px] font-semibold text-accent-primary uppercase tracking-[0.15em] mb-1">
             Current Health
           </p>
           <div className="flex items-center justify-center gap-2">
@@ -401,7 +401,7 @@ function HealthTab({ snapshots, currentScore, currentTrend }: {
 
       {/* Snapshot history */}
       <div>
-        <h4 className="text-[10px] font-mono text-text-muted uppercase tracking-wider mb-2">
+        <h4 className="text-[10px] font-semibold text-accent-primary uppercase tracking-[0.15em] mb-2">
           History
         </h4>
         <div className="space-y-1.5">
@@ -509,7 +509,7 @@ export function DomainDetailPanel({ slug, onClose, onRefresh }: DomainDetailPane
         {/* Loading state */}
         {loading && (
           <div className="flex items-center justify-center h-full">
-            <Loader2 className="h-6 w-6 text-accent-purple animate-spin" />
+            <Loader2 className="h-6 w-6 text-accent-primary animate-spin" />
           </div>
         )}
 
@@ -582,7 +582,7 @@ export function DomainDetailPanel({ slug, onClose, onRefresh }: DomainDetailPane
                     className={cn(
                       'flex-1 flex items-center justify-center gap-1.5 py-2.5 text-xs font-mono transition-colors border-b-2',
                       activeTab === tab.key
-                        ? 'border-accent-purple text-accent-purple'
+                        ? 'border-accent-primary text-accent-primary'
                         : 'border-transparent text-text-muted hover:text-text-secondary',
                     )}
                   >

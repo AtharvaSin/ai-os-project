@@ -14,7 +14,7 @@ const config: Config = {
         'text-muted': 'var(--text-muted)',
         'accent-gold': 'var(--accent-gold)',
         'accent-teal': 'var(--accent-teal)',
-        'accent-purple': 'var(--accent-purple)',
+        'accent-primary': 'var(--accent-primary)',
         'accent-red': 'var(--accent-red)',
       },
       fontFamily: {

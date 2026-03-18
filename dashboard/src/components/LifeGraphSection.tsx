@@ -48,7 +48,7 @@ export function LifeGraphSection() {
       <section className="space-y-4">
         <div className="flex items-center gap-2 mb-2">
           <Activity className="h-4 w-4 text-accent-teal" />
-          <h2 className="text-sm font-mono text-text-muted uppercase tracking-wider">
+          <h2 className="text-[11px] font-semibold text-accent-primary uppercase tracking-[0.15em]">
             Life Graph
           </h2>
         </div>
@@ -73,7 +73,7 @@ export function LifeGraphSection() {
       <section className="space-y-4">
         <div className="flex items-center gap-2 mb-2">
           <Activity className="h-4 w-4 text-accent-red" />
-          <h2 className="text-sm font-mono text-text-muted uppercase tracking-wider">
+          <h2 className="text-[11px] font-semibold text-accent-primary uppercase tracking-[0.15em]">
             Life Graph
           </h2>
         </div>
@@ -94,14 +94,14 @@ export function LifeGraphSection() {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Activity className="h-4 w-4 text-accent-teal" />
-          <h2 className="text-sm font-mono text-text-muted uppercase tracking-wider">
+          <h2 className="text-[11px] font-semibold text-accent-primary uppercase tracking-[0.15em]">
             Life Graph
           </h2>
         </div>
         {summary && (
           <div className="flex items-center gap-4 text-xs text-text-secondary">
             <span className="flex items-center gap-1.5">
-              <Activity className="h-3 w-3 text-accent-purple" />
+              <Activity className="h-3 w-3 text-accent-primary" />
               {summary.total_domains} domains
             </span>
             <span className="flex items-center gap-1.5">

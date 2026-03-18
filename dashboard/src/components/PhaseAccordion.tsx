@@ -45,7 +45,7 @@ export function PhaseAccordion({ phase, className }: PhaseAccordionProps) {
                 className="h-full rounded-full transition-all"
                 style={{
                   width: `${progress}%`,
-                  backgroundColor: progress === 100 ? 'var(--accent-teal)' : 'var(--accent-purple)',
+                  backgroundColor: progress === 100 ? 'var(--accent-teal)' : 'var(--accent-primary)',
                 }}
               />
             </div>

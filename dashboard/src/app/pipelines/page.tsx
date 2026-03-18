@@ -68,7 +68,7 @@ export default function PipelinesPage() {
         <>
           {scheduled.length > 0 && (
             <section>
-              <h2 className="text-sm font-mono text-text-muted uppercase tracking-wider mb-4">
+              <h2 className="text-[11px] font-semibold text-accent-primary uppercase tracking-[0.15em] mb-4">
                 Scheduled ({scheduled.length})
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
@@ -90,7 +90,7 @@ export default function PipelinesPage() {
 
           {eventDriven.length > 0 && (
             <section>
-              <h2 className="text-sm font-mono text-text-muted uppercase tracking-wider mb-4">
+              <h2 className="text-[11px] font-semibold text-accent-primary uppercase tracking-[0.15em] mb-4">
                 Event-driven ({eventDriven.length})
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">

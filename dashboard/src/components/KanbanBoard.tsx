@@ -12,7 +12,7 @@ interface KanbanBoardProps {
 
 const columns: { id: TaskStatus; label: string; color: string }[] = [
   { id: 'todo', label: 'Todo', color: 'var(--text-muted)' },
-  { id: 'in_progress', label: 'In Progress', color: 'var(--accent-purple)' },
+  { id: 'in_progress', label: 'In Progress', color: 'var(--accent-primary)' },
   { id: 'blocked', label: 'Blocked', color: 'var(--accent-red)' },
   { id: 'done', label: 'Done', color: 'var(--accent-teal)' },
 ];
@@ -60,14 +60,14 @@ export function KanbanBoard({ tasks, onStatusChange }: KanbanBoardProps) {
                             {...provided.dragHandleProps}
                             className={cn(
                               'rounded-lg border border-border p-3 bg-primary transition-shadow',
-                              snapshot.isDragging && 'shadow-lg shadow-accent-purple/10',
+                              snapshot.isDragging && 'shadow-lg shadow-accent-primary/10',
                             )}
                           >
                             <p className="text-sm text-text-primary mb-2">{task.title}</p>
                             <div className="flex items-center justify-between">
                               <div className="flex items-center gap-2">
                                 {task.project_name && (
-                                  <span className="text-[10px] font-mono text-accent-purple">
+                                  <span className="text-[10px] font-mono text-accent-primary">
                                     {task.project_name}
                                   </span>
                                 )}

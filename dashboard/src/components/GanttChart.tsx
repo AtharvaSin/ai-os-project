@@ -121,7 +121,7 @@ export function GanttChart({ phases, onMilestoneReschedule }: GanttChartProps) {
                     left: `${leftPct}%`,
                     width: `${Math.max(widthPct, 1)}%`,
                     backgroundColor: phase.status === 'completed' ? 'var(--accent-teal)'
-                      : phase.status === 'in_progress' ? 'var(--accent-purple)'
+                      : phase.status === 'in_progress' ? 'var(--accent-primary)'
                       : phase.status === 'blocked' ? 'var(--accent-red)'
                       : 'var(--text-muted)',
                     opacity: 0.25,
@@ -149,7 +149,7 @@ export function GanttChart({ phases, onMilestoneReschedule }: GanttChartProps) {
                           'h-4 w-4 fill-current',
                           isOverdue ? 'text-accent-red'
                             : m.status === 'completed' ? 'text-accent-teal'
-                            : 'text-accent-purple',
+                            : 'text-accent-primary',
                         )}
                       />
                       <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 hidden group-hover:block whitespace-nowrap">
@@ -188,7 +188,7 @@ export function GanttChart({ phases, onMilestoneReschedule }: GanttChartProps) {
                 type="date"
                 value={newDate}
                 onChange={(e) => setNewDate(e.target.value)}
-                className="w-full rounded-lg border border-border bg-primary px-3 py-2 text-sm text-text-primary focus:outline-none focus:ring-2 focus:ring-accent-purple"
+                className="w-full rounded-lg border border-border bg-primary px-3 py-2 text-sm text-text-primary focus:outline-none focus:ring-2 focus:ring-accent-primary"
               />
             </div>
             <div className="flex justify-end gap-3">

@@ -23,7 +23,7 @@ export function MilestoneRibbon({ milestones, className }: MilestoneRibbonProps)
             >
               <Diamond className={cn(
                 'h-4 w-4 mt-0.5 shrink-0',
-                overdue ? 'text-accent-red' : 'text-accent-purple',
+                overdue ? 'text-accent-red' : 'text-accent-primary',
               )} />
               <div className="min-w-0">
                 <p className="text-sm text-text-primary truncate">{m.name}</p>

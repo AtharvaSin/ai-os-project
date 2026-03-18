@@ -115,7 +115,7 @@ export function AddDomainModal({ parentId, parentName, onClose, onCreated }: Add
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full rounded-lg border border-border bg-primary px-3 py-2 text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-accent-purple"
+            className="w-full rounded-lg border border-border bg-primary px-3 py-2 text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-accent-primary"
             placeholder="e.g., Fitness Tracking"
             autoFocus
             required
@@ -129,7 +129,7 @@ export function AddDomainModal({ parentId, parentName, onClose, onCreated }: Add
             type="text"
             value={slug}
             onChange={(e) => setSlug(e.target.value)}
-            className="w-full rounded-lg border border-border bg-primary px-3 py-2 text-sm text-text-secondary font-mono placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-accent-purple"
+            className="w-full rounded-lg border border-border bg-primary px-3 py-2 text-sm text-text-secondary font-mono placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-accent-primary"
             placeholder="auto-generated-from-name"
             required
           />
@@ -143,7 +143,7 @@ export function AddDomainModal({ parentId, parentName, onClose, onCreated }: Add
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             rows={2}
-            className="w-full rounded-lg border border-border bg-primary px-3 py-2 text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-accent-purple resize-none"
+            className="w-full rounded-lg border border-border bg-primary px-3 py-2 text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-accent-primary resize-none"
             placeholder="Optional description..."
           />
         </div>
@@ -186,7 +186,7 @@ export function AddDomainModal({ parentId, parentName, onClose, onCreated }: Add
                   setUseCustomColor(true);
                 }}
                 onFocus={() => setUseCustomColor(true)}
-                className="w-20 rounded-lg border border-border bg-primary px-2 py-1 text-xs text-text-primary font-mono placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-accent-purple"
+                className="w-20 rounded-lg border border-border bg-primary px-2 py-1 text-xs text-text-primary font-mono placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-accent-primary"
                 placeholder="#hex"
                 maxLength={7}
               />

@@ -53,7 +53,7 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
 
       {project.next_milestone_name && (
         <div className="flex items-center gap-2 text-xs text-text-muted">
-          <Diamond className="h-3 w-3 text-accent-purple" />
+          <Diamond className="h-3 w-3 text-accent-primary" />
           <span className="truncate">{project.next_milestone_name}</span>
           {project.next_milestone_date && (
             <span className="shrink-0">· {formatDate(project.next_milestone_date)}</span>

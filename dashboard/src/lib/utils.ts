@@ -10,7 +10,7 @@ export function priorityColor(p: TaskPriority): string {
   const map: Record<TaskPriority, string> = {
     urgent: 'bg-accent-red/15 text-accent-red',
     high: 'bg-accent-gold/15 text-accent-gold',
-    medium: 'bg-accent-purple/15 text-accent-purple',
+    medium: 'bg-accent-primary/15 text-accent-primary',
     low: 'bg-accent-teal/15 text-accent-teal',
   };
   return map[p];
@@ -22,7 +22,7 @@ export function statusColor(s: TaskStatus | MilestoneStatus | PhaseStatus | Proj
     not_started: 'bg-text-muted/15 text-text-muted',
     pending: 'bg-text-muted/15 text-text-muted',
     planning: 'bg-text-muted/15 text-text-muted',
-    in_progress: 'bg-accent-purple/15 text-accent-purple',
+    in_progress: 'bg-accent-primary/15 text-accent-primary',
     active: 'bg-accent-teal/15 text-accent-teal',
     done: 'bg-accent-teal/15 text-accent-teal',
     completed: 'bg-accent-teal/15 text-accent-teal',
@@ -90,7 +90,7 @@ export function pipelineRunStatusColor(s: PipelineRunStatus): string {
   const map: Record<PipelineRunStatus, string> = {
     success: 'bg-accent-teal/15 text-accent-teal',
     failed: 'bg-accent-red/15 text-accent-red',
-    running: 'bg-accent-purple/15 text-accent-purple',
+    running: 'bg-accent-primary/15 text-accent-primary',
     cancelled: 'bg-text-muted/15 text-text-muted',
   };
   return map[s] ?? 'bg-text-muted/15 text-text-muted';

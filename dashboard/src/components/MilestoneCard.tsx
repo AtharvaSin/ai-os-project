@@ -36,7 +36,7 @@ export function MilestoneCard({ milestone, className }: MilestoneCardProps) {
       >
         <Diamond className={cn(
           'h-3.5 w-3.5 shrink-0',
-          overdue ? 'text-accent-red' : 'text-accent-purple',
+          overdue ? 'text-accent-red' : 'text-accent-primary',
         )} />
 
         <span className="text-sm text-text-primary flex-1 truncate">{milestone.name}</span>

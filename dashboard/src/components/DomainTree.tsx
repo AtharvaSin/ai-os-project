@@ -84,7 +84,7 @@ export function DomainTree({ domains, onSelectDomain, onAddDomain, selectedSlug 
               </button>
               <button
                 onClick={() => onAddDomain(cat.id)}
-                className="flex items-center gap-1 text-text-muted hover:text-accent-purple transition-colors text-xs"
+                className="flex items-center gap-1 text-text-muted hover:text-accent-primary transition-colors text-xs"
                 title={`Add sub-domain to ${cat.name}`}
               >
                 <Plus className="h-3.5 w-3.5" />
@@ -106,7 +106,7 @@ export function DomainTree({ domains, onSelectDomain, onAddDomain, selectedSlug 
                       onClick={() => onSelectDomain(domain.slug)}
                       className={cn(
                         'card-hover p-4 text-left w-full transition-all',
-                        isSelected && 'ring-2 ring-accent-purple',
+                        isSelected && 'ring-2 ring-accent-primary',
                       )}
                     >
                       {/* Domain number badge + name */}

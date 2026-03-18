@@ -10,7 +10,7 @@ type Tab = 'inbox' | 'journals' | 'stats';
 
 const CAPTURE_TYPE_CONFIG: Record<string, { icon: typeof Lightbulb; label: string; color: string }> = {
   idea: { icon: Lightbulb, label: 'Idea', color: 'text-accent-gold bg-accent-gold/10' },
-  epiphany: { icon: Zap, label: 'Epiphany', color: 'text-accent-purple bg-accent-purple/10' },
+  epiphany: { icon: Zap, label: 'Epiphany', color: 'text-accent-primary bg-accent-primary/10' },
   memory_recall: { icon: Brain, label: 'Memory', color: 'text-accent-teal bg-accent-teal/10' },
   observation: { icon: Eye, label: 'Observation', color: 'text-text-secondary bg-hover' },
 };
@@ -24,7 +24,7 @@ const URGENCY_COLOR: Record<string, string> = {
 function StatCard({ label, value, sub, color }: { label: string; value: number; sub?: string; color: string }) {
   return (
     <div className="card p-4">
-      <p className="text-xs font-mono text-text-muted uppercase tracking-wider mb-1">{label}</p>
+      <p className="text-[11px] font-semibold text-accent-primary uppercase tracking-[0.15em] mb-1">{label}</p>
       <p className={cn('text-2xl font-mono font-bold', color)}>{value}</p>
       {sub && <p className="text-[10px] text-text-muted mt-0.5">{sub}</p>}
     </div>
@@ -77,7 +77,7 @@ function JournalCard({ journal }: { journal: JournalEntry }) {
       <div className="flex items-center justify-between mb-2">
         <div className="flex items-center gap-2">
           {journal.mood && (
-            <span className="text-xs font-mono text-accent-purple bg-accent-purple/10 px-1.5 py-0.5 rounded">
+            <span className="text-xs font-mono text-accent-primary bg-accent-primary/10 px-1.5 py-0.5 rounded">
               {journal.mood}
             </span>
           )}
@@ -150,7 +150,7 @@ export function CaptureContent() {
             className={cn(
               'flex items-center gap-2 px-4 py-2.5 text-sm transition-colors border-b-2 -mb-px',
               tab === t.id
-                ? 'border-accent-purple text-accent-purple'
+                ? 'border-accent-primary text-accent-primary'
                 : 'border-transparent text-text-muted hover:text-text-primary',
             )}
           >
@@ -159,7 +159,7 @@ export function CaptureContent() {
             {t.count !== undefined && t.count > 0 && (
               <span className={cn(
                 'text-[10px] font-mono px-1.5 py-0.5 rounded-full',
-                tab === t.id ? 'bg-accent-purple/15 text-accent-purple' : 'bg-hover text-text-muted',
+                tab === t.id ? 'bg-accent-primary/15 text-accent-primary' : 'bg-hover text-text-muted',
               )}>
                 {t.count}
               </span>
@@ -205,7 +205,7 @@ export function CaptureContent() {
           {/* Stats tab */}
           {tab === 'stats' && stats && (
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-              <StatCard label="Journals" value={stats.total_journals} sub={`${stats.journals_this_week} this week`} color="text-accent-purple" />
+              <StatCard label="Journals" value={stats.total_journals} sub={`${stats.journals_this_week} this week`} color="text-accent-primary" />
               <StatCard label="Quick Entries" value={stats.total_quick_entries} sub={`${stats.entries_this_week} this week`} color="text-accent-teal" />
               <StatCard label="Unprocessed" value={stats.unprocessed_entries} sub="awaiting analysis" color={stats.unprocessed_entries > 10 ? 'text-accent-gold' : 'text-text-primary'} />
               <StatCard label="Undistilled" value={stats.undistilled_journals} sub="awaiting monthly distill" color="text-text-primary" />

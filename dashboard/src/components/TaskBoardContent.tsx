@@ -72,14 +72,14 @@ export function TaskBoardContent() {
         <div className="flex items-center gap-2">
           <button
             onClick={() => setView('list')}
-            className={cn('btn-ghost p-2', view === 'list' && 'bg-hover text-accent-purple')}
+            className={cn('btn-ghost p-2', view === 'list' && 'bg-hover text-accent-primary')}
             aria-label="List view"
           >
             <List className="h-4 w-4" />
           </button>
           <button
             onClick={() => setView('kanban')}
-            className={cn('btn-ghost p-2', view === 'kanban' && 'bg-hover text-accent-purple')}
+            className={cn('btn-ghost p-2', view === 'kanban' && 'bg-hover text-accent-primary')}
             aria-label="Kanban view"
           >
             <Columns className="h-4 w-4" />
@@ -99,7 +99,7 @@ export function TaskBoardContent() {
               activePriorities.includes(p) ? 'opacity-100' : 'opacity-40',
               p === 'urgent' && 'bg-accent-red/15 text-accent-red',
               p === 'high' && 'bg-accent-gold/15 text-accent-gold',
-              p === 'medium' && 'bg-accent-purple/15 text-accent-purple',
+              p === 'medium' && 'bg-accent-primary/15 text-accent-primary',
               p === 'low' && 'bg-accent-teal/15 text-accent-teal',
             )}
           >
@@ -149,7 +149,7 @@ export function TaskBoardContent() {
       {/* Quick Add FAB */}
       <button
         onClick={() => setShowQuickAdd(true)}
-        className="fixed bottom-20 right-6 lg:bottom-8 lg:right-8 h-14 w-14 rounded-full bg-accent-purple text-white shadow-lg flex items-center justify-center hover:opacity-90 transition-opacity z-20"
+        className="fixed bottom-20 right-6 lg:bottom-8 lg:right-8 h-14 w-14 rounded-full bg-accent-primary text-white shadow-lg flex items-center justify-center hover:opacity-90 transition-opacity z-20"
         aria-label="Add task"
       >
         <Plus className="h-6 w-6" />

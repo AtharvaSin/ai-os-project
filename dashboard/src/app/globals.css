@@ -7,12 +7,12 @@
   --bg-card: #12121e;
   --bg-hover: #1a1a2e;
   --border: #1f1f35;
-  --text-primary: #e8e6e1;
+  --text-primary: #EEEAE4;
   --text-secondary: #a09d95;
-  --text-muted: #807d75;
+  --text-muted: #606060;
   --accent-gold: #E8B931;
   --accent-teal: #4ECDC4;
-  --accent-purple: #7B68EE;
+  --accent-primary: #00D492;
   --accent-red: #FF6B6B;
 }
 
@@ -40,7 +40,7 @@ body {
 
 /* Focus ring */
 *:focus-visible {
-  outline: 2px solid var(--accent-purple);
+  outline: 2px solid var(--accent-primary);
   outline-offset: 2px;
 }
 
@@ -64,7 +64,7 @@ body {
 
   .btn-primary {
     @apply inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium transition-colors;
-    background-color: var(--accent-purple);
+    background-color: var(--accent-primary);
     color: white;
   }
   .btn-primary:hover {

@@ -114,7 +114,7 @@ export default async function CommandCenter() {
 
       {/* Project health cards */}
       <section>
-        <h2 className="text-sm font-mono text-text-muted uppercase tracking-wider mb-4">
+        <h2 className="text-[11px] font-semibold text-accent-primary uppercase tracking-[0.15em] mb-4">
           Active Projects
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
@@ -126,7 +126,7 @@ export default async function CommandCenter() {
 
       {/* Milestone ribbon */}
       <section>
-        <h2 className="text-sm font-mono text-text-muted uppercase tracking-wider mb-4">
+        <h2 className="text-[11px] font-semibold text-accent-primary uppercase tracking-[0.15em] mb-4">
           Upcoming Milestones
         </h2>
         <MilestoneRibbon milestones={milestones} />
@@ -138,13 +138,13 @@ export default async function CommandCenter() {
       {/* Today's tasks + Knowledge Health */}
       <section className="grid grid-cols-1 xl:grid-cols-3 gap-6">
         <div className="xl:col-span-2">
-          <h2 className="text-sm font-mono text-text-muted uppercase tracking-wider mb-4">
+          <h2 className="text-[11px] font-semibold text-accent-primary uppercase tracking-[0.15em] mb-4">
             Today&apos;s Tasks
           </h2>
           <TodayTasks />
         </div>
         <div>
-          <h2 className="text-sm font-mono text-text-muted uppercase tracking-wider mb-4">
+          <h2 className="text-[11px] font-semibold text-accent-primary uppercase tracking-[0.15em] mb-4">
             Knowledge Layer
           </h2>
           <KnowledgeHealthCard />

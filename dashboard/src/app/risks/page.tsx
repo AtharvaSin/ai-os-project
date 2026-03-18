@@ -50,7 +50,7 @@ export default function RisksPage() {
         <select
           value={typeFilter}
           onChange={(e) => setTypeFilter(e.target.value as RiskAlertType | 'all')}
-          className="rounded-lg border border-border bg-card px-3 py-2 text-sm text-text-primary focus:outline-none focus:ring-2 focus:ring-accent-purple"
+          className="rounded-lg border border-border bg-card px-3 py-2 text-sm text-text-primary focus:outline-none focus:ring-2 focus:ring-accent-primary"
         >
           <option value="all">All Risk Types</option>
           <option value="overdue_cluster">Overdue Clusters</option>
@@ -70,13 +70,13 @@ export default function RisksPage() {
           <RiskSummaryCards summary={data.summary} />
           <section className="grid grid-cols-1 xl:grid-cols-3 gap-6">
             <div className="xl:col-span-2">
-              <h2 className="text-sm font-mono text-text-muted uppercase tracking-wider mb-4">
+              <h2 className="text-[11px] font-semibold text-accent-primary uppercase tracking-[0.15em] mb-4">
                 Active Alerts ({filteredAlerts.length})
               </h2>
               <RiskAlertList alerts={filteredAlerts} onResolve={handleResolve} />
             </div>
             <div>
-              <h2 className="text-sm font-mono text-text-muted uppercase tracking-wider mb-4">
+              <h2 className="text-[11px] font-semibold text-accent-primary uppercase tracking-[0.15em] mb-4">
                 Velocity Trend (14 days)
               </h2>
               <VelocityChart data={data.velocity} />

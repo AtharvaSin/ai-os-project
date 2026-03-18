@@ -42,7 +42,7 @@ export function RiskSummaryCards({ summary }: RiskSummaryCardsProps) {
       {cards.map((card) => (
         <div key={card.label} className="card p-4">
           <div className="flex items-center justify-between mb-3">
-            <span className="text-xs font-mono text-text-muted uppercase tracking-wider">
+            <span className="text-[11px] font-semibold text-accent-primary uppercase tracking-[0.15em]">
               {card.label}
             </span>
             <div className={`h-8 w-8 rounded-lg ${card.bgColor} flex items-center justify-center`}>

@@ -88,7 +88,7 @@ export function QuickAddTask({ onClose, onCreated }: QuickAddTaskProps) {
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="w-full rounded-lg border border-border bg-primary px-3 py-2 text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-accent-purple"
+            className="w-full rounded-lg border border-border bg-primary px-3 py-2 text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-accent-primary"
             placeholder="What needs to be done?"
             autoFocus
             required
@@ -100,7 +100,7 @@ export function QuickAddTask({ onClose, onCreated }: QuickAddTaskProps) {
           <select
             value={projectId}
             onChange={(e) => setProjectId(e.target.value)}
-            className="w-full rounded-lg border border-border bg-primary px-3 py-2 text-sm text-text-primary focus:outline-none focus:ring-2 focus:ring-accent-purple"
+            className="w-full rounded-lg border border-border bg-primary px-3 py-2 text-sm text-text-primary focus:outline-none focus:ring-2 focus:ring-accent-primary"
           >
             {projects.map((p) => (
               <option key={p.id} value={p.id}>{p.name}</option>
@@ -114,7 +114,7 @@ export function QuickAddTask({ onClose, onCreated }: QuickAddTaskProps) {
             <select
               value={priority}
               onChange={(e) => setPriority(e.target.value as TaskPriority)}
-              className="w-full rounded-lg border border-border bg-primary px-3 py-2 text-sm text-text-primary focus:outline-none focus:ring-2 focus:ring-accent-purple"
+              className="w-full rounded-lg border border-border bg-primary px-3 py-2 text-sm text-text-primary focus:outline-none focus:ring-2 focus:ring-accent-primary"
             >
               <option value="low">Low</option>
               <option value="medium">Medium</option>
@@ -129,7 +129,7 @@ export function QuickAddTask({ onClose, onCreated }: QuickAddTaskProps) {
               type="date"
               value={dueDate}
               onChange={(e) => setDueDate(e.target.value)}
-              className="w-full rounded-lg border border-border bg-primary px-3 py-2 text-sm text-text-primary focus:outline-none focus:ring-2 focus:ring-accent-purple"
+              className="w-full rounded-lg border border-border bg-primary px-3 py-2 text-sm text-text-primary focus:outline-none focus:ring-2 focus:ring-accent-primary"
             />
           </div>
         </div>

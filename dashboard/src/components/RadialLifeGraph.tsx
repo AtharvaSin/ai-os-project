@@ -44,7 +44,7 @@ interface GLink {
 
 const CATEGORY_PALETTE: Record<string, string> = {
   private_affairs: '#FF6B9D',
-  personal_projects: '#7B68EE',
+  personal_projects: '#00D492',
   work: '#4ECDC4',
 };
 
@@ -54,7 +54,7 @@ const DOMAIN_PALETTES: Record<string, string[]> = {
   work: ['#80CBC4', '#80DEEA', '#84FFFF', '#A7FFEB'],
 };
 
-const FALLBACK = ['#7B68EE', '#4ECDC4', '#E8B931', '#FF6B6B'];
+const FALLBACK = ['#00D492', '#4ECDC4', '#E8B931', '#FF6B6B'];
 
 const R_CAT = 210;   // center → category distance
 const R_DOM = 155;    // category → domain distance
@@ -74,7 +74,7 @@ function buildGraph(domains: DomainWithCounts[]): { nodes: GNode[]; links: GLink
   nodes.push({
     id: '__root__', slug: '__root__', type: 'root',
     label: 'Life Graph', x: 0, y: 0, r: NODE_R_ROOT,
-    color: '#7B68EE', activeTasks: 0, overdueTasks: 0,
+    color: '#00D492', activeTasks: 0, overdueTasks: 0,
     activeObjectives: 0, healthScore: null,
   });
 
@@ -218,7 +218,7 @@ export function RadialLifeGraph({ domains, selectedSlug, onSelectDomain }: Radia
             <feComposite in="SourceGraphic" in2="b" operator="over" />
           </filter>
           <radialGradient id="lg-root-grad" cx="35%" cy="35%" r="65%">
-            <stop offset="0%" stopColor="#9B8AFB" />
+            <stop offset="0%" stopColor="#00D492" />
             <stop offset="100%" stopColor="#4ECDC4" />
           </radialGradient>
         </defs>
@@ -259,7 +259,7 @@ export function RadialLifeGraph({ domains, selectedSlug, onSelectDomain }: Radia
             >
               {/* Selection ring */}
               {sel && (
-                <motion.circle r={n.r + 7} fill="none" stroke="#7B68EE" strokeWidth="2.5"
+                <motion.circle r={n.r + 7} fill="none" stroke="#00D492" strokeWidth="2.5"
                   initial={{ scale: 0.7, opacity: 0 }} animate={{ scale: 1, opacity: 0.9 }}
                   transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                 />
@@ -336,7 +336,7 @@ export function RadialLifeGraph({ domains, selectedSlug, onSelectDomain }: Radia
             animate={{ scale: 1, opacity: 1 }}
             transition={{ type: 'spring', stiffness: 180, damping: 18, delay: 0.05 }}
           >
-            <circle r={n.r + 20} fill="#7B68EE" opacity="0.06" filter="url(#lg-glow-lg)" />
+            <circle r={n.r + 20} fill="#00D492" opacity="0.06" filter="url(#lg-glow-lg)" />
             <circle r={n.r} fill="url(#lg-root-grad)" filter="url(#lg-glow)" />
             <circle cx={-14} cy={-14} r={n.r * 0.38} fill="white" opacity="0.07" />
             <text y={-6} textAnchor="middle" fill="white" fontSize="16" fontWeight="800"

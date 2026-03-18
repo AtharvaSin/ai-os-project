@@ -25,7 +25,7 @@ export function TaskRow({ task, showProject = false, onStatusChange, className }
         type="checkbox"
         checked={task.status === 'done'}
         onChange={() => onStatusChange?.(task.id, task.status === 'done' ? 'todo' : 'done')}
-        className="h-4 w-4 rounded border-border bg-card accent-accent-purple shrink-0"
+        className="h-4 w-4 rounded border-border bg-card accent-accent-primary shrink-0"
         aria-label={`Mark "${task.title}" as ${task.status === 'done' ? 'todo' : 'done'}`}
       />
 
@@ -39,7 +39,7 @@ export function TaskRow({ task, showProject = false, onStatusChange, className }
       </div>
 
       {showProject && task.project_name && (
-        <span className="badge bg-accent-purple/10 text-accent-purple shrink-0">
+        <span className="badge bg-accent-primary/10 text-accent-primary shrink-0">
           {task.project_name}
         </span>
       )}

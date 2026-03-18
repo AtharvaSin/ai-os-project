@@ -22,7 +22,7 @@ export function Sidebar() {
     <aside className="hidden lg:flex flex-col w-60 border-r border-border bg-card h-screen sticky top-0">
       <div className="px-5 py-5 border-b border-border">
         <Link href="/" className="flex items-center gap-2">
-          <div className="h-7 w-7 rounded-lg bg-accent-purple flex items-center justify-center">
+          <div className="h-7 w-7 rounded-lg bg-accent-primary flex items-center justify-center">
             <span className="text-white text-xs font-bold font-mono">OS</span>
           </div>
           <span className="font-display text-xl text-text-primary">AI OS</span>
@@ -39,7 +39,7 @@ export function Sidebar() {
               className={cn(
                 'flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors',
                 active
-                  ? 'bg-accent-purple/15 text-accent-purple'
+                  ? 'bg-accent-primary/15 text-accent-primary'
                   : 'text-text-secondary hover:bg-hover hover:text-text-primary',
               )}
             >
@@ -50,7 +50,7 @@ export function Sidebar() {
         })}
 
         <div className="pt-4 pb-2">
-          <p className="px-3 text-xs font-mono text-text-muted uppercase tracking-wider">
+          <p className="px-3 text-[11px] font-semibold text-accent-primary uppercase tracking-[0.15em]">
             Projects
           </p>
         </div>
@@ -60,7 +60,7 @@ export function Sidebar() {
           className={cn(
             'flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors',
             pathname === '/projects/ai-os'
-              ? 'bg-accent-purple/15 text-accent-purple'
+              ? 'bg-accent-primary/15 text-accent-primary'
               : 'text-text-secondary hover:bg-hover hover:text-text-primary',
           )}
         >
@@ -72,7 +72,7 @@ export function Sidebar() {
           className={cn(
             'flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors',
             pathname === '/projects/aiu-youtube'
-              ? 'bg-accent-purple/15 text-accent-purple'
+              ? 'bg-accent-primary/15 text-accent-primary'
               : 'text-text-secondary hover:bg-hover hover:text-text-primary',
           )}
         >
@@ -84,7 +84,7 @@ export function Sidebar() {
           className={cn(
             'flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors',
             pathname === '/projects/bharatvarsh'
-              ? 'bg-accent-purple/15 text-accent-purple'
+              ? 'bg-accent-primary/15 text-accent-primary'
               : 'text-text-secondary hover:bg-hover hover:text-text-primary',
           )}
         >

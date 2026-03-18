@@ -33,7 +33,7 @@ export function KnowledgeHealthCard() {
       label: 'Entries',
       value: data.total_entries,
       icon: Database,
-      color: 'text-accent-purple',
+      color: 'text-accent-primary',
     },
     {
       label: 'Embedded',
@@ -51,17 +51,17 @@ export function KnowledgeHealthCard() {
       label: 'Connections',
       value: data.connection_count,
       icon: GitFork,
-      color: 'text-accent-purple',
+      color: 'text-accent-primary',
     },
   ];
 
   return (
     <div className="card p-5">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-sm font-mono text-text-muted uppercase tracking-wider">
+        <h3 className="text-[11px] font-semibold text-accent-primary uppercase tracking-[0.15em]">
           Knowledge Health
         </h3>
-        <Brain className="h-4 w-4 text-accent-purple" />
+        <Brain className="h-4 w-4 text-accent-primary" />
       </div>
 
       <div className="grid grid-cols-2 gap-3">

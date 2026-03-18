@@ -20,7 +20,7 @@ export function PipelineCard({ pipeline, isExpanded, onToggle }: PipelineCardPro
   const categoryColor =
     p.category === 'B'
       ? 'bg-accent-teal/15 text-accent-teal'
-      : 'bg-accent-purple/15 text-accent-purple';
+      : 'bg-accent-primary/15 text-accent-primary';
 
   /*
    * The /api/pipelines endpoint returns flat fields from a LATERAL join
@@ -39,13 +39,13 @@ export function PipelineCard({ pipeline, isExpanded, onToggle }: PipelineCardPro
   let statusDot = 'bg-text-muted'; // no runs
   if (latestRunStatus === 'success') statusDot = 'bg-accent-teal';
   else if (latestRunStatus === 'failed') statusDot = 'bg-accent-red';
-  else if (latestRunStatus === 'running') statusDot = 'bg-accent-purple animate-pulse';
+  else if (latestRunStatus === 'running') statusDot = 'bg-accent-primary animate-pulse';
 
   return (
     <div
       className={cn(
         'card p-4 cursor-pointer transition-colors hover:bg-hover',
-        isExpanded && 'border-accent-purple/30',
+        isExpanded && 'border-accent-primary/30',
       )}
       onClick={onToggle}
       role="button"

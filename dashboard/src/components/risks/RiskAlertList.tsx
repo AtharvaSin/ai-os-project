@@ -53,7 +53,7 @@ export function RiskAlertList({ alerts, onResolve }: RiskAlertListProps) {
                         <span className={cn('badge', severityColor(alert.severity))}>
                           {alert.severity}
                         </span>
-                        <span className="badge bg-accent-purple/10 text-accent-purple">
+                        <span className="badge bg-accent-primary/10 text-accent-primary">
                           {riskTypeLabel(alert.alert_type)}
                         </span>
                         <span className="text-xs text-text-muted">
@@ -94,7 +94,7 @@ export function RiskAlertList({ alerts, onResolve }: RiskAlertListProps) {
                           placeholder="Resolution note (optional)"
                           value={resolveNote}
                           onChange={(e) => setResolveNote(e.target.value)}
-                          className="flex-1 rounded-lg border border-border bg-primary px-3 py-1.5 text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-accent-purple"
+                          className="flex-1 rounded-lg border border-border bg-primary px-3 py-1.5 text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-accent-primary"
                           onClick={(e) => e.stopPropagation()}
                         />
                         <button

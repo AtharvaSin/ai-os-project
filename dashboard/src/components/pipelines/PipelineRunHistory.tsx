@@ -29,22 +29,22 @@ export function PipelineRunHistory({ runs, loading }: PipelineRunHistoryProps) {
         <table className="w-full text-xs">
           <thead>
             <tr className="border-b border-border">
-              <th className="px-3 py-2 text-left font-mono text-text-muted uppercase tracking-wider">
+              <th className="px-3 py-2 text-left font-semibold text-accent-primary uppercase tracking-[0.15em]">
                 When
               </th>
-              <th className="px-3 py-2 text-left font-mono text-text-muted uppercase tracking-wider">
+              <th className="px-3 py-2 text-left font-semibold text-accent-primary uppercase tracking-[0.15em]">
                 Status
               </th>
-              <th className="px-3 py-2 text-left font-mono text-text-muted uppercase tracking-wider">
+              <th className="px-3 py-2 text-left font-semibold text-accent-primary uppercase tracking-[0.15em]">
                 Duration
               </th>
-              <th className="px-3 py-2 text-left font-mono text-text-muted uppercase tracking-wider">
+              <th className="px-3 py-2 text-left font-semibold text-accent-primary uppercase tracking-[0.15em]">
                 Tokens
               </th>
-              <th className="px-3 py-2 text-left font-mono text-text-muted uppercase tracking-wider">
+              <th className="px-3 py-2 text-left font-semibold text-accent-primary uppercase tracking-[0.15em]">
                 Cost
               </th>
-              <th className="px-3 py-2 text-left font-mono text-text-muted uppercase tracking-wider">
+              <th className="px-3 py-2 text-left font-semibold text-accent-primary uppercase tracking-[0.15em]">
                 Summary
               </th>
             </tr>

@@ -99,7 +99,7 @@ export default async function ProjectDetailPage({ params }: Props) {
         <div className="flex gap-4 mt-4">
           {project.repo_url && (
             <a href={project.repo_url} target="_blank" rel="noopener noreferrer"
-               className="flex items-center gap-1.5 text-sm text-accent-purple hover:underline">
+               className="flex items-center gap-1.5 text-sm text-accent-primary hover:underline">
               <GitBranch className="h-3.5 w-3.5" /> Repo
             </a>
           )}
@@ -116,7 +116,7 @@ export default async function ProjectDetailPage({ params }: Props) {
       <div className="flex flex-col xl:flex-row gap-8">
         {/* Phases + Milestones + Tasks */}
         <div className="flex-1 space-y-4">
-          <h2 className="text-sm font-mono text-text-muted uppercase tracking-wider">
+          <h2 className="text-[11px] font-semibold text-accent-primary uppercase tracking-[0.15em]">
             Phases & Milestones
           </h2>
           {project.phases.map((phase) => (

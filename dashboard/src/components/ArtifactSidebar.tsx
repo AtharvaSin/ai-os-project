@@ -35,7 +35,7 @@ export function ArtifactSidebar({ artifacts, className }: ArtifactSidebarProps) 
 
   return (
     <aside className={cn('w-full xl:w-72 shrink-0', className)}>
-      <h2 className="text-sm font-mono text-text-muted uppercase tracking-wider mb-4">
+      <h2 className="text-[11px] font-semibold text-accent-primary uppercase tracking-[0.15em] mb-4">
         Artifacts
       </h2>
       <div className="space-y-4">
@@ -44,7 +44,7 @@ export function ArtifactSidebar({ artifacts, className }: ArtifactSidebarProps) 
           return (
             <div key={type} className="card p-4">
               <div className="flex items-center gap-2 mb-3">
-                <Icon className="h-4 w-4 text-accent-purple" />
+                <Icon className="h-4 w-4 text-accent-primary" />
                 <h3 className="text-xs font-mono text-text-secondary uppercase">
                   {typeLabels[type as ArtifactType] ?? type}
                 </h3>
@@ -57,7 +57,7 @@ export function ArtifactSidebar({ artifacts, className }: ArtifactSidebarProps) 
                         href={a.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-sm text-accent-purple hover:underline truncate block"
+                        className="text-sm text-accent-primary hover:underline truncate block"
                       >
                         {a.name}
                       </a>
