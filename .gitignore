@@ -49,6 +49,9 @@ out/
 coverage/
 .nyc_output/
 
+# Sensitive data
+docs/contacts.csv
+
 # Misc
 *.bak
 *.tmp

@@ -13,6 +13,16 @@ A running record of design decisions, architecture changes, brainstorming outcom
 
 ## Log Entries
 
+### Sprint 10-A — Contact Intelligence Layer (2026-03-18)
+- [x] Migration 014: Added google_contact_id, import_source, last_contacted_at, domain_slug to contacts table
+- [x] Built idempotent CSV importer (scripts/import_google_contacts.py) — 891 Google Contacts imported
+- [x] Built contacts.py MCP module (8 tools): search_contacts, get_contact, create_contact, update_contact, get_upcoming_dates, get_contact_network, add_relationship, add_important_date
+- [x] Gateway updated: 40 → 48 tools, 8 → 9 modules
+- [x] Created Life Graph Domain 010 — Career Network (155 contacts)
+- [x] New skill: /contact-lookup
+- [x] Enhanced skills: /morning-brief (birthdays), /weekly-review (network health), /draft-email (recipient lookup)
+- [x] Gateway deployed to Cloud Run with contacts module
+
 ### Entry 016 — Personal Capture System (Sprint 9-B)
 - **Date:** 2026-03-18
 - **Domain:** Capture System / MCP Gateway / Telegram / Dashboard / Database / Skills

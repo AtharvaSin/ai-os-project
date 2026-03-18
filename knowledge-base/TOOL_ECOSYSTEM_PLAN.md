@@ -2,7 +2,7 @@
 
 > **Purpose:** Reference architecture for the three-tier MCP and tool access system. Governs how new tools are added and where they live.
 >
-> **Last updated:** 2026-03-18 (Sprint 9-B. MCP Gateway live with 40 tools across 8 modules. Capture system complete. 24 skills. Dashboard: 9 pages, 23 API routes, 27 components.)
+> **Last updated:** 2026-03-18 (Sprint 10-A. MCP Gateway live with 48 tools across 9 modules. Contact Intelligence Layer complete. 24 skills. Dashboard: 9 pages, 23 API routes, 27 components.)
 
 ---
 
@@ -39,6 +39,7 @@ Single FastAPI container on Cloud Run. Scales to zero. All custom tool access. A
 | Telegram | P1 | send_telegram_message, send_telegram_template, send_telegram_inline_keyboard, edit_telegram_message, get_telegram_bot_info | LIVE (5 tools) |
 | Life Graph | P0 | list_domains, get_domain_tree, get_domain_tasks, get_domain_summary, create_domain, update_domain, add_context_item, complete_context_item | LIVE (8 tools) |
 | Capture | P1 | capture_entry, list_journals, search_journals | LIVE (3 tools) |
+| Contacts | P1 | search_contacts, get_contact, create_contact, update_contact, get_upcoming_dates, get_contact_network, add_relationship, add_important_date | LIVE (8 tools) |
 | Bharatvarsh Admin | P2 | query_lore, get_character, search_timeline, forum_moderate | Not started |
 | Lore Search | P2 | semantic_search_lore, get_lore_by_topic (pgvector) | Not started |
 | WhatsApp | P3 | send_message, send_template, get_message_status | Not started |
@@ -60,6 +61,7 @@ mcp-servers/ai-os-gateway/
 │   │   ├── telegram.py      ← LIVE (5 tools)
 │   │   ├── life_graph.py    ← LIVE (8 tools)
 │   │   ├── capture.py       ← LIVE (3 tools)
+│   │   ├── contacts.py      ← LIVE (8 tools)
 │   │   ├── bharatvarsh.py   ← Not started
 │   │   ├── whatsapp.py      ← Not started
 │   │   └── content.py       ← Not started

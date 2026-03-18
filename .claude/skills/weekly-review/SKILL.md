@@ -115,6 +115,17 @@ Query the Life Graph for weekly domain-level health using MCP tools:
 
 If `get_domain_tree` fails or returns empty, skip this section silently.
 
+### Step 2d: Contact Network Health
+Query the Contacts module for network-level insights:
+
+1. Call `get_contact_network(group_by="domain")` to see contacts by Life Graph domain.
+2. Call `get_contact_network(group_by="tag")` to see the top tag distribution.
+3. Identify:
+   - Domains with active contacts vs domains with none
+   - Network growth this week (if any new contacts were added via `import_source = 'manual'` recently)
+   - Upcoming birthdays/anniversaries via `get_upcoming_dates(days_ahead=14)` for the next two weeks
+4. If contact tools fail, skip this section silently.
+
 ### Step 3: Compose the Review
 
 **WEEK IN REVIEW: [Date Range]**
@@ -168,6 +179,13 @@ Present as a table:
 Include rebalancing alerts if any domain is neglected (14+ days stale).
 Note effort distribution across categories (Private Affairs vs Personal Projects vs Work).
 
+**NETWORK HEALTH**
+[Only show if contact data is available from Step 2d]
+- Total contacts by domain (career_network, friends, family, admin, unassigned)
+- Top tags distribution (HR, friend, family, service_provider, etc.)
+- Upcoming dates in next 14 days (birthdays, anniversaries)
+- Flag if any important domain has 0 contacts assigned
+
 **OPEN ITEMS**
 [Action items from sessions that weren't completed. Decisions still pending.]
 
@@ -212,4 +230,5 @@ If the week was particularly productive (multiple decisions, many artifacts), of
 - **MCP Gateway: get_domain_tree, get_domain_summary** — used for Step 2c (Life Graph domain review)
 - **MCP Gateway: search_knowledge** — optional, for semantic queries against knowledge layer
 - **Knowledge base: WORK_PROJECTS.md** — current project state
+- **MCP Gateway: get_contact_network, get_upcoming_dates** — used for Step 2d (contact network health)
 - **Knowledge base: OS_EVOLUTION_LOG.md** — recent entries and decisions

@@ -31,6 +31,11 @@ Determine what's needed:
 If the user provides enough context upfront, don't ask unnecessary clarifying questions — proceed directly.
 
 ### Step 2: Pull Relevant Context
+- **Recipient lookup**: If the user names a recipient, call `search_contacts(query="recipient name")` or `get_contact(name="recipient name")` to pull their profile — company, title, tags, contact_type, last_contacted_at, and notes. Use this to:
+  - Adapt tone based on contact_type (professional → Direct/Diplomatic, personal → Warm)
+  - Add context ("last contacted 3 weeks ago — consider a warm re-engagement opener")
+  - Pre-fill subject line with relevant company/project context
+  - If the contact has no email in the database, flag it
 - If the email relates to a **professional engagement**, reference WORK_PROJECTS.md for project context and the Career Reference Index for relevant experience.
 - If the user references a **previous email or thread**, use Gmail search to find and read it for continuity.
 - If the email is **introducing yourself or your work**, reference OWNER_PROFILE.md for positioning and credentials.
@@ -99,4 +104,5 @@ After presenting drafts, ask: "Want me to refine any of these, or send via Gmail
 - **Gmail** — search for thread context, read previous messages, send drafts
 - **Message compose tool** — present email variants in the native message widget
 - **Knowledge base: OWNER_PROFILE.md** — for voice/positioning when representing the user
+- **MCP Gateway: search_contacts, get_contact** — recipient lookup for context, tone, and history
 - **Knowledge base: WORK_PROJECTS.md** — for project context in professional emails

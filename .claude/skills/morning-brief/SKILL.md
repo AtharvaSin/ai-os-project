@@ -65,7 +65,17 @@ Query the Life Graph for domain-level status using MCP tools:
    - Objectives nearing their target_date
 4. If `get_domain_tree` fails or returns empty (Life Graph not yet deployed), skip this section silently.
 
-### Step 3c: Check Active Project State (Fallback)
+### Step 3c: Birthdays & Important Dates
+Query the Contacts module for upcoming birthdays and important dates:
+
+1. Call `get_upcoming_dates(days_ahead=7)` to get birthdays, anniversaries, and custom dates in the next 7 days.
+2. If any dates are returned:
+   - Dates where `is_today=true` → mark as **ACTION NEEDED** with the contact's name and phone number
+   - Dates within 1-2 days → mark as **UPCOMING** with a heads-up
+   - Dates 3-7 days out → list briefly
+3. If `get_upcoming_dates` fails or returns empty, skip this section silently.
+
+### Step 3d: Check Active Project State (Fallback)
 Reference **WORK_PROJECTS.md** from this project's knowledge base. For each active focus project (AI Operating System, AI&U, Bharatvarsh), pull:
 - Current status (one line)
 - This week's focus or next milestone
@@ -96,6 +106,9 @@ Present as a single structured response:
 **PROJECT PULSE**
 [One line per active project: Project Name → status → this week's focus]
 
+**BIRTHDAYS & DATES**
+[Today's dates marked ACTION NEEDED with name + phone. Upcoming dates for next 7 days. Only show if dates exist.]
+
 **DOMAIN HEALTH**
 [Show 3 category summaries with their numbered domains. For each domain: status emoji (green=healthy, yellow=stale 3-7d, red=stale 7d+ or overdue), domain number + name, task/objective counts. Flag any domain needing attention. Only show if Life Graph data is available.]
 
@@ -124,6 +137,7 @@ Present as a single structured response:
 - **Gmail** — required for Step 2
 - **MCP Gateway: search_knowledge** — used for Step 3 (knowledge layer queries, semantic search)
 - **MCP Gateway: get_domain_tree, get_domain_summary** — used for Step 3b (Life Graph domain health)
+- **MCP Gateway: get_upcoming_dates** — used for Step 3c (birthdays and important dates)
 - **Past chats search** — used for Step 4 (carry-forward items)
 - **Knowledge base: WORK_PROJECTS.md** — fallback for Step 3c (project pulse)
 - **Knowledge base: OS_EVOLUTION_LOG.md** — referenced for recent decisions context

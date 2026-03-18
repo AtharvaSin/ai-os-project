@@ -3,7 +3,7 @@
 > Auto-generated from `ai_os` database on 2026-03-14, updated 2026-03-17
 > Instance: `bharatvarsh-website:us-central1:bharatvarsh-db`
 > Database: `ai_os` | User: `ai_os_admin` | PostgreSQL 15 | Extensions: vector 0.8.1, moddatetime 1.0, ltree 1.2
-> **Note:** Migrations 001-013 all applied (33 tables live). Extensions: vector 0.8.1, moddatetime 1.0, ltree 1.2. Live regeneration requires Cloud SQL Proxy connection.
+> **Note:** Migrations 001-014 all applied (33 tables live). Extensions: vector 0.8.1, moddatetime 1.0, ltree 1.2. Live regeneration requires Cloud SQL Proxy connection.
 
 ## Overview
 
@@ -15,7 +15,7 @@
 | 4 | `tasks` | 6 | 17 | Project Management | 001, 005, 012 |
 | 5 | `artifacts` | 0 | 12 | Project Management | 001, 005 |
 | 6 | `project_tags` | 12 | 4 | Project Management | 001 |
-| 7 | `contacts` | 10 | 16 | Contacts & Reference | 002 |
+| 7 | `contacts` | 891 | 20 | Contacts & Reference | 002, 014 |
 | 8 | `contact_relationships` | 4 | 7 | Contacts & Reference | 002 |
 | 9 | `important_dates` | 12 | 11 | Contacts & Reference | 002 |
 | 10 | `audiences` | 3 | 9 | Contacts & Reference | 002 |
@@ -76,6 +76,10 @@
 - **Indexes:** created_at DESC, mood, domain_id, GIN on tags, full-text GIN on content, partial indexes for undistilled and unembedded journals
 - **Trigger:** moddatetime(updated_at)
 - **Pipeline registration:** journal-monthly-distill (28th of each month, Category B)
+
+**Migration 014 (Contact Intelligence — applied):**
+- **Columns added to contacts:** google_contact_id (TEXT, unique), import_source (TEXT), last_contacted_at (TIMESTAMPTZ), domain_slug (TEXT). Table now has 20 columns (was 16).
+- **Data:** 891 Google Contacts imported via idempotent CSV importer (scripts/import_google_contacts.py)
 
 ---
 
