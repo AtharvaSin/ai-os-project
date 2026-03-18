@@ -9,6 +9,7 @@ steps:
       - '-t'
       - 'asia-south1-docker.pkg.dev/ai-operating-system-490208/ai-os-images/daily-brief-engine:latest'
       - '.'
+    dir: 'workflows/category-b/daily-brief-engine'
 
   # 2. Push both tags
   - name: 'gcr.io/cloud-builders/docker'

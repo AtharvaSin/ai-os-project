@@ -1,0 +1,85 @@
+# Category B Service Dispatcher
+# Single trigger watches workflows/category-b/** and deploys only changed services.
+# Each service's own cloudbuild.yaml is submitted as a nested Cloud Build job,
+# keeping deploy config (secrets, memory, env vars) in one authoritative place.
+
+steps:
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        set -e
+
+        echo "=== Category B Service Dispatcher ==="
+        echo "Commit: $COMMIT_SHA ($SHORT_SHA)"
+        echo ""
+
+        # Detect which service directories changed in this commit.
+        # git diff-tree compares a commit to its parent using tree objects
+        # (works with shallow clones).
+        CHANGED=$(git diff-tree --no-commit-id --name-only -r "$COMMIT_SHA" \
+          -- workflows/category-b/ 2>/dev/null \
+          | cut -d'/' -f3 | sort -u | grep -v '^$' || true)
+
+        # Fallback: if diff-tree fails (e.g. initial commit or merge),
+        # check all services that have a cloudbuild.yaml
+        if [ -z "$CHANGED" ]; then
+          echo "Could not detect specific changes — checking all services..."
+          CHANGED=$(ls workflows/category-b/*/cloudbuild.yaml 2>/dev/null \
+            | xargs -I{} dirname {} | xargs -I{} basename {} || true)
+        fi
+
+        # Filter to only directories that have their own cloudbuild.yaml
+        # (skip this dispatcher file, shared/, and any non-service dirs)
+        SERVICES=""
+        for DIR in $CHANGED; do
+          if [ -f "workflows/category-b/$DIR/cloudbuild.yaml" ]; then
+            SERVICES="$SERVICES $DIR"
+          fi
+        done
+        SERVICES=$(echo "$SERVICES" | xargs)
+
+        if [ -z "$SERVICES" ]; then
+          echo "No deployable Category B services changed. Done."
+          exit 0
+        fi
+
+        echo "Services to deploy: $SERVICES"
+        echo ""
+
+        DEPLOYED=0
+        FAILED=0
+
+        for SERVICE in $SERVICES; do
+          CONFIG="workflows/category-b/$SERVICE/cloudbuild.yaml"
+          echo "========================================="
+          echo ">>> Deploying: $SERVICE"
+          echo ">>> Config:    $CONFIG"
+          echo "========================================="
+
+          if gcloud builds submit /workspace \
+            --config="$CONFIG" \
+            --substitutions=SHORT_SHA="$SHORT_SHA" \
+            --project="$PROJECT_ID" \
+            --region=asia-south1 \
+            --quiet; then
+            echo ">>> $SERVICE deployed successfully"
+            DEPLOYED=$((DEPLOYED + 1))
+          else
+            echo ">>> FAILED: $SERVICE"
+            FAILED=$((FAILED + 1))
+          fi
+          echo ""
+        done
+
+        echo "========================================="
+        echo "=== Summary: $DEPLOYED deployed, $FAILED failed ==="
+        echo "========================================="
+
+        if [ "$FAILED" -gt 0 ]; then
+          exit 1
+        fi
+
+options:
+  logging: CLOUD_LOGGING_ONLY

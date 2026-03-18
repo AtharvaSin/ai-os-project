@@ -1,15 +1,28 @@
 steps:
+  # Build Docker image with commit SHA and latest tags
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'asia-south1-docker.pkg.dev/ai-operating-system-490208/ai-os-images/domain-health-scorer', '.']
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'asia-south1-docker.pkg.dev/ai-operating-system-490208/ai-os-images/domain-health-scorer']
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     args:
-      - 'gcloud'
+      - 'build'
+      - '--platform=linux/amd64'
+      - '-t'
+      - 'asia-south1-docker.pkg.dev/ai-operating-system-490208/ai-os-images/domain-health-scorer:$SHORT_SHA'
+      - '-t'
+      - 'asia-south1-docker.pkg.dev/ai-operating-system-490208/ai-os-images/domain-health-scorer:latest'
+      - '.'
+    dir: 'workflows/category-b/domain-health-scorer'
+
+  # Push both tags
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', '--all-tags', 'asia-south1-docker.pkg.dev/ai-operating-system-490208/ai-os-images/domain-health-scorer']
+
+  # Deploy to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args:
       - 'run'
       - 'deploy'
       - 'domain-health-scorer'
-      - '--image=asia-south1-docker.pkg.dev/ai-operating-system-490208/ai-os-images/domain-health-scorer'
+      - '--image=asia-south1-docker.pkg.dev/ai-operating-system-490208/ai-os-images/domain-health-scorer:$SHORT_SHA'
       - '--region=asia-south1'
       - '--service-account=ai-os-cloud-functions@ai-operating-system-490208.iam.gserviceaccount.com'
       - '--set-secrets=DB_PASSWORD=AI_OS_DB_PASSWORD:latest'
@@ -20,5 +33,10 @@ steps:
       - '--max-instances=1'
       - '--memory=256Mi'
       - '--timeout=120'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
+
 images:
-  - 'asia-south1-docker.pkg.dev/ai-operating-system-490208/ai-os-images/domain-health-scorer'
+  - 'asia-south1-docker.pkg.dev/ai-operating-system-490208/ai-os-images/domain-health-scorer:$SHORT_SHA'
+  - 'asia-south1-docker.pkg.dev/ai-operating-system-490208/ai-os-images/domain-health-scorer:latest'
