@@ -135,17 +135,17 @@ Recency decay: 0-3d = 1.0, 4-7d = 0.75, 8-14d = 0.50, 15-30d = 0.25, 30d+ = 0.10
 
 | Skill | Integration |
 |-------|-----------|
-| /morning-brief | DOMAIN HEALTH section showing all 9 domains with status indicators |
+| /morning-brief | DOMAIN HEALTH section showing all 11 domains with status indicators |
 | /weekly-review | LIFE DOMAIN REVIEW table with per-domain stats and rebalancing alerts |
 | /session-resume | Domain context recovery using get_domain_tree and get_domain_tasks |
 | /action-planner | Domain-aware task creation with domain_slug tagging |
 
 ## Adding New Domains
 
-Use `create_domain` MCP tool. Domain numbers continue from 010+. Suggested future domains:
-- 010 — Learning & Skill Development
-- 011 — Creative Practice (AI&U, digital art)
-- 012 — Financial Planning & Investments
+Use `create_domain` MCP tool. Domain numbers continue from 012+. Current range: 001-011 (009 archived). Suggested future domains:
+- 012 — Learning & Skill Development
+- 013 — Creative Practice (AI&U, digital art)
+- 014 — Financial Planning & Investments
 
 ## Design Decision: PostgreSQL over Neo4j
 

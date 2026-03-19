@@ -2,7 +2,7 @@
 
 Syncs tasks, objectives, and automations between Cloud SQL (source of truth)
 and Google Tasks (notification delivery rail). Creates items in domain-specific
-task lists organized by Life Graph domains (001-010).
+task lists organized by Life Graph domains (001-011).
 
 Task list naming: "{domain_number} {domain_name}" (one per numbered domain).
 Task list IDs stored in life_domains.metadata->>'google_task_list_id'.
@@ -235,7 +235,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
     @mcp.tool(
         description="List tasks from the Cloud SQL database, optionally filtered by project or life domain. "
         "Returns tasks with their Google Tasks sync status. "
-        "Task lists are organized per life domain (001-009). "
+        "Task lists are organized per life domain (001-011). "
         "Use domain_slug to filter by life domain (recursively includes sub-domains). "
         "Returns: {tasks: [{id, title, status, priority, due_date, project_name, domain_name, google_synced, ...}], count, _meta}. "
         "Example: list_tasks(project_slug='ai-operating-system') or list_tasks(domain_slug='003_career_professional')"
@@ -1137,7 +1137,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
 
     @mcp.tool(
         description="Reset Google Tasks: delete ALL existing task lists, then create "
-        "domain-based lists (one per numbered life domain 001-010). Syncs all DB tasks, "
+        "domain-based lists (one per numbered life domain 001-011). Syncs all DB tasks, "
         "objectives, and automations to the appropriate domain list. "
         "WARNING: Destructive operation — deletes ALL existing task lists and recreates them. "
         "Returns: {lists_deleted, lists_created, tasks_synced, objectives_synced, automations_synced, errors[]}. "

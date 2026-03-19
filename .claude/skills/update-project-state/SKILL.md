@@ -65,6 +65,15 @@ Use filesystem tools (Glob, Read, ls) to verify what physically exists. Check ea
 - Check for Dockerfile, cloudbuild.yaml, deployment configs
 - Check `.env.example` exists
 
+**I. Life Graph & Google Tasks Alignment**
+- Query `life_domains` table via MCP (`query_db`) to get current domain count, numbers, statuses
+- Check all active numbered domains have `google_task_list_id` in metadata (via `query_db`)
+- Verify domain numbers are sequential and no gaps exist in active domains
+- Flag any active domain without a `domain_number` (drift: domain exists but invisible in Google Tasks)
+- Flag any domain with `domain_number` but no `google_task_list_id` in metadata (drift: domain numbered but not synced)
+- Check `google_tasks.py` docstrings match current domain range (e.g., "001-011" not stale "001-010")
+- If misalignment is detected, flag it in the Drift Report and recommend running `reset_task_lists` + `sync_tasks_to_db`
+
 ### Step 2: Check Git State
 
 Run these git commands to understand recent activity:
@@ -125,8 +134,16 @@ Scan all knowledge-base/*.md files for stale counts or references that conflict 
 - **DB_SCHEMA.md** — Table count, migration count (only update the "Last updated" / overview section, not individual table schemas)
 - **EVOLUTION_LOG.md** — Add a new entry for the current sprint/build if significant changes occurred
 - **CAPTURE_GUIDE.md**, **LIFE_GRAPH.md**, **BRAND_IDENTITY.md** — Check for stale cross-references
+- **LIFE_GRAPH.md** — Domain count, domain hierarchy, skill integration section (domain count in /morning-brief), "Adding New Domains" section (next available domain number), archived domain status
 
 Update these files directly with the corrected counts and references.
+
+**Life Graph & Google Tasks reconciliation:**
+After updating KB files, compare the Life Graph domain state (from Step 1.I scan) against what the KB files claim. Common drift:
+- KB says "10 domains" but DB has 11 → update all domain count references
+- KB domain hierarchy doesn't include new domains → update hierarchy diagram
+- google_tasks.py docstrings say "001-010" but DB has 011 → update docstrings
+- PROJECT_INSTRUCTIONS.md notification rails section says "10 lists" → update to match DB
 
 ### Step 9: Update CLAUDE.md Files
 
@@ -301,6 +318,8 @@ Present a concise summary:
 - **Filesystem (Glob, Read, ls)** — required for codebase scanning
 - **Git (Bash)** — required for commit history and recent changes
 - **Knowledge base files** — required for cross-referencing documented state
+- **MCP tools (query_db)** — required for Life Graph domain verification, Google Tasks alignment check, and live DB state
+- **MCP tools (reset_task_lists, sync_tasks_to_db)** — only if misalignment detected and user approves corrective action
 - **gcloud CLI (Bash, optional)** — for verifying deployment status. If gcloud is not available or not authenticated, skip deployment verification and mark deployment status as UNVERIFIED
 
 ---

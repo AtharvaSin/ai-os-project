@@ -3,7 +3,7 @@
 ## Project Overview
 This is Atharva Singh's AI-enabled Personal Operating System. This directory is the execution layer — where code gets written, workflows get built, infrastructure gets deployed, and the OS grows.
 
-The primary interface is a Claude.ai project (Category A) with 25 skills, 3 connectors (Gmail, Calendar, Drive), and a rich knowledge base. This Claude Code workspace handles what can't happen inside chat: terminal operations, multi-file code generation, git management, deployment, and MCP server development.
+The primary interface is a Claude.ai project (Category A) with 26 skills, 3 connectors (Gmail, Calendar, Drive), and a rich knowledge base. This Claude Code workspace handles what can't happen inside chat: terminal operations, multi-file code generation, git management, deployment, and MCP server development.
 
 **Current State:** See `knowledge-base/PROJECT_STATE.md` for the authoritative, filesystem-verified project state snapshot. Run `/update-project-state` to refresh it.
 
@@ -71,7 +71,7 @@ ai-os-project/
 │   ├── bharatvarsh-website-docs/
 │   ├── bharatvarsh-source-text/
 │   └── skills/
-├── .claude/skills/           ← Claude Code auto-discovered skills (25 skills)
+├── .claude/skills/           ← Claude Code auto-discovered skills (26 skills)
 ├── dashboard/                ← Dashboard PWA (Next.js 14, LIVE on Cloud Run)
 │   ├── src/
 │   │   ├── app/              ← Pages + API routes (9 pages, 23 API routes)
@@ -122,12 +122,17 @@ ai-os-project/
 │   ├── generate_knowledge_snapshots.py ← Generate domain-level snapshots
 │   ├── seed_knowledge_drive.py ← Seed knowledge from Drive
 │   └── import_google_contacts.py ← Idempotent CSV contact importer (891 contacts)
+├── cowork-configuration/     ← Cowork plugins (visual studio, software forge)
+│   ├── asr-visual-studio/    ← Visual content plugin (18 files: 3 skills, 3 engine modules, brand system)
+│   ├── plugins-asr-visual-studio/ ← Flat copy for plugin loading
+│   ├── asr-software-forge/
+│   └── plugins-asr-software-forge/
 ├── infra/
 └── docs/
 ```
 
 ## Active Projects
-1. **AI Operating System** — Sprint 10-B (Bharatvarsh Lore Layer) deployed. Sprint 10-A (Contact Intelligence) deployed. 64 tools (12 modules), 39 tables in codebase, 25 skills, Dashboard PWA (9 pages, 28 components), Telegram Bot (10 commands), 891 contacts imported. Bharatvarsh lore module deployed (image: lore-v1). Migration 015 + seed 013 applied.
+1. **AI Operating System** — Sprint 11b: ASR Visual Studio Cowork plugin (18 files, 3 skills, 3 engine modules, hybrid local+MCP rendering). Sprint 11: Visual Content + Composite Queries built. 64 tools (12 modules), 39 tables in codebase, 26 skills, Dashboard PWA (9 pages, 28 components), Telegram Bot (10 commands), 891 contacts imported. Life Graph: 11 domains (001-011, 009 archived), 14 life_domains rows, Google Tasks aligned. Cowork plugin directory added.
 2. **AI&U YouTube** — Pre-launch. Content system designed. First 10-video library in progress.
 3. **Bharatvarsh** — Published. Website live at welcometobharatvarsh.com. Lore Layer complete (6 KB files, 5 DB tables, 8 MCP tools, 3 skills). Marketing phase.
 
@@ -147,7 +152,7 @@ When calling the Anthropic API in code:
 Always use prompt caching for system prompts that repeat across runs.
 
 ## Current Sprint
-Sprint 11 — Visual Content + Composite Queries (IN PROGRESS). New modules: composite.py (3 tools), media_gen.py (5 tools), 6 HTML templates, migration 016 (media_assets), migration 017 (domain default_project). Sprint 10-B — Bharatvarsh Knowledge Layer Enrichment (DEPLOYED). Sprint 10-A — Contact Intelligence Layer (DEPLOYED). Deployed state: 38 tables live, 64 tools (12 modules) in codebase, 25 skills, 891 contacts. Gateway image: lore-v1 (revision 00037). Migration 015 + seed 013 applied.
+Sprint 11b — ASR Visual Studio Cowork Plugin (BUILT). 18 files, 3 plugin skills (create-image, create-video, create-social-pack), 3 engine modules (renderer.js, video-renderer.js, mcp-bridge.js), hybrid local+MCP rendering, Chrome auto-detection, /render command, test suite, OPERATOR_GUIDE.md. Life Graph domain 011 (Zealogics Projects) aligned with Google Tasks (11 domain lists, 001-011). Domain 009 archived. Sprint 11 — Visual Content + Composite Queries (BUILT, NOT DEPLOYED). composite.py (3 tools), media_gen.py (5 tools), 6 HTML templates, migration 016-017. Sprint 10-B — Bharatvarsh Lore (DEPLOYED). Sprint 10-A — Contact Intelligence (DEPLOYED). Codebase: 64 tools / 12 modules / 39 tables / 26 skills. Deployed: 56 tools / 10 modules / 38 tables.
 
 ## Key Commands
 - `claude` — Start Claude Code session in this directory

@@ -13,6 +13,35 @@ A running record of design decisions, architecture changes, brainstorming outcom
 
 ## Log Entries
 
+### Life Graph Domain 011 + Google Tasks Alignment (2026-03-19)
+- [x] Domain 011 (Zealogics Projects) confirmed with `domain_number = '011'` in Cloud SQL
+- [x] Domain 009 (Zealogics Onboarding) confirmed archived — no active content
+- [x] Gateway `google_tasks.py` docstrings updated: "001-010"/"001-009" → "001-011"
+- [x] `reset_task_lists` executed: 11 lists deleted, 9 created (domains with content), 16 items synced (6 tasks + 8 objectives + 2 automations)
+- [x] `sync_tasks_to_db` verified: 0 discrepancies between DB and Google Tasks
+- [x] Task "Onboard and contribute to Inspection Services Scheduling Tool project" visible in 011 Zealogics Projects list
+- [x] `life_domains` table: 14 rows (3 categories + 11 numbered domains)
+- [x] KB updated: PROJECT_STATE v14, LIFE_GRAPH.md, WORK_PROJECTS.md, PROJECT_INSTRUCTIONS.md, CLAUDE.md
+- **State:** v13 → v14. Domains: 10 → 11 (009 archived, 011 active). Google Tasks: fully aligned.
+
+### Sprint 11b — ASR Visual Studio Cowork Plugin + Skills Cleanup (2026-03-19)
+- [x] ASR Visual Studio Cowork plugin built: 18 files in cowork-configuration/asr-visual-studio/asr-visual-studio/
+- [x] 3 plugin skills: create-image (HTML+Puppeteer, 12 platform presets), create-video (FFmpeg frame generation, 5 video types), create-social-pack (one brief → 5 platform assets)
+- [x] 3 engine modules: renderer.js (brand tokens, HTML builder, Puppeteer, Sharp, Chrome auto-detection), video-renderer.js (frame generation, FFmpeg assembly), mcp-bridge.js (hybrid local/MCP routing)
+- [x] /render command for one-line briefs with auto-detection of asset type, brand context, platform
+- [x] renderer agent for parallel batch rendering in social pack workflows
+- [x] Brand system with full token sets for A/B/C contexts (Google Fonts CDN, effects: grain, vignette, glow)
+- [x] Hybrid MCP integration: simple templates → Gateway render_template, AI imagery → Gateway generate_image, complex/video → local
+- [x] Test suite (scripts/test-suite.js): 7 tests covering all 3 brand contexts, social pack, 2 video types, routing validation
+- [x] Setup verification (scripts/verify-setup.js): pre-flight checks for Chrome, FFmpeg, Node, engine, skills
+- [x] OPERATOR_GUIDE.md with process recipes for Bharatvarsh marketing, AI&U episodes, AI OS sprint updates
+- [x] .gitignore: only workflow code pushed (18 files). Generated assets, node_modules, render logs excluded.
+- [x] plugins-asr-visual-studio/ synced as flat copy for plugin loading
+- [x] Skills cleanup: 25 → 26 skills. content-gen (NEW), life-graph (NEW), bharatvarsh renamed from bharatvarsh-content, sync-from-repo removed
+- [x] cowork-configuration/ directory added: asr-visual-studio, plugins-asr-visual-studio, asr-software-forge, plugins-asr-software-forge
+- [ ] Standalone GitHub repo (github.com/AtharvaSin/asr-visual-studio) — pending push
+- [ ] cowork-configuration/ untracked in git — pending commit
+
 ### Sprint 11 — Visual Content + Composite Queries + Gateway Improvements (2026-03-19)
 - [x] composite.py module: 3 tools (get_task_full, get_domain_overview, get_contact_brief) — reduces multi-query round-trips
 - [x] media_gen.py module: 5 tools (generate_image, edit_image, render_template, store_asset, list_assets) — brand-injected visual content via Google Gemini API

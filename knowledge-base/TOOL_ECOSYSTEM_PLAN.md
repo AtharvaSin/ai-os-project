@@ -2,7 +2,7 @@
 
 > **Purpose:** Reference architecture for the three-tier MCP and tool access system. Governs how new tools are added and where they live.
 >
-> **Last updated:** 2026-03-19 (State v12. MCP Gateway: 64 tools across 12 modules in codebase (56/10 deployed). Composite queries + Visual content modules built. 25 skills. Dashboard: 9 pages, 23 API routes, 28 components.)
+> **Last updated:** 2026-03-19 (State v13. MCP Gateway: 64 tools across 12 modules in codebase (56/10 deployed). Composite queries + Visual content modules built. 26 skills. Dashboard: 9 pages, 23 API routes, 28 components. ASR Visual Studio Cowork plugin: 3 plugin skills, 3 engine modules, hybrid local+MCP rendering.)
 
 ---
 

@@ -2,7 +2,7 @@
 
 > **Purpose:** Operational state file. Tells Claude what you're working on RIGHT NOW and where deep context lives. Updated after any session where project status shifts.
 >
-> **Last updated:** 2026-03-19 (State v12: Sprint 11 Visual Content + Composite Queries. 64 MCP tools in codebase (12 modules). 25 skills. 13 Cloud Run services. 39 tables in codebase (38 live). 891 contacts. Visual content + composite modules built.)
+> **Last updated:** 2026-03-19 (State v14: ASR Visual Studio Cowork plugin + skills update. 64 MCP tools in codebase (12 modules). 26 skills. 13 Cloud Run services. 39 tables in codebase (38 live). 891 contacts. Cowork visual content workflow operational.)
 > **Authoritative state:** See `knowledge-base/PROJECT_STATE.md` for verified filesystem-scanned state.
 
 ---
@@ -10,15 +10,15 @@
 ## Active Focus Projects
 
 ### 1. AI Operating System
-- **Status:** Active. Sprint 11 in progress — Visual Content + Composite Queries module. 39 tables in codebase (38 live), 64 MCP tools (12 modules, 56/10 deployed), 13 Cloud Run services, domain-based Google Task lists, 25 skills. 13 secrets. Contact Intelligence + Bharatvarsh Lore deployed. Composite queries + media generation built.
+- **Status:** Active. Sprint 11 in progress — Visual Content + Composite Queries module. 39 tables in codebase (38 live), 64 MCP tools (12 modules, 56/10 deployed), 13 Cloud Run services, domain-based Google Task lists, 26 skills. 13 secrets. Contact Intelligence + Bharatvarsh Lore deployed. Composite queries + media generation built. ASR Visual Studio Cowork plugin operational (18 files, 3 skills, 3 engine modules).
 - **Current phase:** Sprint 11 — Visual Content Generation + Composite Queries (BUILT, NOT DEPLOYED). composite.py (3 tools: get_task_full, get_domain_overview, get_contact_brief). media_gen.py (5 tools: generate_image, edit_image, render_template, store_asset, list_assets). Migration 016 (media_assets table). Migration 017 (domain default project). Telegram /img command. 6 branded HTML templates. All gateway modules improved. Sprint 10-B Bharatvarsh Lore (DEPLOYED). Sprint 10-A Contact Intelligence (DEPLOYED).
 - **Next milestone:** Commit and deploy gateway (64 tools, 12 modules). Apply migrations 016-017 to Cloud SQL. Reconnect Claude.ai MCP connector. Seed knowledge base from Drive. Push notifications (FCM).
 - **Pending decisions:** Firebase project setup timing, Life Graph dashboard visualization approach, knowledge seeding method (manual vs automated), daily brief delivery channels configuration
 - **What's been built:**
-  - Category A: 25 skills, 3 connectors (Gmail, Calendar, Drive), 28+ KB files
-  - Claude Code: Project directory with CLAUDE.md, 25 SKILL.md skills, mirrored KB
+  - Category A: 26 skills, 3 connectors (Gmail, Calendar, Drive), 28+ KB files
+  - Claude Code: Project directory with CLAUDE.md, 26 SKILL.md skills, mirrored KB
   - GCP: Project ai-operating-system-490208 with 16 APIs, 3 service accounts, Artifact Registry, Secret Manager (13 secrets)
-  - Life Graph v2: COMPLETE. ltree extension + 3 new tables (life_domains 12 rows, domain_context_items 12 rows, domain_health_snapshots). 8 MCP tools (life_graph.py module). Domain-based Google Task lists. domain-health-scorer pipeline (Cloud Run + weekly scheduler). 4 skills updated with domain health sections. LIFE_GRAPH.md in knowledge base.
+  - Life Graph v2: COMPLETE. ltree extension + 3 new tables (life_domains 14 rows — 3 categories + 11 numbered domains, domain_context_items 12 rows, domain_health_snapshots). 8 MCP tools (life_graph.py module). Domain-based Google Task lists (11 lists, 001-011). Domain 009 archived, 011 Zealogics Projects active. domain-health-scorer pipeline (Cloud Run + weekly scheduler). 4 skills updated with domain health sections. LIFE_GRAPH.md in knowledge base.
   - Database: ai_os DB on Cloud SQL (shared Bharatvarsh instance), 39 tables in codebase (38 live) across 11 domains, pgvector + ltree enabled, Migrations 001-017 written (001-015 applied), Seeds 001-013 all applied, 28 tasks seeded
   - MCP Gateway: LIVE on Cloud Run (ai-os-gateway, asia-south1, scale-to-zero). FastAPI + FastMCP. 64 tools in codebase (12 modules), 56 deployed (10 modules). Modules: PostgreSQL (6), Google Tasks (9), Drive Write (3), Drive Read (3), Calendar Sync (3), Telegram (5), Life Graph (8), Capture (3), Contacts (8), Bharatvarsh (8), Composite (3 — BUILT), Media Gen (5 — BUILT). 6 branded HTML templates for media_gen. Telegram webhook subsystem (8 files). Bearer token auth. Latest deployed revision: ai-os-gateway-00037-ggg (image lore-v1).
   - Google OAuth: Desktop client for Gateway (refresh token). Web Application client for Dashboard (DASHBOARD_OAUTH_SECRET). Consent screen configured.
@@ -40,6 +40,7 @@
   - Bharatvarsh Lore Layer: DEPLOYED. bharatvarsh.py MCP module (8 tools), migration 015 (5 lore tables), seed 013 (139 records), 6 KB files (BIBLE 1931 lines, CHARACTERS 1475, LOCATIONS 777, VISUAL_GUIDE 572, WRITING_GUIDE 395, TIMELINE 298), 3 Claude.ai skills, bharatvarsh-content v2.0, source text archive (19 files, 960K chars). Gateway revision 00037-ggg (image lore-v1).
   - Visual Content + Composite Queries (Sprint 11 — BUILT): composite.py module (3 composite query tools reducing round-trips), media_gen.py module (5 tools for brand-injected image generation via Google Gemini, template rendering via Playwright, asset management). Migration 016 (media_assets table). Migration 017 (domain default_project_id). 6 branded HTML templates (banner, og_image, social posts, story, thumbnail). Telegram /img command. Gateway-wide module improvements. Drive structure redesign. All built, pending commit and deploy.
   - Interface Strategy: Option C decided — Google Tasks/Calendar/Drive as notification rails, Next.js PWA as intelligence layer, Cloud SQL as single source of truth
+  - ASR Visual Studio Cowork Plugin (v13 — BUILT): Programmatic visual content generation via Cowork. 18 files in cowork-configuration/asr-visual-studio/. 3 skills (create-image with 12 platform presets, create-video with 5 video types, create-social-pack for multi-platform batch). 3 engine modules (renderer.js, video-renderer.js, mcp-bridge.js). Hybrid local+MCP rendering. Chrome auto-detection. /render command. OPERATOR_GUIDE.md. Test suite (7 tests). Git strategy: workflow code only, generated assets gitignored. Standalone repo: github.com/AtharvaSin/asr-visual-studio.
 - **Context:** PROJECT_STATE.md (KB — authoritative state), GCP_INFRA_CONFIG.md (KB), DB_SCHEMA.md (KB), TOOL_ECOSYSTEM_PLAN.md (KB), INTERFACE_STRATEGY.md (KB), EVOLUTION_LOG.md (KB)
 - **Tech stack:** Claude.ai + Claude Code, Cloud SQL PostgreSQL + pgvector, GCP (Cloud Run, Functions, Scheduler, Cloud Build), FastAPI, FastMCP, Next.js 14, NextAuth.js, Tailwind CSS, @hello-pangea/dnd, Docker, Firebase Cloud Messaging (Phase 3b)
 

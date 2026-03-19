@@ -41,3 +41,7 @@ WHERE domain_number = '009';
 -- 010 Career Network → personal
 UPDATE life_domains SET metadata = metadata || '{"default_project_id": "f75716c2-e8aa-4270-a1e0-db171f0e720d"}'::jsonb
 WHERE domain_number = '010';
+
+-- 011 Zealogics Projects → zealogics
+UPDATE life_domains SET metadata = metadata || '{"default_project_id": "d1e0e72c-5b0a-4695-908c-9fe8e33bc4eb"}'::jsonb
+WHERE domain_number = '011';

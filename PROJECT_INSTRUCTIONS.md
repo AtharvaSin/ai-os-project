@@ -35,7 +35,7 @@ When reasoning, building context, or making decisions, ALWAYS prefer information
 - **WORK_PROJECTS.md** — Operational project status. Cross-reference with PROJECT_STATE.md for verified accuracy.
 - **TOOL_ECOSYSTEM_PLAN.md** — Three-tier MCP architecture. Updated to v12: 64 tools across 12 modules (56/10 deployed).
 - **GCP_INFRA_CONFIG.md** — Infrastructure config. 13 secrets, 13 Cloud Run services (all live), 14 Cloud Scheduler jobs, deployment templates. Updated to v12.
-- **INTERFACE_STRATEGY.md** — Interface layer design. Dashboard spec, data flow patterns, design system. Updated with Brand Identity section, 25 skills.
+- **INTERFACE_STRATEGY.md** — Interface layer design. Dashboard spec, data flow patterns, design system. Updated with Brand Identity section, 26 skills.
 - **DB_SCHEMA.md** — Database schema. 39 tables in codebase (38 live), 17 migrations (001-015 applied, 016-017 pending), indexes, functions, enum types. Extensions: pgvector, moddatetime, uuid-ossp, ltree.
 - **CAPTURE_GUIDE.md** — Quick reference for using the Personal Capture System across Claude.ai, Telegram, and Dashboard.
 - **LIFE_GRAPH.md** — Life Graph domain organization system. Domain hierarchy, context types, health scoring, MCP tools.
@@ -111,7 +111,7 @@ Bot @AsrAiOsbot live with webhook on MCP Gateway. 10 slash commands (/brief, /ad
 
 ## Life Graph
 
-Life domain organization system that makes the AI OS life-domain-aware (not just project-centric). 3 categories (Private Affairs, Personal Projects, Work) with 10 numbered domains (001-010). PostgreSQL ltree for hierarchical queries. 3 tables (`life_domains`, `domain_context_items`, `domain_health_snapshots`). 8 MCP tools in `life_graph.py` module. Google Tasks reorganized to domain-based lists (10 lists). Domain health scoring pipeline (weekly Sunday 6 PM IST). 4 skills integrated with domain health sections. See LIFE_GRAPH.md for full specification.
+Life domain organization system that makes the AI OS life-domain-aware (not just project-centric). 3 categories (Private Affairs, Personal Projects, Work) with 11 numbered domains (001-011, domain 009 archived). PostgreSQL ltree for hierarchical queries. 3 tables (`life_domains` — 14 rows, `domain_context_items`, `domain_health_snapshots`). 8 MCP tools in `life_graph.py` module. Google Tasks reorganized to domain-based lists (11 lists, 001-011). Domain health scoring pipeline (weekly Sunday 6 PM IST). 4 skills integrated with domain health sections. See LIFE_GRAPH.md for full specification.
 
 ---
 
@@ -213,6 +213,8 @@ Reference PROJECT_STATE.md v12 for verified details:
 **Bharatvarsh Lore Layer (Complete — Sprint 10-B, Deployed):** bharatvarsh.py MCP module (8 tools). Migration 015 (5 lore tables, applied). Seed 013 (139 records, applied). 6 KB files (BHARATVARSH_BIBLE 1931 lines, CHARACTERS 1475, LOCATIONS 777, VISUAL_GUIDE 572, WRITING_GUIDE 395, TIMELINE 298). 3 Claude.ai skills (SKILL_BHARATVARSH_CONTENT v2.0, SKILL_LORE_CHECK, SKILL_BHARATVARSH_WRITER). bharatvarsh-content v2.0 skill with MCP lore validation. Source text archive (19 files, 960K chars). Gateway revision 00037-ggg (image lore-v1).
 
 **Visual Content + Composite Queries (Sprint 11 — Built, Not Deployed):** composite.py module (3 tools: get_task_full, get_domain_overview, get_contact_brief). media_gen.py module (5 tools: generate_image, edit_image, render_template, store_asset, list_assets). Migration 016 (media_assets table). Migration 017 (domain default_project_id). 6 branded HTML templates. Telegram /img command (10th command). Gateway-wide module improvements. Drive structure redesign. All built, pending commit and deploy.
+
+**ASR Visual Studio — Cowork Plugin (Sprint 11b — Built):** Programmatic visual content generation via Claude Cowork. 18 files in cowork-configuration/asr-visual-studio/. 3 plugin skills (create-image with 12 platform presets, create-video with 5 video types, create-social-pack for multi-platform batch). 3 engine modules (renderer.js with brand tokens + Puppeteer + Chrome auto-detection, video-renderer.js with FFmpeg + frame generation, mcp-bridge.js for hybrid local/MCP routing). /render command. Brand system A/B/C with Google Fonts. Test suite (7 tests). OPERATOR_GUIDE.md. Git strategy: workflow code only, generated assets gitignored.
 
 **Dashboard Life Graph + Capture UI (Built — Not Deployed):** Domain health visualization, context item views, Capture page. Committed, ready to deploy with next dashboard push.
 
@@ -342,7 +344,7 @@ The interface layer follows **Option C — Google Rails + Custom Intelligence La
 
 **Cognitive Engine (Claude.ai + Claude Code):** 60-70% of work. Creates tasks, generates artifacts, plans, drafts, decides. Talks to Google and Cloud SQL through the MCP Gateway (64 tools via AIOSMCP connector, 12 modules, 56/10 deployed).
 
-**Notification Rails (Google Tasks, Calendar, Drive, Telegram):** Delivery channels that push alerts to the phone and store files. NOT data stores. Cloud SQL is always the source of truth. Google tools and Telegram are downstream consumers. Google Tasks uses domain-based lists (10 lists for Life Graph domains 001-010). Telegram also serves as a capture input channel via /j, /e, /ei, /em commands.
+**Notification Rails (Google Tasks, Calendar, Drive, Telegram):** Delivery channels that push alerts to the phone and store files. NOT data stores. Cloud SQL is always the source of truth. Google tools and Telegram are downstream consumers. Google Tasks uses domain-based lists (11 lists for Life Graph domains 001-011, domain 009 archived). Telegram also serves as a capture input channel via /j, /e, /ei, /em commands.
 
 **Intelligence Layer (Next.js PWA Dashboard — LIVE):** What no third-party tool can provide: project health cards, interactive Gantt, Kanban task board, cross-project analytics, risk dashboard, pipeline monitor. Reads directly from Cloud SQL. Writes back task status updates. Dashboard URL: https://ai-os-dashboard-sv4fbx5yna-el.a.run.app. Built but not yet deployed: Life Graph dashboard visualization.
 
@@ -374,7 +376,7 @@ Three interfaces, one OS. This project operates across three surfaces that share
 
 **What Only the Dashboard Has:** Visual Gantt timeline, Kanban task board, Project health cards, Risk dashboard, Pipeline monitor, Mobile-optimized task management, PWA installability.
 
-**What All Three Surfaces Share:** CLAUDE.md / Project Instructions context, Knowledge base documents (mirrored via GitHub repo), Skills (available in both Claude surfaces), Cloud SQL data (all three read/write same database). The 25 skills work identically on both Claude surfaces.
+**What All Three Surfaces Share:** CLAUDE.md / Project Instructions context, Knowledge base documents (mirrored via GitHub repo), Skills (available in both Claude surfaces), Cloud SQL data (all three read/write same database). The 26 skills work identically on both Claude surfaces.
 
 ---
 
@@ -450,7 +452,7 @@ Proactively use connectors for context when relevant — don't wait to be asked:
 
 Reference WORK_PROJECTS.md and PROJECT_STATE.md for current operational state. As of March 2026, three active projects:
 
-1. **AI Operating System** — Sprint 10-B (Bharatvarsh Lore Layer). 39 tables in codebase, 64 MCP tools (12 modules, 56/10 deployed), 13 Cloud Run services (all live), 14 Cloud Scheduler jobs, 25 skills, domain-based Google Tasks, Dashboard PWA (9 pages, 23 routes, 28 components), Telegram Bot (10 commands incl. capture), Knowledge Layer V2, Risk Engine, Daily Brief Engine, Task Annotation Sync, Domain Health Scorer, Brand Identity System, Personal Capture System, Contact Intelligence Layer, Bharatvarsh Lore Layer — all deployed and live. Next: deploy dashboard with new pages, seed knowledge base, reconnect AIOSMCP connector.
+1. **AI Operating System** — Sprint 11b (ASR Visual Studio Cowork Plugin). 39 tables in codebase, 64 MCP tools (12 modules, 56/10 deployed), 13 Cloud Run services (all live), 14 Cloud Scheduler jobs, 26 skills, domain-based Google Tasks, Dashboard PWA (9 pages, 23 routes, 28 components), Telegram Bot (10 commands incl. capture), Knowledge Layer V2, Risk Engine, Daily Brief Engine, Task Annotation Sync, Domain Health Scorer, Brand Identity System, Personal Capture System, Contact Intelligence Layer, Bharatvarsh Lore Layer — all deployed and live. Cowork visual content plugin operational. Next: deploy gateway (64 tools, 12 modules), apply migrations 016-017, seed knowledge base, reconnect AIOSMCP connector.
 2. **AI&U YouTube Channel** — Pre-launch. Building first 10-video library. Context: AI&U Knowledge Pack (3 files in KB).
 3. **Bharatvarsh Novel & Transmedia** — Published. Marketing and community phase. Context: Bible + Platform docs + Website Docs (4 files) in KB.
 
@@ -470,7 +472,7 @@ The project knowledge base is synced from GitHub repo AtharvaSin/ai-os-project v
 
 ### Architecture & Systems
 
-- **PROJECT_STATE.md** — Authoritative state snapshot v12, generated from filesystem scans (trust this over other docs if they conflict)
+- **PROJECT_STATE.md** — Authoritative state snapshot v14, generated from filesystem scans (trust this over other docs if they conflict)
 - **GCP_INFRA_CONFIG.md** — GCP project config, 13 Cloud Run services all live, 13 secrets, 3 service accounts, deployment templates
 - **DB_SCHEMA.md** — Cloud SQL PostgreSQL schema reference (39 tables in codebase, 38 live, 10 domains, indexes, functions, migrations 001-015 applied, 016-017 pending)
 - **TOOL_ECOSYSTEM_PLAN.md** — Three-tier MCP architecture, module inventory (64 tools, 12 modules, 56/10 deployed), decision tree, implementation phases
@@ -558,7 +560,7 @@ Claude Code has additional skills not in this KB: /update-project-state (filesys
 At the start of each new chat in this project:
 
 1. **Orient** — Identify which workstream the request belongs to. Load relevant knowledge base context. Use MCP tools (query_db, list_tasks, get_domain_tree) for live state when relevant.
-2. **Phase check** — Note which build phase we are currently in when proposing solutions. Sprint 11 (Visual Content + Composite Queries) built. Sprint 10-B (Bharatvarsh Lore) deployed. Sprint 10-A (Contact Intelligence) deployed. Current focus is on committing and deploying gateway (64 tools, 12 modules), applying migrations 016-017, seeding knowledge base, and reconnecting AIOSMCP connector. Reference PROJECT_STATE.md v12 for verified current state.
+2. **Phase check** — Note which build phase we are currently in when proposing solutions. Sprint 11b (ASR Visual Studio Cowork Plugin) built. Sprint 11 (Visual Content + Composite Queries) built. Sprint 10-B (Bharatvarsh Lore) deployed. Sprint 10-A (Contact Intelligence) deployed. Current focus is on committing and deploying gateway (64 tools, 12 modules), applying migrations 016-017, seeding knowledge base, reconnecting AIOSMCP connector, and pushing Cowork plugin to standalone GitHub repo. Reference PROJECT_STATE.md v13 for verified current state.
 3. **Interface check** — Assess whether the request is better suited to Claude.ai, Claude Code, or the Dashboard. If another interface is more appropriate, say so before proceeding.
 4. **Execute** — Dive into work with full context, grounded in the KB documents and live MCP data.
 
