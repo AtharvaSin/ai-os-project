@@ -34,6 +34,7 @@ export async function GET() {
           WHERE dh.domain_id = d.id
           ORDER BY dh.snapshot_date DESC LIMIT 1) AS health_score
        FROM life_domains d
+       WHERE d.status = 'active'
        ORDER BY d.sort_order, d.name`,
     );
 
