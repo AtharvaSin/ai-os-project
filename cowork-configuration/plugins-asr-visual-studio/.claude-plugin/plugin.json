@@ -1,0 +1,10 @@
+{
+  "name": "asr-visual-studio",
+  "version": "2.0.0",
+  "description": "Programmatic visual content creation — branded images (Puppeteer/Sharp), videos (FFmpeg), and multi-platform social packs. Three-context brand system (A: AI OS, B: Bharatvarsh, C: Portfolio). Hybrid local+MCP rendering. Fire-and-forget: describe the output, optionally provide custom assets, come back to rendered files.",
+  "author": {
+    "name": "Atharva Singh",
+    "email": "atharvasingh.24@gmail.com"
+  },
+  "repository": "https://github.com/AtharvaSin/asr-visual-studio"
+}

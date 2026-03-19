@@ -1,0 +1,91 @@
+# {PROJECT_NAME}
+
+{ONE_LINER}
+
+## Project Context
+
+This project was built using the ASR Software Forge v2.
+- **Forge specs:** `{AI_OS_PATH}/forge-projects/{SLUG}/specs/`
+- **PRD:** `specs/prd.md` — functional requirements, data model, API spec, page inventory
+- **Architecture:** `specs/architecture.md` — stack decisions and rationale
+- **Design Direction:** `specs/design-direction.md` — aesthetic archetype, token system, differentiation decision
+
+When making changes to this project, always reference the specs to maintain consistency with the original intent.
+
+## Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Frontend | {FRONTEND} |
+| Backend | {BACKEND} |
+| Database | {DATABASE} |
+| Auth | {AUTH} |
+| Styling | {STYLING} |
+| Deployment | {DEPLOYMENT} |
+
+## Directory Structure
+
+```
+{DIRECTORY_TREE}
+```
+
+## Coding Standards
+
+### TypeScript
+- `strict: true` — no `any` types, no `@ts-ignore`
+- Named exports for components (no default exports)
+- Path aliases: `@/components`, `@/lib`, `@/hooks`, `@/types`
+- Zod for runtime validation at API boundaries
+
+### Styling
+- Tailwind CSS only — no inline styles, no CSS modules
+- All brand colors via CSS variables (defined in `globals.css`)
+- All brand tokens in `tailwind.config.ts`
+- Never hardcode hex values in component files
+
+### Components
+- One component per file
+- Server Components by default, `"use client"` only when needed
+- Every page route has `loading.tsx` and `error.tsx`
+- Semantic HTML (main, nav, section, article)
+
+## Design System
+
+This project uses the **{ARCHETYPE}** aesthetic direction.
+
+**Differentiation decision:** {DIFFERENTIATION}
+
+**Token references:** See `globals.css` for CSS variables, `tailwind.config.ts` for Tailwind mappings.
+
+When adding new pages or components:
+1. Use existing tokens — don't introduce new colors or fonts
+2. Follow the established layout patterns from existing pages
+3. Ensure the differentiation decision is present in new components where applicable
+4. Run the anti-slop checklist before finalizing (see design-direction.md)
+
+## Environment Variables
+
+See `.env.example` for all required variables with descriptions.
+
+## Development
+
+```bash
+# Install
+npm install
+
+# Dev server
+npm run dev
+
+# Build
+npm run build
+
+# Lint
+npm run lint
+
+# Type check
+npx tsc --noEmit
+```
+
+## Key Decisions
+
+{KEY_DECISIONS — from architecture.md rationale section}

@@ -1,0 +1,10 @@
+{
+  "name": "asr-software-forge",
+  "version": "2.1.0",
+  "description": "Two-mode software development system. BUILD mode: bespoke fullstack applications from scratch with anti-slop design process, PRD generation, architecture decisions, and intentional UI. CONTRIBUTE mode: work on existing team repositories (Zealogics, open-source) with codebase onboarding, convention detection, branch management, testing, and PR creation. Supports multi-cloud deployment (Vercel, GCP, AWS, Azure, Railway, Fly.io). Planning happens in ai-os-project, code lives in separate repos. Adapts to any tech stack — doesn't force Next.js on everything.",
+  "author": {
+    "name": "Atharva Singh",
+    "email": "atharvasingh.24@gmail.com"
+  },
+  "repository": "https://github.com/AtharvaSin/ai-os-project"
+}

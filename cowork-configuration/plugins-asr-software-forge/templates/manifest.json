@@ -1,0 +1,61 @@
+{
+  "name": "",
+  "slug": "",
+  "one_liner": "",
+  "project_type": "greenfield",
+  "created_at": "",
+  "updated_at": "",
+  "code_path": null,
+  "git_remote": null,
+
+  "_comment_greenfield": "Fields for greenfield (build from scratch) projects",
+  "target_users": "",
+  "problem_statement": "",
+  "revenue_model": "",
+  "phase": "ideating",
+  "specs": {
+    "prd": false,
+    "architecture": false,
+    "design_direction": false,
+    "competitive_scan": false
+  },
+  "build": {
+    "status": null,
+    "pages_built": 0,
+    "api_endpoints": 0,
+    "database_tables": 0
+  },
+  "review": {
+    "verdict": null,
+    "anti_slop_score": null,
+    "design_compliance": null,
+    "requirements_coverage": null
+  },
+  "stack": {
+    "frontend": null,
+    "backend": null,
+    "database": null,
+    "auth": null,
+    "deployment": null,
+    "ci_cd": null
+  },
+  "deployment": {
+    "target": null,
+    "url": null,
+    "last_deployed": null
+  },
+
+  "_comment_contribution": "Fields for contribution (existing repo) projects",
+  "contribution": {
+    "repo_url": null,
+    "repo_host": null,
+    "org": null,
+    "default_branch": null,
+    "detected_stack": null,
+    "branching_strategy": null,
+    "commit_convention": null,
+    "codebase_brief": false,
+    "active_branches": [],
+    "prs": []
+  }
+}

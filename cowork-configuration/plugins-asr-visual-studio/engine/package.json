@@ -1,0 +1,17 @@
+{
+  "name": "asr-visual-studio-engine",
+  "version": "2.0.0",
+  "description": "Core rendering engine for ASR Visual Studio",
+  "private": true,
+  "scripts": {
+    "test": "node renderer.js && node video-renderer.js"
+  },
+  "dependencies": {},
+  "optionalDependencies": {
+    "puppeteer": "^22.0.0",
+    "sharp": "^0.33.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

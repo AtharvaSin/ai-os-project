@@ -1,0 +1,94 @@
+# Design Direction — {PROJECT_NAME}
+
+## Context Declaration
+
+```
+BRAND CONTEXT: {A: AI OS System / B: Bharatvarsh / C: Portfolio / D: Custom}
+CONTENT TYPE: {dashboard / form / landing / commerce / content / tool / admin}
+TARGET FEELING: {what should users feel?}
+```
+
+## Use-Case Analysis
+
+**Who uses this?**
+{Specific user description — technical level, context, device}
+
+**When and where?**
+{Usage patterns — daily tool, occasional use, one-time experience}
+
+**What's the ONE job?**
+"The user needs to {do X} in order to {achieve Y}."
+
+**Emotional register:**
+{Focus / Action / Trust / Exploration / Celebration / Warning / Clarity}
+
+## Aesthetic Direction
+
+**Archetype:** {Name from the archetype table}
+
+**Direction statement (2-3 sentences):**
+> {Specific direction with concrete visual mechanisms — NOT adjectives}
+
+## Anti-Slop Commitment
+
+The following patterns were explicitly REJECTED for this project:
+- {Pattern 1}
+- {Pattern 2}
+- {Pattern 3}
+
+## Differentiation Decision
+
+The ONE thing someone will remember about this design:
+
+> "{Specific visual or interaction mechanism}"
+
+## Token System
+
+### Colors
+```
+background-base:      #{hex}     # Page/app background
+background-surface:   #{hex}     # Cards, panels
+background-elevated:  #{hex}     # Modals, dropdowns
+border-default:       #{hex}     # Standard borders
+border-subtle:        #{hex}     # Hairlines, dividers
+text-primary:         #{hex}     # Main readable text
+text-secondary:       #{hex}     # Supporting text
+text-muted:           #{hex}     # Disabled, placeholder
+accent-primary:       #{hex}     # Primary action color
+accent-secondary:     #{hex}     # Secondary actions
+status-success:       #{hex}
+status-warning:       #{hex}
+status-error:         #{hex}
+status-info:          #{hex}
+```
+
+### Typography
+```
+font-display:   {font name}     # Headings, hero text
+font-body:      {font name}     # Body copy, UI text
+font-mono:      JetBrains Mono  # Code, data, metrics
+```
+
+### Scale
+```
+type-scale:     [12, 14, 16, 20, 24, 32, 48] px
+spacing-unit:   {4 or 8} px
+spacing-scale:  [4, 8, 12, 16, 24, 32, 48, 64, 96] px
+```
+
+### Borders & Surfaces
+```
+radius-sm:      {value}px
+radius-md:      {value}px
+radius-lg:      {value}px
+shadow-strategy: {none / subtle / layered}
+```
+
+## Component Patterns
+
+Key component decisions for this project:
+- **Cards:** {description of card treatment}
+- **Buttons:** {description of button treatment}
+- **Navigation:** {description of nav treatment}
+- **Data display:** {description of how data/metrics are shown}
+- **Empty states:** {description of empty state approach}

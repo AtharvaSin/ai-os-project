@@ -1,0 +1,61 @@
+# ── Generated Assets (NEVER push to GitHub) ──────────────────────────
+output/
+_frames/
+*.mp4
+*.webm
+*.gif
+
+# Generated images in working directories
+render-output/
+social-pack-*/
+
+# ── Node Dependencies ─────────────────────────────────────────────────
+node_modules/
+package-lock.json
+
+# ── Runtime Files ─────────────────────────────────────────────────────
+*.log
+.cache/
+.puppeteer/
+chrome-data/
+
+# ── User-Uploaded Assets (local only, not in repo) ───────────────────
+assets/user/
+assets/uploads/
+
+# ── OS / IDE ──────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# ── Downloaded Fonts (regenerated at runtime) ─────────────────────────
+assets/fonts/*.ttf
+assets/fonts/*.woff2
+!assets/fonts/.gitkeep
+
+# ── Texture Files (large, regenerated) ────────────────────────────────
+assets/textures/*.png
+assets/textures/*.jpg
+!assets/textures/.gitkeep
+
+# ── Reference Images (local mood boards, not in repo) ─────────────────
+references/mood-boards/**/*.png
+references/mood-boards/**/*.jpg
+references/mood-boards/**/*.jpeg
+references/mood-boards/**/*.webp
+references/examples/**/*.png
+references/examples/**/*.jpg
+references/examples/**/*.jpeg
+references/examples/**/*.webp
+!references/mood-boards/**/.gitkeep
+!references/examples/**/.gitkeep
+
+# ── Test Output (ephemeral) ───────────────────────────────────────────
+test-output/
+
+# ── Render Logs (ephemeral) ───────────────────────────────────────────
+render-log.md
+**/render-log.md
+**/pack-preview.html
