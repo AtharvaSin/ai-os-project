@@ -1,7 +1,7 @@
 # Life Graph — Domain Organization System
 
 > **Version:** 2.0
-> **Last Updated:** 2026-03-17
+> **Last Updated:** 2026-03-19
 > **Status:** Active
 
 ---
@@ -25,7 +25,8 @@ Life Graph
 └── Work
     ├── 007 — Networking
     ├── 008 — Admin
-    └── 009 — Zealogics Onboarding
+    ├── 010 — Career Network
+    └── 011 — Zealogics Projects
 ```
 
 ## Context Types
@@ -64,7 +65,8 @@ The relationship is directional: you complete **Tasks** to achieve **Objectives*
 |---|--------|-----------|-------------|-----------|
 | 007 | Networking | Growing LinkedIn presence | — | Professional brand building |
 | 008 | Admin | Expense tracking | Yearly triggers (IT return, insurance, car) | Financial administration |
-| 009 | Zealogics Onboarding | Learn skills for high performance | — | Career transition |
+| 010 | Career Network | — | — | Professional network, HR contacts, recruiters |
+| 011 | Zealogics Projects | — | — | TPM delivery, client projects, stakeholder mgmt |
 
 ## Database Architecture
 
@@ -87,7 +89,7 @@ ltree                 -- Hierarchical path queries
 ### Query Patterns
 
 ```sql
--- All tasks under Work (recursive, includes networking, admin, zealogics)
+-- All tasks under Work (recursive, includes networking, admin, zealogics projects)
 SELECT * FROM tasks t
 JOIN life_domains d ON t.domain_id = d.id
 WHERE d.path <@ 'work';
