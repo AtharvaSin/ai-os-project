@@ -22,12 +22,12 @@ Do NOT activate this skill in the middle of an ongoing working session. It is a 
 ## Process
 
 ### Step 1: Pull Today's Calendar
-Use the Google Calendar connector to fetch all events for today and tomorrow (Asia/Kolkata timezone). Present today's schedule with times. Flag anything tomorrow that requires preparation today (meetings needing a document, deadlines, calls with external parties).
+Use `gcal_list_events` to fetch all events for today and tomorrow (Asia/Kolkata timezone). Present today's schedule with times. Flag anything tomorrow that requires preparation today (meetings needing a document, deadlines, calls with external parties).
 
 If the calendar is empty, state that in one line and move on. Don't pad.
 
 ### Step 2: Scan Gmail for Priority Items
-Use the Gmail connector to search for unread messages from the last 24 hours.
+Use `gmail_search_messages` to search for unread messages from the last 24 hours.
 
 Categorize into:
 - **ACTION NEEDED** — Messages requiring a response, decision, or follow-up from the user. Include: sender, subject, one-line summary of what's needed.
@@ -75,7 +75,24 @@ Query the Contacts module for upcoming birthdays and important dates:
    - Dates 3-7 days out → list briefly
 3. If `get_upcoming_dates` fails or returns empty, skip this section silently.
 
-### Step 3d: Check Active Project State (Fallback)
+### Step 3d: Active Priorities
+Query the task database for the top active priorities via `query_db`:
+
+```sql
+SELECT title, domain_slug, priority, due_date, status
+FROM tasks WHERE status IN ('pending', 'in_progress')
+ORDER BY CASE priority WHEN 'urgent' THEN 1 WHEN 'high' THEN 2 WHEN 'medium' THEN 3 ELSE 4 END,
+due_date ASC NULLS LAST LIMIT 5
+```
+
+For each task returned:
+- If `due_date` is before today's date, flag it as **OVERDUE** with a visual marker.
+- If `due_date` is today, flag it as **DUE TODAY**.
+- Otherwise show the due date normally (or "No due date" if null).
+
+If the query fails or returns empty, skip this section silently.
+
+### Step 3e: Check Active Project State (Fallback)
 Reference **WORK_PROJECTS.md** from this project's knowledge base. For each active focus project (AI Operating System, AI&U, Bharatvarsh), pull:
 - Current status (one line)
 - This week's focus or next milestone
@@ -112,11 +129,29 @@ Present as a single structured response:
 **DOMAIN HEALTH**
 [Show 3 category summaries with their numbered domains. For each domain: status emoji (green=healthy, yellow=stale 3-7d, red=stale 7d+ or overdue), domain number + name, task/objective counts. Flag any domain needing attention. Only show if Life Graph data is available.]
 
+**ACTIVE PRIORITIES**
+[Top 5 tasks from query, ordered by priority then due date. For each: title, domain, priority level, due date. Mark OVERDUE tasks prominently. Mark DUE TODAY tasks. Only show if task data is available.]
+
 **CARRY-FORWARD**
 [Unfinished items from recent sessions. Only show if items exist.]
 
 **SUGGESTED FOCUS**
 [2-3 specific, actionable priorities for today based on everything above. Be concrete — not "work on AI OS" but "write the /deep-research skill and test it with a real research query." Ground these in actual project state, deadlines, and pending items.]
+
+### Step 6: Post-Execution Logging
+After composing and delivering the brief, call:
+`log_pipeline_run(slug: 'morning-brief', status: 'success')`
+
+If any critical step failed (Calendar or Gmail connector unavailable), call instead:
+`log_pipeline_run(slug: 'morning-brief', status: 'partial', metadata: {failed_steps: [...]})`
+
+---
+
+## Adaptive Behavior
+
+- **Overdue detection:** If any task from the Active Priorities query has a `due_date` earlier than today, surface it at the top of ACTIVE PRIORITIES with a clear OVERDUE label and include it in SUGGESTED FOCUS as a priority action.
+- **Time-of-day awareness:** If the user triggers this in the afternoon or evening, adjust framing ("remaining today" / "for tomorrow" rather than "this morning").
+- **Empty sections:** Silently omit any section that has no data. Never show empty headers.
 
 ---
 
@@ -125,7 +160,6 @@ Present as a single structured response:
 - The entire brief must be scannable in under 30 seconds. No section should exceed 8 lines.
 - Ruthlessly filter emails. If in doubt, skip it.
 - SUGGESTED FOCUS is the most important section. It should reflect real priorities grounded in project state, not generic productivity advice.
-- Be time-aware: if the user triggers this in the afternoon or evening, adjust framing ("remaining today" / "for tomorrow" rather than "this morning").
 - Never fabricate calendar events or emails. If a connector fails or returns nothing, say so briefly and continue with the sections that work.
 - Use the user's project context (WORK_PROJECTS.md, Evolution Log) to make suggestions that are grounded in actual work, not abstract recommendations.
 
@@ -133,11 +167,13 @@ Present as a single structured response:
 
 ## Connectors Used
 
-- **Google Calendar** — required for Step 1
-- **Gmail** — required for Step 2
-- **MCP Gateway: search_knowledge** — used for Step 3 (knowledge layer queries, semantic search)
-- **MCP Gateway: get_domain_tree, get_domain_summary** — used for Step 3b (Life Graph domain health)
-- **MCP Gateway: get_upcoming_dates** — used for Step 3c (birthdays and important dates)
+- **MCP Gateway: `gcal_list_events`** — required for Step 1 (calendar)
+- **MCP Gateway: `gmail_search_messages`** — required for Step 2 (inbox scan)
+- **MCP Gateway: `search_knowledge`** — used for Step 3 (knowledge layer queries, semantic search)
+- **MCP Gateway: `get_domain_tree`, `get_domain_summary`** — used for Step 3b (Life Graph domain health)
+- **MCP Gateway: `get_upcoming_dates`** — used for Step 3c (birthdays and important dates)
+- **MCP Gateway: `query_db`** — used for Step 3d (active priorities task query)
+- **MCP Gateway: `log_pipeline_run`** — used for Step 6 (post-execution logging)
 - **Past chats search** — used for Step 4 (carry-forward items)
-- **Knowledge base: WORK_PROJECTS.md** — fallback for Step 3c (project pulse)
-- **Knowledge base: OS_EVOLUTION_LOG.md** — referenced for recent decisions context
+- **Knowledge base: WORK_PROJECTS.md** — fallback for Step 3e (project pulse)
+- **Knowledge base: EVOLUTION_LOG.md** — referenced for recent decisions context

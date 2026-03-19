@@ -29,19 +29,19 @@ Use past chats search to find all substantive sessions in this project from the 
 - Action items stated
 
 **B. Evolution Log**
-Read OS_EVOLUTION_LOG.md for any entries added this week. Note:
+Read EVOLUTION_LOG.md for any entries added this week. Note:
 - Completed items (newly checked off)
 - New decisions logged
 - Status changes
 
 **C. Calendar Review**
-Use Google Calendar to pull all events from the past 7 days. Identify:
+Use `gcal_list_events` to pull all events from the past 7 days. Identify:
 - Meetings attended
 - Time spent in meetings vs available for deep work
 - Any events that were cancelled or rescheduled
 
 **D. Gmail Snapshot**
-Search Gmail for sent messages from the past 7 days. This shows:
+Use `gmail_search_messages` to search for sent messages from the past 7 days. This shows:
 - What communications were handled
 - Outstanding threads that need follow-up
 - Commitments made via email
@@ -195,7 +195,32 @@ Note effort distribution across categories (Private Affairs vs Personal Projects
 **KB MAINTENANCE**
 [Flag any knowledge base documents that are stale or need updating based on this week's work]
 
-### Step 4: Offer Downstream Actions
+### Step 4: Write-Back to Knowledge Layer
+After composing the review, persist a structured summary to the knowledge layer for future delta comparisons:
+
+Call `insert_record` with:
+- `table: 'knowledge_entries'`
+- `entry_type: 'weekly-review'`
+- `title: 'Weekly Review — [Date Range]'`
+- `domain: 'system'`
+- `content: {structured_summary}` — Include: accomplishments list, project statuses, open items, next week priorities, knowledge layer stats snapshot, domain health summary.
+
+This stored review becomes the baseline for next week's delta comparison. When composing the next weekly review, query for the previous week's entry:
+```sql
+SELECT content, created_at FROM knowledge_entries
+WHERE entry_type = 'weekly-review'
+ORDER BY created_at DESC LIMIT 1
+```
+Use it to highlight week-over-week changes (new accomplishments vs carried-over items, knowledge layer growth, domain health trends).
+
+### Step 5: Post-Execution Logging
+After composing and delivering the review (and completing the write-back), call:
+`log_pipeline_run(slug: 'weekly-review', status: 'success')`
+
+If any critical step failed, call instead:
+`log_pipeline_run(slug: 'weekly-review', status: 'partial', metadata: {failed_steps: [...]})`
+
+### Step 6: Offer Downstream Actions
 After presenting the review, offer:
 - "Want me to update WORK_PROJECTS.md with any status changes?"
 - "Should I create Calendar events for next week's priorities?"
@@ -224,11 +249,13 @@ If the week was particularly productive (multiple decisions, many artifacts), of
 ## Connectors Used
 
 - **Past chats search** — find sessions from the current week (required)
-- **Google Calendar** — review the week's events
-- **Gmail** — review sent communications and pending threads
-- **MCP Gateway: query_db** — used for Step 2b (knowledge layer health stats, proposed connections)
-- **MCP Gateway: get_domain_tree, get_domain_summary** — used for Step 2c (Life Graph domain review)
-- **MCP Gateway: search_knowledge** — optional, for semantic queries against knowledge layer
+- **MCP Gateway: `gcal_list_events`** — review the week's events
+- **MCP Gateway: `gmail_search_messages`** — review sent communications and pending threads
+- **MCP Gateway: `query_db`** — used for Step 2b (knowledge layer health stats, proposed connections)
+- **MCP Gateway: `get_domain_tree`, `get_domain_summary`** — used for Step 2c (Life Graph domain review)
+- **MCP Gateway: `search_knowledge`** — optional, for semantic queries against knowledge layer
+- **MCP Gateway: `get_contact_network`, `get_upcoming_dates`** — used for Step 2d (contact network health)
+- **MCP Gateway: `insert_record`** — used for Step 4 (write-back weekly review to knowledge layer)
+- **MCP Gateway: `log_pipeline_run`** — used for Step 5 (post-execution logging)
 - **Knowledge base: WORK_PROJECTS.md** — current project state
-- **MCP Gateway: get_contact_network, get_upcoming_dates** — used for Step 2d (contact network health)
-- **Knowledge base: OS_EVOLUTION_LOG.md** — recent entries and decisions
+- **Knowledge base: EVOLUTION_LOG.md** — recent entries and decisions

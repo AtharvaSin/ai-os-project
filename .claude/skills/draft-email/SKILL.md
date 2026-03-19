@@ -32,10 +32,14 @@ If the user provides enough context upfront, don't ask unnecessary clarifying qu
 
 ### Step 2: Pull Relevant Context
 - **Recipient lookup**: If the user names a recipient, call `search_contacts(query="recipient name")` or `get_contact(name="recipient name")` to pull their profile — company, title, tags, contact_type, last_contacted_at, and notes. Use this to:
-  - Adapt tone based on contact_type (professional → Direct/Diplomatic, personal → Warm)
+  - Adapt tone based on contact_type (professional -> Direct/Diplomatic, personal -> Warm)
   - Add context ("last contacted 3 weeks ago — consider a warm re-engagement opener")
   - Pre-fill subject line with relevant company/project context
   - If the contact has no email in the database, flag it
+- **Birthday proximity check**: After the contact lookup, call `get_upcoming_dates(days_ahead=7)` and check if the recipient has a birthday within the next 3 days. If a match is found, surface the suggestion before drafting:
+  - "**Suggestion:** {name}'s birthday is on {date}. Want to mention it in the email?"
+  - If the user agrees, weave a natural, non-forced birthday mention into the opening or sign-off. Never make the birthday the subject unless the email's purpose is specifically a birthday wish.
+  - If the user declines, proceed without mentioning it.
 - If the email relates to a **professional engagement**, reference WORK_PROJECTS.md for project context and the Career Reference Index for relevant experience.
 - If the user references a **previous email or thread**, use Gmail search to find and read it for continuity.
 - If the email is **introducing yourself or your work**, reference OWNER_PROFILE.md for positioning and credentials.
@@ -57,6 +61,35 @@ If the user asks to review an email they've already written:
 - Flag anything that could be misread or is ambiguous
 - Suggest specific edits (not vague "make it more professional")
 - Note if anything important is missing given the context
+
+### Step 5: Communication Logging (optional)
+After presenting drafts (or after the user confirms/sends), offer:
+
+> "Log this communication to the knowledge base?"
+
+If the user accepts, call:
+```
+insert_record(
+    table: "knowledge_entries",
+    data: {
+        entry_type: "communication-log",
+        content: "<summary of the email>",
+        metadata: {
+            recipient: "<recipient name>",
+            recipient_email: "<email if known>",
+            subject: "<subject line>",
+            key_points: ["<point 1>", "<point 2>", ...],
+            tone_used: "<Direct|Diplomatic|Warm>",
+            date: "<ISO 8601 date>",
+            thread_context: "<brief thread summary if reply>"
+        }
+    }
+)
+```
+
+This creates a searchable record of outbound communication for future reference (e.g., "what did I last email Ramesh about?").
+
+If the user declines or doesn't respond, skip silently — do not prompt again.
 
 ---
 
@@ -105,4 +138,6 @@ After presenting drafts, ask: "Want me to refine any of these, or send via Gmail
 - **Message compose tool** — present email variants in the native message widget
 - **Knowledge base: OWNER_PROFILE.md** — for voice/positioning when representing the user
 - **MCP Gateway: search_contacts, get_contact** — recipient lookup for context, tone, and history
+- **MCP Gateway: get_upcoming_dates** — birthday proximity check for recipients (within 3 days)
+- **MCP Gateway: insert_record** — log outbound communications to the knowledge base
 - **Knowledge base: WORK_PROJECTS.md** — for project context in professional emails

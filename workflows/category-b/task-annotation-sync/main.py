@@ -420,20 +420,24 @@ def main(request):
                     domain_id = domain["id"]
                     domain_slug = domain["slug"]
 
-                    # Resolve project from domain
-                    cursor.execute(
-                        "SELECT id FROM projects WHERE domain_id = %s::uuid",
-                        (str(domain_id),),
-                    )
-                    project_row = cursor.fetchone()
-                    if not project_row:
+                    # Resolve project from domain metadata, then FK, then deterministic fallback
+                    default_pid = dmeta.get("default_project_id")
+                    if default_pid:
+                        project_id = default_pid
+                    else:
                         cursor.execute(
-                            "SELECT id FROM projects ORDER BY created_at LIMIT 1"
+                            "SELECT id FROM projects WHERE domain_id = %s::uuid",
+                            (str(domain_id),),
                         )
                         project_row = cursor.fetchone()
-                    if not project_row:
-                        continue
-                    project_id = project_row[0]
+                        if not project_row:
+                            cursor.execute(
+                                "SELECT id FROM projects WHERE slug = 'personal'"
+                            )
+                            project_row = cursor.fetchone()
+                        if not project_row:
+                            continue
+                        project_id = project_row[0]
 
                     # Parse fields
                     clean_title = gt_title

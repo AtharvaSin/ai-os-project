@@ -94,7 +94,7 @@ If the user confirms the decision, offer to:
 
 ## Connectors Used
 
-- **Knowledge base: OS_EVOLUTION_LOG.md** — prior decisions
+- **Knowledge base: EVOLUTION_LOG.md** — prior decisions
 - **Knowledge base: WORK_PROJECTS.md** — project state
 - **Knowledge base: Reference Architecture** — technical alignment
 - **Past chats search** — previous discussions

@@ -29,6 +29,16 @@ Before researching, confirm:
 
 If the user's request is clear enough, skip clarification and proceed. Don't slow things down with unnecessary questions.
 
+### Step 1.5: Knowledge Base Pre-Check
+Before launching any web search, check whether the AI OS already has relevant research:
+- Call `search_knowledge(query="{topic}")` to search across knowledge entries, journal entries, and past research.
+- Review the results for recency and relevance:
+  - **If recent research exists (< 30 days old) and is highly relevant:** Present it to the user: "Found existing research on '{topic}' from {date}. Key findings: {brief summary}. Want to use this as a starting point and update it, or start fresh?"
+  - **If older research exists (30-90 days):** Note it as context: "There's a prior research entry from {date} on a related topic. I'll use it as baseline context but will verify all findings against current sources."
+  - **If no relevant research exists:** Proceed directly to Step 2.
+
+This prevents redundant research and builds on the knowledge graph over time.
+
 ### Step 2: Check Internal Context First
 Before searching the web, check what already exists:
 - Search **Google Drive** for any existing documents, decks, or notes on this topic
@@ -73,6 +83,45 @@ End every research output with a section that connects findings to the user's ac
 - "What this means for Bharatvarsh:" — if the research is marketing/audience related
 - "Decision needed:" — if the research surfaces a choice that should be logged
 
+### Step 6: Write Back to Knowledge Base
+After delivering the research to the user, persist the findings so they are discoverable by future sessions and other skills:
+- Call `insert_record(table: 'knowledge_entries', entry_type: 'research', content: {topic, key_findings_summary, source_count, depth, date, related_domain})`.
+- The `key_findings_summary` should be a concise 3-5 sentence distillation of the most important findings — not the full document. This is what will surface in future `search_knowledge` calls.
+- If the research updates or supersedes a prior knowledge entry found in Step 1.5, note the prior entry's ID in the content for lineage tracking.
+
+### Step 7: Follow-Up Offers
+After delivering the research and persisting it, offer the following next steps:
+
+1. **Save full brief to Google Drive?**
+   - If yes, call `upload_file` or `create_doc` to save the complete research document to the appropriate Drive folder.
+   - Suggest a folder path based on the topic domain (e.g., "AI OS/Research", "Bharatvarsh/Market Research").
+
+2. **Create tasks from recommendations?**
+   - If the research contains actionable recommendations, offer: "Want me to turn these recommendations into an action plan?"
+   - If yes, chain to `/action-planner` with the recommendations as input context.
+
+3. **Log a decision?**
+   - If the research surfaces a clear decision point, offer to log it in the Evolution Log.
+
+### Step 8: Log Pipeline Run
+After all steps complete, call:
+```
+log_pipeline_run(
+  slug: 'deep-research',
+  status: 'success',
+  metadata: {
+    topic: '<research topic>',
+    depth: '<quick-scan|deep-blueprint>',
+    source_count: <number of sources used>,
+    prior_research_found: <true|false>,
+    knowledge_entry_created: <true|false>,
+    drive_saved: <true|false>,
+    action_plan_chained: <true|false>
+  }
+)
+```
+If any step fails, log with `status: 'error'` and include the failure reason in metadata.
+
 ---
 
 ## Output Format
@@ -81,7 +130,7 @@ For quick scans (< 2 pages): Produce directly as a well-structured chat response
 
 For deep blueprints (2+ pages): Produce as a downloadable artifact — either a markdown file for technical content or a docx file for professional/shareable content.
 
-Always end with: "Should I add any findings to the Evolution Log or update any knowledge base documents?"
+Always end with: "Should I save this to Drive, create tasks from the recommendations, or add findings to the Evolution Log?"
 
 ---
 
@@ -93,6 +142,8 @@ Always end with: "Should I add any findings to the Evolution Log or update any k
 - Recommendations must be specific and actionable, not generic. "Consider using X" is weak. "Use X for Y because Z, starting with their free tier" is strong.
 - If the research relates to a pending decision in the Reference Architecture (Section 9: Open Decisions), explicitly flag this.
 - Don't pad. If the research can be communicated in 1 page, don't stretch it to 3.
+- Always check the knowledge base before searching the web. Redundant research wastes tokens and the user's time.
+- When writing back to the knowledge base, be concise — the entry should be a discovery aid, not a full copy of the research.
 
 ---
 
@@ -103,3 +154,8 @@ Always end with: "Should I add any findings to the Evolution Log or update any k
 - **Past chats search** — check for previous discussions in this project
 - **Knowledge base** — Reference Architecture, WORK_PROJECTS.md, domain-specific docs as relevant
 - **Web fetch** — for reading full articles/docs when search snippets are insufficient
+- **MCP Gateway: search_knowledge** — pre-check for existing research in the knowledge graph before conducting new research
+- **MCP Gateway: insert_record** — persist research findings as knowledge_entries for cross-session discovery
+- **MCP Gateway: log_pipeline_run** — record skill execution for observability and analytics
+- **MCP Gateway: upload_file** (optional) — save full research briefs to Google Drive
+- **MCP Gateway: create_doc** (optional) — create structured Google Docs for shareable research output

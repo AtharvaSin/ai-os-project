@@ -1,3 +1,8 @@
+---
+name: checklist-gen
+description: "Skill: Checklist Generator"
+---
+
 # Skill: Checklist Generator
 
 > **Scope:** This skill operates within the AI Operating System project only. It references project-specific knowledge base documents and connectors available in this project.

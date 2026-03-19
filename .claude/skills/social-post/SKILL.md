@@ -15,7 +15,7 @@ description: "Platform-aware professional and AI&U social content with voice cal
 
 Activate this workflow when the user asks to create social media content for professional thought leadership, AI&U channel promotion, personal brand building, or any non-Bharatvarsh social content. Trigger phrases include: "social post about," "LinkedIn post," "Twitter thread," "write a post on," "promote this," "share this insight," or any request for social media content creation.
 
-For Bharatvarsh-specific content, use /bharatvarsh-content instead. This skill handles everything else: professional insights, AI&U promotion, industry commentary, personal brand content.
+For Bharatvarsh-specific content, use /bharatvarsh instead (unified skill with content, writer, and lore check modes). This skill handles everything else: professional insights, AI&U promotion, industry commentary, personal brand content.
 
 ---
 

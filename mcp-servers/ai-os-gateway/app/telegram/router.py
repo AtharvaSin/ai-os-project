@@ -33,8 +33,8 @@ PROJECT_ALIASES: dict[str, tuple[str | None, str]] = {
     "youtube": ("a1000000-0000-0000-0000-000000000002", "AI&U"),
     "bv": ("a1000000-0000-0000-0000-000000000003", "Bharatvarsh"),
     "novel": ("a1000000-0000-0000-0000-000000000003", "Bharatvarsh"),
-    "zeal": (None, "Zealogics"),
-    "personal": (None, "Personal"),
+    "zeal": ("d1e0e72c-5b0a-4695-908c-9fe8e33bc4eb", "Zealogics"),
+    "personal": ("f75716c2-e8aa-4270-a1e0-db171f0e720d", "Personal"),
 }
 
 # Reverse lookup: UUID → (alias, name)
@@ -42,6 +42,8 @@ UUID_TO_PROJECT: dict[str, str] = {
     "a1000000-0000-0000-0000-000000000001": "AI Operating System",
     "a1000000-0000-0000-0000-000000000002": "AI&U",
     "a1000000-0000-0000-0000-000000000003": "Bharatvarsh",
+    "d1e0e72c-5b0a-4695-908c-9fe8e33bc4eb": "Zealogics",
+    "f75716c2-e8aa-4270-a1e0-db171f0e720d": "Personal",
 }
 
 # Priority aliases
@@ -307,9 +309,9 @@ async def handle_add(args: str, pool: asyncpg.Pool) -> dict[str, Any]:
         project_name = parsed["project_name"]
 
         if not project_id:
-            # Default to AI OS project
-            project_id = "a1000000-0000-0000-0000-000000000001"
-            project_name = "AI Operating System"
+            # Default to Personal project (safer than AI OS for unclassified tasks)
+            project_id = "f75716c2-e8aa-4270-a1e0-db171f0e720d"
+            project_name = "Personal"
 
         task_id = str(uuid.uuid4())
         short = task_id[:8]

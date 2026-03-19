@@ -60,7 +60,7 @@ Search recent conversations in this project for the relevant topic. Look for:
 - Open questions that were deferred
 
 **C. Evolution Log**
-Read the OS_EVOLUTION_LOG.md from the knowledge base. Check:
+Read the EVOLUTION_LOG.md from the knowledge base. Check:
 - Most recent entries for the relevant domain
 - Any status changes ([ACTIVE], [COMPLETED], [PARKED])
 - Listed next steps that may still be pending
@@ -71,6 +71,22 @@ Check the current project status for the relevant focus area:
 - Current phase and status
 - Next milestone
 - Pending decisions
+
+**E. Session Handoff Context**
+Query for the most recent session handoff via `query_db`:
+
+```sql
+SELECT content, metadata, created_at FROM knowledge_entries
+WHERE entry_type = 'session-handoff' ORDER BY created_at DESC LIMIT 1
+```
+
+If a handoff is found, extract:
+- Summary of what was in progress
+- Open work items and their state
+- Recommended next actions from the previous session
+- Any warnings or blockers noted
+
+If no handoff is found, note: "No formal handoff from last session." and rely on the other context sources.
 
 ### Step 3: Compose the Continuity Summary
 
@@ -88,6 +104,9 @@ Present as a concise "Previously on..." briefing:
 **OPEN ITEMS**
 [Action items, unanswered questions, deferred decisions]
 
+**HANDOFF CONTEXT**
+[Summary from the session handoff record, if one exists. Include: what was in progress, recommended next actions, any blockers flagged. If no handoff found: "No formal handoff from last session — context reconstructed from knowledge layer and chat history."]
+
 **CURRENT PROJECT STATE**
 [Pull from WORK_PROJECTS.md — where the relevant project stands now]
 
@@ -98,6 +117,38 @@ Present as a concise "Previously on..." briefing:
 After presenting the summary, ask: "Ready to pick up from here, or do you want to adjust the direction?"
 
 Then seamlessly transition into the working session — the resume is a ramp, not a destination.
+
+---
+
+## Session End: Create Handoff
+
+At the end of a significant working session (multiple artifacts produced, decisions made, or multi-step work in progress), proactively offer:
+
+> "Want me to save a session handoff for next time?"
+
+If the user agrees, compose a structured handoff summary and persist it:
+
+1. **Summarize the session**: What was accomplished, what decisions were made, what is still in progress, what the recommended next actions are, and any blockers or warnings.
+
+2. **Store the handoff** by calling `insert_record` with:
+   - `table: 'knowledge_entries'`
+   - `entry_type: 'session-handoff'`
+   - `title: 'Session Handoff — [Topic/Domain] — [Date]'`
+   - `domain: 'system'`
+   - `content: {handoff_summary}` — Include: session topic, accomplishments, open work items with state, recommended next steps, blockers/warnings, relevant file paths.
+
+3. Confirm to the user: "Handoff saved. Next time you resume, I'll pull this context automatically."
+
+**When to offer handoff creation:**
+- Session involved 3+ tool calls or file edits
+- Multi-step work was started but not completed
+- Important decisions were made that affect future work
+- The user explicitly says they're stopping for now
+
+**When NOT to offer:**
+- Quick Q&A sessions
+- Simple lookups or reads
+- The user already said goodbye or ended abruptly
 
 ---
 
@@ -115,15 +166,18 @@ If the past chat search returns links to previous conversations, include them so
 - Prioritize the most recent session on the topic. Don't surface sessions from weeks ago unless the user specifically asks.
 - PROPOSED NEXT STEPS should continue the trajectory of the previous session, not restart from scratch. If the last session ended with "next: build the Supabase schema," the proposed step should be "build the Supabase schema," not "let's discuss whether we should use Supabase."
 - If an Evolution Log entry conflicts with what past chat search surfaces (e.g., a decision was revised in a later session), go with the more recent information.
+- If a session handoff exists, give it high weight — it was explicitly created to carry context forward.
 - Be brief. The user knows what they worked on — they need a memory jog, not a lecture.
 
 ---
 
 ## Connectors Used
 
-- **MCP Gateway: search_knowledge** — primary tool for finding curated knowledge context (checked first)
-- **MCP Gateway: get_domain_tree, get_domain_tasks** — Life Graph domain context for session scope
+- **MCP Gateway: `search_knowledge`** — primary tool for finding curated knowledge context (checked first)
+- **MCP Gateway: `get_domain_tree`, `get_domain_tasks`** — Life Graph domain context for session scope
+- **MCP Gateway: `query_db`** — used for Step 2E (session handoff retrieval)
+- **MCP Gateway: `insert_record`** — used for session end handoff creation
 - **Past chats search** — secondary tool for session-level context when knowledge layer is insufficient
-- **Knowledge base: OS_EVOLUTION_LOG.md** — for decision history and status tracking
+- **Knowledge base: EVOLUTION_LOG.md** — for decision history and status tracking
 - **Knowledge base: WORK_PROJECTS.md** — for current project state
 - **Knowledge base: domain-specific docs** — loaded based on which project/domain is being resumed
