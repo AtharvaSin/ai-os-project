@@ -173,7 +173,9 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
         columns = list(data.keys())
         values = [_prep_value(v) for v in data.values()]
         set_clause = ", ".join(f"{col} = ${i+1}" for i, col in enumerate(columns))
-        id_cast = "::int" if table in _INTEGER_PK_TABLES else "::uuid"
+        is_int_pk = table in _INTEGER_PK_TABLES
+        id_cast = "::int" if is_int_pk else "::uuid"
+        record_id = int(id) if is_int_pk else id
         sql = (
             f"UPDATE {table} SET {set_clause} "
             f"WHERE id = ${len(columns)+1}{id_cast} RETURNING *"
@@ -181,7 +183,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
         pool = get_pool()
         try:
             async with pool.acquire() as conn:
-                record = await conn.fetchrow(sql, *values, id)
+                record = await conn.fetchrow(sql, *values, record_id)
                 if record is None:
                     return json.dumps({"error": f"No record in '{table}' with id '{id}'."})
                 result = _row_to_dict(record)
