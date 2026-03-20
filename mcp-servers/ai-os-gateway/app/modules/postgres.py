@@ -30,6 +30,7 @@ ALLOWED_TABLES = [
     "skill_evolution_log", "task_annotations",
     "life_domains", "domain_context_items", "domain_health_snapshots",
     "creative_projects", "creative_project_steps", "brainstorm_sessions", "writing_outputs",
+    "content_posts", "content_pipeline_log",
 ]
 
 _WRITE_KEYWORDS = re.compile(
