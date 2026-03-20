@@ -32,8 +32,8 @@ export async function POST(
       return NextResponse.json({ error: 'No file provided. Send as "file" field in form data.' }, { status: 400 });
     }
 
-    // Determine output path: content-ops/assets/{postId}/final.png
-    const assetsDir = path.join(process.cwd(), '..', 'content-ops', 'assets', postId);
+    // Determine output path: bharatvarsh_content_pipeline/assets/{postId}/final.png
+    const assetsDir = path.join(process.cwd(), '..', 'bharatvarsh_content_pipeline', 'assets', postId);
     await mkdir(assetsDir, { recursive: true });
 
     const filePath = path.join(assetsDir, 'final.png');

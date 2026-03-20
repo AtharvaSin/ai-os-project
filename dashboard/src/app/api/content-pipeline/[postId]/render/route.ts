@@ -51,9 +51,9 @@ export async function POST(
     }
 
     const oldStatus = current.status;
-    const contentOpsDir = path.join(process.cwd(), '..', 'content-ops');
+    const contentOpsDir = path.join(process.cwd(), '..', 'bharatvarsh_content_pipeline');
 
-    // Execute render-post.js in the content-ops directory
+    // Execute render-post.js in the bharatvarsh_content_pipeline directory
     const { stdout, stderr } = await execAsync(
       `node render-post.js --post ${postId}`,
       { cwd: contentOpsDir, timeout: 120_000 },
