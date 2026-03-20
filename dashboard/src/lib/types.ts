@@ -398,3 +398,49 @@ export interface CaptureStats {
   entries_this_week: number;
   distilled_entries: number;
 }
+
+/* ── Content Pipeline types ── */
+
+export type ContentPostStatus = 'planned' | 'prompt_ready' | 'awaiting_image' | 'image_uploaded' | 'rendered' | 'approved' | 'scheduled' | 'published' | 'failed';
+
+export interface ContentPost {
+  id: number;
+  post_id: string;
+  campaign: string;
+  content_pillar: string;
+  topic: string;
+  hook: string | null;
+  lore_refs: string | null;
+  classified_status: string | null;
+  channels: string[];
+  caption_text: string | null;
+  visual_direction: string | null;
+  art_prompt: Record<string, unknown> | null;
+  model_routing: string | null;
+  source_image_path: string | null;
+  render_manifest: Record<string, unknown> | null;
+  style_overrides: Record<string, unknown> | null;
+  scheduled_date: string | null;
+  scheduled_time: string | null;
+  target_audience: string | null;
+  hashtags: string | null;
+  cta_type: string | null;
+  cta_link: string | null;
+  social_post_ids: Record<string, string> | null;
+  status: ContentPostStatus;
+  approved_at: string | null;
+  published_at: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface ContentPipelineSummary {
+  total: number;
+  by_status: Record<ContentPostStatus, number>;
+  by_pillar: Record<string, number>;
+}
+
+export interface ContentPipelineResponse {
+  posts: ContentPost[];
+  summary: ContentPipelineSummary;
+}

@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import { Home, ListTodo, GanttChart, ShieldAlert, Activity, FolderOpen, LogOut, Inbox } from 'lucide-react';
+import { Home, ListTodo, GanttChart, ShieldAlert, Activity, FolderOpen, LogOut, Inbox, Radio } from 'lucide-react';
 import { signOut } from 'next-auth/react';
 
 const navItems = [
@@ -13,6 +13,7 @@ const navItems = [
   { href: '/risks', label: 'Risk Dashboard', icon: ShieldAlert },
   { href: '/pipelines', label: 'Pipelines', icon: Activity },
   { href: '/capture', label: 'Capture', icon: Inbox },
+  { href: '/content-pipeline', label: 'Content Pipeline', icon: Radio },
 ];
 
 export function Sidebar() {

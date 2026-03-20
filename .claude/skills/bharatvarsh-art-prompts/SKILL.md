@@ -60,8 +60,27 @@ The pipeline maintains 53 cataloged reference assets in `content-ops/assets/refe
 - Bharatsena: `Army logo.png`, `Bharatsena Card.jpg`
 - Bracecomm: `Bracecom banner.jpg`, `Bracecom Card.jpg`
 
-### Art Style Reference
-Always review `Art Style.pdf` principles before character generation sessions. It defines the cinematic, detailed, heroic, gritty visual language Bharatvarsh art should aspire to.
+### Art Style Reference — Jim Lee Modern American Comic Book
+ALL Bharatvarsh visual content MUST follow the Jim Lee modern American comic book art style. Review `Art Style.pdf` (11 pages, 10 Jim Lee reference images at `content-ops/assets/art_style/Jim 1-10.jpg`).
+
+**Jim Lee Style Checklist — EVERY prompt must include these elements:**
+
+| Category | Requirements |
+|----------|-------------|
+| **Line & Shading** | Dense hatching and cross-hatching for depth. Heavy blacks balanced with sharp white highlights. Bold ink outlines. |
+| **Anatomy** | Heroic musculature, strong jawlines, idealized but realistic faces. |
+| **Poses** | Dynamic foreshortened poses, aggressive low angles, Dutch tilts. |
+| **Cinematic Energy** | Action frozen at peak tension. Silhouette readability. Bold paneling logic. |
+| **Camera** | 24-35mm for drama, 50-85mm for heroic close-ups. |
+| **Costume Detail** | Sharp tactical seams, armor lines crisp. |
+| **Mood & Texture** | Textured line-work surfaces, slight grit. NEVER flat digital fills, smooth gradients, or airbrush. |
+| **Heroic Presence** | Characters always monumental even when calm. |
+
+**Style Anchor Phrase (prepend to every prompt):**
+`Jim Lee modern American comic book art style. Dense hatching and cross-hatching for depth. Heavy blacks balanced with sharp white highlights. Bold ink outlines. Textured line-work surfaces with slight grit.`
+
+**Negative Prompt Additions (Jim Lee exclusions):**
+`soft gradients, airbrush, smooth digital rendering, watercolor, anime, manga, chibi, flat colors, pastel palette, cel shading, vector art, minimalist, abstract, photorealistic, photograph, 3D render, CGI, Pixar style, oil painting, impressionist`
 
 ---
 
