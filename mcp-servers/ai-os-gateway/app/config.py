@@ -18,6 +18,11 @@ _linkedin_client_id: str | None = None
 _linkedin_client_secret: str | None = None
 _meta_app_id: str | None = None
 _meta_app_secret: str | None = None
+_x_api_key: str | None = None
+_x_api_secret: str | None = None
+_x_access_token: str | None = None
+_x_access_token_secret: str | None = None
+_x_bearer_token: str | None = None
 
 
 def _is_cloud_run() -> bool:
@@ -138,6 +143,16 @@ def _load_meta_env() -> None:
                 os.environ[secret_id] = value
 
 
+def _load_x_env() -> None:
+    """Load X (Twitter) API secrets from Secret Manager into env vars."""
+    for secret_id in ["X_API_KEY", "X_API_SECRET", "X_ACCESS_TOKEN",
+                       "X_ACCESS_TOKEN_SECRET", "X_BEARER_TOKEN"]:
+        if not os.getenv(secret_id):
+            value = _load_secret(secret_id)
+            if value:
+                os.environ[secret_id] = value
+
+
 def get_linkedin_client_id() -> str | None:
     """Get the LinkedIn Client ID."""
     global _linkedin_client_id
@@ -241,6 +256,7 @@ async def init_db_pool() -> None:
     _load_gemini_env()
     _load_linkedin_env()
     _load_meta_env()
+    _load_x_env()
 
     db_name = os.getenv("DB_NAME", "ai_os")
     db_user = os.getenv("DB_USER", "ai_os_admin")
