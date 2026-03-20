@@ -33,6 +33,9 @@ ALLOWED_TABLES = [
     "content_posts", "content_pipeline_log",
 ]
 
+# Tables that use SERIAL (integer) primary keys instead of UUID
+_INTEGER_PK_TABLES = {"content_posts", "content_pipeline_log"}
+
 _WRITE_KEYWORDS = re.compile(
     r"\b(INSERT|UPDATE|DELETE|DROP|ALTER|TRUNCATE|CREATE|GRANT|REVOKE)\b",
     re.IGNORECASE,
@@ -131,7 +134,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
     async def insert_record(table: str, data: dict[str, Any]) -> str:
         if table not in ALLOWED_TABLES:
             return json.dumps({"error": f"Table '{table}' is not in the allow-list."})
-        if "id" not in data:
+        if "id" not in data and table not in _INTEGER_PK_TABLES:
             data["id"] = str(uuid.uuid4())
         columns = list(data.keys())
         placeholders = [f"${i+1}" for i in range(len(columns))]
@@ -163,9 +166,10 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
         columns = list(data.keys())
         values = list(data.values())
         set_clause = ", ".join(f"{col} = ${i+1}" for i, col in enumerate(columns))
+        id_cast = "::int" if table in _INTEGER_PK_TABLES else "::uuid"
         sql = (
             f"UPDATE {table} SET {set_clause} "
-            f"WHERE id = ${len(columns)+1}::uuid RETURNING *"
+            f"WHERE id = ${len(columns)+1}{id_cast} RETURNING *"
         )
         pool = get_pool()
         try:
