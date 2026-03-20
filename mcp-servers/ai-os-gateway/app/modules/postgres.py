@@ -42,6 +42,13 @@ _WRITE_KEYWORDS = re.compile(
 )
 
 
+def _prep_value(value: Any) -> Any:
+    """Convert Python dicts/lists to JSON strings for asyncpg JSONB columns."""
+    if isinstance(value, (dict, list)):
+        return json.dumps(value)
+    return value
+
+
 def _serialize(value: Any) -> Any:
     """Convert asyncpg-native types to JSON-safe Python types."""
     if isinstance(value, uuid.UUID):
@@ -145,7 +152,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
         pool = get_pool()
         try:
             async with pool.acquire() as conn:
-                record = await conn.fetchrow(sql, *list(data.values()))
+                record = await conn.fetchrow(sql, *[_prep_value(v) for v in data.values()])
                 result = _row_to_dict(record)
                 result["_meta"] = {"action": "inserted", "table": table}
                 return json.dumps(result)
@@ -164,7 +171,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
         if not data:
             return json.dumps({"error": "No data provided for update."})
         columns = list(data.keys())
-        values = list(data.values())
+        values = [_prep_value(v) for v in data.values()]
         set_clause = ", ".join(f"{col} = ${i+1}" for i, col in enumerate(columns))
         id_cast = "::int" if table in _INTEGER_PK_TABLES else "::uuid"
         sql = (
