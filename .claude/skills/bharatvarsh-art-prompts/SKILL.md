@@ -9,8 +9,8 @@ description: "Generates model-aligned, lore-canonical, visually consistent AI ar
 > **Type:** Workflow skill — produces structured prompt packages ready for copy-paste into generation tools.
 > **Version:** 1.1 — 2026-03-20
 > **Dependencies:** BHARATVARSH_BIBLE.md, BRAND_IDENTITY.md (Context B), Character Reference Sheets
-> **Data Files:** `content-ops/prompts/` (style_anchors.json, character_dna.json, environment_templates.json, negative_prompts.json)
-> **Reference Catalog:** `content-ops/assets/references/REFERENCE_CATALOG.json` (53 assets cataloged)
+> **Data Files:** `bharatvarsh_content_pipeline/prompts/` (style_anchors.json, character_dna.json, environment_templates.json, negative_prompts.json)
+> **Reference Catalog:** `bharatvarsh_content_pipeline/assets/references/REFERENCE_CATALOG.json` (53 assets cataloged)
 
 ---
 
@@ -35,7 +35,7 @@ Before writing any prompt, select the generation model based on what you're crea
 
 ## Reference Image Strategy
 
-The pipeline maintains 53 cataloged reference assets in `content-ops/assets/references/`. Consult `REFERENCE_CATALOG.json` for the full inventory.
+The pipeline maintains 53 cataloged reference assets in `bharatvarsh_content_pipeline/assets/references/`. Consult `REFERENCE_CATALOG.json` for the full inventory.
 
 ### Which References to Attach
 
@@ -60,8 +60,27 @@ The pipeline maintains 53 cataloged reference assets in `content-ops/assets/refe
 - Bharatsena: `Army logo.png`, `Bharatsena Card.jpg`
 - Bracecomm: `Bracecom banner.jpg`, `Bracecom Card.jpg`
 
-### Art Style Reference
-Always review `Art Style.pdf` principles before character generation sessions. It defines the cinematic, detailed, heroic, gritty visual language Bharatvarsh art should aspire to.
+### Art Style Reference — Jim Lee Modern American Comic Book
+ALL Bharatvarsh visual content MUST follow the Jim Lee modern American comic book art style. Review `Art Style.pdf` (11 pages, 10 Jim Lee reference images at `bharatvarsh_content_pipeline/assets/art_style/Jim 1-10.jpg`).
+
+**Jim Lee Style Checklist — EVERY prompt must include these elements:**
+
+| Category | Requirements |
+|----------|-------------|
+| **Line & Shading** | Dense hatching and cross-hatching for depth. Heavy blacks balanced with sharp white highlights. Bold ink outlines. |
+| **Anatomy** | Heroic musculature, strong jawlines, idealized but realistic faces. |
+| **Poses** | Dynamic foreshortened poses, aggressive low angles, Dutch tilts. |
+| **Cinematic Energy** | Action frozen at peak tension. Silhouette readability. Bold paneling logic. |
+| **Camera** | 24-35mm for drama, 50-85mm for heroic close-ups. |
+| **Costume Detail** | Sharp tactical seams, armor lines crisp. |
+| **Mood & Texture** | Textured line-work surfaces, slight grit. NEVER flat digital fills, smooth gradients, or airbrush. |
+| **Heroic Presence** | Characters always monumental even when calm. |
+
+**Style Anchor Phrase (prepend to every prompt):**
+`Jim Lee modern American comic book art style. Dense hatching and cross-hatching for depth. Heavy blacks balanced with sharp white highlights. Bold ink outlines. Textured line-work surfaces with slight grit.`
+
+**Negative Prompt Additions (Jim Lee exclusions):**
+`soft gradients, airbrush, smooth digital rendering, watercolor, anime, manga, chibi, flat colors, pastel palette, cel shading, vector art, minimalist, abstract, photorealistic, photograph, 3D render, CGI, Pixar style, oil painting, impressionist`
 
 ---
 
@@ -82,7 +101,7 @@ Trigger phrases: "generate art for," "create a visual," "Bharatvarsh image," "pr
 
 1. **Select model:** Seedream 4.5 (faces/costumes) or Nano Banana (environments/atmospheres) — see routing table above
 2. **Select references:** Read `REFERENCE_CATALOG.json`, pick the appropriate reference images to attach
-3. **Load context:** Read `content-ops/prompts/character_dna.json` and `content-ops/prompts/style_anchors.json`
+3. **Load context:** Read `bharatvarsh_content_pipeline/prompts/character_dna.json` and `bharatvarsh_content_pipeline/prompts/style_anchors.json`
 4. **Select style anchor:** Pick from `style_anchors.json` based on target type
 5. **Insert subject:** Pull character Visual DNA verbatim from `character_dna.json` or write custom subject
 6. **Insert environment:** Pull from `environment_templates.json` or write custom
@@ -91,7 +110,7 @@ Trigger phrases: "generate art for," "create a visual," "Bharatvarsh image," "pr
 
 ## Full Skill Reference
 
-See `content-ops/skills/SKILL_BHARATVARSH_ART_PROMPTS.md` for the complete 11-phase prompting framework including:
+See `bharatvarsh_content_pipeline/skills/SKILL_BHARATVARSH_ART_PROMPTS.md` for the complete 11-phase prompting framework including:
 - Character Visual DNA registry (Phase 3) — now with reference image paths for 6 characters
 - Style Anchor System with 5 pre-validated anchors (Phase 4) — now with model routing
 - Environment Templates for 4 key locations (Phase 5)
