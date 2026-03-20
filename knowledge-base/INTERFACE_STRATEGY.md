@@ -4,7 +4,7 @@
 >
 > **Decision:** Option C — Google Rails + Custom Intelligence Layer
 >
-> **Last updated:** 2026-03-19 (State v12. 25 skills. Dashboard: 9 pages, 23 API routes, 28 components. MCP Gateway: 64 tools in codebase (12 modules), 56/10 deployed. Composite queries + Visual content modules built. Drive structure redesigned.)
+> **Last updated:** 2026-03-20 (State v14. 29 skills. Dashboard: 9 pages, 23 API routes, 28 components. MCP Gateway: 80 tools in codebase (15 modules), 56/10 deployed. Composite queries + Visual content + Creative Writer + LinkedIn + Meta modules built. Drive structure redesigned.)
 
 ---
 
@@ -33,7 +33,7 @@ The interface layer is built on a strict separation between three roles:
 - Message compose tool for email drafting
 - Interactive artifacts (React/HTML) for visual outputs
 - Past chats search for session continuity
-- Skills (25 active) for structured workflows
+- Skills (29 active) for structured workflows
 
 **What it creates for the interface layer:**
 - Tasks → written to Cloud SQL via MCP Gateway → synced to Google Tasks

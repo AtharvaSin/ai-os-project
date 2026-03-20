@@ -13,7 +13,7 @@ The Life Graph organizes all life domains into a queryable hierarchy stored in P
 ## Domain Hierarchy
 
 ```
-Life Graph
+Life Graph (14 rows: 3 root + 11 numbered, 009 archived)
 ├── Private Affairs
 │   ├── 001 — Friends and Gatherings
 │   ├── 002 — Health
@@ -25,6 +25,7 @@ Life Graph
 └── Work
     ├── 007 — Networking
     ├── 008 — Admin
+    ├── 009 — Career (ARCHIVED)
     ├── 010 — Career Network
     └── 011 — Zealogics Projects
 ```
@@ -65,6 +66,7 @@ The relationship is directional: you complete **Tasks** to achieve **Objectives*
 |---|--------|-----------|-------------|-----------|
 | 007 | Networking | Growing LinkedIn presence | — | Professional brand building |
 | 008 | Admin | Expense tracking | Yearly triggers (IT return, insurance, car) | Financial administration |
+| 009 | Career | — | — | **ARCHIVED** — replaced by 010 + 011 |
 | 010 | Career Network | — | — | Professional network, HR contacts, recruiters |
 | 011 | Zealogics Projects | — | — | TPM delivery, client projects, stakeholder mgmt |
 

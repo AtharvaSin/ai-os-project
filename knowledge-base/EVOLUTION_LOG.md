@@ -13,6 +13,33 @@ A running record of design decisions, architecture changes, brainstorming outcom
 
 ## Log Entries
 
+### Sprint 12 — Creative Writing Plugin + Social Media (2026-03-20)
+
+#### What Was Built
+- **Creative Writer MCP Module** — 8 tools: create/get/list projects, update Truby steps, save/get writing outputs, create/update brainstorm sessions
+- **Migration 019** — 4 tables (creative_projects, creative_project_steps, brainstorm_sessions, writing_outputs), 4 enum types
+- **Cowork Plugin** — cowork-configuration/creative-writing-plugin/ with Truby framework context, brainstorm methods reference
+- **Skill** — creative-writer with 4 modes (quick, project, brainstorm, critique), interactive-first design
+- **Social Media Modules** — linkedin.py (4 tools), meta.py (4 tools), social_oauth.py, migration 018 (social_accounts, social_post_log)
+- **New Skills** — bharatvarsh-art-prompts, channel-knowledge, post-to-social, creative-writer
+- **Gateway Deployment** — All 80 tools / 15 modules live on Cloud Run (build b6493516)
+
+#### Key Decisions
+- Creative writing is universe-agnostic; universe='bharatvarsh' loads lore context
+- Truby's 22 steps auto-populate for narrative project types (novel, comic_series, screenplay, anthology)
+- writing_outputs is append-only (no updated_at) — versioning via parent_output_id chain
+- Interactive-first: all modes gather information before generating output
+- Source tagging in brainstorm: untagged = user, <AI> = suggestion, <hidden> = author-only
+
+#### State After
+- 80 tools / 15 modules / 45 tables / 29 skills / 3 Cowork plugins
+- Commit: fdb1ce4
+
+#### Next Steps
+- [ ] Configure LinkedIn/Meta OAuth credentials for social publishing
+- [ ] First Category C LangGraph workflow
+- [ ] AI&U YouTube content production
+
 ### Life Graph Domain 011 + Google Tasks Alignment (2026-03-19)
 - [x] Domain 011 (Zealogics Projects) confirmed with `domain_number = '011'` in Cloud SQL
 - [x] Domain 009 (Zealogics Onboarding) confirmed archived — no active content
