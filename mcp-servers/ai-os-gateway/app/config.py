@@ -14,6 +14,10 @@ _telegram_bot_token: str | None = None
 _telegram_chat_id: str | None = None
 _telegram_webhook_secret: str | None = None
 _gemini_api_key: str | None = None
+_linkedin_client_id: str | None = None
+_linkedin_client_secret: str | None = None
+_meta_app_id: str | None = None
+_meta_app_secret: str | None = None
 
 
 def _is_cloud_run() -> bool:
@@ -116,6 +120,60 @@ def _load_gemini_env() -> None:
         os.environ.setdefault("GEMINI_API_KEY", key)
 
 
+def _load_linkedin_env() -> None:
+    """Load LinkedIn OAuth secrets from Secret Manager into env vars."""
+    for secret_id in ["LINKEDIN_CLIENT_ID", "LINKEDIN_CLIENT_SECRET"]:
+        if not os.getenv(secret_id):
+            value = _load_secret(secret_id)
+            if value:
+                os.environ[secret_id] = value
+
+
+def _load_meta_env() -> None:
+    """Load Meta (Facebook/Instagram) app secrets from Secret Manager into env vars."""
+    for secret_id in ["META_APP_ID", "META_APP_SECRET"]:
+        if not os.getenv(secret_id):
+            value = _load_secret(secret_id)
+            if value:
+                os.environ[secret_id] = value
+
+
+def get_linkedin_client_id() -> str | None:
+    """Get the LinkedIn Client ID."""
+    global _linkedin_client_id
+    if _linkedin_client_id:
+        return _linkedin_client_id
+    _linkedin_client_id = os.environ.get("LINKEDIN_CLIENT_ID") or _load_secret("LINKEDIN_CLIENT_ID")
+    return _linkedin_client_id
+
+
+def get_linkedin_client_secret() -> str | None:
+    """Get the LinkedIn Client Secret."""
+    global _linkedin_client_secret
+    if _linkedin_client_secret:
+        return _linkedin_client_secret
+    _linkedin_client_secret = os.environ.get("LINKEDIN_CLIENT_SECRET") or _load_secret("LINKEDIN_CLIENT_SECRET")
+    return _linkedin_client_secret
+
+
+def get_meta_app_id() -> str | None:
+    """Get the Meta App ID."""
+    global _meta_app_id
+    if _meta_app_id:
+        return _meta_app_id
+    _meta_app_id = os.environ.get("META_APP_ID") or _load_secret("META_APP_ID")
+    return _meta_app_id
+
+
+def get_meta_app_secret() -> str | None:
+    """Get the Meta App Secret."""
+    global _meta_app_secret
+    if _meta_app_secret:
+        return _meta_app_secret
+    _meta_app_secret = os.environ.get("META_APP_SECRET") or _load_secret("META_APP_SECRET")
+    return _meta_app_secret
+
+
 def _load_telegram_env() -> None:
     """Load Telegram secrets from Secret Manager into env vars.
 
@@ -181,6 +239,8 @@ async def init_db_pool() -> None:
     _load_anthropic_env()
     _load_telegram_env()
     _load_gemini_env()
+    _load_linkedin_env()
+    _load_meta_env()
 
     db_name = os.getenv("DB_NAME", "ai_os")
     db_user = os.getenv("DB_USER", "ai_os_admin")

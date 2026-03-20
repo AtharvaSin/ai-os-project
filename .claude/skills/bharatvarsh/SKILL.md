@@ -67,6 +67,18 @@ Use when creating marketing content, social media posts, promotional material, l
   ```
 - If a similar post was published in the last 7 days, pivot the angle or suggest an alternative.
 
+### Step 2.5: Load Channel Knowledge
+
+- **`search_knowledge`** — If a target platform is specified or implied, load the channel profile and strategy:
+  ```
+  search_knowledge(query="{platform} bharatvarsh channel profile", sub_domain="social-channels", limit=2)
+  search_knowledge(query="{platform} bharatvarsh channel strategy", sub_domain="social-channels", limit=2)
+  ```
+- If a Bharatvarsh channel profile exists for the target platform, extract: content pillars, target audience, hashtag strategy, posting guidelines
+- If a channel strategy exists, apply: content mix preferences, platform-specific voice guidance, growth-stage-appropriate tactics
+- Use channel context to inform Step 3 (platform-specific content) — channel strategy overrides generic platform defaults
+- **Fallback:** If no channel exists for the target platform, proceed with default behavior from Step 3. Suggest running `/channel-knowledge` to create one.
+
 ### Step 2: Determine Content Type
 
 | Type | Purpose | Best Platform |
@@ -301,3 +313,4 @@ After completing any mode:
 - `CONTENT_CALENDAR.md` — avoid duplicates (content mode, when available)
 - `MARKETING_PLAYBOOK.md` — brand voice (content mode, when available)
 - `BRAND_IDENTITY.md` — Context B design tokens (content mode, when available)
+- `SOCIAL_CHANNELS.md` — channel data architecture for `sub_domain='social-channels'` (content mode)

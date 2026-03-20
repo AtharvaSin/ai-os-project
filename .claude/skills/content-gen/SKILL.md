@@ -39,6 +39,18 @@ Trigger phrases include:
    - AI&U content: **AI&U Knowledge Pack** (channel voice, pillars, brand guidelines)
    - Brand-sensitive content: **BRAND_IDENTITY.md** (Context A for professional, Context C for personal)
 
+### Step 1.5: Load Channel Knowledge
+
+- **`search_knowledge`** — Search for the channel profile and strategy for the target platform:
+  ```
+  search_knowledge(query="{platform} channel profile", sub_domain="social-channels", limit=2)
+  search_knowledge(query="{platform} channel strategy", sub_domain="social-channels", limit=2)
+  ```
+- If a channel profile exists, extract: content pillars, target audience, posting guidelines, channel handle
+- If a channel strategy exists, apply: content mix preferences, voice/tone for this platform, hashtag strategy, algorithm-aware tips
+- Use channel context to inform Step 3 (platform format) and Step 4 (brand voice) — channel-specific voice overrides generic platform guidance
+- **Fallback:** If no channel exists for the target platform, proceed with default behavior. Suggest running `/channel-knowledge` to set one up.
+
 ### Step 2: Check for Duplicates
 
 - **`query_db`** — Check `campaign_posts` for recently published content on the same topic:
@@ -175,3 +187,4 @@ When generating an AI&U script, use this structure:
 - `BRAND_IDENTITY.md` — Context A and Context C design tokens
 - `CONTENT_CALENDAR.md` — cadence tracking and topic gaps (when available)
 - `AI&U Knowledge Pack` — channel voice, pillars, and guidelines (for YouTube content)
+- `SOCIAL_CHANNELS.md` — channel data architecture and query patterns for `sub_domain='social-channels'`

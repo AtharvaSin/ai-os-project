@@ -35,6 +35,16 @@ Identify what the post is about:
 - For **technical content**: Reference relevant project context from WORK_PROJECTS.md
 - For **trend commentary**: Use web search to verify the current state of the topic
 
+### Step 2.5: Load Channel Knowledge
+- **`search_knowledge`** — Search for the channel profile and strategy for the target platform:
+  ```
+  search_knowledge(query="{platform} channel profile", sub_domain="social-channels", limit=2)
+  search_knowledge(query="{platform} channel strategy", sub_domain="social-channels", limit=2)
+  ```
+- If a channel profile exists, extract: content pillars, target audience, channel handle, posting guidelines
+- If a channel strategy exists, apply: content mix preferences, voice/tone guidance, hashtag strategy, platform-specific tips
+- **Fallback:** If no channel exists for this platform, proceed with default behavior from Step 3. Suggest running `/channel-knowledge` to set up the channel.
+
 ### Step 3: Generate Platform-Specific Content
 
 **LinkedIn (Professional Home Base):**
@@ -94,4 +104,6 @@ For every post, include:
 - **Knowledge base: AI&U Knowledge Pack** — channel voice and brand guidelines
 - **Knowledge base: WORK_PROJECTS.md** — project context for technical posts
 - **Knowledge base: CONTENT_CALENDAR.md** — track what's been posted (when available)
+- **Knowledge base: SOCIAL_CHANNELS.md** — channel data architecture reference
+- **MCP Gateway: `search_knowledge`** — load channel profile and strategy from `sub_domain='social-channels'`
 - **Web search** — verify trends and current state for commentary posts

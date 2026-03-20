@@ -18,7 +18,7 @@ from fastmcp import FastMCP
 
 from app import config
 from app.auth.bearer import verify_bearer_token
-from app.modules import postgres, google_tasks, drive_write, drive_read, calendar_sync, telegram, life_graph, capture, contacts, bharatvarsh, composite, media_gen
+from app.modules import postgres, google_tasks, drive_write, drive_read, calendar_sync, telegram, life_graph, capture, contacts, bharatvarsh, composite, media_gen, linkedin, meta, creative_writer
 from app.telegram.webhook import router as telegram_router
 
 logger = logging.getLogger(__name__)
@@ -40,6 +40,9 @@ contacts.register_tools(mcp, config.get_db_pool)
 bharatvarsh.register_tools(mcp, config.get_db_pool)
 composite.register_tools(mcp, config.get_db_pool)
 media_gen.register_tools(mcp, config.get_db_pool)
+linkedin.register_tools(mcp, config.get_db_pool)
+meta.register_tools(mcp, config.get_db_pool)
+creative_writer.register_tools(mcp, config.get_db_pool)
 
 # Create the MCP HTTP sub-app (stateless — no session persistence needed)
 # path="/mcp" so the sub-app handles /mcp directly (no 307 redirect)
@@ -150,7 +153,7 @@ async def health():
         "version": "0.2.0",
         "database": db_status,
         "google_oauth": google_status,
-        "modules": ["postgres", "google_tasks", "drive_write", "drive_read", "calendar_sync", "telegram", "life_graph", "capture", "contacts", "bharatvarsh", "composite", "media_gen"],
+        "modules": ["postgres", "google_tasks", "drive_write", "drive_read", "calendar_sync", "telegram", "life_graph", "capture", "contacts", "bharatvarsh", "composite", "media_gen", "linkedin", "meta", "creative_writer"],
     }
 
 

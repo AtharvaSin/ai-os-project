@@ -18,7 +18,7 @@ Based in Hyderabad, India. Full profile in `knowledge-base/OWNER_PROFILE.md`.
 
 ## Tool Ecosystem (Three-Tier Model)
 - **Tier 1 — Directory Connectors:** Gmail, Calendar, Drive (connected). Slack, Notion, Canva, GitHub (pending). Zero infrastructure. One-click OAuth via Claude.ai.
-- **Tier 2 — Unified MCP Gateway:** ONE FastAPI Cloud Run service (`mcp-servers/ai-os-gateway/`) with 64 tools (12 modules). PostgreSQL (6), Google Tasks (9), Drive Write (3), Drive Read (3), Calendar Sync (3), Telegram (5), Life Graph (8), Capture (3), Contacts (8), Bharatvarsh (8), Composite (3), Media Gen (5). Telegram bot webhook also hosted on Gateway. Scales to zero. $0-7/month. Dashboard PWA (`dashboard/`) on separate Cloud Run service.
+- **Tier 2 — Unified MCP Gateway:** ONE FastAPI Cloud Run service (`mcp-servers/ai-os-gateway/`) with 72 tools (13 modules). PostgreSQL (6), Google Tasks (9), Drive Write (3), Drive Read (3), Calendar Sync (3), Telegram (5), Life Graph (8), Capture (3), Contacts (8), Bharatvarsh (8), Composite (3), Media Gen (5), Creative Writer (8). Telegram bot webhook also hosted on Gateway. Scales to zero. $0-7/month. Dashboard PWA (`dashboard/`) on separate Cloud Run service.
 - **Tier 3 — Local STDIO MCP:** Evernote, n8n, GitHub via npm packages in Claude Code. Zero cloud cost.
 See `knowledge-base/TOOL_ECOSYSTEM_PLAN.md` for full architecture, module inventory, decision tree for adding new tools, and implementation phases.
 
@@ -26,10 +26,10 @@ See `knowledge-base/TOOL_ECOSYSTEM_PLAN.md` for full architecture, module invent
 - **Cloud:** GCP (project: ai-operating-system-490208, region: asia-south1)
 - **Backend:** FastAPI, Python 3.12
 - **Orchestration:** LangGraph (Category C only)
-- **Database:** Cloud SQL PostgreSQL (pgvector, ltree) on shared bharatvarsh-db instance (bharatvarsh-website:us-central1:bharatvarsh-db). Database: ai_os. User: ai_os_admin. 39 tables in codebase (38 live) across 11 schema domains. Migrations 001-015 applied. 016-017 written (not applied).
+- **Database:** Cloud SQL PostgreSQL (pgvector, ltree) on shared bharatvarsh-db instance (bharatvarsh-website:us-central1:bharatvarsh-db). Database: ai_os. User: ai_os_admin. 43 tables in codebase (38 live) across 12 schema domains. Migrations 001-015 applied. 016-019 written (not applied).
 - **Frontend:** Next.js 14, React 18, Tailwind CSS, NextAuth.js, @hello-pangea/dnd (Dashboard PWA live on Cloud Run). Bharatvarsh website also live.
 - **AI Models:** Claude Sonnet 4.6 (default), Opus 4.6 (complex reasoning), Haiku 4.5 (classification)
-- **MCP:** Gmail, Calendar, Drive (Tier 1 connectors). AI OS Gateway deployed on Cloud Run with 64 tools (12 modules): PostgreSQL (6), Google Tasks (9), Drive Write (3), Drive Read (3), Calendar Sync (3), Telegram (5), Life Graph (8), Capture (3), Contacts (8), Bharatvarsh (8), Composite (3), Media Gen (5). 64 tools / 12 modules total in codebase (56/10 deployed). Telegram bot @AsrAiOsbot webhook on Gateway with capture commands (/j, /e, /ei, /em, /img). Evernote, n8n (Tier 3 local STDIO, to configure).
+- **MCP:** Gmail, Calendar, Drive (Tier 1 connectors). AI OS Gateway deployed on Cloud Run with 72 tools (13 modules): PostgreSQL (6), Google Tasks (9), Drive Write (3), Drive Read (3), Calendar Sync (3), Telegram (5), Life Graph (8), Capture (3), Contacts (8), Bharatvarsh (8), Composite (3), Media Gen (5), Creative Writer (8). 72 tools / 13 modules total in codebase (56/10 deployed). Telegram bot @AsrAiOsbot webhook on Gateway with capture commands (/j, /e, /ei, /em, /img). Evernote, n8n (Tier 3 local STDIO, to configure).
 
 ## GCP Infrastructure (Provisioned)
 - **Project:** ai-operating-system-490208 (asia-south1)
@@ -101,11 +101,11 @@ ai-os-project/
 │   │   └── ai_os_knowledge.py ← KnowledgeClient for semantic search + graph traversal
 │   └── category-c/           ← LangGraph + FastAPI (agentic)
 ├── mcp-servers/
-│   └── ai-os-gateway/        ← Unified MCP Gateway (64 tools, 12 modules — 56/10 deployed)
+│   └── ai-os-gateway/        ← Unified MCP Gateway (72 tools, 13 modules — 56/10 deployed)
 │       ├── app/
 │       │   ├── main.py
 │       │   ├── config.py
-│       │   ├── modules/      ← postgres.py, google_tasks.py, drive_write.py, drive_read.py, calendar_sync.py, telegram.py, life_graph.py, capture.py, contacts.py, bharatvarsh.py, composite.py, media_gen.py
+│       │   ├── modules/      ← postgres.py, google_tasks.py, drive_write.py, drive_read.py, calendar_sync.py, telegram.py, life_graph.py, capture.py, contacts.py, bharatvarsh.py, composite.py, media_gen.py, creative_writer.py
 │       │   ├── templates/     ← 6 branded HTML templates for media_gen
 │       │   ├── telegram/     ← Bot webhook, commands, AI triage, thread memory
 │       │   └── auth/         ← google_oauth.py, bearer.py
@@ -113,8 +113,8 @@ ai-os-project/
 │       ├── requirements.txt
 │       └── cloudbuild.yaml
 ├── database/
-│   ├── migrations/           ← 001-015 applied, 016-017 written (not applied)
-│   └── seeds/                ← 001-013 all applied
+│   ├── migrations/           ← 001-015 applied, 016-019 written (not applied)
+│   └── seeds/                ← 001-013 applied, 014 written (not applied)
 ├── scripts/
 │   ├── google_oauth_setup.py ← OAuth token flow helper
 │   ├── deploy_knowledge_layer_v2.sh ← Step-by-step deployment guide
@@ -122,17 +122,18 @@ ai-os-project/
 │   ├── generate_knowledge_snapshots.py ← Generate domain-level snapshots
 │   ├── seed_knowledge_drive.py ← Seed knowledge from Drive
 │   └── import_google_contacts.py ← Idempotent CSV contact importer (891 contacts)
-├── cowork-configuration/     ← Cowork plugins (visual studio, software forge)
+├── cowork-configuration/     ← Cowork plugins (visual studio, software forge, creative writer)
 │   ├── asr-visual-studio/    ← Visual content plugin (18 files: 3 skills, 3 engine modules, brand system)
 │   ├── plugins-asr-visual-studio/ ← Flat copy for plugin loading
 │   ├── asr-software-forge/
-│   └── plugins-asr-software-forge/
+│   ├── plugins-asr-software-forge/
+│   └── creative-writing-plugin/ ← Creative writer plugin (skill, context, 8 MCP tools)
 ├── infra/
 └── docs/
 ```
 
 ## Active Projects
-1. **AI Operating System** — Sprint 11b: ASR Visual Studio Cowork plugin (18 files, 3 skills, 3 engine modules, hybrid local+MCP rendering). Sprint 11: Visual Content + Composite Queries built. 64 tools (12 modules), 39 tables in codebase, 26 skills, Dashboard PWA (9 pages, 28 components), Telegram Bot (10 commands), 891 contacts imported. Life Graph: 11 domains (001-011, 009 archived), 14 life_domains rows, Google Tasks aligned. Cowork plugin directory added.
+1. **AI Operating System** — Sprint 12: Creative Writing Plugin (BUILT, NOT DEPLOYED). creative_writer.py (8 tools), migration 019 (4 tables, 4 enums), seed 014, Cowork plugin with Truby 22-step framework, 7 brainstorm methods, 4 modes. Sprint 11b: ASR Visual Studio Cowork plugin (18 files, 3 skills, 3 engine modules, hybrid local+MCP rendering). 72 tools (13 modules), 43 tables in codebase, 27 skills, Dashboard PWA (9 pages, 28 components), Telegram Bot (10 commands), 891 contacts imported. Life Graph: 11 domains (001-011, 009 archived), 14 life_domains rows, Google Tasks aligned. Cowork plugin directory added.
 2. **AI&U YouTube** — Pre-launch. Content system designed. First 10-video library in progress.
 3. **Bharatvarsh** — Published. Website live at welcometobharatvarsh.com. Lore Layer complete (6 KB files, 5 DB tables, 8 MCP tools, 3 skills). Marketing phase.
 
@@ -152,7 +153,7 @@ When calling the Anthropic API in code:
 Always use prompt caching for system prompts that repeat across runs.
 
 ## Current Sprint
-Sprint 11b — ASR Visual Studio Cowork Plugin (BUILT). 18 files, 3 plugin skills (create-image, create-video, create-social-pack), 3 engine modules (renderer.js, video-renderer.js, mcp-bridge.js), hybrid local+MCP rendering, Chrome auto-detection, /render command, test suite, OPERATOR_GUIDE.md. Life Graph domain 011 (Zealogics Projects) aligned with Google Tasks (11 domain lists, 001-011). Domain 009 archived. Sprint 11 — Visual Content + Composite Queries (BUILT, NOT DEPLOYED). composite.py (3 tools), media_gen.py (5 tools), 6 HTML templates, migration 016-017. Sprint 10-B — Bharatvarsh Lore (DEPLOYED). Sprint 10-A — Contact Intelligence (DEPLOYED). Codebase: 64 tools / 12 modules / 39 tables / 26 skills. Deployed: 56 tools / 10 modules / 38 tables.
+Sprint 12 — Creative Writing Plugin (BUILT, NOT DEPLOYED). creative_writer.py (8 tools), migration 019 (4 tables: creative_projects, creative_project_steps, brainstorm_sessions, writing_outputs), seed 014, Cowork plugin at cowork-configuration/creative-writing-plugin/ with Truby 22-step framework, 7 brainstorm methods, 4 modes (quick/project/brainstorm/critique). Sprint 11b — ASR Visual Studio Cowork Plugin (BUILT). Sprint 11 — Visual Content + Composite Queries (BUILT, NOT DEPLOYED). Sprint 10-B — Bharatvarsh Lore (DEPLOYED). Sprint 10-A — Contact Intelligence (DEPLOYED). Codebase: 72 tools / 13 modules / 43 tables / 27 skills. Deployed: 56 tools / 10 modules / 38 tables.
 
 ## Key Commands
 - `claude` — Start Claude Code session in this directory

@@ -2,7 +2,7 @@
 
 > **Purpose:** Reference architecture for the three-tier MCP and tool access system. Governs how new tools are added and where they live.
 >
-> **Last updated:** 2026-03-19 (State v13. MCP Gateway: 64 tools across 12 modules in codebase (56/10 deployed). Composite queries + Visual content modules built. 26 skills. Dashboard: 9 pages, 23 API routes, 28 components. ASR Visual Studio Cowork plugin: 3 plugin skills, 3 engine modules, hybrid local+MCP rendering.)
+> **Last updated:** 2026-03-20 (State v13. MCP Gateway: 72 tools across 13 modules in codebase (56/10 deployed). Composite queries + Visual content modules built. Creative Writer module added. 26 skills. Dashboard: 9 pages, 23 API routes, 28 components. ASR Visual Studio Cowork plugin: 3 plugin skills, 3 engine modules, hybrid local+MCP rendering.)
 
 ---
 
@@ -43,6 +43,7 @@ Single FastAPI container on Cloud Run. Scales to zero. All custom tool access. A
 | Bharatvarsh | P2 | query_lore, get_character, get_entity, search_lore, get_timeline, get_chapter, check_lore_consistency, get_writing_style | LIVE (8 tools) |
 | Composite | P1 | get_task_full, get_domain_overview, get_contact_brief | BUILT (3 tools) |
 | Media Gen | P2 | generate_image, edit_image, render_template, store_asset, list_assets | BUILT (5 tools) |
+| Creative Writer | P2 | Create/manage creative projects (Truby 22-step), brainstorm sessions (7 methods), save/retrieve versioned writing outputs | NOT DEPLOYED (8 tools) |
 | WhatsApp | P3 | send_message, send_template, get_message_status | Not started |
 | Content Tracker | P3 | log_post, get_calendar, update_status, get_metrics | Not started |
 
@@ -66,6 +67,7 @@ mcp-servers/ai-os-gateway/
 │   │   ├── bharatvarsh.py   ← LIVE (8 tools)
 │   │   ├── composite.py     ← BUILT (3 tools)
 │   │   ├── media_gen.py     ← BUILT (5 tools)
+│   │   ├── creative_writer.py ← NOT DEPLOYED (8 tools)
 │   │   ├── whatsapp.py      ← Not started
 │   │   └── content.py       ← Not started
 │   ├── templates/            ← 6 branded HTML templates for media_gen

@@ -1,0 +1,10 @@
+{
+  "name": "creative-writing-plugin",
+  "version": "1.0.0",
+  "description": "General-purpose creative writing engine with structured story development (Truby's 22-step framework), interactive brainstorming (7 methods), quick-output generation, and critique mode. Universe-agnostic — works for any creative project; loads Bharatvarsh lore context when universe='bharatvarsh'.",
+  "author": {
+    "name": "Atharva Singh",
+    "email": "atharvasingh.24@gmail.com"
+  },
+  "repository": "https://github.com/AtharvaSin/creative-writing-plugin"
+}
