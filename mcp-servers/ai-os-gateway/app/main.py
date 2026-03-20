@@ -18,7 +18,8 @@ from fastmcp import FastMCP
 
 from app import config
 from app.auth.bearer import verify_bearer_token
-from app.modules import postgres, google_tasks, drive_write, drive_read, calendar_sync, telegram, life_graph, capture, contacts, bharatvarsh, composite, media_gen, linkedin, meta, creative_writer, x_twitter
+from app.modules import postgres, google_tasks, drive_write, drive_read, calendar_sync, telegram, life_graph, capture, contacts, bharatvarsh, composite, media_gen, linkedin, meta, creative_writer, x_twitter, social_manager
+from app.modules.social_adapters import init_social_registry
 from app.telegram.webhook import router as telegram_router
 
 logger = logging.getLogger(__name__)
@@ -44,6 +45,10 @@ linkedin.register_tools(mcp, config.get_db_pool)
 meta.register_tools(mcp, config.get_db_pool)
 creative_writer.register_tools(mcp, config.get_db_pool)
 x_twitter.register_tools(mcp, config.get_db_pool)
+social_manager.register_tools(mcp, config.get_db_pool)
+
+# Initialize the social media platform registry (adapters + stubs)
+init_social_registry(config.get_db_pool)
 
 # Create the MCP HTTP sub-app (stateless — no session persistence needed)
 # path="/mcp" so the sub-app handles /mcp directly (no 307 redirect)
@@ -154,7 +159,7 @@ async def health():
         "version": "0.2.0",
         "database": db_status,
         "google_oauth": google_status,
-        "modules": ["postgres", "google_tasks", "drive_write", "drive_read", "calendar_sync", "telegram", "life_graph", "capture", "contacts", "bharatvarsh", "composite", "media_gen", "linkedin", "meta", "creative_writer", "x_twitter"],
+        "modules": ["postgres", "google_tasks", "drive_write", "drive_read", "calendar_sync", "telegram", "life_graph", "capture", "contacts", "bharatvarsh", "composite", "media_gen", "linkedin", "meta", "creative_writer", "x_twitter", "social_manager"],
     }
 
 

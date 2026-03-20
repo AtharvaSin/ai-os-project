@@ -56,3 +56,23 @@ docs/contacts.csv
 *.bak
 *.tmp
 .cache/
+
+# Claude Code worktrees
+.claude/worktrees/
+
+# Local-only content pipelines and ops
+bharatvarsh-content-pipeline/
+content-ops/
+
+# Cowork plugin zips and local builds
+cowork-configuration/plugins-*.zip
+cowork-configuration/software-forge/
+plugins-*.zip
+
+# Local Node scripts (one-off tooling)
+scripts/generate_social_setup_guide.js
+scripts/package.json
+scripts/package-lock.json
+
+# Stray temp files
+ziD5aKRN
