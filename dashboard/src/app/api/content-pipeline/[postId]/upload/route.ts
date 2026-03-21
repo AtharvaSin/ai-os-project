@@ -48,20 +48,22 @@ export async function POST(
     const oldStatus = current.status;
 
     // Update DB: set source_image_path (tmp path) and store base64 in render_manifest
+    const manifest = JSON.stringify({
+      source_image_base64: dataUri,
+      source_file_name: file.name,
+      source_mime_type: mimeType,
+      source_file_size: file.size,
+      uploaded_at: new Date().toISOString(),
+    });
+
     const updated = await queryOne<ContentPost>(
       `UPDATE content_posts
        SET source_image_path = $1,
            status = 'image_uploaded'::content_post_status,
-           render_manifest = COALESCE(render_manifest, '{}'::jsonb) || jsonb_build_object(
-             'source_image_base64', $3,
-             'source_file_name', $4,
-             'source_mime_type', $5,
-             'source_file_size', $6,
-             'uploaded_at', now()::text
-           )
+           render_manifest = COALESCE(render_manifest, '{}'::jsonb) || $3::jsonb
        WHERE post_id = $2
-       RETURNING *`,
-      [filePath, postId, dataUri, file.name, mimeType, file.size],
+       RETURNING id, post_id, status, source_image_path, scheduled_date`,
+      [filePath, postId, manifest],
     );
 
     // Insert audit log entry
