@@ -195,6 +195,74 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
             return json.dumps({"error": f"Update failed: {exc}"})
 
     @mcp.tool(description=(
+        "Upload an image (as base64) for a content pipeline post and advance its status "
+        "to 'image_uploaded'. Stores the base64 data URI in render_manifest JSONB for "
+        "persistence. post_id: the post identifier (e.g., 'BHV-20260406-001'). "
+        "image_base64: raw base64-encoded image data (no data: prefix). "
+        "mime_type: image MIME type (default 'image/jpeg'). file_name: original filename. "
+        "Returns: {post_id, status, uploaded} or {error}. "
+        "Example: upload_content_image(post_id='BHV-20260406-001', image_base64='...', "
+        "file_name='Mesh.jpg')"
+    ))
+    async def upload_content_image(
+        post_id: str,
+        image_base64: str,
+        file_name: str = "image.png",
+        mime_type: str = "image/jpeg",
+    ) -> str:
+        pool = get_pool()
+        try:
+            data_uri = f"data:{mime_type};base64,{image_base64}"
+            manifest = json.dumps({
+                "source_image_base64": data_uri,
+                "source_file_name": file_name,
+                "source_mime_type": mime_type,
+                "source_file_size": len(image_base64) * 3 // 4,
+                "uploaded_at": datetime.now().isoformat(),
+            })
+
+            async with pool.acquire() as conn:
+                # Verify post exists
+                post = await conn.fetchrow(
+                    "SELECT id, post_id, status FROM content_posts WHERE post_id = $1",
+                    post_id,
+                )
+                if not post:
+                    return json.dumps({"error": f"Post '{post_id}' not found."})
+
+                old_status = post["status"]
+
+                # Update post with image data and advance status
+                await conn.execute(
+                    "UPDATE content_posts "
+                    "SET status = 'image_uploaded'::content_post_status, "
+                    "    render_manifest = COALESCE(render_manifest, '{}'::jsonb) || $1::jsonb "
+                    "WHERE post_id = $2",
+                    manifest, post_id,
+                )
+
+                # Audit log
+                await conn.execute(
+                    "INSERT INTO content_pipeline_log "
+                    "(post_id, action, old_status, new_status, details, performed_by) "
+                    "VALUES ($1, 'image_upload', $2::content_post_status, "
+                    "'image_uploaded'::content_post_status, $3::jsonb, $4)",
+                    post_id, old_status,
+                    json.dumps({"file_name": file_name, "mime_type": mime_type, "via": "mcp_gateway"}),
+                    "mcp_gateway",
+                )
+
+                return json.dumps({
+                    "post_id": post_id,
+                    "status": "image_uploaded",
+                    "uploaded": True,
+                    "file_name": file_name,
+                    "_meta": {"action": "image_uploaded", "table": "content_posts"},
+                })
+        except Exception as exc:
+            return json.dumps({"error": f"Upload failed: {exc}"})
+
+    @mcp.tool(description=(
         "Inspect the database schema. With a table name: returns columns, types, "
         "constraints, and row count. Without: lists all tables with row counts. "
         "Returns: [{table, estimated_rows}] (no args) or {table, row_count, columns[], constraints[]} (with table). "
