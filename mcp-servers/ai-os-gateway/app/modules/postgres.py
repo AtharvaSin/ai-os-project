@@ -30,6 +30,8 @@ ALLOWED_TABLES = [
     "skill_evolution_log", "task_annotations",
     "life_domains", "domain_context_items", "domain_health_snapshots",
     "creative_projects", "creative_project_steps", "brainstorm_sessions", "writing_outputs",
+    # Content pipeline — migration 020
+    "content_posts", "content_pipeline_log",
 ]
 
 _WRITE_KEYWORDS = re.compile(
@@ -115,6 +117,10 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
         except Exception as exc:
             return json.dumps({"error": f"Query failed: {exc}"})
 
+    # Tables where id is SERIAL (auto-increment integer), not UUID.
+    # Must be defined before the tool function that references it.
+    _SERIAL_ID_TABLES = {"content_posts", "content_pipeline_log"}
+
     @mcp.tool(description=(
         "Insert a new record into an allowed table. Provide table name and a "
         "data dict of column->value pairs. UUID id auto-generated if omitted. "
@@ -123,15 +129,20 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
         "audiences, audience_members, pipelines, pipeline_runs, pipeline_logs, "
         "campaigns, campaign_posts, knowledge_entries, knowledge_embeddings, "
         "knowledge_connections, skill_registry, skill_evolution_log, task_annotations, "
-        "life_domains, domain_context_items, domain_health_snapshots. "
+        "life_domains, domain_context_items, domain_health_snapshots, "
+        "content_posts, content_pipeline_log. "
         "Returns: {column: value, ..., _meta: {action, table}}. "
         "Example: insert_record(table='tasks', data={'title': 'Review PR', 'status': 'todo', 'priority': 'high', 'project_id': '...', 'domain_id': '...'})"
     ))
     async def insert_record(table: str, data: dict[str, Any]) -> str:
         if table not in ALLOWED_TABLES:
             return json.dumps({"error": f"Table '{table}' is not in the allow-list."})
-        if "id" not in data:
+        # Only auto-generate a UUID id for UUID primary key tables.
+        # SERIAL id tables (content_posts, content_pipeline_log) let the DB auto-increment.
+        if "id" not in data and table not in _SERIAL_ID_TABLES:
             data["id"] = str(uuid.uuid4())
+        if "id" in data and data["id"] is None and table in _SERIAL_ID_TABLES:
+            del data["id"]
         columns = list(data.keys())
         placeholders = [f"${i+1}" for i in range(len(columns))]
         sql = (
@@ -162,14 +173,21 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
         columns = list(data.keys())
         values = list(data.values())
         set_clause = ", ".join(f"{col} = ${i+1}" for i, col in enumerate(columns))
+        # Auto-detect id type: integer for numeric strings, UUID otherwise
+        try:
+            id_val: int | uuid.UUID = int(id)
+            id_cast = "::int"
+        except ValueError:
+            id_val = uuid.UUID(id)
+            id_cast = "::uuid"
         sql = (
             f"UPDATE {table} SET {set_clause} "
-            f"WHERE id = ${len(columns)+1}::uuid RETURNING *"
+            f"WHERE id = ${len(columns)+1}{id_cast} RETURNING *"
         )
         pool = get_pool()
         try:
             async with pool.acquire() as conn:
-                record = await conn.fetchrow(sql, *values, id)
+                record = await conn.fetchrow(sql, *values, id_val)
                 if record is None:
                     return json.dumps({"error": f"No record in '{table}' with id '{id}'."})
                 result = _row_to_dict(record)
