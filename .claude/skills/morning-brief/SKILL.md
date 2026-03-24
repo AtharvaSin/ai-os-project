@@ -1,6 +1,6 @@
 ---
 name: morning-brief
-description: "Daily brief pulling Calendar, Gmail, project state, and carry-forward items. Use when user says good morning, brief me, what is on today, start my day, or opens a session with a greeting."
+description: "Daily brief pulling Calendar, Gmail, project state, domain health, Zealogics focus, and momentum analysis. Use when user says good morning, brief me, what is on today, start my day, or opens a session with a greeting."
 ---
 
 # Skill: Morning Brief
@@ -8,6 +8,8 @@ description: "Daily brief pulling Calendar, Gmail, project state, and carry-forw
 > **Scope:** This skill operates within the AI Operating System project only. It references project-specific knowledge base documents and connectors available in this project.
 >
 > **Type:** Workflow skill — Claude follows these instructions when triggered.
+>
+> **Version:** v2 — 6-section brief aligned with automated Daily Brief Engine.
 
 ---
 
@@ -21,124 +23,76 @@ Do NOT activate this skill in the middle of an ongoing working session. It is a 
 
 ## Process
 
-### Step 1: Pull Today's Calendar
-Use `gcal_list_events` to fetch all events for today and tomorrow (Asia/Kolkata timezone). Present today's schedule with times. Flag anything tomorrow that requires preparation today (meetings needing a document, deadlines, calls with external parties).
+### Step 1: Pull Today's Schedule
+Use `gcal_list_events` to fetch all events for today and tomorrow (Asia/Kolkata timezone). For each meeting:
+- Show time, title, and attendees
+- Show agenda/description snippet if available
+- Cross-reference with active tasks — flag any task that appears related to a meeting
 
 If the calendar is empty, state that in one line and move on. Don't pad.
 
-### Step 2: Scan Gmail for Priority Items
+### Step 2: Zealogics Focus
+Query the tasks database for all active Zealogics tasks (domain 011):
+
+```sql
+SELECT t.title, t.priority, t.due_date, t.status, p.name AS project_name
+FROM tasks t
+JOIN projects p ON p.id = t.project_id
+JOIN life_domains d ON d.id = t.domain_id
+WHERE d.domain_number = 11
+  AND t.status NOT IN ('done', 'cancelled')
+ORDER BY CASE t.priority WHEN 'urgent' THEN 1 WHEN 'high' THEN 2 WHEN 'medium' THEN 3 ELSE 4 END,
+t.due_date ASC NULLS LAST
+LIMIT 15
+```
+
+Group by urgency: overdue, due today, upcoming. Show priority icons.
+If no Zealogics tasks exist, show "No active Zealogics tasks" in one line.
+
+### Step 3: Scan Gmail for Priority Items
 Use `gmail_search_messages` to search for unread messages from the last 24 hours.
 
 Categorize into:
 - **ACTION NEEDED** — Messages requiring a response, decision, or follow-up from the user. Include: sender, subject, one-line summary of what's needed.
 - **FYI** — Important updates that don't need action but the user should know about. Keep to 3-4 max.
 
-Skip entirely: newsletters, marketing emails, automated alerts, security notifications, promotional emails, subscription receipts. Do not list these.
+Skip entirely: newsletters, marketing emails, automated alerts, security notifications, promotional emails, subscription receipts.
 
 If nothing is action-needed, say "Inbox is clear" and move on.
 
-### Step 3: Query Knowledge Layer (RAG-Grounded)
-Before composing the project pulse, query the AI OS knowledge layer via MCP tools for richer, up-to-date context:
-
-**A. Project Status** — For each active project, call:
-`search_knowledge(query="weekly status update", domain="project", sub_domain="{project_slug}", limit=1)`
-Use the most recent weekly summary to ground the project status section. This provides auto-generated summaries of tasks completed, blockers, and velocity for the past week.
-
-**B. Personal Events** — Call:
-`search_knowledge(query="upcoming events this week", domain="personal", limit=5)`
-Include any personal events (birthdays, anniversaries, trips) found in the knowledge layer in the brief.
-
-**C. System Updates** — Call:
-`search_knowledge(query="infrastructure changes deployment", domain="system", limit=3)`
-If recent system changes (deployments, migrations, infra updates) are found, mention them briefly as context.
-
-If `search_knowledge` returns no results for any domain, fall back to the static KB approach below.
-
-### Step 3b: Life Domain Health Check
-Query the Life Graph for domain-level status using MCP tools:
+### Step 4: Domain Health
+Query the Life Graph for domain-level health:
 
 1. Call `get_domain_tree()` to get the full Life Graph hierarchy with active task/objective/automation counts.
-2. For each top-level category (private_affairs, personal_projects, work), call `get_domain_summary(domain_slug)` to get aggregate stats (total tasks, active, overdue, objectives, automations).
-3. Identify:
-   - Domains with overdue tasks
-   - Domains with no recent activity (no task updates in 7+ days)
-   - Objectives nearing their target_date
-4. If `get_domain_tree` fails or returns empty (Life Graph not yet deployed), skip this section silently.
+2. For each numbered domain, call `get_domain_summary(domain_slug)` to get aggregate stats and latest health score.
+3. Present each domain with:
+   - Health indicator: green (70+), yellow (40-69), red (<40 or 3+ overdue tasks)
+   - Score, active tasks, overdue count, days since last activity
+4. Flag domains needing attention (health < 40 or stale > 7 days).
 
-### Step 3c: Birthdays & Important Dates
-Query the Contacts module for upcoming birthdays and important dates:
+If Life Graph data is unavailable, skip this section silently.
 
-1. Call `get_upcoming_dates(days_ahead=7)` to get birthdays, anniversaries, and custom dates in the next 7 days.
-2. If any dates are returned:
-   - Dates where `is_today=true` → mark as **ACTION NEEDED** with the contact's name and phone number
-   - Dates within 1-2 days → mark as **UPCOMING** with a heads-up
-   - Dates 3-7 days out → list briefly
-3. If `get_upcoming_dates` fails or returns empty, skip this section silently.
+### Step 5: 3-Day Momentum Analysis
+Compute momentum from the last 3 days of activity:
 
-### Step 3d: Active Priorities
-Query the task database for the top active priorities via `query_db`:
+1. Query tasks completed in last 3 days (total and per domain)
+2. Query tasks created in last 3 days
+3. Generate 3-4 lines of honest commentary:
+   - Which domains are getting attention
+   - Which domains are being neglected
+   - Overall momentum trajectory (accelerating, steady, stalled)
+   - Any concerns (e.g., "Career domain has 0 activity in 3 days despite 4 overdue tasks")
 
-```sql
-SELECT title, domain_slug, priority, due_date, status
-FROM tasks WHERE status IN ('pending', 'in_progress')
-ORDER BY CASE priority WHEN 'urgent' THEN 1 WHEN 'high' THEN 2 WHEN 'medium' THEN 3 ELSE 4 END,
-due_date ASC NULLS LAST LIMIT 5
-```
+### Step 6: Suggested Focus
+Compose 3 specific, actionable priorities for today based on everything above.
 
-For each task returned:
-- If `due_date` is before today's date, flag it as **OVERDUE** with a visual marker.
-- If `due_date` is today, flag it as **DUE TODAY**.
-- Otherwise show the due date normally (or "No due date" if null).
+Rules:
+- Be concrete: not "work on AI OS" but "apply migration 020 and test content_posts schema"
+- Reference specific tasks, emails, meetings, or deadlines
+- If Zealogics has urgent items, at least one suggestion should address them
+- Ground these in actual project state, not generic productivity advice
 
-If the query fails or returns empty, skip this section silently.
-
-### Step 3e: Check Active Project State (Fallback)
-Reference **WORK_PROJECTS.md** from this project's knowledge base. For each active focus project (AI Operating System, AI&U, Bharatvarsh), pull:
-- Current status (one line)
-- This week's focus or next milestone
-
-Flag any milestone that's due this week or any pending decision that's been sitting unresolved.
-
-**Merge knowledge layer results with static KB:** If the knowledge layer returned weekly summaries, use those as the primary source and supplement with WORK_PROJECTS.md only for information not covered. If no knowledge layer results, use WORK_PROJECTS.md as before.
-
-### Step 4: Check for Carry-Forward Items
-Use the past chats search tool to find recent sessions in this project (last 2-3 conversations). Look for:
-- Explicit action items or "next steps" that were identified
-- Unfinished tasks or deferred decisions
-- Anything the user said they'd do but may not have completed
-
-If nothing surfaces, skip this section silently.
-
-### Step 5: Compose the Brief
-
-Present as a single structured response:
-
-**TODAY'S SCHEDULE**
-[Calendar events with times, chronological. If empty: "No events scheduled."]
-
-**PRIORITY INBOX**
-[Action-needed emails: sender → subject → what's needed]
-[FYI items as compact list. If nothing: "Inbox is clear."]
-
-**PROJECT PULSE**
-[One line per active project: Project Name → status → this week's focus]
-
-**BIRTHDAYS & DATES**
-[Today's dates marked ACTION NEEDED with name + phone. Upcoming dates for next 7 days. Only show if dates exist.]
-
-**DOMAIN HEALTH**
-[Show 3 category summaries with their numbered domains. For each domain: status emoji (green=healthy, yellow=stale 3-7d, red=stale 7d+ or overdue), domain number + name, task/objective counts. Flag any domain needing attention. Only show if Life Graph data is available.]
-
-**ACTIVE PRIORITIES**
-[Top 5 tasks from query, ordered by priority then due date. For each: title, domain, priority level, due date. Mark OVERDUE tasks prominently. Mark DUE TODAY tasks. Only show if task data is available.]
-
-**CARRY-FORWARD**
-[Unfinished items from recent sessions. Only show if items exist.]
-
-**SUGGESTED FOCUS**
-[2-3 specific, actionable priorities for today based on everything above. Be concrete — not "work on AI OS" but "write the /deep-research skill and test it with a real research query." Ground these in actual project state, deadlines, and pending items.]
-
-### Step 6: Post-Execution Logging
+### Step 7: Post-Execution Logging
 After composing and delivering the brief, call:
 `log_pipeline_run(slug: 'morning-brief', status: 'success')`
 
@@ -147,11 +101,36 @@ If any critical step failed (Calendar or Gmail connector unavailable), call inst
 
 ---
 
+## Brief Structure (6 Sections)
+
+Present as a single structured response:
+
+**TODAY'S SCHEDULE**
+[Calendar events with times, attendees, agenda snippets. Related tasks flagged. If empty: "No events scheduled."]
+
+**ZEALOGICS FOCUS**
+[All active domain-011 tasks grouped by urgency. Priority icons. If none: "No active Zealogics tasks."]
+
+**PRIORITY INBOX**
+[Action-needed emails: sender, subject, what's needed. FYI items compact. If nothing: "Inbox is clear."]
+
+**DOMAIN HEALTH**
+[Health scores per numbered domain. Indicator + score + active/overdue counts. Flag domains needing attention.]
+
+**3-DAY MOMENTUM**
+[3-4 lines of honest commentary on activity trends, domain focus, and momentum trajectory.]
+
+**SUGGESTED FOCUS**
+[3 specific, actionable priorities for today. At least one Zealogics item if relevant.]
+
+---
+
 ## Adaptive Behavior
 
-- **Overdue detection:** If any task from the Active Priorities query has a `due_date` earlier than today, surface it at the top of ACTIVE PRIORITIES with a clear OVERDUE label and include it in SUGGESTED FOCUS as a priority action.
-- **Time-of-day awareness:** If the user triggers this in the afternoon or evening, adjust framing ("remaining today" / "for tomorrow" rather than "this morning").
+- **Overdue detection:** If any task is overdue, surface it prominently and include it in SUGGESTED FOCUS.
+- **Time-of-day awareness:** If triggered in the afternoon/evening, adjust framing ("remaining today" / "for tomorrow").
 - **Empty sections:** Silently omit any section that has no data. Never show empty headers.
+- **Zealogics priority:** When Zealogics domain has urgent/high-priority tasks, ensure they appear in SUGGESTED FOCUS.
 
 ---
 
@@ -159,21 +138,19 @@ If any critical step failed (Calendar or Gmail connector unavailable), call inst
 
 - The entire brief must be scannable in under 30 seconds. No section should exceed 8 lines.
 - Ruthlessly filter emails. If in doubt, skip it.
-- SUGGESTED FOCUS is the most important section. It should reflect real priorities grounded in project state, not generic productivity advice.
-- Never fabricate calendar events or emails. If a connector fails or returns nothing, say so briefly and continue with the sections that work.
-- Use the user's project context (WORK_PROJECTS.md, Evolution Log) to make suggestions that are grounded in actual work, not abstract recommendations.
+- SUGGESTED FOCUS is the most important section. It should reflect real priorities grounded in project state.
+- Never fabricate calendar events or emails. If a connector fails, say so briefly and continue.
+- 3-DAY MOMENTUM should be honest — if nothing happened, say so.
 
 ---
 
 ## Connectors Used
 
-- **MCP Gateway: `gcal_list_events`** — required for Step 1 (calendar)
-- **MCP Gateway: `gmail_search_messages`** — required for Step 2 (inbox scan)
-- **MCP Gateway: `search_knowledge`** — used for Step 3 (knowledge layer queries, semantic search)
-- **MCP Gateway: `get_domain_tree`, `get_domain_summary`** — used for Step 3b (Life Graph domain health)
-- **MCP Gateway: `get_upcoming_dates`** — used for Step 3c (birthdays and important dates)
-- **MCP Gateway: `query_db`** — used for Step 3d (active priorities task query)
-- **MCP Gateway: `log_pipeline_run`** — used for Step 6 (post-execution logging)
-- **Past chats search** — used for Step 4 (carry-forward items)
-- **Knowledge base: WORK_PROJECTS.md** — fallback for Step 3e (project pulse)
-- **Knowledge base: EVOLUTION_LOG.md** — referenced for recent decisions context
+- **MCP Gateway: `gcal_list_events`** — Step 1 (calendar with attendees/description)
+- **MCP Gateway: `gmail_search_messages`** — Step 3 (inbox scan)
+- **MCP Gateway: `search_knowledge`** — Knowledge layer queries for project context
+- **MCP Gateway: `get_domain_tree`, `get_domain_summary`** — Step 4 (domain health)
+- **MCP Gateway: `get_upcoming_dates`** — Birthdays and important dates (included in Schedule if relevant)
+- **MCP Gateway: `query_db`** — Steps 2, 5 (Zealogics tasks, momentum queries)
+- **MCP Gateway: `log_pipeline_run`** — Step 7 (post-execution logging)
+- **Knowledge base: WORK_PROJECTS.md** — Fallback project context

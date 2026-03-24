@@ -19,6 +19,8 @@ class CalendarEvent:
     end_time: str
     location: str | None
     is_all_day: bool
+    description: str | None = None  # event agenda / notes
+    attendees: list[str] = field(default_factory=list)  # attendee names/emails
 
 
 @dataclass
@@ -44,12 +46,27 @@ def _parse_event(event: dict) -> CalendarEvent:
         start_time = start_dt.astimezone(IST).strftime("%H:%M")
         end_time = end_dt.astimezone(IST).strftime("%H:%M")
 
+    # Extract description (agenda) — first 300 chars
+    raw_desc = event.get("description", "") or ""
+    description = raw_desc.strip()[:300] if raw_desc.strip() else None
+
+    # Extract attendees (display name or email)
+    attendees: list[str] = []
+    for att in event.get("attendees", []):
+        if att.get("self"):
+            continue  # skip the calendar owner
+        name = att.get("displayName") or att.get("email", "")
+        if name:
+            attendees.append(name)
+
     return CalendarEvent(
         summary=event.get("summary", "(No title)"),
         start_time=start_time,
         end_time=end_time,
         location=event.get("location"),
         is_all_day=is_all_day,
+        description=description,
+        attendees=attendees,
     )
 
 

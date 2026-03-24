@@ -20,6 +20,8 @@ class TaskItem:
     priority: str
     due_date: date | None
     status: str
+    domain_name: str = ""
+    domain_slug: str = ""
 
 
 @dataclass
@@ -56,6 +58,8 @@ class TaskSnapshot:
     projects: list[ProjectProgress] = field(default_factory=list)
     open_count: int = 0
     done_this_week: int = 0
+    zealogics_tasks: list[TaskItem] = field(default_factory=list)
+    recent_completions: int = 0  # tasks completed in last 3 days
 
 
 def _row_to_task(row: tuple, columns: list[str]) -> TaskItem:
@@ -67,6 +71,8 @@ def _row_to_task(row: tuple, columns: list[str]) -> TaskItem:
         priority=d.get("priority", "medium"),
         due_date=d.get("due_date"),
         status=d.get("status", ""),
+        domain_name=d.get("domain_name") or "",
+        domain_slug=d.get("domain_slug") or "",
     )
 
 
@@ -76,12 +82,14 @@ def collect(conn: pg8000.Connection) -> TaskSnapshot:
     cursor = conn.cursor()
 
     try:
-        # 1. Overdue tasks
+        # 1. Overdue tasks (with domain info)
         cursor.execute(
             """
-            SELECT t.id, t.title, p.name AS project_name, t.priority, t.due_date, t.status
+            SELECT t.id, t.title, p.name AS project_name, t.priority, t.due_date, t.status,
+                   d.name AS domain_name, d.slug AS domain_slug
             FROM tasks t
             JOIN projects p ON p.id = t.project_id
+            LEFT JOIN life_domains d ON d.id = t.domain_id
             WHERE t.due_date < CURRENT_DATE
               AND t.status NOT IN ('done', 'cancelled')
             ORDER BY t.priority DESC, t.due_date ASC
@@ -91,12 +99,14 @@ def collect(conn: pg8000.Connection) -> TaskSnapshot:
         cols = [desc[0] for desc in cursor.description]
         snapshot.overdue = [_row_to_task(r, cols) for r in cursor.fetchall()]
 
-        # 2. Today's tasks
+        # 2. Today's tasks (with domain info)
         cursor.execute(
             """
-            SELECT t.id, t.title, p.name AS project_name, t.priority, t.due_date, t.status
+            SELECT t.id, t.title, p.name AS project_name, t.priority, t.due_date, t.status,
+                   d.name AS domain_name, d.slug AS domain_slug
             FROM tasks t
             JOIN projects p ON p.id = t.project_id
+            LEFT JOIN life_domains d ON d.id = t.domain_id
             WHERE t.due_date = CURRENT_DATE
               AND t.status NOT IN ('done', 'cancelled')
             ORDER BY t.priority DESC
@@ -189,6 +199,38 @@ def collect(conn: pg8000.Connection) -> TaskSnapshot:
             """
         )
         snapshot.done_this_week = cursor.fetchone()[0]
+
+        # 7. Zealogics domain tasks (domain_number = 11, all active)
+        cursor.execute(
+            """
+            SELECT t.id, t.title, p.name AS project_name, t.priority, t.due_date, t.status,
+                   d.name AS domain_name, d.slug AS domain_slug
+            FROM tasks t
+            JOIN projects p ON p.id = t.project_id
+            JOIN life_domains d ON d.id = t.domain_id
+            WHERE d.domain_number = 11
+              AND t.status NOT IN ('done', 'cancelled')
+            ORDER BY
+                CASE t.priority
+                    WHEN 'urgent' THEN 1 WHEN 'high' THEN 2
+                    WHEN 'medium' THEN 3 ELSE 4
+                END,
+                t.due_date ASC NULLS LAST
+            LIMIT 15
+            """
+        )
+        cols = [desc[0] for desc in cursor.description]
+        snapshot.zealogics_tasks = [_row_to_task(r, cols) for r in cursor.fetchall()]
+
+        # 8. Tasks completed in last 3 days (for momentum)
+        cursor.execute(
+            """
+            SELECT COUNT(*) FROM tasks
+            WHERE status = 'done'
+              AND completed_at >= CURRENT_DATE - INTERVAL '3 days'
+            """
+        )
+        snapshot.recent_completions = cursor.fetchone()[0]
 
     except Exception as exc:
         logger.error("Task collector error: %s", exc)

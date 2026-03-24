@@ -1,7 +1,11 @@
 """Daily Brief Engine — FastAPI service that composes a morning intelligence brief.
 
-Aggregates tasks, knowledge, Gmail, and calendar data into a formatted brief,
-saves to Google Drive, and pushes notifications via Google Tasks and Telegram.
+Aggregates tasks, knowledge, Gmail, calendar, and domain health data into a
+formatted brief, saves to Google Drive, and pushes notifications via Google
+Tasks and Telegram.
+
+v2 — 6-section brief: Schedule, Zealogics Focus, Priority Inbox,
+      Domain Health, 3-Day Momentum, Suggested Focus.
 """
 
 from __future__ import annotations
@@ -12,13 +16,14 @@ import logging
 import uuid
 from datetime import datetime, timedelta, timezone
 
-from fastapi import FastAPI, Request, Response
+from fastapi import FastAPI, Request
 
 import config
 from collectors import tasks as task_collector
 from collectors import knowledge as knowledge_collector
 from collectors import gmail as gmail_collector
 from collectors import calendar as calendar_collector
+from collectors import domains as domain_collector
 from composer import formatter, ai_composer
 from delivery import drive as drive_delivery
 from delivery import google_tasks as tasks_delivery
@@ -29,7 +34,7 @@ logger = logging.getLogger(__name__)
 
 IST = timezone(timedelta(hours=5, minutes=30))
 
-app = FastAPI(title="Daily Brief Engine", version="1.0.0")
+app = FastAPI(title="Daily Brief Engine", version="2.0.0")
 
 
 # ---------------------------------------------------------------------------
@@ -38,7 +43,7 @@ app = FastAPI(title="Daily Brief Engine", version="1.0.0")
 @app.get("/health")
 async def health() -> dict:
     """Liveness / readiness probe."""
-    status = {"service": "daily-brief-engine", "status": "healthy"}
+    status = {"service": "daily-brief-engine", "status": "healthy", "version": "2.0.0"}
     try:
         conn = await asyncio.to_thread(config.get_db_connection)
         cursor = conn.cursor()
@@ -61,10 +66,10 @@ async def generate_daily_brief(request: Request) -> dict:
     start_time = datetime.now(timezone.utc)
     errors: list[str] = []
 
-    logger.info("Starting daily brief generation (run_id=%s)", run_id)
+    logger.info("Starting daily brief generation v2 (run_id=%s)", run_id)
 
     # ------------------------------------------------------------------
-    # 1. COLLECT — run all 4 collectors in parallel
+    # 1. COLLECT — run all 5 collectors in parallel
     # ------------------------------------------------------------------
     conn = None
     try:
@@ -114,7 +119,6 @@ async def generate_daily_brief(request: Request) -> dict:
 
     async def collect_knowledge():
         try:
-            # Knowledge collector needs its own connection (pg8000 not thread-safe)
             kb_conn = await asyncio.to_thread(config.get_db_connection)
             result = await asyncio.to_thread(knowledge_collector.collect, kb_conn)
             kb_conn.close()
@@ -144,32 +148,51 @@ async def generate_daily_brief(request: Request) -> dict:
             logger.error("Calendar collector failed: %s", exc)
             return calendar_collector.CalendarSnapshot(available=False)
 
-    task_data, knowledge_data, gmail_data, calendar_data = await asyncio.gather(
+    async def collect_domains():
+        try:
+            dom_conn = await asyncio.to_thread(config.get_db_connection)
+            result = await asyncio.to_thread(domain_collector.collect, dom_conn)
+            dom_conn.close()
+            return result
+        except Exception as exc:
+            errors.append(f"Domain collector: {exc}")
+            logger.error("Domain collector failed: %s", exc)
+            return domain_collector.DomainsSnapshot(available=False)
+
+    task_data, knowledge_data, gmail_data, calendar_data, domain_data = await asyncio.gather(
         collect_tasks(),
         collect_knowledge(),
         collect_gmail(),
         collect_calendar(),
+        collect_domains(),
     )
 
     logger.info(
-        "Collection complete — tasks(overdue=%d, today=%d), gmail(actions=%d), calendar(events=%d)",
+        "Collection complete — tasks(overdue=%d, today=%d, zealogics=%d), "
+        "gmail(actions=%d), calendar(events=%d), domains(count=%d)",
         len(task_data.overdue),
         len(task_data.today),
+        len(task_data.zealogics_tasks),
         len(gmail_data.action_items),
         len(calendar_data.today_events),
+        domain_data.total_active_domains,
     )
 
     # ------------------------------------------------------------------
-    # 2. COMPOSE — generate AI suggestions + format brief
+    # 2. COMPOSE — generate AI suggestions + momentum + format brief
     # ------------------------------------------------------------------
     api_key = config.get_anthropic_api_key()
-    suggestions = await asyncio.to_thread(
-        ai_composer.generate_suggestions,
+    ai_output = await asyncio.to_thread(
+        ai_composer.generate_brief_intelligence,
         api_key,
         task_data,
         gmail_data,
         calendar_data,
+        domain_data,
     )
+
+    suggestions = ai_output.suggestions
+    momentum_commentary = ai_output.momentum_commentary
 
     # Compose brief (without drive_url first — we'll update after upload)
     brief_text = formatter.compose_brief(
@@ -177,7 +200,9 @@ async def generate_daily_brief(request: Request) -> dict:
         knowledge=knowledge_data,
         gmail=gmail_data,
         calendar=calendar_data,
+        domains=domain_data,
         suggestions=suggestions,
+        momentum_commentary=momentum_commentary,
         drive_url=None,
     )
 
@@ -205,7 +230,9 @@ async def generate_daily_brief(request: Request) -> dict:
                 knowledge=knowledge_data,
                 gmail=gmail_data,
                 calendar=calendar_data,
+                domains=domain_data,
                 suggestions=suggestions,
+                momentum_commentary=momentum_commentary,
                 drive_url=drive_url,
             )
             # Update Drive doc with the URL-containing version
@@ -251,7 +278,10 @@ async def generate_daily_brief(request: Request) -> dict:
             tg_config["chat_id"],
             task_data,
             gmail_data,
+            calendar_data,
+            domain_data,
             suggestions,
+            momentum_commentary,
             drive_url,
         )
 
@@ -271,10 +301,14 @@ async def generate_daily_brief(request: Request) -> dict:
     output_summary = {
         "overdue_tasks": len(task_data.overdue),
         "today_tasks": len(task_data.today),
+        "zealogics_tasks": len(task_data.zealogics_tasks),
         "gmail_actions": len(gmail_data.action_items),
         "calendar_events": len(calendar_data.today_events),
+        "active_domains": domain_data.total_active_domains,
+        "domains_needing_attention": domain_data.domains_needing_attention,
         "knowledge_available": knowledge_data.available,
         "suggestions_count": len(suggestions),
+        "has_momentum": bool(momentum_commentary),
         "drive_url": drive_url,
         "google_task_id": google_task_id,
         "telegram_sent": telegram_sent,
@@ -313,7 +347,6 @@ async def generate_daily_brief(request: Request) -> dict:
         logger.warning("Pipeline run logging failed: %s", exc)
 
     # Log notification (best-effort) — one row per channel
-    # Check constraint allows: 'telegram', 'email', 'push'
     try:
         cursor = conn.cursor()
         now_utc = datetime.now(timezone.utc).isoformat()
@@ -349,7 +382,7 @@ async def generate_daily_brief(request: Request) -> dict:
         pass
 
     logger.info(
-        "Daily brief complete — status=%s, duration=%dms, drive=%s",
+        "Daily brief v2 complete — status=%s, duration=%dms, drive=%s",
         status, duration_ms, drive_url,
     )
 
@@ -366,4 +399,4 @@ async def generate_daily_brief(request: Request) -> dict:
 # ---------------------------------------------------------------------------
 @app.get("/")
 async def root() -> dict:
-    return {"service": "daily-brief-engine", "version": "1.0.0"}
+    return {"service": "daily-brief-engine", "version": "2.0.0"}

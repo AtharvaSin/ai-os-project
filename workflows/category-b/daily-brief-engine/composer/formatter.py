@@ -1,4 +1,13 @@
-"""Render the final brief from all collected data into scannable plain text."""
+"""Render the final brief from all collected data into scannable plain text.
+
+6 sections:
+  1. TODAY'S SCHEDULE — meetings with agenda, attendees, related tasks
+  2. ZEALOGICS FOCUS — dedicated section for domain 011 tasks
+  3. PRIORITY INBOX — action emails + FYI
+  4. DOMAIN HEALTH — health scores, flags domains needing attention
+  5. 3-DAY MOMENTUM — AI-generated commentary on activity trends
+  6. SUGGESTED FOCUS — AI-prioritized top 3 actions
+"""
 
 from __future__ import annotations
 
@@ -8,6 +17,7 @@ from collectors.tasks import TaskSnapshot
 from collectors.knowledge import KnowledgeSnapshot
 from collectors.gmail import GmailSnapshot
 from collectors.calendar import CalendarSnapshot
+from collectors.domains import DomainsSnapshot
 
 IST = timezone(timedelta(hours=5, minutes=30))
 
@@ -20,8 +30,8 @@ PRIORITY_ICONS = {
 }
 
 
-def _format_schedule(cal: CalendarSnapshot) -> str:
-    """Build the TODAY'S SCHEDULE section."""
+def _format_schedule(cal: CalendarSnapshot, tasks: TaskSnapshot) -> str:
+    """Build the TODAY'S SCHEDULE section with agenda + related tasks."""
     lines: list[str] = []
 
     if not cal.available:
@@ -31,15 +41,84 @@ def _format_schedule(cal: CalendarSnapshot) -> str:
     if not cal.today_events:
         lines.append("  No events scheduled today.")
     else:
-        for ev in cal.today_events[:6]:
+        # Build a quick lookup of task titles for cross-referencing
+        all_task_titles = [t.title.lower() for t in tasks.today + tasks.overdue + tasks.zealogics_tasks]
+
+        for ev in cal.today_events[:8]:
+            # Time + summary
             if ev.is_all_day:
                 lines.append(f"  All day  \u2014 {ev.summary}")
             else:
-                lines.append(f"  {ev.start_time} \u2014 {ev.summary}")
+                lines.append(f"  {ev.start_time}-{ev.end_time}  \u2014 {ev.summary}")
+
+            # Attendees (compact)
+            if ev.attendees:
+                att_str = ", ".join(ev.attendees[:4])
+                if len(ev.attendees) > 4:
+                    att_str += f" +{len(ev.attendees) - 4}"
+                lines.append(f"    With: {att_str}")
+
+            # Agenda snippet
+            if ev.description:
+                desc_preview = ev.description.replace("\n", " ").strip()[:120]
+                lines.append(f"    Agenda: {desc_preview}")
+
+            # Cross-reference: find tasks related to this meeting
+            meeting_words = set(ev.summary.lower().split())
+            related = []
+            for t in tasks.today + tasks.overdue:
+                task_words = set(t.title.lower().split())
+                if len(meeting_words & task_words) >= 2:
+                    related.append(t.title)
+            if related:
+                lines.append(f"    Related task: {related[0]}")
 
     if cal.tomorrow_events:
         lines.append("")
         lines.append(f"  Tomorrow: {len(cal.tomorrow_events)} event(s)")
+
+    return "\n".join(lines)
+
+
+def _format_zealogics(tasks: TaskSnapshot) -> str:
+    """Build the ZEALOGICS FOCUS section."""
+    lines: list[str] = []
+
+    if not tasks.zealogics_tasks:
+        lines.append("  No active Zealogics tasks.")
+        return "\n".join(lines)
+
+    # Group by urgency
+    overdue_zl = [t for t in tasks.zealogics_tasks if t.due_date and t.due_date < datetime.now(IST).date()]
+    today_zl = [t for t in tasks.zealogics_tasks if t.due_date and t.due_date == datetime.now(IST).date()]
+    rest_zl = [t for t in tasks.zealogics_tasks if t not in overdue_zl and t not in today_zl]
+
+    if overdue_zl:
+        lines.append(f"  \U0001f534 Overdue ({len(overdue_zl)}):")
+        for t in overdue_zl[:3]:
+            due = f" \u2014 due {t.due_date.strftime('%b %d')}" if t.due_date else ""
+            lines.append(f"    {PRIORITY_ICONS.get(t.priority, '\U0001f7e1')} {t.title}{due}")
+
+    if today_zl:
+        if lines:
+            lines.append("")
+        lines.append(f"  \U0001f7e1 Due Today ({len(today_zl)}):")
+        for t in today_zl[:3]:
+            lines.append(f"    {PRIORITY_ICONS.get(t.priority, '\U0001f7e1')} {t.title}")
+
+    if rest_zl:
+        if lines:
+            lines.append("")
+        # Show high-priority upcoming first
+        high_rest = [t for t in rest_zl if t.priority in ("urgent", "high")]
+        other_rest = [t for t in rest_zl if t.priority not in ("urgent", "high")]
+
+        display = high_rest[:3] + other_rest[:2]
+        lines.append(f"  Upcoming ({len(rest_zl)}):")
+        for t in display:
+            icon = PRIORITY_ICONS.get(t.priority, "\U0001f7e1")
+            due = f" \u2014 due {t.due_date.strftime('%b %d')}" if t.due_date else ""
+            lines.append(f"    {icon} {t.title}{due}")
 
     return "\n".join(lines)
 
@@ -59,7 +138,6 @@ def _format_inbox(gmail: GmailSnapshot) -> str:
 
     idx = 1
     for item in gmail.action_items:
-        # Extract just the email from sender
         sender_short = item.sender
         if "<" in sender_short:
             sender_short = sender_short.split("<")[-1].rstrip(">")
@@ -78,62 +156,54 @@ def _format_inbox(gmail: GmailSnapshot) -> str:
     return "\n".join(lines)
 
 
-def _format_task_pulse(tasks: TaskSnapshot) -> str:
-    """Build the TASK PULSE section."""
+def _format_domain_health(domains: DomainsSnapshot) -> str:
+    """Build the DOMAIN HEALTH section."""
     lines: list[str] = []
 
-    if tasks.overdue:
-        lines.append(f"  Overdue ({len(tasks.overdue)}):")
-        for t in tasks.overdue[:4]:
-            icon = PRIORITY_ICONS.get(t.priority, "\U0001f7e1")
-            project_tag = f" ({t.project_name})" if t.project_name else ""
-            due = f" \u2014 due {t.due_date.strftime('%b %d')}" if t.due_date else ""
-            lines.append(f"    {icon} {t.title}{project_tag}{due}")
+    if not domains.available or not domains.health:
+        lines.append("  (Domain health data unavailable)")
+        return "\n".join(lines)
 
-    if tasks.today:
-        if lines:
-            lines.append("")
-        lines.append(f"  Today ({len(tasks.today)}):")
-        for t in tasks.today[:4]:
-            icon = PRIORITY_ICONS.get(t.priority, "\U0001f7e1")
-            project_tag = f" ({t.project_name})" if t.project_name else ""
-            lines.append(f"    {icon} {t.title}{project_tag}")
+    for dh in domains.health:
+        # Health indicator
+        if dh.health_score is not None:
+            if dh.health_score >= 70:
+                indicator = "\U0001f7e2"  # green
+            elif dh.health_score >= 40:
+                indicator = "\U0001f7e1"  # yellow
+            else:
+                indicator = "\U0001f534"  # red
+            score_str = f"{dh.health_score:.0f}/100"
+        else:
+            indicator = "\u26aa"  # grey — no score yet
+            score_str = "no score"
 
-    # Upcoming summary
-    parts = []
-    if tasks.upcoming_count > 0:
-        parts.append(f"{tasks.upcoming_count} task(s)")
-    if tasks.upcoming_milestones:
-        parts.append(f"{len(tasks.upcoming_milestones)} milestone(s) approaching")
-    if parts:
-        if lines:
-            lines.append("")
-        lines.append(f"  Upcoming (7 days): {', '.join(parts)}")
+        # Compact line: icon name score | active tasks | overdue
+        parts = [f"{indicator} {dh.name}: {score_str}"]
+        if dh.active_tasks > 0:
+            parts.append(f"{dh.active_tasks} active")
+        if dh.overdue_tasks > 0:
+            parts.append(f"\U0001f534 {dh.overdue_tasks} overdue")
+        if dh.days_since_activity is not None and dh.days_since_activity > 7:
+            parts.append(f"stale {dh.days_since_activity}d")
 
-    if not lines:
-        lines.append("  No tasks due. You're clear!")
+        lines.append(f"  {' | '.join(parts)}")
+
+    # Flag domains needing attention
+    if domains.domains_needing_attention:
+        lines.append("")
+        lines.append(f"  \u26a0\ufe0f Needs attention: {', '.join(domains.domains_needing_attention)}")
 
     return "\n".join(lines)
 
 
-def _format_goals(tasks: TaskSnapshot) -> str:
-    """Build the GOALS & PROGRESS section."""
+def _format_momentum(momentum_commentary: str) -> str:
+    """Build the 3-DAY MOMENTUM section from AI-generated commentary."""
+    if not momentum_commentary:
+        return "  (Momentum analysis unavailable)"
     lines: list[str] = []
-
-    if not tasks.projects:
-        lines.append("  No active projects.")
-        return "\n".join(lines)
-
-    for proj in tasks.projects:
-        pct = proj.pct
-        desc = proj.description or proj.status
-        # Truncate description to first sentence
-        if desc and "." in desc:
-            desc = desc.split(".")[0]
-        if len(desc) > 60:
-            desc = desc[:57] + "..."
-        lines.append(f"  {proj.name}: {pct}% \u2014 {desc}")
-
+    for line in momentum_commentary.strip().split("\n"):
+        lines.append(f"  {line.strip()}")
     return "\n".join(lines)
 
 
@@ -150,16 +220,19 @@ def compose_brief(
     knowledge: KnowledgeSnapshot,
     gmail: GmailSnapshot,
     calendar: CalendarSnapshot,
+    domains: DomainsSnapshot,
     suggestions: list[str],
+    momentum_commentary: str = "",
     drive_url: str | None = None,
 ) -> str:
-    """Compose the full daily brief as plain text."""
+    """Compose the full daily brief as plain text — 6 sections."""
     now = datetime.now(IST)
     date_str = now.strftime("%a, %d %b %Y")
     time_str = now.strftime("%H:%M IST")
 
     inbox_count = len(gmail.action_items) + len(gmail.fyi_items)
     inbox_label = f"({inbox_count} item(s) need attention)" if inbox_count > 0 else "(inbox clear)"
+    zealogics_label = f"({len(tasks.zealogics_tasks)} task(s))" if tasks.zealogics_tasks else "(no tasks)"
 
     sections = []
 
@@ -170,53 +243,58 @@ def compose_brief(
         f"\u255a{'=' * 46}\u255d"
     )
 
-    # Schedule
+    # Quick stats bar
+    stats = []
+    if tasks.overdue:
+        stats.append(f"\U0001f534 {len(tasks.overdue)} overdue")
+    stats.append(f"\U0001f4cb {len(tasks.today)} due today")
+    if gmail.available and gmail.action_items:
+        stats.append(f"\U0001f4ec {len(gmail.action_items)} emails")
+    stats.append(f"\U0001f4c5 {len(calendar.today_events)} meetings")
+    sections.append(" | ".join(stats))
+
+    # 1. TODAY'S SCHEDULE
     sections.append(
         f"\U0001f4c5 TODAY'S SCHEDULE\n"
         f"{'=' * 20}\n"
-        f"{_format_schedule(calendar)}"
+        f"{_format_schedule(calendar, tasks)}"
     )
 
-    # Priority Inbox
+    # 2. ZEALOGICS FOCUS
+    sections.append(
+        f"\U0001f3e2 ZEALOGICS FOCUS {zealogics_label}\n"
+        f"{'=' * 20}\n"
+        f"{_format_zealogics(tasks)}"
+    )
+
+    # 3. PRIORITY INBOX
     sections.append(
         f"\U0001f4ec PRIORITY INBOX {inbox_label}\n"
         f"{'=' * 20}\n"
         f"{_format_inbox(gmail)}"
     )
 
-    # Task Pulse
+    # 4. DOMAIN HEALTH
     sections.append(
-        f"\U0001f4cb TASK PULSE\n"
+        f"\U0001f3af DOMAIN HEALTH\n"
         f"{'=' * 20}\n"
-        f"{_format_task_pulse(tasks)}"
+        f"{_format_domain_health(domains)}"
     )
 
-    # Goals & Progress
+    # 5. 3-DAY MOMENTUM
     sections.append(
-        f"\U0001f4ca GOALS & PROGRESS\n"
+        f"\U0001f4c8 3-DAY MOMENTUM\n"
         f"{'=' * 20}\n"
-        f"{_format_goals(tasks)}"
+        f"{_format_momentum(momentum_commentary)}"
     )
 
-    # Suggested Focus
+    # 6. SUGGESTED FOCUS
     if suggestions:
         sections.append(
             f"\U0001f3af SUGGESTED FOCUS (Today's Top 3)\n"
             f"{'=' * 20}\n"
             f"{_format_suggestions(suggestions)}"
         )
-
-    # Knowledge context (optional — only if available and has results)
-    if knowledge.available and (knowledge.project_updates or knowledge.recent_changes):
-        kb_lines = []
-        for item in (knowledge.project_updates + knowledge.recent_changes)[:3]:
-            kb_lines.append(f"  \u2022 {item.title}: {item.content_snippet[:100]}...")
-        if kb_lines:
-            sections.append(
-                f"\U0001f9e0 KNOWLEDGE CONTEXT\n"
-                f"{'=' * 20}\n"
-                + "\n".join(kb_lines)
-            )
 
     # Footer
     footer_parts = [f"Generated at {time_str}"]
