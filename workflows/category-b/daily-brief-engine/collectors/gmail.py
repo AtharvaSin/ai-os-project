@@ -45,6 +45,29 @@ SKIP_SENDERS = [
     "notification@", "mailer@", "updates@",
 ]
 
+# Domains that are always newsletters / marketing platforms — skip entirely
+SKIP_DOMAINS = [
+    "@substack.com", "@beehiiv.com", "@convertkit.com",
+    "@mailchimp.com", "@sendinblue.com", "@mailerlite.com",
+    "@campaignmonitor.com", "@constantcontact.com",
+    "@iconscout.com", "@canva.com", "@medium.com",
+    "@vincimind.com", "@producthunt.com", "@hackernewsletter.com",
+    "@tldrnewsletter.com", "@morningbrew.com",
+    "@naukri.com", "@linkedin.com", "@quora.com",
+]
+
+# Subject / snippet patterns that indicate marketing / newsletter content
+SKIP_CONTENT = [
+    "introducing ", "just launched", "new feature",
+    "here's what changes", "here's what you missed",
+    "weekly digest", "monthly digest", "daily digest",
+    "top stories", "trending now", "curated for you",
+    "unsubscribe", "view in browser", "email preferences",
+    "limited time", "exclusive offer", "discount code",
+    "free trial", "upgrade now", "don't miss out",
+    "the game isn't", "what's new in",
+]
+
 FYI_KEYWORDS = [
     "delivery", "shipped", "out for delivery", "tracking",
     "receipt", "order confirmed", "subscription",
@@ -72,9 +95,19 @@ def _extract_subject(headers: list[dict]) -> str:
     return "(no subject)"
 
 
-def _should_skip(sender: str) -> bool:
+def _should_skip(sender: str, subject: str = "", snippet: str = "") -> bool:
     sender_lower = sender.lower()
-    return any(skip in sender_lower for skip in SKIP_SENDERS)
+    # Skip by sender prefix (noreply@, newsletter@, etc.)
+    if any(skip in sender_lower for skip in SKIP_SENDERS):
+        return True
+    # Skip by sender domain (substack, iconscout, etc.)
+    if any(domain in sender_lower for domain in SKIP_DOMAINS):
+        return True
+    # Skip by content patterns (marketing / newsletter language)
+    text = f"{subject} {snippet}".lower()
+    if any(pattern in text for pattern in SKIP_CONTENT):
+        return True
+    return False
 
 
 def _classify(subject: str, snippet: str) -> str:
@@ -115,7 +148,7 @@ def collect(gmail_service: Any) -> GmailSnapshot:
     snapshot = GmailSnapshot()
 
     try:
-        query = "is:unread newer_than:1d -category:promotions -category:social -category:forums"
+        query = "is:unread newer_than:1d -category:promotions -category:social -category:forums -category:updates"
         results = (
             gmail_service.users()
             .messages()
@@ -148,8 +181,8 @@ def collect(gmail_service: Any) -> GmailSnapshot:
                 subject = _extract_subject(headers)
                 snippet = msg.get("snippet", "")
 
-                # Skip known noise senders
-                if _should_skip(sender):
+                # Skip known noise senders, domains, and marketing content
+                if _should_skip(sender, subject, snippet):
                     continue
 
                 category = _classify(subject, snippet)
