@@ -1,9 +1,9 @@
 # AI OS Database Schema
 
-> Auto-generated from `ai_os` database on 2026-03-14, updated 2026-03-18
+> Auto-generated from `ai_os` database on 2026-03-14, updated 2026-03-21
 > Instance: `bharatvarsh-website:us-central1:bharatvarsh-db`
-> Database: `ai_os` | User: `ai_os_admin` | PostgreSQL 15 | Extensions: vector 0.8.1, moddatetime 1.0, ltree 1.2
-> **Note:** Migrations 001-015 applied (38 tables live). Migrations 016-017 written (not yet applied). Migration 019 written (not yet applied). 43 tables in codebase. Seed 013 applied (139 lore records). Extensions: vector 0.8.1, moddatetime 1.0, ltree 1.2. Live regeneration requires Cloud SQL Proxy connection.
+> Database: `ai_os` | User: `ai_os_admin` | PostgreSQL 15 | Extensions: vector 0.8.1, moddatetime 1.0, ltree 1.2, pg_trgm
+> **Note:** Migrations 001-019 confirmed applied (45 tables live). Migration 020 written (not yet applied — adds content_posts + content_post_audit_log, 47 tables in codebase). Seeds 001-014 applied. Seed 015 (content_pipeline) written (not yet applied). Live regeneration requires Cloud SQL Proxy connection.
 
 ## Overview
 
@@ -417,11 +417,12 @@ _Core knowledge store_
 | `confidence_score` | `numeric` | YES |  |  |
 | `tags` | `text[]` | YES | `'{}'[]` |  |
 | `metadata` | `jsonb` | YES | `{}` |  |
+| `content_hash` | `text` | YES |  | SHA-256 of (title + '\n\n' + content). Used for dedup and stale-embedding detection. Auto-set by MCP gateway on insert/update. (Migration 021) |
 | `created_at` | `timestamp with time zone` | NO | `now()` |  |
 | `updated_at` | `timestamp with time zone` | NO | `now()` |  |
 
 ### Table: `knowledge_embeddings`
-_Vector representations for semantic search_
+_Vector representations for semantic search. Embedding freshness tracked via updated_at (migration 021) — embedding-generator re-embeds entries where knowledge_entries.updated_at > knowledge_embeddings.updated_at._
 
 | Column | Type | Nullable | Default | Notes |
 |--------|------|----------|---------|-------|
@@ -430,6 +431,7 @@ _Vector representations for semantic search_
 | `embedding` | `vector(1536)` | NO |  |  |
 | `model_used` | `text` | NO | `text-embedding-3-small` |  |
 | `created_at` | `timestamp with time zone` | NO | `now()` |  |
+| `updated_at` | `timestamp with time zone` | NO | `now()` | When embedding was last generated/refreshed. Stale when < knowledge_entries.updated_at. (Migration 021) |
 
 ### Table: `knowledge_connections`
 _Typed relationships between entries_

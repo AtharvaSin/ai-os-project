@@ -3,7 +3,7 @@
 > **Channel Knowledge ID:** `e7d1e4d3-89d9-47bd-bf35-39197fb1d43d` (profile) / `d1ea5a83-9c97-4bbf-8c88-139fc69f3923` (strategy)
 > **Date:** 2026-03-20
 > **Brand Context:** B (Bharatvarsh) — Obsidian + Mustard Gold (#F1C232) + Bebas Neue
-> **Asset Pipeline:** `content-ops/` (prompts, templates, references)
+> **Asset Pipeline:** `content-pipelines/bharatvarsh/` (prompts, templates, references)
 > **Art Generation:** OpenArt (Seedream 4.5 for characters, Nano Banana for environments)
 
 ---
@@ -24,7 +24,7 @@
 
 ### Step 1.2 — Profile Picture
 
-Generate using **Seedream 4.5** on OpenArt. Attach `content-ops/assets/references/Bharatvarsh.webp` as style reference.
+Generate using **Seedream 4.5** on OpenArt. Attach `content-pipelines/bharatvarsh/assets/references/Bharatvarsh.webp` as style reference.
 
 **Prompt (copy-paste to OpenArt):**
 
@@ -45,7 +45,7 @@ NOT colorful, NOT generic shield logo
 
 **Reference to attach:** `Bharatvarsh.webp` (for color/mood alignment)
 
-**Alternative:** Use the existing book cover art or the `Novel Card.webp` from `content-ops/assets/references/` cropped to square — this gives instant brand recognition.
+**Alternative:** Use the existing book cover art or the `Novel Card.webp` from `content-pipelines/bharatvarsh/assets/references/` cropped to square — this gives instant brand recognition.
 
 ---
 
@@ -390,7 +390,7 @@ FOR THE TRUTH?"
 — BHARATVARSH
 ```
 
-**Render with asr-visual-studio:** Use template `BHV-T-QUOTE-IG.html` from `content-ops/templates/instagram/` for brand-locked rendering.
+**Render with asr-visual-studio:** Use template `BHV-T-QUOTE-IG.html` from `content-pipelines/bharatvarsh/templates/instagram/` for brand-locked rendering.
 
 ---
 
@@ -561,7 +561,7 @@ NOT bright, NOT clean modern office, NOT generic stock photo
 ### Post 9: Gateway CTA — Book Purchase
 
 **Format:** Static 1:1 or 4:5
-**Use template** `BHV-T-CHAR-IG.html` from content-ops or generate:
+**Use template** `BHV-T-CHAR-IG.html` from content-pipelines/bharatvarsh or generate:
 
 ```
 cinematic composition with book mockup feel, dark obsidian background
@@ -599,7 +599,7 @@ welcometobharatvarsh.com
 4. Share invite link in your first Story
 
 ### Step 5.2 — Content Calendar Setup
-The content calendar CSV lives at `content-ops/calendar/content_calendar.csv`. Populate it with Week 1 content (the 9 posts above) plus the next 2 weeks of planned content.
+The content calendar CSV lives at `content-pipelines/bharatvarsh/calendar/content_calendar.csv`. Populate it with Week 1 content (the 9 posts above) plus the next 2 weeks of planned content.
 
 ### Step 5.3 — Hashtag Sets (Save in Instagram)
 
@@ -642,17 +642,17 @@ Update Bharatvarsh Instagram: handle is @{your_final_handle}, URL is https://ins
 
 | Resource | Path |
 |----------|------|
-| Style Anchors | `content-ops/prompts/style_anchors.json` |
-| Character Visual DNA | `content-ops/prompts/character_dna.json` |
-| Environment Templates | `content-ops/prompts/environment_templates.json` |
-| Negative Prompts | `content-ops/prompts/negative_prompts.json` |
-| Reference Images (53) | `content-ops/assets/references/` |
-| Reference Catalog | `content-ops/assets/references/REFERENCE_CATALOG.json` |
-| IG Quote Template | `content-ops/templates/instagram/BHV-T-QUOTE-IG.html` |
-| IG Character Template | `content-ops/templates/instagram/BHV-T-CHAR-IG.html` |
-| Brand Tokens (JS) | `content-ops/templates/shared/brand-tokens.js` |
-| Atmospheric Effects | `content-ops/templates/shared/atmospheric-effects.css` |
-| Art Prompts Skill | `content-ops/skills/SKILL_BHARATVARSH_ART_PROMPTS.md` |
+| Style Anchors | `content-pipelines/bharatvarsh/prompts/style_anchors.json` |
+| Character Visual DNA | `content-pipelines/bharatvarsh/prompts/character_dna.json` |
+| Environment Templates | `content-pipelines/bharatvarsh/prompts/environment_templates.json` |
+| Negative Prompts | `content-pipelines/bharatvarsh/prompts/negative_prompts.json` |
+| Reference Images (53) | `content-pipelines/bharatvarsh/assets/references/` |
+| Reference Catalog | `content-pipelines/bharatvarsh/assets/references/REFERENCE_CATALOG.json` |
+| IG Quote Template | `content-pipelines/bharatvarsh/templates/instagram/BHV-T-QUOTE-IG.html` |
+| IG Character Template | `content-pipelines/bharatvarsh/templates/instagram/BHV-T-CHAR-IG.html` |
+| Brand Tokens (JS) | `content-pipelines/bharatvarsh/templates/shared/brand-tokens.js` |
+| Atmospheric Effects | `content-pipelines/bharatvarsh/templates/shared/atmospheric-effects.css` |
+| Art Prompts Skill | `content-pipelines/bharatvarsh/skills/SKILL_BHARATVARSH_ART_PROMPTS.md` |
 | Brand Identity | `knowledge-base/BRAND_IDENTITY.md` |
 | Channel Profile (DB) | `knowledge_entries` ID: `e7d1e4d3-89d9-47bd-bf35-39197fb1d43d` |
 | Channel Strategy (DB) | `knowledge_entries` ID: `d1ea5a83-9c97-4bbf-8c88-139fc69f3923` |
@@ -684,4 +684,4 @@ Update Bharatvarsh Instagram: handle is @{your_final_handle}, URL is https://ins
 | 5.4 | Start engagement routine | Daily | ☐ |
 | 6 | Update channel knowledge in AI OS | 2 min | ☐ |
 
-**Total setup:** ~4-5 hours (can be batched across 2 sessions). After that, the channel strategy calls for ~2.5 hours/week ongoing (per `content-ops/README.md` steady-state workflow).
+**Total setup:** ~4-5 hours (can be batched across 2 sessions). After that, the channel strategy calls for ~2.5 hours/week ongoing (per `content-pipelines/bharatvarsh/README.md` steady-state workflow).

@@ -5,7 +5,7 @@
 > **Account:** dystopiandynasties@gmail.com
 > **Brand Context:** B (Bharatvarsh) — Obsidian + Mustard Gold (#F1C232) + Bebas Neue
 > **Parallel Channel:** Instagram — [@welcometobharatvarsh](https://www.instagram.com/welcometobharatvarsh/)
-> **Asset Pipeline:** `content-ops/` (prompts, templates, references)
+> **Asset Pipeline:** `content-pipelines/bharatvarsh/` (prompts, templates, references)
 
 ---
 
@@ -70,7 +70,7 @@ NOT letters, NOT generic logo
 --guidance 7.5
 ```
 
-**Reference:** `content-ops/assets/references/Novel Card.webp`
+**Reference:** `content-pipelines/bharatvarsh/assets/references/Novel Card.webp`
 
 **Reuse tip:** If you already generated this for Instagram, use the exact same file. Same profile picture across platforms = instant brand recognition.
 
@@ -628,14 +628,14 @@ Update Bharatvarsh Facebook: handle is {your_page_handle}, URL is https://facebo
 
 | Resource | Path |
 |----------|------|
-| Style Anchors | `content-ops/prompts/style_anchors.json` |
-| Character Visual DNA | `content-ops/prompts/character_dna.json` |
-| Environment Templates | `content-ops/prompts/environment_templates.json` |
-| Negative Prompts | `content-ops/prompts/negative_prompts.json` |
-| Reference Images (53) | `content-ops/assets/references/` |
-| Reference Catalog | `content-ops/assets/references/REFERENCE_CATALOG.json` |
-| Twitter Lore Template | `content-ops/templates/twitter/BHV-T-LORE-TW.html` |
-| Brand Tokens (JS) | `content-ops/templates/shared/brand-tokens.js` |
+| Style Anchors | `content-pipelines/bharatvarsh/prompts/style_anchors.json` |
+| Character Visual DNA | `content-pipelines/bharatvarsh/prompts/character_dna.json` |
+| Environment Templates | `content-pipelines/bharatvarsh/prompts/environment_templates.json` |
+| Negative Prompts | `content-pipelines/bharatvarsh/prompts/negative_prompts.json` |
+| Reference Images (53) | `content-pipelines/bharatvarsh/assets/references/` |
+| Reference Catalog | `content-pipelines/bharatvarsh/assets/references/REFERENCE_CATALOG.json` |
+| Twitter Lore Template | `content-pipelines/bharatvarsh/templates/twitter/BHV-T-LORE-TW.html` |
+| Brand Tokens (JS) | `content-pipelines/bharatvarsh/templates/shared/brand-tokens.js` |
 | Brand Identity | `knowledge-base/BRAND_IDENTITY.md` |
 | Instagram Setup Guide | `docs/BHARATVARSH_INSTAGRAM_SETUP_GUIDE.md` |
 | Channel Profile (DB) | `knowledge_entries` ID: `b8aeeb10-d9a4-42e3-95e3-9ca39af98b83` |

@@ -1,0 +1,17 @@
+# Test override — ephemeral Postgres (tmpfs, wiped on container stop)
+# Usage:
+#   docker compose -f docker/docker-compose.dev.yml \
+#                  -f docker/docker-compose.test.yml \
+#                  up --abort-on-container-exit
+
+services:
+
+  postgres-local:
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d
+      - type: tmpfs
+        target: /var/lib/postgresql/data
+
+  ai-os-gateway-dev:
+    environment:
+      NODE_ENV: test

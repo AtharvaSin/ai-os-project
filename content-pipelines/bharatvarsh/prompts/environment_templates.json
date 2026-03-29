@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Pre-built location descriptions for key Bharatvarsh settings. Source: SKILL_BHARATVARSH_ART_PROMPTS.md Phase 5.",
+  "environments": [
+    {
+      "id": "indrapur_hq",
+      "name": "Indrapur HQ",
+      "description": "massive military command complex, monolithic dark architecture blending Mughal fortress geometry with brutalist military design, towering walls with geometric jali screen patterns in concrete, guarded entrance with biometric scanners and Mesh sensor arrays, Bharatsena soldiers in dark navy uniforms standing guard, wide ceremonial approach avenue lined with Oxy Poles emitting faint blue-white light, Directorate insignia carved into stone above main gate, overcast sky, oppressive scale suggesting absolute authority",
+      "lighting_default": "Overcast sky, cold blue-grey ambient light, warm mustard accent from Oxy Pole tops and interior windows",
+      "mood_keywords": ["absolute authority", "imposing scale", "military precision"]
+    },
+    {
+      "id": "lakshmanpur",
+      "name": "Lakshmanpur (Industrial Metropolis)",
+      "description": "sprawling industrial cityscape, smokestacks mixing with surveillance towers, dense urban grid with narrow streets between massive factory-residential hybrid blocks, Oxy Poles working overtime to scrub thick air, warm amber industrial lighting mixing with cool blue Mesh scanner glow, workers in utilitarian clothing moving through checkpoints, vertical gardens clinging to concrete towers, wet streets reflecting neon-tinted light from commercial displays, crowded but orderly — compliance visible in the flow of movement",
+      "lighting_default": "Warm amber industrial + cool blue scanner glow, perpetual haze softening light sources",
+      "mood_keywords": ["industrial oppression", "ordered compliance", "polluted beauty"]
+    },
+    {
+      "id": "oxy_pole_boulevard",
+      "name": "Oxy Pole Boulevard",
+      "description": "wide tree-lined boulevard in a Bharatvarsh city, clean and orderly, tall sleek Oxy Poles rising at regular intervals — each pole a slender metallic column with a glowing top section emitting faint blue-white purification light, silent glide-cars passing on smooth road surface, pedestrians walking on wide footpaths, vertical gardens cascading down building facades, everything immaculate and surveilled — surveillance cameras subtly embedded in lamp posts and building corners, children walking to school passing through checkpoints they don't question, beautiful but unsettling in its perfection",
+      "lighting_default": "Late evening golden hour fading to blue, mustard gold from Oxy Pole tops contrasting with deepening blue sky, wet street reflections",
+      "mood_keywords": ["engineered calm", "beautiful oppression", "unsettling perfection"]
+    },
+    {
+      "id": "mesh_surveillance_zone",
+      "name": "Mesh Surveillance Zone (Abstract/Tech)",
+      "description": "abstract visualization of the Mesh network, countless thin blue-white light lines forming a 3D grid overlaid on a dark cityscape, data nodes pulsing at intersections, facial recognition frames highlighting pedestrians below, transaction data flowing as streams of light, holographic Directorate seal floating in the grid, everything connected — wallets, gates, streets, eyes — the architecture of total awareness rendered as beautiful, terrifying infrastructure",
+      "lighting_default": "Blue-white from Mesh lines, deep obsidian background, occasional mustard gold data node pulses",
+      "mood_keywords": ["total surveillance", "terrifying beauty", "connected control"]
+    }
+  ]
+}

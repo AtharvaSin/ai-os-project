@@ -1,0 +1,84 @@
+id: aiu
+name: "AI&U YouTube"
+brand_context: C
+description: "Practical GenAI education — clean, vibrant, structured yet warm"
+
+brand:
+  colors:
+    bg_primary: "#0F1117"
+    bg_surface: "#1A1B23"
+    bg_elevated: "#242530"
+    accent_primary: "#F59E0B"       # Amber Orange (default, overridden by pillar)
+    accent_secondary: "#10B981"
+    text_primary: "#F5F5F5"
+    text_secondary: "#9CA3AF"
+    text_muted: "#6B7280"
+    border: "#2D2E3A"
+  typography:
+    display: "Space Grotesk"
+    body: "Inter"
+    mono: "JetBrains Mono"
+  effects:
+    film_grain: { enabled: false }
+    vignette: { enabled: false }
+    scan_lines: { enabled: false }
+    letterbox: { enabled: false }
+    glow: { enabled: true, color: "#F59E0B", spread: 30 }
+
+art_style:
+  primary: "Flat vector illustration with metaphorical visual storytelling"
+  descriptors:
+    - "clean and vibrant"
+    - "rounded shapes"
+    - "warm and human"
+    - "metaphorical visualization"
+    - "Duolingo/Headspace inspired"
+  negative_prompts:
+    - "photorealistic"
+    - "dark/dystopian"
+    - "complex 3D"
+    - "overly technical diagrams"
+  prompt_template: "aiu_educational"
+
+content_pillars:
+  - id: warmth
+    label: "AI for Common Person"
+    colors: { primary: "#DC8D52", accent: "#E8A87C", highlight: "#FDF0E4" }
+    mood: "warm, approachable, decision-making clarity"
+  - id: momentum
+    label: "Using AI Tools"
+    colors: { primary: "#48DD71", accent: "#3CC8B4", highlight: "#E6FAF0" }
+    mood: "energetic, practical, hands-on improvement"
+  - id: precision
+    label: "Building AI Workflows"
+    colors: { primary: "#5B6ABF", accent: "#8B96D4", highlight: "#EDEEF8" }
+    mood: "systematic, architectural, engineering depth"
+
+formats:
+  longform: { width: 1920, height: 1080, fps: 30 }
+  short: { width: 1080, height: 1920, fps: 30 }
+  thumbnail: { width: 1280, height: 720, fps: 30 }
+
+timing:
+  intro_duration_s: 2.5
+  endcard_duration_s: 9
+  chapter_card_s: 1.73
+  lower_third_s: 6
+  key_term_s: 6
+
+cta:
+  url: ""
+  display: "Subscribe for more"
+  logo_path: "aiu/brand/aiu-logo.png"
+  intent: "subscription"
+
+notebooks:
+  - id: aiu-content
+    use_for: ["content_strategy", "script_research", "audience_targeting"]
+  - id: aiu-tech
+    use_for: ["technical_accuracy", "tool_comparison"]
+
+pipeline:
+  calendar_path: "../aiu-youtube/knowledge/editorial-calendar.md"
+  rendered_path: ""
+  prompts_path: ""

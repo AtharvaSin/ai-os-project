@@ -1,0 +1,104 @@
+id: bharatvarsh
+name: "Bharatvarsh"
+brand_context: B
+description: "Dystopian-cinematic novel marketing — dark, atmospheric, military precision"
+
+brand:
+  colors:
+    bg_primary: "#0A0D12"
+    bg_surface: "#1A1F2E"
+    bg_elevated: "#252A3B"
+    accent_primary: "#F1C232"       # Mustard Gold
+    accent_secondary: "#C9DBEE"     # Powder Blue
+    text_primary: "#F0F4F8"
+    text_secondary: "#A0AEC0"
+    text_muted: "#718096"
+    border: "#323848"
+  typography:
+    display: "Bebas Neue"           # ALL CAPS, non-negotiable
+    body: "Inter"
+    mono: "JetBrains Mono"
+    narrative: "Crimson Pro"        # Lore passages, serif elegance
+  effects:
+    film_grain: { enabled: true, base_frequency: 0.65, opacity: 0.06 }
+    vignette: { enabled: true, opacity: 0.4 }
+    scan_lines: { enabled: true, opacity: 0.02 }
+    letterbox: { enabled: false }
+    glow: { enabled: false }
+
+art_style:
+  primary: "Jim Lee modern American comic book illustration"
+  descriptors:
+    - "cinematic lighting"
+    - "high detail"
+    - "dramatic shadows"
+    - "dystopian atmosphere"
+    - "military precision"
+    - "muted color palette with selective color pops"
+  negative_prompts:
+    - "anime"
+    - "chibi"
+    - "3D render"
+    - "photorealistic"
+    - "cartoon"
+    - "watercolor"
+    - "pastel colors"
+  prompt_template: "bharatvarsh_declassified"
+
+content_pillars:
+  - id: bharatsena
+    label: "Bharatsena"
+    colors: { primary: "#0B2742", accent: "#17D0E3", highlight: "#FFB703" }
+    mood: "military order, surveillance state, cold precision"
+  - id: akakpen
+    label: "Akakpen"
+    colors: { primary: "#162B18", accent: "#D9781E", highlight: "#FFC933" }
+    mood: "underground resistance, raw energy, stolen fire"
+  - id: tribhuj
+    label: "Tribhuj"
+    colors: { primary: "#4A4A4A", accent: "#DC2626", highlight: "#FF9D4D" }
+    mood: "grey zone, moral ambiguity, calculated rebellion"
+
+content_channels:
+  - id: declassified_report
+    intro_style: classified_stamp
+    overlay_intensity: 0.15
+    badge_format: "DIRECTIVE {ref} · DECLASSIFIED"
+  - id: graffiti_photo
+    intro_style: fade_reveal
+    overlay_intensity: 0.08
+  - id: news_article
+    intro_style: bvn_masthead
+    overlay_intensity: 0.12
+    badge_format: "BVN-24x7 · {desk}"
+
+formats:
+  reel: { width: 1080, height: 1920, fps: 30 }
+  trailer: { width: 1920, height: 1080, fps: 30 }
+  post_square: { width: 1080, height: 1080, fps: 30 }
+  post_portrait: { width: 1080, height: 1350, fps: 30 }
+
+timing:
+  intro_duration_s: 2
+  endcard_duration_s: 3
+  slide_duration_default_s: 5
+  typewriter_speed_ms: 50
+  flicker_duration_ms: 500
+  glow_pulse_duration_s: 1.5
+
+cta:
+  url: "www.welcometobharatvarsh.com"
+  display: "Read the full story"
+  logo_path: "bharatvarsh/brand/bharatsena-logo.jpeg"
+  intent: "lead_generation"
+
+notebooks:
+  - id: bhv-lore
+    use_for: ["lore_context", "spoiler_check", "character_reference"]
+  - id: bhv-marketing
+    use_for: ["content_strategy", "audience_targeting"]
+
+pipeline:
+  calendar_path: "../content-pipelines/bharatvarsh/calendar/content_calendar.csv"
+  rendered_path: "../content-pipelines/bharatvarsh/rendered/"
+  prompts_path: "../content-pipelines/bharatvarsh/prompts/"

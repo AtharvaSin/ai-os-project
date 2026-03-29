@@ -1,0 +1,72 @@
+# Video Production — Project Configuration Template
+# Copy this file to projects/{your-project-id}/project.yaml and fill in your brand details.
+
+id: my-project
+name: "My Project"
+brand_context: A  # A = AI OS, B = Bharatvarsh, C = Portfolio, or custom
+description: "Brief description of the project"
+
+brand:
+  colors:
+    bg_primary: "#0A0A0A"
+    bg_surface: "#1A1A1A"
+    bg_elevated: "#252525"
+    accent_primary: "#00D492"
+    accent_secondary: ""
+    text_primary: "#EEEAE4"
+    text_secondary: "#A09D95"
+    text_muted: "#606060"
+    border: "#1F1F35"
+  typography:
+    display: "DM Sans"       # Google Fonts family name
+    body: "Inter"
+    mono: "JetBrains Mono"
+    narrative: ""             # Optional serif/narrative font
+  effects:
+    film_grain: { enabled: false, base_frequency: 0.65, opacity: 0.06 }
+    vignette: { enabled: false, opacity: 0.4 }
+    scan_lines: { enabled: false, opacity: 0.02 }
+    letterbox: { enabled: false, aspect_ratio: 2.35 }
+    glow: { enabled: false, color: "#00D492", spread: 30 }
+
+art_style:
+  primary: "Clean modern digital illustration"
+  descriptors: []
+  negative_prompts: []
+  prompt_template: ""
+
+content_pillars: []
+  # - id: pillar-1
+  #   label: "Pillar Name"
+  #   colors: { primary: "#000", accent: "#FFF", highlight: "#AAA" }
+  #   mood: "descriptive mood keywords"
+
+content_channels: []
+  # - id: channel-1
+  #   intro_style: fade_reveal
+  #   overlay_intensity: 0.1
+
+formats:
+  reel: { width: 1080, height: 1920, fps: 30 }
+  landscape: { width: 1920, height: 1080, fps: 30 }
+  square: { width: 1080, height: 1080, fps: 30 }
+
+timing:
+  intro_duration_s: 2
+  endcard_duration_s: 3
+  slide_duration_default_s: 5
+
+cta:
+  url: ""
+  display: ""
+  logo_path: ""
+  intent: "engagement"
+
+notebooks: []
+  # - id: notebook-id
+  #   use_for: ["context", "reference"]
+
+pipeline:
+  calendar_path: ""
+  rendered_path: ""
+  prompts_path: ""

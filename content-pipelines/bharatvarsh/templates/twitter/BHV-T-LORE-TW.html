@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<!--
+  Bharatvarsh Content Ops — Lore Reveal Card (Twitter/X 16:9)
+  Dimensions: 1200×675 (16:9)
+  Template ID: BHV-T-LORE-TW
+
+  Slot variables (pass via URL params or JS injection):
+    backgroundImage  — URL or base64 of background image
+    headline         — Main headline text
+    bodySnippet      — 2-3 line body text
+    classifiedStamp  — "true" to show DECLASSIFIED stamp (top-right, rotated)
+
+  Rendering: Puppeteer screenshot at 1200×675 viewport.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1200">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --obsidian-950: #0A0D12;
+      --obsidian-900: #0F1419;
+      --obsidian-800: #1A1F2E;
+      --obsidian-700: #252A3B;
+      --obsidian-600: #323848;
+      --mustard-500: #F1C232;
+      --mustard-400: #F5D56A;
+      --powder-300: #C9DBEE;
+      --b-text-primary: #F0F4F8;
+      --b-text-secondary: #A0AEC0;
+      --b-text-muted: #718096;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 1200px;
+      height: 675px;
+      overflow: hidden;
+      background: var(--obsidian-900);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .canvas {
+      position: relative;
+      width: 1200px;
+      height: 675px;
+      overflow: hidden;
+    }
+
+    /* ── Background Image ── */
+    .bg-image {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-size: cover;
+      background-position: center;
+      z-index: 1;
+    }
+
+    /* ── Heavy Dark Overlay (obsidian 80%) ── */
+    .dark-overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 5;
+      background: rgba(15, 20, 25, 0.82);
+    }
+
+    /* ── Surveillance Grid ── */
+    .surveillance-grid::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 6;
+      opacity: 0.025;
+      background-image:
+        linear-gradient(rgba(201, 219, 238, 0.3) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201, 219, 238, 0.3) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+
+    /* ── Film Grain ── */
+    .film-grain::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 10;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 256px;
+    }
+
+    /* ── Content (left-aligned) ── */
+    .content {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 20;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 56px 64px;
+    }
+
+    /* ── Accent Bar ── */
+    .accent-bar {
+      width: 64px;
+      height: 3px;
+      background: var(--mustard-500);
+      margin-bottom: 24px;
+      opacity: 0.7;
+    }
+
+    /* ── Headline ── */
+    .headline {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 48px;
+      line-height: 1.1;
+      letter-spacing: 2px;
+      color: var(--mustard-500);
+      text-shadow: 0 0 30px rgba(241, 194, 50, 0.15);
+      margin-bottom: 16px;
+      max-width: 750px;
+    }
+
+    /* ── Body Snippet ── */
+    .body-snippet {
+      font-family: 'Inter', sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--b-text-primary);
+      max-width: 650px;
+      opacity: 0.9;
+    }
+
+    /* ── DECLASSIFIED Stamp ── */
+    .declassified-stamp {
+      position: absolute;
+      top: 44px;
+      right: 52px;
+      z-index: 25;
+      display: inline-block;
+      padding: 8px 20px;
+      border: 2px solid var(--powder-300);
+      color: var(--powder-300);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      transform: rotate(-12deg);
+      opacity: 0.75;
+    }
+
+    /* ── Corner tag ── */
+    .corner-tag {
+      position: absolute;
+      top: 48px;
+      left: 64px;
+      z-index: 25;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      color: var(--b-text-muted);
+      text-transform: uppercase;
+      opacity: 0.45;
+    }
+
+    /* ── Bottom-right Bharatvarsh label ── */
+    .bhv-label {
+      position: absolute;
+      bottom: 24px;
+      right: 40px;
+      z-index: 25;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      color: var(--b-text-muted);
+      text-transform: uppercase;
+      opacity: 0.3;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas film-grain surveillance-grid">
+    <!-- Background image -->
+    <div class="bg-image" id="bgImage"></div>
+
+    <!-- Dark overlay -->
+    <div class="dark-overlay"></div>
+
+    <!-- Corner tag -->
+    <div class="corner-tag">LORE // INTEL BRIEF</div>
+
+    <!-- Declassified stamp -->
+    <div class="declassified-stamp" id="stamp">DECLASSIFIED</div>
+
+    <!-- Content -->
+    <div class="content">
+      <div class="accent-bar"></div>
+      <div class="headline" id="headline">THE MESH</div>
+      <div class="body-snippet" id="bodySnippet">
+        Every transaction, every movement, every breath — catalogued, scored, and filed.
+        The Mesh doesn't just watch. It remembers.
+      </div>
+    </div>
+
+    <!-- Label -->
+    <div class="bhv-label">WELCOMETOBHARATVARSH.COM</div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+
+    if (params.get('backgroundImage')) {
+      document.getElementById('bgImage').style.backgroundImage = `url(${params.get('backgroundImage')})`;
+    }
+    if (params.get('headline')) {
+      document.getElementById('headline').textContent = params.get('headline');
+    }
+    if (params.get('bodySnippet')) {
+      document.getElementById('bodySnippet').textContent = params.get('bodySnippet');
+    }
+    if (params.get('classifiedStamp') === 'false') {
+      document.getElementById('stamp').style.display = 'none';
+    }
+  </script>
+</body>
+</html>

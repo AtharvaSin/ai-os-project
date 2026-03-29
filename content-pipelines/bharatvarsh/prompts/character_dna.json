@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Canonical visual descriptors for Bharatvarsh characters. Source: SKILL_BHARATVARSH_ART_PROMPTS.md Phase 3. Visual DNA MUST be included verbatim in every prompt featuring the character.",
+  "model_routing_note": "Use Seedream 4.5 for all character portrait/face/costume generation (attach expression sheet + front reference as IP-Adapter input). Use Nano Banana only for environment/scenery shots where character face accuracy is not critical.",
+  "characters": [
+    {
+      "id": "kahaan",
+      "name": "Kahaan",
+      "devanagari": "कहान",
+      "classified_status": "declassified",
+      "visual_dna": "Young Indian man, early 30s, military bearing. Close-cropped black hair with clean fade. Sharp defined jaw, high cheekbones, warm brown skin. Intense dark brown eyes conveying intelligence and controlled intensity. Small floating tactical lens/HUD monocle hovering near right eye emitting faint blue-white light. Wearing Bharatsena dress uniform: dark navy fitted jacket with structured shoulders, gold piping on collar and cuffs, rank insignia on chest. Athletic build, upright posture. Expression: focused, contemplative, carrying weight of authority.",
+      "faction_color_accent": {
+        "primary": "#0B2742",
+        "secondary": "#F1C232",
+        "description": "Navy + Gold piping"
+      },
+      "signature_element": "The floating tactical lens — this is his visual signature and MUST appear in every portrait.",
+      "mood_keywords": ["precision", "burden of duty", "controlled intensity"],
+      "reference_images": {
+        "face_anchor": "Kahaan Expressions.jpg",
+        "front_reference": "Kahaan Front.png",
+        "back_reference": "Kahaan Back.png",
+        "left_profile": "Kahaan Left.png",
+        "right_profile": "Kahaan Right.png",
+        "action_pose": "Kahaan angle.jpg",
+        "environmental": "Kahaan.webp",
+        "notes": "ALWAYS attach 'Kahaan Expressions.jpg' as primary face anchor. Add 'Kahaan Front.png' for full-body costume accuracy. The expressions sheet has 9 variants covering the full emotional range."
+      }
+    },
+    {
+      "id": "rudra",
+      "name": "Rudra",
+      "devanagari": "रुद्र",
+      "classified_status": "declassified",
+      "visual_dna": "Indian man, mid-30s, muscular powerful build. Battle-worn but disciplined. Short dark hair with topknot, full beard, olive/tan skin. Deep-set intense dark eyes with a warrior's focus. Grey Trident insignia tattooed on chest. Devanagari 'तत् त्वम् असि' tattooed on shoulder blade. Armband with trident below right elbow. Wearing hooded olive-green jacket over tan undershirt, or tactical combat gear depending on context. Scarring on forearms suggesting combat history. Expression: quiet intensity, coiled readiness, unwavering loyalty. Posture: grounded, alert, ready to act.",
+      "faction_color_accent": {
+        "primary": "#718096",
+        "secondary": "#4A5568",
+        "description": "Grey Trident legacy — desaturated grey-blue tones. Earth palette (sage, brown) for civilian look."
+      },
+      "signature_element": "Grey Trident tattoo on chest, Devanagari script tattoo, Rudra's curved machete",
+      "mood_keywords": ["disciplined violence", "loyalty", "silence"],
+      "reference_images": {
+        "face_anchor": "Rudra Expressions.png",
+        "front_reference": "Rudra Front.jpeg",
+        "back_reference": "Rudra Back.jpg",
+        "side_profiles": "Rudra Side.jpg",
+        "tattoo_details": "Rudra Tattoos.png",
+        "weapon": "Rudra Machete.png",
+        "accessory": "Rudra Armband.jpg",
+        "notes": "ALWAYS attach 'Rudra Expressions.png' as face anchor. For close-ups, also attach 'Rudra Tattoos.png' to ensure spiritual/cultural markers are accurate. Rudra's look is earth-toned and rustic — contrasts sharply with Kahaan's tech-military aesthetic."
+      }
+    },
+    {
+      "id": "pratap",
+      "name": "General Pratap",
+      "devanagari": "प्रताप",
+      "classified_status": "declassified",
+      "visual_dna": "Indian man, late 50s, commanding presence. Silver-streaked hair swept back neatly. Gray mustache. Deep lines on face suggesting decades of difficult decisions. Piercing dark eyes that assess and calculate. Clean-shaven chin, patrician features. Wearing Directorate high command uniform: dark navy long coat with gold epaulettes, chest covered in service decorations and campaign ribbons. Large gold/bronze circular emblem (crossed weapons/laurel wreath) on back of tunic. Tall, straight posture despite age. Hands often clasped behind back or resting on desk/table. Expression: absolute authority, controlled calm masking ruthlessness.",
+      "faction_color_accent": {
+        "primary": "#0B2742",
+        "secondary": "#F1C232",
+        "description": "Navy heavy, gold decoration"
+      },
+      "signature_element": "Gold epaulettes, service decorations, commanding posture, back emblem",
+      "mood_keywords": ["cold authority", "weight of empire", "calculated sacrifice"],
+      "reference_images": {
+        "front_reference": "Pratap Front.png",
+        "back_reference": "Pratap Back.png",
+        "environmental": "Pratap Banner.jpg",
+        "notes": "No expression sheet available yet. Use 'Pratap Front.png' as primary face/costume anchor. The back view shows the critical gold emblem — include when Pratap is shown from behind."
+      }
+    },
+    {
+      "id": "hana",
+      "name": "Hana",
+      "devanagari": "हना",
+      "classified_status": "declassified",
+      "visual_dna": "Young woman, late 20s. Delicate but resilient features. Short dark hair with side-swept fringe. Perceptive eyes. Wearing dark tactical bodysuit for operations or dark blazer suit for formal contexts. Sniper rifle with scope is her primary weapon. Rooftop operational environment. Expression: quiet intelligence, guarded warmth, the weight of knowing something others don't. Carries herself with fluid grace, aware of surroundings.",
+      "faction_color_accent": {
+        "primary": "#0B2742",
+        "secondary": "#C9DBEE",
+        "description": "Dark navy tactical + cool urban blues. Warmer earth tones in civilian contexts."
+      },
+      "signature_element": "Sniper rifle, rooftop tactical position, holographic HUD elements",
+      "mood_keywords": ["hidden knowledge", "tactical precision", "quiet resistance"],
+      "reference_images": {
+        "action_reference": "Hana_Front_Battle.png",
+        "formal_reference": "Hana Card.png",
+        "environmental": "Hana Banner.jpg",
+        "notes": "No expression sheet available yet. Use 'Hana_Front_Battle.png' for action/tactical context and 'Hana Card.png' for civilian/formal scenes. The banner image shows her signature rooftop overwatch composition."
+      }
+    },
+    {
+      "id": "arshi",
+      "name": "Arshi",
+      "devanagari": "अर्शी",
+      "classified_status": "classified",
+      "visual_dna": "⛔ CLASSIFIED — No public-facing art generation permitted. Use silhouette, obscured face, or atmospheric suggestion only. If absolutely needed for teaser content: \"Mysterious figure, face hidden in shadow, only the suggestion of a presence at the edge of light. Obsidian palette. No identifiable features.\"",
+      "faction_color_accent": {
+        "primary": "#0D9488",
+        "secondary": "#1A1F2E",
+        "description": "Teal/dark blue geometric aesthetic (from reference images — INTERNAL USE ONLY)"
+      },
+      "signature_element": "Geometric triangle emblem — but classified for public content",
+      "mood_keywords": ["mystery", "shadow", "unseen presence"],
+      "reference_images": {
+        "internal_only_local": "Arshi Local.png",
+        "internal_only_snow": "Arshi Snow.png",
+        "notes": "⛔ These references exist for INTERNAL pipeline use ONLY. Any public-facing content must use silhouette, obscured face, or atmospheric suggestion. Do NOT attach these as generation references for public content."
+      }
+    },
+    {
+      "id": "surya",
+      "name": "Surya",
+      "devanagari": "सूर्य",
+      "classified_status": "declassified",
+      "visual_dna": "Military commander in high-tech tactical bodysuit. Dark gray armor plating with cyan/turquoise tech accents. 'GUHYAKAS' nameplate visible. Indian flag patch on arm. Muscular athletic build. Modern military sci-fi soldier aesthetic.",
+      "faction_color_accent": {
+        "primary": "#4A5568",
+        "secondary": "#06B6D4",
+        "description": "Dark gray charcoal armor + cyan/turquoise highlights"
+      },
+      "signature_element": "GUHYAKAS nameplate, high-tech bodysuit armor, Indian flag patch",
+      "mood_keywords": ["military precision", "tech-forward soldier", "command authority"],
+      "reference_images": {
+        "front_reference": "Surya Front.jpg",
+        "back_reference": "Surya Back.jpg",
+        "side_profile": "Surya Side.jpg",
+        "environmental": "Surya Banner.jpg",
+        "notes": "No expression sheet available yet. Use 'Surya Front.jpg' for primary face/armor anchor. Shows the high-tech military aesthetic that contrasts with Rudra's rustic warrior look."
+      }
+    }
+  ]
+}

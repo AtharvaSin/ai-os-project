@@ -1,0 +1,26 @@
+{
+  "name": "content-ops",
+  "version": "1.0.0",
+  "description": "Bharatvarsh Content Operations Platform — lore-canonical content pipeline for MahaBharatvarsh marketing across Instagram, Twitter/X, and Facebook.",
+  "main": "render-post.js",
+  "scripts": {
+    "render": "node render-post.js",
+    "dry-run": "node render-post.js --dry-run",
+    "validate": "node render-post.js --validate",
+    "list": "node render-post.js --list",
+    "test": "node render-post.js --validate"
+  },
+  "dependencies": {
+    "@google-cloud/storage": "^7.19.0",
+    "pg": "^8.20.0",
+    "puppeteer": "^24.0.0"
+  },
+  "keywords": [
+    "bharatvarsh",
+    "content-ops",
+    "puppeteer",
+    "social-media"
+  ],
+  "author": "Atharva Singh",
+  "license": "ISC"
+}

@@ -408,6 +408,9 @@ export interface ContentPost {
   post_id: string;
   campaign: string;
   content_pillar: string;
+  story_angle: string | null;
+  distillation_filter: string | null;
+  content_channel: string | null;
   topic: string;
   hook: string | null;
   lore_refs: string | null;
@@ -438,6 +441,9 @@ export interface ContentPipelineSummary {
   total: number;
   by_status: Record<ContentPostStatus, number>;
   by_pillar: Record<string, number>;
+  by_angle: Record<string, number>;
+  by_filter: Record<string, number>;
+  by_channel: Record<string, number>;
 }
 
 export interface ContentPipelineResponse {

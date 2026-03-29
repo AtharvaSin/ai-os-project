@@ -141,6 +141,10 @@ export function contentPostStatusLabel(s: ContentPostStatus): string {
 
 export function pillarLabel(p: string): string {
   const map: Record<string, string> = {
+    bharatsena: 'Bharatsena',
+    akakpen: 'Akakpen',
+    tribhuj: 'Tribhuj',
+    // Legacy fallbacks
     mesh_intel: 'Mesh Intel',
     personnel_file: 'Personnel File',
     flagged_query: 'Flagged Query',
@@ -156,10 +160,51 @@ export function pillarLabel(p: string): string {
 
 export function pillarColor(p: string): string {
   const map: Record<string, string> = {
+    // New story angle colors
+    bharatsena: 'bg-[#0B84F3]/15 text-[#0B84F3]',       // Control Blue — state/military
+    akakpen: 'bg-[#4B6B32]/15 text-[#6A7A3A]',           // Deep Green — tribal/nature
+    tribhuj: 'bg-[#FFB703]/15 text-[#FFB703]',            // Mustard — resistance/trident
+    // Legacy fallbacks
     mesh_intel: 'bg-[#C9DBEE]/15 text-[#C9DBEE]',
     personnel_file: 'bg-accent-gold/15 text-accent-gold',
     flagged_query: 'bg-[#F1C232]/15 text-[#F1C232]',
     clearance_upgrade: 'bg-accent-teal/15 text-accent-teal',
   };
   return map[p] ?? 'bg-text-muted/15 text-text-muted';
+}
+
+export function filterLabel(f: string): string {
+  const map: Record<string, string> = {
+    living_without_religion: 'Living Without Religion',
+    med_mil_progress: 'Med & Mil Progress',
+    novel_intro: 'Novel Intro',
+  };
+  return map[f] ?? f;
+}
+
+export function channelLabel(c: string): string {
+  const map: Record<string, string> = {
+    declassified_report: 'Declassified Report',
+    graffiti_photo: 'Graffiti & Photo',
+    news_article: 'News Article',
+  };
+  return map[c] ?? c;
+}
+
+export function filterColor(f: string): string {
+  const map: Record<string, string> = {
+    living_without_religion: 'bg-[#8B5CF6]/15 text-[#8B5CF6]',  // Purple — philosophical
+    med_mil_progress: 'bg-[#17D0E3]/15 text-[#17D0E3]',          // Cyan — tech/progress
+    novel_intro: 'bg-[#FFB200]/15 text-[#FFB200]',                // Amber — narrative
+  };
+  return map[f] ?? 'bg-text-muted/15 text-text-muted';
+}
+
+export function channelColor(c: string): string {
+  const map: Record<string, string> = {
+    declassified_report: 'bg-[#E03C31]/15 text-[#E03C31]',  // Red — classified docs
+    graffiti_photo: 'bg-[#6A7A3A]/15 text-[#6A7A3A]',        // Olive — artistic
+    news_article: 'bg-[#D8DCDF]/15 text-[#B9C3C8]',          // Silver — media
+  };
+  return map[c] ?? 'bg-text-muted/15 text-text-muted';
 }

@@ -5,7 +5,7 @@
 > **Account:** dystopiandynasties@gmail.com
 > **Brand Context:** B (Bharatvarsh) — Obsidian + Mustard Gold (#F1C232) + Bebas Neue
 > **Parallel Channels:** Instagram [@welcometobharatvarsh](https://www.instagram.com/welcometobharatvarsh/) / Facebook Page (Mahabharatvarsh)
-> **Asset Pipeline:** `content-ops/` (prompts, templates, references)
+> **Asset Pipeline:** `content-pipelines/bharatvarsh/` (prompts, templates, references)
 
 ---
 
@@ -69,7 +69,7 @@ NOT letters, NOT generic logo
 --guidance 7.5
 ```
 
-**Reference:** `content-ops/assets/references/Novel Card.webp`
+**Reference:** `content-pipelines/bharatvarsh/assets/references/Novel Card.webp`
 
 **Reuse tip:** Same file from Instagram/Facebook. One symbol, three platforms.
 
@@ -553,12 +553,12 @@ Tweet 5: CTA
 
 ### Lore Reveal Card Template
 
-Use `content-ops/templates/twitter/BHV-T-LORE-TW.html` (1200x675) for brand-locked lore cards:
+Use `content-pipelines/bharatvarsh/templates/twitter/BHV-T-LORE-TW.html` (1200x675) for brand-locked lore cards:
 - Obsidian background
 - Bebas Neue title in mustard gold
 - Content text in off-white
 - Bharatvarsh watermark bottom-right
-- Film grain overlay via `content-ops/templates/shared/atmospheric-effects.css`
+- Film grain overlay via `content-pipelines/bharatvarsh/templates/shared/atmospheric-effects.css`
 
 ---
 
@@ -618,13 +618,13 @@ Update Bharatvarsh Twitter: handle is @{your_handle}, URL is https://x.com/{your
 
 | Resource | Path |
 |----------|------|
-| Style Anchors | `content-ops/prompts/style_anchors.json` |
-| Character Visual DNA | `content-ops/prompts/character_dna.json` |
-| Environment Templates | `content-ops/prompts/environment_templates.json` |
-| Negative Prompts | `content-ops/prompts/negative_prompts.json` |
-| Reference Images (53) | `content-ops/assets/references/` |
-| Twitter Lore Template | `content-ops/templates/twitter/BHV-T-LORE-TW.html` |
-| Brand Tokens (JS) | `content-ops/templates/shared/brand-tokens.js` |
+| Style Anchors | `content-pipelines/bharatvarsh/prompts/style_anchors.json` |
+| Character Visual DNA | `content-pipelines/bharatvarsh/prompts/character_dna.json` |
+| Environment Templates | `content-pipelines/bharatvarsh/prompts/environment_templates.json` |
+| Negative Prompts | `content-pipelines/bharatvarsh/prompts/negative_prompts.json` |
+| Reference Images (53) | `content-pipelines/bharatvarsh/assets/references/` |
+| Twitter Lore Template | `content-pipelines/bharatvarsh/templates/twitter/BHV-T-LORE-TW.html` |
+| Brand Tokens (JS) | `content-pipelines/bharatvarsh/templates/shared/brand-tokens.js` |
 | Brand Identity | `knowledge-base/BRAND_IDENTITY.md` |
 | Instagram Setup Guide | `docs/BHARATVARSH_INSTAGRAM_SETUP_GUIDE.md` |
 | Facebook Setup Guide | `docs/BHARATVARSH_FACEBOOK_SETUP_GUIDE.md` |

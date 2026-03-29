@@ -26,7 +26,7 @@ DB_PASS = os.environ.get("AI_OS_DB_PASSWORD", "ai_os_admin_clearance")
 CSV_PATH = os.path.join(
     os.path.dirname(__file__),
     "..",
-    "content-ops",
+    "content-pipelines/bharatvarsh",
     "calendar",
     "content_calendar.csv",
 )

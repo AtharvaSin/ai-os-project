@@ -1,4 +1,10 @@
-# Environment and secrets
+# ============================================================
+# AI Operating System — .gitignore
+# Portable, lift-and-shift structure.
+# Core code/config tracked. Ephemeral/generated excluded.
+# ============================================================
+
+# ── Environment & Secrets ──
 .env
 .env.local
 credentials.json
@@ -6,73 +12,158 @@ client_secret*.json
 *.pem
 *.key
 
-# Python
+# ── Python ──
 __pycache__/
 *.pyc
 .venv/
 venv/
 *.egg-info/
 
-# Node
+# ── Node ──
 node_modules/
 .next/
 dist/
 
-# OS
+# ── OS ──
 .DS_Store
 Thumbs.db
+desktop.ini
 
-# IDE
+# ── IDE ──
 .vscode/
 .idea/
 *.swp
 
-# Docker
+# ── Docker ──
 docker-compose.override.yml
 
-# Terraform
+# ── Terraform ──
 .terraform/
 *.tfstate
 *.tfstate.backup
 *.tfvars
 
-# Logs
+# ── Logs ──
 *.log
 logs/
 
-# Build artifacts
+# ── Build artifacts ──
 build/
 out/
 *.tsbuildinfo
 
-# Coverage
+# ── Coverage ──
 coverage/
 .nyc_output/
 
-# Sensitive data
+# ── Sensitive data ──
 docs/contacts.csv
 
-# Misc
+# ── Misc ──
 *.bak
 *.tmp
 .cache/
 
-# Claude Code worktrees
+# ============================================================
+# Claude Code — track skills/commands/agents, ignore session state
+# ============================================================
+.claude/settings.local.json
 .claude/worktrees/
+.claude/memory/
+.claude/projects/
+# .claude/skills/ → TRACKED (OS brain)
+# .claude/commands/ → TRACKED
 
-# Local-only content pipelines and ops
+# ── Playwright MCP session data ──
+.playwright-mcp/
+
+# ============================================================
+# Content Pipelines — track code/templates, ignore outputs
+# ============================================================
+content-pipelines/*/rendered/
+content-pipelines/*/node_modules/
+
+# ── Legacy pipeline paths (no longer exist, safety net) ──
+bharatvarsh_content_pipeline/
 bharatvarsh-content-pipeline/
 content-ops/
 
-# Cowork plugin zips and local builds
-cowork-configuration/plugins-*.zip
-cowork-configuration/software-forge/
+# ── Cowork plugin zips (installed as plugins, source tracked) ──
 plugins-*.zip
+*.skill
 
-# Local Node scripts (one-off tooling)
+# ── Context transfer docs (large reference files) ──
+docs/context_transfer/
+
+# ── Video production workspace (render outputs) ──
+video-production/workspace/
+video-production/node_modules/
+
+# ── Remotion render outputs (legacy, dir being removed) ──
+remotion_video/out/
+remotion_video/.remotion/
+
+# ============================================================
+# AIU YouTube — track knowledge/templates, ignore media
+# ============================================================
+aiu-youtube/content/*/raw-footage/*.mp4
+aiu-youtube/content/*/raw-footage/*.mov
+aiu-youtube/content/*/exports/*.mp4
+aiu-youtube/content/*/exports/*.mov
+aiu-youtube/assets/music/*.mp3
+aiu-youtube/assets/music/*.wav
+
+# ============================================================
+# Large binary files (global)
+# ============================================================
+*.mp4
+*.mov
+*.wav
+*.mp3
+*.avi
+*.mkv
+*.flac
+*.aac
+
+# But keep .gitkeep files
+!.gitkeep
+
+# ── Images (global ignore, with exceptions) ──
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+# Exception: keep images in specific tracked directories
+!knowledge-base/**/*.png
+!knowledge-base/**/*.jpg
+!docs/**/*.png
+!docs/**/*.jpg
+!aiu-youtube/assets/brand/**
+!aiu-youtube/assets/graphics/**
+!dashboard/public/icons/**
+
+# ── Large generated HTML ──
+*.html
+# Exception: keep HTML templates in specific tracked directories
+!aiu-youtube/assets/templates/**/*.html
+!mcp-servers/ai-os-gateway/app/templates/**/*.html
+!dashboard/public/**/*.html
+!content-pipelines/bharatvarsh/templates/**/*.html
+
+# ── DaVinci Resolve project files ──
+*.drp
+*.dra
+
+# ── Stray temp/eval files ──
+eval_screenshot*.png
+test_render*.png
+
+# ── Local Node scripts (one-off tooling) ──
 scripts/generate_social_setup_guide.js
 scripts/package.json
 scripts/package-lock.json
 
-# Stray temp files
+# ── Stray temp files ──
 ziD5aKRN
+ziRLjr1g

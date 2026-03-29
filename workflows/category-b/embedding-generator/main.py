@@ -1,14 +1,17 @@
 """Embedding Generation Pipeline — Category B Pipeline.
 
-Runs once a week (Sunday 02:00 IST) via Cloud Scheduler. Finds knowledge_entries
-rows without corresponding knowledge_embeddings, generates embeddings via OpenAI
-text-embedding-3-small, and inserts them.
+Runs weekly (Sunday 02:00 UTC / 07:30 IST) via Cloud Scheduler.
+Finds knowledge_entries rows that either:
+  1. Have no corresponding embedding (new entries), or
+  2. Have been updated since their embedding was last generated (stale entries).
+Generates embeddings via OpenAI text-embedding-3-small and upserts them.
 
 Entry point: main(request)
 Deployment: Cloud Run, python312, asia-south1
 Service account: ai-os-cloud-run@ai-operating-system-490208.iam.gserviceaccount.com
 """
 
+import hashlib
 import json
 import os
 import uuid
@@ -71,18 +74,27 @@ def get_connection():
     )
 
 
-def fetch_entries_without_embeddings(cursor):
-    """Query knowledge_entries that have no corresponding knowledge_embeddings row.
+def fetch_entries_needing_embeddings(cursor):
+    """Query knowledge_entries that need embedding generation.
 
-    Returns a list of dicts with id, title, content.
+    Finds entries that either:
+      1. Have no embedding at all (new entries), or
+      2. Have content that changed since the embedding was last generated
+         (detected via content_hash mismatch or updated_at comparison).
+
+    Returns a list of dicts with id, title, content, is_stale (bool).
     """
     cursor.execute(
         """
-        SELECT ke.id, ke.title, ke.content
+        SELECT ke.id, ke.title, ke.content, ke.content_hash,
+               CASE WHEN kv.id IS NULL THEN FALSE ELSE TRUE END AS is_stale
         FROM knowledge_entries ke
         LEFT JOIN knowledge_embeddings kv ON kv.entry_id = ke.id
-        WHERE kv.id IS NULL
-        ORDER BY ke.created_at ASC
+        WHERE kv.id IS NULL                          -- new: no embedding yet
+           OR ke.updated_at > kv.updated_at          -- stale: content updated
+        ORDER BY
+            CASE WHEN kv.id IS NULL THEN 0 ELSE 1 END,  -- new entries first
+            ke.created_at ASC
         LIMIT %s
         """,
         (BATCH_SIZE,),
@@ -108,24 +120,41 @@ def generate_embeddings(texts: list[str], api_key: str) -> tuple[list[list[float
     return embeddings, tokens_used
 
 
-def insert_embeddings(cursor, entries, embeddings):
-    """Insert embedding vectors into knowledge_embeddings table.
+def _compute_content_hash(title: str, content: str) -> str:
+    """Compute SHA-256 hash of the text sent to the embedding model."""
+    text = f"{title}\n\n{content}"
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
+def upsert_embeddings(cursor, entries, embeddings):
+    """Upsert embedding vectors into knowledge_embeddings table.
 
     Uses pgvector string format for the vector column.
+    On conflict (re-embed of stale entry), updates the vector, model, and
+    updated_at timestamp.
     """
     for entry, embedding in zip(entries, embeddings):
         # Convert list to pgvector string format: '[0.1, 0.2, ...]'
         vector_str = "[" + ", ".join(str(v) for v in embedding) + "]"
         cursor.execute(
             """
-            INSERT INTO knowledge_embeddings (entry_id, embedding, model_used)
-            VALUES (%s, %s, %s)
+            INSERT INTO knowledge_embeddings (entry_id, embedding, model_used, updated_at)
+            VALUES (%s, %s, %s, NOW())
             ON CONFLICT (entry_id) DO UPDATE SET
                 embedding = EXCLUDED.embedding,
-                model_used = EXCLUDED.model_used
+                model_used = EXCLUDED.model_used,
+                updated_at = NOW()
             """,
             (str(entry["id"]), vector_str, MODEL),
         )
+
+        # Sync content_hash on the entry so future runs skip it
+        content_hash = _compute_content_hash(entry["title"], entry["content"])
+        if entry.get("content_hash") != content_hash:
+            cursor.execute(
+                "UPDATE knowledge_entries SET content_hash = %s WHERE id = %s",
+                (content_hash, str(entry["id"])),
+            )
 
 
 def log_ingestion_job(cursor, entries_count, tokens_used, cost_usd, status, error_msg=None):
@@ -212,8 +241,8 @@ def main(request):
         conn = get_connection()
         cursor = conn.cursor()
 
-        # 1. Fetch entries that need embeddings
-        entries = fetch_entries_without_embeddings(cursor)
+        # 1. Fetch entries that need embeddings (new + stale)
+        entries = fetch_entries_needing_embeddings(cursor)
 
         if not entries:
             # Nothing to process — log and return early
@@ -227,6 +256,8 @@ def main(request):
                 json.dumps({
                     "status": "success",
                     "processed": 0,
+                    "new": 0,
+                    "refreshed": 0,
                     "tokens_used": 0,
                     "cost_usd": 0.0,
                     "message": "No entries need embeddings",
@@ -234,6 +265,9 @@ def main(request):
                 200,
                 {"Content-Type": "application/json"},
             )
+
+        new_count = sum(1 for e in entries if not e.get("is_stale"))
+        stale_count = sum(1 for e in entries if e.get("is_stale"))
 
         # 2. Prepare texts: title + "\n\n" + content
         texts = [
@@ -244,8 +278,8 @@ def main(request):
         openai_api_key = get_secret("OPENAI_API_KEY")
         embeddings, tokens_used = generate_embeddings(texts, openai_api_key)
 
-        # 4. Insert embeddings into knowledge_embeddings
-        insert_embeddings(cursor, entries, embeddings)
+        # 4. Upsert embeddings into knowledge_embeddings
+        upsert_embeddings(cursor, entries, embeddings)
         processed = len(entries)
 
         # 5. Calculate cost
@@ -262,7 +296,7 @@ def main(request):
 
         # 7. Log pipeline run
         summary = (
-            f"Processed: {processed}, "
+            f"Processed: {processed} (new: {new_count}, refreshed: {stale_count}), "
             f"Tokens: {tokens_used}, "
             f"Cost: ${cost_usd:.6f}"
         )
@@ -276,6 +310,8 @@ def main(request):
             json.dumps({
                 "status": "success",
                 "processed": processed,
+                "new": new_count,
+                "refreshed": stale_count,
                 "tokens_used": tokens_used,
                 "cost_usd": round(cost_usd, 6),
             }),

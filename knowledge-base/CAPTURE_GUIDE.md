@@ -93,7 +93,7 @@ Claude will pull unprocessed quick entries, cross-reference with active tasks an
 
 ### What Happens Next
 
-- **Quick entries** are embedded within 5 minutes by the existing embedding pipeline and become searchable via `search_knowledge`
+- **Quick entries** are embedded on the next weekly Sunday run (02:00 UTC) by the embedding-generator pipeline and become searchable via `search_knowledge`. Content hash is set on capture so stale detection works if the entry is later edited.
 - **Journals** accumulate until the 28th, when `journal-monthly-distill` extracts themes, mood patterns, tensions, decisions, and missed actions via Claude Haiku
 - Distilled journal insights appear as `knowledge_entries` with `source_type='journal_entry'` and tags `journal_distill, monthly, YYYY-MM`
 - Use the Dashboard `/capture` page to browse your inbox and journal feed

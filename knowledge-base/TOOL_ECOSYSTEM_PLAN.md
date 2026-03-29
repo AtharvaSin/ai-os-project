@@ -2,7 +2,7 @@
 
 > **Purpose:** Reference architecture for the three-tier MCP and tool access system. Governs how new tools are added and where they live.
 >
-> **Last updated:** 2026-03-20 (State v14. MCP Gateway: 80 tools across 15 modules in codebase (56/10 deployed). Composite queries + Visual content modules built. Creative Writer, LinkedIn, Meta modules added. 29 skills. Dashboard: 9 pages, 23 API routes, 28 components. ASR Visual Studio Cowork plugin: 3 plugin skills, 3 engine modules, hybrid local+MCP rendering.)
+> **Last updated:** 2026-03-27 (State v21. MCP Gateway: ~111 tools across 17 functional modules (21 .py files, 4 utility modules). 35 skills. Dashboard: 8+ pages, 35 API routes, 38 components. NotebookLM: Tier 3 local STDIO (14 notebooks, ~700 sources). Video Production System: unified video-production/ with Remotion 4.0.438, 18 common components, 88 project-specific compositions, BrandTokens interface, 4 CLI tools. Content pipeline: 13 posts in DB.)
 
 ---
 
@@ -43,9 +43,11 @@ Single FastAPI container on Cloud Run. Scales to zero. All custom tool access. A
 | Bharatvarsh | P2 | query_lore, get_character, get_entity, search_lore, get_timeline, get_chapter, check_lore_consistency, get_writing_style | LIVE (8 tools) |
 | Composite | P1 | get_task_full, get_domain_overview, get_contact_brief | BUILT (3 tools) |
 | Media Gen | P2 | generate_image, edit_image, render_template, store_asset, list_assets | BUILT (5 tools) |
-| Creative Writer | P2 | Create/manage creative projects (Truby 22-step), brainstorm sessions (7 methods), save/retrieve versioned writing outputs | NOT DEPLOYED (8 tools) |
-| LinkedIn | P1 | post_to_linkedin, get_linkedin_profile, get_linkedin_posts, schedule_linkedin_post | NOT DEPLOYED (4 tools) |
-| Meta | P1 | post_to_instagram, get_instagram_insights, post_to_facebook, get_facebook_insights | NOT DEPLOYED (4 tools) |
+| Creative Writer | P2 | Create/manage creative projects (Truby 22-step), brainstorm sessions (7 methods), save/retrieve versioned writing outputs | BUILT (8 tools) — Cloud Build auto-deploy expected |
+| LinkedIn | P1 | post_to_linkedin, get_linkedin_profile, get_linkedin_posts, schedule_linkedin_post | BUILT (4 tools) — needs OAuth credentials in Secret Manager |
+| Meta | P1 | post_to_instagram, get_instagram_insights, post_to_facebook, get_facebook_insights | BUILT (4 tools) — needs OAuth credentials in Secret Manager |
+| X/Twitter | P1 | post_tweet, post_tweet_with_media, get_recent_tweets, get_tweet_metrics | BUILT (4 tools) — needs API credentials in Secret Manager |
+| Social Manager | P1 | social_post (universal dispatcher), social_cross_post, social_list_platforms, social_validate_content, social_list_accounts, social_account_health | BUILT (6 tools) — adapter layer over platform modules |
 | WhatsApp | P3 | send_message, send_template, get_message_status | Not started |
 | Content Tracker | P3 | log_post, get_calendar, update_status, get_metrics | Not started |
 
@@ -55,7 +57,6 @@ mcp-servers/ai-os-gateway/
 ├── app/
 │   ├── main.py              ← FastAPI + MCP server
 │   ├── config.py            ← Secrets, DB pool, OAuth
-│   ├── mcp_registry.py      ← Tool registration system
 │   ├── modules/             ← One file per tool
 │   │   ├── postgres.py      ← LIVE (6 tools)
 │   │   ├── google_tasks.py  ← LIVE (9 tools)
@@ -67,11 +68,16 @@ mcp-servers/ai-os-gateway/
 │   │   ├── capture.py       ← LIVE (3 tools)
 │   │   ├── contacts.py      ← LIVE (8 tools)
 │   │   ├── bharatvarsh.py   ← LIVE (8 tools)
-│   │   ├── composite.py     ← BUILT (3 tools)
-│   │   ├── media_gen.py     ← BUILT (5 tools)
-│   │   ├── creative_writer.py ← NOT DEPLOYED (8 tools)
-│   │   ├── linkedin.py      ← NOT DEPLOYED (4 tools)
-│   │   ├── meta.py          ← NOT DEPLOYED (4 tools)
+│   │   ├── composite.py     ← BUILT / auto-deploy expected (3 tools)
+│   │   ├── media_gen.py     ← BUILT / auto-deploy expected (5 tools)
+│   │   ├── creative_writer.py ← BUILT / auto-deploy expected (8 tools)
+│   │   ├── linkedin.py      ← BUILT (4 tools) — needs OAuth creds
+│   │   ├── meta.py          ← BUILT (4 tools) — needs OAuth creds
+│   │   ├── x_twitter.py     ← BUILT (4 tools) — needs API creds
+│   │   ├── social_manager.py ← BUILT (6 tools) — unified dispatcher
+│   │   ├── social_adapters.py ← Infrastructure (adapter registry)
+│   │   ├── social_base.py   ← Infrastructure (SocialPost base)
+│   │   ├── social_registry.py ← Infrastructure (SocialRegistry)
 │   │   ├── whatsapp.py      ← Not started
 │   │   └── content.py       ← Not started
 │   ├── templates/            ← 6 branded HTML templates for media_gen
@@ -134,11 +140,12 @@ dashboard/
 ### Tier 3 — Local STDIO MCP Servers (Claude Code Only)
 NPM packages running as local subprocesses. Zero cloud cost.
 
-| Tool | Package | Use Case |
-|------|---------|----------|
-| Evernote | @verygoodplugins/mcp-evernote | Pull learning notes, project docs into Claude Code |
-| n8n | n8n native MCP | Design and trigger automation workflows |
-| GitHub | Official GitHub MCP or gh CLI | Repo management during dev sessions |
+| Tool | Package | Status | Use Case |
+|------|---------|--------|----------|
+| NotebookLM | notebooklm-py (PyPI) | **CONFIGURED** | Research Q&A, podcast/video/quiz generation from 14 curated notebooks (~700 sources). Agent skill at ~/.claude/skills/notebooklm/. Auth: browser cookie login, 1-2 hr expiry. |
+| Evernote | @verygoodplugins/mcp-evernote | Pending | Pull learning notes, project docs into Claude Code |
+| n8n | n8n native MCP | Pending | Design and trigger automation workflows |
+| GitHub | Official GitHub MCP or gh CLI | Pending | Repo management during dev sessions |
 
 ---
 

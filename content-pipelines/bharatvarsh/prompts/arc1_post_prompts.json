@@ -1,0 +1,949 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Art prompt configurations for all 30 posts in the Bharatvarsh Arc 1 content calendar (Welcome to the Mesh). Every prompt follows Jim Lee modern American comic book art style. Voice is Bhoomi (the surveillance AI). Generated for seedream_4_5 (character portraits) and nano_banana (environments, tech, backgrounds).",
+  "campaign": "arc1-welcome-to-the-mesh",
+  "style_contract": "Jim Lee modern American comic book art style. Dense hatching and cross-hatching for depth. Heavy blacks balanced with sharp white highlights. Bold ink outlines. Textured line-work surfaces with slight grit, pen-and-ink feel. NOT flat digital fills, NOT smooth gradients.",
+  "spoiler_rules": {
+    "surya_never_appears": true,
+    "military_behind_2010_never_hinted": true,
+    "kahaan_rudra_alliance_never_hinted": true,
+    "new_tribhuj_not_mentioned": true
+  },
+  "posts": [
+    {
+      "post_id": "BHV-20260406-001",
+      "topic": "The Mesh — introduction",
+      "content_pillar": "mesh_intel",
+      "model": "nano_banana",
+      "positive_prompt": "Jim Lee modern American comic book art style. Vast abstract Mesh surveillance network rendered as thousands of thin luminous blue-white light lines forming a three-dimensional grid over a dark obsidian Bharatvarsh cityscape at night. Data nodes pulse at grid intersections with faint mustard-gold sparks. Facial recognition targeting frames lock onto pedestrian silhouettes far below on rain-slicked streets. Towering Mughal-geometric architecture rises through the grid, dense hatching and cross-hatching defining every surface and shadow. Heavy blacks dominate the lower city while sharp white highlights trace the Mesh lines above. Bold ink outlines on all structural edges. Cinematic wide establishing shot, camera 24mm, slight upward tilt to emphasize monumental scale. Volumetric fog diffusing blue light through the grid. Textured line-work surfaces with slight grit and pen-and-ink feel throughout. Atmospheric haze separating foreground buildings from deep background towers. The entire composition conveys total surveillance as infrastructure — beautiful, terrifying, inescapable.",
+      "negative_prompt": "low quality, blurry, deformed, disfigured, extra limbs, extra fingers, mutated hands, poorly drawn face, ugly, oversaturated, neon, white background, stock photo, generic, watermark, text, logo, signature, soft gradients, airbrush, smooth digital rendering, watercolor, anime, manga, chibi, flat colors, pastel palette, cel shading, vector art, minimalist, abstract, photorealistic, photograph, 3D render, CGI, Pixar style, oil painting, impressionist, people in foreground (unless specified), too many focal points, cluttered composition, daytime bright sunshine",
+      "reference_images": [
+        {
+          "filename": "Mesh.webp",
+          "role": "style_reference",
+          "ip_adapter_strength": null,
+          "notes": "Use for surveillance atmosphere and blue-white grid aesthetic mood matching"
+        },
+        {
+          "filename": "Bharatvarsh.webp",
+          "role": "style_reference",
+          "ip_adapter_strength": null,
+          "notes": "Use for city architectural style and obsidian palette reference"
+        }
+      ],
+      "aspect_ratios": {
+        "instagram": "1:1",
+        "twitter": "16:9",
+        "facebook": "1.91:1"
+      },
+      "generation_parameters": {
+        "guidance": "3-5",
+        "steps": "20-35",
+        "reference_strength": null
+      },
+      "visual_direction_notes": "Cinematic wide establishing shot. The Mesh as visible infrastructure — a luminous surveillance web blanketing the city. Blue-white dominant with obsidian architecture beneath. This is the campaign opener — set the visual tone for all 30 posts."
+    },
+    {
+      "post_id": "BHV-20260408-001",
+      "topic": "OxyPoles — clean air and hidden sensors",
+      "content_pillar": "mesh_intel",
+      "model": "nano_banana",
+      "positive_prompt": "Jim Lee modern American comic book art style. Towering metallic OxyPole dominating the frame against an obsidian night sky, rendered in heroic low-angle close-up at 50mm focal length. The pole is a slender column of dark polished metal with intricate Mughal jali geometric screen patterns etched into its surface, every facet defined by dense hatching and cross-hatching for depth and texture. The glowing top section emits faint blue-white purification light that casts sharp highlights on the metal below. Hidden secondary sensor arrays visible as subtle recessed lenses along the pole shaft catching ambient light. Bold ink outlines on every structural edge. Heavy blacks on the unlit side of the pole balanced against sharp white highlights where the glow catches the metalwork. Background shows distant Bharatvarsh skyline in deep obsidian with faint amber lights. Textured line-work surfaces with slight grit and pen-and-ink feel on all metal surfaces — no smooth digital rendering. Atmospheric haze softening the background while the pole remains razor-sharp in focus. The composition conveys dual purpose: life-giving air purification and silent constant surveillance.",
+      "negative_prompt": "low quality, blurry, deformed, disfigured, extra limbs, extra fingers, mutated hands, poorly drawn face, ugly, oversaturated, neon, white background, stock photo, generic, watermark, text, logo, signature, soft gradients, airbrush, smooth digital rendering, watercolor, anime, manga, chibi, flat colors, pastel palette, cel shading, vector art, minimalist, abstract, photorealistic, photograph, 3D render, CGI, Pixar style, oil painting, impressionist, toy-like, chunky, low-detail, generic sci-fi prop",
+      "reference_images": [
+        {
+          "filename": "Oxy Pole.jpg",
+          "role": "subject_reference",
+          "ip_adapter_strength": null,
+          "notes": "Primary reference for OxyPole design — use for accurate proportions and jali pattern detail"
+        }
+      ],
+      "aspect_ratios": {
+        "instagram": "1:1",
+        "twitter": "16:9",
+        "facebook": "1.91:1"
+      },
+      "generation_parameters": {
+        "guidance": "3-5",
+        "steps": "20-35",
+        "reference_strength": null
+      },
+      "visual_direction_notes": "Heroic tech close-up. The OxyPole as a monumental object — beautiful engineering that hides surveillance inside a life-giving device. Low angle to emphasize scale and authority. Dense detail on metal surfaces."
+    },
+    {
+      "post_id": "BHV-20260409-001",
+      "topic": "Blind spots question",
+      "content_pillar": "flagged_query",
+      "model": "nano_banana",
+      "positive_prompt": "Jim Lee modern American comic book art style. Dark atmospheric background composition optimized for text overlay. Deep obsidian gradient transitioning from pure black at edges to dark navy at centre. A faint surveillance grid pattern barely visible beneath the surface, rendered with fine pen-and-ink lines suggesting the Mesh watching from behind. Dense hatching and cross-hatching defining subtle tonal gradations across the dark field. A single edge of mustard gold light bleeding from the right margin, casting sharp white highlights on the faint grid intersections. Heavy blacks dominate ninety percent of the composition with bold ink outlines on the subtle grid elements. Minimal detail in the centre third for text readability. Slight film grain texture across the entire surface. Textured line-work surfaces with slight grit and pen-and-ink feel — no smooth digital gradient fill. The atmosphere is oppressive, watching, classified. Volumetric fog wisps barely visible in the upper corners. The composition reads as a classified document surface — dark, official, ominous.",
+      "negative_prompt": "low quality, blurry, deformed, disfigured, extra limbs, extra fingers, mutated hands, poorly drawn face, ugly, oversaturated, neon, white background, stock photo, generic, watermark, text, logo, signature, soft gradients, airbrush, smooth digital rendering, watercolor, anime, manga, chibi, flat colors, pastel palette, cel shading, vector art, minimalist, abstract, photorealistic, photograph, 3D render, CGI, Pixar style, oil painting, impressionist, people in foreground (unless specified), too many focal points, cluttered composition, daytime bright sunshine",
+      "reference_images": [
+        {
+          "filename": "Question.webp",
+          "role": "style_reference",
+          "ip_adapter_strength": null,
+          "notes": "Use for classified-document texture and dark atmospheric feel"
+        },
+        {
+          "filename": "Mesh.webp",
+          "role": "style_reference",
+          "ip_adapter_strength": null,
+          "notes": "Use for faint surveillance grid pattern overlay reference"
+        }
+      ],
+      "aspect_ratios": {
+        "instagram": "1:1",
+        "twitter": "16:9",
+        "facebook": "1.91:1"
+      },
+      "generation_parameters": {
+        "guidance": "3-5",
+        "steps": "20-35",
+        "reference_strength": null
+      },
+      "visual_direction_notes": "Quote card background. Minimal but textured — not a flat dark rectangle. The surveillance grid is felt more than seen. Mustard gold edge light provides the only warmth. Centre must be clear for text overlay."
+    },
+    {
+      "post_id": "BHV-20260410-001",
+      "topic": "Checkpoints — children process faster",
+      "content_pillar": "mesh_intel",
+      "model": "nano_banana",
+      "positive_prompt": "Jim Lee modern American comic book art style. Wide establishing shot of Oxy Pole Boulevard in a Bharatvarsh city rendered at 24mm focal length with dramatic foreshortened perspective down a tree-lined boulevard vanishing into atmospheric haze. Small silhouettes of children walking through a checkpoint in the mid-ground, their posture casual and unbothered — normalized compliance. Surveillance cameras embedded subtly in ornate lamp posts along the boulevard, each post detailed with dense hatching and cross-hatching on metal and stone surfaces. Tall sleek OxyPoles rise at regular intervals, their blue-white purification glow casting sharp white highlights on wet pavement below. Heavy blacks define deep shadows under the trees and between buildings. Bold ink outlines on all architectural elements — vertical gardens cascading down building facades, Mughal geometric patterns in concrete walls. The scene is beautiful but deeply unsettling in its perfection. Textured line-work surfaces with slight grit and pen-and-ink feel on every surface. Cinematic establishing shot composition. The checkpoint is casual, routine, invisible to those who grew up with it.",
+      "negative_prompt": "low quality, blurry, deformed, disfigured, extra limbs, extra fingers, mutated hands, poorly drawn face, ugly, oversaturated, neon, white background, stock photo, generic, watermark, text, logo, signature, soft gradients, airbrush, smooth digital rendering, watercolor, anime, manga, chibi, flat colors, pastel palette, cel shading, vector art, minimalist, abstract, photorealistic, photograph, 3D render, CGI, Pixar style, oil painting, impressionist, people in foreground (unless specified), too many focal points, cluttered composition, daytime bright sunshine",
+      "reference_images": [
+        {
+          "filename": "Bharatvarsh.webp",
+          "role": "style_reference",
+          "ip_adapter_strength": null,
+          "notes": "Use for city architectural style and boulevard aesthetic"
+        },
+        {
+          "filename": "Commute.webp",
+          "role": "style_reference",
+          "ip_adapter_strength": null,
+          "notes": "Use for pedestrian street-level mood and checkpoint atmosphere"
+        }
+      ],
+      "aspect_ratios": {
+        "instagram": "1:1",
+        "twitter": "16:9",
+        "facebook": "1.91:1"
+      },
+      "generation_parameters": {
+        "guidance": "3-5",
+        "steps": "20-35",
+        "reference_strength": null
+      },
+      "visual_direction_notes": "Cinematic establishing shot. Children passing through a checkpoint they have never questioned. The horror is in the normalcy — everything looks beautiful, clean, safe. Surveillance is ambient, not aggressive."
+    },
+    {
+      "post_id": "BHV-20260411-001",
+      "topic": "The Mesh at night — curfew protocols",
+      "content_pillar": "mesh_intel",
+      "model": "nano_banana",
+      "positive_prompt": "Jim Lee modern American comic book art style. Lakshmanpur industrial district at night rendered as a cinematic noir establishing shot at 24mm wide angle. Empty wet streets reflecting blue scanner glow sweeping in horizontal bands across the pavement. Smokestacks mixing with surveillance towers in the mid-ground, industrial exhaust merging with volumetric fog. Heavy blacks dominating the entire composition — at least seventy percent of the frame is deep shadow. Sharp white highlights only on wet surfaces catching scanner beams and on the edges of surveillance tower arrays. Dense hatching and cross-hatching defining every building facade, factory wall, and street surface. Bold ink outlines on industrial infrastructure — pipes, chimneys, antenna arrays. The scanner glow is blue-white and clinical, sweeping mechanically. Textured line-work surfaces with slight grit and pen-and-ink feel on concrete and metal. Rim lighting on building edges from distant industrial amber glow. The city is asleep but the Mesh is awake — every shadow catalogued, every empty street monitored. Cinematic noir atmosphere with the oppressive weight of industrial surveillance state at rest.",
+      "negative_prompt": "low quality, blurry, deformed, disfigured, extra limbs, extra fingers, mutated hands, poorly drawn face, ugly, oversaturated, neon, white background, stock photo, generic, watermark, text, logo, signature, soft gradients, airbrush, smooth digital rendering, watercolor, anime, manga, chibi, flat colors, pastel palette, cel shading, vector art, minimalist, abstract, photorealistic, photograph, 3D render, CGI, Pixar style, oil painting, impressionist, people in foreground (unless specified), too many focal points, cluttered composition, daytime bright sunshine",
+      "reference_images": [
+        {
+          "filename": "Mesh.webp",
+          "role": "style_reference",
+          "ip_adapter_strength": null,
+          "notes": "Use for surveillance scanner glow aesthetic"
+        },
+        {
+          "filename": "Bharatvarsh.webp",
+          "role": "style_reference",
+          "ip_adapter_strength": null,
+          "notes": "Use for Lakshmanpur industrial skyline architecture"
+        }
+      ],
+      "aspect_ratios": {
+        "instagram": "1:1",
+        "twitter": "16:9",
+        "facebook": "1.91:1"
+      },
+      "generation_parameters": {
+        "guidance": "3-5",
+        "steps": "20-35",
+        "reference_strength": null
+      },
+      "visual_direction_notes": "Night scene noir. Heavy blacks. The city sleeps, the Mesh does not. Blue scanner glow is the only movement. Industrial oppression meets surveillance infrastructure. Wet street reflections add depth."
+    },
+    {
+      "post_id": "BHV-20260413-001",
+      "topic": "Bracecomm — your identity your leash",
+      "content_pillar": "mesh_intel",
+      "model": "nano_banana",
+      "positive_prompt": "Jim Lee modern American comic book art style. Detailed close-up of a Bracecomm wrist-band device projecting holographic identity cards and data readouts upward from the wearer's forearm, rendered at 50-85mm focal length. The band itself is intricate dark metal with dense cross-hatching defining every buckle, plate, and micro-sensor on its surface. Mughal-inspired geometric engravings on the band edges. Blue-white holographic light illuminating the forearm and casting sharp white highlights on skin and metal alike. Holographic projections show identity data, transaction logs, and biometric readings in fine blue-white linework. Heavy blacks on the unlit portions of the arm and background. Bold ink outlines on the device and every mechanical component. Textured line-work surfaces with slight grit and pen-and-ink feel on both metal and skin. Shallow depth of field with the band razor-sharp and background dissolving into dark obsidian blur. The composition reads as both beautiful consumer technology and invisible shackle — a leash disguised as a lifeline.",
+      "negative_prompt": "low quality, blurry, deformed, disfigured, extra limbs, extra fingers, mutated hands, poorly drawn face, ugly, oversaturated, neon, white background, stock photo, generic, watermark, text, logo, signature, soft gradients, airbrush, smooth digital rendering, watercolor, anime, manga, chibi, flat colors, pastel palette, cel shading, vector art, minimalist, abstract, photorealistic, photograph, 3D render, CGI, Pixar style, oil painting, impressionist, toy-like, chunky, low-detail, generic sci-fi prop",
+      "reference_images": [
+        {
+          "filename": "Bracecom Card.jpg",
+          "role": "subject_reference",
+          "ip_adapter_strength": null,
+          "notes": "Primary reference for Bracecomm design and holographic interface style"
+        },
+        {
+          "filename": "Bracecom banner.jpg",
+          "role": "style_reference",
+          "ip_adapter_strength": null,
+          "notes": "Use for overall Bracecomm aesthetic and contextual mood"
+        }
+      ],
+      "aspect_ratios": {
+        "instagram": "1:1",
+        "twitter": "16:9",
+        "facebook": "1.91:1"
+      },
+      "generation_parameters": {
+        "guidance": "3-5",
+        "steps": "20-35",
+        "reference_strength": null
+      },
+      "visual_direction_notes": "Product-shot quality tech close-up. The Bracecomm is the most intimate surveillance device — it lives on your skin. Show the mechanical beauty and the holographic data it exposes. Dense detail on every surface."
+    },
+    {
+      "post_id": "BHV-20260415-001",
+      "topic": "Glide-Cars — destination pre-approved",
+      "content_pillar": "mesh_intel",
+      "model": "nano_banana",
+      "positive_prompt": "Jim Lee modern American comic book art style. Cinematic wide establishing shot of a Bharatvarsh city boulevard with sleek hover vehicles floating five metres above wet reflective streets, rendered at 24mm with dynamic diagonal composition. The glide-cars are smooth dark metal forms with faint blue-white running lights, suspended silently above the pavement. Towering structures line both sides of the boulevard with vertical gardens cascading down their facades, detailed with dense hatching and cross-hatching on concrete, glass, and vegetation. Surveillance towers punctuate the skyline, their sensor arrays catching ambient light. Heavy blacks in deep shadows between buildings balanced with sharp white highlights on wet street reflections and glide-car undersides. Bold ink outlines on all architectural edges and vehicle forms. Atmospheric haze softening the deep background. Textured line-work surfaces with slight grit and pen-and-ink feel on every surface — stone, metal, foliage, water. The boulevard vanishes into haze suggesting an endless controlled urban grid. OxyPoles visible at regular intervals casting faint blue-white top-glow. The composition conveys effortless technological control of movement — beautiful transit in a city where your destination was approved before you chose it.",
+      "negative_prompt": "low quality, blurry, deformed, disfigured, extra limbs, extra fingers, mutated hands, poorly drawn face, ugly, oversaturated, neon, white background, stock photo, generic, watermark, text, logo, signature, soft gradients, airbrush, smooth digital rendering, watercolor, anime, manga, chibi, flat colors, pastel palette, cel shading, vector art, minimalist, abstract, photorealistic, photograph, 3D render, CGI, Pixar style, oil painting, impressionist, people in foreground (unless specified), too many focal points, cluttered composition, daytime bright sunshine",
+      "reference_images": [
+        {
+          "filename": "Bharatvarsh.webp",
+          "role": "style_reference",
+          "ip_adapter_strength": null,
+          "notes": "Use for cityscape architectural style and boulevard composition"
+        },
+        {
+          "filename": "Commute.webp",
+          "role": "style_reference",
+          "ip_adapter_strength": null,
+          "notes": "Use for street-level transit atmosphere and vehicle context"
+        }
+      ],
+      "aspect_ratios": {
+        "instagram": "1:1",
+        "twitter": "16:9",
+        "facebook": "1.91:1"
+      },
+      "generation_parameters": {
+        "guidance": "3-5",
+        "steps": "20-35",
+        "reference_strength": null
+      },
+      "visual_direction_notes": "Wide establishing shot with dynamic diagonal composition. Glide-cars are quiet, elegant, controlled. The city is beautiful and ordered. Vertical gardens and OxyPoles show a surface-level utopia. Surveillance is ambient."
+    },
+    {
+      "post_id": "BHV-20260416-001",
+      "topic": "Convenience vs compliance",
+      "content_pillar": "flagged_query",
+      "model": "nano_banana",
+      "positive_prompt": "Jim Lee modern American comic book art style. Dark atmospheric background composition for text overlay. Obsidian-navy gradient field with a faint Mesh surveillance grid pattern barely perceptible beneath the surface, rendered in ultra-fine pen-and-ink lines. Dense hatching and cross-hatching creating subtle tonal depth across the dark field — not a flat fill but a living textured surface. A single mustard gold accent edge along the left margin casting a narrow band of sharp white highlights on the faint grid. Heavy blacks fill the majority of the composition. Bold ink outlines subtly define the grid nodes where they almost emerge from darkness. Minimal detail in the centre two-thirds for maximum text readability. Slight film grain texture throughout. Textured line-work surfaces with slight grit and pen-and-ink feel. No smooth digital gradient. The atmosphere suggests a classified interrogation room surface — dark, institutional, watching. Faint blue-white data artifacts barely visible at the extreme top and bottom edges as if a screen is being monitored.",
+      "negative_prompt": "low quality, blurry, deformed, disfigured, extra limbs, extra fingers, mutated hands, poorly drawn face, ugly, oversaturated, neon, white background, stock photo, generic, watermark, text, logo, signature, soft gradients, airbrush, smooth digital rendering, watercolor, anime, manga, chibi, flat colors, pastel palette, cel shading, vector art, minimalist, abstract, photorealistic, photograph, 3D render, CGI, Pixar style, oil painting, impressionist, people in foreground (unless specified), too many focal points, cluttered composition, daytime bright sunshine",
+      "reference_images": [
+        {
+          "filename": "Question.webp",
+          "role": "style_reference",
+          "ip_adapter_strength": null,
+          "notes": "Use for classified-document dark atmospheric texture"
+        }
+      ],
+      "aspect_ratios": {
+        "instagram": "1:1",
+        "twitter": "16:9",
+        "facebook": "1.91:1"
+      },
+      "generation_parameters": {
+        "guidance": "3-5",
+        "steps": "20-35",
+        "reference_strength": null
+      },
+      "visual_direction_notes": "Quote card background. Obsidian-navy palette. Faint Mesh grid texture — felt not seen. Mustard gold edge provides warmth. Centre clear for text. The surface should feel institutional and classified."
+    },
+    {
+      "post_id": "BHV-20260417-001",
+      "topic": "Biometric E-Wallets — every transaction tracked",
+      "content_pillar": "mesh_intel",
+      "model": "nano_banana",
+      "positive_prompt": "Jim Lee modern American comic book art style. Detailed macro close-up of a fingerprint scanner surface rendered at 50mm with shallow depth of field. A finger pressing down on a dark obsidian metal scanner plate with holographic financial data streams rising vertically from the contact point — transaction amounts, merchant codes, citizen IDs, all in fine blue-white luminous linework. The scanner plate has intricate mechanical detail with dense cross-hatching on dark metal surfaces and mustard gold accent lines tracing geometric patterns along the edges. Sharp white highlights on the holographic data streams and on the polished scanner surface. Heavy blacks in the background and on the unlit scanner housing. Bold ink outlines on all mechanical components. Every rivet, seam, and sensor is defined with textured line-work and slight grit. The fingerprint ridges are visible where light catches the pressed finger. The composition reads as a product shot of beautiful, invasive technology — every purchase profiled, every transaction a data point in the Mesh. Pen-and-ink feel throughout, no smooth digital surfaces.",
+      "negative_prompt": "low quality, blurry, deformed, disfigured, extra limbs, extra fingers, mutated hands, poorly drawn face, ugly, oversaturated, neon, white background, stock photo, generic, watermark, text, logo, signature, soft gradients, airbrush, smooth digital rendering, watercolor, anime, manga, chibi, flat colors, pastel palette, cel shading, vector art, minimalist, abstract, photorealistic, photograph, 3D render, CGI, Pixar style, oil painting, impressionist, toy-like, chunky, low-detail, generic sci-fi prop",
+      "reference_images": [
+        {
+          "filename": "Bracecom Card.jpg",
+          "role": "style_reference",
+          "ip_adapter_strength": null,
+          "notes": "Use for holographic interface style and biometric scanner aesthetic"
+        }
+      ],
+      "aspect_ratios": {
+        "instagram": "1:1",
+        "twitter": "16:9",
+        "facebook": "1.91:1"
+      },
+      "generation_parameters": {
+        "guidance": "3-5",
+        "steps": "20-35",
+        "reference_strength": null
+      },
+      "visual_direction_notes": "Macro tech detail. The moment of transaction — finger on scanner, data erupting. Beautiful invasive technology. Mustard gold accents on obsidian metal. Holographic data streams are the visual hook."
+    },
+    {
+      "post_id": "BHV-20260418-001",
+      "topic": "Kahaan — first teaser",
+      "content_pillar": "personnel_file",
+      "model": "seedream_4_5",
+      "positive_prompt": "Jim Lee modern American comic book art style. Young Indian man, early 30s, military bearing. Close-cropped black hair with clean fade. Sharp defined jaw, high cheekbones, warm brown skin. Intense dark brown eyes. Small floating tactical lens/HUD monocle hovering near right eye emitting faint blue-white light. Dark navy fitted jacket with structured shoulders, gold piping on collar and cuffs, rank insignia on chest. Cinematic portrait in a dark command room environment with multiple holographic displays casting faint blue-white ambient light. Low angle camera at 35mm focal length conveying heroic monumental presence. Dense hatching and cross-hatching on the uniform fabric texture, the command room walls, and the skin's tonal depth. Heavy blacks in the background balanced with sharp white highlights on the tactical lens, gold piping, and insignia. Bold ink outlines defining the strong jawline, shoulder structure, and lens housing. Heroic proportions — broad shoulders, upright military posture, athletic build. The tactical lens is the focal point, its blue-white glow the brightest element in the frame. Textured line-work surfaces with slight grit and pen-and-ink feel on fabric, skin, and metal. Expression: focused intensity, the weight of duty, controlled intelligence. This is the first time the audience sees Bharatvarsh's military prince.",
+      "negative_prompt": "low quality, blurry, deformed, disfigured, extra limbs, extra fingers, mutated hands, poorly drawn face, ugly, oversaturated, neon, white background, stock photo, generic, watermark, text, logo, signature, soft gradients, airbrush, smooth digital rendering, watercolor, anime, manga, chibi, flat colors, pastel palette, cel shading, vector art, minimalist, abstract, photorealistic, photograph, 3D render, CGI, Pixar style, oil painting, impressionist, bad hands, wrong number of fingers, asymmetric face, crossed eyes",
+      "reference_images": [
+        {
+          "filename": "Kahaan Expressions.jpg",
+          "role": "face_anchor",
+          "ip_adapter_strength": 0.5,
+          "notes": "Primary face anchor — use for facial identity consistency across all Kahaan portraits"
+        },
+        {
+          "filename": "Kahaan Front.png",
+          "role": "costume_reference",
+          "ip_adapter_strength": 0.4,
+          "notes": "Use for uniform accuracy — navy jacket, gold piping, rank insignia placement"
+        }
+      ],
+      "aspect_ratios": {
+        "instagram": "1:1",
+        "twitter": "16:9",
+        "facebook": "1.91:1"
+      },
+      "generation_parameters": {
+        "guidance": "5-7",
+        "steps": "30-50",
+        "reference_strength": "0.4-0.6"
+      },
+      "visual_direction_notes": "First character reveal. Low angle heroic portrait. The tactical lens is the visual hook — it glows, it floats, it defines him. Command room ambiance. This must look like a comic book cover introducing a major character."
+    },
+    {
+      "post_id": "BHV-20260420-001",
+      "topic": "Kahaan — full dossier",
+      "content_pillar": "personnel_file",
+      "model": "seedream_4_5",
+      "positive_prompt": "Jim Lee modern American comic book art style. Young Indian man, early 30s, military bearing. Close-cropped black hair with clean fade. Sharp defined jaw, high cheekbones, warm brown skin. Intense dark brown eyes. Small floating tactical lens/HUD monocle hovering near right eye emitting faint blue-white light. Dark navy fitted jacket with structured shoulders, gold piping on collar and cuffs, rank insignia on chest. Full character portrait from head to mid-thigh, low angle dramatic composition at 24mm focal length. Twin floating Mag-Holster pistols hovering at shoulder height beside him, suspended by magnetic fields with faint blue energy tethers. A thin scar on his right cheek glows faint cyan when the HUD is active. Dense hatching and cross-hatching across every surface — the uniform fabric shows individual thread-level detail on the gold piping and collar embroidery, rank insignia rendered with meticulous precision, service decorations catching light. Heavy blacks in the deep background and shadow side of his face. Sharp white highlights on the tactical lens, pistol housings, and gold elements. Bold ink outlines on his silhouette, jawline, and weapon forms. Heroic proportions with monumental presence — this is a warrior enhanced by technology. Textured line-work surfaces with slight grit and pen-and-ink feel. Expression: the burden of authority, intelligence behind intensity. Full dress uniform detail visible — every button, seam, and decoration rendered.",
+      "negative_prompt": "low quality, blurry, deformed, disfigured, extra limbs, extra fingers, mutated hands, poorly drawn face, ugly, oversaturated, neon, white background, stock photo, generic, watermark, text, logo, signature, soft gradients, airbrush, smooth digital rendering, watercolor, anime, manga, chibi, flat colors, pastel palette, cel shading, vector art, minimalist, abstract, photorealistic, photograph, 3D render, CGI, Pixar style, oil painting, impressionist, bad hands, wrong number of fingers, asymmetric face, crossed eyes",
+      "reference_images": [
+        {
+          "filename": "Kahaan Expressions.jpg",
+          "role": "face_anchor",
+          "ip_adapter_strength": 0.5,
+          "notes": "Primary face anchor for facial identity consistency"
+        },
+        {
+          "filename": "Kahaan Front.png",
+          "role": "costume_reference",
+          "ip_adapter_strength": 0.4,
+          "notes": "Full body costume accuracy — uniform, posture, proportions"
+        },
+        {
+          "filename": "Kahaan angle.jpg",
+          "role": "pose_reference",
+          "ip_adapter_strength": 0.3,
+          "notes": "Use for dynamic angle and heroic stance reference"
+        }
+      ],
+      "aspect_ratios": {
+        "instagram": "1:1",
+        "twitter": "16:9",
+        "facebook": "1.91:1"
+      },
+      "generation_parameters": {
+        "guidance": "5-7",
+        "steps": "30-50",
+        "reference_strength": "0.4-0.6"
+      },
+      "visual_direction_notes": "Full dossier reveal. More detail than the teaser — weapons visible, scar active, full uniform rendered. Low angle 24mm for maximum heroic impact. This is the definitive Kahaan portrait for Arc 1."
+    },
+    {
+      "post_id": "BHV-20260422-001",
+      "topic": "Neural-Diode Lattice — enhancement cost",
+      "content_pillar": "mesh_intel",
+      "model": "nano_banana",
+      "positive_prompt": "Jim Lee modern American comic book art style. Technical cross-section visualization of a Neural-Diode Lattice cybernetic brain-computer implant. Blue-white neural pathways flowing through a semi-transparent rendering of brain and upper spine, each pathway rendered as fine luminous lines with dense cross-hatching defining the organic tissue around them. Mechanical implant nodes at key junctions where technology interfaces with biology — dark obsidian metal housings with intricate circuitry visible. Holographic schematics and technical annotations float around the implant in thin blue-white linework showing specifications and data flows. Heavy blacks on the background and deep tissue areas. Sharp white highlights tracing active neural connections as they fire. Bold ink outlines on the implant housing and major neural trunk lines. The cross-section shows the cost of enhancement — organic matter reshaped by technology, dependency visible in how deeply the lattice has integrated. Textured line-work surfaces with slight grit and pen-and-ink feel on both organic brain textures and metallic implant surfaces. Scientific illustration meets comic book dynamism. Camera tight on the implant, 50mm, shallow depth. The composition reads as both marvel and horror — beautiful engineering consuming what it enhances.",
+      "negative_prompt": "low quality, blurry, deformed, disfigured, extra limbs, extra fingers, mutated hands, poorly drawn face, ugly, oversaturated, neon, white background, stock photo, generic, watermark, text, logo, signature, soft gradients, airbrush, smooth digital rendering, watercolor, anime, manga, chibi, flat colors, pastel palette, cel shading, vector art, minimalist, abstract, photorealistic, photograph, 3D render, CGI, Pixar style, oil painting, impressionist, toy-like, chunky, low-detail, generic sci-fi prop",
+      "reference_images": [],
+      "aspect_ratios": {
+        "instagram": "1:1",
+        "twitter": "16:9",
+        "facebook": "1.91:1"
+      },
+      "generation_parameters": {
+        "guidance": "3-5",
+        "steps": "20-35",
+        "reference_strength": null
+      },
+      "visual_direction_notes": "Original concept art — no direct reference image. Scientific cross-section meets Jim Lee dynamism. The Neural-Diode Lattice is beautiful and invasive. Show the integration depth — this technology consumes what it enhances."
+    },
+    {
+      "post_id": "BHV-20260423-001",
+      "topic": "Kahaan quote — perfection as cage",
+      "content_pillar": "flagged_query",
+      "model": "nano_banana",
+      "positive_prompt": "Jim Lee modern American comic book art style. Dark atmospheric background for text overlay. Deep obsidian field with faint tactical HUD overlay elements rendered in ultra-fine blue-white pen-and-ink lines — targeting reticles, data readout bars, and system status indicators positioned at the extreme edges of the frame. Dense hatching and cross-hatching creating tonal depth in the dark field. Subtle blue-white data readout edges along the top and bottom margins as if viewed through a military heads-up display. Heavy blacks dominate the core of the composition with minimal detail in the centre for text readability. Sharp white highlights only on the HUD elements. Bold ink outlines on the faint targeting frame. The atmosphere suggests viewing through Kahaan's tactical lens — his perspective on the perfect system. Textured line-work surfaces with slight grit and pen-and-ink feel across the dark field. Faint film grain texture. No smooth digital surfaces. The composition reads as a classified readout — something flagged, something the system does not want repeated.",
+      "negative_prompt": "low quality, blurry, deformed, disfigured, extra limbs, extra fingers, mutated hands, poorly drawn face, ugly, oversaturated, neon, white background, stock photo, generic, watermark, text, logo, signature, soft gradients, airbrush, smooth digital rendering, watercolor, anime, manga, chibi, flat colors, pastel palette, cel shading, vector art, minimalist, abstract, photorealistic, photograph, 3D render, CGI, Pixar style, oil painting, impressionist, people in foreground (unless specified), too many focal points, cluttered composition, daytime bright sunshine",
+      "reference_images": [
+        {
+          "filename": "Question.webp",
+          "role": "style_reference",
+          "ip_adapter_strength": null,
+          "notes": "Use for dark classified-document atmospheric texture"
+        },
+        {
+          "filename": "Mesh.webp",
+          "role": "style_reference",
+          "ip_adapter_strength": null,
+          "notes": "Use for faint HUD/surveillance overlay pattern reference"
+        }
+      ],
+      "aspect_ratios": {
+        "instagram": "1:1",
+        "twitter": "16:9",
+        "facebook": "1.91:1"
+      },
+      "generation_parameters": {
+        "guidance": "3-5",
+        "steps": "20-35",
+        "reference_strength": null
+      },
+      "visual_direction_notes": "Kahaan's quote card. The HUD overlay suggests we are seeing through his tactical lens perspective. Flagged statement aesthetic — the system is logging this. Centre clear for text."
+    },
+    {
+      "post_id": "BHV-20260424-001",
+      "topic": "Identity Protocol — surnames discontinued",
+      "content_pillar": "mesh_intel",
+      "model": "nano_banana",
+      "positive_prompt": "Jim Lee modern American comic book art style. Extreme close-up detail shot of a Bharatsena dress uniform collar and upper chest area rendered at 85mm focal length with shallow depth of field. Dark navy fabric with dense cross-hatching defining every thread and weave of the heavy military cloth. Gold piping running along the collar edge and down the front placket, each gold thread individually rendered with sharp white highlights. Rank insignia on the chest — metallic badges with intricate engraving visible. A first-name-only identification badge attached below the insignia reading a single name in Devanagari and Latin script — no surname, no family history. Bharatsena emblem visible on the shoulder — bold ink outlines defining its military geometry. Heavy blacks in the shadow folds of the fabric. The gold piping catches light with sharp precision. Textured line-work surfaces with slight grit and pen-and-ink feel on every fabric surface — this is not smooth digital cloth but hatched, inked, felt. The composition conveys institutional identity — your uniform is your self, your rank is your name, your family is the state. Dense detail on every element from button stitching to thread count.",
+      "negative_prompt": "low quality, blurry, deformed, disfigured, extra limbs, extra fingers, mutated hands, poorly drawn face, ugly, oversaturated, neon, white background, stock photo, generic, watermark, text, logo, signature, soft gradients, airbrush, smooth digital rendering, watercolor, anime, manga, chibi, flat colors, pastel palette, cel shading, vector art, minimalist, abstract, photorealistic, photograph, 3D render, CGI, Pixar style, oil painting, impressionist, toy-like, chunky, low-detail, generic sci-fi prop",
+      "reference_images": [
+        {
+          "filename": "Kahaan Front.png",
+          "role": "costume_reference",
+          "ip_adapter_strength": null,
+          "notes": "Costume reference only — use for uniform collar, gold piping, and insignia accuracy. No face needed."
+        }
+      ],
+      "aspect_ratios": {
+        "instagram": "1:1",
+        "twitter": "16:9",
+        "facebook": "1.91:1"
+      },
+      "generation_parameters": {
+        "guidance": "3-5",
+        "steps": "20-35",
+        "reference_strength": null
+      },
+      "visual_direction_notes": "Uniform detail shot — no face, just fabric and insignia. The single-name badge is the thematic anchor. Dense textile detail in Jim Lee hatching style. Gold piping as the visual accent. This is about identity erasure through institutional dress."
+    },
+    {
+      "post_id": "BHV-20260425-001",
+      "topic": "CTA — mid-arc clearance upgrade",
+      "content_pillar": "clearance_upgrade",
+      "model": "nano_banana",
+      "positive_prompt": "Jim Lee modern American comic book art style. Cinematic wide establishing shot of the Bharatvarsh skyline rendered as a hero cityscape at 24mm wide angle. The Mesh grid is faintly visible in the sky above — thin blue-white lines forming a vast surveillance canopy over the city. OxyPoles line a grand boulevard in the foreground, their blue-white glow creating rhythmic light points receding into atmospheric haze. Monumental architecture rises in layers — Mughal geometric patterns merged with military-industrial brutalism, each building defined by dense hatching and cross-hatching on stone, concrete, and metal surfaces. Heavy blacks in the lower third of the composition where the boulevard meets shadow, creating natural space for CTA text overlay. Sharp white highlights on OxyPole tops, Mesh grid nodes, and the leading edges of the tallest towers. Bold ink outlines on all architectural silhouettes. Dawn light breaking through atmospheric haze from the right, casting warm amber across the upper skyline while the lower city remains in cool obsidian shadow. Textured line-work surfaces with slight grit and pen-and-ink feel throughout. The composition reads as an invitation — enter this world, there is so much more to see. Monumental scale suggesting endless depth.",
+      "negative_prompt": "low quality, blurry, deformed, disfigured, extra limbs, extra fingers, mutated hands, poorly drawn face, ugly, oversaturated, neon, white background, stock photo, generic, watermark, text, logo, signature, soft gradients, airbrush, smooth digital rendering, watercolor, anime, manga, chibi, flat colors, pastel palette, cel shading, vector art, minimalist, abstract, photorealistic, photograph, 3D render, CGI, Pixar style, oil painting, impressionist, people in foreground (unless specified), too many focal points, cluttered composition, daytime bright sunshine",
+      "reference_images": [
+        {
+          "filename": "Bharatvarsh.webp",
+          "role": "style_reference",
+          "ip_adapter_strength": null,
+          "notes": "Primary reference for city skyline architecture and monumental scale"
+        }
+      ],
+      "aspect_ratios": {
+        "instagram": "1:1",
+        "twitter": "16:9",
+        "facebook": "1.91:1"
+      },
+      "generation_parameters": {
+        "guidance": "3-5",
+        "steps": "20-35",
+        "reference_strength": null
+      },
+      "visual_direction_notes": "Mid-arc CTA hero shot. The city in its full monumental glory — inviting but ominous. Lower third must be dark enough for text overlay. Dawn light adds warmth without breaking the dark palette. This is the pull moment."
+    },
+    {
+      "post_id": "BHV-20260427-001",
+      "topic": "Religion repurposed — 1984",
+      "content_pillar": "mesh_intel",
+      "model": "nano_banana",
+      "positive_prompt": "Jim Lee modern American comic book art style. Cinematic wide shot of an ancient Indian temple structure that has been retrofitted with modern military-industrial technology. Grand arched entrance of Mughal-geometric design — intricate carved stonework with dense hatching and cross-hatching on every aged surface. Through the archway, Senate chambers are visible inside with modern holographic displays, command stations, and the Directorate seal projected in blue-white light. Surveillance sensors embedded in the ancient carvings. The exterior blends centuries-old stone craftsmanship with dark metal conduits, antenna arrays, and power junction boxes bolted into sacred walls. Heavy blacks in the deep interior and shadow areas beneath carved overhangs. Sharp white highlights on the modern tech elements and on the ancient stone edges where light catches carved geometry. Bold ink outlines on both ancient architectural detail and modern industrial additions. Textured line-work surfaces with slight grit and pen-and-ink feel on stone, metal, and holographic elements. Dynamic perspective from slightly below looking up at the grand entrance, emphasizing the monumental scale of repurposing. The composition shows religion consumed by the state — sacred space made into a chamber of governance. Every surface tells two stories: ancient devotion and modern control.",
+      "negative_prompt": "low quality, blurry, deformed, disfigured, extra limbs, extra fingers, mutated hands, poorly drawn face, ugly, oversaturated, neon, white background, stock photo, generic, watermark, text, logo, signature, soft gradients, airbrush, smooth digital rendering, watercolor, anime, manga, chibi, flat colors, pastel palette, cel shading, vector art, minimalist, abstract, photorealistic, photograph, 3D render, CGI, Pixar style, oil painting, impressionist, people in foreground (unless specified), too many focal points, cluttered composition, daytime bright sunshine",
+      "reference_images": [
+        {
+          "filename": "Refusal.webp",
+          "role": "style_reference",
+          "ip_adapter_strength": null,
+          "notes": "Use for grand architectural scale and historical gravitas"
+        },
+        {
+          "filename": "Bharatvarsh.webp",
+          "role": "style_reference",
+          "ip_adapter_strength": null,
+          "notes": "Use for modern-tech-meets-ancient-structure aesthetic"
+        }
+      ],
+      "aspect_ratios": {
+        "instagram": "1:1",
+        "twitter": "16:9",
+        "facebook": "1.91:1"
+      },
+      "generation_parameters": {
+        "guidance": "3-5",
+        "steps": "20-35",
+        "reference_strength": null
+      },
+      "visual_direction_notes": "Architecture as narrative. A temple that became a Senate chamber. The sacred consumed by the state. Show both layers — ancient stone and modern tech coexisting. Dynamic low-angle perspective for monumental impact."
+    },
+    {
+      "post_id": "BHV-20260429-001",
+      "topic": "No surnames — the state defines you",
+      "content_pillar": "mesh_intel",
+      "model": "nano_banana",
+      "positive_prompt": "Jim Lee modern American comic book art style. Detailed close-up of a holographic biometric identity display floating above a Bracecomm device, rendered at 50mm with shallow depth of field. The holographic display shows a citizen profile with first name only in bold Devanagari and Latin script — where surname fields would be there is only a state-assigned alphanumeric code. Surrounding data readouts show citizen classification, work assignment, compliance score, and transit permissions, all in fine blue-white luminous linework. Dense cross-hatching defines the dark metal Bracecomm surface beneath the hologram. The identity data has an identity-erasure aesthetic — personal history replaced with state-assigned data fields. Heavy blacks in the background. Sharp white highlights on the holographic text and data streams. Bold ink outlines on the Bracecomm housing and major holographic frame elements. Textured line-work surfaces with slight grit and pen-and-ink feel on metal and holographic elements. Blue-white glow illuminates the immediate area while everything beyond falls to obsidian shadow. The composition reads as liberation through erasure — your past deleted for your equality, your name your only inheritance from before the state.",
+      "negative_prompt": "low quality, blurry, deformed, disfigured, extra limbs, extra fingers, mutated hands, poorly drawn face, ugly, oversaturated, neon, white background, stock photo, generic, watermark, text, logo, signature, soft gradients, airbrush, smooth digital rendering, watercolor, anime, manga, chibi, flat colors, pastel palette, cel shading, vector art, minimalist, abstract, photorealistic, photograph, 3D render, CGI, Pixar style, oil painting, impressionist, toy-like, chunky, low-detail, generic sci-fi prop",
+      "reference_images": [
+        {
+          "filename": "Bracecom Card.jpg",
+          "role": "subject_reference",
+          "ip_adapter_strength": null,
+          "notes": "Use for Bracecomm holographic identity display design and interface style"
+        }
+      ],
+      "aspect_ratios": {
+        "instagram": "1:1",
+        "twitter": "16:9",
+        "facebook": "1.91:1"
+      },
+      "generation_parameters": {
+        "guidance": "3-5",
+        "steps": "20-35",
+        "reference_strength": null
+      },
+      "visual_direction_notes": "Identity-erasure tech shot. The holographic ID is the visual anchor — first name only, everything else state-assigned. The absence of a surname is the point. Blue-white glow on obsidian. Clean, clinical, total."
+    },
+    {
+      "post_id": "BHV-20260430-001",
+      "topic": "Religion and freedom",
+      "content_pillar": "flagged_query",
+      "model": "nano_banana",
+      "positive_prompt": "Jim Lee modern American comic book art style. Dark atmospheric background composition for text overlay. Deep obsidian gradient with faint mustard gold light bleeding warmly from the right edge, creating a narrow gradient band that transitions from gold to obsidian across the rightmost quarter of the frame. Dense hatching and cross-hatching building subtle textural depth across the dark surface — this is an inked surface, not a digital fill. The centre and left two-thirds are minimal and dark, optimized for text readability. Slight film grain texture throughout. Heavy blacks dominate the composition. Sharp white highlights only where the mustard gold edge light catches faint surface textures. Bold ink outlines barely visible on the edges of the composition frame. Textured line-work surfaces with slight grit and pen-and-ink feel. A barely perceptible suggestion of architectural forms — perhaps the ghost outline of a temple dome or minaret — fading into the obsidian darkness at the extreme lower left, almost invisible unless you look for it. The atmosphere is contemplative and heavy — a question about freedom asked in a space where freedom is controlled.",
+      "negative_prompt": "low quality, blurry, deformed, disfigured, extra limbs, extra fingers, mutated hands, poorly drawn face, ugly, oversaturated, neon, white background, stock photo, generic, watermark, text, logo, signature, soft gradients, airbrush, smooth digital rendering, watercolor, anime, manga, chibi, flat colors, pastel palette, cel shading, vector art, minimalist, abstract, photorealistic, photograph, 3D render, CGI, Pixar style, oil painting, impressionist, people in foreground (unless specified), too many focal points, cluttered composition, daytime bright sunshine",
+      "reference_images": [
+        {
+          "filename": "Question.webp",
+          "role": "style_reference",
+          "ip_adapter_strength": null,
+          "notes": "Use for dark atmospheric classified-document texture and mood"
+        }
+      ],
+      "aspect_ratios": {
+        "instagram": "1:1",
+        "twitter": "16:9",
+        "facebook": "1.91:1"
+      },
+      "generation_parameters": {
+        "guidance": "3-5",
+        "steps": "20-35",
+        "reference_strength": null
+      },
+      "visual_direction_notes": "Quote card background. The most minimal of the atmospheric backgrounds. Mustard gold edge is the warmth. Ghost outline of a temple dome adds thematic resonance without being obvious. Centre clear for text."
+    },
+    {
+      "post_id": "BHV-20260501-001",
+      "topic": "Festive Fortnight — one celebration per year",
+      "content_pillar": "mesh_intel",
+      "model": "nano_banana",
+      "positive_prompt": "Jim Lee modern American comic book art style. Dynamic wide-angle scene of the Festive Fortnight in a Bharatvarsh city celebration zone. Candy-bots — small rounded service robots with cheerful painted designs — guide groups of children through decorated streets. The surface energy is joyful: festive banners in state-approved colors, illuminated arches, children laughing and running. But the composition tells a dual story — in the mid-ground and background, scanning checkpoints are subtly visible, their blue-white sensor arrays active behind festive decorations. Surveillance cameras embedded in celebration arches. OxyPoles draped with banners still scanning silently. Dense hatching and cross-hatching on every surface — the candy-bot shells, the street paving, the building facades, the children's clothing. Heavy blacks in the shadows beneath celebration structures and in the gaps between buildings. Sharp white highlights on the candy-bot indicator lights, festive illumination, and the hidden scanner glow. Bold ink outlines on all figures and architectural elements. Textured line-work surfaces with slight grit and pen-and-ink feel. Foreshortened perspective creating dynamic depth. The composition must hold both energies simultaneously — celebration on the surface, surveillance underneath. Camera 24mm establishing shot.",
+      "negative_prompt": "low quality, blurry, deformed, disfigured, extra limbs, extra fingers, mutated hands, poorly drawn face, ugly, oversaturated, neon, white background, stock photo, generic, watermark, text, logo, signature, soft gradients, airbrush, smooth digital rendering, watercolor, anime, manga, chibi, flat colors, pastel palette, cel shading, vector art, minimalist, abstract, photorealistic, photograph, 3D render, CGI, Pixar style, oil painting, impressionist, people in foreground (unless specified), too many focal points, cluttered composition, daytime bright sunshine",
+      "reference_images": [
+        {
+          "filename": "Bharatvarsh.webp",
+          "role": "style_reference",
+          "ip_adapter_strength": null,
+          "notes": "Use for city architecture and boulevard setting"
+        },
+        {
+          "filename": "Commute.webp",
+          "role": "style_reference",
+          "ip_adapter_strength": null,
+          "notes": "Use for street-level crowd and pedestrian atmosphere"
+        }
+      ],
+      "aspect_ratios": {
+        "instagram": "1:1",
+        "twitter": "16:9",
+        "facebook": "1.91:1"
+      },
+      "generation_parameters": {
+        "guidance": "3-5",
+        "steps": "20-35",
+        "reference_strength": null
+      },
+      "visual_direction_notes": "Dual-energy composition. Joy on the surface, surveillance beneath. Candy-bots are visually charming but serve as guides to designated zones. Checkpoints hidden behind festive decorations. The horror is in how happy everyone looks."
+    },
+    {
+      "post_id": "BHV-20260502-001",
+      "topic": "Curfew — there will not be a third notification",
+      "content_pillar": "mesh_intel",
+      "model": "nano_banana",
+      "positive_prompt": "Jim Lee modern American comic book art style. Cinematic noir composition of empty Bharatvarsh streets during curfew. Blue scanning lights sweep across wet pavement in horizontal bands, their glow reflecting off rain-slicked surfaces. A single human figure caught in silhouette within one of the scanner beams, frozen in the act of being detected — small against the monumental architecture surrounding them. Heavy blacks dominate the composition — at least seventy-five percent deep shadow. Dramatic shadows fall from towering buildings. Dense hatching and cross-hatching define the building facades, street surfaces, and the scattered puddles that mirror the scanner light. Sharp white highlights only on the scanner beams, wet reflections, and the silhouette's edge where light catches them. Bold ink outlines on architectural forms and the lone figure. Textured line-work surfaces with slight grit and pen-and-ink feel on concrete, metal, and water. The scanner beams are clinical blue-white, mechanical, sweeping without pause. The silhouette is vulnerable, exposed, caught. Cinematic noir atmosphere — the city at its most threatening, when the machine watches and there is no crowd to hide in. Camera 35mm, slight Dutch tilt adding unease.",
+      "negative_prompt": "low quality, blurry, deformed, disfigured, extra limbs, extra fingers, mutated hands, poorly drawn face, ugly, oversaturated, neon, white background, stock photo, generic, watermark, text, logo, signature, soft gradients, airbrush, smooth digital rendering, watercolor, anime, manga, chibi, flat colors, pastel palette, cel shading, vector art, minimalist, abstract, photorealistic, photograph, 3D render, CGI, Pixar style, oil painting, impressionist, people in foreground (unless specified), too many focal points, cluttered composition, daytime bright sunshine",
+      "reference_images": [
+        {
+          "filename": "Mesh.webp",
+          "role": "style_reference",
+          "ip_adapter_strength": null,
+          "notes": "Use for scanner beam aesthetic and surveillance atmosphere"
+        }
+      ],
+      "aspect_ratios": {
+        "instagram": "1:1",
+        "twitter": "16:9",
+        "facebook": "1.91:1"
+      },
+      "generation_parameters": {
+        "guidance": "3-5",
+        "steps": "20-35",
+        "reference_strength": null
+      },
+      "visual_direction_notes": "The most threatening night scene. Single figure caught in scanner light — total vulnerability. Noir composition. Heavy blacks. The scanner does not negotiate. Slight Dutch tilt for unease."
+    },
+    {
+      "post_id": "BHV-20260504-001",
+      "topic": "1717 Divergence — India was never colonized",
+      "content_pillar": "mesh_intel",
+      "model": "nano_banana",
+      "positive_prompt": "Jim Lee modern American comic book art style. Epic historical split composition divided dynamically on a diagonal — the left half shows the 1717 Mughal court of Emperor Farrukhsiyar refusing the East India Company charter. Ornate Mughal architecture with intricate geometric stone carvings, richly dressed courtiers in period robes and turbans, the Emperor on an elevated throne gesturing refusal. Dense hatching and cross-hatching on fabric textures, stone columns, and ornamental detail. The right half transitions through a dynamic dissolve into the modern Bharatvarsh skyline — OxyPoles, surveillance towers, Mesh grid in the sky, monumental military-industrial architecture blending with Mughal geometric forms. The transition line between eras is not straight but energetic, with fragments of one era bleeding into the other. Heavy blacks anchor both sides. Sharp white highlights on the Mughal court's gold elements and on the modern city's tech glow. Bold ink outlines on all figures and architectural forms. Textured line-work surfaces with slight grit and pen-and-ink feel across all surfaces — ancient stone and modern metal alike. Monumental scale on both sides. Camera 24mm wide shot encompassing both eras. The composition reads as a pivot point in history — one refusal that shaped three centuries.",
+      "negative_prompt": "low quality, blurry, deformed, disfigured, extra limbs, extra fingers, mutated hands, poorly drawn face, ugly, oversaturated, neon, white background, stock photo, generic, watermark, text, logo, signature, soft gradients, airbrush, smooth digital rendering, watercolor, anime, manga, chibi, flat colors, pastel palette, cel shading, vector art, minimalist, abstract, photorealistic, photograph, 3D render, CGI, Pixar style, oil painting, impressionist, people in foreground (unless specified), too many focal points, cluttered composition, daytime bright sunshine",
+      "reference_images": [
+        {
+          "filename": "Refusal.webp",
+          "role": "style_reference",
+          "ip_adapter_strength": null,
+          "notes": "Use for historical Mughal court gravitas and period architectural detail"
+        },
+        {
+          "filename": "Bharatvarsh.webp",
+          "role": "style_reference",
+          "ip_adapter_strength": null,
+          "notes": "Use for modern Bharatvarsh skyline on the right half"
+        }
+      ],
+      "aspect_ratios": {
+        "instagram": "1:1",
+        "twitter": "16:9",
+        "facebook": "1.91:1"
+      },
+      "generation_parameters": {
+        "guidance": "3-5",
+        "steps": "20-35",
+        "reference_strength": null
+      },
+      "visual_direction_notes": "Historical-epic split. This is the most ambitious composition in the arc — two eras in one frame. The diagonal transition should feel dynamic, not static. Mughal court left, modern city right. Both monumental in scale."
+    },
+    {
+      "post_id": "BHV-20260506-001",
+      "topic": "Democracy's end — The Correction",
+      "content_pillar": "mesh_intel",
+      "model": "nano_banana",
+      "positive_prompt": "Jim Lee modern American comic book art style. Dynamic diagonal split composition showing the death of democracy and the birth of military order. Left side: democratic chaos — protest fires casting orange-amber light, crowd conflict rendered as a mass of gesturing silhouettes, torn banners, smoke rising, buildings damaged — all rendered with aggressive hatching and jagged ink lines conveying disorder and violence. Right side: military order — clean ranks of Bharatsena soldiers in dark navy uniforms standing in perfect formation, pristine streets with surveillance towers, OxyPoles in perfect rows, the Mesh grid visible in a clear sky above — all rendered with precise, controlled linework and geometric composition. The diagonal split cuts from upper left to lower right, creating dynamic tension between the two worlds. Heavy blacks on both sides but with different character — chaotic shadows on the left, controlled shadows on the right. Sharp white highlights on fire glow left and tech glow right. Bold ink outlines throughout. Dense cross-hatching on all surfaces. Textured line-work with slight grit and pen-and-ink feel. Contrasting lighting moods: warm destructive amber left versus cool clinical blue-white right. The composition reads as a before-and-after — democracy tried and failed, the military stepped in. Camera 24mm wide, Dutch tilt following the diagonal.",
+      "negative_prompt": "low quality, blurry, deformed, disfigured, extra limbs, extra fingers, mutated hands, poorly drawn face, ugly, oversaturated, neon, white background, stock photo, generic, watermark, text, logo, signature, soft gradients, airbrush, smooth digital rendering, watercolor, anime, manga, chibi, flat colors, pastel palette, cel shading, vector art, minimalist, abstract, photorealistic, photograph, 3D render, CGI, Pixar style, oil painting, impressionist, people in foreground (unless specified), too many focal points, cluttered composition, daytime bright sunshine",
+      "reference_images": [
+        {
+          "filename": "20-10.webp",
+          "role": "style_reference",
+          "ip_adapter_strength": null,
+          "notes": "Use for the chaos/destruction aesthetic on the left half"
+        },
+        {
+          "filename": "Bharatvarsh.webp",
+          "role": "style_reference",
+          "ip_adapter_strength": null,
+          "notes": "Use for the ordered military city aesthetic on the right half"
+        }
+      ],
+      "aspect_ratios": {
+        "instagram": "1:1",
+        "twitter": "16:9",
+        "facebook": "1.91:1"
+      },
+      "generation_parameters": {
+        "guidance": "3-5",
+        "steps": "20-35",
+        "reference_strength": null
+      },
+      "visual_direction_notes": "Diagonal split — chaos vs order. The Correction visualized. Left is warm, destructive, chaotic. Right is cool, controlled, precise. The diagonal creates dynamic tension. Both sides are dense with detail but with opposite visual languages."
+    },
+    {
+      "post_id": "BHV-20260507-001",
+      "topic": "Rudra — the exile",
+      "content_pillar": "personnel_file",
+      "model": "seedream_4_5",
+      "positive_prompt": "Jim Lee modern American comic book art style. Indian man, mid-30s, muscular powerful build. Short dark hair with topknot, full beard, olive/tan skin. Deep-set intense dark eyes. Grey Trident insignia tattoo on chest. Hooded olive-green jacket over tan undershirt. Scarring on forearms. Atmospheric portrait of a hooded figure standing on a mountain ridge at dusk, rendered with dramatic backlighting from a deep amber-gold sunset behind. Earth tones dominate — olive greens, sage, warm browns, grey stone. The Grey Trident tattoo is barely visible beneath the hooded jacket, a shadow of suggestion rather than full reveal. A longbow silhouette rises above the right shoulder against the sky. His face is in partial shadow — the hood obscures the upper half, only the bearded jaw and mouth visible, set in grim determination. Dense hatching and cross-hatching on the hooded fabric, mountain rock textures, and the rough terrain beneath his boots. Heavy blacks in the hood shadow and the valley below the ridge. Sharp white highlights on the sky edge where sunset catches the ridge line and on the longbow's limbs. Bold ink outlines on his monumental silhouette. Heroic proportions — grounded stance, massive shoulders, coiled readiness. Textured line-work surfaces with slight grit and pen-and-ink feel on fabric, stone, skin. This is not a full reveal — it is a first sighting, a ghost on a mountain.",
+      "negative_prompt": "low quality, blurry, deformed, disfigured, extra limbs, extra fingers, mutated hands, poorly drawn face, ugly, oversaturated, neon, white background, stock photo, generic, watermark, text, logo, signature, soft gradients, airbrush, smooth digital rendering, watercolor, anime, manga, chibi, flat colors, pastel palette, cel shading, vector art, minimalist, abstract, photorealistic, photograph, 3D render, CGI, Pixar style, oil painting, impressionist, bad hands, wrong number of fingers, asymmetric face, crossed eyes",
+      "reference_images": [
+        {
+          "filename": "Rudra Expressions.png",
+          "role": "face_anchor",
+          "ip_adapter_strength": 0.4,
+          "notes": "Face anchor — lower strength since face is partially obscured. Use for jawline and beard accuracy."
+        },
+        {
+          "filename": "Rudra Front.jpeg",
+          "role": "costume_reference",
+          "ip_adapter_strength": 0.4,
+          "notes": "Use for body proportions, hooded jacket design, and overall earth-toned aesthetic"
+        }
+      ],
+      "aspect_ratios": {
+        "instagram": "1:1",
+        "twitter": "16:9",
+        "facebook": "1.91:1"
+      },
+      "generation_parameters": {
+        "guidance": "5-7",
+        "steps": "30-50",
+        "reference_strength": "0.4-0.6"
+      },
+      "visual_direction_notes": "First Rudra reveal — mysterious, partial. Face obscured by hood. Mountain ridge silhouette. Earth tones contrasting sharply with Kahaan's tech-navy world. The Grey Trident is suggested not shown. Longbow silhouette against sunset. This must feel like a different visual world from the Mesh posts."
+    },
+    {
+      "post_id": "BHV-20260508-001",
+      "topic": "Generational amnesia — born into checkpoints",
+      "content_pillar": "flagged_query",
+      "model": "nano_banana",
+      "positive_prompt": "Jim Lee modern American comic book art style. Dark atmospheric background for text overlay. Deep obsidian field with a checkpoint silhouette rendered in the lower third of the composition — a geometric arch with subtle scanner elements and barrier bars, all drawn in fine dark lines barely darker than the background, almost subliminal. Above the checkpoint ghost, a faint surveillance grid pattern fades into the darkness. Dense hatching and cross-hatching building textural depth across the dark surface. Heavy blacks fill the upper two-thirds — deep, unbroken, oppressive. Sharp white highlights are sparse — only catching the faintest scanner glow on the checkpoint silhouette. Bold ink outlines barely define the checkpoint structure. Textured line-work surfaces with slight grit and pen-and-ink feel across the field. The composition is minimal but evocative — the checkpoint is there but you might not notice it, just like the citizens who were born after it was installed. Slight film grain texture. The atmosphere suggests a memory that was never formed — you cannot miss what you never knew existed. Centre upper two-thirds clear for text readability.",
+      "negative_prompt": "low quality, blurry, deformed, disfigured, extra limbs, extra fingers, mutated hands, poorly drawn face, ugly, oversaturated, neon, white background, stock photo, generic, watermark, text, logo, signature, soft gradients, airbrush, smooth digital rendering, watercolor, anime, manga, chibi, flat colors, pastel palette, cel shading, vector art, minimalist, abstract, photorealistic, photograph, 3D render, CGI, Pixar style, oil painting, impressionist, people in foreground (unless specified), too many focal points, cluttered composition, daytime bright sunshine",
+      "reference_images": [
+        {
+          "filename": "Question.webp",
+          "role": "style_reference",
+          "ip_adapter_strength": null,
+          "notes": "Use for dark classified-document atmospheric texture"
+        },
+        {
+          "filename": "Mesh.webp",
+          "role": "style_reference",
+          "ip_adapter_strength": null,
+          "notes": "Use for faint surveillance grid and checkpoint scanner aesthetic"
+        }
+      ],
+      "aspect_ratios": {
+        "instagram": "1:1",
+        "twitter": "16:9",
+        "facebook": "1.91:1"
+      },
+      "generation_parameters": {
+        "guidance": "3-5",
+        "steps": "20-35",
+        "reference_strength": null
+      },
+      "visual_direction_notes": "Atmospheric background with subliminal checkpoint in lower third. The checkpoint is almost invisible — that is the point. Generational amnesia visualized. You were born into this and do not know to question it. Centre clear for text."
+    },
+    {
+      "post_id": "BHV-20260509-001",
+      "topic": "Three Administrative Blocs — territorial report",
+      "content_pillar": "mesh_intel",
+      "model": "nano_banana",
+      "positive_prompt": "Jim Lee modern American comic book art style. Top-down geopolitical territory visualization rendered as a stylized map of the Bharatvarsh subcontinent divided into three distinct administrative blocs. Northern Plains Command shown with dense Mesh grid linework overlaying the terrain in blue-white — fully surveilled, fully controlled. Peninsular Command similarly covered with Mesh grid but with different terrain textures — coastal edges, denser urban concentrations indicated by tighter linework. Eastern and Himalayan Treaty Zone shown as a gap — organic terrain rendered with natural hatching and cross-hatching, no surveillance overlay, mountain textures with wild organic linework contrasting the geometric control of the other two zones. Bold borders between the zones rendered as thick ink lines with military demarcation markers. Heavy blacks define the oceans and borders. Sharp white highlights trace the Mesh grid in the controlled zones and the snow-capped mountain peaks in the Treaty Zone. Dense cross-hatching throughout creating rich textural depth on every terrain type. Textured line-work surfaces with slight grit and pen-and-ink feel. The composition reads as a military strategic map — geopolitical diagram meets comic book art. Dramatic scale suggesting continental ambition. Labels or markers at each zone in clean military typography style.",
+      "negative_prompt": "low quality, blurry, deformed, disfigured, extra limbs, extra fingers, mutated hands, poorly drawn face, ugly, oversaturated, neon, white background, stock photo, generic, watermark, text, logo, signature, soft gradients, airbrush, smooth digital rendering, watercolor, anime, manga, chibi, flat colors, pastel palette, cel shading, vector art, minimalist, abstract, photorealistic, photograph, 3D render, CGI, Pixar style, oil painting, impressionist, people in foreground (unless specified), too many focal points, cluttered composition, daytime bright sunshine",
+      "reference_images": [
+        {
+          "filename": "Timeline Card.webp",
+          "role": "style_reference",
+          "ip_adapter_strength": null,
+          "notes": "Use for geopolitical information-design aesthetic"
+        },
+        {
+          "filename": "Bharatvarsh.webp",
+          "role": "style_reference",
+          "ip_adapter_strength": null,
+          "notes": "Use for general Bharatvarsh visual identity and palette"
+        }
+      ],
+      "aspect_ratios": {
+        "instagram": "1:1",
+        "twitter": "16:9",
+        "facebook": "1.91:1"
+      },
+      "generation_parameters": {
+        "guidance": "3-5",
+        "steps": "20-35",
+        "reference_strength": null
+      },
+      "visual_direction_notes": "Strategic map visualization. Three zones with distinct visual treatments — two controlled (Mesh grid), one organic (no grid). The Eastern Treaty Zone gap is the visual hook. Military cartography meets Jim Lee linework."
+    },
+    {
+      "post_id": "BHV-20260511-001",
+      "topic": "The 20-10 bombings — incident report",
+      "content_pillar": "mesh_intel",
+      "model": "nano_banana",
+      "positive_prompt": "Jim Lee modern American comic book art style. Dynamic aftermath scene of the 20-10 bombings in a Bharatvarsh city. Damaged cityscape with a collapsed building facade in the centre, structural steel exposed through shattered concrete. Dust and debris particles suspended in the air catching harsh emergency lighting. Emergency responders in dark uniforms moving through the foreground rubble, their silhouettes purposeful against the destruction. Dramatic Dutch angle tilting the entire composition to convey disorientation and shock. Heavy shadows dominating the scene — at least sixty percent deep blacks. Dense hatching and cross-hatching on every surface — crumbled concrete, twisted metal, scattered debris, responder equipment. Sharp white highlights on emergency light sources, reflective vest elements, and the jagged edges of broken architecture where light catches shattered concrete. Bold ink outlines on all figures and major structural forms. Dynamic destruction composition with foreshortened rubble in the foreground creating depth. Textured line-work surfaces with slight grit and pen-and-ink feel — the dust and grit are part of the ink aesthetic. Volumetric dust clouds softening the background. The composition reads as an action-still — the moment after impact, frozen in time. The Mesh watched everything and yet this happened. Camera 24mm wide angle with pronounced Dutch tilt.",
+      "negative_prompt": "low quality, blurry, deformed, disfigured, extra limbs, extra fingers, mutated hands, poorly drawn face, ugly, oversaturated, neon, white background, stock photo, generic, watermark, text, logo, signature, soft gradients, airbrush, smooth digital rendering, watercolor, anime, manga, chibi, flat colors, pastel palette, cel shading, vector art, minimalist, abstract, photorealistic, photograph, 3D render, CGI, Pixar style, oil painting, impressionist, people in foreground (unless specified), too many focal points, cluttered composition, daytime bright sunshine",
+      "reference_images": [
+        {
+          "filename": "20-10.webp",
+          "role": "subject_reference",
+          "ip_adapter_strength": null,
+          "notes": "Primary reference for the 20-10 bombing destruction aesthetic and aftermath mood"
+        }
+      ],
+      "aspect_ratios": {
+        "instagram": "1:1",
+        "twitter": "16:9",
+        "facebook": "1.91:1"
+      },
+      "generation_parameters": {
+        "guidance": "3-5",
+        "steps": "20-35",
+        "reference_strength": null
+      },
+      "visual_direction_notes": "The most dynamic action-style composition in the arc. Dutch angle destruction aftermath. Emergency responders in the rubble. This is the event that drives the plot — it must feel impactful. Dust particles and broken architecture. The Mesh failed here."
+    },
+    {
+      "post_id": "BHV-20260513-001",
+      "topic": "Kahaan assigned — investigation begins",
+      "content_pillar": "mesh_intel",
+      "model": "seedream_4_5",
+      "positive_prompt": "Jim Lee modern American comic book art style. Young Indian man, early 30s, military bearing. Close-cropped black hair with clean fade. Sharp defined jaw, high cheekbones, warm brown skin. Intense dark brown eyes. Small floating tactical lens/HUD monocle hovering near right eye emitting faint blue-white light. Dark navy fitted jacket with structured shoulders, gold piping on collar and cuffs, rank insignia on chest. Kahaan standing in a dark command room, rendered in a low-angle heroic composition at 24-35mm focal length. The tactical lens is active, projecting multiple holographic case data panels around him in a semicircle — evidence files, city maps with blast markers, suspect profiles, timeline reconstructions — all in blue-white holographic linework. The holographic light illuminates his face from below and sides, casting dramatic upward shadows. Dense hatching and cross-hatching on his uniform, the command room walls, the holographic display frames, and his skin tones. Heavy blacks in the deep background and the unlit portions of the room. Sharp white highlights on the tactical lens glow, holographic data streams, gold piping, and his intense eyes catching the light. Bold ink outlines on his silhouette, jawline, and the holographic frames. Heroic proportions with monumental presence — the investigator taking command. Textured line-work surfaces with slight grit and pen-and-ink feel. Expression: fierce determination, analytical focus, a man pointed at the system's deepest wound.",
+      "negative_prompt": "low quality, blurry, deformed, disfigured, extra limbs, extra fingers, mutated hands, poorly drawn face, ugly, oversaturated, neon, white background, stock photo, generic, watermark, text, logo, signature, soft gradients, airbrush, smooth digital rendering, watercolor, anime, manga, chibi, flat colors, pastel palette, cel shading, vector art, minimalist, abstract, photorealistic, photograph, 3D render, CGI, Pixar style, oil painting, impressionist, bad hands, wrong number of fingers, asymmetric face, crossed eyes",
+      "reference_images": [
+        {
+          "filename": "Kahaan Expressions.jpg",
+          "role": "face_anchor",
+          "ip_adapter_strength": 0.5,
+          "notes": "Primary face anchor for facial identity consistency"
+        },
+        {
+          "filename": "Kahaan Front.png",
+          "role": "costume_reference",
+          "ip_adapter_strength": 0.4,
+          "notes": "Use for uniform accuracy and body proportions"
+        },
+        {
+          "filename": "Kahaan.webp",
+          "role": "environment_reference",
+          "ip_adapter_strength": 0.3,
+          "notes": "Use for environmental command room mood and lighting reference"
+        }
+      ],
+      "aspect_ratios": {
+        "instagram": "1:1",
+        "twitter": "16:9",
+        "facebook": "1.91:1"
+      },
+      "generation_parameters": {
+        "guidance": "5-7",
+        "steps": "30-50",
+        "reference_strength": "0.4-0.6"
+      },
+      "visual_direction_notes": "Kahaan in investigation mode. The holographic case data surrounding him is the visual hook — he is immersed in the 20-10 mystery. Low angle heroic. The tactical lens connects to the holographic data. This bridges character and plot."
+    },
+    {
+      "post_id": "BHV-20260514-001",
+      "topic": "Core mystery — who attacks a nation that watches everything",
+      "content_pillar": "flagged_query",
+      "model": "nano_banana",
+      "positive_prompt": "Jim Lee modern American comic book art style. Dark atmospheric background for the arc's central mystery question. Deep obsidian field with the Mesh surveillance grid visible but fracturing — the grid lines break apart and scatter in the background, some lines severed and trailing off into darkness, data nodes flickering and destabilizing. The fracture pattern radiates from the centre of the composition outward, as if the Mesh itself has been struck. Dense hatching and cross-hatching define the intact grid sections while the fractured areas dissolve into aggressive pen strokes. Heavy blacks fill the voids where the grid has broken. Sharp white highlights on the fracture points where blue-white energy escapes from severed grid lines. Bold ink outlines on the intact grid structure, contrasting with the ragged broken edges. Textured line-work surfaces with slight grit and pen-and-ink feel throughout. The centre of the composition must accommodate text but the fracture pattern creates visual tension around the text space. Slight film grain texture. The atmosphere is the Mesh in crisis — the perfect surveillance system confronting a question it cannot answer. Blue-white fracture energy is the primary light source. Obsidian palette everywhere else.",
+      "negative_prompt": "low quality, blurry, deformed, disfigured, extra limbs, extra fingers, mutated hands, poorly drawn face, ugly, oversaturated, neon, white background, stock photo, generic, watermark, text, logo, signature, soft gradients, airbrush, smooth digital rendering, watercolor, anime, manga, chibi, flat colors, pastel palette, cel shading, vector art, minimalist, abstract, photorealistic, photograph, 3D render, CGI, Pixar style, oil painting, impressionist, people in foreground (unless specified), too many focal points, cluttered composition, daytime bright sunshine",
+      "reference_images": [
+        {
+          "filename": "Mesh.webp",
+          "role": "style_reference",
+          "ip_adapter_strength": null,
+          "notes": "Use for Mesh grid visual language — then fracture it in the composition"
+        }
+      ],
+      "aspect_ratios": {
+        "instagram": "1:1",
+        "twitter": "16:9",
+        "facebook": "1.91:1"
+      },
+      "generation_parameters": {
+        "guidance": "3-5",
+        "steps": "20-35",
+        "reference_strength": null
+      },
+      "visual_direction_notes": "The arc's central mystery visualized. The Mesh grid fracturing — the perfect system broken. Blue-white energy escaping from severed lines. This is the most visually active of the atmospheric backgrounds. The fracture IS the question."
+    },
+    {
+      "post_id": "BHV-20260515-001",
+      "topic": "Kahaan vs Rudra — threat assessment",
+      "content_pillar": "personnel_file",
+      "model": "seedream_4_5",
+      "positive_prompt": "Jim Lee modern American comic book art style. Iconic split composition — the definitive versus image. LEFT HALF: Young Indian man, early 30s, military bearing. Close-cropped black hair with clean fade. Sharp defined jaw, high cheekbones, warm brown skin. Intense dark brown eyes. Small floating tactical lens/HUD monocle hovering near right eye emitting faint blue-white light. Dark navy fitted jacket with structured shoulders, gold piping on collar and cuffs, rank insignia on chest. Kahaan stands in a blue-tech-navy palette environment — urban command room with holographic displays behind him, cool blue-white lighting defining every surface. RIGHT HALF: Indian man, mid-30s, muscular powerful build. Short dark hair with topknot, full beard, olive/tan skin. Deep-set intense dark eyes. Grey Trident insignia tattoo on chest. Hooded olive-green jacket over tan undershirt. Scarring on forearms. Rudra stands in an earth-green-mountain palette environment — mountain landscape with natural light behind him, warm amber-gold dusk lighting, longbow visible at his back. The two face each other across the centre divide, tension crackling between their opposed worlds. Dense hatching and cross-hatching on every surface — tech-precise linework on Kahaan's side, organic rough linework on Rudra's side. Heavy blacks anchor both halves. Sharp white highlights on the tactical lens left and the mountain ridge right. Bold ink outlines on both silhouettes. Heroic proportions on both — they are equals in presence, opposites in everything else. Textured line-work with slight grit and pen-and-ink feel. Cover-art quality composition — monumental, iconic, defining. Camera straight-on, symmetrical framing at 24mm.",
+      "negative_prompt": "low quality, blurry, deformed, disfigured, extra limbs, extra fingers, mutated hands, poorly drawn face, ugly, oversaturated, neon, white background, stock photo, generic, watermark, text, logo, signature, soft gradients, airbrush, smooth digital rendering, watercolor, anime, manga, chibi, flat colors, pastel palette, cel shading, vector art, minimalist, abstract, photorealistic, photograph, 3D render, CGI, Pixar style, oil painting, impressionist, bad hands, wrong number of fingers, asymmetric face, crossed eyes",
+      "reference_images": [
+        {
+          "filename": "Kahaan Expressions.jpg",
+          "role": "face_anchor",
+          "ip_adapter_strength": 0.5,
+          "notes": "Kahaan face anchor — left half of composition"
+        },
+        {
+          "filename": "Kahaan Front.png",
+          "role": "costume_reference",
+          "ip_adapter_strength": 0.4,
+          "notes": "Kahaan uniform reference — navy jacket, gold piping"
+        },
+        {
+          "filename": "Rudra Expressions.png",
+          "role": "face_anchor",
+          "ip_adapter_strength": 0.5,
+          "notes": "Rudra face anchor — right half of composition"
+        },
+        {
+          "filename": "Rudra Front.jpeg",
+          "role": "costume_reference",
+          "ip_adapter_strength": 0.4,
+          "notes": "Rudra costume reference — hooded jacket, earth tones, Trident tattoo"
+        }
+      ],
+      "aspect_ratios": {
+        "instagram": "1:1",
+        "twitter": "16:9",
+        "facebook": "1.91:1"
+      },
+      "generation_parameters": {
+        "guidance": "5-7",
+        "steps": "30-50",
+        "reference_strength": "0.4-0.6"
+      },
+      "visual_direction_notes": "The iconic versus image. Cover-art quality. Two worlds colliding at the centre line — tech-blue-navy left, earth-green-mountain right. Both characters rendered with equal monumental presence. They are OPPONENTS in this arc. The visual tension between their opposed palettes IS the story. This is the penultimate image of Arc 1."
+    },
+    {
+      "post_id": "BHV-20260516-001",
+      "topic": "CTA — Arc 1 finale",
+      "content_pillar": "clearance_upgrade",
+      "model": "nano_banana",
+      "positive_prompt": "Jim Lee modern American comic book art style. Cinematic hero shot of the Bharatvarsh cityscape at golden hour — the arc finale image. Warm dawn light breaking through atmospheric haze from the eastern horizon, casting amber-gold across the upper half of the monumental skyline. The Mesh grid visible in the sky is beginning to fracture at its outermost edges — thin blue-white lines severing and trailing off, data nodes flickering at the periphery, while the core grid remains intact over the city centre. OxyPoles line a grand boulevard in the foreground, their blue-white glow complementing the warm dawn light. Monumental architecture fills the frame — Mughal geometric patterns merged with military-industrial brutalism, towers upon towers, each defined by dense hatching and cross-hatching on stone, concrete, metal, and glass. Heavy blacks in the lower third creating natural dark space for CTA text overlay. Sharp white highlights on the dawn-lit tower tops, OxyPole glow, and the fracturing Mesh edges. Bold ink outlines on all architectural silhouettes. The fracturing Mesh edges are subtle but unmistakable — the investigation has begun, something is cracking. Textured line-work surfaces with slight grit and pen-and-ink feel throughout. The composition is both inviting and ominous — enter this world, the story is just beginning, the cracks are showing. Dawn breaks on a city that does not yet know it is breaking. Camera 24mm wide establishing shot.",
+      "negative_prompt": "low quality, blurry, deformed, disfigured, extra limbs, extra fingers, mutated hands, poorly drawn face, ugly, oversaturated, neon, white background, stock photo, generic, watermark, text, logo, signature, soft gradients, airbrush, smooth digital rendering, watercolor, anime, manga, chibi, flat colors, pastel palette, cel shading, vector art, minimalist, abstract, photorealistic, photograph, 3D render, CGI, Pixar style, oil painting, impressionist, people in foreground (unless specified), too many focal points, cluttered composition, daytime bright sunshine",
+      "reference_images": [
+        {
+          "filename": "Bharatvarsh.webp",
+          "role": "style_reference",
+          "ip_adapter_strength": null,
+          "notes": "Primary reference for city skyline architecture and monumental scale — the definitive Bharatvarsh cityscape"
+        }
+      ],
+      "aspect_ratios": {
+        "instagram": "1:1",
+        "twitter": "16:9",
+        "facebook": "1.91:1"
+      },
+      "generation_parameters": {
+        "guidance": "3-5",
+        "steps": "20-35",
+        "reference_strength": null
+      },
+      "visual_direction_notes": "Arc 1 finale CTA. The most visually warm image in the arc — golden hour dawn. But the Mesh is fracturing at the edges. This is an invitation with an ominous undercurrent. Lower third dark for CTA text. The city is beautiful and it is cracking. The story continues inside."
+    }
+  ]
+}

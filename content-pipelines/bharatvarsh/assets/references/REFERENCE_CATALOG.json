@@ -1,0 +1,559 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Comprehensive catalog of all Bharatvarsh reference assets. Each entry describes what the image depicts, its category, art style, and when to use it for prompt engineering / image generation.",
+  "last_updated": "2026-03-20",
+  "total_files": 53,
+  "model_routing": {
+    "seedream_4_5": {
+      "name": "Seedream 4.5",
+      "platform": "OpenArt",
+      "best_for": ["facial accuracy", "character consistency", "costume detail", "expression studies", "portrait generation", "character reference sheets"],
+      "when_to_use": "Any prompt where a character's face, expression, or costume must match an existing reference image. Use img2img or IP-Adapter with the character's canonical reference sheet. Strongest model for maintaining facial identity across multiple generations.",
+      "typical_settings": {
+        "guidance": "5-7",
+        "steps": "30-50",
+        "reference_strength": "0.4-0.6"
+      }
+    },
+    "nano_banana": {
+      "name": "Nano Banana",
+      "platform": "OpenArt",
+      "best_for": ["landscapes", "cityscapes", "atmospheric scenes", "technology close-ups", "environment art", "mood pieces", "quote card backgrounds", "establishing shots"],
+      "when_to_use": "Any prompt focused on scenery, architecture, technology, or atmospheric backgrounds where no specific character face needs to match a reference. Produces superior painterly and cinematic compositions.",
+      "typical_settings": {
+        "guidance": "3-5",
+        "steps": "20-35"
+      }
+    }
+  },
+  "categories": {
+    "character_references": {
+      "description": "Multi-angle sheets, portraits, expression studies, costume details. Use these as img2img or IP-Adapter inputs with Seedream 4.5 for facial/costume consistency.",
+      "assets": {
+        "kahaan": {
+          "character_id": "kahaan",
+          "file_count": 7,
+          "files": [
+            {
+              "filename": "Kahaan Front.png",
+              "type": "full_body_front",
+              "description": "Front-facing stance in formal tactical uniform, dual pulse guns raised. Navy blue suit with cyan/turquoise tech accents. Commanding presence.",
+              "art_style": "Digital illustration, polished 3D render hybrid",
+              "palette": ["navy blue", "cyan/turquoise accents", "gold trim", "warm skin"],
+              "usefulness": "essential",
+              "use_as": "Primary front reference for full-body compositions. Attach as IP-Adapter ref for any front-facing Kahaan generation."
+            },
+            {
+              "filename": "Kahaan Back.png",
+              "type": "full_body_back",
+              "description": "Back view showing gold Ashoka Chakra wheel emblem on navy coat back. Gold embroidery detail on shoulders.",
+              "art_style": "Technical character sheet",
+              "palette": ["navy dominant", "gold emblem accent"],
+              "usefulness": "essential",
+              "use_as": "Costume detail reference — ensures faction insignia and back-of-coat design remain consistent."
+            },
+            {
+              "filename": "Kahaan Left.png",
+              "type": "side_profile_left",
+              "description": "Left side profile against black background. Coat drape, shoulder patch detail visible.",
+              "art_style": "Studio dramatic silhouette",
+              "palette": ["deep navy", "dark background", "gold shoulder insignia"],
+              "usefulness": "useful",
+              "use_as": "Profile angle reference for side-view compositions."
+            },
+            {
+              "filename": "Kahaan Right.png",
+              "type": "side_profile_right",
+              "description": "Right side profile. Gold emblem on sleeve visible. Mirrored symmetry check.",
+              "art_style": "Studio technique matching left profile",
+              "palette": ["navy", "gold", "dark bg"],
+              "usefulness": "useful",
+              "use_as": "Complementary profile reference."
+            },
+            {
+              "filename": "Kahaan Expressions.jpg",
+              "type": "expression_sheet",
+              "description": "3×3 grid of 9 facial expressions — neutral, focused, determined, angry, surprised, concerned, confident, tactical, introspective. Consistent lighting and framing.",
+              "art_style": "Clean digital headshots, uniform lighting",
+              "palette": ["warm brown skin", "dark hair", "minimal background"],
+              "usefulness": "essential",
+              "use_as": "CRITICAL face consistency anchor. Attach as reference for ANY Kahaan portrait. The 9 expressions cover the full emotional range needed for content posts."
+            },
+            {
+              "filename": "Kahaan angle.jpg",
+              "type": "three_quarter_action",
+              "description": "Three-quarter back angle in action pose. Pistol drawn, coat flared, turquoise wrist device (Bracecomm) visible. Futuristic architecture blurred in background.",
+              "art_style": "Rendered illustration with atmospheric background",
+              "palette": ["navy/blue dominant", "turquoise tech accents", "cool background"],
+              "usefulness": "essential",
+              "use_as": "Action pose reference — shows equipment loadout and dynamic stance."
+            },
+            {
+              "filename": "Kahaan.webp",
+              "type": "environmental_context",
+              "description": "Full-body action in futuristic cityscape. Holding tech devices, drone in background. Moody teal/cyan lighting.",
+              "art_style": "Concept art with environmental context",
+              "palette": ["cool teals", "dark blues", "warm character contrast"],
+              "usefulness": "essential",
+              "use_as": "Shows Kahaan in operational environment — use for compositions needing character + city context."
+            }
+          ]
+        },
+        "rudra": {
+          "character_id": "rudra",
+          "file_count": 7,
+          "files": [
+            {
+              "filename": "Rudra Front.jpeg",
+              "type": "full_body_front",
+              "description": "Full-body front stance. Hooded olive-green jacket, tan undershirt, topknot hair, full beard. Tattoo on right bicep. Rustic, weathered warrior aesthetic.",
+              "art_style": "Digital character illustration",
+              "palette": ["sage green", "brown", "earth tones", "warm skin"],
+              "usefulness": "essential",
+              "use_as": "Primary front reference. Contrasts sharply with Kahaan's tech aesthetic — earth vs machine."
+            },
+            {
+              "filename": "Rudra Back.jpg",
+              "type": "full_body_back",
+              "description": "Back view showing Devanagari script on hood and tattoo band on bicep.",
+              "art_style": "Technical character sheet",
+              "palette": ["sage green", "gray", "brown"],
+              "usefulness": "essential",
+              "use_as": "Cultural identity markers — Devanagari script and tattoo placement are critical to character."
+            },
+            {
+              "filename": "Rudra Side.jpg",
+              "type": "dual_side_profile",
+              "description": "Left and right side profiles showing tattoo across both perspectives.",
+              "art_style": "Clean comparison sheet",
+              "palette": ["sage/brown earth tones"],
+              "usefulness": "useful",
+              "use_as": "Profile consistency check."
+            },
+            {
+              "filename": "Rudra Expressions.png",
+              "type": "expression_sheet",
+              "description": "2×2 grid of 4 expressions — neutral/serious, communicative, determined/intense, weathered/weary.",
+              "art_style": "Head-shot consistency studies",
+              "palette": ["warm skin", "dark hair", "beard"],
+              "usefulness": "essential",
+              "use_as": "Face consistency anchor for all Rudra portraits."
+            },
+            {
+              "filename": "Rudra Tattoos.png",
+              "type": "detail_reference",
+              "description": "Three tattoo designs: (1) Trident on chest with mystical energy, (2) 'तत् त्वम् असि' (Tat Tvam Asi) Devanagari on shoulder blade, (3) Armband with trident below right elbow.",
+              "art_style": "Tattoo design documentation",
+              "palette": ["deep blues", "greens", "skin integration"],
+              "usefulness": "essential",
+              "use_as": "CRITICAL spiritual/cultural markers. Must be visible in close-ups and shirtless scenes."
+            },
+            {
+              "filename": "Rudra Machete.png",
+              "type": "weapon_detail",
+              "description": "Curved tactical machete — black blade with serrated edge, ergonomic grip. Labeled 'This is Rudra's Machete'.",
+              "art_style": "Equipment schematic",
+              "palette": ["black steel", "gray/brown handle"],
+              "usefulness": "essential",
+              "use_as": "Character-specific weapon. Must appear when Rudra is shown armed."
+            },
+            {
+              "filename": "Rudra Armband.jpg",
+              "type": "accessory_detail",
+              "description": "Close-up of ornamental silver metalwork armband with traditional design.",
+              "art_style": "Photography-realistic metal detail",
+              "palette": ["silver metallic"],
+              "usefulness": "useful",
+              "use_as": "Jewelry detail for costume accuracy."
+            }
+          ]
+        },
+        "pratap": {
+          "character_id": "pratap",
+          "file_count": 3,
+          "files": [
+            {
+              "filename": "Pratap Front.png",
+              "type": "full_body_front",
+              "description": "Older statesman in formal dark blue military dress uniform with medals and insignia. Gray hair/mustache. Authoritative bearing in institutional interior.",
+              "art_style": "Formal portrait illustration",
+              "palette": ["dark blue uniform", "gold medals", "warm interior", "gray hair"],
+              "usefulness": "essential",
+              "use_as": "Primary authority figure reference. Attach for any Pratap generation."
+            },
+            {
+              "filename": "Pratap Back.png",
+              "type": "full_body_back",
+              "description": "Rear view showing large gold/bronze circular emblem (crossed weapons/laurel wreath) on back of tunic.",
+              "art_style": "Formal portrait documentation",
+              "palette": ["navy", "gold", "institutional stone"],
+              "usefulness": "useful",
+              "use_as": "Faction leadership insignia placement."
+            },
+            {
+              "filename": "Pratap Banner.jpg",
+              "type": "environmental_context",
+              "description": "Command scene — officer at holographic tactical display showing map of Bharatvarsh. Strategic operations room with monitors.",
+              "art_style": "Sci-fi command center composition",
+              "palette": ["cool teals", "dark interfaces", "warm figure lighting"],
+              "usefulness": "useful",
+              "use_as": "Pratap in operational context — command room aesthetic."
+            }
+          ]
+        },
+        "hana": {
+          "character_id": "hana",
+          "file_count": 3,
+          "files": [
+            {
+              "filename": "Hana_Front_Battle.png",
+              "type": "action_pose",
+              "description": "Female operative crouched on rooftop, sniper rifle with scope. Dark tactical bodysuit, short dark hair. Nighttime urban environment with city lights.",
+              "art_style": "Action composition with environmental context",
+              "palette": ["dark navy/black suit", "cool urban blues", "city glow"],
+              "usefulness": "essential",
+              "use_as": "Primary action reference. Defines Hana's tactical role and silhouette."
+            },
+            {
+              "filename": "Hana Card.png",
+              "type": "formal_portrait",
+              "description": "Professional portrait — dark blazer suit, light blue shirt, composed expression. Neutral studio pose.",
+              "art_style": "Professional ID card format",
+              "palette": ["dark blue suit", "pale blue shirt", "neutral bg"],
+              "usefulness": "useful",
+              "use_as": "Civilian/official appearance variant."
+            },
+            {
+              "filename": "Hana Banner.jpg",
+              "type": "environmental_action",
+              "description": "Full-body kneeling on rooftop with sniper rifle, overlooking city nightscape. Holographic HUD elements visible. Title 'Hana: Rooftop Overwatch'.",
+              "art_style": "Concept art with environmental storytelling",
+              "palette": ["cool teals/blues", "warm city lights", "high contrast"],
+              "usefulness": "essential",
+              "use_as": "Operational environment and tactical role definition."
+            }
+          ]
+        },
+        "arshi": {
+          "character_id": "arshi",
+          "file_count": 2,
+          "notes": "CLASSIFIED character — limited public-facing use. These references exist for internal pipeline use only. Public content must use silhouette or obscured treatments.",
+          "files": [
+            {
+              "filename": "Arshi Local.png",
+              "type": "full_body_front",
+              "description": "Young woman in dark teal/black wrapping dress with geometric triangle emblem. Hand raised. Institutional geometric background. Dark hair, athletic build.",
+              "art_style": "Character illustration with faction context",
+              "palette": ["teal/dark blue", "geometric patterns", "warm skin"],
+              "usefulness": "useful",
+              "use_as": "Internal reference only — do NOT use for public-facing content unless face is obscured."
+            },
+            {
+              "filename": "Arshi Snow.png",
+              "type": "environmental_variant",
+              "description": "Winter operations outfit — white cloak over dark tactical gear, snow environment, goggles/headgear. Arctic mission variant.",
+              "art_style": "Environmental character adaptation",
+              "palette": ["white cloak", "dark under-gear", "ice blues"],
+              "usefulness": "useful",
+              "use_as": "Environmental variant reference. Shows design adaptability across climates."
+            }
+          ]
+        },
+        "surya": {
+          "character_id": "surya",
+          "file_count": 4,
+          "files": [
+            {
+              "filename": "Surya Front.jpg",
+              "type": "full_body_front",
+              "description": "Military commander in high-tech tactical bodysuit. Dark gray armor with cyan/turquoise accents. 'GUHYAKAS' nameplate. Indian flag patch. Muscular build.",
+              "art_style": "Professional character design, tech-forward",
+              "palette": ["dark gray/charcoal armor", "cyan highlights", "warm skin", "green flag"],
+              "usefulness": "essential",
+              "use_as": "Defines high-ranking military tech aesthetic. Primary Surya reference."
+            },
+            {
+              "filename": "Surya Back.jpg",
+              "type": "full_body_back",
+              "description": "Back view showing tactical armor distribution, weapon holster placement. Gray/cyan scheme.",
+              "art_style": "Technical armor documentation",
+              "palette": ["gray", "cyan", "military"],
+              "usefulness": "essential",
+              "use_as": "Armor engineering and equipment placement reference."
+            },
+            {
+              "filename": "Surya Side.jpg",
+              "type": "side_profile",
+              "description": "Side profile showing armor depth, layering, and 'GUHYAKAS' shoulder patch.",
+              "art_style": "Equipment design reference",
+              "palette": ["dark gray", "cyan/turquoise accents"],
+              "usefulness": "useful",
+              "use_as": "Tech armor consistency from side angle."
+            },
+            {
+              "filename": "Surya Banner.jpg",
+              "type": "environmental_context",
+              "description": "Command center scene — officer at holographic tactical map of Bharatvarsh. Multiple monitors. Strategic operations aesthetic.",
+              "art_style": "Sci-fi command scene",
+              "palette": ["cool teals", "dark interfaces", "warm figure", "map colors"],
+              "usefulness": "useful",
+              "use_as": "Military command environment reference."
+            }
+          ]
+        }
+      }
+    },
+    "faction_symbols": {
+      "description": "Logos, insignias, banners. Must appear consistently on uniforms, backgrounds, and branded content.",
+      "assets": [
+        {
+          "filename": "Army logo.png",
+          "faction": "Bharatsena / Guhyakas",
+          "description": "Golden Ashoka Chakra wheel inside upward-pointing triangle. Two variants: embroidered on uniform and clean schematic.",
+          "usefulness": "essential",
+          "use_as": "Primary faction identifier — must appear on all military uniforms and government imagery."
+        },
+        {
+          "filename": "Akakpen Symbol.png",
+          "faction": "Akakpen",
+          "description": "Geometric interlocking triangular shapes forming larger triangle. Minimalist black vector design.",
+          "usefulness": "essential",
+          "use_as": "Akakpen faction identifier — apply to all Akakpen-related content."
+        },
+        {
+          "filename": "Akakpen Banner.jpg",
+          "faction": "Akakpen",
+          "description": "Snow-capped Himalayan landscape with wind turbines. Carved wooden signpost with Akakpen triangle and 'Eastern Himalayan Treaty Zone / No-Fly Vault' text.",
+          "usefulness": "essential",
+          "use_as": "Akakpen territory and geographic identity. Environmental composition reference."
+        },
+        {
+          "filename": "Akakpen Tribe'.jpg",
+          "faction": "Akakpen",
+          "description": "3D-rendered tribal symbol carved into dark stone. Geometric triangle with weathered relief texture.",
+          "usefulness": "useful",
+          "use_as": "Cultural/sculptural aesthetic of Akakpen faction."
+        },
+        {
+          "filename": "Bharatsena Card.jpg",
+          "faction": "Bharatsena",
+          "description": "Military organizational card showing hierarchical command structure through character portraits in tactical gear.",
+          "usefulness": "useful",
+          "use_as": "Faction hierarchy visualization reference."
+        }
+      ]
+    },
+    "technology": {
+      "description": "Weapons, devices, infrastructure. Use with Seedream 4.5 for device detail or Nano Banana for tech-in-environment scenes.",
+      "assets": [
+        {
+          "filename": "Pulse Gun.png",
+          "type": "weapon",
+          "description": "Compact energy pistol 'Warringstom 58'. White/silver body, dark blue rail mounts, glowing blue cylindrical core.",
+          "usefulness": "essential",
+          "use_as": "Standard issue weapon. Must appear in hands of operators when armed."
+        },
+        {
+          "filename": "Pulse Gun 1.jpg",
+          "type": "weapon",
+          "description": "Horizontal display of same weapon model. Professional product photography. Model number and markings visible.",
+          "usefulness": "useful",
+          "use_as": "Technical specification reference for detailed close-ups."
+        },
+        {
+          "filename": "Pulse Gun 2.jpg",
+          "type": "weapon_in_context",
+          "description": "Compact pulse pistol in ancient temple setting. Labeled 'Compact Pulse-Gun: Palace Carry'. Moody blue archaeological lighting.",
+          "usefulness": "useful",
+          "use_as": "Weapon in narrative context — scale and environmental juxtaposition."
+        },
+        {
+          "filename": "Oxy Pole.jpg",
+          "type": "infrastructure",
+          "description": "Tall cylindrical device with 9-10 horizontal extending fins. Central turquoise glowing core. Atmospheric processing function.",
+          "usefulness": "essential",
+          "use_as": "Worldbuilding infrastructure — must appear in city environment shots along boulevards."
+        },
+        {
+          "filename": "Bracecom banner.jpg",
+          "type": "communications_tech",
+          "description": "Rooftop scene with 4 operators in dark blue coats. Holographic HUD showing squad lattice network. 'Brace-Comm HUD: Squad Lattice' label.",
+          "usefulness": "useful",
+          "use_as": "Communications tech aesthetic and team coordination visuals."
+        },
+        {
+          "filename": "Bracecom Card.jpg",
+          "type": "device_detail",
+          "description": "Wrist-mounted computing device in isometric view. Dark blue strap, white/gray face, cyan screen. Equipment schematic style.",
+          "usefulness": "essential",
+          "use_as": "Primary Bracecomm device design — must appear on character wrists in close-ups."
+        },
+        {
+          "filename": "Dart Card.jpg",
+          "type": "weapon_system",
+          "description": "Missile/dart projectile with aerodynamic fins + Akakpen-marked equipment case with secure compartments.",
+          "usefulness": "useful",
+          "use_as": "Specialized weaponry design reference."
+        }
+      ]
+    },
+    "locations": {
+      "description": "Cityscapes, environments, architecture. Use Nano Banana for generating new environment art with these as mood/composition references.",
+      "assets": [
+        {
+          "filename": "Bharatvarsh.webp",
+          "type": "cityscape_wide",
+          "description": "Futuristic city wide-angle. Tall vertical architecture with integrated vegetation, geometric grid, flying transport. Teal/cool lighting. Elevated perspective.",
+          "usefulness": "essential",
+          "use_as": "PRIMARY city aesthetic anchor. All Bharatvarsh cityscapes should match this architectural language."
+        },
+        {
+          "filename": "20-10.webp",
+          "type": "destruction_aftermath",
+          "description": "Bombed-out urban marketplace — 20-10 bombing aftermath. Hazmat teams in white suits, warning barriers, devastation. Dark industrial aesthetic with orange/red emergency lights.",
+          "usefulness": "essential",
+          "use_as": "20-10 bombing visual reference. Critical narrative event. Dark, investigative mood."
+        },
+        {
+          "filename": "Commute.webp",
+          "type": "civilian_life",
+          "description": "Modern transit hub — elevated subway platform, glass enclosures, green vegetation integration. Daytime urban scene with commuters.",
+          "usefulness": "useful",
+          "use_as": "Civilian normalcy reference. Shows Bharatvarsh daily life before it turns ominous."
+        },
+        {
+          "filename": "Mesh.webp",
+          "type": "surveillance_environment",
+          "description": "Night street with modernist glass-fronted structure. Armed uniformed figures. Cool blue nighttime lighting. Surveillance/control aesthetic.",
+          "usefulness": "essential",
+          "use_as": "Mesh surveillance state visual. Use for any 'world_window' content about control systems."
+        },
+        {
+          "filename": "Lakshman 2.jpg",
+          "type": "interior_command",
+          "description": "Underground command space. Two figures in dark suits facing each other. Dramatic spotlighting, geometric floor, warning tape barriers.",
+          "usefulness": "useful",
+          "use_as": "Interior confrontation scene and antagonist environment."
+        },
+        {
+          "filename": "Refusal.webp",
+          "type": "historical_interior",
+          "description": "Ornate traditional Indian reception chamber. Multiple figures in formal dress. Carved wooden archways, high ceilings, natural light. Historical/palatial aesthetic.",
+          "usefulness": "useful",
+          "use_as": "Historical institutional setting. Useful for timeline content and lore flashbacks."
+        }
+      ]
+    },
+    "style_guides": {
+      "description": "Art direction references that define the overall visual language. Read before starting any generation session.",
+      "assets": [
+        {
+          "filename": "Art Style.pdf",
+          "type": "master_style_guide",
+          "pages": 11,
+          "description": "Comprehensive modern comic art style guide based on Jim Lee-influenced superhero aesthetic. Covers: dense hatching/cross-hatching, heavy blacks, exaggerated heroic musculature, dynamic foreshortened poses, aggressive Dutch tilts, action at peak tension, silhouette readability, tactical costume detail, gritty line texture, cinematic camera work.",
+          "usefulness": "essential",
+          "use_as": "MASTER STYLE REFERENCE. Read before every character generation session. Defines the visual language Bharatvarsh art should aspire to — cinematic, detailed, heroic, gritty."
+        },
+        {
+          "filename": "Question.webp",
+          "type": "prop_design",
+          "description": "Overhead view of classified files — 'BHARATA SENA - INTERNAL SECURITY ARCHIVE' folder with red 'CLASSIFIED // LEVEL - OMEGA' stamps. Black-redacted text. Evidence photography aesthetic.",
+          "usefulness": "useful",
+          "use_as": "Government documentation visual. Perfect for 'the_question' content pillar backgrounds."
+        }
+      ]
+    },
+    "cards_and_templates": {
+      "description": "Pre-made card designs showing layout patterns for content posts. Reference for asr-visual-studio template design.",
+      "assets": [
+        {
+          "filename": "Lore Card.webp",
+          "type": "information_card",
+          "description": "Lore index card layout — 'LORE INDEX' header with categorized sections for factions, characters, concepts. Cream/beige card with structured text hierarchy, gold accent borders.",
+          "usefulness": "useful",
+          "use_as": "UI/informational layout reference for lore presentation cards."
+        },
+        {
+          "filename": "Novel Card.webp",
+          "type": "book_cover_card",
+          "description": "Book cover design — 'MAHABHARATVARSH' title with glowing blue trident symbol. Dark navy background.",
+          "usefulness": "useful",
+          "use_as": "Publication visual identity and title treatment."
+        },
+        {
+          "filename": "Timeline Card.webp",
+          "type": "map_timeline",
+          "description": "Geographic map card showing Bharatvarsh territory with temporal markers (1910, 1932, 1947, 1968, 1975). Historical progression visualized on map.",
+          "usefulness": "essential",
+          "use_as": "Historical timeline visual. Reference for any timeline content or lore reveal posts."
+        }
+      ]
+    },
+    "book_covers": {
+      "description": "Published book front/back cover art.",
+      "assets": [
+        {
+          "filename": "Front.png",
+          "description": "Book front cover — character portrait in dark blue military dress tunic. Institutional interior background.",
+          "usefulness": "useful",
+          "use_as": "Publication cover reference. Use when creating 'gateway_cta' posts pointing to book purchase."
+        },
+        {
+          "filename": "Back.png",
+          "description": "Book back cover — rear view showing faction insignia on coat back. Institutional space.",
+          "usefulness": "useful",
+          "use_as": "Back cover design reference."
+        }
+      ]
+    },
+    "reference_documents": {
+      "description": "PDF documents containing lore and style direction.",
+      "assets": [
+        {
+          "filename": "Timeline Details.pdf",
+          "type": "lore_document",
+          "description": "Complete 9-era historical timeline: 1717 AD (East India Company lost) through 2022 AD (20-10 Bombings). Covers Enlightenment, Divergence, Sindhu-Dakhin Concord, Democratic Republic, Civil War, Year-Turn Decree, Era of the Mesh, and the bombings.",
+          "usefulness": "essential",
+          "use_as": "Lore accuracy reference. Cross-check any timeline content against this before publishing."
+        },
+        {
+          "filename": "Art Style.pdf",
+          "type": "style_guide",
+          "description": "11-page comic art style guide. See style_guides category for full details.",
+          "usefulness": "essential",
+          "use_as": "See style_guides entry."
+        }
+      ]
+    }
+  },
+  "quick_reference": {
+    "for_character_portraits": {
+      "model": "Seedream 4.5",
+      "attach_references": ["[Character] Expressions.jpg/png", "[Character] Front.png/jpg"],
+      "style_ref": "Art Style.pdf principles",
+      "notes": "Always attach the expression sheet as the primary face anchor. Add front view for costume accuracy."
+    },
+    "for_environment_art": {
+      "model": "Nano Banana",
+      "attach_references": ["Bharatvarsh.webp (city aesthetic)", "Mesh.webp (surveillance)", "Commute.webp (civilian)", "20-10.webp (destruction)"],
+      "style_ref": "environment_templates.json",
+      "notes": "Select the mood-matched location reference. Nano Banana excels at atmospheric compositions."
+    },
+    "for_technology_closeups": {
+      "model": "Nano Banana (general) or Seedream 4.5 (device detail)",
+      "attach_references": ["Oxy Pole.jpg", "Bracecom Card.jpg", "Pulse Gun.png"],
+      "notes": "Use Nano Banana for tech-in-environment. Use Seedream for isolated device detail shots."
+    },
+    "for_quote_cards": {
+      "model": "Nano Banana",
+      "attach_references": ["Question.webp (classified doc bg)", "Mesh.webp (surveillance bg)"],
+      "notes": "Generate atmospheric backgrounds only — text overlay handled by templates."
+    },
+    "for_faction_content": {
+      "akakpen": ["Akakpen Banner.jpg", "Akakpen Symbol.png", "Akakpen Tribe'.jpg"],
+      "bharatsena": ["Army logo.png", "Bharatsena Card.jpg"],
+      "bracecomm": ["Bracecom banner.jpg", "Bracecom Card.jpg"]
+    }
+  }
+}

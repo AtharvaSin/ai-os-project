@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Pre-validated style anchor strings for Bharatvarsh AI art prompts. Jim Lee modern American comic book art style. Source: SKILL_BHARATVARSH_ART_PROMPTS.md Phase 4.",
+  "model_routing": {
+    "seedream_4_5": "Characters, faces, costumes, expression-critical portraits. Best for maintaining facial identity with reference images via img2img/IP-Adapter.",
+    "nano_banana": "Environments, landscapes, cityscapes, atmospheric backgrounds, technology in context. Superior painterly compositions and cinematic scenery."
+  },
+  "anchors": [
+    {
+      "id": "cinematic_portrait",
+      "name": "Heroic Portrait — Jim Lee",
+      "positive_prompt": "Jim Lee modern American comic book art style, heroic portrait with dense hatching and cross-hatching for depth and volume, heavy blacks balanced with sharp white highlights, bold ink outlines with varying line weight, heroic musculature and strong jawline with idealized but realistic facial features, Indian cyberpunk military aesthetic, low-angle camera 35-50mm for heroic presence, monumental character presence even in stillness, tactical costume detail with sharp seams and crisp armor lines rendered in precise ink, textured surfaces through line-work with slight grit, obsidian-navy color palette with mustard gold accents, dramatic rim lighting with deep shadow pools, NOT airbrushed, NOT smooth digital rendering, NOT flat colors, NOT photorealistic, NOT anime, NOT plastic",
+      "best_for": ["character_spotlight", "character teaser", "portrait", "headshot", "personnel_file"],
+      "recommended_models": ["seedream_4_5"],
+      "reference_strategy": "Attach character expression sheet + front reference as IP-Adapter input. Reference strength 0.4-0.6. Apply Art Style.pdf Jim Lee checklist — dense inks, heroic proportions, bold outlines.",
+      "reference_images_to_attach": ["[Character] Expressions.jpg/png", "[Character] Front.png/jpg", "Art Style.pdf"]
+    },
+    {
+      "id": "environment_landscape",
+      "name": "Epic Landscape — Jim Lee",
+      "positive_prompt": "Jim Lee modern American comic book art style, epic wide establishing shot with dense architectural ink detail, dramatic perspective with foreshortened buildings receding to vanishing point, dark atmospheric dystopian Indian futuristic cityscape blending Mughal geometric patterns with military-industrial infrastructure, heavy blacks dominating shadows with sharp white highlights on building edges and wet surfaces, bold outlines on architectural silhouettes, cross-hatching on building facades and street textures, surveillance technology rendered with precise technical linework, towering structures with vertical gardens, obsidian and navy blue dominant palette with mustard gold accent from technology elements, cinematic composition with dynamic angles, textured line-work on every surface with slight grit, NOT smooth gradients, NOT airbrushed, NOT photorealistic, NOT bright, NOT utopian, NOT generic sci-fi",
+      "best_for": ["world_window", "lore reveal background", "location art", "establishing shot", "mesh_intel"],
+      "recommended_models": ["nano_banana"],
+      "reference_strategy": "Use Bharatvarsh.webp as city aesthetic anchor. Add location-specific reference (Mesh.webp, Commute.webp, 20-10.webp) for mood. Apply Jim Lee architectural detail — every building surface should have visible linework.",
+      "reference_images_to_attach": ["Bharatvarsh.webp", "[location-specific ref]", "Art Style.pdf"]
+    },
+    {
+      "id": "technology_closeup",
+      "name": "Tech Detail — Jim Lee",
+      "positive_prompt": "Jim Lee modern American comic book art style, detailed technology close-up with mechanical precision in every ink line, dense cross-hatching on metal surfaces creating depth and reflectivity, bold outlines defining form with varying line weight from thick structural to thin detail, advanced technology with Indian design language incorporating Mughal jali screen geometric patterns and mandala geometry, holographic blue-white interfaces rendered with sharp clean linework, obsidian metal surfaces with mustard gold accent lines, heavy blacks in recessed areas balanced with sharp white highlights on reflective edges, textured surfaces through meticulous hatching with slight industrial grit, camera 50-85mm for heroic close-up detail, NOT smooth digital rendering, NOT airbrushed, NOT toy-like, NOT flat colors, NOT generic sci-fi prop",
+      "best_for": ["technology showcase", "Mesh visualization", "Oxy Pole detail", "Bracecomm"],
+      "recommended_models": ["nano_banana", "seedream_4_5"],
+      "reference_strategy": "For tech-in-environment: Nano Banana + Oxy Pole.jpg or Mesh.webp. For isolated device: Seedream 4.5 + Bracecom Card.jpg or Pulse Gun.png. Ensure cross-hatching on all metal surfaces.",
+      "reference_images_to_attach": ["Oxy Pole.jpg", "Bracecom Card.jpg", "Pulse Gun.png"]
+    },
+    {
+      "id": "atmospheric_background",
+      "name": "Atmospheric Background — Jim Lee",
+      "positive_prompt": "Jim Lee modern American comic book art style, moody atmospheric background with dramatic ink wash effect, dark obsidian gradient with visible brush strokes and hatching texture, subtle surveillance grid pattern rendered in fine technical linework barely visible beneath surface, heavy blacks dominating composition with controlled white space, faint mustard gold light bleeding from one edge creating dramatic contrast, textured with crosshatching and ink grain throughout, empty center space for text overlay with minimal detail for readability, brooding oppressive atmosphere, bold outlines on any structural elements at edges, NOT smooth gradients, NOT airbrushed, NOT digitally flat, NOT bright, NOT busy in center",
+      "best_for": ["quote card", "text overlay background", "flagged_query posts", "clearance_upgrade background"],
+      "recommended_models": ["nano_banana"],
+      "reference_strategy": "Use Question.webp for classified-doc feel or Mesh.webp for surveillance atmosphere. Keep compositions simple with heavy ink atmosphere — text overlay handled by templates.",
+      "reference_images_to_attach": ["Question.webp", "Mesh.webp"]
+    },
+    {
+      "id": "action_dynamic",
+      "name": "Action / Dynamic — Jim Lee",
+      "positive_prompt": "Jim Lee modern American comic book art style, peak-tension action frozen at maximum dramatic impact, dynamic foreshortened pose with aggressive low angle or Dutch tilt composition, dense hatching and cross-hatching creating explosive energy and depth, heavy blacks dominating shadows with sharp white highlights cutting through action, bold ink outlines with thick-to-thin variation conveying motion and force, speed lines and motion blur on secondary elements, sharp focus on subject with silhouette readability, dark atmospheric Indian cyberpunk military aesthetic, volumetric dust and debris particles rendered as ink splatter texture, obsidian-navy palette with mustard gold sparks and energy accents, camera 24-35mm wide dramatic angle, every surface textured with gritty linework, NOT clean, NOT static, NOT calm, NOT smooth digital, NOT anime-style action",
+      "best_for": ["action scene", "faction confrontation", "dynamic moment", "battle scene"],
+      "recommended_models": ["seedream_4_5"],
+      "reference_strategy": "For character action: Seedream 4.5 + character expression sheet + action pose reference. Art Style.pdf Jim Lee principles apply strongest here — dynamic foreshortening, peak tension, silhouette readability, dense inks.",
+      "reference_images_to_attach": ["[Character] action pose ref", "Art Style.pdf"]
+    }
+  ]
+}

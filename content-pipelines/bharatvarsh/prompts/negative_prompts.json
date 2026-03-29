@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Negative prompt library for Bharatvarsh AI art generation. Jim Lee comic art style — excludes photorealistic and flat digital aesthetics. Apply base to EVERY prompt, then add model-specific and target-specific.",
+  "base": "3D render, plastic, low quality, blurry, deformed, disfigured, extra limbs, extra fingers, mutated hands, poorly drawn face, mutation, ugly, oversaturated, neon, bright colors, white background, stock photo, generic, watermark, text, logo, signature, Western architecture, European features (unless specified), light skin (unless specified), generic cyberpunk neon",
+  "jim_lee_exclusions": "soft gradients, airbrush, smooth digital rendering, watercolor, anime, manga, chibi, flat colors, pastel palette, cel shading, vector art, minimalist, abstract, photorealistic, photograph, 3D render, CGI, Pixar style, oil painting, impressionist, smooth skin texture without linework, digital painting without ink texture",
+  "model_specific": {
+    "sdxl": "worst quality, low quality, normal quality, lowres, jpeg artifacts, compression artifacts, duplicate, morbid, ugly, tiling, poorly drawn, bad anatomy, bad proportions, cloned face",
+    "flux": "smooth, airbrushed, overprocessed, HDR, hyper-realistic uncanny valley, too clean, too perfect, digital art look, concept art style",
+    "imagen": "Do not generate: anime style, overly bright or saturated colors, Western architectural elements, light-skinned characters unless specified, generic stock photography look, smooth plastic skin texture, or any text/watermarks in the image.",
+    "seedream_4_5": "smooth airbrushed skin, flat digital coloring, soft diffused lighting without contrast, plastic appearance, gentle rounded features, thin wispy lines",
+    "nano_banana": "smooth gradients without texture, flat sky backgrounds, simple geometric shapes, minimalist composition, sparse detail, clean digital surfaces"
+  },
+  "target_specific": {
+    "character_portrait": "bad hands, wrong number of fingers, asymmetric face, crossed eyes, looking away from camera (unless specified), soft features, rounded shapes, chibi proportions, thin lines without weight variation, gentle lighting without dramatic shadows",
+    "environment": "people in foreground (unless specified), too many focal points, cluttered composition, daytime bright sunshine, smooth untextured surfaces, flat sky without atmosphere",
+    "technology": "toy-like, chunky, low-detail, generic sci-fi prop, lightsaber-style glowing, smooth plastic surfaces, lack of mechanical detail",
+    "atmospheric": "busy composition, too many details in center, bright cheerful colors, high key lighting, clean modern design aesthetic"
+  }
+}

@@ -33,7 +33,7 @@ steps:
       - '--region=asia-south1'
       - '--service-account=ai-os-cloud-run@ai-operating-system-490208.iam.gserviceaccount.com'
       - '--add-cloudsql-instances=bharatvarsh-website:us-central1:bharatvarsh-db'
-      - '--set-secrets=DB_PASSWORD=AI_OS_DB_PASSWORD:latest,GOOGLE_CLIENT_ID=DASHBOARD_OAUTH_CLIENT_ID:latest,GOOGLE_CLIENT_SECRET=DASHBOARD_OAUTH_SECRET:latest,NEXTAUTH_SECRET=NEXTAUTH_SECRET:latest'
+      - '--set-secrets=DB_PASSWORD=AI_OS_DB_PASSWORD:latest,GOOGLE_CLIENT_ID=DASHBOARD_OAUTH_CLIENT_ID:latest,GOOGLE_CLIENT_SECRET=DASHBOARD_OAUTH_SECRET:latest,NEXTAUTH_SECRET=NEXTAUTH_SECRET:latest,META_PAGE_ACCESS_TOKEN=META_PAGE_ACCESS_TOKEN:latest,META_IG_USER_TOKEN=META_IG_USER_TOKEN:latest,X_API_KEY=X_API_KEY:latest,X_API_SECRET=X_API_SECRET:latest,X_ACCESS_TOKEN=X_ACCESS_TOKEN:latest,X_ACCESS_TOKEN_SECRET=X_ACCESS_TOKEN_SECRET:latest'
       - '--set-env-vars=DB_NAME=ai_os,DB_USER=ai_os_admin,DB_HOST=/cloudsql/bharatvarsh-website:us-central1:bharatvarsh-db,NEXTAUTH_URL=https://ai-os-dashboard-sv4fbx5yna-el.a.run.app'
       - '--min-instances=0'
       - '--max-instances=3'

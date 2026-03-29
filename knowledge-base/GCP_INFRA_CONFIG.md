@@ -2,7 +2,7 @@
 
 > **Purpose:** Canonical reference for all GCP project config, service accounts, database access, secrets, and deployment patterns. Referenced by /workflow-designer, /build-prd, /tech-eval, and any skill that deploys or connects to infrastructure.
 >
-> **Last updated:** 2026-03-20 (State v14. 13 Cloud Run services all LIVE. 14 Cloud Scheduler jobs (10 enabled, 4 paused). 13 secrets. Gateway: 80 tools in codebase (15 modules), 56/10 deployed. Composite + Media Gen + Creative Writer + LinkedIn + Meta modules built.)
+> **Last updated:** 2026-03-21 (State v17. 13 Cloud Run services all LIVE. 14 Cloud Scheduler jobs (10 enabled, 4 paused). 13 secrets. Gateway: 90 tools in codebase (17 modules) — 56/10 confirmed live, 34/7 built (Cloud Build auto-trigger expected). New modules: x_twitter (4 tools), social_manager (6 tools). Migration 020 written (content_posts + content_post_audit_log). 31 skills.)
 
 ---
 
@@ -82,7 +82,7 @@ Enabled at 03:00 UTC, 7 retained, point-in-time recovery on, 7-day transaction l
 **Images:**
 | Image | Service | Status | Size |
 |-------|---------|--------|------|
-| ai-os-gateway | MCP Gateway (FastAPI) | LIVE (deployed: lore-v1). Next deploy adds composite + media_gen + creative_writer + linkedin + meta (80 tools) | ~107MB |
+| ai-os-gateway | MCP Gateway (FastAPI) | LIVE. Auto-deployed by Cloud Build trigger on mcp-servers/ai-os-gateway/**. Codebase: 90 tools / 17 modules. Last known manual build: b6493516 (Sprint 12, 80 tools). Cloud Build auto-triggered for 3503cf3 + b0576b6 (x_twitter, social_manager). Actual deployed image: verify with gcloud run services describe ai-os-gateway. | ~107MB+ (Playwright adds ~400MB) |
 | ai-os-dashboard | Dashboard PWA (Next.js) | LIVE (latest: sha256:b690e1a5...) | ~78MB |
 | telegram-notifications | Telegram Bot Notifications | LIVE | ~60MB |
 | embedding-generator | Knowledge Embedding Pipeline | LIVE | ~50MB |
@@ -171,8 +171,8 @@ gcloud run deploy ai-os-dashboard \
 
 | Service | Container | Purpose | Auth | Status | URL |
 |---------|-----------|---------|------|--------|-----|
-| ai-os-gateway | FastAPI | MCP Gateway — 80 tools in codebase (15 modules: postgres, google_tasks, drive_write, drive_read, calendar_sync, telegram, life_graph, capture, contacts, bharatvarsh, composite, media_gen, creative_writer, linkedin, meta), 56/10 deployed, Telegram webhook | Bearer token / API key | LIVE (asia-south1, scale-to-zero) | https://ai-os-gateway-1054489801008.asia-south1.run.app |
-| ai-os-dashboard | Next.js | PWA Dashboard — 9 pages, 23 API routes, 28 components | Google OAuth (NextAuth.js) | LIVE (asia-south1, scale-to-zero) | https://ai-os-dashboard-sv4fbx5yna-el.a.run.app |
+| ai-os-gateway | FastAPI | MCP Gateway — 90 tools in codebase (17 modules: postgres, google_tasks, drive_write, drive_read, calendar_sync, telegram, life_graph, capture, contacts, bharatvarsh, composite, media_gen, creative_writer, linkedin, meta, x_twitter, social_manager), 56/10 confirmed live + 34/7 built (Cloud Build auto-deploy expected), Telegram webhook | Bearer token / API key | LIVE (asia-south1, scale-to-zero) | https://ai-os-gateway-1054489801008.asia-south1.run.app |
+| ai-os-dashboard | Next.js | PWA Dashboard — 7 pages, 33 API routes, 38 components | Google OAuth (NextAuth.js) | LIVE (asia-south1, scale-to-zero) | https://ai-os-dashboard-sv4fbx5yna-el.a.run.app |
 | task-notification-daily | Python + functions-framework | Daily overdue/upcoming task scan + Google Tasks sync | OIDC (Cloud Scheduler) | LIVE (asia-south1, scale-to-zero) | https://task-notification-daily-sv4fbx5yna-el.a.run.app |
 | telegram-notifications | Python + FastAPI | Telegram bot: scheduled briefs, overdue alerts, weekly digest, AI triage | OIDC (Cloud Scheduler) + Telegram webhook | LIVE (asia-south1, scale-to-zero) | https://telegram-notifications-sv4fbx5yna-el.a.run.app |
 | embedding-generator | Python | Knowledge embedding pipeline (text-embedding-3-small) | OIDC (Cloud Scheduler) | LIVE (asia-south1, scale-to-zero) | — |

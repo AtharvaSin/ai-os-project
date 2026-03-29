@@ -13,6 +13,135 @@ A running record of design decisions, architecture changes, brainstorming outcom
 
 ## Log Entries
 
+### Video Production System + State v21 (2026-03-27)
+
+#### What Was Built
+- **Unified Video Production System** (`video-production/`) — Single Remotion 4.0.438 workspace replacing fragmented `remotion_video/` and `aiu-youtube/remotion_aiu/`. 160 source files, zero TypeScript errors.
+- **Common Component Library** — 18 brand-neutral components accepting BrandTokens interface: FilmGrain, Vignette, ScanLines, GlowPulse, NoiseTexture, MotionBlur, TypewriterText, TextPunch, WordReveal, CountUp, KaraokeSubtitle, SafeArea, AccentBar, LetterboxBars, ProgressBar, Watermark, StatCard, KenBurnsImage.
+- **Project Migrations** — 88 project-specific compositions migrated (63 AI&U + 22 Bharatvarsh + 1 AI OS + 2 shared). AI&U uses 9 shim files in utils/ to redirect imports to common library without touching 60+ component files.
+- **Brand Configuration** — 3 project YAML configs (Bharatvarsh/AI&U/AI OS) + template. Each defines colors, typography, art style, content pillars, formats, timing, CTA, notebook references, pipeline paths.
+- **Workspace System** — One-at-a-time production with phase tracking (INITIATE → BRIEF → DESIGN → ASSETS → COMPOSE → RENDER → REVIEW). Component graduation mechanism promotes reusable components to common library.
+- **Orchestrator Skill** — `video-production` skill with 10 auto-invoked sub-skills (brand-guidelines, remotion-best-practices, bharatvarsh-art-prompts, creative-writer, content-gen, infographic, notebooklm, etc.)
+- **CLI Tools** — 4 executables (new-video, render, graduate, catalog). Root.tsx registers 28 compositions (442 lines).
+- **Animation Style Taxonomy** — 87 animation styles cataloged across 10 categories in `knowledge-base/ANIMATION_STYLE_TAXONOMY.md`.
+
+#### Key Decisions
+- Single Remotion install over keeping two projects — reduces maintenance, enables shared component library
+- BrandTokens interface as universal contract — components never hardcode colors/fonts, accept tokens prop instead
+- AI&U shim strategy over rewriting 60+ files — pragmatic migration, zero risk of breaking existing components
+- Open project system (not hardcoded to 3 projects) — any new project gets first-class support via project.yaml
+- content-pipelines/bharatvarsh stays in place, referenced via paths — no disruption to existing post-renderer skill
+- Conversational component suggestion (not rigid catalog UI) — design phase is a creative discussion, not a lookup
+
+#### State After
+- 35 skills (was 34), video-production added
+- ~111 MCP tools (was 90 — gateway scan revealed additional tool registrations)
+- 106 video components (18 common + 88 project-specific)
+- Old directories deprecated with DEPRECATED.md files
+
+---
+
+### NotebookLM Integration + Daily Brief v2 + State v20 (2026-03-27)
+
+#### What Was Built
+- **NotebookLM CLI** — `notebooklm-py` v0.3.4 installed as Tier 3 local STDIO tool. 14 active notebooks (~700 curated sources) covering: animation/video, Claude workflows, business, Bharatvarsh, frontend, backend, Google Antigravity, AI integration, social media, Google Ads, AI training, aerospace, ADK.
+- **NotebookLM Agent Skill** — Installed at `~/.claude/skills/notebooklm/SKILL.md`. Claude Code auto-discovers and can query notebooks via CLI. Activation: explicit `/notebooklm` or intent detection ("create a podcast about X", "summarize these URLs").
+- **Notebook Awareness System** — Memory file `reference_notebooklm_catalog.md` maps 14 notebooks to AI OS project areas with proactive suggestion rules. CLAUDE.md Tier 3 and Tech Stack sections updated.
+- **Daily Brief Engine v2** — 6-section brief format with Zealogics focus, domain health, and momentum analysis (commit 8714d68). Gmail filter improvements to block newsletters and marketing content (commit 311c1f1).
+
+#### Key Decisions
+- Chose `notebooklm-py` (Python CLI/SDK) over `notebooklm-mcp` (Node.js MCP wrapper) — better Windows support, actively maintained (570+ commits vs 21), feature breadth (content generation, not just Q&A), and more resilient RPC-based architecture vs DOM scraping.
+- NotebookLM stays as Tier 3 (local STDIO) not Tier 2 (gateway module) — cookie auth expires every 1-2 hours, unsuitable for always-on cloud deployment.
+- Claude.ai access to NotebookLM research via Drive bridge + DB sync approach (not direct integration).
+
+#### State After
+- 34 skills (was 33), NotebookLM added
+- Tier 3 tools: NotebookLM (configured), Evernote (pending), n8n (pending)
+- State version: v20
+
+#### Next Steps
+- [ ] Explore Drive bridge for Claude.ai access to NotebookLM research
+- [ ] Consider `notebooklm.py` gateway module wrapper once Google publishes official API
+- [ ] Periodic notebook-to-knowledge-DB sync skill
+
+---
+
+### AI&U Remotion Video Pipeline — Full Build (2026-03-23)
+
+#### What Was Built
+- **Remotion Project** — `aiu-youtube/remotion_aiu/` scaffolded from scratch. Remotion 4.x, React 19, TypeScript strict mode. Zero type errors across 34 source files.
+- **Brand Context D (Dark Mode)** — New dark palette for video chrome: BG #0F1117, Card #1A1B23, pillar accents Amber #F59E0B / Green #10B981 / Indigo #6366F1. Separate from the existing light-mode design tokens in `assets/tokens/`.
+- **6 Utility Modules** — constants.ts (full token system), types.ts (AIUVideoInput schema with 20+ interfaces), fonts.ts (@remotion/google-fonts loading), animations.ts (spring configs, slide/scale/slam presets), colors.ts (pillar color resolvers), audio.ts (volume ducking, SFX mapping), subtitles.ts (Whisper JSON → grouped display segments with SRT generation).
+- **15 Atomic Components** — IntroSting, LowerThird, ChapterCard, SubtitleOverlay (word-level karaoke), EndScreen, PillarBadge, ProgressBar, Watermark, CalloutHighlight (SVG draw-on), TextPunch (slam-in), StatCard (Think School style), ComparisonChart, ProcessFlow (animated node chain), BRollDrop (Fireship-style flash), CodeBlock (line-by-line reveal). Each with isolated test composition.
+- **6 Scene Compositions** — FacecamScene (OffthreadVideo + overlays), ScreenRecScene (zoom points + callouts + PIP), SplitScreenScene (40/60 split), DiagramScene (component router), FullScreenTextScene (4 variants: statement/question/rule/myth_bust), BRollScene (4 animation modes). Plus overlayRenderer.tsx helper for GraphicOverlay → component mapping.
+- **3 Video Compositions** — AIULongForm (reads input.json, assembles IntroSting → Chapters → EndScreen with music ducking), AIUShort (vertical reframe 1080×1920 with hook text + CTA), AIUThumbnail (router to 3 templates).
+- **3 Thumbnail Templates** — BigPromise (face + claim), BeforeAfter (split comparison), WorkflowDiagram (node diagram). All 1280×720 dark mode stills.
+- **5 CLI Scripts** — transcribe.sh (Whisper wrapper), render.sh (long-form with preview mode), render-short.sh (per-marker or batch), render-thumbnail.sh (still render), package.sh (collect outputs + generate description.txt, chapters.txt, render_log.md).
+- **Sample Content** — VID01 input.json with 3 chapters, 5 scenes, 20 subtitle segments, 1 shorts marker, thumbnail config.
+- **16 Registered Compositions** — 1 hello-world + 15 component tests + 3 production (aiu-longform, aiu-short, aiu-thumbnail) in Root.tsx.
+
+#### Key Decisions
+- Dark mode Context D uses different pillar accent colors than the existing light-mode tokens (#F59E0B vs #DC8D52, #10B981 vs #48DD71, #6366F1 vs #5B6ABF) — optimized for video overlays against dark backgrounds
+- OffthreadVideo used throughout (not Video) for render performance
+- Subtitle grouping follows strict rules: max 5 words, break at >200ms pauses and punctuation
+- Graphic overlays are routed via overlayRenderer.tsx which maps overlay type strings to React components
+- AIULongForm calculates total duration from chapters at render time (not hardcoded)
+- Thumbnail compositions use `remotion still` (single frame PNG) not video render
+
+#### Render Tests Passed
+- aiu-test (hello world) — 276.7 kB
+- test-intro-sting — 245.6 kB
+- test-stat-card — 127.6 kB
+- test-code-block — 199.7 kB
+- test-text-punch — 129.3 kB
+- test-chapter-card — 166.6 kB
+- test-process-flow — 155.7 kB
+- VID01_thumbnail.png — rendered from sample input.json
+
+#### State After
+- `aiu-youtube/remotion_aiu/`: 34 TS/TSX files, 5 CLI scripts, 0 type errors
+- Production workflow: transcribe → render → render:shorts → render:thumbnail → package
+
+#### Next Steps
+- [ ] Record 30-second test clip (facecam + screen recording) for end-to-end pipeline test
+- [ ] Populate public/sfx/ with sound effect files (whoosh, pop, click, ding, bass-drop, slide, type)
+- [ ] Add background music to public/music/
+- [ ] Run full end-to-end: transcribe → render → package with real footage
+- [ ] Add Context D section to knowledge-base/BRAND_IDENTITY.md
+- [ ] Consider adding ChecklistCard component (referenced in spec but not yet built)
+
+---
+
+### Sprint 12 Follow-on — X/Twitter + Social Manager + Content Pipeline (2026-03-21)
+
+#### What Was Built
+- **X/Twitter Module** — x_twitter.py (4 tools: post_tweet, post_tweet_with_media, get_recent_tweets, get_tweet_metrics). OAuth 1.0a implementation. Registered in main.py.
+- **Social Manager Module** — social_manager.py (6 tools: social_post universal dispatcher, social_cross_post, social_list_platforms, social_validate_content, social_list_accounts, social_account_health). Routing via SocialRegistry adapter pattern.
+- **Social Adapter Layer** — social_adapters.py (adapter registry), social_base.py (SocialPost base class), social_registry.py (SocialRegistry). Platform-agnostic infrastructure allowing new platforms without touching social_manager.py.
+- **Content Pipeline Dashboard Page** — dashboard/src/app/content-pipeline/ with 5 components (ContentPipelineView, ContentPostCard, ContentPostDetail, ImageUploadZone, PipelineSummary) and API routes.
+- **Migration 020** — content_post_status enum, content_posts table (9-stage workflow: planned → prompt_ready → awaiting_image → image_uploaded → rendered → approved → scheduled → published), content_post_audit_log table. Total: 47 tables in codebase.
+- **content-pipelines/bharatvarsh/** — Full content pipeline system at repo root (renamed from content-pipelines). render-post.js (Node.js renderer for platform-specific assets), templates/, prompts/ (arc1_post_prompts.json), assets/, calendar/, distributor/, monitor/, skills/. IMPLEMENTATION_PLAN.md. Seed 015 (content_pipeline data).
+- **Refactor** — content-pipelines → content-pipelines/bharatvarsh across all references.
+
+#### Key Decisions
+- Social Manager sits as a universal dispatcher ABOVE platform modules — adding a new platform only requires implementing the adapter, not touching the dispatcher
+- Content pipeline is draft-only: 'approved' gate is mandatory before any post reaches 'scheduled' or 'published'
+- Migration 020 is written but NOT yet applied — run before using Content Pipeline dashboard page
+- X/Twitter, LinkedIn, Meta all need credentials added to Secret Manager before live posting works
+
+#### State After
+- 90 tools / 17 modules / 47 tables in codebase / 31 skills
+- Commits: 3503cf3, b0576b6, 7aba016, cc937ec, 5cf1e57
+
+#### Next Steps
+- [ ] Apply migration 020 + seed 015 to Cloud SQL
+- [ ] Add X_API_KEY, X_API_SECRET, X_ACCESS_TOKEN, X_ACCESS_TOKEN_SECRET, X_BEARER_TOKEN to Secret Manager
+- [ ] Configure LinkedIn/Meta OAuth credentials
+- [ ] First Category C LangGraph workflow
+- [ ] MCP Gateway auth gap — add request-origin validation for /mcp endpoint
+
+---
+
 ### Sprint 12 — Creative Writing Plugin + Social Media (2026-03-20)
 
 #### What Was Built

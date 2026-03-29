@@ -1,0 +1,1 @@
+export { KenBurnsImage } from './KenBurnsImage';

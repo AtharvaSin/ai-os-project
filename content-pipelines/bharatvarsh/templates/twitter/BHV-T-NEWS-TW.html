@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<!--
+  Bharatvarsh Content Ops — BVN-24x7 News Broadcast Card (Twitter 4:5)
+  Dimensions: 1080×1350 (4:5 portrait)
+  Template ID: BHV-T-NEWS-TW
+  Channel: news_article
+  Context B — Bharatvarsh (dystopian-cinematic, Bebas Neue, Mustard #FFB703)
+
+  Slot variables (replaced by render script):
+    __BG_IMAGE__        — base64 data URL of the Jim Lee illustration
+    __CHYRON_HEADLINE__ — Short punchy headline (max 5 words)
+    __CHYRON_SUB__      — Sub-line text (1 sentence)
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy:        #0D1B2A;
+      --navy-deep:   #0A0D12;
+      --navy-mid:    #111E2D;
+      --mustard:     #FFB703;
+      --mustard-dim: #F1C232;
+      --text-primary:#F0F4F8;
+      --text-muted:  #A0AEC0;
+      --text-grey:   #718096;
+      --red-live:    #EF4444;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 1080px;
+      height: 1350px;
+      overflow: hidden;
+      background: var(--navy);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .canvas {
+      position: relative;
+      width: 1080px;
+      height: 1350px;
+      overflow: hidden;
+    }
+
+    /* ── Background Image (full-bleed Jim Lee art) ── */
+    .bg-image {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-size: cover;
+      background-position: center 18%;
+      background-repeat: no-repeat;
+      z-index: 1;
+      filter: sepia(0.06) contrast(1.04) brightness(0.88);
+    }
+
+    /* ── Vignette (radial edge darkening) ── */
+    .vignette-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        ellipse at 50% 42%,
+        transparent 22%,
+        rgba(10, 13, 18, 0.28) 58%,
+        rgba(10, 13, 18, 0.68) 100%
+      );
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    /* ── Film Grain (feTurbulence fractalNoise) ── */
+    .film-grain-overlay {
+      position: absolute;
+      inset: 0;
+      opacity: 0.062;
+      z-index: 3;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' seed='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 300px;
+    }
+
+    /* ── Bottom gradient fade (image → chyron chrome) ── */
+    .bottom-fade {
+      position: absolute;
+      bottom: 140px;
+      left: 0; right: 0;
+      height: 240px;
+      background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(13, 27, 42, 0.55) 45%,
+        rgba(13, 27, 42, 0.98) 100%
+      );
+      z-index: 4;
+      pointer-events: none;
+    }
+
+    /* ── Top shadow under masthead ── */
+    .top-fade {
+      position: absolute;
+      top: 72px;
+      left: 0; right: 0;
+      height: 80px;
+      background: linear-gradient(to bottom, rgba(13, 27, 42, 0.55), transparent);
+      z-index: 4;
+      pointer-events: none;
+    }
+
+    /* ══════════════════════════════════════════
+       MASTHEAD (top chrome bar)
+       ══════════════════════════════════════════ */
+    .masthead {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 72px;
+      background: rgba(13, 27, 42, 0.94);
+      border-bottom: 3px solid var(--mustard);
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+    }
+
+    .masthead-left {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    /* BVN logo wordmark */
+    .bvn-logo {
+      font-family: 'Inter', sans-serif;
+      font-weight: 800;
+      font-size: 30px;
+      color: #FFFFFF;
+      letter-spacing: -1.5px;
+      line-height: 1;
+    }
+
+    .bvn-freq {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 23px;
+      color: var(--mustard);
+      margin-left: 5px;
+      letter-spacing: 2px;
+      line-height: 1;
+      align-self: flex-end;
+      padding-bottom: 3px;
+    }
+
+    /* Vertical divider */
+    .masthead-divider {
+      width: 1px;
+      height: 28px;
+      background: rgba(255, 255, 255, 0.15);
+      margin: 0 20px;
+    }
+
+    /* LIVE badge */
+    .live-indicator {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 10px 3px 7px;
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+    }
+
+    .live-dot {
+      font-size: 7px;
+      color: var(--red-live);
+      line-height: 1;
+    }
+
+    .live-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      font-weight: 600;
+      color: var(--red-live);
+      letter-spacing: 2.5px;
+    }
+
+    .masthead-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 3px;
+    }
+
+    .network-name {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+    }
+
+    .air-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8.5px;
+      color: var(--text-grey);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* ══════════════════════════════════════════
+       CHYRON (bottom info bar)
+       ══════════════════════════════════════════ */
+    .chyron {
+      position: absolute;
+      bottom: 30px; left: 0; right: 0;
+      height: 112px;
+      background: var(--navy);
+      z-index: 20;
+      display: flex;
+      align-items: stretch;
+      border-top: 2px solid rgba(255, 183, 3, 0.25);
+    }
+
+    /* Mustard category badge */
+    .chyron-badge {
+      min-width: 156px;
+      background: var(--mustard);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 21px;
+      letter-spacing: 3.5px;
+      color: #0D1B2A;
+      padding: 0 14px;
+      flex-shrink: 0;
+      text-align: center;
+      line-height: 1.15;
+    }
+
+    /* Thin mustard separator */
+    .chyron-sep {
+      width: 3px;
+      background: rgba(255, 183, 3, 0.55);
+      flex-shrink: 0;
+    }
+
+    .chyron-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 28px;
+      gap: 7px;
+      overflow: hidden;
+    }
+
+    .chyron-headline {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 19px;
+      color: var(--text-primary);
+      letter-spacing: 0.01em;
+      line-height: 1.25;
+      text-transform: uppercase;
+    }
+
+    .chyron-sub {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 13px;
+      color: var(--text-grey);
+      line-height: 1.4;
+    }
+
+    /* ══════════════════════════════════════════
+       TICKER (crawl bar at very bottom)
+       ══════════════════════════════════════════ */
+    .ticker {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 30px;
+      background: var(--navy-deep);
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      gap: 10px;
+      overflow: hidden;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .ticker-bullet {
+      font-size: 7px;
+      color: var(--mustard);
+      flex-shrink: 0;
+      opacity: 0.8;
+    }
+
+    .ticker-content {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      color: rgba(160, 174, 192, 0.75);
+      letter-spacing: 0.8px;
+      white-space: nowrap;
+      text-transform: uppercase;
+    }
+
+    /* ── Bharatvarsh watermark (subtle, bottom-right of image) ── */
+    .bhv-watermark {
+      position: absolute;
+      bottom: 152px;
+      right: 28px;
+      z-index: 15;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8.5px;
+      font-weight: 500;
+      color: rgba(160, 174, 192, 0.28);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+
+    <!-- ── Base layer: Jim Lee illustration ── -->
+    <div class="bg-image" id="bgImage"></div>
+
+    <!-- ── Atmosphere layers ── -->
+    <div class="vignette-overlay"></div>
+    <div class="film-grain-overlay"></div>
+    <div class="bottom-fade"></div>
+    <div class="top-fade"></div>
+
+    <!-- ── BVN-24x7 Masthead ── -->
+    <div class="masthead">
+      <div class="masthead-left">
+        <span class="bvn-logo">BVN</span>
+        <span class="bvn-freq">24x7</span>
+        <div class="masthead-divider"></div>
+        <div class="live-indicator">
+          <span class="live-dot">●</span>
+          <span class="live-label">LIVE</span>
+        </div>
+      </div>
+      <div class="masthead-right">
+        <span class="network-name">Bharatvarsh News Network</span>
+        <span class="air-date">Q3 2025 · Civic Desk</span>
+      </div>
+    </div>
+
+    <!-- ── Subtle watermark ── -->
+    <div class="bhv-watermark">BHARATVARSH // welcometobharatvarsh.com</div>
+
+    <!-- ── Chyron bar ── -->
+    <div class="chyron">
+      <div class="chyron-badge">CIVIC<br>DESK</div>
+      <div class="chyron-sep"></div>
+      <div class="chyron-text">
+        <div class="chyron-headline">__CHYRON_HEADLINE__</div>
+        <div class="chyron-sub">__CHYRON_SUB__</div>
+      </div>
+    </div>
+
+    <!-- ── Ticker ── -->
+    <div class="ticker">
+      <span class="ticker-bullet">●</span>
+      <span class="ticker-content">BVN-24x7 BHARATVARSH NEWS NETWORK &nbsp;·&nbsp; FORM R-17 APPLICATIONS RISE 340% IN Q3 2025 &nbsp;·&nbsp; APPROVAL RATE: 23% &nbsp;·&nbsp; WELCOMETOBHARATVARSH.COM &nbsp;·&nbsp; "CONTEMPLATION IS NOT PROHIBITED. CONGREGATION IS REGULATED." &nbsp;·&nbsp;</span>
+    </div>
+
+  </div>
+
+  <script>
+    // Image injected by render script (base64 data URL replaces __BG_IMAGE__)
+    document.getElementById('bgImage').style.backgroundImage = "url('__BG_IMAGE__')";
+  </script>
+</body>
+</html>

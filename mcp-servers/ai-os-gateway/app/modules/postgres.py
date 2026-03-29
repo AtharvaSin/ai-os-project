@@ -7,11 +7,12 @@ for user-supplied values.
 
 from __future__ import annotations
 
+import hashlib
 import json
 import logging
 import re
 import uuid
-from datetime import date, datetime
+from datetime import date, datetime, time as dt_time, timedelta
 from decimal import Decimal
 from typing import Any
 
@@ -46,6 +47,13 @@ def _serialize(value: Any) -> Any:
         return str(value)
     if isinstance(value, (datetime, date)):
         return value.isoformat()
+    if isinstance(value, dt_time):
+        return value.isoformat()
+    if isinstance(value, timedelta):
+        total = int(value.total_seconds())
+        h, rem = divmod(total, 3600)
+        m, s = divmod(rem, 60)
+        return f"{h:02d}:{m:02d}:{s:02d}"
     if isinstance(value, Decimal):
         return float(value)
     if isinstance(value, bytes):
@@ -64,6 +72,48 @@ def _serialize(value: Any) -> Any:
     if isinstance(value, (list, tuple)):
         return [_serialize(v) for v in value]
     return value
+
+
+def _json_default(obj: Any) -> Any:
+    """Fallback for json.dumps — catches types _serialize may have missed."""
+    if isinstance(obj, (datetime, date)):
+        return obj.isoformat()
+    if isinstance(obj, dt_time):
+        return obj.isoformat()
+    if isinstance(obj, timedelta):
+        total = int(obj.total_seconds())
+        h, rem = divmod(total, 3600)
+        m, s = divmod(rem, 60)
+        return f"{h:02d}:{m:02d}:{s:02d}"
+    if isinstance(obj, Decimal):
+        return float(obj)
+    if isinstance(obj, uuid.UUID):
+        return str(obj)
+    if isinstance(obj, bytes):
+        return obj.decode("utf-8", errors="replace")
+    raise TypeError(f"Object of type {type(obj).__name__} is not JSON serializable")
+
+
+def _dumps(obj: Any) -> str:
+    """json.dumps with fallback serializer for DB types."""
+    return json.dumps(obj, default=_json_default)
+
+
+def _compute_content_hash(title: str, content: str) -> str:
+    """Compute SHA-256 hash matching the embedding model input format."""
+    text = f"{title}\n\n{content}"
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
+def _auto_content_hash(table: str, data: dict[str, Any]) -> dict[str, Any]:
+    """Auto-set content_hash for knowledge_entries if title+content are present."""
+    if table != "knowledge_entries":
+        return data
+    title = data.get("title")
+    content = data.get("content")
+    if title and content and "content_hash" not in data:
+        data["content_hash"] = _compute_content_hash(str(title), str(content))
+    return data
 
 
 def _row_to_dict(record) -> dict[str, Any]:
@@ -105,17 +155,17 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
     async def query_db(sql: str, params: list[Any] | None = None) -> str:
         stripped = sql.strip().rstrip(";")
         if _WRITE_KEYWORDS.search(stripped):
-            return json.dumps({"error": "Only SELECT queries allowed. Use insert_record/update_record for writes."})
+            return _dumps({"error": "Only SELECT queries allowed. Use insert_record/update_record for writes."})
         upper = stripped.upper().lstrip()
         if not (upper.startswith("SELECT") or upper.startswith("WITH")):
-            return json.dumps({"error": "Query must start with SELECT or WITH."})
+            return _dumps({"error": "Query must start with SELECT or WITH."})
         pool = get_pool()
         try:
             async with pool.acquire() as conn:
                 rows = await conn.fetch(stripped, *(params or []))
-                return json.dumps([_row_to_dict(r) for r in rows])
+                return _dumps([_row_to_dict(r) for r in rows])
         except Exception as exc:
-            return json.dumps({"error": f"Query failed: {exc}"})
+            return _dumps({"error": f"Query failed: {exc}"})
 
     # Tables where id is SERIAL (auto-increment integer), not UUID.
     # Must be defined before the tool function that references it.
@@ -136,7 +186,9 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
     ))
     async def insert_record(table: str, data: dict[str, Any]) -> str:
         if table not in ALLOWED_TABLES:
-            return json.dumps({"error": f"Table '{table}' is not in the allow-list."})
+            return _dumps({"error": f"Table '{table}' is not in the allow-list."})
+        # Auto-compute content_hash for knowledge_entries
+        data = _auto_content_hash(table, data)
         # Only auto-generate a UUID id for UUID primary key tables.
         # SERIAL id tables (content_posts, content_pipeline_log) let the DB auto-increment.
         if "id" not in data and table not in _SERIAL_ID_TABLES:
@@ -155,9 +207,9 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                 record = await conn.fetchrow(sql, *list(data.values()))
                 result = _row_to_dict(record)
                 result["_meta"] = {"action": "inserted", "table": table}
-                return json.dumps(result)
+                return _dumps(result)
         except Exception as exc:
-            return json.dumps({"error": f"Insert failed: {exc}"})
+            return _dumps({"error": f"Insert failed: {exc}"})
 
     @mcp.tool(description=(
         "Update an existing record by UUID id. Provide table name, record id (UUID string), "
@@ -167,9 +219,27 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
     ))
     async def update_record(table: str, id: str, data: dict[str, Any]) -> str:
         if table not in ALLOWED_TABLES:
-            return json.dumps({"error": f"Table '{table}' is not in the allow-list."})
+            return _dumps({"error": f"Table '{table}' is not in the allow-list."})
         if not data:
-            return json.dumps({"error": "No data provided for update."})
+            return _dumps({"error": "No data provided for update."})
+        # Recompute content_hash when title or content changes on knowledge_entries
+        if table == "knowledge_entries" and ("title" in data or "content" in data):
+            # Need both title and content to compute hash — fetch missing field
+            pool = get_pool()
+            try:
+                async with pool.acquire() as conn:
+                    row = await conn.fetchrow(
+                        "SELECT title, content FROM knowledge_entries WHERE id = $1::uuid",
+                        uuid.UUID(id),
+                    )
+                    if row:
+                        title = data.get("title", row["title"])
+                        content = data.get("content", row["content"])
+                        data["content_hash"] = _compute_content_hash(
+                            str(title), str(content)
+                        )
+            except Exception:
+                pass  # Best-effort — hash will be stale but embedding generator catches it
         columns = list(data.keys())
         values = list(data.values())
         set_clause = ", ".join(f"{col} = ${i+1}" for i, col in enumerate(columns))
@@ -189,12 +259,12 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
             async with pool.acquire() as conn:
                 record = await conn.fetchrow(sql, *values, id_val)
                 if record is None:
-                    return json.dumps({"error": f"No record in '{table}' with id '{id}'."})
+                    return _dumps({"error": f"No record in '{table}' with id '{id}'."})
                 result = _row_to_dict(record)
                 result["_meta"] = {"action": "updated", "table": table}
-                return json.dumps(result)
+                return _dumps(result)
         except Exception as exc:
-            return json.dumps({"error": f"Update failed: {exc}"})
+            return _dumps({"error": f"Update failed: {exc}"})
 
     @mcp.tool(description=(
         "Inspect the database schema. With a table name: returns columns, types, "
@@ -211,7 +281,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                         "SELECT relname, n_live_tup "
                         "FROM pg_stat_user_tables ORDER BY relname"
                     )
-                    return json.dumps([
+                    return _dumps([
                         {"table": r["relname"], "estimated_rows": r["n_live_tup"]}
                         for r in rows
                     ])
@@ -224,7 +294,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                     "ORDER BY c.ordinal_position", table,
                 )
                 if not cols:
-                    return json.dumps({"error": f"Table '{table}' not found."})
+                    return _dumps({"error": f"Table '{table}' not found."})
 
                 constraints = await conn.fetch(
                     "SELECT conname, contype, "
@@ -240,7 +310,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                         "WHERE relname = $1", table,
                     )
 
-                return json.dumps({
+                return _dumps({
                     "table": table,
                     "row_count": _serialize(count_row["cnt"]) if count_row else 0,
                     "columns": [
@@ -262,7 +332,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                     ],
                 })
         except Exception as exc:
-            return json.dumps({"error": f"Schema query failed: {exc}"})
+            return _dumps({"error": f"Schema query failed: {exc}"})
 
     @mcp.tool(description=(
         "Search knowledge entries using semantic similarity (vector), "
@@ -316,7 +386,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                             )
 
                         if rows or mode == "semantic":
-                            return json.dumps({
+                            return _dumps({
                                 "mode": "semantic",
                                 "results": [_row_to_dict(r) for r in rows],
                                 "count": len(rows),
@@ -325,7 +395,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
 
                     elif mode == "semantic":
                         # Embedding generation failed and caller wants semantic only
-                        return json.dumps({
+                        return _dumps({
                             "mode": "semantic",
                             "results": [],
                             "count": 0,
@@ -334,7 +404,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                 except Exception as sem_exc:
                     logger.warning(f"Semantic search failed, falling back to fulltext: {sem_exc}")
                     if mode == "semantic":
-                        return json.dumps({"error": f"Semantic search failed: {sem_exc}"})
+                        return _dumps({"error": f"Semantic search failed: {sem_exc}"})
 
             # --- BM25 full-text fallback ---
             tsv = "to_tsvector('english', coalesce(title,'') || ' ' || coalesce(content,''))"
@@ -364,7 +434,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
             async with pool.acquire() as conn:
                 rows = await conn.fetch(sql, *params)
 
-            return json.dumps({
+            return _dumps({
                 "mode": "fulltext",
                 "results": [_row_to_dict(r) for r in rows],
                 "count": len(rows),
@@ -372,7 +442,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
             })
 
         except Exception as exc:
-            return json.dumps({"error": f"Search failed: {exc}"})
+            return _dumps({"error": f"Search failed: {exc}"})
 
     @mcp.tool(description=(
         "Log a pipeline execution run. Looks up pipeline by slug, inserts a "
@@ -390,9 +460,9 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
         valid_statuses = ("running", "success", "failed", "cancelled")
         valid_triggers = ("scheduled", "manual", "event", "webhook")
         if status not in valid_statuses:
-            return json.dumps({"error": f"Invalid status '{status}'. Must be: {', '.join(valid_statuses)}"})
+            return _dumps({"error": f"Invalid status '{status}'. Must be: {', '.join(valid_statuses)}"})
         if trigger_type not in valid_triggers:
-            return json.dumps({"error": f"Invalid trigger_type '{trigger_type}'. Must be: {', '.join(valid_triggers)}"})
+            return _dumps({"error": f"Invalid trigger_type '{trigger_type}'. Must be: {', '.join(valid_triggers)}"})
 
         pool = get_pool()
         try:
@@ -401,7 +471,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                     "SELECT id FROM pipelines WHERE slug = $1", pipeline_slug,
                 )
                 if pipeline is None:
-                    return json.dumps({"error": f"Pipeline '{pipeline_slug}' not found."})
+                    return _dumps({"error": f"Pipeline '{pipeline_slug}' not found."})
 
                 is_terminal = status in ("success", "failed", "cancelled")
                 record = await conn.fetchrow(
@@ -417,6 +487,6 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                     output_summary, error_message,
                     tokens_used or 0, cost_estimate_usd or 0,
                 )
-                return json.dumps(_row_to_dict(record))
+                return _dumps(_row_to_dict(record))
         except Exception as exc:
-            return json.dumps({"error": f"Pipeline run logging failed: {exc}"})
+            return _dumps({"error": f"Pipeline run logging failed: {exc}"})

@@ -1,0 +1,15 @@
+/**
+ * Bharatvarsh Content Operations — Font Imports
+ *
+ * Google Fonts imports for all Context B typefaces.
+ * Source: knowledge-base/BRAND_IDENTITY.md, Context B Typography.
+ *
+ * Font roles:
+ *   Bebas Neue       — Display / Titles (military-style, bold)
+ *   Inter            — Body / Base (readable UI copy)
+ *   Crimson Pro      — Lore / Narrative (historical docs, narrative passages)
+ *   JetBrains Mono   — Monospace (terminal, data, technical logs) — universal across all contexts
+ *   Noto Sans Devanagari — Hindi/Devanagari rendering
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap');

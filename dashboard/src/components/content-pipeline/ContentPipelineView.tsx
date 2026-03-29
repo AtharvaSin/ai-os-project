@@ -5,7 +5,7 @@ import type { ContentPost, ContentPostStatus, ContentPipelineSummary } from '@/l
 import { PipelineSummary } from './PipelineSummary';
 import { ContentPostCard } from './ContentPostCard';
 import { ContentPostDetail } from './ContentPostDetail';
-import { cn, pillarLabel, contentPostStatusLabel } from '@/lib/utils';
+import { cn, pillarLabel, contentPostStatusLabel, filterLabel, channelLabel } from '@/lib/utils';
 import { Filter, RefreshCw, Radio, ChevronDown } from 'lucide-react';
 
 const ALL_STATUSES: ContentPostStatus[] = [
@@ -20,6 +20,8 @@ export function ContentPipelineView() {
   const [selectedPost, setSelectedPost] = useState<ContentPost | null>(null);
   const [statusFilter, setStatusFilter] = useState<ContentPostStatus | 'all'>('all');
   const [pillarFilter, setPillarFilter] = useState<string>('all');
+  const [distFilterVal, setDistFilterVal] = useState<string>('all');
+  const [channelFilterVal, setChannelFilterVal] = useState<string>('all');
   const [refreshing, setRefreshing] = useState(false);
 
   const fetchData = useCallback(async () => {
@@ -59,13 +61,17 @@ export function ContentPipelineView() {
     }
   }, [posts, selectedPost]);
 
-  /* Derive unique pillars from data */
+  /* Derive unique values from data */
   const pillars = Array.from(new Set(posts.map(p => p.content_pillar))).sort();
+  const filters = Array.from(new Set(posts.map(p => p.distillation_filter).filter(Boolean))).sort() as string[];
+  const channels = Array.from(new Set(posts.map(p => p.content_channel).filter(Boolean))).sort() as string[];
 
   /* Apply filters */
   const filteredPosts = posts.filter(p => {
     if (statusFilter !== 'all' && p.status !== statusFilter) return false;
     if (pillarFilter !== 'all' && p.content_pillar !== pillarFilter) return false;
+    if (distFilterVal !== 'all' && p.distillation_filter !== distFilterVal) return false;
+    if (channelFilterVal !== 'all' && p.content_channel !== channelFilterVal) return false;
     return true;
   });
 
@@ -120,7 +126,7 @@ export function ContentPipelineView() {
                 onChange={(e) => setPillarFilter(e.target.value)}
                 className="appearance-none bg-card border border-border rounded-lg px-3 py-1.5 pr-8 text-xs text-text-secondary focus:border-accent-primary/50 focus:outline-none cursor-pointer"
               >
-                <option value="all">All Pillars</option>
+                <option value="all">All Angles</option>
                 {pillars.map(p => (
                   <option key={p} value={p}>{pillarLabel(p)}</option>
                 ))}
@@ -128,10 +134,44 @@ export function ContentPipelineView() {
               <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 h-3 w-3 text-text-muted pointer-events-none" />
             </div>
 
+            {/* Distillation filter */}
+            {filters.length > 0 && (
+              <div className="relative">
+                <select
+                  value={distFilterVal}
+                  onChange={(e) => setDistFilterVal(e.target.value)}
+                  className="appearance-none bg-card border border-border rounded-lg px-3 py-1.5 pr-8 text-xs text-text-secondary focus:border-accent-primary/50 focus:outline-none cursor-pointer"
+                >
+                  <option value="all">All Filters</option>
+                  {filters.map(f => (
+                    <option key={f} value={f}>{filterLabel(f)}</option>
+                  ))}
+                </select>
+                <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 h-3 w-3 text-text-muted pointer-events-none" />
+              </div>
+            )}
+
+            {/* Content channel filter */}
+            {channels.length > 0 && (
+              <div className="relative">
+                <select
+                  value={channelFilterVal}
+                  onChange={(e) => setChannelFilterVal(e.target.value)}
+                  className="appearance-none bg-card border border-border rounded-lg px-3 py-1.5 pr-8 text-xs text-text-secondary focus:border-accent-primary/50 focus:outline-none cursor-pointer"
+                >
+                  <option value="all">All Channels</option>
+                  {channels.map(c => (
+                    <option key={c} value={c}>{channelLabel(c)}</option>
+                  ))}
+                </select>
+                <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 h-3 w-3 text-text-muted pointer-events-none" />
+              </div>
+            )}
+
             {/* Active filter count */}
-            {(statusFilter !== 'all' || pillarFilter !== 'all') && (
+            {(statusFilter !== 'all' || pillarFilter !== 'all' || distFilterVal !== 'all' || channelFilterVal !== 'all') && (
               <button
-                onClick={() => { setStatusFilter('all'); setPillarFilter('all'); }}
+                onClick={() => { setStatusFilter('all'); setPillarFilter('all'); setDistFilterVal('all'); setChannelFilterVal('all'); }}
                 className="text-[10px] text-accent-primary hover:underline"
               >
                 Clear filters

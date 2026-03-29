@@ -1,0 +1,133 @@
+
+  === VIDEO PRODUCTION SYSTEM — COMPONENT CATALOG ===
+
+  COMMON LIBRARY (src/common/)
+  ─────────────────────────────
+
+  effects/
+    - FilmGrain
+    - GlowPulse
+    - MotionBlur
+    - NoiseTexture
+    - ScanLines
+    - Vignette
+
+  typography/
+    - CountUp
+    - KaraokeSubtitle
+    - TextPunch
+    - TypewriterText
+    - WordReveal
+
+  layout/
+    - AccentBar
+    - LetterboxBars
+    - ProgressBar
+    - SafeArea
+    - Watermark
+
+  data-viz/
+    - StatCard
+
+  media/
+    - KenBurnsImage
+
+  PROJECT: AI-OS (src/projects/ai-os/)
+  ─────────────────────────────
+    AIOSRepoIntro
+
+  PROJECT: AIU (src/projects/aiu/)
+  ─────────────────────────────
+    components/BRollDrop
+    components/CalloutHighlight
+    components/ChapterCard
+    components/CodeBlock
+    components/ComparisonChart
+    components/EndScreen
+    components/ExperienceOrbit
+    components/GuardrailsRiskCard
+    components/HighlightBox
+    components/InternPunch
+    components/IntroSting
+    components/KeyTermCard
+    components/LogoIntro
+    components/LowerThird
+    components/PersonaBadge
+    components/PillarBadge
+    components/ProcessFlow
+    components/ProgressBar
+    components/SolutionEngineCard
+    components/StatCard
+    components/StepNotification
+    components/SubtitleOverlay
+    components/TextPunch
+    components\tool-animations/ToolChatGPT
+    components\tool-animations/ToolCopilot
+    components\tool-animations/ToolCopilotStudio
+    components\tool-animations/ToolGemini
+    components\tool-animations/ToolLogos
+    components\tool-animations/ToolWorkflowBuilders
+    components\video2-diagrams/DeploymentLanes
+    components\video2-diagrams/ExplorerToolkit
+    components\video2-diagrams/FiveStepRoadmap
+    components\video2-diagrams/PainPointsBusiness
+    components\video2-diagrams/PersonaGateway
+    components\video2-diagrams/PixelCharacters
+    components\video2-diagrams/VideoRoadmap8Bit
+    components\video2-diagrams/VillageBuilder
+    components/Watermark
+    compositions/AIUDisclaimerCard
+    compositions/AIUIntroSting
+    compositions/AIULongForm
+    compositions/AIULowerThird
+    compositions/AIUShort
+    compositions/AIUTest
+    compositions/AIUThumbnail
+    compositions/AIUVideoRoadmap
+    compositions/TestCompositions
+    compositions/Video2ExperienceOrbit
+    compositions/Video2Part3
+    compositions/Video2Part4
+    compositions/Video2Part5
+    compositions/Video2Part6
+    compositions/Video2Part7
+    compositions/Video2Part7Composite
+    compositions/Video2Section1
+    scenes/BRollScene
+    scenes/DiagramScene
+    scenes/FacecamScene
+    scenes/FullScreenTextScene
+    scenes/overlayRenderer
+    scenes/ScreenRecScene
+    scenes/SplitScreenScene
+    thumbnails/BeforeAfter
+    thumbnails/BigPromise
+    thumbnails/WorkflowDiagram
+
+  PROJECT: BHARATVARSH (src/projects/bharatvarsh/)
+  ─────────────────────────────
+    BharatvarshBackground
+    BharatvarshEndCard
+    BharatvarshIntro
+    BharatvarshSubtitle
+    BharatvarshVideo
+    compositions/BharatvarshPost
+    compositions/BracecommReel
+    compositions/BracecommReelV2
+    compositions\seven-cities/BrandOverlay
+    compositions\seven-cities/BreakingBanner
+    compositions\seven-cities/BVNLogo
+    compositions\seven-cities/ChyronBar
+    compositions\seven-cities/DustParticles
+    compositions\seven-cities/HookLockup
+    compositions\seven-cities/NationalMap
+    compositions\seven-cities/SceneTransition
+    compositions\seven-cities/ScrollingTicker
+    compositions\seven-cities/SevenCitiesReel
+    compositions\seven-cities/TridentDrawOn
+    compositions\seven-cities/WarRoomOverlay
+    compositions/TridentSurveillance
+    compositions/TridentSurveillanceReel
+
+  Total: 18 common + 88 project-specific
+

@@ -31,6 +31,7 @@ export async function GET(
 /** Allowed fields for PATCH updates */
 interface PatchBody {
   status?: ContentPostStatus;
+  topic?: string;
   caption_text?: string;
   visual_direction?: string;
   art_prompt?: Record<string, unknown>;
@@ -40,10 +41,11 @@ interface PatchBody {
   style_overrides?: Record<string, unknown>;
   scheduled_date?: string | null;
   scheduled_time?: string | null;
-  hook?: string;
-  hashtags?: string;
-  cta_type?: string;
-  cta_link?: string;
+  hook?: string | null;
+  hashtags?: string | null;
+  cta_type?: string | null;
+  cta_link?: string | null;
+  lore_refs?: string | null;
   target_audience?: string;
   channels?: string[];
   social_post_ids?: Record<string, string>;
@@ -76,9 +78,9 @@ export async function PATCH(
     const jsonbFields = ['art_prompt', 'render_manifest', 'style_overrides', 'social_post_ids'] as const;
     // Text/varchar fields
     const textFields = [
-      'status', 'caption_text', 'visual_direction', 'model_routing',
+      'status', 'topic', 'caption_text', 'visual_direction', 'model_routing',
       'source_image_path', 'scheduled_date', 'scheduled_time', 'hook',
-      'hashtags', 'cta_type', 'cta_link', 'target_audience',
+      'hashtags', 'cta_type', 'cta_link', 'lore_refs', 'target_audience',
     ] as const;
 
     for (const field of textFields) {

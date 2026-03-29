@@ -3,6 +3,8 @@ import { queryOne, query } from '@/lib/db';
 import type { ContentPost } from '@/lib/types';
 import { exec } from 'child_process';
 import path from 'path';
+import fs from 'fs';
+import { getContentPipelineRoot } from '@/lib/pipeline-paths';
 
 export const dynamic = 'force-dynamic';
 
@@ -51,9 +53,9 @@ export async function POST(
     }
 
     const oldStatus = current.status;
-    const contentOpsDir = path.join(process.cwd(), '..', 'bharatvarsh_content_pipeline');
+    const contentOpsDir = getContentPipelineRoot();
 
-    // Execute render-post.js in the bharatvarsh_content_pipeline directory
+    // Execute render-post.js in the content pipeline directory
     const { stdout, stderr } = await execAsync(
       `node render-post.js --post ${postId}`,
       { cwd: contentOpsDir, timeout: 120_000 },
@@ -63,12 +65,13 @@ export async function POST(
       console.error('[api/content-pipeline/[postId]/render] stderr:', stderr);
     }
 
-    // Parse render manifest from stdout (render-post.js outputs JSON)
+    // Read render manifest from filesystem (render-post.js writes it to rendered/{postId}/render-manifest.json)
     let manifest: Record<string, unknown> = {};
+    const manifestPath = path.join(contentOpsDir, 'rendered', postId, 'render-manifest.json');
     try {
-      manifest = JSON.parse(stdout.trim());
+      manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
     } catch {
-      // If stdout is not valid JSON, store it as raw output
+      // Fallback: store stdout as raw output for debugging
       manifest = { raw_output: stdout.trim() };
     }
 

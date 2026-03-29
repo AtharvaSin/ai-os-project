@@ -10,6 +10,7 @@ Deployment: Cloud Run, python312, asia-south1
 Service account: ai-os-cloud-run@ai-operating-system-490208.iam.gserviceaccount.com
 """
 
+import hashlib
 import json
 import logging
 import os
@@ -442,6 +443,12 @@ def resolve_project_id(cursor, project_slug: str | None) -> str | None:
 # ---------------------------------------------------------------------------
 
 
+def _compute_content_hash(title: str, content: str) -> str:
+    """Compute SHA-256 hash matching the embedding model input format."""
+    text = f"{title}\n\n{content}"
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
 def ingest_file(
     cursor,
     file_id: str,
@@ -450,63 +457,146 @@ def ingest_file(
     modified_time: str,
     domain_info: dict,
     project_id: str | None,
-) -> int:
-    """Ingest a Drive file into knowledge_entries with deduplication.
+) -> dict:
+    """Ingest a Drive file into knowledge_entries with content-hash deduplication.
 
-    Deletes any existing entries with the same drive_file_id (handles re-ingestion
-    when a file is edited), then inserts one entry per content chunk.
+    Instead of blindly deleting all existing chunks and re-inserting:
+      1. Chunk the new content and compute content_hash for each chunk.
+      2. Load existing entries for this drive_file_id with their content_hash.
+      3. Match new chunks to existing entries by (drive_file_id, chunk_index).
+      4. Skip unchanged chunks (same hash) — preserving their embeddings.
+      5. Update changed chunks in-place (preserving UUID, triggering re-embed).
+      6. Insert brand-new chunks.
+      7. Delete orphaned entries (old chunks beyond the new chunk count).
 
     Returns:
-        Number of chunks inserted.
+        Dict with counts: {inserted, updated, skipped, deleted}.
     """
-    # Delete existing entries for this file (handles edits / re-ingestion)
-    cursor.execute(
-        "DELETE FROM knowledge_entries WHERE drive_file_id = %s",
-        (file_id,),
-    )
-
-    # Chunk the content
+    # Chunk the new content
     chunks = chunk_content(content, file_name)
     if not chunks:
         logger.info("File '%s' produced no valid chunks (too short)", file_name)
-        return 0
+        # Still delete any old entries for this file
+        cursor.execute(
+            "DELETE FROM knowledge_entries WHERE drive_file_id = %s",
+            (file_id,),
+        )
+        return {"inserted": 0, "updated": 0, "skipped": 0, "deleted": 0}
 
     source_type = classify_source_type(domain_info, file_name)
     tags = extract_tags(file_name)
 
+    # Compute hashes for all new chunks
     for chunk in chunks:
-        entry_id = str(uuid.uuid4())
-        metadata = json.dumps(
+        chunk["content_hash"] = _compute_content_hash(chunk["title"], chunk["content"])
+
+    # Load existing entries for this file, keyed by chunk_index
+    cursor.execute(
+        """
+        SELECT id, metadata, content_hash
+        FROM knowledge_entries
+        WHERE drive_file_id = %s
+        ORDER BY (metadata->>'chunk_index')::int ASC
+        """,
+        (file_id,),
+    )
+    existing_rows = cursor.fetchall()
+    existing_by_index: dict[int, dict] = {}
+    for row in existing_rows:
+        cols = [desc[0] for desc in cursor.description]
+        entry = dict(zip(cols, row))
+        meta = entry.get("metadata")
+        if isinstance(meta, str):
+            meta = json.loads(meta)
+        idx = meta.get("chunk_index") if meta else None
+        if idx is not None:
+            existing_by_index[int(idx)] = entry
+
+    inserted = 0
+    updated = 0
+    skipped = 0
+
+    for chunk in chunks:
+        idx = chunk["chunk_index"]
+        new_hash = chunk["content_hash"]
+        existing = existing_by_index.pop(idx, None)
+
+        metadata_json = json.dumps(
             {
                 "drive_file_id": file_id,
-                "chunk_index": chunk["chunk_index"],
+                "chunk_index": idx,
                 "original_filename": file_name,
                 "last_modified": modified_time,
             }
         )
 
-        cursor.execute(
-            """
-            INSERT INTO knowledge_entries
-                (id, title, content, domain, sub_domain, source_type,
-                 project_id, drive_file_id, tags, metadata)
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
-            """,
-            (
-                entry_id,
-                chunk["title"],
-                chunk["content"],
-                domain_info["domain"],
-                domain_info.get("sub_domain"),
-                source_type,
-                project_id,
-                file_id,
-                tags,
-                metadata,
-            ),
-        )
+        if existing and existing.get("content_hash") == new_hash:
+            # Content unchanged — skip (preserves existing embedding)
+            skipped += 1
+            continue
 
-    return len(chunks)
+        if existing:
+            # Content changed — update in-place (same UUID, triggers re-embed
+            # because updated_at will advance past embedding's updated_at)
+            cursor.execute(
+                """
+                UPDATE knowledge_entries
+                SET title = %s, content = %s, content_hash = %s,
+                    domain = %s, sub_domain = %s, source_type = %s,
+                    project_id = %s, tags = %s, metadata = %s,
+                    updated_at = NOW()
+                WHERE id = %s
+                """,
+                (
+                    chunk["title"],
+                    chunk["content"],
+                    new_hash,
+                    domain_info["domain"],
+                    domain_info.get("sub_domain"),
+                    source_type,
+                    project_id,
+                    tags,
+                    metadata_json,
+                    str(existing["id"]),
+                ),
+            )
+            updated += 1
+        else:
+            # New chunk — insert
+            entry_id = str(uuid.uuid4())
+            cursor.execute(
+                """
+                INSERT INTO knowledge_entries
+                    (id, title, content, content_hash, domain, sub_domain,
+                     source_type, project_id, drive_file_id, tags, metadata)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                """,
+                (
+                    entry_id,
+                    chunk["title"],
+                    chunk["content"],
+                    new_hash,
+                    domain_info["domain"],
+                    domain_info.get("sub_domain"),
+                    source_type,
+                    project_id,
+                    file_id,
+                    tags,
+                    metadata_json,
+                ),
+            )
+            inserted += 1
+
+    # Delete orphaned entries (old chunks that no longer exist in the file)
+    deleted = 0
+    for orphan in existing_by_index.values():
+        cursor.execute(
+            "DELETE FROM knowledge_entries WHERE id = %s",
+            (str(orphan["id"]),),
+        )
+        deleted += 1
+
+    return {"inserted": inserted, "updated": updated, "skipped": skipped, "deleted": deleted}
 
 
 # ---------------------------------------------------------------------------
@@ -793,8 +883,8 @@ def main(request):
                             )
                             continue
 
-                        # Ingest the file (chunk + insert)
-                        chunks_inserted = ingest_file(
+                        # Ingest the file (chunk + diff + upsert)
+                        result = ingest_file(
                             cursor=cursor,
                             file_id=file_id,
                             file_name=file_name,
@@ -804,12 +894,17 @@ def main(request):
                             project_id=project_id,
                         )
 
-                        folder_entries_created += chunks_inserted
+                        folder_entries_created += result["inserted"]
                         folder_files_processed += 1
                         total_files_scanned += 1
 
                         logger.info(
-                            "Ingested '%s': %d chunks", file_name, chunks_inserted
+                            "Ingested '%s': %d new, %d updated, %d skipped, %d deleted",
+                            file_name,
+                            result["inserted"],
+                            result["updated"],
+                            result["skipped"],
+                            result["deleted"],
                         )
 
                     except Exception as e:

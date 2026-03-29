@@ -1,0 +1,11 @@
+node_modules/
+dist/
+out/
+.remotion/
+workspace/active/renders/
+workspace/active/assets/images/
+workspace/active/assets/audio/
+public/workspace
+*.mp4
+*.webm
+*.mov

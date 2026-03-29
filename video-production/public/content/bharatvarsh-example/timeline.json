@@ -1,0 +1,80 @@
+{
+  "postId": "bhv-example-001",
+  "shortTitle": "The Last Signal",
+  "hook": "A message from beyond the Veil",
+  "storyAngle": "bharatsena",
+  "contentChannel": "declassified_report",
+  "badge": "DIRECTIVE 1984-R/07 · DECLASSIFIED",
+  "ctaUrl": "welcometobharatvarsh.com",
+  "elements": [
+    {
+      "startMs": 0,
+      "endMs": 4000,
+      "imageUrl": "placeholder-1.png",
+      "enterTransition": "fade",
+      "exitTransition": "fade",
+      "animations": [
+        {
+          "startMs": 0,
+          "endMs": 4000,
+          "type": "scale",
+          "from": 1,
+          "to": 1.15
+        }
+      ]
+    },
+    {
+      "startMs": 3500,
+      "endMs": 8000,
+      "imageUrl": "placeholder-2.png",
+      "enterTransition": "fade",
+      "exitTransition": "blur",
+      "animations": [
+        {
+          "startMs": 3500,
+          "endMs": 8000,
+          "type": "scale",
+          "from": 1.2,
+          "to": 1
+        }
+      ]
+    },
+    {
+      "startMs": 7500,
+      "endMs": 12000,
+      "imageUrl": "placeholder-3.png",
+      "enterTransition": "fade",
+      "exitTransition": "fade",
+      "animations": [
+        {
+          "startMs": 7500,
+          "endMs": 12000,
+          "type": "scale",
+          "from": 1,
+          "to": 1.1
+        }
+      ]
+    }
+  ],
+  "text": [
+    {
+      "startMs": 1000,
+      "endMs": 3500,
+      "text": "A nation divided",
+      "position": "bottom"
+    },
+    {
+      "startMs": 4000,
+      "endMs": 6500,
+      "text": "By the veil between worlds",
+      "position": "bottom"
+    },
+    {
+      "startMs": 7500,
+      "endMs": 10000,
+      "text": "One message changes everything",
+      "position": "bottom"
+    }
+  ],
+  "audio": []
+}

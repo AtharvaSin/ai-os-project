@@ -12,11 +12,18 @@ immediately searchable via the existing embedding pipeline.
 
 from __future__ import annotations
 
+import hashlib
 import json
 import uuid
 from datetime import date, datetime, timedelta, timezone
 from decimal import Decimal
 from typing import Any
+
+
+def _compute_content_hash(title: str, content: str) -> str:
+    """Compute SHA-256 hash matching the embedding model input format."""
+    text = f"{title}\n\n{content}"
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()
 
 from fastmcp import FastMCP
 
@@ -150,13 +157,15 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                         "source_interface": "mcp",
                     }
 
+                    content_hash = _compute_content_hash(title, content)
                     record = await conn.fetchrow(
                         "INSERT INTO knowledge_entries "
-                        "(title, content, domain, source_type, confidence_score, tags, metadata) "
-                        "VALUES ($1, $2, $3, 'quick_capture', 0.5, $4, $5) "
+                        "(title, content, content_hash, domain, source_type, confidence_score, tags, metadata) "
+                        "VALUES ($1, $2, $3, $4, 'quick_capture', 0.5, $5, $6) "
                         "RETURNING id, title, created_at",
                         title,
                         content,
+                        content_hash,
                         domain or "personal",
                         entry_tags,
                         json.dumps(metadata),

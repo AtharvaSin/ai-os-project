@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<!--
+  Bharatvarsh Content Ops — Character Teaser Template (Twitter/X 16:9)
+  Dimensions: 1200×675 (16:9)
+  Template ID: BHV-T-CHAR-TW
+
+  Slot variables (pass via URL params or JS injection):
+    characterPortrait — URL or base64 of character portrait image
+    characterName     — Character name (e.g., "KAHAAN")
+    tagline           — Character tagline (1-2 lines)
+    factionColor      — Hex color for faction accent (default: #F1C232)
+
+  Rendering: Puppeteer screenshot at 1200×675 viewport.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1200">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --obsidian-950: #0A0D12;
+      --obsidian-900: #0F1419;
+      --obsidian-800: #1A1F2E;
+      --obsidian-700: #252A3B;
+      --obsidian-600: #323848;
+      --mustard-500: #F1C232;
+      --powder-300: #C9DBEE;
+      --b-text-primary: #F0F4F8;
+      --b-text-secondary: #A0AEC0;
+      --b-text-muted: #718096;
+      --faction-color: #F1C232;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 1200px;
+      height: 675px;
+      overflow: hidden;
+      background: var(--obsidian-900);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .canvas {
+      position: relative;
+      width: 1200px;
+      height: 675px;
+      overflow: hidden;
+      display: flex;
+    }
+
+    /* ── Film Grain ── */
+    .film-grain::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 10;
+      opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 256px;
+    }
+
+    /* ── Left Panel (50%) — Info ── */
+    .info-panel {
+      position: relative;
+      width: 50%;
+      height: 100%;
+      background: var(--obsidian-900);
+      z-index: 20;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 56px;
+    }
+
+    /* ── Faction Accent Line ── */
+    .faction-line {
+      width: 64px;
+      height: 3px;
+      background: var(--faction-color);
+      margin-bottom: 20px;
+    }
+
+    /* ── Character Name ── */
+    .character-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 68px;
+      line-height: 1;
+      letter-spacing: 3px;
+      color: var(--faction-color);
+      text-shadow: 0 0 30px rgba(241, 194, 50, 0.25);
+      margin-bottom: 12px;
+    }
+
+    /* ── Tagline ── */
+    .tagline {
+      font-family: 'Inter', sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--powder-300);
+      max-width: 400px;
+      opacity: 0.9;
+    }
+
+    /* ── Right Panel (50%) — Portrait ── */
+    .portrait-panel {
+      position: relative;
+      width: 50%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 5;
+    }
+
+    .portrait-image {
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* ── Portrait Fade (left side) ── */
+    .portrait-fade {
+      position: absolute;
+      left: 0; top: 0;
+      width: 120px;
+      height: 100%;
+      z-index: 15;
+      background: linear-gradient(
+        to right,
+        var(--obsidian-900) 0%,
+        rgba(15, 20, 25, 0.5) 50%,
+        transparent 100%
+      );
+    }
+
+    /* ── Corner Label ── */
+    .corner-label {
+      position: absolute;
+      top: 32px;
+      left: 48px;
+      z-index: 25;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      color: var(--b-text-muted);
+      text-transform: uppercase;
+      opacity: 0.5;
+    }
+
+    /* ── Bottom-right label ── */
+    .bhv-label {
+      position: absolute;
+      bottom: 20px;
+      right: 32px;
+      z-index: 25;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      color: var(--b-text-muted);
+      text-transform: uppercase;
+      opacity: 0.35;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas film-grain">
+    <!-- Corner label -->
+    <div class="corner-label">CHARACTER DOSSIER</div>
+
+    <!-- Left panel (info) -->
+    <div class="info-panel">
+      <div class="faction-line" id="factionLine"></div>
+      <div class="character-name" id="characterName">KAHAAN</div>
+      <div class="tagline" id="tagline">Trained to obey. Built to question.</div>
+    </div>
+
+    <!-- Right panel (portrait) -->
+    <div class="portrait-panel">
+      <div class="portrait-image" id="portraitImage"></div>
+      <div class="portrait-fade"></div>
+    </div>
+
+    <!-- Bottom label -->
+    <div class="bhv-label">BHARATVARSH // CLASSIFIED</div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+
+    if (params.get('characterPortrait')) {
+      document.getElementById('portraitImage').style.backgroundImage = `url(${params.get('characterPortrait')})`;
+    }
+    if (params.get('characterName')) {
+      document.getElementById('characterName').textContent = params.get('characterName');
+    }
+    if (params.get('tagline')) {
+      document.getElementById('tagline').textContent = params.get('tagline');
+    }
+    if (params.get('factionColor')) {
+      const color = params.get('factionColor');
+      document.documentElement.style.setProperty('--faction-color', color);
+    }
+  </script>
+</body>
+</html>

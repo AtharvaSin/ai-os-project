@@ -1,0 +1,60 @@
+# AI OS Gateway — Local Development Stack
+# Usage:
+#   cp docker/.env.local.example docker/.env.local
+#   # fill in ANTHROPIC_API_KEY in .env.local
+#   docker compose -f docker/docker-compose.dev.yml up -d
+#   # Apply migrations (first time only):
+#   docker compose -f docker/docker-compose.dev.yml exec postgres-local \
+#     psql -U ai_os_admin -d ai_os -c "\i /migrations/001_projects.sql"
+#   # Or use the helper script: scripts/apply_migrations_local.sh
+
+services:
+
+  postgres-local:
+    image: pgvector/pgvector:pg15
+    container_name: ai-os-postgres-local
+    environment:
+      POSTGRES_USER: ai_os_admin
+      POSTGRES_PASSWORD: localdev
+      POSTGRES_DB: ai_os
+    volumes:
+      - postgres-local-data:/var/lib/postgresql/data
+      - ./init:/docker-entrypoint-initdb.d
+    ports:
+      - "5434:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ai_os_admin -d ai_os"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  ai-os-gateway-dev:
+    build:
+      context: ../mcp-servers/ai-os-gateway
+      dockerfile: Dockerfile
+    container_name: ai-os-gateway-dev
+    env_file:
+      - .env.local
+    environment:
+      DB_HOST: postgres-local
+      DB_PORT: "5432"
+      DB_NAME: ai_os
+      DB_USER: ai_os_admin
+      DB_PASSWORD: localdev
+      NODE_ENV: development
+    ports:
+      - "8081:8080"
+    volumes:
+      - ../mcp-servers/ai-os-gateway/app:/app/app
+    command: >
+      uvicorn app.main:app
+      --host 0.0.0.0
+      --port 8080
+      --reload
+      --log-level debug
+    depends_on:
+      postgres-local:
+        condition: service_healthy
+
+volumes:
+  postgres-local-data:

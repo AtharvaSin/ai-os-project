@@ -1,0 +1,55 @@
+id: ai-os
+name: "AI Operating System"
+brand_context: A
+description: "Dark, electric, command-center precision — system demos and technical showcases"
+
+brand:
+  colors:
+    bg_primary: "#0A0A0A"
+    bg_surface: "#0D0D14"
+    bg_elevated: "#1A1A2E"
+    accent_primary: "#00D492"
+    accent_secondary: "#00A3FF"
+    text_primary: "#EEEAE4"
+    text_secondary: "#A09D95"
+    text_muted: "#606060"
+    border: "#1F1F35"
+  typography:
+    display: "DM Sans"
+    body: "Inter"
+    mono: "JetBrains Mono"
+  effects:
+    film_grain: { enabled: false }
+    vignette: { enabled: false }
+    scan_lines: { enabled: false }
+    letterbox: { enabled: false }
+    glow: { enabled: true, color: "#00D492", spread: 30 }
+
+art_style:
+  primary: "Clean technical illustration with electric accents"
+  descriptors:
+    - "command-center aesthetic"
+    - "dark mode native"
+    - "data-driven visuals"
+    - "precision grid layouts"
+
+formats:
+  landscape: { width: 1920, height: 1080, fps: 30 }
+  reel: { width: 1080, height: 1920, fps: 30 }
+  square: { width: 1080, height: 1080, fps: 30 }
+
+timing:
+  intro_duration_s: 2
+  endcard_duration_s: 3
+
+cta:
+  url: ""
+  display: ""
+  logo_path: ""
+  intent: "demo"
+
+notebooks: []
+pipeline:
+  calendar_path: ""
+  rendered_path: ""
+  prompts_path: ""

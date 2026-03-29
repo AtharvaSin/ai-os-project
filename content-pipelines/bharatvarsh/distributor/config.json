@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Distribution pipeline configuration. API credentials stored in GCP Secret Manager — never hardcode here.",
+  "channels": {
+    "instagram": {
+      "enabled": false,
+      "api": "Meta Graph API",
+      "secret_names": ["INSTAGRAM_ACCESS_TOKEN", "FACEBOOK_PAGE_ID"],
+      "rate_limit": "200 posts/hour",
+      "notes": "Requires Facebook Page linked to IG Business account. Images must be hosted URL."
+    },
+    "twitter": {
+      "enabled": false,
+      "api": "Twitter API v2",
+      "secret_names": ["TWITTER_OAUTH_TOKEN", "TWITTER_OAUTH_SECRET"],
+      "rate_limit": "17 tweets/15 min (free tier)",
+      "notes": "Media upload separate endpoint. Thread posting requires chaining."
+    },
+    "facebook": {
+      "enabled": false,
+      "api": "Meta Graph API",
+      "secret_names": ["FACEBOOK_PAGE_TOKEN"],
+      "rate_limit": "200 posts/hour",
+      "notes": "Similar to IG. Richer formatting. Link previews auto-generated."
+    }
+  },
+  "scheduler": {
+    "type": "claude_schedule",
+    "interval_minutes": 15,
+    "notes": "Will upgrade to Cloud Run + Cloud Scheduler if posting frequency exceeds 2/day"
+  },
+  "safety": {
+    "require_approval": true,
+    "draft_only": true,
+    "auto_publish_field": "auto_publish",
+    "batch_approval_day": "sunday",
+    "three_layer_protection": {
+      "layer_1": "DB status enum constraint — only 'approved' posts enter distribution",
+      "layer_2": "MCP draft_only flag — Meta uses published=false, Twitter logs for manual",
+      "layer_3": "Google Task created for manual review and publish"
+    }
+  }
+}

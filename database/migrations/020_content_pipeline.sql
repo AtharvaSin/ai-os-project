@@ -18,7 +18,7 @@ CREATE TYPE content_post_status AS ENUM (
     'planned',          -- post is in the calendar but not yet fleshed out
     'prompt_ready',     -- art prompt generated, awaiting human image creation
     'awaiting_image',   -- prompt sent to Atharva, waiting for upload
-    'image_uploaded',   -- source image placed in content-ops directory
+    'image_uploaded',   -- source image placed in content-pipelines/bharatvarsh/ directory
     'rendered',         -- render-post.js has produced platform-specific assets
     'approved',         -- Atharva has approved the final output
     'scheduled',        -- post is queued for a specific date/time
@@ -52,7 +52,10 @@ CREATE TABLE content_posts (
     id                 SERIAL PRIMARY KEY,
     post_id            VARCHAR(20) UNIQUE NOT NULL,         -- e.g., 'ARC1-001'
     campaign           VARCHAR(100) NOT NULL,               -- e.g., 'arc1_whispers_of_dharma'
-    content_pillar     VARCHAR(50) NOT NULL,                -- e.g., 'lore_reveal', 'character_spotlight'
+    content_pillar     VARCHAR(50) NOT NULL,                -- stores story_angle value for backward compat
+    story_angle        VARCHAR(50),                          -- 'bharatsena', 'akakpen', 'tribhuj'
+    distillation_filter VARCHAR(50),                         -- 'living_without_religion', 'med_mil_progress', 'novel_intro'
+    content_channel    VARCHAR(50),                           -- 'declassified_report', 'graffiti_photo', 'news_article'
     topic              TEXT NOT NULL,                        -- post topic / subject line
     hook               TEXT,                                 -- opening hook or attention-grabber
     lore_refs          TEXT,                                 -- comma-separated lore references for canon validation
@@ -82,8 +85,11 @@ CREATE TABLE content_posts (
 COMMENT ON TABLE content_posts IS 'Bharatvarsh content pipeline posts. Each row tracks one promotional post through a 9-stage workflow from planning to publishing. Draft-only: human approval required before scheduling. art_prompt stores full image generation config, render_manifest stores render-post.js output, social_post_ids maps platform→external ID after publishing. post_id format is ARC{n}-{seq} (e.g., ARC1-001).';
 
 COMMENT ON COLUMN content_posts.post_id IS 'Human-readable identifier in ARC{n}-{seq} format. Used as the primary reference in pipeline commands and Google Tasks.';
-COMMENT ON COLUMN content_posts.campaign IS 'Campaign arc name. Maps to content-ops/calendar/ arc definitions (e.g., arc1_whispers_of_dharma).';
-COMMENT ON COLUMN content_posts.content_pillar IS 'Content category: lore_reveal, character_spotlight, world_building, quote, behind_the_scenes, engagement, launch_cta.';
+COMMENT ON COLUMN content_posts.campaign IS 'Campaign arc name. Maps to content-pipelines/bharatvarsh/calendar/ arc definitions (e.g., arc1_whispers_of_dharma).';
+COMMENT ON COLUMN content_posts.content_pillar IS 'Primary content category. Now stores story_angle value (bharatsena/akakpen/tribhuj) for backward compatibility with dashboard filters. See story_angle, distillation_filter, content_channel for the full 3-axis taxonomy.';
+COMMENT ON COLUMN content_posts.story_angle IS 'Content strategy Layer 2: bharatsena (state perspective), akakpen (tribal/wild perspective), tribhuj (resistance perspective).';
+COMMENT ON COLUMN content_posts.distillation_filter IS 'Content strategy Layer 3: living_without_religion, med_mil_progress, novel_intro. Determines thematic lens.';
+COMMENT ON COLUMN content_posts.content_channel IS 'Content strategy Layer 4: declassified_report (formal docs), graffiti_photo (artistic), news_article (media artifacts). Determines output format.';
 COMMENT ON COLUMN content_posts.channels IS 'Target social platforms. Array of: instagram, twitter, facebook, linkedin.';
 COMMENT ON COLUMN content_posts.art_prompt IS 'Full image generation prompt config from arc post prompts JSON. Includes prompt text, negative prompt, style params, aspect ratio.';
 COMMENT ON COLUMN content_posts.model_routing IS 'Image generation model identifier. Primary: seedream_4_5 (Google). Fallback: nano_banana (local).';
@@ -129,8 +135,17 @@ CREATE INDEX idx_content_posts_campaign ON content_posts (campaign);
 -- Calendar view — find posts by scheduled date
 CREATE INDEX idx_content_posts_scheduled ON content_posts (scheduled_date) WHERE scheduled_date IS NOT NULL;
 
--- Content pillar analytics
+-- Content pillar / story angle analytics
 CREATE INDEX idx_content_posts_pillar ON content_posts (content_pillar);
+
+-- Story angle analytics (new 3-axis taxonomy)
+CREATE INDEX idx_content_posts_story_angle ON content_posts (story_angle) WHERE story_angle IS NOT NULL;
+
+-- Distillation filter analytics
+CREATE INDEX idx_content_posts_distillation ON content_posts (distillation_filter) WHERE distillation_filter IS NOT NULL;
+
+-- Content channel analytics
+CREATE INDEX idx_content_posts_channel ON content_posts (content_channel) WHERE content_channel IS NOT NULL;
 
 -- Channel-based queries (GIN for array containment)
 CREATE INDEX idx_content_posts_channels ON content_posts USING GIN (channels);

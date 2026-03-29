@@ -1,0 +1,174 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Maps content_pillar + channel + format to the correct template file and dimensions. Used by render-post.js to select the right template for each calendar row.",
+  "version": "1.0",
+  "templates": {
+    "BHV-T-QUOTE": {
+      "name": "Quote Card",
+      "description": "Atmospheric background with large quote text and attribution. For 'the_question' and quotable lore content.",
+      "best_for_pillars": ["the_question", "world_window"],
+      "slots": {
+        "backgroundImage": "URL or base64 — atmospheric/environment art",
+        "quoteText": "The quote or provocative question",
+        "attribution": "Optional — character name or '— BHARATVARSH'",
+        "showClassified": "'true' or 'false' — show watermark strip"
+      },
+      "variants": {
+        "instagram": {
+          "file": "instagram/BHV-T-QUOTE-IG.html",
+          "dimensions": { "width": 1080, "height": 1080 },
+          "aspect_ratio": "1:1"
+        },
+        "twitter": {
+          "file": "twitter/BHV-T-QUOTE-TW.html",
+          "dimensions": { "width": 1200, "height": 675 },
+          "aspect_ratio": "16:9"
+        },
+        "facebook": {
+          "file": "facebook/BHV-T-QUOTE-FB.html",
+          "dimensions": { "width": 1200, "height": 630 },
+          "aspect_ratio": "1.91:1"
+        }
+      }
+    },
+    "BHV-T-CHAR": {
+      "name": "Character Teaser",
+      "description": "Character portrait with name and tagline in bottom panel. For character spotlight posts.",
+      "best_for_pillars": ["character_spotlight"],
+      "slots": {
+        "characterPortrait": "URL or base64 — character portrait image",
+        "characterName": "Character name (displayed large, uppercase)",
+        "tagline": "1-2 line character tagline",
+        "factionColor": "Hex color for faction accent line and name"
+      },
+      "variants": {
+        "instagram": {
+          "file": "instagram/BHV-T-CHAR-IG.html",
+          "dimensions": { "width": 1080, "height": 1350 },
+          "aspect_ratio": "4:5"
+        },
+        "twitter": {
+          "file": "twitter/BHV-T-CHAR-TW.html",
+          "dimensions": { "width": 1200, "height": 675 },
+          "aspect_ratio": "16:9"
+        },
+        "facebook": {
+          "file": "facebook/BHV-T-CHAR-FB.html",
+          "dimensions": { "width": 1200, "height": 630 },
+          "aspect_ratio": "1.91:1"
+        }
+      }
+    },
+    "BHV-T-LORE": {
+      "name": "Lore Reveal",
+      "description": "Background image with dark overlay, headline, body snippet, and optional DECLASSIFIED stamp. For world-building lore reveals.",
+      "best_for_pillars": ["world_window"],
+      "slots": {
+        "backgroundImage": "URL or base64 — lore-relevant environment/tech art",
+        "headline": "Bold headline (1 line)",
+        "bodySnippet": "2-3 line body text",
+        "classifiedStamp": "'true' or 'false' — show DECLASSIFIED stamp"
+      },
+      "variants": {
+        "instagram": {
+          "file": "instagram/BHV-T-LORE-IG.html",
+          "dimensions": { "width": 1080, "height": 1080 },
+          "aspect_ratio": "1:1"
+        },
+        "twitter": {
+          "file": "twitter/BHV-T-LORE-TW.html",
+          "dimensions": { "width": 1200, "height": 675 },
+          "aspect_ratio": "16:9"
+        },
+        "facebook": {
+          "file": "facebook/BHV-T-LORE-FB.html",
+          "dimensions": { "width": 1200, "height": 630 },
+          "aspect_ratio": "1.91:1"
+        }
+      }
+    },
+    "BHV-T-CTA": {
+      "name": "Gateway CTA",
+      "description": "Hero image with CTA headline and button-style call to action. For driving traffic to website/purchase.",
+      "best_for_pillars": ["gateway_cta"],
+      "slots": {
+        "backgroundImage": "URL or base64 — hero image",
+        "ctaHeadline": "CTA headline text",
+        "ctaButtonText": "Button label (e.g., 'READ NOW', 'ENTER BHARATVARSH')",
+        "url": "Display URL shown on card"
+      },
+      "variants": {
+        "instagram": {
+          "file": "instagram/BHV-T-CTA-IG.html",
+          "dimensions": { "width": 1080, "height": 1080 },
+          "aspect_ratio": "1:1"
+        },
+        "twitter": {
+          "file": "twitter/BHV-T-CTA-TW.html",
+          "dimensions": { "width": 1200, "height": 675 },
+          "aspect_ratio": "16:9"
+        },
+        "facebook": {
+          "file": "facebook/BHV-T-CTA-FB.html",
+          "dimensions": { "width": 1200, "height": 630 },
+          "aspect_ratio": "1.91:1"
+        }
+      }
+    },
+    "BHV-T-BTS": {
+      "name": "Behind the Scenes",
+      "description": "Author-focused card with headline and body text. For behind_the_build content showing the creative process.",
+      "best_for_pillars": ["behind_the_build"],
+      "slots": {
+        "backgroundImage": "URL or base64 — author photo or workspace shot",
+        "headline": "BTS headline",
+        "bodyText": "2-4 line body text about the creative process"
+      },
+      "variants": {
+        "instagram": {
+          "file": "instagram/BHV-T-BTS-IG.html",
+          "dimensions": { "width": 1080, "height": 1080 },
+          "aspect_ratio": "1:1"
+        },
+        "twitter": {
+          "file": "twitter/BHV-T-BTS-TW.html",
+          "dimensions": { "width": 1200, "height": 675 },
+          "aspect_ratio": "16:9"
+        },
+        "facebook": {
+          "file": "facebook/BHV-T-BTS-FB.html",
+          "dimensions": { "width": 1200, "height": 630 },
+          "aspect_ratio": "1.91:1"
+        }
+      }
+    }
+  },
+  "pillar_to_template_default": {
+    "world_window": "BHV-T-LORE",
+    "character_spotlight": "BHV-T-CHAR",
+    "the_question": "BHV-T-QUOTE",
+    "behind_the_build": "BHV-T-BTS",
+    "gateway_cta": "BHV-T-CTA",
+    "mesh_intel": "BHV-T-LORE",
+    "personnel_file": "BHV-T-CHAR",
+    "flagged_query": "BHV-T-QUOTE",
+    "clearance_upgrade": "BHV-T-CTA",
+    "bharatsena": "BHV-T-LORE",
+    "akakpen": "BHV-T-LORE",
+    "tribhuj": "BHV-T-QUOTE"
+  },
+  "channel_dimensions": {
+    "instagram": {
+      "feed_post": { "width": 1080, "height": 1080, "aspect": "1:1" },
+      "feed_post_portrait": { "width": 1080, "height": 1350, "aspect": "4:5" },
+      "story": { "width": 1080, "height": 1920, "aspect": "9:16" },
+      "reel": { "width": 1080, "height": 1920, "aspect": "9:16" }
+    },
+    "twitter": {
+      "default": { "width": 1200, "height": 675, "aspect": "16:9" }
+    },
+    "facebook": {
+      "default": { "width": 1200, "height": 630, "aspect": "1.91:1" }
+    }
+  }
+}

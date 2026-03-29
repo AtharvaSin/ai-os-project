@@ -1,12 +1,12 @@
 'use client';
 
 import type { ContentPost } from '@/lib/types';
-import { cn, contentPostStatusColor, contentPostStatusLabel, pillarLabel, pillarColor, formatDate } from '@/lib/utils';
-import { Calendar, Image, Hash, MessageSquare } from 'lucide-react';
+import { cn, contentPostStatusColor, contentPostStatusLabel, pillarLabel, pillarColor, filterLabel, filterColor, channelLabel, channelColor, formatDate } from '@/lib/utils';
+import { Calendar, Image as ImageIcon, Hash, MessageSquare } from 'lucide-react';
 
 /** Map channel names to display icons */
 const CHANNEL_ICONS: Record<string, { icon: typeof MessageSquare; label: string }> = {
-  instagram: { icon: Image, label: 'IG' },
+  instagram: { icon: ImageIcon, label: 'IG' },
   facebook: { icon: MessageSquare, label: 'FB' },
   twitter: { icon: Hash, label: 'X' },
   linkedin: { icon: MessageSquare, label: 'LI' },
@@ -46,11 +46,21 @@ export function ContentPostCard({ post, onClick }: ContentPostCardProps) {
         {post.topic}
       </h3>
 
-      {/* Pillar badge */}
-      <div className="flex items-center gap-2 mb-3">
+      {/* Taxonomy badges */}
+      <div className="flex items-center gap-2 mb-3 flex-wrap">
         <span className={cn('badge text-[10px]', pillarColor(post.content_pillar))}>
           {pillarLabel(post.content_pillar)}
         </span>
+        {post.distillation_filter && (
+          <span className={cn('badge text-[10px]', filterColor(post.distillation_filter))}>
+            {filterLabel(post.distillation_filter)}
+          </span>
+        )}
+        {post.content_channel && (
+          <span className={cn('badge text-[10px]', channelColor(post.content_channel))}>
+            {channelLabel(post.content_channel)}
+          </span>
+        )}
         {post.campaign && (
           <span className="text-[10px] text-text-muted truncate max-w-[120px]">
             {post.campaign}
@@ -84,7 +94,7 @@ export function ContentPostCard({ post, onClick }: ContentPostCardProps) {
         {/* Image indicator */}
         {post.source_image_path && (
           <span className="inline-flex items-center gap-0.5 text-[10px] text-accent-teal">
-            <Image className="h-3 w-3" />
+            <ImageIcon className="h-3 w-3" />
             img
           </span>
         )}

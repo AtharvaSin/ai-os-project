@@ -110,10 +110,122 @@ class MCPAuthMiddleware:
         await self.app(scope, receive, send)
 
 
+async def _apply_pending_migrations() -> None:
+    """Apply any pending database migrations at startup.
+
+    Migration 020 (content_pipeline) — idempotent, safe on every cold start.
+    Two-phase: enum first (own txn), then tables + indexes.
+    """
+    pool = config.get_db_pool()
+    async with pool.acquire() as conn:
+        # ── Phase 1: create enum (must commit before table creation uses it) ──
+        enum_exists = await conn.fetchval(
+            "SELECT EXISTS(SELECT 1 FROM pg_type WHERE typname = 'content_post_status')"
+        )
+        if not enum_exists:
+            await conn.execute("""
+                CREATE TYPE content_post_status AS ENUM (
+                    'planned', 'prompt_ready', 'awaiting_image', 'image_uploaded',
+                    'rendered', 'approved', 'scheduled', 'published', 'failed'
+                )
+            """)
+            logger.info("Migration 020: content_post_status enum created.")
+
+        # ── Phase 2: create tables + indexes if missing ────────────────────────
+        table_exists = await conn.fetchval(
+            "SELECT EXISTS(SELECT 1 FROM information_schema.tables "
+            "WHERE table_schema='public' AND table_name='content_posts')"
+        )
+        if not table_exists:
+            await conn.execute("""
+                CREATE TABLE content_posts (
+                    id                  SERIAL PRIMARY KEY,
+                    post_id             VARCHAR(20) UNIQUE NOT NULL,
+                    campaign            VARCHAR(100) NOT NULL,
+                    content_pillar      VARCHAR(50) NOT NULL,
+                    story_angle         VARCHAR(50),
+                    distillation_filter VARCHAR(50),
+                    content_channel     VARCHAR(50),
+                    topic               TEXT NOT NULL,
+                    hook                TEXT,
+                    lore_refs           TEXT,
+                    classified_status   VARCHAR(30),
+                    channels            TEXT[] NOT NULL,
+                    caption_text        TEXT,
+                    visual_direction    TEXT,
+                    art_prompt          JSONB,
+                    model_routing       VARCHAR(50),
+                    source_image_path   TEXT,
+                    render_manifest     JSONB,
+                    style_overrides     JSONB,
+                    scheduled_date      DATE,
+                    scheduled_time      TIME,
+                    target_audience     TEXT,
+                    hashtags            TEXT,
+                    cta_type            VARCHAR(50),
+                    cta_link            TEXT,
+                    social_post_ids     JSONB,
+                    status              content_post_status NOT NULL DEFAULT 'planned',
+                    approved_at         TIMESTAMPTZ,
+                    published_at        TIMESTAMPTZ,
+                    created_at          TIMESTAMPTZ NOT NULL DEFAULT now(),
+                    updated_at          TIMESTAMPTZ NOT NULL DEFAULT now()
+                );
+                CREATE INDEX idx_content_posts_status    ON content_posts (status);
+                CREATE INDEX idx_content_posts_campaign  ON content_posts (campaign);
+                CREATE INDEX idx_content_posts_scheduled ON content_posts (scheduled_date)
+                    WHERE scheduled_date IS NOT NULL;
+                CREATE INDEX idx_content_posts_story_angle ON content_posts (story_angle)
+                    WHERE story_angle IS NOT NULL;
+                CREATE INDEX idx_content_posts_channel   ON content_posts (content_channel)
+                    WHERE content_channel IS NOT NULL;
+                CREATE INDEX idx_content_posts_channels  ON content_posts USING GIN (channels);
+                CREATE INDEX idx_content_posts_created   ON content_posts (created_at DESC);
+            """)
+            await conn.execute("""
+                CREATE TABLE content_pipeline_log (
+                    id           SERIAL PRIMARY KEY,
+                    post_id      VARCHAR(20) NOT NULL REFERENCES content_posts(post_id),
+                    action       VARCHAR(50) NOT NULL,
+                    old_status   content_post_status,
+                    new_status   content_post_status,
+                    details      JSONB,
+                    performed_by VARCHAR(100) DEFAULT 'system',
+                    created_at   TIMESTAMPTZ NOT NULL DEFAULT now()
+                );
+                CREATE INDEX idx_pipeline_log_post      ON content_pipeline_log (post_id);
+                CREATE INDEX idx_pipeline_log_action    ON content_pipeline_log (action);
+                CREATE INDEX idx_pipeline_log_created   ON content_pipeline_log (created_at DESC);
+                CREATE INDEX idx_pipeline_log_post_time ON content_pipeline_log (post_id, created_at);
+            """)
+            logger.info("Migration 020 (content_pipeline) applied — tables + indexes created.")
+        else:
+            logger.debug("Migration 020 already applied — content_posts exists.")
+            # ── Phase 3: add 3-axis taxonomy columns if missing (schema upgrade) ──
+            # These columns were added in a later revision of migration 020.
+            # Safe to run on every cold start — each ADD COLUMN is idempotent.
+            for col_name, col_ddl in [
+                ("story_angle",         "VARCHAR(50)"),
+                ("distillation_filter", "VARCHAR(50)"),
+                ("content_channel",     "VARCHAR(50)"),
+            ]:
+                col_exists = await conn.fetchval(
+                    "SELECT EXISTS(SELECT 1 FROM information_schema.columns "
+                    "WHERE table_schema='public' AND table_name='content_posts' "
+                    "AND column_name=$1)", col_name
+                )
+                if not col_exists:
+                    await conn.execute(
+                        f"ALTER TABLE content_posts ADD COLUMN {col_name} {col_ddl}"
+                    )
+                    logger.info(f"Schema upgrade: added content_posts.{col_name}")
+
+
 @contextlib.asynccontextmanager
 async def lifespan(app: FastAPI):
     """Manage startup and shutdown of DB pool + MCP session manager."""
     await config.init_db_pool()
+    await _apply_pending_migrations()
     async with mcp_app.router.lifespan_context(app):
         yield
     await config.close_db_pool()

@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "bharatvarsh-content-calendar-row",
+  "title": "Bharatvarsh Content Calendar Row",
+  "description": "Schema for a single row in the content_calendar.csv. One row = one post across all target channels.",
+  "type": "object",
+  "required": [
+    "post_id",
+    "campaign",
+    "content_pillar",
+    "topic",
+    "hook",
+    "classified_status",
+    "channels",
+    "status"
+  ],
+  "properties": {
+    "post_id": {
+      "type": "string",
+      "pattern": "^BHV-\\d{8}-\\d{3}$",
+      "description": "Unique ID: BHV-YYYYMMDD-NNN"
+    },
+    "campaign": {
+      "type": "string",
+      "description": "Campaign name (e.g., phase1-lore-reveals, character-spotlight-series)"
+    },
+    "content_pillar": {
+      "type": "string",
+      "enum": [
+        "world_window",
+        "character_spotlight",
+        "the_question",
+        "behind_the_build",
+        "gateway_cta"
+      ],
+      "description": "Content pillar classification"
+    },
+    "topic": {
+      "type": "string",
+      "description": "One-line topic description"
+    },
+    "hook": {
+      "type": "string",
+      "description": "The opening line or visual hook"
+    },
+    "lore_refs": {
+      "type": "string",
+      "description": "Bible sections referenced (e.g., Bible:Technology:TheMesh)"
+    },
+    "classified_status": {
+      "type": "string",
+      "enum": ["declassified", "classified"],
+      "description": "Enforces what can be revealed publicly"
+    },
+    "channels": {
+      "type": "string",
+      "description": "Comma-separated target channels: instagram, twitter, facebook"
+    },
+    "format_instagram": {
+      "type": "string",
+      "enum": ["feed_post", "reel", "story", "carousel", ""],
+      "description": "Instagram post format"
+    },
+    "format_twitter": {
+      "type": "string",
+      "enum": ["single_tweet", "thread", "poll", "quote_tweet", ""],
+      "description": "Twitter/X post format"
+    },
+    "format_facebook": {
+      "type": "string",
+      "enum": ["post", "reel", "story", ""],
+      "description": "Facebook post format"
+    },
+    "caption_text": {
+      "type": "string",
+      "description": "Primary caption/text content"
+    },
+    "visual_direction": {
+      "type": "string",
+      "description": "Art direction brief for asset generation"
+    },
+    "prompt_template": {
+      "type": "string",
+      "description": "Reference to style anchor ID from the prompting skill"
+    },
+    "asset_ids": {
+      "type": "string",
+      "description": "Comma-separated asset file references"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "idea",
+        "planned",
+        "prompt_ready",
+        "assets_generating",
+        "assets_final",
+        "rendered",
+        "approved",
+        "scheduled",
+        "published",
+        "analyzing"
+      ],
+      "description": "Pipeline status of this post"
+    },
+    "scheduled_date": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+      "description": "Target publish date (YYYY-MM-DD)"
+    },
+    "scheduled_time": {
+      "type": "string",
+      "pattern": "^\\d{2}:\\d{2}$",
+      "description": "Target publish time in IST (HH:MM)"
+    },
+    "target_audience": {
+      "type": "string",
+      "description": "Audience segment: A, B, C, D or combo"
+    },
+    "hashtags": {
+      "type": "string",
+      "description": "Platform-appropriate hashtags"
+    },
+    "cta_type": {
+      "type": "string",
+      "enum": ["none", "website", "purchase", "lead_magnet", "forum", "bhoomi", ""],
+      "description": "Call-to-action type"
+    },
+    "cta_link": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL for the CTA"
+    },
+    "published_url": {
+      "type": "string",
+      "description": "Actual published post URL (filled post-publish)"
+    },
+    "performance_impressions": {
+      "type": ["integer", "null"],
+      "description": "Tracked impressions"
+    },
+    "performance_engagement": {
+      "type": ["number", "null"],
+      "description": "Engagement rate"
+    },
+    "performance_clicks": {
+      "type": ["integer", "null"],
+      "description": "Link clicks"
+    },
+    "performance_notes": {
+      "type": "string",
+      "description": "Manual analysis notes"
+    }
+  }
+}

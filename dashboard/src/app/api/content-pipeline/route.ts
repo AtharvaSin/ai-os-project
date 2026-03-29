@@ -45,6 +45,15 @@ export async function GET(req: NextRequest) {
     const pillarRows = await query<{ content_pillar: string; count: number }>(
       `SELECT content_pillar, COUNT(*)::int AS count FROM content_posts GROUP BY content_pillar`,
     );
+    const angleRows = await query<{ story_angle: string; count: number }>(
+      `SELECT story_angle, COUNT(*)::int AS count FROM content_posts WHERE story_angle IS NOT NULL GROUP BY story_angle`,
+    );
+    const filterRows = await query<{ distillation_filter: string; count: number }>(
+      `SELECT distillation_filter, COUNT(*)::int AS count FROM content_posts WHERE distillation_filter IS NOT NULL GROUP BY distillation_filter`,
+    );
+    const channelRows = await query<{ content_channel: string; count: number }>(
+      `SELECT content_channel, COUNT(*)::int AS count FROM content_posts WHERE content_channel IS NOT NULL GROUP BY content_channel`,
+    );
 
     const by_status: Record<string, number> = {};
     for (const row of statusRows) {
@@ -56,12 +65,24 @@ export async function GET(req: NextRequest) {
       by_pillar[row.content_pillar] = row.count;
     }
 
+    const by_angle: Record<string, number> = {};
+    for (const row of angleRows) by_angle[row.story_angle] = row.count;
+
+    const by_filter: Record<string, number> = {};
+    for (const row of filterRows) by_filter[row.distillation_filter] = row.count;
+
+    const by_channel: Record<string, number> = {};
+    for (const row of channelRows) by_channel[row.content_channel] = row.count;
+
     return NextResponse.json({
       posts,
       summary: {
         total: posts.length,
         by_status,
         by_pillar,
+        by_angle,
+        by_filter,
+        by_channel,
       },
     });
   } catch (err) {
@@ -85,21 +106,26 @@ export async function POST(req: NextRequest) {
     for (const post of posts) {
       const count = await execute(
         `INSERT INTO content_posts (
-           post_id, campaign, content_pillar, topic, hook, lore_refs,
+           post_id, campaign, content_pillar, story_angle, distillation_filter,
+           content_channel, topic, hook, lore_refs,
            classified_status, channels, caption_text, visual_direction,
            art_prompt, model_routing, source_image_path, render_manifest,
            style_overrides, scheduled_date, scheduled_time, target_audience,
            hashtags, cta_type, cta_link, status
          ) VALUES (
-           $1, $2, $3, $4, $5, $6,
-           $7, $8, $9, $10,
-           $11, $12, $13, $14,
-           $15, $16, $17, $18,
-           $19, $20, $21, $22
+           $1, $2, $3, $4, $5,
+           $6, $7, $8, $9,
+           $10, $11, $12, $13,
+           $14, $15, $16, $17,
+           $18, $19, $20, $21,
+           $22, $23, $24, $25
          )
          ON CONFLICT (post_id) DO UPDATE SET
            campaign = EXCLUDED.campaign,
            content_pillar = EXCLUDED.content_pillar,
+           story_angle = EXCLUDED.story_angle,
+           distillation_filter = EXCLUDED.distillation_filter,
+           content_channel = EXCLUDED.content_channel,
            topic = EXCLUDED.topic,
            hook = EXCLUDED.hook,
            lore_refs = EXCLUDED.lore_refs,
@@ -121,7 +147,10 @@ export async function POST(req: NextRequest) {
         [
           post.post_id,
           post.campaign,
-          post.content_pillar,
+          (post.story_angle ?? post.content_pillar) as string,  // content_pillar ← story_angle
+          (post.story_angle ?? null) as string | null,
+          (post.distillation_filter ?? null) as string | null,
+          (post.content_channel ?? null) as string | null,
           post.topic,
           post.hook ?? null,
           post.lore_refs ?? null,

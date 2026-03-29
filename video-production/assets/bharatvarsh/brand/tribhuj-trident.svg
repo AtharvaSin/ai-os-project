@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600" fill="none">
+  <!-- Tribhuj Grey Trident — silhouette based on Mahabharatvarsh book cover -->
+  <!-- Three-pronged trident with tapered shaft, pointed tips, curved arms -->
+  <defs>
+    <linearGradient id="tridentGlow" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0%" stop-color="#17D0E3" stop-opacity="0.9"/>
+      <stop offset="40%" stop-color="#4A90D9" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#4A4A4A" stop-opacity="0.5"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <g filter="url(#glow)">
+    <!-- Main shaft -->
+    <path d="M 195 580 L 195 220 Q 195 200 200 195 Q 205 200 205 220 L 205 580 Z" fill="url(#tridentGlow)"/>
+
+    <!-- Center prong (tallest) -->
+    <path d="M 188 220 L 200 20 L 212 220 Z" fill="url(#tridentGlow)"/>
+
+    <!-- Left arm (curved from shaft to left prong) -->
+    <path d="M 195 230 Q 160 210 130 220 Q 115 225 110 230 L 110 100 L 125 80 L 130 100 L 130 220 Q 145 215 160 218 Q 180 222 195 230 Z" fill="url(#tridentGlow)"/>
+
+    <!-- Left prong tip -->
+    <path d="M 105 100 L 120 30 L 135 100 Z" fill="url(#tridentGlow)"/>
+
+    <!-- Right arm (curved from shaft to right prong) -->
+    <path d="M 205 230 Q 240 210 270 220 Q 285 225 290 230 L 290 100 L 275 80 L 270 100 L 270 220 Q 255 215 240 218 Q 220 222 205 230 Z" fill="url(#tridentGlow)"/>
+
+    <!-- Right prong tip -->
+    <path d="M 265 100 L 280 30 L 295 100 Z" fill="url(#tridentGlow)"/>
+
+    <!-- Cross guard -->
+    <path d="M 150 240 Q 175 255 200 260 Q 225 255 250 240 Q 225 265 200 270 Q 175 265 150 240 Z" fill="url(#tridentGlow)"/>
+  </g>
+</svg>
