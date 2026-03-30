@@ -394,7 +394,7 @@ No sudden movements. Smooth 4-second loop."
 ## PHASE 9: Consistency Enforcement Protocol
 
 ### Rule 1: Reference Sheet First
-Before generating ANY content images for a character, generate (or confirm) a canonical reference sheet exists in `content-ops/assets/references/`. If it doesn't exist, that's the first generation task.
+Before generating ANY content images for a character, generate (or confirm) a canonical reference sheet exists in `content-pipelines/bharatvarsh/assets/references/`. If it doesn't exist, that's the first generation task.
 
 ### Rule 2: Same Seed Anchoring
 When generating multiple images of the same character across different posts, note the seed of the best result and reuse it as a starting point for subsequent generations (with denoise 0.3-0.5 to allow variation while maintaining facial similarity).

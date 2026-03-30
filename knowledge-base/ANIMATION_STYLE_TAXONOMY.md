@@ -984,9 +984,9 @@ What are you building?
 
 ## Existing Project Inventory
 
-Components and utilities already built across the two Remotion projects:
+Components and utilities already built across the video production system (now unified in `video-production/`):
 
-### remotion_video/ (Bharatvarsh pipeline)
+### video-production/src/projects/bharatvarsh/ (Bharatvarsh pipeline)
 | Component | Category | Style |
 |-----------|----------|-------|
 | `BharatvarshPost.tsx` | 1.3, 6.1, 6.3 | Multi-phase title sequence with Ken Burns, typewriter, stamp, film grain, vignette, scanline |
@@ -998,7 +998,7 @@ Components and utilities already built across the two Remotion projects:
 | `Subtitle.tsx` | 1.1 | Word-level subtitle display |
 | `Word.tsx` | 1.1 | Individual word animation |
 
-### aiu-youtube/remotion_aiu/ (AI&U pipeline)
+### video-production/src/projects/aiu/ (AI&U pipeline)
 | Component | Category | Style |
 |-----------|----------|-------|
 | `LowerThird.tsx` | 1.2 | Pillar-accented slide-in name/title |

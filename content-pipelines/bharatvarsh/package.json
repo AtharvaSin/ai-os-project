@@ -1,5 +1,5 @@
 {
-  "name": "content-ops",
+  "name": "bharatvarsh-content-pipeline",
   "version": "1.0.0",
   "description": "Bharatvarsh Content Operations Platform — lore-canonical content pipeline for MahaBharatvarsh marketing across Instagram, Twitter/X, and Facebook.",
   "main": "render-post.js",
@@ -17,7 +17,7 @@
   },
   "keywords": [
     "bharatvarsh",
-    "content-ops",
+    "bharatvarsh-content-pipeline",
     "puppeteer",
     "social-media"
   ],

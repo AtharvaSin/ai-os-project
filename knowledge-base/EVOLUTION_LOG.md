@@ -16,7 +16,7 @@ A running record of design decisions, architecture changes, brainstorming outcom
 ### Video Production System + State v21 (2026-03-27)
 
 #### What Was Built
-- **Unified Video Production System** (`video-production/`) — Single Remotion 4.0.438 workspace replacing fragmented `remotion_video/` and `aiu-youtube/remotion_aiu/`. 160 source files, zero TypeScript errors.
+- **Unified Video Production System** (`video-production/`) — Single Remotion 4.0.438 workspace replacing fragmented `remotion_video/` and `aiu-youtube/remotion_aiu/` (now deprecated). 160 source files, zero TypeScript errors.
 - **Common Component Library** — 18 brand-neutral components accepting BrandTokens interface: FilmGrain, Vignette, ScanLines, GlowPulse, NoiseTexture, MotionBlur, TypewriterText, TextPunch, WordReveal, CountUp, KaraokeSubtitle, SafeArea, AccentBar, LetterboxBars, ProgressBar, Watermark, StatCard, KenBurnsImage.
 - **Project Migrations** — 88 project-specific compositions migrated (63 AI&U + 22 Bharatvarsh + 1 AI OS + 2 shared). AI&U uses 9 shim files in utils/ to redirect imports to common library without touching 60+ component files.
 - **Brand Configuration** — 3 project YAML configs (Bharatvarsh/AI&U/AI OS) + template. Each defines colors, typography, art style, content pillars, formats, timing, CTA, notebook references, pipeline paths.

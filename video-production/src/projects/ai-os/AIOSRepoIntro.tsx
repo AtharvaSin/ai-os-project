@@ -12,7 +12,7 @@ import { loadFont as loadInter } from "@remotion/google-fonts/Inter";
 import { AIU_COLORS, SPRING_CONFIG } from "../aiu/aiu-legacy-constants";
 
 // Note: AIU_COLORS and SPRING_CONFIG are imported from the legacy AI&U constants.
-// This component was originally part of the remotion_video project.
+// This component was originally part of the remotion_video project (now unified in video-production/).
 
 const { fontFamily: spaceGrotesk } = loadSpaceGrotesk();
 const { fontFamily: inter } = loadInter();

@@ -1,8 +1,8 @@
 /**
- * Bharatvarsh Content Operations — Brand Tokens (Context B)
+ * Bharatvarsh Content Pipeline — Brand Tokens (Context B)
  *
  * Canonical source: knowledge-base/BRAND_IDENTITY.md, Context B section.
- * These tokens are consumed by all content-ops templates and rendering pipelines.
+ * These tokens are consumed by all bharatvarsh content pipeline templates and rendering pipelines.
  * Do NOT add tokens from Context A or C here — this file is Context B only.
  */
 

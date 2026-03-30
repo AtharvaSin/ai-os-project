@@ -9,7 +9,7 @@
 
 ## Overview
 
-The Bharatvarsh Content Operations Platform (BCOP) is a 6-layer content factory that automates promotional content creation, rendering, distribution, and monitoring for MahaBharatvarsh across Instagram, Twitter/X, and Facebook. It lives as `content-ops/` inside the existing AI OS project.
+The Bharatvarsh Content Operations Platform (BCOP) is a 6-layer content factory that automates promotional content creation, rendering, distribution, and monitoring for MahaBharatvarsh across Instagram, Twitter/X, and Facebook. It lives as `content-pipelines/bharatvarsh/` inside the existing AI OS project.
 
 **Three core principles:** lore-canonical consistency, brand-locked design (Context B tokens everywhere), human-in-the-loop quality gates.
 
@@ -22,18 +22,18 @@ The Bharatvarsh Content Operations Platform (BCOP) is a 6-layer content factory 
 **Goal:** Create all directory structure, data schemas, brand exports, prompt data files, starter templates, and the art prompting skill. No runtime code yet — this is the data layer everything else builds on.
 
 ### Task 1: Directory Structure
-Create the full `content-ops/` tree with all subdirectories and placeholder files.
+Create the full `content-pipelines/bharatvarsh/` tree with all subdirectories and placeholder files.
 
 **Files created:**
-- `content-ops/README.md`
-- `content-ops/calendar/` (with `archive/`)
-- `content-ops/templates/instagram/`, `twitter/`, `facebook/`, `shared/`
-- `content-ops/assets/references/` + `.gitkeep` files
-- `content-ops/rendered/` + `.gitkeep`
-- `content-ops/prompts/`
-- `content-ops/distributor/channel_adapters/`
-- `content-ops/monitor/dashboard/`, `reports/`
-- `content-ops/skills/`
+- `content-pipelines/bharatvarsh/README.md`
+- `content-pipelines/bharatvarsh/calendar/` (with `archive/`)
+- `content-pipelines/bharatvarsh/templates/instagram/`, `twitter/`, `facebook/`, `shared/`
+- `content-pipelines/bharatvarsh/assets/references/` + `.gitkeep` files
+- `content-pipelines/bharatvarsh/rendered/` + `.gitkeep`
+- `content-pipelines/bharatvarsh/prompts/`
+- `content-pipelines/bharatvarsh/distributor/channel_adapters/`
+- `content-pipelines/bharatvarsh/monitor/dashboard/`, `reports/`
+- `content-pipelines/bharatvarsh/skills/`
 
 ### Task 2: Content Calendar CSV + JSON Schema
 - Header-only CSV with all 25 fields from the architecture doc
@@ -61,7 +61,7 @@ Self-contained HTML files for Puppeteer rendering via asr-visual-studio:
 Each uses inline CSS with Context B tokens, atmospheric effects, brand fonts. Accepts URL parameters or data attributes for slot content.
 
 ### Task 6: Install Prompting Skill
-- Copy to `content-ops/skills/SKILL_BHARATVARSH_ART_PROMPTS.md`
+- Copy to `content-pipelines/bharatvarsh/skills/SKILL_BHARATVARSH_ART_PROMPTS.md`
 - Create `.claude/skills/bharatvarsh-art-prompts/SKILL.md` with Claude Code frontmatter
 
 ### Task 7: README
@@ -83,12 +83,12 @@ Using the prompting skill, generate:
 
 **Tools:** OpenArt (SDXL/Flux), Google Flow (Imagen). Manual operation with prompt refinement.
 
-**Output:** `content-ops/assets/references/` populated with canonical images + `metadata.json` per image.
+**Output:** `content-pipelines/bharatvarsh/assets/references/` populated with canonical images + `metadata.json` per image.
 
 ### Task 2.2: First Asset Batch
 Generate 5-10 assets for sample calendar posts. Test across content pillars: one quote card, one character teaser, one lore reveal, one world contrast, one CTA.
 
-**Output:** `content-ops/assets/{post_id}/` with prompt.txt, final.png, metadata.json per post.
+**Output:** `content-pipelines/bharatvarsh/assets/{post_id}/` with prompt.txt, final.png, metadata.json per post.
 
 ### Task 2.3: Rendering Pipeline Integration
 Wire the templates to asr-visual-studio:
@@ -96,7 +96,7 @@ Wire the templates to asr-visual-studio:
 - Test: asset + template → rendered multi-channel output
 - Validate brand consistency across Instagram, Twitter, Facebook variants
 
-**Output:** `content-ops/rendered/{post_id}/` with `instagram_feed.png`, `twitter.png`, `facebook.png`.
+**Output:** `content-pipelines/bharatvarsh/rendered/{post_id}/` with `instagram_feed.png`, `twitter.png`, `facebook.png`.
 
 ### Task 2.4: Template Expansion
 Based on Phase 2.3 results, build remaining templates:
@@ -122,14 +122,14 @@ Based on Phase 2.3 results, build remaining templates:
 
 ### Task 3.2: Channel Adapter Scripts
 Build Python adapters following existing AI OS patterns:
-- `content-ops/distributor/channel_adapters/instagram.py` — Meta Graph API (upload media → create container → publish)
-- `content-ops/distributor/channel_adapters/twitter.py` — Twitter API v2 (upload media → create tweet, thread support)
-- `content-ops/distributor/channel_adapters/facebook.py` — Meta Graph API (upload media → create post)
+- `content-pipelines/bharatvarsh/distributor/channel_adapters/instagram.py` — Meta Graph API (upload media → create container → publish)
+- `content-pipelines/bharatvarsh/distributor/channel_adapters/twitter.py` — Twitter API v2 (upload media → create tweet, thread support)
+- `content-pipelines/bharatvarsh/distributor/channel_adapters/facebook.py` — Meta Graph API (upload media → create post)
 
 Each adapter: type-hinted, async, structured error handling, rate limit awareness.
 
 ### Task 3.3: Distribution Orchestrator
-`content-ops/distributor/distribute.py`:
+`content-pipelines/bharatvarsh/distributor/distribute.py`:
 - Reads content_calendar.csv
 - Filters: `status == 'approved' AND scheduled_datetime <= now()`
 - For each row: call appropriate channel adapter(s)
@@ -172,7 +172,7 @@ Two options (decide based on posting frequency):
 **Goal:** Build performance tracking, a visual dashboard, and an AI-guided strategy feedback loop.
 
 ### Task 4.1: Metrics Collection Pipeline
-`content-ops/monitor/fetch_metrics.py`:
+`content-pipelines/bharatvarsh/monitor/fetch_metrics.py`:
 - Daily cron job (Cloud Scheduler or Claude Schedule)
 - Fetches from each platform API: impressions, reach, engagement, likes, comments, shares, saves, clicks
 - Writes metrics back to content_calendar.csv performance columns
@@ -188,7 +188,7 @@ Two options (decide based on scope):
 - Best for integrated experience
 
 **Option B: Local Standalone Dashboard**
-- Simple React app in `content-ops/monitor/dashboard/`
+- Simple React app in `content-pipelines/bharatvarsh/monitor/dashboard/`
 - Reads from CSV directly
 - No auth needed (local only)
 - Best for quick iteration

@@ -25,7 +25,7 @@ Total: ~2.5 hours/week manual effort.
 ## File Structure
 
 ```
-content-ops/
+content-pipelines/bharatvarsh/
 ├── README.md                           ← You're reading this
 ├── IMPLEMENTATION_PLAN.md              ← Full 4-phase build plan
 ├── calendar/
@@ -68,11 +68,11 @@ content-ops/
 | Document | Location |
 |----------|----------|
 | System Architecture | `bharatvarsh-content-pipeline/plan-first-draft/BHARATVARSH_CONTENT_OPS_SYSTEM.md` |
-| AI Art Prompting Skill | `content-ops/skills/SKILL_BHARATVARSH_ART_PROMPTS.md` |
+| AI Art Prompting Skill | `content-pipelines/bharatvarsh/skills/SKILL_BHARATVARSH_ART_PROMPTS.md` |
 | Brand Identity (Context B) | `knowledge-base/BRAND_IDENTITY.md` |
 | Lore Canon | `knowledge-base/BHARATVARSH_BIBLE.md` |
 | Marketing Strategy | `knowledge-base/MARKETING_PLAYBOOK.md` |
-| Implementation Plan | `content-ops/IMPLEMENTATION_PLAN.md` |
+| Implementation Plan | `content-pipelines/bharatvarsh/IMPLEMENTATION_PLAN.md` |
 
 ## Current Status
 

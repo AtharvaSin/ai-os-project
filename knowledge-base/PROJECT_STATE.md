@@ -105,7 +105,7 @@
 
 ### Video Production System (NEW — v21)
 - **Location:** `video-production/` — unified Remotion 4.0.438 workspace
-- **Architecture:** Single install replacing `remotion_video/` + `aiu-youtube/remotion_aiu/`
+- **Architecture:** Single install (replaced former `remotion_video/` + `aiu-youtube/remotion_aiu/`)
 - **Common Library:** 18 brand-neutral components (6 effects, 5 typography, 5 layout, 1 data-viz, 1 media)
 - **Project Compositions:** 88 project-specific (63 AI&U + 22 Bharatvarsh + 1 AI OS + 2 shared)
 - **Brand System:** BrandTokens interface — components accept tokens, render per-project brand automatically
@@ -115,7 +115,7 @@
 - **CLI Tools:** 4 (new-video, render, graduate, catalog)
 - **Root.tsx:** 28 registered compositions (442 lines)
 - **TypeScript:** Strict mode, zero errors, 160 source files
-- **Old dirs deprecated:** `remotion_video/DEPRECATED.md`, `aiu-youtube/remotion_aiu/DEPRECATED.md`
+- **Old dirs deprecated:** `remotion_video/DEPRECATED.md`, `aiu-youtube/remotion_aiu/DEPRECATED.md` (all code now in `video-production/`)
 
 ### Cowork Plugins (3)
 - asr-visual-studio — 3 skills, 3 engine modules, brand system (A/B/C)
@@ -220,7 +220,7 @@
 - 4 CLI tools (new-video, render, graduate, catalog)
 - 28 compositions registered in Root.tsx (442 lines)
 - AI&U shim strategy: 9 utils/ shim files redirect imports to common library without touching 60+ component files
-- Old directories deprecated: remotion_video/DEPRECATED.md, aiu-youtube/remotion_aiu/DEPRECATED.md
+- Old directories deprecated: remotion_video/DEPRECATED.md, aiu-youtube/remotion_aiu/DEPRECATED.md (all code now in video-production/)
 - Skills count: 34 → 35 (video-production added)
 - CLAUDE.md, TOOL_ECOSYSTEM_PLAN.md, WORK_PROJECTS.md, EVOLUTION_LOG.md all updated
 - bharatvarsh-video-renderer and bharatvarsh-post-renderer skills updated with infrastructure notes
