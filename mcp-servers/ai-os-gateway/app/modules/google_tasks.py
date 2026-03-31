@@ -755,6 +755,7 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                 synced = 0
                 errors = 0
                 changes: list[dict[str, Any]] = []
+                error_details: list[dict[str, str]] = []
 
                 # ── Phase 1: Field-level merge for existing DB tasks ──
                 rows = await conn.fetch(
@@ -919,8 +920,16 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                                     "preview": user_zone[:80],
                                 })
                                 synced += 1
-                    except Exception:
+                    except Exception as exc:
                         errors += 1
+                        detail = {
+                            "phase": "field_merge",
+                            "task_id": str(row["id"]),
+                            "title": row["title"][:60],
+                            "error": str(exc)[:200],
+                        }
+                        error_details.append(detail)
+                        logger.warning("Phase 1 sync error for task %s: %s", str(row["id"])[:8], exc)
 
                 # ── Phase 2: Discover phone-created tasks ──
                 # Query ALL active numbered domains (not just those with a list)
@@ -965,8 +974,14 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                             ).execute
                         )
                         google_tasks_list = result.get("items", [])
-                    except Exception:
+                    except Exception as exc:
                         errors += 1
+                        error_details.append({
+                            "phase": "list_fetch",
+                            "domain": domain["slug"],
+                            "error": str(exc)[:200],
+                        })
+                        logger.warning("Phase 2 list fetch error for %s: %s", domain["slug"], exc)
                         continue
 
                     for gt in google_tasks_list:
@@ -1091,14 +1106,23 @@ def register_tools(mcp: FastMCP, get_pool) -> None:
                                 "domain": domain_slug,
                             })
                             synced += 1
-                        except Exception:
+                        except Exception as exc:
                             errors += 1
+                            error_details.append({
+                                "phase": "task_import",
+                                "google_task_id": gt_id,
+                                "title": (gt_title or "")[:60],
+                                "domain": domain["slug"],
+                                "error": str(exc)[:200],
+                            })
+                            logger.warning("Phase 2 import error for '%s': %s", gt_title[:40] if gt_title else "?", exc)
 
                 return json.dumps({
                     "synced": synced,
                     "errors": errors,
                     "changes": changes,
                     "total_checked": len(rows),
+                    "error_details": error_details[:20],
                 })
         except Exception as exc:
             return json.dumps({"error": f"Sync failed: {exc}"})
